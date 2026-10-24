@@ -6938,3 +6938,36 @@ union now preserves all **194** upstream entries plus the three own IDs (197).
 Canonical build renders the full union. Own audit triggers also now cover source
 core/validator changes, actual refreshed snapshot/identities, and all test changes,
 so the read-only six-hour monitor is not its only chance to catch a regression.
+
+
+### e3fe9518 combined-main checkpoint — 2026-10-24 07:29 UTC
+
+- Upstream #266 / `939c0d5` independently supplied the same actual-register
+  positive-fixture fix with the full tightened contract. Dropped own duplicate
+  `a4251d4` during rebase; `tests/test_session_ea2e254c.py` is exactly upstream.
+  Main #267 / `d0faf73` production/alias/quicknav work and all **201** upstream
+  review entries are preserved, plus three own IDs (204).
+- Current full repeat: **1,345 unit tests OK (one skip), 42 own supplemental**;
+  all nine legacy browser suites pass. Root/public validator: 92 rows,
+  31 calculations, 878 links/assets, 20 hashes, 234 displayed rows.
+- **Release is NOT green:** the unchanged own full-bottom acceptance detects
+  the new #267 quicknav pushing the score-pair rectangle to y497.328 + h55.688
+  = bottom553.016, under the y507 fixed tab bar at 320x568. Owner's saved
+  measurement checks only top<tab; old tests also miss this clipped answer.
+  Exact issue + narrow compaction request is posted on #267 (comments
+  6381409575 / 6381438957). No test relaxed and no DOM altered. Active quicknav
+  CSS remains 4ed657ce's scope pending its fix or explicit handoff.
+- Original read-only run 40071009978 completed at06:52:42: canonical and public
+  source-byte steps succeeded; actual live-mobile step failed (cause unknown).
+  Its only readable check annotation is exit1. Log download redirects to a
+  non-allowlisted results host and fails EOF; no alternate proxy/credential or
+  forbidden-host workaround used. Own checker now emits small escaped normal
+  GitHub Checks annotations with exact manifest/source hashes, observed clock,
+  per-phone answer/nav bounds and failures, alongside the usual artifacts.
+  New tests reject command injection and a self-consistent but changed manifest
+  appearing between verified assets and source reads. All 42 own tests pass.
+- REST budget recovered after its official reset (4782 remaining at07:11).
+  Cancelling obsolete own queued run40072602013 returned403 **Resource not
+  accessible by integration** (Actions-write permission, not authentication).
+  No retry, alternate credentials or cancellation of anyone else's run; normal
+  read-only monitoring continues. Current PR #264 remains unmerged.

@@ -6,12 +6,14 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const http = require('node:http');
+const crypto = require('node:crypto');
 const {chromium: playwright} = require('playwright-core');
 const chromium = require('@sparticuz/chromium');
 
 (async () => {
   let server, browser;
-  const report = {clock: process.env.VERIFY_LIVE ? 'actual_device_time' : 'snapshot_time_not_live', viewports: []};
+  const report = {clock: process.env.VERIFY_LIVE ? 'actual_device_time' : 'snapshot_time_not_live',
+    checked_at: new Date().toISOString(), passed: false, viewports: [], firstCardMeasurements: []};
   try {
     let base = process.env.SITE;
     if (!base) {
@@ -31,9 +33,12 @@ const chromium = require('@sparticuz/chromium');
       base = `http://127.0.0.1:${server.address().port}/MaltaProj4/`;
     }
     base = base.replace(/\/?$/, '/');
+    report.site = base;
     const response = await fetch(base + 'data/latest.json');
     assert.equal(response.status, 200);
-    const snapshot = await response.json();
+    const snapshotBytes = Buffer.from(await response.arrayBuffer());
+    report.snapshot_sha256 = crypto.createHash('sha256').update(snapshotBytes).digest('hex');
+    const snapshot = JSON.parse(snapshotBytes.toString('utf8'));
     const clock = process.env.VERIFY_LIVE ? Date.now() : Date.parse(snapshot.generated_at);
     const inventoryFresh = clock - Date.parse(snapshot.fixtures_observed_at) < 8 * 3600000;
     const open = snapshot.matches.filter(m => m.state === 'open'
@@ -95,6 +100,7 @@ const chromium = require('@sparticuz/chromium');
           const first = page.locator(`.glance-card-mobile[href="evidence.html#match-${actionable[0].id}"]`);
           const answer = await first.locator('.glance-card-scores, .glance-card-pick').last().boundingBox();
           const nav = await page.locator('.mobile-tabs').boundingBox();
+          report.firstCardMeasurements.push({width, height, match: actionable[0].id, answer, nav});
           assert.ok(answer && nav && answer.y + answer.height <= nav.y,
             `Both first-pick shares must fit above bottom nav: ${JSON.stringify({width, answer, nav})}`);
           await first.click();
@@ -121,10 +127,18 @@ const chromium = require('@sparticuz/chromium');
     if (process.env.VERIFY_LIVE) {
       assert.ok(inventoryFresh, 'Live snapshot is expired; do not claim the deployment is current');
     }
+    report.passed = true;
     console.log('Passed: every phone card agrees with the source snapshot, primary/listing/model labels, first-screen pick links, one-tap evidence and genuine expiry.');
+  } catch (error) {
+    report.error = error.message;
+    throw error;
   } finally {
     fs.mkdirSync('runtime', {recursive: true});
     fs.writeFileSync('runtime/browser-e3fe9518.json', JSON.stringify(report, null, 2) + '\n');
+    if (process.env.VERIFY_LIVE) {
+      const message = JSON.stringify(report).replaceAll('%', '%25').replaceAll('\r', '%0D').replaceAll('\n', '%0A');
+      console.log(`::${report.passed ? 'notice' : 'error'} title=e3fe9518-live-mobile-receipt::${message}`);
+    }
     if (browser) await browser.close();
     if (server) await new Promise(resolve => server.close(resolve));
   }

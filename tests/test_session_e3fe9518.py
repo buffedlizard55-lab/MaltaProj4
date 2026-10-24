@@ -269,6 +269,29 @@ class PublicationExpectationTests(unittest.TestCase):
             self.assertEqual(self.live.expectation(ref, b'merged', b'previously-published'),
                              (b'merged', 'this_merged_main_build_or_a_coherent_newer_release'))
 
+    def test_annotation_receipt_cannot_inject_workflow_commands(self):
+        command = self.live.receipt_annotation({'untrusted': '%0A\n::error::not a command'})
+        self.assertTrue(command.startswith('::notice title=e3fe9518-public-source-receipt::'))
+        self.assertNotIn('\n', command)
+        self.assertIn('%250A', command)
+        self.assertTrue(self.live.receipt_annotation({'verified': False}, failed=True).startswith('::error '))
+
+    def test_new_self_consistent_manifest_cannot_replace_the_one_actually_verified(self):
+        old_data, new_data = b'old snapshot', b'new snapshot'
+        manifest = lambda data: json.dumps({'files': {'data/latest.json': hashlib.sha256(data).hexdigest()}}).encode()
+        old, new = manifest(old_data), manifest(new_data)
+        same = self.live.public_read_binding(old, old, old_data)
+        self.assertTrue(same['manifest_unchanged_since_byte_verification'])
+        self.assertTrue(same['snapshot_matches_adjacent_manifest'])
+        race = self.live.public_read_binding(old, new, new_data)
+        self.assertFalse(race['manifest_unchanged_since_byte_verification'])
+        self.assertTrue(race['snapshot_matches_adjacent_manifest'])
+        corrupt = self.live.public_read_binding(old, old, new_data)
+        self.assertFalse(corrupt['snapshot_matches_adjacent_manifest'])
+        missing = self.live.public_read_binding(None, None, new_data)
+        self.assertFalse(missing['manifest_unchanged_since_byte_verification'])
+        self.assertFalse(missing['snapshot_matches_adjacent_manifest'])
+
 
 class LiveComparisonTests(unittest.TestCase):
     @classmethod

@@ -91,6 +91,28 @@ def expectation(reference, root_bytes, published_bytes=None):
     return root_bytes, 'this_merged_main_build_or_a_coherent_newer_release'
 
 
+def receipt_annotation(payload, failed=False):
+    """Expose small receipts through the normal, readable GitHub Checks API."""
+    message = json.dumps(payload, ensure_ascii=True, separators=(',', ':'))
+    message = message.replace('%', '%25').replace('\r', '%0D').replace('\n', '%0A')
+    level = 'error' if failed else 'notice'
+    return f'::{level} title=e3fe9518-public-source-receipt::{message}'
+
+
+def public_read_binding(verified_manifest, adjacent_manifest, snapshot):
+    digest = lambda body: hashlib.sha256(body).hexdigest() if body is not None else None
+    try:
+        parsed = json.loads(adjacent_manifest)
+        files = parsed.get('files') if isinstance(parsed, dict) else {}
+        recorded_snapshot = files.get('data/latest.json') if isinstance(files, dict) else None
+    except (TypeError, ValueError):
+        recorded_snapshot = None
+    return {'verified_manifest_sha256': digest(verified_manifest),
+            'adjacent_manifest_sha256': digest(adjacent_manifest),
+            'manifest_unchanged_since_byte_verification': bool(verified_manifest) and verified_manifest == adjacent_manifest,
+            'snapshot_matches_adjacent_manifest': recorded_snapshot is not None and recorded_snapshot == digest(snapshot)}
+
+
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     stamp = os.environ.get('GITHUB_RUN_ID') or str(int(time.time()))
@@ -101,20 +123,32 @@ def main():
     expected_bytes, expectation_mode = expectation(
         reference, (ROOT / 'build-info.json').read_bytes(), published_bytes)
     expected = json.loads(expected_bytes)
+    verified_manifests = []
+
+    def observed_fetch(url):
+        content, observed = fetch(url)
+        if content is None:
+            raise OSError(f'Public fetch failed: {observed.get("http_status", observed.get("error"))}')
+        if url.split('?', 1)[0] == SITE + 'build-info.json':
+            verified_manifests.append(content)
+        return content
+
     receipt = verify(SITE, hashlib.sha256(expected_bytes).hexdigest(), expected['built_at'],
-                     stamp, deadline_seconds=360, interval_seconds=15)
+                     stamp, deadline_seconds=360, interval_seconds=15, fetch=observed_fetch)
     receipt['expectation_mode'] = expectation_mode
     (OUT / 'live-build-receipt.json').write_text(json.dumps(receipt, indent=2) + '\n')
     raw, snapshot_receipt = fetch(SITE + 'data/latest.json?verification=' + stamp)
     if raw is None:
         (OUT / 'snapshot-fetch.json').write_text(json.dumps(snapshot_receipt, indent=2) + '\n')
+        print(receipt_annotation({'verified': False, 'snapshot_fetch': snapshot_receipt,
+                                  'live_build': receipt}, failed=True), flush=True)
         return 1
     (OUT / 'live-snapshot.json').write_bytes(raw)
     snapshot = json.loads(raw)
     manifest_raw, manifest_receipt = fetch(SITE + 'build-info.json?verification=' + stamp)
-    live_manifest = json.loads(manifest_raw) if manifest_raw else {}
-    manifest_snapshot_hash_matches = (live_manifest.get('files', {}).get('data/latest.json')
-                                      == hashlib.sha256(raw).hexdigest())
+    binding = public_read_binding(verified_manifests[-1] if verified_manifests else None,
+                                  manifest_raw, raw)
+    manifest_snapshot_hash_matches = binding['snapshot_matches_adjacent_manifest']
     documents = audit.archived_standings()
     document_receipts = []
     urls = sorted({q['api_url'] for m in snapshot['matches'] for q in m.get('evidence', [])
@@ -130,6 +164,8 @@ def main():
     result = audit.inspect(snapshot, now.isoformat(), standings_documents=documents)
     if not manifest_snapshot_hash_matches:
         result['errors'].append('Public snapshot bytes differ from the manifest read alongside them; deployment may be racing')
+    if not binding['manifest_unchanged_since_byte_verification']:
+        result['errors'].append('Public manifest changed after the verified-file read; repeat after deployment propagation')
     result['snapshot_sha256'] = hashlib.sha256(raw).hexdigest()
     (OUT / 'live-source-audit.json').write_text(json.dumps(result, indent=2, ensure_ascii=False) + '\n')
     (OUT / 'live-source-audit.md').write_text(audit.markdown(result))
@@ -154,16 +190,33 @@ def main():
                'captured_operator_inputs_still_confirmed': sum(
                    r['comparison']['snapshot_inputs_confirmed_now'] for r in quotes),
                'primary_price_confirmation_for_third_party_listings': None,
+               'official_documents_rechecked': len(document_receipts),
+               'official_documents_downloaded_now': sum('sha256' in r for r in document_receipts),
+               'official_document_access_limitations': [r for r in document_receipts if 'sha256' not in r],
+               'live_build': receipt,
+               **binding,
                'errors': result['errors']}
+    failed = not receipt['verified'] or not summary['inside_eight_hour_window'] or bool(result['errors'])
     (OUT / 'summary.json').write_text(json.dumps(summary, indent=2) + '\n')
     print(json.dumps(summary, indent=2))
+    print(receipt_annotation(summary, failed=failed), flush=True)
     if os.environ.get('GITHUB_STEP_SUMMARY'):
         with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as handle:
             handle.write('## Independent live source review\n\n```json\n' + json.dumps(summary, indent=2)
                          + '\n```\n\nAn aggregator link is not operator price verification. '
                          'Changed live prices are not used to rewrite captured picks.\n')
-    return int(not receipt['verified'] or not summary['inside_eight_hour_window'] or bool(result['errors']))
+    return int(failed)
 
 
 if __name__ == '__main__':
-    raise SystemExit(main())
+    try:
+        outcome = main()
+    except Exception as error:
+        failure = {'checked_at': datetime.now(timezone.utc).isoformat(),
+                   'site': SITE, 'verified': False,
+                   'error': f'{type(error).__name__}: {error}'}
+        OUT.mkdir(parents=True, exist_ok=True)
+        (OUT / 'failure.json').write_text(json.dumps(failure, indent=2) + '\n')
+        print(receipt_annotation(failure, failed=True), flush=True)
+        raise
+    raise SystemExit(outcome)
