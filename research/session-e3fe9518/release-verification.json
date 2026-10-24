@@ -83,7 +83,17 @@
       ]
     }
   ],
-  "live_publication": "Pending merged-release verification. Branch audits of observed production never prove this unmerged release is deployed.",
+  "live_publication": {
+    "verified": true,
+    "checked_at": "2026-10-24T10:52:22.323326+00:00",
+    "workflow_run": 40085643489,
+    "main_tree_commit": "1ae6445b81989997ac81d7646d111a5677163a3a",
+    "public_manifest_sha256": "7f1edf7361c10fef180a31d7cdd9f2e4b419738dc0d30ded649d3a40a18282cd",
+    "public_snapshot_sha256": "b6388e5e578fd5ec31f15e5ec48b3455569cec93e5cb5f07f4d955e46a3e5055",
+    "active_at_mobile_check": 29,
+    "scope": "already-merged application release; no main write",
+    "full_receipt": "public-release-verification.json"
+  },
   "non_executable_integration_after_full_browser_run": "0fc34cd changes only COORDINATION and dated e9be3e6b reports/measurements/audit receipts; production code, source snapshot and every public byte are unchanged.",
   "checked_at_after_docs_only_integration": "2026-10-24T08:24:54.442823+00:00",
   "full_unit_repeat_after_docs_only_integration": {

@@ -7979,3 +7979,17 @@ Actual public check09:56 still old06:19: source target correctly failed after
 inputs were traced but this is NOT proof the release deployed. Current native
 99253f7 run40082763927 and the explicit merged-target branch reader remain queued.
 No dispatch/cancel retry, credential change, old-data rewriting or main push.
+
+
+### e3fe9518 public application release verified — 2026-10-24T10:52:22.323326+00:00
+
+PR264 is merged. Actual PUBLIC source+mobile receipts from run40085643489 prove
+all20 manifest files, stable snapshot binding, 92 inventory rows,
+29 currently-open matches, all four phone/tablet/desktop viewports and real
+eight-hour expiry. Source errors0. Actual public manifest matches already-merged
+main tree1ae6445b81989997ac81d7646d111a5677163a3a; app JS/CSS and honest source scope match
+the release. Normal source/price drift is reported, not rewritten. All listing/
+model limits remain explicit. Full proof research/session-e3fe9518/PUBLICATION.md
+and public-release-verification.json. This source/proof branch update does not
+claim its new receipt files deployed and deliberately makes NO MAIN PUSH, so it
+does not restart a queued native Pages build. No user input or credentials used.
