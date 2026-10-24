@@ -62,6 +62,7 @@ const chromium = require('@sparticuz/chromium');
           titleHidden: title ? getComputedStyle(title).display === 'none' : true,
           tabbar: box(document.querySelector('.mobile-tabs')),
           card: box(first),
+          evidenceHref: first ? first.getAttribute('href') : null,
           cards: cards.length,
           staleVisible: !!document.querySelector('#runtime-stale') && !document.querySelector('#runtime-stale').hidden,
           staleText: document.querySelector('#runtime-stale')?.textContent.replace(/\s+/g, ' ').trim() || '',
@@ -87,19 +88,24 @@ const chromium = require('@sparticuz/chromium');
       assert.ok(measured.card, `${width}px no phone pick card rendered`);
       assert.ok(measured.card.y < measured.tabbar.y,
         `${width}px the first pick card is below the tab bar: ${JSON.stringify(measured.card)}`);
-      if (picks.length > 0) {
-        assert.equal(measured.scores.length, 2, `${width}px a current pick card must print both teams' win chances`);
-        for (const score of measured.scores) {
-          assert.ok(score && score.bottom <= measured.tabbar.y,
-            `${width}px a win probability is hidden behind the tab bar: ${JSON.stringify(measured.scores)}`);
-        }
-      } else {
-        assert.equal(measured.scores.length, 0,
-          `${width}px an expired baseline must not leave stale probability text on a card`);
+      const fixtureId = (measured.evidenceHref || '').split('#match-')[1];
+      const fixture = open.find(row => String(row.id) === fixtureId);
+      assert.ok(fixture, `${width}px the first card links to a real open fixture`);
+      const priced = Array.isArray(fixture.probabilities);
+      assert.equal(measured.scores.length, priced ? 2 : 0,
+        `${width}px sourced chances must be shown only when this fixture has probabilities`);
+      if (!fixture.pick) assert.match(measured.pickLabel, /UNRESOLVED/,
+        `${width}px an unsupported pick must be explicitly unresolved`);
+      for (const score of measured.scores) {
+        assert.ok(score && score.bottom <= measured.tabbar.y,
+          `${width}px a win probability is hidden behind the tab bar: ${JSON.stringify(measured.scores)}`);
+      }
+      const inventoryAge = Date.now() - Date.parse(data.fixtures_observed_at || data.generated_at);
+      if (!priced && inventoryAge > 8 * 3600 * 1000) {
         assert.equal(measured.staleVisible, true,
-          `${width}px missing probabilities must be accompanied by the visible fail-closed warning`);
+          `${width}px an expired baseline must visibly withhold recommendations`);
         assert.match(measured.staleText, /Current picks are withheld/,
-          `${width}px stale warning must explain why probabilities are absent`);
+          `${width}px the stale warning must explain the missing probabilities`);
       }
       assert.ok(measured.time && /\d{1,2} \w{3} · \d{2}:\d{2} UTC$/.test(measured.time),
         `${width}px the card must still state its start time, got ${JSON.stringify(measured.time)}`);
