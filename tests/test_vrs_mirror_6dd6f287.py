@@ -173,11 +173,18 @@ class ApplyTests(unittest.TestCase):
         self.assertGreaterEqual(resolved['evidence'][0]['roster_checks'][1]['overlap'], vrs.ROSTER_OVERLAP)
 
     def test_equal_points_give_no_directional_edge(self):
+        # Integration repair, session e86697a6 (2026-10-24): an exactly even
+        # model estimate is now retained as rejected evidence and the research
+        # tiers continue, instead of publishing numbers with no pick (a state
+        # this project's own coverage contracts forbid, measured on fixture
+        # 1079200 at 16:31Z).
         level = standings(alpha=1435, bravo=1435)
         row = fixture()
         vrs_mirror.apply(row, level, META, {}, OFFICIAL)
         self.assertIsNone(row['pick'])
-        self.assertEqual([0.5, 0.5], row['probabilities'])
+        self.assertIsNone(row['probabilities'])
+        self.assertEqual(row['attempts'][-1]['status'], 'unresolved')
+        self.assertEqual([0.5, 0.5], row['attempts'][-1]['rejected_quote']['probabilities'])
 
 
 class ValidatorTests(unittest.TestCase):

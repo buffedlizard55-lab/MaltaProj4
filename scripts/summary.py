@@ -46,7 +46,9 @@ ORIGINS = {
 LADDER = (
     ('exchange', 'Polymarket exchange line, strict gate',
      'Two-sided, funded and fresh: spread 25 points or less, at least $100 of liquidity, '
-     'and an observation no older than eight hours. De-vigged from both outcome prices.',
+     'and an observation no older than eight hours. De-vigged from both outcome prices. '
+     'An exactly even quote is retained as rejected evidence and the row continues down '
+     'this ladder, because an even line supplies no direction to pick.',
      'Polymarket Gamma API', GAMMA + '/events'),
     ('hltv', 'HLTV fixture identity, rankings and lineups',
      'Confirms the exact opponent pair and UTC start, the world ranking and the current five. '
@@ -123,6 +125,19 @@ def counts(matches):
     priced = [m for m in open_rows if m.get('probabilities') is not None]
     with_pick = [m for m in open_rows if m.get('pick')]
     without_percentage = [m for m in open_rows if m.get('probabilities') is None]
+    # Session e86697a6. A row whose pick was cleared because the snapshot left
+    # its eight-hour evidence window (or a quote deadline passed) is NOT an
+    # unresolved match: the collector did find a pick, the page may no longer
+    # treat it as current, and reporting it as "unresolved" is what made a
+    # stopped publisher look like a source-coverage failure on the live site
+    # (2026-10-24: "22 open CS2 match(es) · 0 with a pick · 22 unresolved" while
+    # the same snapshot held 29 sourced picks). Withheld rows are counted, and
+    # listed, separately -- with their own reason and their own section.
+    withheld = [m for m in open_rows if m.get('withheld')]
+    withheld_ids = {m.get('id') for m in withheld}
+    unresolved = [m for m in open_rows
+                  if m.get('id') not in withheld_ids
+                  and (not m.get('pick') or origin(m)[0] == 'unknown')]
     return {
         'feed_rows': len(matches),
         'open': len(open_rows),
@@ -131,11 +146,13 @@ def counts(matches):
         'market': kinds['market'],
         'model': kinds['model'],
         'research': kinds['research'],
-        'no_pick': sum(not m.get('pick') or origin(m)[0] == 'unknown' for m in open_rows),
+        'no_pick': len(unresolved),
         'without_percentage': len(without_percentage),
+        'withheld': len(withheld),
         'percent': round(len(priced) / len(open_rows) * 100) if open_rows else 0,
         'research_rows': [m for m in without_percentage if m.get('pick')],
-        'blank_rows': [m for m in without_percentage if not m.get('pick')],
+        'blank_rows': [m for m in without_percentage if not m.get('pick') and m.get('id') not in withheld_ids],
+        'withheld_rows': withheld,
     }
 
 
@@ -143,6 +160,19 @@ def completeness_sentence(c):
     """One sentence a phone can read without scrolling: is the board complete?"""
     if not c['open']:
         return 'No open CS2 fixture at the last check.'
+    withheld = c.get('withheld') or 0
+    if withheld:
+        # Never call a withheld row unresolved: the two have different causes and
+        # different remedies (a refresh vs. a source that published nothing).
+        head = ('The open match has a sourced pick, but it is withheld pending a refresh'
+                if c['open'] == 1 else
+                '%d of %d open matches have a sourced pick that is withheld pending a refresh'
+                % (withheld, c['open']))
+        tail = ('No open match is unresolved.'
+                if c['no_pick'] == 0 else
+                ' %d open match(es) genuinely have no supported pick; their reasons are listed below.'
+                % c['no_pick'])
+        return head + '.' + tail
     if c['no_pick'] == 0:
         head = ('The only open match has a pick' if c['open'] == 1 else
                 'Every one of the %d open matches has a pick' % c['open'])

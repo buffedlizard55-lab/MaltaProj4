@@ -216,18 +216,28 @@ function expire() {
   const open = coverage.filter(m => m.state === 'open' && Date.parse(m.lock) > now && Date.parse(m.start) > now);
   const priced = open.filter(m => !globalStale && m.priced && Date.parse(m.expires_at) > now);
   const researched = open.filter(m => !globalStale && m.research && !m.priced && Date.parse(m.expires_at) > now);
+  const current = [...priced, ...researched];
+  // Session e86697a6. A row whose pick was sourced but has left its evidence
+  // window is WITHHELD, not unresolved. Counting the two together is what made
+  // the live board report "0 with a pick / 22 unresolved" while its own snapshot
+  // held 29 sourced picks -- a stopped refresh read as a coverage failure.
+  const sourced = open.filter(m => m.priced || m.research || m.picked || m.withheld);
+  const withheld = sourced.filter(m => !current.includes(m));
   const modelled = priced.filter(m => m.model);
   const counts = {open: open.length, priced: priced.length, researched: researched.length,
-    picked: [...priced, ...researched].filter(m => m.picked).length,
+    picked: current.filter(m => m.picked).length,
     model: modelled.length, market: priced.length - modelled.length,
     missing: open.length - priced.length,
-    unresolved: open.length - priced.length - researched.length,
+    withheld: withheld.length,
+    unresolved: open.length - current.length - withheld.length,
     percent: open.length ? Math.round(priced.length / open.length * 100) : 0};
   for (const el of document.querySelectorAll('[data-count]')) el.textContent = String(counts[el.dataset.count] ?? '');
   for (const el of document.querySelectorAll('[data-completeness]')) {
     let sentence;
     if (globalStale) {
-      sentence = 'This snapshot is outside its 8-hour evidence window, so no current pick is published until the next successful refresh. The numbered evidence below is historical.';
+      sentence = counts.withheld
+        ? `This snapshot is outside its 8-hour evidence window: ${counts.withheld} open match(es) have a sourced pick that is withheld pending a refresh, and ${counts.unresolved} genuinely have no supported pick. The numbered evidence below is historical.`
+        : 'This snapshot is outside its 8-hour evidence window, so no current pick is published until the next successful refresh. The numbered evidence below is historical.';
     } else if (!counts.open) {
       sentence = 'No open CS2 fixture at the last check.';
     } else if (counts.unresolved === 0 && counts.missing === 0) {

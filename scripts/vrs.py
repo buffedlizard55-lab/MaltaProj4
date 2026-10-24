@@ -165,10 +165,21 @@ def apply(fixture, standings, meta, lineups=None):
         fixture['attempts'].append(attempt)
         return
     p = quote['probabilities']
+    if abs(p[0] - p[1]) < .0001:
+        # Session e86697a6: an exactly even model estimate would publish numbers
+        # with no pick, which this project's own coverage contracts forbid and
+        # which leaves the match with no answer. Record it and move on to the
+        # research tiers instead of stopping here.
+        attempt.update(status='unresolved',
+                       reason='Equal model estimate (both teams price to 50.0%): no directional edge. '
+                              'The estimate is retained in this attempt and the research tiers continue.')
+        attempt['rejected_quote'] = {'provider': 'Valve VRS model', 'probabilities': p,
+                                     'notice': 'Rejected evidence, not a pick or verified probability.'}
+        fixture['attempts'].append(attempt)
+        return
     fixture.update(probabilities=p, fair_odds=[1 / x for x in p],
-                   pick=None if abs(p[0] - p[1]) < .0001 else fixture['teams'][0 if p[0] > p[1] else 1],
-                   method='model_vrs', evidence=[quote],
-                   reason='Equal model estimate; no directional edge.' if abs(p[0] - p[1]) < .0001 else None)
+                   pick=fixture['teams'][0 if p[0] > p[1] else 1],
+                   method='model_vrs', evidence=[quote], reason=None)
     fixture['flags'].append(MODEL_FLAG)
     if any(c['overlap'] is None for c in quote['roster_checks']):
         fixture['flags'].append('VRS roster continuity not checked for at least one team (no HLTV lineup available).')

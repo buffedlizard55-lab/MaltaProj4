@@ -286,10 +286,20 @@ def apply(fixture, standings, meta, lineups=None, official=None):
         fixture.setdefault('attempts', []).append(attempt)
         return
     p = quote['probabilities']
+    if abs(p[0] - p[1]) < .0001:
+        # Session e86697a6: same rule as scripts.vrs.apply -- an exactly even
+        # estimate supplies no direction, so it is retained as rejected
+        # evidence rather than published as numbers without a pick.
+        attempt.update(status='unresolved',
+                       reason='Equal mirror estimate (both clubs price to 50.0%): no directional edge. '
+                              'The estimate is retained in this attempt and the research tiers continue.')
+        attempt['rejected_quote'] = {'provider': PROVIDER, 'probabilities': p,
+                                     'notice': 'Rejected evidence, not a pick or verified probability.'}
+        fixture.setdefault('attempts', []).append(attempt)
+        return
     fixture.update(probabilities=p, fair_odds=[1 / x for x in p],
-                   pick=None if abs(p[0] - p[1]) < .0001 else fixture['teams'][0 if p[0] > p[1] else 1],
-                   method=METHOD, evidence=[quote],
-                   reason=None if abs(p[0] - p[1]) >= .0001 else 'Equal model estimate; no directional edge.')
+                   pick=fixture['teams'][0 if p[0] > p[1] else 1],
+                   method=METHOD, evidence=[quote], reason=None)
     fixture.setdefault('flags', []).append(MODEL_FLAG)
     fixture['flags'].append('Valve points came from HLTV\'s dated Valve ranking of %s, not from Valve\'s '
                             'monthly standings file of %s.' % (standings['as_of'],

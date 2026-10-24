@@ -47,6 +47,9 @@ def page(name,title,body,data):
     coverage_rows=[{k:m.get(k) for k in ('id','state','start','lock','expires_at')} | {'priced':m['probabilities'] is not None,
         'model':is_model(m),
         'picked':bool(m.get('pick')),
+        # Session e86697a6: the browser must be able to tell a withheld row
+        # (pick sourced, no longer current) from an unresolved one.
+        'withheld':bool(m.get('withheld')),
         'research':m['probabilities'] is None and bool(m.get('pick')) and str(m.get('method') or '').startswith('research_')} for m in data['matches']]
     coverage_json=json.dumps(coverage_rows,separators=(',',':')).replace('<','\\u003c')
     return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#132c28"><meta name="description" content="Independent CS2 pick research for the Hotspawn lobby. External market probabilities, clear sources, and honest coverage limitations."><title>{e(title)} · CS2 Scout</title><link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="assets/style.css"><script src="assets/app.js" defer></script></head><body data-page="{e(name)}" data-observed="{e(observed)}"><script type="application/json" id="coverage-data">{coverage_json}</script>
@@ -198,11 +201,13 @@ def table(matches,review=False,label='Match table',past_ids=frozenset()):
     rows=[]
     for m in sorted(matches,key=lambda item:(item['state']!='open', (dt(item['start']).timestamp() if item['state']=='open' else -dt(item['start']).timestamp()) if item.get('start') else float('inf'),item['id'])):
         research=is_research(m)
-        state='not_open' if m['state']!='open' else ('priced' if m['probabilities'] is not None else ('research' if research and m.get('pick') else 'unresolved'))
+        # Session e86697a6: 'withheld' is its own state, never 'unresolved'.
+        state=('not_open' if m['state']!='open' else ('withheld' if m.get('withheld') else
+               ('priced' if m['probabilities'] is not None else ('research' if research and m.get('pick') else 'unresolved'))))
         evidence=m['evidence'][0] if m['evidence'] else {}
         obs=evidence.get('observed_at') or research_observation(m) or ''
         research_only=' research-only' if research else ''
-        pick=(f'<span class="pick{research_only}">{e(m["pick"])}</span>'+tag('Listing estimate' if listing_quote(evidence) else METHOD_TAGS.get(m['method'],'Exchange line'),'warning' if listing_quote(evidence) else METHOD_KIND.get(m['method'],'gray'))) if m['pick'] else tag('No directional edge' if m['probabilities'] is not None else ('Unresolved' if state=='unresolved' else ('Past fixture \u00b7 not in the lobby' if str(m['id']) in past_ids else 'Not open')),'warning' if state=='unresolved' else 'gray')
+        pick=(f'<span class="pick{research_only}">{e(m["pick"])}</span>'+tag('Listing estimate' if listing_quote(evidence) else METHOD_TAGS.get(m['method'],'Exchange line'),'warning' if listing_quote(evidence) else METHOD_KIND.get(m['method'],'gray'))) if m['pick'] else tag('No directional edge' if m['probabilities'] is not None else ('Pick withheld \u00b7 refresh pending' if state=='withheld' else ('Unresolved' if state=='unresolved' else ('Past fixture \u00b7 not in the lobby' if str(m['id']) in past_ids else 'Not open'))),'warning' if state in ('unresolved','withheld') else 'gray')
         source=link(m['source_url'],'Hotspawn ↗')+link('evidence.html#match-'+m['id'],'Evidence & lines')
         if evidence and evidence.get('provider')=='Valve VRS model':
             source+=link(evidence['url'],'Valve standings ↗')
@@ -441,7 +446,9 @@ def exec_summary_bar(data):
         + link('review.html', 'Flagged for review →', 'exec-bar-link')
         + '</nav>'
         '<p class="exec-bar-note">Probabilities come from external betting lines or our own labelled '
-        'VRS model — never from Hotspawn. ' + count_span('missing', c['without_percentage'])
+        'VRS model — never from Hotspawn. ' + count_span('withheld', c['withheld'])
+        + ' open match(es) carry a sourced pick that is withheld pending a refresh (not unresolved), and '
+        + count_span('missing', c['without_percentage'])
         + ' open match(es) publish no percentage; every one is named with its reason in the '
         + link('#unresolved-summary', 'unresolved section below') + ' and on the '
         + link('unresolved.html', 'unresolved page') + '. '
@@ -469,17 +476,20 @@ def exec_summary_quicknav(data):
         '<nav class="exec-quicknav" id="exec-quicknav" aria-label="Executive summary — quick links">'
         '<p class="exec-quicknav-line"><strong>Executive summary</strong> · '
         + count_span('picked', c['with_pick']) + '/' + count_span('open', c['open'])
-        + ' picks · ' + count_span('missing', c['without_percentage'])
+        + ' picks · ' + count_span('withheld', c['withheld']) + ' withheld · '
+        + count_span('unresolved', c['no_pick'])
         + ' unresolved<span class="exec-quicknav-past"> · <span data-past-rows="'
         + str(past) + '">' + str(past) + '</span> past feed rows are not open</span>.</p>'
         '<span class="exec-quicknav-actions">'
         + link('picks.html', 'Updated picks →', 'exec-quicknav-primary')
+        + (link('#withheld-picks', 'Withheld ↓ (' + str(c['withheld']) + ')', 'exec-quicknav-link')
+           if c['withheld'] else '')
         + link('#unresolved-limits', 'Unresolved & limits ↓', 'exec-quicknav-link')
         + '</span></nav>'
     )
 
 
-def fresh_strip(data, opens, priced, researched, unresolved):
+def fresh_strip(data, opens, priced, researched, unresolved, withheld=()):
 
     """One-glance answer to \"is this current, and where are the picks?\".
 
@@ -557,6 +567,7 @@ def fresh_strip(data, opens, priced, researched, unresolved):
         # JavaScript the build-time numbers stay in the markup.
         + f'</span>{next_span}<span class="fresh-counts">{count_span("open", len(opens))} open CS2 match(es) · '
         f'<strong>{count_span("picked", with_pick)} with a pick</strong> · {count_span("priced", len(priced))} with a win probability · '
+        f'{count_span("withheld", len(withheld))} withheld pending a refresh · '
         f'{count_span("unresolved", len(unresolved))} unresolved</span>'
         f'<span class="fresh-links">{link("picks.html", "View updated picks →", "fresh-cta")}'
         f'{link("#picks-at-a-glance", "Every pick on this page ↓")}'
@@ -591,6 +602,8 @@ def coverage_now(data):
         mix.append(f"{c['model']} from our own VRS model line")
     if c['research']:
         mix.append(f"{c['research']} research picks without a percentage")
+    if c['withheld']:
+        mix.append(f"{c['withheld']} withheld pending a refresh (a sourced pick that is no longer current)")
     if c['no_pick']:
         mix.append(f"{c['no_pick']} with no supported pick")
     mix_text = ' · '.join(mix) if mix else 'No priced row yet'
@@ -665,6 +678,22 @@ def unresolved_page_intro(data):
         '<p class="eyebrow muted">Unresolved &amp; no-percentage rows</p>'
         f'<h2>{headline}</h2>'
         f'<p><span data-completeness>{e(summary.completeness_sentence(c))}</span></p>'
+        # Session e86697a6: the two reasons a match can show no pick are named
+        # here, before the rows, so "no pick" is never mistaken for "no source".
+        '<div class="table-wrap"><table class="source-table" role="table">'
+        '<caption>Two different reasons a row can show no pick.</caption>'
+        '<thead><tr><th scope="col">State</th><th scope="col">What it means</th>'
+        '<th scope="col">What fixes it</th></tr></thead><tbody>'
+        '<tr><td data-label="State"><strong>Withheld</strong></td>'
+        '<td data-label="What it means">A pick was sourced and recorded, but the snapshot is outside its '
+        'eight-hour evidence window or the quote deadline passed, so it may not be presented as current.</td>'
+        '<td data-label="What fixes it">The next successful refresh. ' + link(REPO + '/actions', 'Refresh status ↗') + '</td></tr>'
+        '<tr><td data-label="State"><strong>Unresolved</strong></td>'
+        '<td data-label="What it means">No rung of the source ladder produced a pick: no accepted two-way line, '
+        'no two-team model input, and no HLTV ranking, standings or recent-form edge that supports a direction.</td>'
+        '<td data-label="What fixes it">More published evidence — a bookmaker line, an HLTV fixture page or a '
+        'Valve standings row. Until then the row stays blank, never 50/50.</td></tr>'
+        '</tbody></table></div>'
         '<details class="method-details"><summary>How these matches are researched</summary>'
         '<h3>Every source tried, in order, before a blank</h3>'
         '<ol class="checklist ladder">' + ladder_list() + '</ol></details>'
@@ -717,6 +746,55 @@ def coverage_boundary():
         '</section>')
 
 
+def withheld_block(c):
+    """Session e86697a6: withheld rows get their own named section.
+
+    The live site on 2026-10-24 told a reader "22 open CS2 match(es) · 0 with a
+    pick · 22 unresolved" while the same snapshot held 29 sourced picks that had
+    simply left their eight-hour window. A withheld row is not an unresolved
+    match: the pick was found, the page may not call it current, and the remedy
+    is a refresh -- not more research. This block says so, per row, with the
+    reason, the source that produced the pick and the refresh link.
+    """
+    rows = c.get('withheld_rows') or []
+    if not rows:
+        return ''
+    items = []
+    for m in sorted(rows, key=lambda item: (item.get('start') or '', item['id'])):
+        held = m.get('withheld') or {}
+        had = held.get('had') or {}
+        before = ''
+        if had.get('pick'):
+            before = ('<span class="unresolved-pick">Sourced pick: <strong>' + e(had['pick'])
+                      + '</strong> <span class="numbers">'
+                      + ('%.1f%%' % (had['probabilities'][0] * 100) + ' / %.1f%%' % (had['probabilities'][1] * 100)
+                         if had.get('probabilities') else 'no %')
+                      + '</span></span>')
+        else:
+            before = '<span class="unresolved-pick none">Pick withheld</span>'
+        items.append(
+            '<li class="unresolved-item withheld-item">'
+            '<span class="unresolved-when">' + e(date(m.get('start'))) + ' UTC</span> '
+            '<span class="unresolved-teams">' + e(m['teams'][0]) + ' <span class="muted">vs</span> '
+            + e(m['teams'][1]) + '</span> '
+            + before
+            + '<p class="unresolved-why">' + e(held.get('reason') or summary.limitation(m)) + '</p>'
+            + '<p class="small">' + link('evidence.html#match-' + e(m['id']), 'Sources & calculation ↗')
+            + ' · ' + link(m.get('source_url'), 'Hotspawn fixture ↗')
+            + ' · ' + link(m.get('feed_url') or FIXTURES, 'Official fixture API ↗')
+            + ' · ' + link(REPO + '/actions', 'Refresh status ↗') + '</p></li>')
+    return ('<div class="notice warning" id="withheld-picks" role="status">'
+            '<h3>' + count_span('withheld', c['withheld'])
+            + ' open match(es) with a pick that is withheld pending a refresh</h3>'
+            '<p>These are <strong>not</strong> unresolved: a pick was sourced and is recorded here, '
+            'but the snapshot is outside its eight-hour evidence window (or the quote deadline passed), '
+            'so it may not be presented as a current recommendation. The remedy is the next successful '
+            'refresh — see ' + link(REPO + '/actions', 'the refresh workflow') + ' and '
+            + link('sources.html', 'source status') + '. Genuinely unresolved matches, where no rung of '
+            'the ladder produced a pick, are listed separately below.</p>'
+            '<ol class="glance-list unresolved-list">' + ''.join(items) + '</ol></div>')
+
+
 def unresolved_picks(data):
     """The dedicated unresolved section, carried inside the executive summary.
 
@@ -753,21 +831,28 @@ def unresolved_picks(data):
                 + link(m['source_url'], 'Hotspawn fixture ↗')
                 + unresolved_row_sources(m, standings) + '</p></li>')
         listing = '<ol class="glance-list unresolved-list">' + ''.join(items) + '</ol>'
+    elif c['withheld']:
+        listing = ('<p class="notice info"><strong>No genuinely unresolved match.</strong> Every open '
+                   'match at this snapshot has a sourced pick; the ' + count_span('withheld', c['withheld'])
+                   + ' withheld above are waiting on a refresh, not on more research.</p>')
     else:
         listing = ('<p class="notice info"><strong>Nothing is blank.</strong> Every open match at this '
                    'snapshot has a pick and a win probability.</p>')
     ladder = ladder_list()
     if c['open']:
         lead = (count_span('missing', c['without_percentage']) + ' of the ' + count_span('open', c['open'])
-                + ' open matches publish no win percentage; ' + count_span('unresolved', c['no_pick'])
-                + ' of those have no supported pick. Blank means unverified, never 50/50.')
+                + ' open matches publish no win percentage; ' + count_span('withheld', c['withheld'])
+                + ' of those are <strong>withheld pending a refresh</strong> (a pick was sourced and is no longer current) and '
+                + count_span('unresolved', c['no_pick'])
+                + ' genuinely have no supported pick. Blank means unverified, never 50/50.')
     else:
         lead = 'There is no open fixture at this snapshot, so there is nothing to price.'
     return (
         '<section class="panel" id="unresolved-picks" aria-label="Unresolved picks and their limitations">'
         '<p class="eyebrow muted">Executive summary · unresolved picks &amp; limitations</p>'
         '<h2>Picks without a win probability — and exactly why</h2>'
-        f'<p>{lead} Each row below states the source that was tried and the gate it failed.</p>'
+        f'<p>{lead} Each unresolved row below states the source that was tried and the gate it failed.</p>'
+        + withheld_block(c)
         + listing
         + '<details class="method-details"><summary>Evidence ladder &amp; source rules</summary>'
         + '<h3>What is tried, in order, before a blank is published</h3>'
@@ -1055,7 +1140,8 @@ def overview(data):
                     +number+'</span><span class="queue-when">'+e(date(m['start']))+' UTC · '+e(kind)+'</span></a></li>')
         queue_html='<div class="queue"><p class="eyebrow muted">Then next</p><ul>'+items+'</ul></div>'
     body=head('Executive summary','CS2 picks & probabilities.','Every open Hotspawn CS2 match, with our pick first and the supporting sources one tap away.',data)
-    body+=fresh_strip(data, opens, priced, researched, unresolved)
+    withheld=[m for m in opens if m.get('withheld')]
+    body+=fresh_strip(data, opens, priced, researched, unresolved, withheld)
     body+=exec_summary_bar(data)
     # Session 4ed657ce: the full bar stays in DOM before the pick list and is
     # ordered after it on phones; this compact quick nav is what a phone reader
@@ -1281,7 +1367,7 @@ def model_section(data):
 
 
 def methodology(data):
-    return head('Audit trail','Sources & methodology.','Raw observations, transparent calculations, and honest limitations.',data)+checks_table(data)+model_section(data)+f'''<section class="panel prose" id="method"><p class="eyebrow muted">Calculation policy · v1</p><h2>One fixture list. Independent probabilities.</h2><p><strong>Discovery:</strong> {link(HOTSPAWN,'Hotspawn CS2 lobby')} establishes which fixtures belong here. Its CS2 hydration data, the {link("https://play.hotspawn.com/lobby","general lobby")} and {link(FIXTURES,'CS2 scheduled fixture API')} are compared by fixture ID and primary fields. All returned CS2 entries remain visible, including stale “scheduled” records. Schema, ID-set and field mismatches are flagged; missing pages are not silently ignored. Conflicting rows cannot supply picks. Partial discovery retains still-open previous-only entries with unverified membership; a wrong-game or unexpected empty result never erases the last good inventory.</p><p><strong>Identity:</strong> only exact case/punctuation-normalized team pairs and exact UTC starts are accepted. Polymarket’s own published team abbreviations may map to Hotspawn names; those team records are retained with the evidence. The small {link(REPO+"/blob/main/data/identities.json","verified alias register")} covers only explicitly registered organization labels ({e(', '.join(i['canonical'] for i in IDENTITY_REGISTER))}), with primary links and narrow CS2 scope recorded. BetBoom labels were checked on {link("https://betboom.team/","the organization’s official site")}. A rename is registered only when a dated primary source states it and Valve’s own three-player roster-continuity rule confirms it against the current lineup — for example {link("https://liquipedia.net/counterstrike/Logitech_G_Pro_Series/2026","Liquipedia’s dated note")} that THUNDERdOWNUNDER became Off Chops on 11 October 2026, whose {link("https://www.hltv.org/team/14095/off-chops","HLTV lineup")} shares four players with that standings row. No fuzzy name matching, guessed team aliases, academy/main-team conflation, or assumed start-time corrections. Duplicate candidates are rejected. Known Hotspawn series format, if supplied, must agree with the external source. Where it is not supplied, it remains blank.</p><h2>Primary picks → research fallback</h2><ol><li>Discover CS2 from {link(GAMMA+'/sports','Polymarket’s sports registry')}, paginate every active event page, then validate the whole-match moneyline. Closed, live, map-only, handicap, totals, stale and malformed markets cannot supply a pick.</li><li> Only unresolved matches enter fallback research: try {link('https://www.hltv.org/matches','HLTV')} first, and for any fixture that list does not contain, HLTV’s own dated views (<code>/matches?selectedDate=YYYY-MM-DD</code>: every unmatched fixture’s UTC day first, then the two neighbouring HLTV days, at most fourteen extra reads a run). HLTV groups its list by its own local day rather than by UTC, so without this a match that starts on a later day can collect no HLTV identity at all and end with no pick; with it the same exact opponent pair and exact UTC start are still required, and a listing at a different start is recorded as evidence instead of being corrected. HLTV is a specialist source, not an official betting operator. Current automation may be denied. Ranks and fan votes are not probabilities; no uncalibrated rank-to-win formula is deployed.</li><li>Try {link(PIN+'/sports/12/markets/straight','Pinnacle’s public esports lines')} with its fixture feed, period 0, a pending parent match, open two-way moneyline and valid future cutoff. Then check {link('https://thunderpick.io/esports/cs2-betting','Thunderpick')} and {link('https://gg.bet/en/esports/counter-strike','GG.BET')} for remaining gaps. Their access restrictions or missing validated adapters are recorded separately. Access controls are not bypassed.</li><li><strong>Labelled wide-quote tier.</strong> For a fixture that would otherwise have no pick at all, an exchange quote that fails only the 25-point spread ceiling can still be accepted — but only when the market is open, accepting orders, has a fresh observation and update, is genuinely two-sided, and holds at least $100 of liquidity. The real spread is published, the row is flagged low confidence, the strict rejection is retained, and a 60-point ceiling still applies. This is a coverage decision, not a claim of precision. An exactly even midpoint inside this tier is rejected rather than published as a 50/50: the midpoint of a spread that already failed the strict ceiling is not a market view, so the row falls through to the model and research tiers below.</li><li><strong>Our originated line.</strong> If no market line passes its gates, the {link('#model','VRS model')} prices the match from Valve’s official standings with Valve’s own formula and calibration, after confirming each roster against the HLTV lineup. The row is labelled as our model line, never as a market price. Where a team competes under a new label, the {link(REPO+"/blob/main/data/identities.json","registered rename")} lets the model read that team’s own standings row (the previous label’s points, verified by roster overlap) instead of refusing the fixture — Ground Zero vs Off Chops is priced this way, from the row Valve lists as THUNDER dOWNUNDER. Pinnacle is tried before the wide exchange tier because a sharp bookmaker line outranks a wide quote. If neither club resolves in Valve’s monthly file, the same points are read from HLTV’s dated view of Valve’s ranking (<code>model_vrs_mirror</code>) before any research tier runs, subject to the same formula, calibration and roster checks; the row publishes that dated page and says the points came from there.</li><li><strong>Research-only tiers, no numbers.</strong> A fixture with no usable line and no model line may receive a pick from an exact HLTV fixture identity (same opponent pair and UTC start). When both teams’ world rankings are exposed on that page the better-ranked team becomes the pick (<code>research_rank</code>); when exactly one team carries a published world ranking there and the other appears in the same fixture without one, that team becomes the pick (<code>research_rank_single</code>). Each row stores its per-team evidence — fixture label, HLTV label, rank, HLTV ranking link and the primary link for any label mapping — so the pick is re-derivable from the snapshot alone. The HLTV link is published, the row is labelled research-only, and probabilities and fair odds stay <em>blank</em>. This is a ranking-order signal, never a market probability.</li><li><strong>Team pages when HLTV has no fixture identity.</strong> If HLTV carries only a TBA bracket slot for the fixture, each club label is resolved to exactly one HLTV team page by that page\'s own heading; the page\'s published starting five is then the roster evidence Valve\'s continuity rule needs, and each page\'s published world rank (or HLTV\'s own words that the club has no world rank) may supply the same research-only ranking pick as the fixture page would — stored with the team-page record, never presented as a fixture page. A failed, ambiguous or non-exact match leaves the row unresolved and is recorded as such. The page never supplies a probability.</li><li><strong>One-sided Valve standings tier, no numbers.</strong> If HLTV never listed the fixture at all, a row can still be resolved when exactly one team resolves in <a href="#model">Valve’s official global standings</a> under the model’s own identity rules (unique label, or a current HLTV lineup sharing at least three players with exactly one listed roster) and the other team’s label is genuinely absent from that file (<code>research_vrs_single</code>). A present-but-unresolvable label is not absent, and an HLTV-displayed VRS rank for the supposedly absent team blocks the tier. The pick is the listed team; no probability is derived from a single points value.</li><li><strong>Recent-form tier, no numbers — the weakest sourced rung.</strong> If every tier above fails but HLTV lists the exact fixture, the completed results HLTV publishes on that match page for both teams are compared over an equal window (each side’s last <em>N</em> matches, <em>N</em> = the smaller recorded history, at least 3 and at most 10). More wins is the pick (<code>research_form</code>); an exact tie falls to HLTV’s lifetime head-to-head series wins for the pairing, and a still-level row stays unresolved — no coin is flipped. Recent form ignores opponent strength and roster changes, so it is labelled research-only, publishes no percentage, and every result used is stored on the row for re-derivation.</li><li>If no tier applies, probabilities, fair odds and the pick all stay blank. {link('unresolved.html','Unresolved picks')} gives the reason and every attempted source. There is no claim that a pick can always be generated, and no default 50/50.</li></ol><h2>Our lines: calculated, not guessed</h2><p>For decimal odds <code>d₁, d₂</code>, compute <code>qᵢ = 1 / dᵢ</code>, then <code>pᵢ = qᵢ / (q₁ + q₂)</code>. The overround is <code>q₁ + q₂ − 1</code>. American odds convert to decimal using <code>1 + A/100</code> for positive A, or <code>1 + 100/|A|</code> for negative A. Our fair decimal line is <code>1 / pᵢ</code>.</p><p>For two exchange outcome prices <code>x₁, x₂</code>, use <code>pᵢ = xᵢ / (x₁ + x₂)</code>. This is market-implied analysis, not an independently calibrated statistical forecast or a tradable quote. It excludes trading fees. We keep the primary accepted source; fallback lines do not overwrite primary picks or pretend to be a multi-book consensus.</p><p>A directional pick is the team with the larger probability; exactly equal verified prices get “no directional edge.” Unknown matches never default to 50/50. Display percentages are rounded to one decimal and complement to 100; downloadable data keeps full precision.</p><h2>Quality and freshness gates</h2><ul><li>Evidence must be no more than eight hours old, using both observation time (adjusted for HTTP cache Age) and exchange market update time. One expiry deadline also includes fixture age, match start, Hotspawn lock and bookmaker cutoff, and is enforced in the build and browser. A market update is not proof of a recent trade.</li><li>Exchange liquidity must be at least $100, with a valid two-sided bid/ask and spread no greater than 25 percentage points. Spreads over 10 points are flagged as low precision. These are conservative project policy thresholds, not validated accuracy guarantees.</li><li>Bookmaker overround must fall between −2% and 25%. Pinnacle does not supply a price-change timestamp in this response; that limitation is shown. One bookmaker is not consensus.</li><li>Lock times come from Hotspawn’s feed. Recommendations are withheld at lock, not only at match start. Not-open records are not claimed to be completed results.</li><li>Schedule: four publication attempts per hour at :04, :19, :34 and :49 UTC via {link(REPO+'/actions','GitHub Actions')}. A separate watchdog checks the live build receipt every 10 minutes and dispatches the same verified workflow only when the published snapshot is older than 90 minutes, with a 45-minute cooldown, a ten-dispatch daily budget and a hard stop if the receipt cannot be read. Historical measurements on 16 October 2026 found delayed and missed runs under the earlier, slower schedule; the detailed diagnosis is linked in the repository. GitHub may still delay or drop jobs or disable schedules; no exact delivery guarantee is possible. The last successful snapshot is retained on failure, with a prominent stale warning, and never relabeled fresh.</li><li>Bookmaker reachability is measured, not assumed: the last research probe read {link(REPO+'/blob/main/research/harvest-dedd2e34/book-probe.json','twelve endpoints')} from a normal internet egress. Polymarket's Gamma API and Pinnacle's guest esports API returned usable JSON; GG.BET (page and public sport API), Thunderpick's CS2 page, Oddschecker and Pinnacle's outright endpoint refused access (403/401), and api.thunderpick.com does not resolve. So for a low-tier fixture the honest ceiling is 'no accessible two-sided line', which is why such rows fall to our model line or a labelled research pick instead of an invented number.</li></ul><h2>Verification scope</h2><p>Every displayed match fact is traced to the official Hotspawn response; this verifies what the source reported, not that contradictory source records are correct. Accepted inputs retain their publisher’s captured fields, source receipts and observation time. Direct operator responses are distinguished from third-party listings and ranking mirrors; a bookmaker link in a listing is not independent confirmation of an operator price tick. Calculated probabilities are our derived estimates, not official forecasts. We checked the initial snapshot row by row with executable assertions and source links; future data is verified by the same schema, identity, market-type, freshness and arithmetic rules. This does not certify team rosters, the true chance of winning, bookmaker accuracy, or every website on the internet.</p><p>{link('evidence.html','Inspect evidence for every row →')} · {link('data/latest.json','Download the complete audit snapshot')} · {link('review.html','Flagged for Review')}</p></section>'''
+    return head('Audit trail','Sources & methodology.','Raw observations, transparent calculations, and honest limitations.',data)+checks_table(data)+model_section(data)+f'''<section class="panel prose" id="method"><p class="eyebrow muted">Calculation policy · v1</p><h2>One fixture list. Independent probabilities.</h2><p><strong>Discovery:</strong> {link(HOTSPAWN,'Hotspawn CS2 lobby')} establishes which fixtures belong here. Its CS2 hydration data, the {link("https://play.hotspawn.com/lobby","general lobby")} and {link(FIXTURES,'CS2 scheduled fixture API')} are compared by fixture ID and primary fields. All returned CS2 entries remain visible, including stale “scheduled” records. Schema, ID-set and field mismatches are flagged; missing pages are not silently ignored. Conflicting rows cannot supply picks. Partial discovery retains still-open previous-only entries with unverified membership; a wrong-game or unexpected empty result never erases the last good inventory.</p><p><strong>Identity:</strong> only exact case/punctuation-normalized team pairs and exact UTC starts are accepted. Polymarket’s own published team abbreviations may map to Hotspawn names; those team records are retained with the evidence. The small {link(REPO+"/blob/main/data/identities.json","verified alias register")} covers only explicitly registered organization labels ({e(', '.join(i['canonical'] for i in IDENTITY_REGISTER))}), with primary links and narrow CS2 scope recorded. BetBoom labels were checked on {link("https://betboom.team/","the organization’s official site")}. A rename is registered only when a dated primary source states it and Valve’s own three-player roster-continuity rule confirms it against the current lineup — for example {link("https://liquipedia.net/counterstrike/Logitech_G_Pro_Series/2026","Liquipedia’s dated note")} that THUNDERdOWNUNDER became Off Chops on 11 October 2026, whose {link("https://www.hltv.org/team/14095/off-chops","HLTV lineup")} shares four players with that standings row. No fuzzy name matching, guessed team aliases, academy/main-team conflation, or assumed start-time corrections. Duplicate candidates are rejected. Known Hotspawn series format, if supplied, must agree with the external source. Where it is not supplied, it remains blank.</p><h2>Primary picks → research fallback</h2><ol><li>Discover CS2 from {link(GAMMA+'/sports','Polymarket’s sports registry')}, paginate every active event page, then validate the whole-match moneyline. Closed, live, map-only, handicap, totals, stale and malformed markets cannot supply a pick.</li><li> Only unresolved matches enter fallback research: try {link('https://www.hltv.org/matches','HLTV')} first, and for any fixture that list does not contain, HLTV’s own dated views (<code>/matches?selectedDate=YYYY-MM-DD</code>: every unmatched fixture’s UTC day first, then the two neighbouring HLTV days, at most fourteen extra reads a run). HLTV groups its list by its own local day rather than by UTC, so without this a match that starts on a later day can collect no HLTV identity at all and end with no pick; with it the same exact opponent pair and exact UTC start are still required, and a listing at a different start is recorded as evidence instead of being corrected. HLTV is a specialist source, not an official betting operator. Current automation may be denied. Ranks and fan votes are not probabilities; no uncalibrated rank-to-win formula is deployed.</li><li>Try {link(PIN+'/sports/12/markets/straight','Pinnacle’s public esports lines')} with its fixture feed, period 0, a pending parent match, open two-way moneyline and valid future cutoff. Then check {link('https://thunderpick.io/esports/cs2-betting','Thunderpick')} and {link('https://gg.bet/en/esports/counter-strike','GG.BET')} for remaining gaps. Their access restrictions or missing validated adapters are recorded separately. Access controls are not bypassed.</li><li><strong>Labelled wide-quote tier.</strong> For a fixture that would otherwise have no pick at all, an exchange quote that fails only the 25-point spread ceiling can still be accepted — but only when the market is open, accepting orders, has a fresh observation and update, is genuinely two-sided, and holds at least $100 of liquidity. The real spread is published, the row is flagged low confidence, the strict rejection is retained, and a 60-point ceiling still applies. This is a coverage decision, not a claim of precision. An exactly even midpoint inside this tier is rejected rather than published as a 50/50: the midpoint of a spread that already failed the strict ceiling is not a market view, so the row falls through to the model and research tiers below.</li><li><strong>Our originated line.</strong> If no market line passes its gates, the {link('#model','VRS model')} prices the match from Valve’s official standings with Valve’s own formula and calibration, after confirming each roster against the HLTV lineup. The row is labelled as our model line, never as a market price. Where a team competes under a new label, the {link(REPO+"/blob/main/data/identities.json","registered rename")} lets the model read that team’s own standings row (the previous label’s points, verified by roster overlap) instead of refusing the fixture — Ground Zero vs Off Chops is priced this way, from the row Valve lists as THUNDER dOWNUNDER. Pinnacle is tried before the wide exchange tier because a sharp bookmaker line outranks a wide quote. If neither club resolves in Valve’s monthly file, the same points are read from HLTV’s dated view of Valve’s ranking (<code>model_vrs_mirror</code>) before any research tier runs, subject to the same formula, calibration and roster checks; the row publishes that dated page and says the points came from there.</li><li><strong>Research-only tiers, no numbers.</strong> A fixture with no usable line and no model line may receive a pick from an exact HLTV fixture identity (same opponent pair and UTC start). When both teams’ world rankings are exposed on that page the better-ranked team becomes the pick (<code>research_rank</code>); when exactly one team carries a published world ranking there and the other appears in the same fixture without one, that team becomes the pick (<code>research_rank_single</code>). Each row stores its per-team evidence — fixture label, HLTV label, rank, HLTV ranking link and the primary link for any label mapping — so the pick is re-derivable from the snapshot alone. The HLTV link is published, the row is labelled research-only, and probabilities and fair odds stay <em>blank</em>. This is a ranking-order signal, never a market probability.</li><li><strong>Team pages when HLTV has no fixture identity.</strong> If HLTV carries only a TBA bracket slot for the fixture, each club label is resolved to exactly one HLTV team page by that page\'s own heading; the page\'s published starting five is then the roster evidence Valve\'s continuity rule needs, and each page\'s published world rank (or HLTV\'s own words that the club has no world rank) may supply the same research-only ranking pick as the fixture page would — stored with the team-page record, never presented as a fixture page. A failed, ambiguous or non-exact match leaves the row unresolved and is recorded as such. The page never supplies a probability.</li><li><strong>One-sided Valve standings tier, no numbers.</strong> If HLTV never listed the fixture at all, a row can still be resolved when exactly one team resolves in <a href="#model">Valve’s official global standings</a> under the model’s own identity rules (unique label, or a current HLTV lineup sharing at least three players with exactly one listed roster) and the other team’s label is genuinely absent from that file (<code>research_vrs_single</code>). A present-but-unresolvable label is not absent, and an HLTV-displayed VRS rank for the supposedly absent team blocks the tier. The pick is the listed team; no probability is derived from a single points value.</li><li><strong>Recent-form tier, no numbers — the weakest sourced rung.</strong> If every tier above fails but HLTV lists the exact fixture, the completed results HLTV publishes on that match page for both teams are compared over an equal window (each side’s last <em>N</em> matches, <em>N</em> = the smaller recorded history, at least 3 and at most 10). More wins is the pick (<code>research_form</code>); an exact tie falls to HLTV’s lifetime head-to-head series wins for the pairing, and a still-level row stays unresolved — no coin is flipped. Recent form ignores opponent strength and roster changes, so it is labelled research-only, publishes no percentage, and every result used is stored on the row for re-derivation.</li><li>If no tier applies, probabilities, fair odds and the pick all stay blank. {link('unresolved.html','Unresolved picks')} gives the reason and every attempted source. There is no claim that a pick can always be generated, and no default 50/50.</li></ol><h2>Our lines: calculated, not guessed</h2><p>For decimal odds <code>d₁, d₂</code>, compute <code>qᵢ = 1 / dᵢ</code>, then <code>pᵢ = qᵢ / (q₁ + q₂)</code>. The overround is <code>q₁ + q₂ − 1</code>. American odds convert to decimal using <code>1 + A/100</code> for positive A, or <code>1 + 100/|A|</code> for negative A. Our fair decimal line is <code>1 / pᵢ</code>.</p><p>For two exchange outcome prices <code>x₁, x₂</code>, use <code>pᵢ = xᵢ / (x₁ + x₂)</code>. This is market-implied analysis, not an independently calibrated statistical forecast or a tradable quote. It excludes trading fees. We keep the primary accepted source; fallback lines do not overwrite primary picks or pretend to be a multi-book consensus.</p><p>A directional pick is the team with the larger probability. An exactly equal verified line carries no directional edge: it is retained as rejected evidence — both prices, the spread and the observation time stay in the ledger — and the match continues down the ladder to the model and research tiers, because a bare 50/50 is not a pick and used to leave the row with no answer at all. If no rung produces a direction, the row is published as unresolved with that limitation. Unknown matches never default to 50/50, and no 50/50 is ever published as a probability. Display percentages are rounded to one decimal and complement to 100; downloadable data keeps full precision.</p><h2>Quality and freshness gates</h2><ul><li>Evidence must be no more than eight hours old, using both observation time (adjusted for HTTP cache Age) and exchange market update time. One expiry deadline also includes fixture age, match start, Hotspawn lock and bookmaker cutoff, and is enforced in the build and browser. A market update is not proof of a recent trade.</li><li>Exchange liquidity must be at least $100, with a valid two-sided bid/ask and spread no greater than 25 percentage points. Spreads over 10 points are flagged as low precision. These are conservative project policy thresholds, not validated accuracy guarantees.</li><li>Bookmaker overround must fall between −2% and 25%. Pinnacle does not supply a price-change timestamp in this response; that limitation is shown. One bookmaker is not consensus.</li><li>Lock times come from Hotspawn’s feed. Recommendations are withheld at lock, not only at match start. Not-open records are not claimed to be completed results.</li><li>Schedule: four publication attempts per hour at :04, :19, :34 and :49 UTC via {link(REPO+'/actions','GitHub Actions')}. A separate watchdog checks the live build receipt every 10 minutes and dispatches the same verified workflow only when the published snapshot is older than 90 minutes, with a 45-minute cooldown, a ten-dispatch daily budget and a hard stop if the receipt cannot be read. Historical measurements on 16 October 2026 found delayed and missed runs under the earlier, slower schedule; the detailed diagnosis is linked in the repository. GitHub may still delay or drop jobs or disable schedules; no exact delivery guarantee is possible. The last successful snapshot is retained on failure, with a prominent stale warning, and never relabeled fresh.</li><li>Bookmaker reachability is measured, not assumed: the last research probe read {link(REPO+'/blob/main/research/harvest-dedd2e34/book-probe.json','twelve endpoints')} from a normal internet egress. Polymarket's Gamma API and Pinnacle's guest esports API returned usable JSON; GG.BET (page and public sport API), Thunderpick's CS2 page, Oddschecker and Pinnacle's outright endpoint refused access (403/401), and api.thunderpick.com does not resolve. So for a low-tier fixture the honest ceiling is 'no accessible two-sided line', which is why such rows fall to our model line or a labelled research pick instead of an invented number.</li></ul><h2>Verification scope</h2><p>Every displayed match fact is traced to the official Hotspawn response; this verifies what the source reported, not that contradictory source records are correct. Accepted inputs retain their publisher’s captured fields, source receipts and observation time. Direct operator responses are distinguished from third-party listings and ranking mirrors; a bookmaker link in a listing is not independent confirmation of an operator price tick. Calculated probabilities are our derived estimates, not official forecasts. We checked the initial snapshot row by row with executable assertions and source links; future data is verified by the same schema, identity, market-type, freshness and arithmetic rules. This does not certify team rosters, the true chance of winning, bookmaker accuracy, or every website on the internet.</p><p>{link('evidence.html','Inspect evidence for every row →')} · {link('data/latest.json','Download the complete audit snapshot')} · {link('review.html','Flagged for Review')}</p></section>'''
 
 
 def analysis_notes():
@@ -1645,8 +1731,25 @@ def build(data,out,now=None):
             m['state']='not_open';m['probabilities']=m['fair_odds']=m['pick']=m['method']=None
             m['reason']='Source start or pick lock has passed. Historical evidence is not a current recommendation.'
         elif (m['probabilities'] is not None or m.get('pick')) and (not m['expires_at'] or dt(m['expires_at'])<=now or not fresh(data.get('fixtures_observed_at'),now) or (is_research(m) and not fresh(research_observation(m),now)) or not all(fresh(q['observed_at'],now) and (not q.get('updated_at') or fresh(q['updated_at'],now)) for q in m['evidence'])):
+            # Session e86697a6. This row DID have a sourced pick; what expired is
+            # the permission to call it current. Record that fact on the row so
+            # every surface can say "withheld pending refresh" instead of
+            # "unresolved" -- the two states have different causes and different
+            # remedies, and conflating them made a stopped publisher read as a
+            # coverage failure on the live site.
+            stale_snapshot = not fresh(data.get('fixtures_observed_at'),now)
+            m['withheld']={'kind':'snapshot_stale' if stale_snapshot else 'evidence_expired',
+                'had': {'pick':m.get('pick'), 'probabilities':m.get('probabilities'),
+                        'method':m.get('method'), 'expires_at':m.get('expires_at')},
+                'reason':('This snapshot is outside its eight-hour evidence window, so the sourced '
+                          'pick it recorded is withheld until the next successful refresh.'
+                          if stale_snapshot else
+                          'The evidence deadline for this pick passed after the snapshot was captured '
+                          '(observation/update TTL or bookmaker cutoff), so it is withheld as a current '
+                          'recommendation; the historical observation is kept in the ledger.')}
             m['probabilities']=m['fair_odds']=m['pick']=m['method']=None
             m['reason']='Evidence deadline passed (observation/update TTL or bookmaker cutoff); historical observation retained in the ledger.'
+
     out=Path(out);out.mkdir(parents=True,exist_ok=True)
     shutil.copytree(ROOT/'site/assets',out/'assets',dirs_exist_ok=True)
     (out/'.nojekyll').touch()
@@ -1659,7 +1762,10 @@ def build(data,out,now=None):
             writer.writerow([m['id'],*m['teams'],m['competition'],m['start'],m['lock'],m['state'],*(m['probabilities'] or ['','']),m['pick'],*(m['fair_odds'] or ['','']),m['method'],m['source_url'],q.get('api_url'),m['reason'],q.get('observed_at'),q.get('updated_at'),m.get('expires_at'),data['generated_at'],data['fixtures_observed_at'],data['built_at']])
     matches=data['matches'];opens=[m for m in matches if m['state']=='open'];priced=[m for m in opens if m['probabilities'] is not None]
     no_probability=[m for m in matches if m['state']=='open' and m['probabilities'] is None]
-    unresolved=[m for m in no_probability if not m.get('pick')]
+    # A withheld row is not an unresolved row (session e86697a6): the pick was
+    # sourced and is being withheld for freshness, so the two are counted apart.
+    withheld=[m for m in opens if m.get('withheld')]
+    unresolved=[m for m in no_probability if not m.get('pick') and not m.get('withheld')]
     nonmarket=non_market_rows(matches)
     pages={'index':('Executive summary',overview(data)),
         'picks':('Updated picks',head('The pick board','Updated CS2 picks.','Every open Hotspawn CS2 match: our pick, both supported win probabilities, and direct source links.',data)+'<nav class="section-nav" aria-label="Pick lists">'+link('picks.html','All open matches ('+str(len(opens))+')')+('<a href="unresolved.html?status=needs">No percentage (<span data-count="missing">'+str(len(no_probability))+'</span>)</a>')+link('unresolved.html','No market line ('+str(len(nonmarket))+')')+link('matches.html','All matches')+'</nav><details class="method-details board-method"><summary>How picks, model lines &amp; blanks work</summary><div class="notice info">One complete board: market probabilities first, our labelled VRS model where no accepted market line was collected, and research-only picks with <strong>no percentage</strong> where a number is unsupported. Unresolved entries stay visible, not omitted. Estimates, not promises. '+link('unresolved.html','Read every non-market limitation →')+'</div></details>'+filters(opens,'open')+table(opens,True,label='Every open CS2 match and pick')),
@@ -1698,7 +1804,7 @@ def build(data,out,now=None):
     files=[*out.glob('*.html'),*out.glob('site/*.html'),*out.glob('assets/*'),out/'data/latest.json',out/'data/matches.csv']
     manifest={'schema_version':1,'revision':revision,'built_at':data['built_at'],'snapshot_generated_at':data['generated_at'],'rows':len(matches),'files':{str(path.relative_to(out)):hashlib.sha256(path.read_bytes()).hexdigest() for path in sorted(files) if path.is_file()}}
     (out/'build-info.json').write_text(json.dumps(manifest,indent=2)+'\n')
-    print(f'Built {len(pages)+1} primary pages + {len(aliases)} legacy redirects; {len(matches)} sourced rows, {len(priced)} with percentages, {len(no_probability)} without percentages, {len(unresolved)} unresolved.')
+    print(f'Built {len(pages)+1} primary pages + {len(aliases)} legacy redirects; {len(matches)} sourced rows, {len(priced)} with percentages, {len(no_probability)} without percentages, {len(withheld)} withheld pending refresh, {len(unresolved)} unresolved.')
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser();parser.add_argument('--data',default='data/latest.json');parser.add_argument('--out',default='public')

@@ -217,7 +217,10 @@ class BriefingFreshnessTests(unittest.TestCase):
 
     def test_strip_counters_share_browser_expiry_hooks(self):
         node = self.strip()
-        self.assertEqual({n['data-count'] for n in node.select('[data-count]')}, {'open', 'picked', 'priced', 'unresolved'})
+        # 'withheld' joins the same live-counter contract in session e86697a6
+        # (withheld pending refresh is not the same state as unresolved).
+        self.assertEqual({n['data-count'] for n in node.select('[data-count]')},
+                         {'open', 'picked', 'priced', 'withheld', 'unresolved'})
 
 
 class BriefingDisclosureTests(unittest.TestCase):

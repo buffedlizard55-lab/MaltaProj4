@@ -262,7 +262,11 @@ class TestExecutiveSummaryCounts(unittest.TestCase):
 
     def test_the_strip_uses_live_counters(self):
         counters = dict(self.counts_in(self.strip))
-        self.assertEqual({'open': '3', 'picked': '3', 'priced': '2', 'unresolved': '0'}, counters)
+        # Session e86697a6 added the 'withheld' counter to this strip so a
+        # row whose pick is withheld pending a refresh is never counted as
+        # 'unresolved'. Everything the owner asserted is unchanged.
+        self.assertEqual({'open': '3', 'picked': '3', 'priced': '2', 'withheld': '0',
+                          'unresolved': '0'}, counters)
 
     def test_the_strip_has_no_static_totals_left(self):
         # The build-time numbers are still the fallback inside the spans; what

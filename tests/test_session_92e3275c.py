@@ -164,12 +164,21 @@ class TestWideTierThroughTheAlias(unittest.TestCase):
         # dressed up as a pick: the documented result is "no directional edge".
         # (The book-listing placeholder pair 1.8/1.8 is refused earlier, in
         # scripts/books.py, and never reaches this path.)
+        #
+        # Integration repair, session e86697a6 (2026-10-24): "no directional edge"
+        # now means the even quote is retained as rejected evidence and the row
+        # continues to the model and research tiers, rather than publishing a
+        # bare 50/50 with no pick. That state broke 42 coverage contracts on the
+        # live 16:31Z board (fixture 1079200) and left the match unpicked. The
+        # quote, its prices and its observation time stay inspectable here.
         f = fixture()
         resolve(f, polymarket_candidates([market_event(prices=('0.5', '0.5'),
                                                       bid='0.49', ask='0.51')],
                                          '2026-10-22T08:06:00Z'), 'Polymarket', NOW, relax=True)
         self.assertIsNone(f['pick'])
-        self.assertIn('no directional edge', (f['reason'] or '').lower())
+        self.assertIsNone(f['probabilities'])
+        self.assertIn('exactly even', f['attempts'][0]['reason'].lower())
+        self.assertIn('rejected_quote', f['attempts'][0])
 
 
 class TestMirrorReadOrder(unittest.TestCase):

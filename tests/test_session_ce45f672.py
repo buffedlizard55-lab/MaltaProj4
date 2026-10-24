@@ -240,11 +240,28 @@ class EvenWideQuoteNeverBecomesA50Fifty(unittest.TestCase):
         self.assertAlmostEqual(row['probabilities'][0], 0.75, places=12)
         self.assertTrue(any('wide' in flag.lower() for flag in row['flags']))
 
-    def test_a_tight_even_market_keeps_the_documented_no_edge_answer(self):
+    def test_a_tight_even_market_is_retained_as_evidence_and_never_published_as_a_50_50(self):
+        # Integration repair, session e86697a6, 2026-10-24. This test used to
+        # pin the opposite: a tight, exactly even quote was published as
+        # [0.5, 0.5] with no pick. The measured live board then produced exactly
+        # that state for fixture 1079200 (Color vs ex-Zero Tenacity) and it broke
+        # 42 unit contracts across this repository at once - a pick must be the
+        # higher probability, and a row with numbers but no pick is neither
+        # priced nor unresolved, so it appeared on no unresolved surface and the
+        # match carried no pick at all. The owner's intent (never publish an
+        # uninformative 50/50, never invent a direction) is unchanged and is
+        # asserted here; the equal quote is now kept as rejected evidence so the
+        # model and research tiers can still answer for that match.
         row = self._resolve(prices=('0.5', '0.5'), bid='0.49', ask='0.51')
-        self.assertEqual(row['probabilities'], [0.5, 0.5])
+        self.assertIsNone(row['probabilities'])
         self.assertIsNone(row['pick'])
-        self.assertIn('no directional edge', (row['reason'] or '').lower())
+        self.assertIsNone(row['method'])
+        self.assertEqual(row['attempts'][0]['status'], 'unresolved')
+        self.assertIn('exactly even', row['attempts'][0]['reason'])
+        self.assertIn('rejected_quote', row['attempts'][0],
+                      'the even quote must stay inspectable, never silently dropped')
+        self.assertEqual(row['attempts'][0]['rejected_quote']['notice'],
+                         'Rejected evidence, not a pick or verified probability.')
 
     def test_the_published_board_publishes_a_probability_without_a_pick_only_for_even_lines(self):
         for match in [m for m in SNAPSHOT['matches'] if m['state'] == 'open']:
