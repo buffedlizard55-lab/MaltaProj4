@@ -1,3 +1,29 @@
+## Session 2a7cdfb7 claim — 2026-10-24 16:30 UTC (fresh every-match picks, fallback research, mobile summary, final integration)
+
+Board read before claiming, including the open-PR list and recent Actions runs. Arena fixes this session to
+`arena/2a7cdfb7-maltaproj4`; no other branch or worktree is created, switched, renamed or pushed. The newest
+open session PR was updated at 09:49 UTC and all current implementation claims are more than 60 minutes old,
+so this is a stale-claim handoff under the board rule. Earlier receipts and private research remain untouched.
+Base `45fc6ba` has fixture evidence `2026-10-24T08:03:11Z`, snapshot `08:06:51Z` (outside its eight-hour window
+at claim time), 92 retained rows and 29 currently priced rows before applying the present lock clock. Main's
+latest scheduled run [40097410704](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40097410704)
+failed; its exact failed step will be reproduced before any gate is changed.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Reproduce and repair the current publication failure without weakening provenance, arithmetic, expiry, coverage or mobile gates | in progress | 2a7cdfb7 | `research/session-2a7cdfb7/**`, `tests/test_session_2a7cdfb7.py` (new); production/test files only for a separately logged reproduced defect | 2026-10-24 16:30 |
+| Fresh Hotspawn CS2 capture and line-by-line audit; for only rows unresolved by the featured market path, try HLTV first, then esportsbooks/exchange lines, then the documented originated model; publish an unresolved/limitations ledger for anything still unsupported | in progress | 2a7cdfb7 | `.github/workflows/harvest-2a7cdfb7.yml` (new), `scripts/probe_2a7cdfb7.py` (new if needed), `research/harvest-2a7cdfb7/**`, `research/session-2a7cdfb7/**`; additive evidence registers only when a live source proves a fact | 2026-10-24 16:30 |
+| Verify the executive summary has direct in-site links to current picks and the separate unresolved/limitations section, and measure both teams' probabilities on phone layouts; repair only measured defects | in progress | 2a7cdfb7 | `tests/browser_2a7cdfb7.cjs` (new), `research/session-2a7cdfb7/**`; shared builder/assets only after a measured defect is logged | 2026-10-24 16:30 |
+| Final integration: fresh verified snapshot, all unit/audit/validator/browser gates, PR from this fixed branch to main, merge without waiting, confirm Pages live bytes, publish flags and record receipt | in progress | 2a7cdfb7 | `COORDINATION.md`, `README.md` (additive receipt only), generated root/site outputs via canonical build/staging, `build-info.json`, `data/latest.json`, `data/matches.csv` | 2026-10-24 16:30 |
+
+Evidence rules: Hotspawn supplies fixture inventory and locks only, never a probability. Hotspawn/HLTV crowd
+votes, placeholder odds, guessed aliases, inferred values and 50/50 filler are forbidden. Every displayed row
+keeps an official fixture link and a separate reproducible price/model source or an explicit blank plus a dated,
+source-linked limitation. `git pull --rebase` precedes every push; conflicts are resolved without discarding
+another session's work and are logged here.
+
+---
+
 ## Session d2a55add — final receipt: PR #246 merged, live bytes verified (2026-10-24 06:20 UTC)
 
 **PR [#246](https://github.com/buffedlizard55-lab/MaltaProj4/pull/246) merged to `main` at
