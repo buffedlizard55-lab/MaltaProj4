@@ -1,3 +1,52 @@
+## Session 2b856884 — final receipt: PR #285 merged, pipeline verified end to end (2026-10-24 17:45 UTC)
+
+**PR [#285](https://github.com/buffedlizard55-lab/MaltaProj4/pull/285) merged to `main` at
+2026-10-24T17:06:42Z as merge commit `cdb68fa`**, after both required checks passed on the branch head
+(`verify-build` run [40114394694](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40114394694),
+`audit` run [40114394705](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40114394705)). The
+merge was made without waiting for approval, per protocol.
+
+**What that PR delivered, measured after the merge.** Its own `main` publish run
+([40114629477](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40114629477)) was cancelled by a
+newer `main` push (PR #289) — the documented legacy-Pages queue behaviour, not a build failure. The run that
+carried the fix forward ([40114944056](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40114944056))
+deployed the artifact successfully and failed only the root-fallback staging step; the committed root on `main`
+nevertheless advanced to snapshot `2026-10-24T16:50:01Z` with **20 open / 20 picks / 20 win probabilities**, and
+`build-info.json` on `main` is built `2026-10-24T17:19:01Z`.
+
+**End-to-end re-verification on the merged tree, from a GitHub runner** (the sandbox cannot reach any source;
+see the limitation above). Run [40115955241](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40115955241)
+refreshed every official source against the merged tree and then reproduced the exact publisher sequence:
+
+| Step | Result | Evidence committed here |
+| --- | --- | --- |
+| Refresh (Hotspawn, HLTV, Polymarket, Pinnacle, books, Valve) | `coverage: verified`, 83 fixtures | `refresh-snapshot.json`, `summary.md` |
+| Open-row coverage | **20 open · 20 with a pick · 20 with a win probability · 0 unresolved** | `COVERAGE.md`, `coverage-report.json` |
+| Independent row audit | 0 failures | `row-audit.md`, `published-row-audit.md` |
+| `scripts.build` + `scripts.validate` | 20 calculations reproduced, 15 pages, 189 displayed rows | `logs/build.txt`, `logs/validate-fresh.txt` |
+| `scripts.publish_root_fallback` (the step that had been failing) | **rc=0**, snapshot `2026-10-24T17:33:35Z` staged over `16:50:01Z` | `logs/root-stage.txt` |
+| Post-staging `scripts.validate` and full unit suite | validate rc=0, **Ran 1,550 tests / OK (skipped=7)**, unit rc=0 | `logs/root-validate.txt`, `logs/root-unit.txt` |
+
+So the failure that froze publication earlier today — an exactly even line published as a priced row with no
+pick — no longer reproduces anywhere in the ladder: the exchange and book tiers reject it (main, session
+6b8b4be0) and the two originated model tiers now reject it too (this session's `scripts.core.directional`).
+
+**Mobile acceptance, measured in Chromium on the built pages.** The executive-summary quick nav no longer clips
+its own sentence (it wraps; no horizontal overflow at 320/390/412), both in-site buttons stay 40px+ tap targets,
+and the pick is ordered above the time and probability cells on every phone width: first pick at y=354 on
+320x568 and y=378 on 390x844, both teams' win chances above the fixed tab bar. All 11 browser suites pass,
+including the four that measure phone placement and the ladder counts.
+
+**Flagged for review (non-blocking, published on the Flagged for Review page):** the even-line *policy* choice;
+whether any test may pin a live fixture ID; the red scheduled runs before this repair; and the one row priced
+only by our own Valve-standings model. Four dated `session-2b856884-*` notes carry the sources.
+
+**Coordination note for parallel sessions.** This session merged `origin/main` twice and adopted other
+sessions' canonical implementation both times rather than overwriting it, keeping only the model-tier fix, the
+phone CSS fix, one dated test module and its four review notes. `research/harvest-2b856884/**` is this session's
+own evidence directory; the shared snapshot, generated pages and `build-info.json` on `main` are owned by
+whichever publication run lands last.
+
 ## Session 2b856884 — delivery receipt (2026-10-24 17:20 UTC)
 
 **The live site was serving zero picks when this session started. Measured, not inferred:** scheduled audit
