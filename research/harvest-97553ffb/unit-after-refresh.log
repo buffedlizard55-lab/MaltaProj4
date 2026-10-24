@@ -1,0 +1,237 @@
+.............................................................................................................................................................................................................................................................No refreshed snapshot at /tmp/tmpkzupe6h5/nope.json; nothing to harvest.
+...............................................................................................................................................................................FFE..................................................................................................................................................................................................................................................................Built 9 primary pages + 6 legacy redirects; 88 sourced rows, 25 with percentages, 0 without percentages, 0 unresolved.
+.........................Built 9 primary pages + 6 legacy redirects; 88 sourced rows, 25 with percentages, 0 without percentages, 0 unresolved.
+..............................................................................................s...........................................................................................................................................................................................................................................................................................................................F...............................................................................
+======================================================================
+ERROR: test_every_pick_is_the_larger_re_derived_probability (test_session_0cc1138a.IndependentReDerivation.test_every_pick_is_the_larger_re_derived_probability)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_0cc1138a.py", line 68, in test_every_pick_is_the_larger_re_derived_probability
+    self.assertEqual(r['pick'], r['teams'][p.index(max(p))], r['id'])
+                                           ^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'index'
+
+======================================================================
+FAIL: test_a_tampered_pick_is_rejected (test_session_0cc1138a.IndependentReDerivation.test_a_tampered_pick_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_0cc1138a.py", line 85, in test_a_tampered_pick_is_rejected
+    self.assertEqual(len(failures), 1)
+AssertionError: 3 != 1
+
+======================================================================
+FAIL: test_every_committed_open_row_reproduces_with_no_shared_code (test_session_0cc1138a.IndependentReDerivation.test_every_committed_open_row_reproduces_with_no_shared_code)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_0cc1138a.py", line 60, in test_every_committed_open_row_reproduces_with_no_shared_code
+    self.assertEqual(failures, [], 'unreproducible: %r' % failures[:3])
+AssertionError: Lists differ: [{'id': '1081156', 'teams': ['Spirit Acade[1254 chars]d']}] != []
+
+First list contains 2 additional elements.
+First extra element 0:
+{'id': '1081156', 'teams': ['Spirit Academy', 'LFO 10'], 'start': '2026-10-25T12:00:00Z', 'competition': 'CCT Europe 2026 Series #12', 'method': 'model_vrs_mirror', 'pick': 'Spirit Academy', 'published': [0.7118171988597648, 0.2881828011402352], 're_derived': None, 'provider': 'HLTV Valve ranking (Valve points)', 'source': 'https://www.hltv.org/valve-ranking/teams/2026/october/24', 'fixture_source': 'https://www.hotspawn.com/matches/spirit-academy-vs-lfo-10-cct-europe-2026-series-12-1081156', 'checked': ['sum=1', 'pick is the favourite', 'fair odds = 1/p'], 'problems': ['evidence not reproducible: no reproducible price in evidence record']}
+
+Diff is 1448 characters long. Set self.maxDiff to None to see it. : unreproducible: [{'id': '1081156', 'teams': ['Spirit Academy', 'LFO 10'], 'start': '2026-10-25T12:00:00Z', 'competition': 'CCT Europe 2026 Series #12', 'method': 'model_vrs_mirror', 'pick': 'Spirit Academy', 'published': [0.7118171988597648, 0.2881828011402352], 're_derived': None, 'provider': 'HLTV Valve ranking (Valve points)', 'source': 'https://www.hltv.org/valve-ranking/teams/2026/october/24', 'fixture_source': 'https://www.hotspawn.com/matches/spirit-academy-vs-lfo-10-cct-europe-2026-series-12-1081156', 'checked': ['sum=1', 'pick is the favourite', 'fair odds = 1/p'], 'problems': ['evidence not reproducible: no reproducible price in evidence record']}, {'id': '1081158', 'teams': ['FORZE Reload', 'ex-RUSTEC'], 'start': '2026-10-25T18:00:00Z', 'competition': 'CCT Europe 2026 Series #12', 'method': 'model_vrs_mirror', 'pick': 'FORZE Reload', 'published': [0.5740422049729164, 0.42595779502708364], 're_derived': None, 'provider': 'HLTV Valve ranking (Valve points)', 'source': 'https://www.hltv.org/valve-ranking/teams/2026/october/24', 'fixture_source': 'https://www.hotspawn.com/matches/forze-reload-vs-ex-rustec-cct-europe-2026-series-12-1081158', 'checked': ['sum=1', 'pick is the favourite', 'fair odds = 1/p'], 'problems': ['evidence not reproducible: no reproducible price in evidence record']}]
+
+======================================================================
+FAIL: test_strip_names_the_first_pick_with_its_number (test_session_f89bb1f8.PhoneFirstScreenTests.test_strip_names_the_first_pick_with_its_number)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_f89bb1f8.py", line 54, in test_strip_names_the_first_pick_with_its_number
+    self.assertIn('23 Oct', text)
+AssertionError: '23 Oct' not found in 'Next pick FOKUS 78.5% 24 Oct · 08:00 UTC'
+
+----------------------------------------------------------------------
+Ran 1204 tests in 41.062s
+
+FAILED (failures=3, errors=1, skipped=1)
+Built 9 primary pages + 6 legacy redirects; 88 sourced rows, 25 with percentages, 0 without percentages, 0 unresolved.
+{
+ "coverage": "verified",
+ "coverage_counts": {
+  "open": 1
+ },
+ "fixtures_observed_at": "2026-10-15T21:33:48Z",
+ "generated_at": "2026-10-15T22:37:11Z",
+ "issues": [],
+ "last_attempt_at": "2026-10-15T22:37:11Z",
+ "open_pick_methods": {
+  "None": 1
+ },
+ "rows_open": 1,
+ "rows_open_with_pick_no_price": 0,
+ "rows_open_with_prices": 0,
+ "rows_open_without_pick": 1,
+ "rows_total": 1,
+ "unresolved_open_ids": [
+  "1"
+ ]
+}
+Built 9 primary pages + 6 legacy redirects; 88 sourced rows, 25 with percentages, 0 without percentages, 0 unresolved.
+receipt = egw-NTRtiger-l6k0vg5-nemesis-nuclear -> already on file for fixture 1081552
+receipt = egw-V1JAWhPomg-astral-leo -> already on file for fixture 1081532
+receipt = egw-Nk9F-Ov54e-fireflux-ex6666 -> already on file for fixture 1079181
+receipt = egw-rW8GEyWK-lavked-ex6666 -> already on file for fixture 1079646
+receipt = egw-41yaj8BdVx-sangal-aurorayoungblud -> already on file for fixture 1082157
+{
+ "receipts_added": 0,
+ "rejections_added": 0,
+ "aliases_added": 0,
+ "notes_added": 0
+}
+Built 9 primary pages + 6 legacy redirects; 88 sourced rows, 25 with percentages, 0 without percentages, 0 unresolved.
+Built 9 primary pages + 6 legacy redirects; 4 sourced rows, 2 with percentages, 2 without percentages, 1 unresolved.
+Built 9 primary pages + 6 legacy redirects; 4 sourced rows, 2 with percentages, 2 without percentages, 1 unresolved.
+Built 9 primary pages + 6 legacy redirects; 4 sourced rows, 2 with percentages, 2 without percentages, 1 unresolved.
+Built 9 primary pages + 6 legacy redirects; 4 sourced rows, 2 with percentages, 2 without percentages, 1 unresolved.
+Built 9 primary pages + 6 legacy redirects; 2 sourced rows, 1 with percentages, 1 without percentages, 0 unresolved.
+Built 9 primary pages + 6 legacy redirects; 88 sourced rows, 25 with percentages, 0 without percentages, 0 unresolved.
+Built 9 primary pages + 6 legacy redirects; 2 sourced rows, 2 with percentages, 0 without percentages, 0 unresolved.
+Built 9 primary pages + 6 legacy redirects; 75 sourced rows, 10 with percentages, 3 without percentages, 1 unresolved.
+Built 9 primary pages + 6 legacy redirects; 1 sourced rows, 0 with percentages, 1 without percentages, 0 unresolved.
+Built 9 primary pages + 6 legacy redirects; 1 sourced rows, 0 with percentages, 1 without percentages, 1 unresolved.
+Built 9 primary pages + 6 legacy redirects; 1 sourced rows, 0 with percentages, 1 without percentages, 1 unresolved.
+Built 9 primary pages + 6 legacy redirects; 75 sourced rows, 10 with percentages, 3 without percentages, 1 unresolved.
+receipt = egw-NTRtiger-l6k0vg5-nemesis-nuclear -> already on file for fixture 1081552
+receipt = egw-V1JAWhPomg-astral-leo -> already on file for fixture 1081532
+receipt = egw-Nk9F-Ov54e-fireflux-ex6666 -> already on file for fixture 1079181
+receipt = egw-rW8GEyWK-lavked-ex6666 -> already on file for fixture 1079646
+receipt = egw-41yaj8BdVx-sangal-aurorayoungblud -> already on file for fixture 1082157
+{
+ "receipts_added": 0,
+ "rejections_added": 0,
+ "aliases_added": 0,
+ "notes_added": 0
+}
+receipt = egw-NTRtiger-l6k0vg5-nemesis-nuclear -> already on file for fixture 1081552
+receipt = egw-V1JAWhPomg-astral-leo -> already on file for fixture 1081532
+receipt = egw-Nk9F-Ov54e-fireflux-ex6666 -> already on file for fixture 1079181
+receipt = egw-rW8GEyWK-lavked-ex6666 -> already on file for fixture 1079646
+receipt = egw-41yaj8BdVx-sangal-aurorayoungblud -> already on file for fixture 1082157
+{
+ "receipts_added": 0,
+ "rejections_added": 0,
+ "aliases_added": 0,
+ "notes_added": 0
+}
+Built 9 primary pages + 6 legacy redirects; 3 sourced rows, 2 with percentages, 1 without percentages, 0 unresolved.
+Built 9 primary pages + 6 legacy redirects; 1 sourced rows, 0 with percentages, 1 without percentages, 1 unresolved.
+{
+  "verified": true,
+  "revision": "TEST_ONLY",
+  "built_at": "2026-10-22T08:30:00Z",
+  "files_checked": 20,
+  "snapshot_generated_at": "2026-10-22T07:49:59.960210Z",
+  "fixtures_observed_at": "2026-10-22T07:44:36.467004Z",
+  "live_manifest_sha256": "f3e2de9776f90bad0b21e50e25accb7af5754767137c7eaa348aa503b2ad892a",
+  "snapshot_sha256": "9c6f1c7e1944447d6618d767299418f4f2a6a5d904cbfa49e5d8aebc009ebb67",
+  "snapshot_counts": {
+    "feed_rows": 107,
+    "open": 46,
+    "with_pick": 45,
+    "with_probability": 39,
+    "market": 27,
+    "model": 12,
+    "official_file_models": 12,
+    "hltv_mirror_models": 0,
+    "research_only": 6,
+    "unresolved": 1
+  },
+  "run_id": "40067063133",
+  "note": "Exact public bytes; no source/quote timestamp was renewed."
+}
+Built 9 primary pages + 6 legacy redirects; 107 sourced rows, 0 with percentages, 25 without percentages, 25 unresolved.
+receipt: /tmp/tmpnzvwqqm5/audit-receipt.json
+{
+ "rows_with_official_source": 107,
+ "open_with_pick": 0,
+ "open_with_probability": 0,
+ "probabilities_reproduced": 0,
+ "research_only": 0,
+ "research_listed_on_both_pages": 0,
+ "unresolved": 25,
+ "unresolved_listed_on_both_pages": 25
+}
+checks: 282  failures: 0
+receipt: /tmp/tmpnzvwqqm5/audit-receipt.json
+{
+ "rows_with_official_source": 107,
+ "open_with_pick": 0,
+ "open_with_probability": 0,
+ "probabilities_reproduced": 0,
+ "research_only": 0,
+ "research_listed_on_both_pages": 0,
+ "unresolved": 25,
+ "unresolved_listed_on_both_pages": 25
+}
+checks: 282  failures: 1
+FAIL: 1082769 K27 vs NEXORA: unresolved probabilities must be None
+receipt: /tmp/tmpnzvwqqm5/audit-receipt.json
+{
+ "rows_with_official_source": 107,
+ "open_with_pick": 0,
+ "open_with_probability": 0,
+ "probabilities_reproduced": 0,
+ "research_only": 0,
+ "research_listed_on_both_pages": 0,
+ "unresolved": 25,
+ "unresolved_listed_on_both_pages": 25
+}
+checks: 282  failures: 1
+FAIL: 1082769 K27 vs NEXORA: unresolved fair_odds must be None
+receipt: /tmp/tmpnzvwqqm5/audit-receipt.json
+{
+ "rows_with_official_source": 107,
+ "open_with_pick": 0,
+ "open_with_probability": 0,
+ "probabilities_reproduced": 0,
+ "research_only": 0,
+ "research_listed_on_both_pages": 0,
+ "unresolved": 25,
+ "unresolved_listed_on_both_pages": 25
+}
+checks: 282  failures: 1
+FAIL: 1082769 K27 vs NEXORA: unresolved method must be None
+receipt: /tmp/tmpnzvwqqm5/audit-receipt.json
+{
+ "rows_with_official_source": 107,
+ "open_with_pick": 0,
+ "open_with_probability": 0,
+ "probabilities_reproduced": 0,
+ "research_only": 0,
+ "research_listed_on_both_pages": 0,
+ "unresolved": 25,
+ "unresolved_listed_on_both_pages": 25
+}
+checks: 282  failures: 1
+FAIL: 1082769 K27 vs NEXORA: unresolved row lacks its limitation
+receipt: /tmp/tmpnzvwqqm5/audit-receipt.json
+{
+ "rows_with_official_source": 107,
+ "open_with_pick": 0,
+ "open_with_probability": 0,
+ "probabilities_reproduced": 0,
+ "research_only": 0,
+ "research_listed_on_both_pages": 0,
+ "unresolved": 25,
+ "unresolved_listed_on_both_pages": 25
+}
+checks: 282  failures: 1
+FAIL: 1082769 K27 vs NEXORA: unresolved row lacks source attempts
+receipt: /tmp/tmpnzvwqqm5/audit-receipt.json
+{
+ "rows_with_official_source": 107,
+ "open_with_pick": 0,
+ "open_with_probability": 0,
+ "probabilities_reproduced": 0,
+ "research_only": 0,
+ "research_listed_on_both_pages": 0,
+ "unresolved": 25,
+ "unresolved_listed_on_both_pages": 25
+}
+checks: 282  failures: 1
+FAIL: 1082769 K27 vs NEXORA: unresolved row lacks official fixture URL
+Built 9 primary pages + 6 legacy redirects; 107 sourced rows, 0 with percentages, 0 without percentages, 0 unresolved.
+Built 9 primary pages + 6 legacy redirects; 107 sourced rows, 36 with percentages, 7 without percentages, 1 unresolved.
+Built 9 primary pages + 6 legacy redirects; 107 sourced rows, 0 with percentages, 25 without percentages, 25 unresolved.
+coverage: 25 open · 25 with a pick · 25 with a win probability
