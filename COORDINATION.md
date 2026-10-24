@@ -1,3 +1,15 @@
+## Session ba410e18 claim — 2026-10-24 06:24 UTC (independent acceptance audit)
+
+Board read before claiming. Work remains on Arena's fixed branch `arena/ba410e18-maltaproj4`; no other branch is created, checked out, or pushed. Current `HEAD` equals `origin/main` at `dce494b`. Multiple fresh-coverage and mobile-UI PRs are open, so this session does **not** edit their shared production code or generated data. Its non-overlapping scope is a read-only independent audit and dated report.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Independently audit the current integrated build: Hotspawn feed freshness and parity receipts, open-row pick/probability/source coverage, fallback-source evidence and limitations, official-source links, executive-summary/findability and mobile layout, scheduled refresh/deploy health; record receipts and any irregularity without changing another session's files | in progress | ba410e18 | `research/session-ba410e18/REPORT.md` (new), `COORDINATION.md` (board and final receipt only) | 2026-10-24 06:24 |
+
+Any defect requiring edits to shared data, generated pages, build scripts, mobile assets or workflow files will be recorded as a request here rather than changed inside another session's scope. Evidence is checked against the current repository snapshot and GitHub Actions/deployment receipts; values without an official-source receipt remain unverified.
+
+---
+
 ## Session d2a55add — delivery receipt: PR #246 (2026-10-24)
 
 **PR [#246](https://github.com/buffedlizard55-lab/MaltaProj4/pull/246)** carries this
