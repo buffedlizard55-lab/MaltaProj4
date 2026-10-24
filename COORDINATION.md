@@ -8425,3 +8425,11 @@ and the regenerated review page for the same 16:40:40Z snapshot.
 
 **Not claimed / not changed:** the ladder ordering that ranks a ceiling-spread exchange
 quote above a six-book consensus, and any other session's in-flight publish-gate work.
+
+## Session acd2a4a8 — CLAIM + DONE (2026-10-24, merged with main's parallel fix)
+- Task: picks for every Hotspawn CS2 match; diagnose the frozen board. Status: done (PR #292).
+- Root cause (harvest-reproduced on this branch): fixture 1079200 accepted an untraded Polymarket market at 0.5/0.5 and published a pick-less [0.5,0.5] row; the publisher's staged-root gate failed with 42 unit failures (scheduled run 40097410704), freezing the board at 08:06Z (0 actionable picks at 16:07Z).
+- Convergence: while this branch's harvest ran, sessions ac5bcb06/2b856884 landed the same policy on main (reject exactly-even lines at every tier, retain as no_edge_lines context, ladder continues). This merge takes main's collector implementation; this branch's contribution is the independent harvest diagnosis/verification, the phone pick-placement fix, and the flagged review note.
+- Phone fix retained: on <=650px cards the pick row renders directly under the team names (first pick y=863 -> 660 at 320px, measured); both stylesheet copies byte-identical, root manifest checksum synced.
+- Verification on this branch pre-merge (snapshot 2026-10-24T17:00:40Z): coverage 83/83/83/83, 20 open / 20 picks / 20 probabilities / 0 unresolved; staged-root unit 1,487 OK, validate OK, all 11 browser suites pass. Receipts: research/session-acd2a4a8/REPORT.md.
+- Flagged for review (non-blocking): acd2a4a8-even-line-fallthrough-2026-10-24 in data/review-notes.json.
