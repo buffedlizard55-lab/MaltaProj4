@@ -1,0 +1,128 @@
+name: Live coverage harvest 11afca43 (non-publishing)
+
+# Session 11afca43 (Arena-fixed branch arena/11afca43-maltaproj4).
+#
+# The authoring sandbox reaches github.com, codeload.github.com, api.github.com,
+# registry.npmjs.org and pypi.org only, so the real Hotspawn / HLTV / exchange /
+# bookmaker / Valve refresh and the independent audits run here on a normal
+# GitHub egress. This workflow never deploys Pages and never pushes generated
+# pages or data to main: it refreshes, rebuilds, re-validates, re-runs the phone
+# and browser gates, stages the verified build to the legacy main:/ root
+# fallback on THIS branch, and commits the dated receipts back to the branch so
+# the session can re-verify line by line before the integration PR.
+on:
+  push:
+    branches: [arena/11afca43-maltaproj4]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: coverage-harvest-11afca43
+  cancel-in-progress: false
+
+jobs:
+  capture:
+    if: github.ref == 'refs/heads/arena/11afca43-maltaproj4' && (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[capture]'))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+          cache: npm
+      - run: pip install -r requirements.txt
+      - run: npm ci --ignore-scripts
+
+      - name: Verify the committed board before touching any source
+        run: |
+          mkdir -p research/harvest-11afca43 runtime
+          python -m unittest discover -s tests 2>&1 | tee research/harvest-11afca43/pre-refresh-unit.log | tail -5
+          python -m unittest discover -s audits -p 'test_*.py' 2>&1 | tee research/harvest-11afca43/pre-refresh-audits.log | tail -3
+          python verification-95b588c2/test_integrity.py 2>&1 | tee research/harvest-11afca43/pre-refresh-integrity.log | tail -3
+          python -m unittest discover -s verification-c6 -p 'test_*.py' 2>&1 | tee research/harvest-11afca43/pre-refresh-c6.log | tail -3
+          python -m scripts.validate --data data/latest.json --site . 2>&1 | tee research/harvest-11afca43/pre-refresh-validate.log | tail -8
+
+      - name: Refresh official Hotspawn, HLTV, exchange, bookmaker and Valve sources
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python -m scripts.refresh --output runtime/latest.json 2>&1 | tee research/harvest-11afca43/refresh.log | tail -40
+
+      - name: Withhold any row the independent evidence replay cannot reproduce
+        run: python -m scripts.quarantine runtime/latest.json 2>&1 | tee research/harvest-11afca43/quarantine.log | tail -20
+
+      - name: Independent row audit of the refreshed snapshot
+        run: |
+          python verification-c6/audit_snapshot.py runtime/latest.json --output research/harvest-11afca43/row-audit.md 2>&1 | tee research/harvest-11afca43/row-audit.log | tail -20
+          cp runtime/latest.json research/harvest-11afca43/snapshot.json
+
+      - name: Build and validate the fresh candidate exactly as publication does
+        run: |
+          python -m scripts.build --data runtime/latest.json 2>&1 | tee research/harvest-11afca43/build.log | tail -10
+          python -m scripts.validate --data runtime/latest.json 2>&1 | tee research/harvest-11afca43/validate-fresh.log | tail -10
+          python verification-c6/audit_snapshot.py public/data/latest.json --output research/harvest-11afca43/published-row-audit.md 2>&1 | tee research/harvest-11afca43/published-audit.log | tail -10
+
+      - name: Phone, tablet, desktop, accessibility and exact expiry checks
+        run: npm run test:browser 2>&1 | tee research/harvest-11afca43/browser.log | tail -30
+
+      - name: Stage the verified build to the legacy main:/ root fallback on this branch
+        run: |
+          python -m scripts.publish_root_fallback --public public --root . --cooldown-hours 0 2>&1 | tee research/harvest-11afca43/stage-root.log | tail -20
+          python -m scripts.validate --data data/latest.json --site . 2>&1 | tee research/harvest-11afca43/validate-staged.log | tail -10
+
+      - name: Confirm the committed gates survive the fresh snapshot
+        run: |
+          python -m unittest discover -s tests 2>&1 | tee research/harvest-11afca43/post-refresh-unit.log | tail -20
+          python -m unittest discover -s audits -p 'test_*.py' 2>&1 | tee research/harvest-11afca43/post-refresh-audits.log | tail -3
+          python verification-95b588c2/test_integrity.py 2>&1 | tee research/harvest-11afca43/post-refresh-integrity.log | tail -3
+          python -m unittest discover -s verification-c6 -p 'test_*.py' 2>&1 | tee research/harvest-11afca43/post-refresh-c6.log | tail -3
+
+      - name: Record runner identity without changing source timestamps
+        env:
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+          RUN_SHA: ${{ github.sha }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          receipt = {'workflow_run_id': os.environ['RUN_ID'], 'attempt': os.environ['RUN_ATTEMPT'],
+                     'checkout_sha': os.environ['RUN_SHA'], 'run_url': os.environ['RUN_URL'],
+                     'publishes_pages': False, 'snapshot': 'research/harvest-11afca43/snapshot.json'}
+          Path('research/harvest-11afca43/run.json').write_text(json.dumps(receipt, indent=1) + '\n')
+          PY
+
+      - name: Commit the verified build and dated receipts to the fixed session branch
+        run: |
+          git config user.name "cs2-evidence-runner"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A -- research/harvest-11afca43 \
+            404.html analysis.html assets build-info.json data/latest.json data/matches.csv \
+            evidence.html index.html matches.html methodology.html picks.html review.html \
+            site sources.html unresolved.html .nojekyll
+          if git diff --cached --quiet; then
+            echo "No verified build change to commit."
+            exit 0
+          fi
+          git status --short
+          git commit -m "Publish the verified fresh CS2 build to the session branch (run ${GITHUB_RUN_ID}) [skip ci]"
+          git pull --rebase origin arena/11afca43-maltaproj4
+          git push origin arena/11afca43-maltaproj4
+
+      - name: Retain candidate and audit artifacts even when a gate fails
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: coverage-harvest-11afca43-${{ github.run_id }}
+          path: |
+            research/harvest-11afca43
+            runtime/latest.json
+            public/build-info.json
+          retention-days: 14

@@ -1,3 +1,32 @@
+## Session 11afca43 claim — 2026-10-24 16:30 UTC (fresh verified snapshot, line-by-line re-verification, integration to main)
+
+Board read before claiming. Arena-fixed branch `arena/11afca43-maltaproj4`, based on `main` `45fc6ba`
+(PR #244). No other branch is created, checked out or pushed. Earlier `in progress` rows in this file are
+dated 2026-10-24 05:30–08:35 UTC and are stale by the 60-minute rule; this session does not reopen their
+private research files and does not edit their production scopes.
+
+**Measured starting state (not assumed).** `main` == `origin/main` == `45fc6ba`. The committed snapshot is
+`data/latest.json` generated `2026-10-24T08:06:51Z` (fixture evidence `08:03:11Z`): 92 feed rows,
+92/92/92/92 three-view parity, **29 open · 29 picks · 29 win probabilities · 0 unresolved** (14 exchange,
+6 exchange_wide, 3 bookmaker_fallback, 5 model_vrs, 1 model_vrs_mirror). At claim time that snapshot is
+outside its 8-hour evidence window, so the committed board would withhold picks if served as-is.
+`python -m scripts.validate --data data/latest.json --site .` reproduces 92 rows / 29 calculations / 15
+pages / 858 links-assets / 20 checksums / 227 displayed rows; `python -m unittest discover -s tests` is
+**1,484 tests OK (1 skipped)** on the committed tree.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Fresh official-source capture on a GitHub runner (Hotspawn feed + lobby, HLTV, Polymarket, Pinnacle, books, Valve VRS), full pick/probability coverage for every open match, receipts committed to this branch | in progress | 11afca43 | `.github/workflows/harvest-11afca43.yml` (new), `research/harvest-11afca43/**` (new) | 2026-10-24 16:30 |
+| Line-by-line re-verification of the refreshed board: pick/probability arithmetic, evidence URL, expiry, source label; flag anything unverifiable | in progress | 11afca43 | `research/session-11afca43/**` (new), `tests/test_session_11afca43.py` (new) | 2026-10-24 16:30 |
+| Final integration: fresh verified build, all unit/audit/integrity/validator/browser gates, PR to main, merge without approval, live Pages verification, receipt | in progress | 11afca43 | `COORDINATION.md`, `data/latest.json`, `data/matches.csv`, generated root pages, `build-info.json` | 2026-10-24 16:30 |
+
+Evidence rules unchanged: Hotspawn supplies fixture inventory and locks only, never a probability; no crowd
+votes, placeholder odds, inferred values or 50/50 filler. A pick for a low-tier or unlisted match comes only
+from the sourced ladder (HLTV identity/rank/form, a verified esportsbook/exchange line, or the labelled VRS
+model); anything left stays in the separate unresolved section with its attempted sources and limitation.
+
+---
+
 ## Session d2a55add — final receipt: PR #246 merged, live bytes verified (2026-10-24 06:20 UTC)
 
 **PR [#246](https://github.com/buffedlizard55-lab/MaltaProj4/pull/246) merged to `main` at
