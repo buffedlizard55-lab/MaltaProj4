@@ -1,0 +1,20 @@
+
+> hotspawn-cs2-scout@1.0.0 test:browser
+> node tests/browser.cjs && node tests/expiry.cjs && node tests/browser_019a253a.cjs && node tests/browser_138cbedd.cjs && node tests/browser_9b97d585.cjs && node tests/browser_ac4743a3.cjs && node tests/browser_cb16f548.cjs && node tests/browser_ce45f672.cjs && node tests/browser_eaff7cce.cjs && node tests/browser_f0814674.cjs && node tests/browser_fe7f5de4.cjs
+
+Passed: 32 page/viewport accessibility and no-overflow scans, 320/390/768/1440px layout, subpath URLs, navigation, filters, six legacy redirects, evidence anchors and expiry.
+Passed: seven board expiry scenarios (including live No percentage filter/count updates) plus four research-quote boundary/future-clock scenarios.
+Passed: phone-first summary on 3 viewports (320x568 y=352, 390x844 y=360, 412x915 y=360), pick board clear of the tab bar, and the 9-rung fallback ladder with counts totalling 22.
+Passed: freshness clock on 2 viewports x 3 snapshot ages (6 reads) and the phone pick board's per-row observation/expiry times — the advertised slot is always ahead of the reader and the snapshot age is always stated.
+AssertionError [ERR_ASSERTION]: match-id filter after the board
+
+0 !== 1
+
+    at /home/user/MaltaProj4/tests/browser_9b97d585.cjs:112:12 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 0,
+  expected: 1,
+  operator: 'strictEqual',
+  diff: 'simple'
+}

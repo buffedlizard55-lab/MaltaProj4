@@ -26,6 +26,13 @@ const chromium = require('@sparticuz/chromium');
   const base = `http://127.0.0.1:${server.address().port}/MaltaProj4/`;
   const open = data.matches.filter(m => m.state === 'open');
   const picks = open.filter(m => m.pick && m.probabilities);
+  // A snapshot past its eight-hour evidence window publishes no percentages at
+  // all (every promise is withheld), and one honestly level market line publishes
+  // both percentages with no directional pick. Both are valid boards, and neither
+  // may fail a gate that runs before publication, so the score assertions below
+  // apply only when the build actually carries a pick with a percentage.
+  const priced = open.filter(m => m.probabilities).length;
+  const withheld = picks.length === 0;
   let browser;
   const report = [];
   try {
@@ -70,6 +77,7 @@ const chromium = require('@sparticuz/chromium');
           scoreText: scores.map(node => node.textContent.replace(/\s+/g, ' ').trim()),
           time: first ? (first.querySelector('.glance-card-time') || {}).textContent || null : null,
           pickLabel: first ? (first.querySelector('.glance-card-pick-label') || {}).textContent || null : null,
+          cardText: first ? first.textContent.replace(/\s+/g, ' ').trim() : null,
           cta: box(document.querySelector('#freshness-strip a.fresh-cta')),
           unresolved: box(document.querySelector('#freshness-strip a[href="unresolved.html"]')),
           matchesLink: box(document.querySelector('.mobile-tabs a[href="matches.html"]')),
@@ -102,6 +110,8 @@ const chromium = require('@sparticuz/chromium');
       }
       const inventoryAge = Date.now() - Date.parse(data.fixtures_observed_at || data.generated_at);
       if (!priced && inventoryAge > 8 * 3600 * 1000) {
+        assert.ok(!/\d+(\.\d+)?%/.test(measured.cardText || ''),
+          `${width}px a withheld card printed a percentage: ${JSON.stringify(measured.cardText)}`);
         assert.equal(measured.staleVisible, true,
           `${width}px an expired baseline must visibly withhold recommendations`);
         assert.match(measured.staleText, /Current picks are withheld/,
@@ -131,8 +141,10 @@ const chromium = require('@sparticuz/chromium');
       assert.ok(page.url().endsWith('/picks.html'), `${width}px the picks CTA must lead to picks.html`);
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false,
         `${width}px picks page overflows horizontally`);
-      assert.equal(await page.locator('tr[data-match]:visible').count(), open.length,
-        `${width}px the pick board must list every open match`);
+      const runtimeOpen = open.filter(match => Date.parse(match.lock) > Date.now()
+        && Date.parse(match.start) > Date.now()).length;
+      assert.equal(await page.locator('tr[data-match]:visible').count(), runtimeOpen,
+        `${width}px the pick board must list every match still open at runtime (locks may pass during the test)`);
     }
 
     // A phone reader must never see a fabricated number where a pick is missing.
@@ -145,7 +157,8 @@ const chromium = require('@sparticuz/chromium');
 
     assert.deepEqual(errors, []);
     fs.mkdirSync('runtime', {recursive: true});
-    fs.writeFileSync('runtime/browser-ce45f672.json', JSON.stringify({picks: picks.length, report}, null, 2) + '\n');
+    fs.writeFileSync('runtime/browser-ce45f672.json',
+      JSON.stringify({picks: picks.length, priced, withheld, report}, null, 2) + '\n');
     await page.screenshot({path: 'runtime/index-320-ce45f672.png'});
     console.log('Passed: the phone home page names itself an executive summary, '
       + (picks.length ? 'keeps the next pick and both win chances above the tab bar' : 'shows the stale/withheld warning and no expired probabilities')

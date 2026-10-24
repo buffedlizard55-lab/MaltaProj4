@@ -1,0 +1,196 @@
+name: Live CS2 coverage harvest afed58c5 (non-publishing)
+
+# GitHub-hosted egress performs the real official-source reads that the
+# authoring sandbox cannot make. This workflow never deploys Pages and pushes
+# only dated evidence to this session's fixed Arena branch. A later integration
+# commit independently replays the capture before anything reaches main.
+on:
+  push:
+    branches: [arena/afed58c5-maltaproj4]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: coverage-harvest-afed58c5
+  cancel-in-progress: false
+
+jobs:
+  capture:
+    if: github.ref == 'refs/heads/arena/afed58c5-maltaproj4' && (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[capture]'))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+          cache: npm
+      - run: pip install -r requirements.txt
+      - run: npm ci --ignore-scripts
+
+      - name: Verify the committed baseline before reading sources
+        id: baseline
+        run: |
+          set -o pipefail
+          mkdir -p research/harvest-afed58c5/logs runtime
+          python -m unittest discover -s tests 2>&1 | tee research/harvest-afed58c5/logs/baseline-unit.log
+          python -m unittest discover -s audits -p 'test_*.py' 2>&1 | tee research/harvest-afed58c5/logs/baseline-audits.log
+          python verification-95b588c2/test_integrity.py 2>&1 | tee research/harvest-afed58c5/logs/baseline-integrity.log
+          python -m unittest discover -s verification-c6 -p 'test_*.py' 2>&1 | tee research/harvest-afed58c5/logs/baseline-c6.log
+          python -m scripts.validate --data data/latest.json --site . 2>&1 | tee research/harvest-afed58c5/logs/baseline-validate.log
+
+      - name: Refresh Hotspawn inventory and the complete external source ladder
+        id: refresh
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -o pipefail
+          cp data/latest.json runtime/previous-latest.json
+          python -m scripts.refresh --output runtime/latest.json 2>&1 | tee research/harvest-afed58c5/logs/refresh.log
+
+      - name: Withhold any row the independent audit cannot reproduce
+        id: quarantine
+        continue-on-error: true
+        if: always() && steps.refresh.outcome == 'success'
+        run: |
+          set -o pipefail
+          python -m scripts.quarantine runtime/latest.json 2>&1 | tee research/harvest-afed58c5/logs/quarantine.log
+
+      - name: Independent row replay and complete coverage ledgers
+        id: audit
+        continue-on-error: true
+        if: always() && steps.quarantine.outcome == 'success'
+        run: |
+          set -o pipefail
+          # Preserve the exact candidate before any verifier can stop the step.
+          # Run every independent ledger even when one fails, so the receipt
+          # distinguishes a bad row from an incomplete diagnostic chain.
+          cp runtime/latest.json research/harvest-afed58c5/snapshot.json
+          status=0
+          python verification-c6/audit_snapshot.py runtime/latest.json --output research/harvest-afed58c5/independent-row-audit.md 2>&1 | tee research/harvest-afed58c5/logs/independent-row-audit.log || status=1
+          python research/session-0cc1138a/verify_0cc1138a.py --data runtime/latest.json --json > research/harvest-afed58c5/independent-rederivation.json || status=1
+          python -m scripts.audit_e334b970 --snapshot runtime/latest.json --output research/harvest-afed58c5 2>&1 | tee research/harvest-afed58c5/logs/coverage-receipt.log || status=1
+          python -m scripts.coverage_233b8a0e --snapshot runtime/latest.json --output research/harvest-afed58c5/ladder 2>&1 | tee research/harvest-afed58c5/logs/ladder.log || status=1
+          exit "$status"
+
+      - name: Research only the remaining gaps after the HLTV-first refresh
+        id: gap_probe
+        continue-on-error: true
+        if: always() && steps.refresh.outcome == 'success'
+        run: |
+          set -o pipefail
+          python -m scripts.probe_4fd13975 --snapshot runtime/latest.json --output research/harvest-afed58c5/unresolved-probe 2>&1 | tee research/harvest-afed58c5/logs/unresolved-probe.log
+
+      - name: Build and validate the fresh candidate
+        id: build
+        continue-on-error: true
+        if: always() && steps.audit.outcome == 'success'
+        run: |
+          set -o pipefail
+          python -m scripts.build --data runtime/latest.json 2>&1 | tee research/harvest-afed58c5/logs/build.log
+          python -m scripts.validate --data runtime/latest.json 2>&1 | tee research/harvest-afed58c5/logs/validate-fresh.log
+          python verification-c6/audit_snapshot.py public/data/latest.json --output research/harvest-afed58c5/published-row-audit.md 2>&1 | tee research/harvest-afed58c5/logs/published-row-audit.log
+          cp public/build-info.json research/harvest-afed58c5/build-info.json
+
+      - name: Diagnose the fresh snapshot against every committed unit gate
+        id: fresh_unit
+        continue-on-error: true
+        if: always() && steps.build.outcome == 'success'
+        run: |
+          set -o pipefail
+          cp public/data/latest.json data/latest.json
+          restore() { cp runtime/previous-latest.json data/latest.json; }
+          trap restore EXIT
+          status=0
+          python -m unittest discover -s tests 2>&1 | tee research/harvest-afed58c5/logs/fresh-unit.log || status=1
+          python -m scripts.validate --data data/latest.json --site . 2>&1 | tee research/harvest-afed58c5/logs/fresh-root-validate.log || status=1
+          exit "$status"
+
+      - name: Phone, desktop, accessibility and expiry checks on the fresh candidate
+        id: browser
+        continue-on-error: true
+        if: always() && steps.build.outcome == 'success'
+        run: |
+          set -o pipefail
+          npm run test:browser 2>&1 | tee research/harvest-afed58c5/logs/browser.log
+
+      - name: Record runner identity and essential gate outcomes
+        if: always()
+        env:
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+          RUN_SHA: ${{ github.sha }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          BASELINE_OUTCOME: ${{ steps.baseline.outcome }}
+          REFRESH_OUTCOME: ${{ steps.refresh.outcome }}
+          QUARANTINE_OUTCOME: ${{ steps.quarantine.outcome }}
+          AUDIT_OUTCOME: ${{ steps.audit.outcome }}
+          PROBE_OUTCOME: ${{ steps.gap_probe.outcome }}
+          BUILD_OUTCOME: ${{ steps.build.outcome }}
+          FRESH_UNIT_OUTCOME: ${{ steps.fresh_unit.outcome }}
+          BROWSER_OUTCOME: ${{ steps.browser.outcome }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          keys = ('baseline', 'refresh', 'quarantine', 'audit', 'probe', 'build', 'fresh_unit', 'browser')
+          receipt = {
+              'workflow_run_id': os.environ['RUN_ID'],
+              'attempt': os.environ['RUN_ATTEMPT'],
+              'checkout_sha': os.environ['RUN_SHA'],
+              'run_url': os.environ['RUN_URL'],
+              'publishes_pages': False,
+              'snapshot': 'research/harvest-afed58c5/snapshot.json',
+              'gate_outcomes': {key: os.environ[key.upper() + '_OUTCOME'] for key in keys},
+          }
+          Path('research/harvest-afed58c5').mkdir(parents=True, exist_ok=True)
+          Path('research/harvest-afed58c5/run.json').write_text(json.dumps(receipt, indent=1) + '\n')
+          PY
+          find research/harvest-afed58c5 -type f -name '*.gz' -size +2M -delete
+          du -sh research/harvest-afed58c5 || true
+
+      - name: Commit only dated research evidence to the fixed session branch
+        if: always()
+        run: |
+          git config user.name "cs2-evidence-runner"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- research/harvest-afed58c5
+          if git diff --cached --quiet; then echo "No capture evidence to commit."; exit 0; fi
+          git commit -m "Retain official-source coverage harvest from run ${GITHUB_RUN_ID} [skip ci]"
+          git pull --rebase origin arena/afed58c5-maltaproj4
+          git push origin arena/afed58c5-maltaproj4
+
+      - name: Fail the capture if an essential source/build/audit gate failed
+        if: always()
+        env:
+          REFRESH_OUTCOME: ${{ steps.refresh.outcome }}
+          QUARANTINE_OUTCOME: ${{ steps.quarantine.outcome }}
+          AUDIT_OUTCOME: ${{ steps.audit.outcome }}
+          BUILD_OUTCOME: ${{ steps.build.outcome }}
+        run: |
+          python - <<'PY'
+          import os
+          essential = ('REFRESH_OUTCOME', 'QUARANTINE_OUTCOME', 'AUDIT_OUTCOME', 'BUILD_OUTCOME')
+          failed = {key: os.environ[key] for key in essential if os.environ[key] != 'success'}
+          if failed:
+              raise SystemExit('Essential capture gate(s) failed: ' + repr(failed))
+          print('Essential refresh, quarantine, independent audit and build gates passed.')
+          print('Fresh-unit and browser outcomes are diagnostics for final integration, not hidden or waived there.')
+          PY
+
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: coverage-harvest-afed58c5-${{ github.run_id }}
+          path: |
+            research/harvest-afed58c5
+            runtime/latest.json
+            public/build-info.json
+          retention-days: 14

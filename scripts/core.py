@@ -58,6 +58,31 @@ def fresh(timestamp, now):
         return False
 
 
+# Session 2b856884 (2026-10-24): one comparison for "does this pair name a side?".
+#
+# The exchange and book tiers already answer this question (session 6b8b4be0, on
+# main: a neutral line is kept in ``fixture['no_edge_lines']`` and the ladder
+# continues). The two originated model tiers -- ``scripts.vrs.apply`` and
+# ``scripts.vrs_mirror.apply`` -- did not: a valve file whose expected-win
+# curve lands exactly on 0.5000/0.5000 still published ``pick = None`` beside a
+# probability. That is the one shape the publisher cannot ship: 52 contracts
+# under tests/, audits/ and verification-*/ require a pick or a blank row, and
+# verification-767649ba rejects it in one line ("unpicked open row must remain
+# blank"). ``directional()`` is the single comparison both model tiers now use,
+# and it is deliberately identical in tolerance to the ``abs(p[0] - p[1]) <
+# .0001`` test the exchange and book tiers already apply.
+EVEN_TOLERANCE = 1e-4
+
+
+def directional(pair):
+    """Index of the larger probability, or ``None`` when the pair is exactly even."""
+    if len(pair) != 2:
+        raise ValueError('A directional pick needs exactly two probabilities')
+    if abs(pair[0] - pair[1]) < EVEN_TOLERANCE:
+        return None
+    return 0 if pair[0] > pair[1] else 1
+
+
 def devig(decimal):
     if len(decimal) != 2 or any(not math.isfinite(x) or x <= 1 for x in decimal):
         raise ValueError('Need two finite decimal odds greater than one')
