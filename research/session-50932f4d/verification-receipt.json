@@ -1,0 +1,90 @@
+{
+  "session": "50932f4d",
+  "recorded_at": "2026-10-24T16:35:21.578079+00:00",
+  "scope": "Independent retained-source replay and official Valve-document verification; not proof that a branch build is deployed or forecasts are calibrated for these fixtures.",
+  "capture": {
+    "run_url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40111409631",
+    "snapshot_url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/e42c1ecc59b3a5127c780d861f933ddbe14fb93e/research/harvest-2b856884/snapshot.json",
+    "sha256": "3f33d2b2f8ba8b636988cbebe9a995c659501029f0f07ff2e08a256f1ec3cadf",
+    "generated_at": "2026-10-24T16:28:44.690826Z",
+    "fixtures_observed_at": "2026-10-24T16:25:13.759973Z",
+    "coverage": "verified",
+    "inventory_counts": {
+      "api": 83,
+      "page": 83,
+      "lobby": 83,
+      "retained": 83
+    },
+    "open": 22,
+    "with_probability": 22,
+    "with_directional_pick": 21,
+    "methods": {
+      "exchange": 15,
+      "bookmaker_fallback": 3,
+      "model_vrs_mirror": 1,
+      "exchange_wide": 1,
+      "model_vrs": 2
+    },
+    "not_published_by_this_run": true
+  },
+  "official_documents": [
+    {
+      "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/model/glicko.js",
+      "retrieval": "GitHub contents API (raw response)",
+      "sha256": "516206722f8f75463a9b39f8bc7e911a22c15023f0b2bfce4dbc06c2cc85afbd",
+      "bytes": 4036
+    },
+    {
+      "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/model/fit.js",
+      "retrieval": "GitHub contents API (raw response)",
+      "sha256": "89a1fbd2396b69ea4463cf8c12034e9cd872733cef6ae774c9a215dfdde11dd0",
+      "bytes": 5744
+    },
+    {
+      "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/model/team.js",
+      "retrieval": "GitHub contents API (raw response)",
+      "sha256": "2bd63b09711c8f86f40002afdbc985dd4268a8cc5ee75098ac4963038ff39a01",
+      "bytes": 13058
+    },
+    {
+      "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/model/report.js",
+      "retrieval": "GitHub contents API (raw response)",
+      "sha256": "cdc7843f6bf423f5f983028cbf1218fc2e78b1e6f2f518a135c8e709d584ee18",
+      "bytes": 14210
+    },
+    {
+      "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/modelfit.png",
+      "retrieval": "GitHub contents API (raw response)",
+      "sha256": "c8fc0fd54d38b33b289844caa713d387b1289fba5604fe2d507c0b1ed11c09cf",
+      "bytes": 18741
+    },
+    {
+      "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+      "retrieval": "GitHub contents API (raw response)",
+      "sha256": "df96e7fc3cd91a2687ec08cac0128e50cc4e4e55346581679572e881d79ae61b",
+      "bytes": 77872
+    }
+  ],
+  "standings_bytes_equal_vendored_copy": true,
+  "official_calibration_chart": {
+    "printed_equation": "y = 0.7986x + 0.126",
+    "verification": "Chart visually read from the fetched official image, not inferred from the project constants.",
+    "project_adjustment": "The project uses the slope symmetrically about 0.5 (intercept 0.1007), NOT the chart intercept 0.126. This is a disclosed project model choice, not a quoted bookmaker line or an official Valve forecast."
+  },
+  "primary_operator_quote_confirmation_for_third_party_listings": null,
+  "checks": {
+    "baseline_unit_tests": 1501,
+    "baseline_unit_skips": 1,
+    "new_parser_regressions": 17,
+    "captured_c6_failures": 0,
+    "captured_source_audit_errors": 0,
+    "fresh_root_replay": {
+      "tests_run": 1494,
+      "failures": 42,
+      "errors": 3,
+      "skipped": 7,
+      "purpose": "Diagnose time-varying upstream tests without changing the published tree."
+    },
+    "local_fresh_mobile": "Passed existing browser_e3fe9518.cjs at four widths (snapshot clock, not live)."
+  }
+}

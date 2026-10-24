@@ -1,5 +1,89 @@
 [
  {
+  "id": "session-50932f4d-listing-event-binding",
+  "status": "Repaired — ambiguous listing evidence fails closed; live coverage impact unverified",
+  "finding": "Synthetic regressions showed that bookmaker-listing parsing could join a name to a different JSON object’s start, miss a valid later widget, or choose the first of conflicting labelled price pairs. The adapter now requires one explicit structured event and a unique label-bound pair across all widgets. Duplicate event declarations, conflicting prices, absent timezones, placeholders and invalid observation clocks cannot renew evidence. The 17 parser regressions are synthetic tests, not real bookmaker prices; no extra live coverage is attributed to this repair without a new source observation.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/5bc71947e7f4097023de36ab79f7e02beeecb7b9/scripts/books.py",
+    "label": "Project adapter: explicit event identity and unique two-sided reading"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/5bc71947e7f4097023de36ab79f7e02beeecb7b9/tests/test_session_50932f4d.py",
+    "label": "Synthetic ambiguity, source-clock and reobservation regressions"
+   }
+  ]
+ },
+ {
+  "id": "session-50932f4d-source-authority-and-calibration",
+  "status": "Needs review — model accuracy and direct bookmaker confirmation remain unverified",
+  "finding": "The independently replayed 16:36 UTC capture retains 83 fixtures and 22 open probability pairs. Its three BO3.gg book listings verify the listing observations, not a fresh Thunderpick operator tick; missing operator update times remain unverified. Valve’s official standings and formula documents were independently checked. The project’s p = 0.5 + 0.7986 × (E − 0.5) is an originated symmetric transformation (intercept 0.1007), not the chart’s literal fitted equation (intercept 0.126), a bookmaker quote or proof of predictive accuracy. Color–ex-Zero Tenacity’s retained market observation is 50/50; its separately labelled 68.8395% / 31.1605% model uses the official 1249 / 1066 points. Neither source is relabelled as agreement from the other. These are dated observations, not a claim that the quoted values are still current.",
+  "sources": [
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "label": "Official Valve standings: original model inputs"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/modelfit.png",
+    "label": "Official Valve chart: published fitted slope and intercept"
+   },
+   {
+    "url": "https://bo3.gg/matches/flyquest-vs-staqued-27-10-2026",
+    "label": "Third-party listing, not direct operator confirmation"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/5bc71947e7f4097023de36ab79f7e02beeecb7b9/research/session-50932f4d/REPORT.md",
+    "label": "Dated row-by-row and seven-fallback verification report"
+   }
+  ]
+ },
+ {
+  "id": "session-50932f4d-neutral-model-and-rotating-test-gates",
+  "status": "Repaired — equal evidence stays inspectable; no invented directional pick",
+  "finding": "Both model tiers could still stop research on equal points, leaving a numeric line with no directional pick and reproducing the publication-gate failure. They now retain the entire neutral model quote, original source clock and roster inputs as no-edge/rejected context, keep recommendation fields blank, and allow later independently sourced research to run. Missing identities and roster conflicts never manufacture neutral context. Two historical arithmetic/alias tests also preferred a live row whenever the old fixture ID was still listed; a valid price/tier change could therefore freeze publication again. Those two dated examples now always use their genuine retained capture; every current-row audit remains current. Seven new synthetic model/rotation regressions cover these failure modes. Scheduled refresh remains best-effort; a rebuild never renews source observation time.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/5bc71947e7f4097023de36ab79f7e02beeecb7b9/scripts/vrs.py",
+    "label": "Official-input model: preserve neutral context and continue research"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/5bc71947e7f4097023de36ab79f7e02beeecb7b9/scripts/vrs_mirror.py",
+    "label": "Dated-mirror model: distinct provenance and no arbitrary tie-break"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/5bc71947e7f4097023de36ab79f7e02beeecb7b9/tests/test_session_50932f4d.py",
+    "label": "Synthetic equal-model and changing-live-tier regression cases"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40097410704",
+    "label": "Official failed scheduled publication that motivated the durability review"
+   }
+  ]
+ },
+ {
+  "id": "session-50932f4d-corrected-capture-prose",
+  "status": "Needs review — sourced correction to mismatched dated prose; estimates unchanged",
+  "finding": "The 16:40:40 UTC capture and its independently reproduced calculations are authoritative for this dated review. Its 1082858 Ground Zero–Off Chops row is DFRAG Invitational 2026, spread 26 points and liquidity 6795.216. Its 1081156 Spirit Academy–LFO 10 row uses HLTV’s 24 October Valve-ranking view, points 1042/819 and standings 99/151. The fbea4413 review prose instead cites a 55-point spread and 22 October mirror values; those prose values are not confirmed by the snapshot they cite and must not be treated as current inputs. A correction was requested on PR #284. The date or cause of LFO 10’s absence from the monthly file is unverified; absence alone does not prove when the club joined the ranking. Actual probabilities remain unchanged and independently reproducible. These are captured-source facts, not new operator observations.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/3cc4363b5c3edc9cb9e83776d7d41b95509d04fa/data/latest.json",
+    "label": "Exact published capture containing the compared input fields"
+   },
+   {
+    "url": "https://polymarket.com/event/cs2-gz1-offcho-2026-10-25",
+    "label": "Official exchange fixture; captured spread is dated, not a current tick"
+   },
+   {
+    "url": "https://www.hltv.org/valve-ranking/teams/2026/october/24",
+    "label": "Actual specialist mirror date retained in the capture"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/pull/284#issuecomment-6387046793",
+    "label": "Correction request with exact independently checked fields"
+   }
+  ]
+ },
+ {
   "id": "identity-wbt",
   "status": "Needs review — fixture-parity verified",
   "finding": "Hotspawn lists WROTBERRY where current external schedules use WBT. This is now mapped for Elisa BreakOut Series #2 only, on fixture parity rather than a name guess: Hotspawn's WROTBERRY occupies the same group slot as HLTV's and Polymarket's WBT against the same opponents (EAC, ENCE, BOJONG) with matching UTC starts, and only one team can occupy that slot in a four-team group. WhiteBIT's white.market announcement launches WhiteBIT Team (WBT) with the Ukrainian core that third-party databases recorded under the WROTBERRY tag. No official statement was found that says 'WROTBERRY was renamed WBT', so the mapping stays visible here for manual review; odds are transferred only for a fixture whose opponent pair and UTC start match exactly.",
@@ -5441,6 +5525,63 @@
    {
     "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40097410704",
     "label": "The 13:16Z publish run that failed the staging gate"
+   }
+  ]
+ },
+ {
+  "id": "acd2a4a8-even-line-fallthrough-2026-10-24",
+  "status": "Policy change published 2026-10-24 (session acd2a4a8) — needs review",
+  "finding": "An exactly even (50/50) line at any tier — exchange, Pinnacle, researched book listing, or our VRS model/mirror — is no longer published as a pick-less probability. It is recorded on the row's attempts as rejected evidence and retained as neutral context (no_edge_lines), and the fallback ladder continues (HLTV, esportsbook lines, VRS model, HLTV research tiers), so the match can still receive a sourced pick instead of stranding the whole board (fixture 1079200, Color vs ex-Zero Tenacity, Polymarket market 6072812 at 0.5/0.5 with bid 0.49/ask 0.51 and no volume, blocked scheduled publish run 40097410704). Sessions ac5bcb06/2b856884 landed the same policy on main in parallel; this branch's harvest verified it end-to-end (20/20 picks on the 2026-10-24T17:00Z board). Limitation: a genuinely traded, liquid market that is truly even also falls through now; its 50/50 is retained in the rejected-quote/no-edge record but not displayed as a probability, and the pick (if any) comes from a lower tier and is labelled with that tier's method.",
+  "sources": [
+   {
+    "label": "Polymarket event: Color vs ex-Zero Tenacity (market 6072812)",
+    "url": "https://polymarket.com/event/cs2-color-zerote-2026-10-25"
+   },
+   {
+    "label": "Session acd2a4a8 harvest coverage summary",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/arena/acd2a4a8-maltaproj4/research/session-acd2a4a8/coverage-summary.txt"
+   }
+  ]
+ },
+ {
+  "id": "session-f2e04d1a-publisher-freeze-2026-10-24",
+  "status": "Fixed — publisher root-caused and unstuck",
+  "finding": "The live board published no picks for part of 24 October 2026 because the publisher, not the sources, was stopped. Pages is served from the legacy main:/ root, so only a committed root reaches visitors. Every 'Verify, refresh and publish CS2 Scout' run from 09:03Z failed at the step that stages that root (runs 40080448344, 40082763751, 40084520702, 40097410704). A diagnostic replay on a fresh 16:37Z snapshot (run 40112070271) isolated the exact gate: refresh, build, publish and validate all returned 0; only the unit suite returned 1. The cause was one row. Fixture 1079200 Color vs ex-Zero Tenacity took a tight, two-sided Polymarket mid of exactly 0.50/0.50, stored those probabilities with no pick, and every later tier is gated on 'probabilities is None', so nothing could rescue the pick. The board then carried a priced row with no directional pick, which the coverage contracts correctly reject, so each run refused to commit and the eight-hour evidence window closed with the page withholding every pick. Session ac5bcb06 fixed the source rule in scripts/core.py (a level price is retained as context and the ladder continues); this session adds a publication-side backstop so any recurrence withholds that one row instead of the whole board. Verified on the fresh 16:51Z snapshot: 22 open, 22 picks, 22 priced, 0 unresolved.",
+  "sources": [
+   {
+    "label": "Diagnostic replay, fresh snapshot (run 40112070271)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40112070271"
+   },
+   {
+    "label": "Scheduled run that failed at root staging (run 40097410704)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40097410704"
+   },
+   {
+    "label": "External market whose level mid produced the row (Polymarket)",
+    "url": "https://polymarket.com/event/cs2-color-zerote-2026-10-25"
+   },
+   {
+    "label": "Official fixture inventory (Hotspawn lobby)",
+    "url": "https://play.hotspawn.com/lobby"
+   }
+  ]
+ },
+ {
+  "id": "session-f2e04d1a-publish-backstop-2026-10-24",
+  "status": "Needs review — new publication guard",
+  "finding": "scripts/quarantine.py now withholds any single open row that publishes a priced probability pair without a directional pick, or an exactly even pair. The row is published as a visible blank with its limitation and the rest of the board publishes normally; before this, one such row made every scheduled run refuse to commit the root, which is how the 09:03Z-16:00Z freeze happened. The rule deliberately lives in the publication path and not in verification-c6/audit_snapshot.py, because that auditor also replays archived historical snapshots, which must stay auditable under the rules of their own date. A withheld row is never a pick: its probabilities, fair odds, pick and evidence are removed and kept under 'withheld' for manual review.",
+  "sources": [
+   {
+    "label": "scripts/quarantine.py: contract_violations",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/scripts/quarantine.py"
+   },
+   {
+    "label": "Coverage contract that defines a valid blank",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/scripts/coverage_contract.py"
+   },
+   {
+    "label": "Flagged for Review page",
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/review.html"
    }
   ]
  }

@@ -312,15 +312,11 @@ class VerifierConsultsTheSourcedAliasRegister(unittest.TestCase):
             'verify_0cc1138a', ROOT / 'research/session-0cc1138a/verify_0cc1138a.py')
         cls.V = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(cls.V)
-        # Session ac5bcb06: data/latest.json rotates every refresh and this
-        # fixture left the feed once it started, which turned every later
-        # publication red at the staged-root gate. The property under test is
-        # the evidence-bound alias on one row, so the row is read from the
-        # live board when still listed and otherwise from the retained
-        # 2026-10-24T08:06Z capture that first carried it.
-        cls.row = next((m for m in SNAPSHOT['matches'] if m['id'] == '1083121'), None) \
-            or next(m for m in json.loads((ROOT / 'research/harvest-ce45f672/snapshot.json').read_text())['matches']
-                    if m['id'] == '1083121')
+        # The evidence-bound alias mutation contract belongs to this archived
+        # observation, even while a changed tier/price for the same ID is still
+        # listed in the live feed. Current-board validation stays independent.
+        archive = json.loads((ROOT / 'research/harvest-ce45f672/snapshot.json').read_text())
+        cls.row = next(m for m in archive['matches'] if m['id'] == '1083121')
         cls.ev = (cls.row.get('evidence') or [{}])[0]
 
     def test_the_registry_entry_is_sourced_and_links_both_labels(self):

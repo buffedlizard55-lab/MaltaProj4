@@ -174,8 +174,10 @@ def apply(fixture, standings, meta, lineups=None):
         # instead of publishing a coin flip with no pick.
         fixture.setdefault('no_edge_lines', []).append(copy.deepcopy(quote))
         fixture['reason'] = 'Equal model estimate; no directional edge. Continue independent research.'
+        fixture.setdefault('flags', []).append(fixture['reason'])
         attempt.update(status='unresolved', reason='Exactly even model estimate (0.5000 / 0.5000); the '
-                       'neutral line is retained in no_edge_lines as context and the ladder continues.')
+                       'neutral line is retained in no_edge_lines as context and the ladder continues.',
+                       rejected_quote=copy.deepcopy(quote))
         fixture['attempts'].append(attempt)
         return
     fixture.update(probabilities=p, fair_odds=[1 / x for x in p], pick=fixture['teams'][index],
