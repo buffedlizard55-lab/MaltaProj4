@@ -33,21 +33,39 @@ jobs:
           cache: npm
       - run: pip install -r requirements.txt
       - run: npm ci --ignore-scripts
-      - name: Refresh, quarantine, build, validate (as pages.yml)
+      - name: Unit and independent failure-mode tests (as pages.yml, before refresh)
+        run: |
+          python -m unittest discover -s tests > /dev/null 2>&1 || echo "pre-refresh unit FAILED"
+          python -m unittest discover -s audits -p 'test_*.py' > /dev/null 2>&1 || echo "audits FAILED"
+          python verification-95b588c2/test_integrity.py > /dev/null 2>&1 || echo "95b FAILED"
+          python -m unittest discover -s verification-c6 -p 'test_*.py' > /dev/null 2>&1 || echo "c6 FAILED"
+          python -m scripts.validate --data data/latest.json --site . > /dev/null 2>&1 || echo "validate FAILED"
+      - uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: runtime/latest.json
+          key: cs2-snapshot-v2-diag-${{ github.run_id }}
+          restore-keys: cs2-snapshot-v2-
+      - name: Refresh, quarantine, audit, build, validate, browser (as pages.yml)
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: |
           mkdir -p runtime research/diag-ac5bcb06
-          cp data/latest.json runtime/latest.json
+          if ! test -s runtime/latest.json; then cp data/latest.json runtime/latest.json; fi
+          python -c "import json;print('baseline snapshot', json.load(open('runtime/latest.json'))['generated_at'])" | tee research/diag-ac5bcb06/baseline.log
           python -m scripts.refresh --output runtime/latest.json 2>&1 | tee research/diag-ac5bcb06/refresh.log
           python -m scripts.quarantine runtime/latest.json 2>&1 | tee research/diag-ac5bcb06/quarantine.log
           cp runtime/latest.json research/diag-ac5bcb06/snapshot.json
+          python verification-c6/audit_snapshot.py runtime/latest.json --output runtime/independent-row-audit.md
           python -m scripts.build --data runtime/latest.json
           python -m scripts.validate --data runtime/latest.json 2>&1 | tee research/diag-ac5bcb06/validate-public.log | tail -20
+          python verification-c6/audit_snapshot.py public/data/latest.json --output runtime/published-row-audit.md
+          npm run test:browser > research/diag-ac5bcb06/browser.log 2>&1 || echo "browser FAILED"
+          tail -5 research/diag-ac5bcb06/browser.log
+          git status --short | head -20 | tee research/diag-ac5bcb06/status-after-browser.log
       - name: Stage the root and run the exact gate that fails on main
         continue-on-error: true
         run: |
-          python -m scripts.publish_root_fallback --public public --root . --cooldown-hours 0 2>&1 | tee research/diag-ac5bcb06/stage.log
+          python -m scripts.publish_root_fallback --public public --root . --cooldown-hours 0.2 2>&1 | tee research/diag-ac5bcb06/stage.log
           git status --short | tee research/diag-ac5bcb06/stage-status.log | head -40
           set +e
           python -m scripts.validate --data data/latest.json --site . > research/diag-ac5bcb06/validate-root.log 2>&1; echo "validate rc=$?" | tee -a research/diag-ac5bcb06/validate-root.log

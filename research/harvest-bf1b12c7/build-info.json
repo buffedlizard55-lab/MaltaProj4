@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "revision": "03198f4c9e29d5a981e4a382e993e2a7299801b8",
+  "built_at": "2026-10-24T17:55:34.006258Z",
+  "snapshot_generated_at": "2026-10-24T17:55:33.590989Z",
+  "rows": 81,
+  "files": {
+    "404.html": "667ccf3c43df2020f7cbe9d2515ef2cb3bfee80d0b77215e7bdfa88d6936ef7c",
+    "analysis.html": "2e24caec3cfd9d7a83c7ae625d2a62afe424877a1c07e8c93516bccb86e38cbb",
+    "assets/app.js": "8991e02f04c20410a946d92e1429a56d945f10da28d6fed587c9a9cf40aa21f8",
+    "assets/favicon.svg": "5b0ba0da9b9bec504dc4695b59291abad789479745d4a18581fb78b0215738ba",
+    "assets/style.css": "e24600991ec4319cadd762211663d403da8ed7d56ce0264ca6015ddc1a1e366b",
+    "data/latest.json": "75c93f9ffb9898359d2e44622e397003719f73ab81e1a124a57590e8ecc65bdb",
+    "data/matches.csv": "5ff892ff08b2338fa7b1369341fdfefae58b4719eb6f4eff365022cb895803b9",
+    "evidence.html": "06ab1fb347f33ad779e101b2a309cd1df8dd6baa1f45d0f994d4256fa5517b64",
+    "index.html": "ce71785e5d058cb5bbdc3ebb27cdffee704f933a9c4e4080b748121271c8f182",
+    "matches.html": "5de4f34d26ad1092c3a23656fef47422099544f5e9b0deca2477385b90dffa06",
+    "methodology.html": "db6dd3e60721627f0629397fd4d76b07f3f9ea5ab15b72348f3bee3b35a094ae",
+    "picks.html": "bd0e9e176df443853106423e804ec913f8905af0f5e667618a5b7f84335e5c5f",
+    "review.html": "aa3ea7e8c8610765d50dce002f21abd4728f0edf2e55fc098fe73ce55cb30216",
+    "site/index.html": "7ad39335aef2960a4c7f3a8f9f2322d358e59fd45631acfa19f456575ec491db",
+    "site/methodology.html": "130024ea27020261e759b42920f78c42bebcbb44f226ef5216c8bbb1a2684b33",
+    "site/picks.html": "de8e71d8a3a1f7b287299108b460956d7c52391255b567fc71cc9974f8dcd76c",
+    "site/review.html": "91547a7e0d0e5b1e9bde9a89cad48c38173aefee74ea25afd75c17d9de3937cf",
+    "site/unresolved.html": "d8c18e13a798f6d0f0f3cf8ee21bb42ed941d6077c82c8031ae3476d6120bded",
+    "sources.html": "8fd6cfe51630886954204b24a7ccd6790e7eb14bf2bb1cb9246007f93de90d21",
+    "unresolved.html": "882248c1bc15a646f92ca091c069b3f6678fe2f8f836d7b24137bd846340b9f4"
+  }
+}

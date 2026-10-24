@@ -1,72 +1,26 @@
 {
- "snapshot_generated_at": "2026-10-24T16:28:44.690826Z",
- "fixtures_observed_at": "2026-10-24T16:25:13.759973Z",
+ "snapshot_generated_at": "2026-10-24T17:33:35.076563Z",
+ "fixtures_observed_at": "2026-10-24T17:30:02.571835Z",
  "coverage_counts": {
-  "api": 83,
-  "page": 83,
-  "lobby": 83,
-  "retained": 83
+  "api": 81,
+  "page": 81,
+  "lobby": 81,
+  "retained": 81
  },
- "total_rows": 83,
- "open_rows": 22,
- "open_with_pick": 21,
- "open_with_probability": 22,
- "open_without_pick": [
-  "1079200"
- ],
+ "total_rows": 81,
+ "open_rows": 20,
+ "open_with_pick": 20,
+ "open_with_probability": 20,
+ "open_without_pick": [],
  "open_without_probability": [],
  "methods": {
   "bookmaker_fallback": 3,
-  "exchange": 15,
+  "exchange": 12,
   "exchange_wide": 1,
-  "model_vrs": 2,
+  "model_vrs": 3,
   "model_vrs_mirror": 1
  },
  "rows": [
-  {
-   "id": "1079661",
-   "teams": [
-    "Nuclear TigeRES",
-    "ex-Zero Tenacity"
-   ],
-   "competition": "CCT Europe 2026 Series #11",
-   "start": "2026-10-24T17:00:00Z",
-   "pick": "Nuclear TigeRES",
-   "method": "exchange",
-   "probabilities": [
-    0.64,
-    0.36
-   ],
-   "reason": null,
-   "winner_share": 0.64,
-   "winner_share_pct": 64.0,
-   "expires_at": "2026-10-24T16:54:00Z",
-   "evidence_urls": [
-    "https://polymarket.com/event/cs2-ntr-zerote-2026-10-24"
-   ]
-  },
-  {
-   "id": "1081154",
-   "teams": [
-    "BakS",
-    "ILLYRIANS"
-   ],
-   "competition": "CCT Europe 2026 Series #12",
-   "start": "2026-10-24T17:00:00Z",
-   "pick": "BakS",
-   "method": "exchange",
-   "probabilities": [
-    0.695,
-    0.305
-   ],
-   "reason": null,
-   "winner_share": 0.695,
-   "winner_share_pct": 69.5,
-   "expires_at": "2026-10-24T16:54:00Z",
-   "evidence_urls": [
-    "https://polymarket.com/event/cs2-baks-ill4-2026-10-24"
-   ]
-  },
   {
    "id": "1082695",
    "teams": [
@@ -78,12 +32,12 @@
    "pick": "paiN",
    "method": "exchange",
    "probabilities": [
-    0.425,
-    0.575
+    0.435,
+    0.565
    ],
    "reason": null,
-   "winner_share": 0.575,
-   "winner_share_pct": 57.5,
+   "winner_share": 0.565,
+   "winner_share_pct": 56.5,
    "expires_at": "2026-10-24T17:54:00Z",
    "evidence_urls": [
     "https://polymarket.com/event/cs2-gls1-pain-2026-10-24"
@@ -100,12 +54,12 @@
    "pick": "BORRACHEIROS",
    "method": "exchange",
    "probabilities": [
-    0.29,
-    0.71
+    0.32,
+    0.68
    ],
    "reason": null,
-   "winner_share": 0.71,
-   "winner_share_pct": 71.0,
+   "winner_share": 0.68,
+   "winner_share_pct": 68.0,
    "expires_at": "2026-10-24T18:54:00Z",
    "evidence_urls": [
     "https://polymarket.com/event/cs2-ln-chama-2026-10-24"
@@ -166,13 +120,13 @@
    "pick": "UNiTY",
    "method": "exchange",
    "probabilities": [
-    0.345,
-    0.655
+    0.41,
+    0.59
    ],
    "reason": null,
-   "winner_share": 0.655,
-   "winner_share_pct": 65.5,
-   "expires_at": "2026-10-25T00:22:39.519419Z",
+   "winner_share": 0.59,
+   "winner_share_pct": 59.0,
+   "expires_at": "2026-10-25T01:24:38.605977Z",
    "evidence_urls": [
     "https://polymarket.com/event/cs2-ace1-unity-2026-10-25"
    ]
@@ -194,7 +148,7 @@
    "reason": null,
    "winner_share": 0.675,
    "winner_share_pct": 67.5,
-   "expires_at": "2026-10-25T00:24:39.312073Z",
+   "expires_at": "2026-10-25T01:24:38.605977Z",
    "evidence_urls": [
     "https://polymarket.com/event/cs2-mzp-baks-2026-10-25"
    ]
@@ -210,13 +164,13 @@
    "pick": "Spirit Academy",
    "method": "model_vrs_mirror",
    "probabilities": [
-    0.7212859641657305,
-    0.27871403583426946
+    0.7220594297703501,
+    0.2779405702296499
    ],
    "reason": null,
-   "winner_share": 0.7212859641657305,
-   "winner_share_pct": 72.1,
-   "expires_at": "2026-10-25T00:25:13.759973Z",
+   "winner_share": 0.7220594297703501,
+   "winner_share_pct": 72.2,
+   "expires_at": "2026-10-25T01:30:02.571835Z",
    "evidence_urls": [
     "https://www.hltv.org/valve-ranking/teams/2026/october/24"
    ]
@@ -238,7 +192,7 @@
    "reason": null,
    "winner_share": 0.54,
    "winner_share_pct": 54.0,
-   "expires_at": "2026-10-25T00:24:39.312073Z",
+   "expires_at": "2026-10-25T01:26:39.200627Z",
    "evidence_urls": [
     "https://polymarket.com/event/cs2-inf6-brute-2026-10-25"
    ]
@@ -251,18 +205,18 @@
    ],
    "competition": "NODWIN Clutch Series #13",
    "start": "2026-10-25T18:00:00Z",
-   "pick": null,
-   "method": "exchange",
+   "pick": "Color",
+   "method": "model_vrs",
    "probabilities": [
-    0.5,
-    0.5
+    0.6883951727580038,
+    0.31160482724199623
    ],
-   "reason": "Equal verified prices; no directional edge.",
-   "winner_share": 0.5,
-   "winner_share_pct": 50.0,
-   "expires_at": "2026-10-25T00:24:39.312073Z",
+   "reason": null,
+   "winner_share": 0.6883951727580038,
+   "winner_share_pct": 68.8,
+   "expires_at": "2026-10-25T01:30:02.571835Z",
    "evidence_urls": [
-    "https://polymarket.com/event/cs2-color-zerote-2026-10-25"
+    "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
    ]
   },
   {
@@ -276,13 +230,13 @@
    "pick": "FORZE Reload",
    "method": "exchange",
    "probabilities": [
-    0.52,
-    0.48
+    0.535,
+    0.465
    ],
    "reason": null,
-   "winner_share": 0.52,
-   "winner_share_pct": 52.0,
-   "expires_at": "2026-10-25T00:24:39.312073Z",
+   "winner_share": 0.535,
+   "winner_share_pct": 53.5,
+   "expires_at": "2026-10-25T01:24:38.605977Z",
    "evidence_urls": [
     "https://polymarket.com/event/cs2-forzer-rustec-2026-10-25"
    ]
@@ -304,7 +258,7 @@
    "reason": null,
    "winner_share": 0.675,
    "winner_share_pct": 67.5,
-   "expires_at": "2026-10-25T00:24:39.312073Z",
+   "expires_at": "2026-10-25T01:26:39.200627Z",
    "evidence_urls": [
     "https://polymarket.com/event/cs2-gz1-offcho-2026-10-25"
    ]
@@ -326,7 +280,7 @@
    "reason": null,
    "winner_share": 0.575197889182058,
    "winner_share_pct": 57.5,
-   "expires_at": "2026-10-25T00:25:13.759973Z",
+   "expires_at": "2026-10-25T01:30:02.571835Z",
    "evidence_urls": [
     "https://bo3.gg/matches/nexvoid-vs-alter-ego-26-10-2026"
    ]
@@ -348,7 +302,7 @@
    "reason": null,
    "winner_share": 0.9230059226213368,
    "winner_share_pct": 92.3,
-   "expires_at": "2026-10-25T00:25:13.759973Z",
+   "expires_at": "2026-10-25T01:30:02.571835Z",
    "evidence_urls": [
     "https://bo3.gg/matches/flyquest-vs-staqued-27-10-2026"
    ]
@@ -392,7 +346,7 @@
    "reason": null,
    "winner_share": 0.605,
    "winner_share_pct": 60.5,
-   "expires_at": "2026-10-25T00:18:40.154155Z",
+   "expires_at": "2026-10-25T01:22:38.942922Z",
    "evidence_urls": [
     "https://polymarket.com/event/cs2-b8-k271-2026-10-27"
    ]
@@ -414,7 +368,7 @@
    "reason": null,
    "winner_share": 0.65,
    "winner_share_pct": 65.0,
-   "expires_at": "2026-10-25T00:24:39.312073Z",
+   "expires_at": "2026-10-25T01:24:38.605977Z",
    "evidence_urls": [
     "https://polymarket.com/event/cs2-all-faze-2026-10-27"
    ]
@@ -436,7 +390,7 @@
    "reason": null,
    "winner_share": 0.525,
    "winner_share_pct": 52.5,
-   "expires_at": "2026-10-25T00:10:39.063854Z",
+   "expires_at": "2026-10-25T01:02:40.940357Z",
    "evidence_urls": [
     "https://polymarket.com/event/cs2-lg6-hotu-2026-10-27"
    ]
@@ -452,13 +406,13 @@
    "pick": "GamerLegion",
    "method": "exchange",
    "probabilities": [
-    0.46,
-    0.54
+    0.455,
+    0.545
    ],
    "reason": null,
-   "winner_share": 0.54,
-   "winner_share_pct": 54.0,
-   "expires_at": "2026-10-25T00:20:40.081906Z",
+   "winner_share": 0.545,
+   "winner_share_pct": 54.5,
+   "expires_at": "2026-10-25T01:20:39.383103Z",
    "evidence_urls": [
     "https://polymarket.com/event/cs2-envy-gl1-2026-10-27"
    ]
@@ -480,7 +434,7 @@
    "reason": null,
    "winner_share": 0.851799765370461,
    "winner_share_pct": 85.2,
-   "expires_at": "2026-10-25T00:25:13.759973Z",
+   "expires_at": "2026-10-25T01:30:02.571835Z",
    "evidence_urls": [
     "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
    ]
@@ -502,7 +456,7 @@
    "reason": null,
    "winner_share": 0.757014223069169,
    "winner_share_pct": 75.7,
-   "expires_at": "2026-10-25T00:25:13.759973Z",
+   "expires_at": "2026-10-25T01:30:02.571835Z",
    "evidence_urls": [
     "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
    ]

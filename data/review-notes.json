@@ -1,5 +1,89 @@
 [
  {
+  "id": "session-50932f4d-listing-event-binding",
+  "status": "Repaired — ambiguous listing evidence fails closed; live coverage impact unverified",
+  "finding": "Synthetic regressions showed that bookmaker-listing parsing could join a name to a different JSON object’s start, miss a valid later widget, or choose the first of conflicting labelled price pairs. The adapter now requires one explicit structured event and a unique label-bound pair across all widgets. Duplicate event declarations, conflicting prices, absent timezones, placeholders and invalid observation clocks cannot renew evidence. The 17 parser regressions are synthetic tests, not real bookmaker prices; no extra live coverage is attributed to this repair without a new source observation.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/5bc71947e7f4097023de36ab79f7e02beeecb7b9/scripts/books.py",
+    "label": "Project adapter: explicit event identity and unique two-sided reading"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/5bc71947e7f4097023de36ab79f7e02beeecb7b9/tests/test_session_50932f4d.py",
+    "label": "Synthetic ambiguity, source-clock and reobservation regressions"
+   }
+  ]
+ },
+ {
+  "id": "session-50932f4d-source-authority-and-calibration",
+  "status": "Needs review — model accuracy and direct bookmaker confirmation remain unverified",
+  "finding": "The independently replayed 16:36 UTC capture retains 83 fixtures and 22 open probability pairs. Its three BO3.gg book listings verify the listing observations, not a fresh Thunderpick operator tick; missing operator update times remain unverified. Valve’s official standings and formula documents were independently checked. The project’s p = 0.5 + 0.7986 × (E − 0.5) is an originated symmetric transformation (intercept 0.1007), not the chart’s literal fitted equation (intercept 0.126), a bookmaker quote or proof of predictive accuracy. Color–ex-Zero Tenacity’s retained market observation is 50/50; its separately labelled 68.8395% / 31.1605% model uses the official 1249 / 1066 points. Neither source is relabelled as agreement from the other. These are dated observations, not a claim that the quoted values are still current.",
+  "sources": [
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "label": "Official Valve standings: original model inputs"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/modelfit.png",
+    "label": "Official Valve chart: published fitted slope and intercept"
+   },
+   {
+    "url": "https://bo3.gg/matches/flyquest-vs-staqued-27-10-2026",
+    "label": "Third-party listing, not direct operator confirmation"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/5bc71947e7f4097023de36ab79f7e02beeecb7b9/research/session-50932f4d/REPORT.md",
+    "label": "Dated row-by-row and seven-fallback verification report"
+   }
+  ]
+ },
+ {
+  "id": "session-50932f4d-neutral-model-and-rotating-test-gates",
+  "status": "Repaired — equal evidence stays inspectable; no invented directional pick",
+  "finding": "Both model tiers could still stop research on equal points, leaving a numeric line with no directional pick and reproducing the publication-gate failure. They now retain the entire neutral model quote, original source clock and roster inputs as no-edge/rejected context, keep recommendation fields blank, and allow later independently sourced research to run. Missing identities and roster conflicts never manufacture neutral context. Two historical arithmetic/alias tests also preferred a live row whenever the old fixture ID was still listed; a valid price/tier change could therefore freeze publication again. Those two dated examples now always use their genuine retained capture; every current-row audit remains current. Seven new synthetic model/rotation regressions cover these failure modes. Scheduled refresh remains best-effort; a rebuild never renews source observation time.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/5bc71947e7f4097023de36ab79f7e02beeecb7b9/scripts/vrs.py",
+    "label": "Official-input model: preserve neutral context and continue research"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/5bc71947e7f4097023de36ab79f7e02beeecb7b9/scripts/vrs_mirror.py",
+    "label": "Dated-mirror model: distinct provenance and no arbitrary tie-break"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/5bc71947e7f4097023de36ab79f7e02beeecb7b9/tests/test_session_50932f4d.py",
+    "label": "Synthetic equal-model and changing-live-tier regression cases"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40097410704",
+    "label": "Official failed scheduled publication that motivated the durability review"
+   }
+  ]
+ },
+ {
+  "id": "session-50932f4d-corrected-capture-prose",
+  "status": "Needs review — sourced correction to mismatched dated prose; estimates unchanged",
+  "finding": "The 16:40:40 UTC capture and its independently reproduced calculations are authoritative for this dated review. Its 1082858 Ground Zero–Off Chops row is DFRAG Invitational 2026, spread 26 points and liquidity 6795.216. Its 1081156 Spirit Academy–LFO 10 row uses HLTV’s 24 October Valve-ranking view, points 1042/819 and standings 99/151. The fbea4413 review prose instead cites a 55-point spread and 22 October mirror values; those prose values are not confirmed by the snapshot they cite and must not be treated as current inputs. A correction was requested on PR #284. The date or cause of LFO 10’s absence from the monthly file is unverified; absence alone does not prove when the club joined the ranking. Actual probabilities remain unchanged and independently reproducible. These are captured-source facts, not new operator observations.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/3cc4363b5c3edc9cb9e83776d7d41b95509d04fa/data/latest.json",
+    "label": "Exact published capture containing the compared input fields"
+   },
+   {
+    "url": "https://polymarket.com/event/cs2-gz1-offcho-2026-10-25",
+    "label": "Official exchange fixture; captured spread is dated, not a current tick"
+   },
+   {
+    "url": "https://www.hltv.org/valve-ranking/teams/2026/october/24",
+    "label": "Actual specialist mirror date retained in the capture"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/pull/284#issuecomment-6387046793",
+    "label": "Correction request with exact independently checked fields"
+   }
+  ]
+ },
+ {
   "id": "identity-wbt",
   "status": "Needs review — fixture-parity verified",
   "finding": "Hotspawn lists WROTBERRY where current external schedules use WBT. This is now mapped for Elisa BreakOut Series #2 only, on fixture parity rather than a name guess: Hotspawn's WROTBERRY occupies the same group slot as HLTV's and Polymarket's WBT against the same opponents (EAC, ENCE, BOJONG) with matching UTC starts, and only one team can occupy that slot in a four-team group. WhiteBIT's white.market announcement launches WhiteBIT Team (WBT) with the Ukrainian core that third-party databases recorded under the WROTBERRY tag. No official statement was found that says 'WROTBERRY was renamed WBT', so the mapping stays visible here for manual review; odds are transferred only for a fixture whose opponent pair and UTC start match exactly.",
@@ -5498,6 +5582,37 @@
    {
     "label": "Flagged for Review page",
     "url": "https://buffedlizard55-lab.github.io/MaltaProj4/review.html"
+   }
+  ]
+ },
+ {
+  "id": "session-aeafcbe6-eight-hour-freeze-and-even-quote-policy-2026-10-24",
+  "status": "Diagnosed and verified end to end by this session; the policy itself was implemented upstream by sessions 6b8b4be0 / 2b856884 and adopted here rather than duplicated",
+  "finding": "Measured: pages.yml on main failed at the single step 'Keep the legacy main:/ root fallback on the verified build' on every push and schedule from 2026-10-24T08:12Z (runs 40077144677, 40080448344, 40082763751, 40084520702, 40097410704). Steps 8-14 all reported success, but upload-pages-artifact and the deploy job were skipped, so the public board stayed at the 2026-10-24T08:06:51Z snapshot until its own eight-hour window closed. This sandbox has no egress to Hotspawn, HLTV or Polymarket, so the failure was reproduced on GitHub's egress by a purpose-built non-publishing workflow (research/diagnose-aeafcbe6/): staged_unit_rc=1, everything else 0, and 42 failures in 11-staged-unit.log. The cause was data. Hotspawn fixture 1079200 (Color vs ex-Zero Tenacity) matched Polymarket market 6072812, whose outcomePrices were the untouched initialisation [\"0.5\",\"0.5\"] (bestBid 0.49 / bestAsk 0.51); the exchange tier published probabilities [0.5, 0.5] with pick null, and because every later tier begins with 'if probabilities is not None: return', that row could never be picked or priced by the book, VRS-model, HLTV-mirror or research ladder. A second, independent freeze cause appeared on the same capture: test_session_35c6e1e9 (fixture 1083121) and test_session_e9be3e6b (fixture 1081152) hard-indexed the live board by ids Hotspawn had already rotated out (StopIteration / KeyError). Both repairs for the even-quote rule were already on main when this session integrated (sessions 6b8b4be0 and 2b856884: scripts.core.directional() plus fixture['no_edge_lines']); they were adopted rather than layered over, and no competing edit was kept. What this session added and verified: the publisher now publishes the failing test names to the run summary and keeps the staged-root unit log as an artifact, so the next rejection is diagnosable from the run page instead of an unreadable job log; a guard fails any future test module that indexes the live board by a bare fixture id without a dated receipt or a rotation skip; and the phone board is measured on a fresh capture (tests/browser_aeafcbe6.cjs, registered in package.json). Verified on GitHub egress, run 40115350477 (receipt research/diagnose-aeafcbe6/): staged_unit_rc=0 with 1,498 tests OK, capture 2026-10-24T17:21:22Z, 81 feed rows, 20 open, 20 picks, 20 win probabilities, 0 unresolved. For review: (1) a genuinely even market is now retained as neutral context (no_edge_lines) rather than published as a 50/50 - a 0.5/0.5 quote is a real observation, and it is evidence, not a percentage; (2) the freeze was announced nowhere except the Actions log for 8.5 hours - the deploy job has since been made always() so a red later step cannot suppress an already-verified artifact, but the publisher still has no public 'source is failing' channel beyond the site's own expiry banner.",
+  "sources": [
+   {
+    "url": "https://gamma-api.polymarket.com/markets/6072812",
+    "label": "Market whose outcomePrices were the untouched 0.5/0.5 initialisation (fixture 1079200)"
+   },
+   {
+    "url": "https://polymarket.com/event/cs2-color-zerote-2026-10-25",
+    "label": "Polymarket event for Color vs ex-Zero Tenacity"
+   },
+   {
+    "url": "https://www.hotspawn.com/matches/color-vs-ex-zero-tenacity-nodwin-clutch-series-13-1079200",
+    "label": "Hotspawn fixture page for 1079200"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40097410704",
+    "label": "Scheduled publisher run that failed at the legacy-root step"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/tree/main/research/diagnose-aeafcbe6",
+    "label": "This session's non-publishing diagnosis: refresh, build, staged-root replay, return codes, unit log, coverage"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/tests/browser_aeafcbe6.cjs",
+    "label": "Phone measurement on a fresh capture (executive summary links, first pick, both win chances)"
    }
   ]
  }

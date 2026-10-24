@@ -188,6 +188,9 @@ class ApplyTests(unittest.TestCase):
         # for the exchange and book tiers (session 6b8b4be0) and is kept on the
         # row as context in ``no_edge_lines``.
         self.assertEqual(row['no_edge_lines'][-1]['probabilities'], [0.5, 0.5])
+        self.assertIsNone(row['fair_odds'])
+        self.assertEqual(META['observed_at'], row['no_edge_lines'][-1]['observed_at'])
+        self.assertEqual(row['no_edge_lines'][-1], row['attempts'][-1]['rejected_quote'])
 
 
 class ValidatorTests(unittest.TestCase):
