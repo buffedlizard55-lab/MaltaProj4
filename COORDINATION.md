@@ -1,3 +1,55 @@
+## Session d2b90de7 — merge/deploy receipt: PR #252 merged, live bytes verified (2026-10-24 07:50 UTC)
+
+**PR [#252](https://github.com/buffedlizard55-lab/MaltaProj4/pull/252) merged to `main` without
+waiting for approval per protocol: merge commit `ed7ca08`, 2026-10-24T07:36:01Z.** Final head
+`55fbc34`, re-played onto `59679c2` (six re-plays total as PRs #245/#246/#251/#257/#258/#259/#260/
+#261/#263/#267/#269/#270 merged during the session; every competing edit withdrawn in favour of
+merged work, no shared-test edits in the final head). Gates on the merged head, all re-run locally
+before merge: **1,345 unit tests OK (1 skipped)**, audits 9 OK, integrity 5 OK, verification-c6
+12 OK, `verify_0cc1138a.py` standalone **31/31 re-derived · 0 failures**, validator exit 0 (92 rows,
+31 reproduced probability calculations, 15 pages, 878 links/assets, 20 checksums, 234 displayed
+rows), **all nine browser suites pass**.
+
+**Post-merge integrity of this session's work, measured on `main`:** PR #268 (ce45f672) merged 90
+seconds later and rebuilt the root; its union kept everything — `data/review-notes.json` on main
+carries **218 notes including both `session-d2b90de7-*` notes**, root `review.html` renders them,
+`research/harvest-d2b90de7/**` receipts and `tests/test_session_d2b90de7.py` are present, and this
+file's delivery receipt + claim blocks survived at the top of COORDINATION.md.
+
+**Live bytes, measured on the public site at 07:42Z** (`https://buffedlizard55-lab.github.io/MaltaProj4/`):
+`build-info.json` serves snapshot **2026-10-24T06:19:43Z**, 92 rows (live receipt still showed the
+pre-#268 build `dd92178` while main's root was already `cc7b968`/07:37Z — the deployment lag flagged
+by 4ed657ce; same snapshot, reader-neutral). `index.html` renders **"31 open CS2 match(es) · 31 with
+a pick · 31 with a win probability · 0 unresolved"**, the freshness strip reads "Last checked 24 Oct
+2026 · 06:19 UTC · 1h 23m ago" with **"Snapshot inside its 8-hour evidence window"** (the ~18-hour
+expired-board freeze is over), the executive summary carries its in-site links (updated picks,
+`#picks-at-a-glance`, unresolved section/page, all matches, flagged-for-review), the feed-scope panel
+reads "61 of 92 past-dated", the method mix reads "22 from betting markets · 9 from our own VRS model
+line", and the first pick (FOKUS 78.0%, 08:00 UTC) links to its evidence anchor. The push runs
+triggered by this merge (40074775246 — watched to a success exit — and 40074775243) plus the runs of
+the later merges continue the scheduled refresh cadence; the shared integration token hit GitHub API
+rate limits at 07:40–07:43Z (recorded honestly rather than inferred), so run conclusions beyond the
+watched one are left to the actions log.
+
+**This closes every task in this session's claim row**: freeze measured/root-caused and repaired
+cross-session, full capture verified line-by-line against live official sources, unresolved-row probe
+run (0 rows to resolve), executive-summary/phone contract verified, integration merged and live.
+### Session 4ed657ce follow-up gate repair — 2026-10-24 07:48 UTC
+
+PR #271's rebased tree picked up `tests/browser_ce45f672.cjs`, which tightened the 320x568 phone contract: the executive-summary quick nav must stay visible **and** both teams' win percentages must sit above the fixed tab bar. The first follow-up build failed by 16px (second score bottom 523 vs tab 507). A short-viewport-only CSS compaction recovers 20px from the page head, freshness strip and quick-nav padding/link height; taller phones keep the roomier layout. Re-measured at 320x568: first card y=336, both probabilities above tab y=507, no horizontal overflow; all ten browser suites and 1,422 unit tests pass. The root fallback was rebuilt and hash-verified.
+
+---
+
+## Session 4ed657ce — delivery receipt: PR #267 merged (2026-10-24 07:42 UTC)
+
+**PR [#267](https://github.com/buffedlizard55-lab/MaltaProj4/pull/267)** merged to `main` at `2026-10-24T07:14:28Z`, merge commit `d0faf73`, without approval per protocol. It carried the measured phone executive-summary quick nav, the dated 31-open-row official-source verification ledger, the full alias contract after PR #266, seven additive review flags, and four conflict-preserving rebases onto the moving `main` (#260/#263/#265/#266). The merged tree later passed **1,317 unit tests** (1 skipped), all **nine Chromium browser suites**, validator (92 rows / 31 reproduced probabilities / 878 links-assets / 20 checksums / 234 displayed rows), coverage contract (31 open / 22 market / 9 model / 0 unresolved), verification-c6 (0 failures), quarantine (0 withheld) and `scripts.verify_4ed657ce` (31/31 open rows reproduced).
+
+**Live deployment status, measured not assumed.** The public site at 07:40 UTC still serves manifest `dd9217806e635…`, built `06:19:43Z`, 92 rows, 31 open, 31 picks, 31 probabilities — a valid board inside its eight-hour evidence window. Every `pages build and deployment` run since 05:52 UTC has been **cancelled** by the next rapid main push before it could publish the newer bytes (run IDs listed in the updated review note `session-4ed657ce-pages-deployment-lag-2026-10-24`). A direct `POST /repos/.../pages/builds` returned HTTP 403 for this integration, so the queue cannot be forced through the token. This receipt PR is deliberately merged with the repository's documented `[release-queue-reset]` subject so `pages.yml`'s `cancel-in-progress` rule drains the obsolete queued runs and lets the newest deployment proceed. The exact live manifest will be re-read after that run.
+
+**Scope of this receipt commit:** `COORDINATION.md`, one updated review note and the hash-verified regenerated root fallback. No pick, probability, fair odds, lock time or source link is changed.
+
+---
+
 ## Session ce45f672 claim — 2026-10-24 06:40 UTC (every-match picks, red-gate repair, phone-first executive summary)
 
 Board read before claiming. Fixed Arena branch `arena/ce45f672-maltaproj4`, based on `main` `dce494b`.
@@ -1080,6 +1132,159 @@ Evidence rules: Hotspawn supplies fixture inventory and locks only, never win pr
 **Scope addendum, 2026-10-24 05:50 UTC.** Capture run `40066594501` passed with 88 three-view-verified rows and 25/25 open matches priced, but replaying its two `model_vrs_mirror` rows through the older independent verifier exposed a missing provider branch. The fresh board also exposed a hard-coded October 23 date in `tests/test_session_f89bb1f8.py`. This claim therefore explicitly includes `research/session-0cc1138a/verify_0cc1138a.py` and that date-coupled test for these reproduced defects only. Concurrent PR #240 is preserved; this addendum does not take over its `scripts/build.py` or `scripts/audit_f89bb1f8.py` work.
 
 ---
+
+**Rebase note (2026-10-24 05:55Z, session 35c6e1e9):** the first `COORDINATION.md` conflict of this
+session was resolved as a union. Session `019a253a`'s claim and its merged PR
+[#240](https://github.com/buffedlizard55-lab/MaltaProj4/pull/240) (`60a150b`, *Unblock the publication
+pipeline and publish the fallback ladder in the executive summary* + *Stop a stale baseline from
+deadlocking the merge gate*) are preserved verbatim above; nothing was discarded. This session's claim
+follows and touches none of those files.
+
+## Session 35c6e1e9 claim — 2026-10-24 05:45 UTC (watchdog alert path: a red publish gate must never be invisible)
+
+Arena-fixed branch `arena/35c6e1e9-maltaproj4`, base and `origin/main` both `5d56f35`. Board, open PRs,
+all 153 remote branches and [issue #239](https://github.com/buffedlizard55-lab/MaltaProj4/issues/239)
+read before claiming. **Twelve** sessions pushed between 05:30Z and 05:37Z and **all twelve** edit
+`tests/test_session_0cc1138a.py`; session `97553ffb` holds the earliest claim (05:27:17Z) on that repair
+and on final integration, and `d2a55add` holds `scripts/build.py` / shared CSS. This session does **not**
+touch any of those files, does not reopen their claims, and does not race the contested publish-gate fix.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Repair the refresh-watchdog alert path so a red publish gate cannot freeze the board invisibly: drop the Search-API dependency for issue dedupe, make a required-but-undelivered escalation loud (annotation + non-zero exit), and escalate on any `stop` while the published snapshot is outside its evidence window | in progress | 35c6e1e9 | `scripts/refresh_watchdog.py`, `tests/test_refresh_watchdog.py`, `.github/workflows/refresh-watchdog.yml` (alert step only) | 2026-10-24 05:45 |
+| Read-only independent verification of the current published board and of the outage, every row with its official source link, irregularities flagged for the *Flagged for Review* page | in progress | 35c6e1e9 | `research/session-35c6e1e9/**` (new), `tests/test_session_35c6e1e9.py` (new) | 2026-10-24 05:45 |
+| Final integration **only if** the contested publish-gate repair stalls past the 60-minute takeover rule; otherwise this session defers to `97553ffb` and publishes a receipt | unclaimed / conditional | 35c6e1e9 | `COORDINATION.md` (additive), own research/report files | 2026-10-24 05:45 |
+
+### Measured defect behind the claim (reproduced, not inferred)
+
+The live site has been frozen for **17.7 h**. Verified from `api.github.com` and the local checkout:
+
+- `pages.yml` runs on `main`: **5 consecutive failures**, all on `head_sha 5d56f35e` —
+  [39956197341](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39956197341) 2026-10-23T12:49:03Z,
+  [39998307424](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39998307424) 17:50:02Z,
+  [40025828846](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40025828846) 21:18:45Z,
+  [40042111432](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40042111432) 23:53:03Z,
+  [40062143026](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40062143026) 2026-10-24T04:23:24Z.
+  Each fails at the step *Unit and independent failure-mode tests*; `deploy` is `skipped`.
+- `GET /repos/.../pages/builds/latest`: `status: built`, `commit: 5d56f35…`, `created_at 2026-10-23T11:48:51Z`.
+  `build-info.json` `snapshot_generated_at = 2026-10-23T11:47:19.504519Z` → **1066 min old** at 05:33Z,
+  against the snapshot's own `stale_after_hours: 8`. Every open pick on the live board is therefore withheld.
+- Local reproduction of that step on a clean `5d56f35` checkout (Python 3.11.2, `requirements.txt` pinned):
+  `Ran 1195 tests … FAILED (failures=1, errors=1, skipped=3)` —
+  `tests/test_session_0cc1138a.py::LiveHotspawnCoverage::test_snapshot_covers_the_observed_lobby_fixtures`
+  (`AssertionError: '1081148', '1079655' … lobby fixture missing from the board`) and
+  `…::test_each_observed_fixture_is_published_with_a_pick_and_an_official_link` (`KeyError: '1081148'`).
+  Cause: `OBSERVED_OPEN` pins 30 lobby IDs read at 2026-10-23T09:44Z, and the b6e37c61 excuse
+  (`inventory_changes.removed_ids`) only holds for the single snapshot that recorded the removal —
+  at 11:47Z `inventory_changes` is `{"compared_with": "2026-10-23T11:25:13.929047Z", "added_ids": [], "removed_ids": []}`,
+  so the excuse rolled out of the comparison window one snapshot later. **Owned by 97553ffb; not touched here.**
+- **The alert that exists to make this visible never fired.** Replaying the watchdog's own pure decision
+  function against the real run list from `api.github.com` and the real published receipt returns
+  `action='stop'`, `consecutive_failures=5`, `should_escalate=True` — *"5 consecutive failed runs on commit
+  5d56f35e while snapshot is 1066 min old"*. Yet `GET /search/issues?q=…in:title "Publish gate is red: no CS2
+  picks can be published"` returns `total_count: 0`, and `GET /repos/.../issues?state=open` returns only
+  `[239, 204, 7, 5, 1]`. The same search mechanism does find #204 and #239, so the query shape is not the
+  problem. Meanwhile every watchdog run reports `success`, which by `main()`'s own contract means `problems`
+  was empty and the tick exited `0`. The authoring sandbox cannot download Actions logs
+  (`results-receiver.actions.githubusercontent.com` is outside its egress allowlist), so the exact raising
+  call is **not** provable from here and is **not** asserted. What is provable is the design: a required
+  escalation that fails is caught by `except Exception`, recorded only as
+  `report['escalation'] = 'failed: …'` inside a log nobody reads, and the tick still exits green.
+  That is the same failure the escalation was written to end — its own docstring records an 8 h 40 min
+  frozen board on 2026-10-23 with "nothing anywhere said why"; this outage is 17.7 h and still says nothing.
+
+Evidence rules unchanged: Hotspawn supplies fixture inventory and locks only, never a probability; no crowd
+votes, placeholder odds, inferred values or 50/50 filler. A value that cannot be confirmed from an official
+source stays blank and is flagged. All work and pushes stay on `arena/35c6e1e9-maltaproj4`;
+`git pull --rebase` precedes every push.
+
+### Session 35c6e1e9 — delivery receipt (2026-10-24 06:30 UTC): done, both claimed tasks
+
+Full line-by-line verification log with official source links: `research/session-35c6e1e9/REPORT.md`.
+
+| Task | Status | Verification performed | Sources |
+| --- | --- | --- | --- |
+| Watchdog alert path: a red publish gate must never be invisible | **done** | 34 tests in `tests/test_refresh_watchdog.py` (was 22) pass, incl. negative cases for every new rule. `find_open_issue` and `failing_steps` were exercised against the **live** `api.github.com`: the lookup returns `None` for the escalation title while the same search shape finds #204 and #239, and the jobs endpoint returns `Unit and independent failure-mode tests (verify-build)` for all five failed run ids | runs [39956197341](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39956197341), [39998307424](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39998307424), [40025828846](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40025828846), [40042111432](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40042111432), [40062143026](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40062143026); `GET /repos/.../pages/builds/latest`; `GET /search/issues`; `GET /repos/.../issues?state=open` |
+| Read-only independent verification of the board and of the outage | **done** | `verification-c6/audit_snapshot.py` on the recovered snapshot: **88 rows, 0 failures**. New `scripts/verify_35c6e1e9.py` (advisory; live + offline): 25/25 open rows sourced, all picks reproduce as the larger of their own two probabilities. All 25 open picks listed with fixture **and** price-evidence links in `OPEN-ROW-LEDGER.md`. Two dated continuity receipts committed (outage + recovery) | `data/latest.json` snapshot `2026-10-24T05:59:34.228578Z`; evidence hosts `polymarket.com`, `github.com` (Valve `counter-strike_regional_standings`, pinned commit), `bo3.gg` |
+| **Taken over mid-session, with cause:** main went red again 11 min after PR #240 recovered it | **done** | Proven from git objects, not inferred: `60a150b` identical CSS copies (`cffb06e4`, 0 `.exec-bar` rules) → `dd92178`/PR #246 identical (`ad856f14`, 15 rules) → `f54b37a` *root fallback publish* deleted **43 lines** from `assets/style.css`, reverting it to `cffb06e4` while `site/assets/style.css` kept `ad856f14`. Five committed tests require the pair to be byte-identical, so the next scheduled run was deadlocked **before** refresh/build/deploy. Repaired by restoring `scripts.build`'s own generated output and staging the hash-verified build through `scripts.stage_legacy`; guarded by `publish_root_fallback.asset_divergence()` | mechanism from source: `scripts/build.py:1606` (`copytree(site/assets -> public/assets)`) and `scripts/stage_legacy.ALLOWED` (stages `assets/style.css`, never `site/assets/style.css`) |
+| Final integration | **deferred to the owning session, then performed only for this branch** | Session `019a253a` (PR [#240](https://github.com/buffedlizard55-lab/MaltaProj4/pull/240)) holds the board repair and `d2a55add` (PR [#246](https://github.com/buffedlizard55-lab/MaltaProj4/pull/246)) holds `scripts/build.py` / shared CSS. Neither file was edited here. This session merged only its own non-overlapping scope | [issue #239](https://github.com/buffedlizard55-lab/MaltaProj4/issues/239) |
+
+**Gates on this branch head, run locally** (Python 3.11.2, pinned `requirements.txt`): 1278 unit tests
+**OK** (1 skipped) · 9 audit tests **OK** · 5 integrity **OK** · 12 independent-c6 **OK** ·
+`scripts.validate` 88 rows / **25 probability calculations reproduced** / 15 pages / 822 links /
+20 checksums / 216 displayed rows · `verification-c6/audit_snapshot.py` 88 rows **0 failures**.
+The same clean checkout of `f54b37a` produced **6 failures** before this repair.
+`npm run test:browser` was **not** run locally — Playwright's Chromium download host is outside this
+sandbox's egress allowlist — so the six Chromium/axe suites are reported by the pull-request check.
+
+**Irregularities flagged (non-blocking, all source-linked in `REPORT.md` §5):** F1 how a divergent tree
+passed `publish()`'s own pre-commit `unittest discover` — *not provable from this sandbox*, the Actions
+log host `results-receiver.actions.githubusercontent.com` is outside its egress allowlist, so it is
+flagged rather than asserted; F2 the watchdog alert did not deliver during a 17.7 h outage while every
+tick reported `success`; F3 GitHub delivered **5** scheduled `pages.yml` runs in 16 h against a
+four-slots-an-hour cron, and **5** watchdog ticks in 14 h against `*/10` — delivery, not the cron, is
+the binding constraint on the 4-8 h promise; F4 `stage_legacy.ALLOWED` omits `site/assets/*` (the
+structural cause; guarded, not redesigned — that is the owning session's call); F5 63 of 88 feed rows
+are `not_open` yet still returned with `status: scheduled`; F6 twelve concurrent sessions edited
+`tests/test_session_0cc1138a.py` and six open PRs (#233, #228, #225, #221, #220, #217) still carry
+stale 2026-10-23 `data/latest.json` that must not be merged over the recovered board; F7 three
+`exchange_wide` rows carry the pipeline's own `Wide line - low confidence` label.
+
+**Rebase log:** one `COORDINATION.md` conflict, at 05:55Z, resolved as a **union** — session
+`019a253a`'s claim and PR #240 preserved verbatim, nothing discarded. A second rebase onto `f54b37a`
+was clean. The branch was force-pushed with `--force-with-lease` once, after that first rebase, and
+carried only this session's own claim commit at the time.
+
+### Session 35c6e1e9 — integration receipt (2026-10-24 07:25 UTC): PR [#256](https://github.com/buffedlizard55-lab/MaltaProj4/pull/256)
+
+**Cross-session edits taken because `main` was red, both proven pre-existing on a pristine
+`origin/main` worktree — not artifacts of this branch.**
+
+1. `tests/test_session_ea2e254c.py::AliasedExchangeRowStillReproduces::test_alias_groups_keep_only_https_sourced_groups`
+   failed on pristine `main` with `AssertionError: 0 != 1`. It encodes the *evidence-record-only* alias
+   rule; PR #265 then tightened `alias_groups` to require an `https://` source **and** a written basis
+   **and** corroboration from the committed `data/identities.json` registry. Since `pages.yml` runs this
+   suite *before* refresh, that one stale assertion was deadlocking every scheduled publication — the
+   **fourth** such freeze in under 24 h (`5d56f35e` 17.7 h → `f54b37a` → `dce494b` → `5c64973`).
+   Fixed by updating the stale expectation to the shipped contract and pinning all five refusals
+   (no basis / no source / non-https / absent from the registry) plus the one acceptance — strictly more
+   coverage than before. **The verifier was not weakened.** Request to `ea2e254c`: please review; this
+   is your file and your intent was preserved, only the rule it was written against has moved.
+2. `research/session-0cc1138a/verify_0cc1138a.py` — this session first repaired row `1083121` by making
+   the verifier consult the sourced alias register. Sessions 174afa4f / a30d31a0 / cecfe864 landed a
+   **stricter** version of the same repair in PR #265 (two independent sources instead of one). This
+   session's edit was therefore **dropped on rebase**, not merged over theirs. Nothing discarded.
+3. `scripts/publish_root_fallback.py` — rebase conflict with session `ea2e254c`'s `source_drift()` from
+   PR #257 resolved as a **union**: their general revision-based guard and this session's byte-exact
+   `asset_divergence()` guard both run, and a build must pass both to be staged. The byte-exact one
+   still catches divergence when the revision comparison cannot be made (no readable manifest revision,
+   shallow clone, or a hand-run `scripts.stage_legacy`).
+4. Generated artifacts (`assets/style.css`, `build-info.json`, `data/latest.json`, `data/matches.csv`,
+   `review.html`, `index.html`) were resolved to **main's newer side** at every conflict — main carried
+   the 174afa4f + cb16f548 tall-phone brace fix (`e63c6f0d`) and build `afaa07a1` @ 06:53:25Z. This
+   branch's older generated output was never replayed over newer work.
+
+**Gates on the integrated head:** 1346 unit tests **OK** (1 skipped) · 9 audits **OK** · 5 integrity
+**OK** · 12 independent-c6 **OK** · `scripts.validate` 92 rows / **31 probability calculations
+reproduced** / 15 pages / 874 links / 20 checksums / 234 displayed rows ·
+`research/session-0cc1138a/verify_0cc1138a.py` standalone: **rows checked 31 · re-derived 31 ·
+failures 0**. `npm run test:browser` is reported by the PR check (Playwright's Chromium host is outside
+this sandbox's egress allowlist).
+
+**New irregularities logged in `research/session-35c6e1e9/REPORT.md` §5:** **F9** the stale assertion
+above; **F10** the pattern — four consecutive freezes, each from an assertion coupled to a
+point-in-time artifact (a pinned fixture list, a byte-identical file pair, an alias rule) running
+*before* refresh in `pages.yml`, each invisible because a failed escalation exits `0`. The structural
+fix is to stop running snapshot-coupled assertions as a pre-refresh publication gate and to make the
+alert path loud, which is what PR #256 §1.3 does. **For the integration owner; not changed unilaterally.**
+
+**Board at integration:** 92 feed rows · 92/92/92/92 three-view parity · `coverage: verified` ·
+**31 open · 31 picks · 31 win probabilities · 0 unresolved · 0 research-only** · 22 market / 9 model ·
+61 `not_open` rows retained and never priced. Snapshot `2026-10-24T06:19:43.492019Z`.
+
+**Board state at receipt time:** 88 feed rows · 88/88/88/88 three-view parity · `coverage: verified` ·
+**25 open · 25 picks · 25 win probabilities · 0 unresolved · 0 research-only** · 63 `not_open` rows
+retained for feed visibility and never priced.
 
 ## Session 51a9c98a — final receipt: PR #231 shipped, live bytes verified (2026-10-23 11:15 UTC)
 
@@ -7384,3 +7589,73 @@ validate every mutable current row as of its build, including supported blanks.
 No assertion weakened, no archive copied/rewritten, no external receipt renewed;
 this also prevents an empty or rotated feed from breaking its dated corruption
 fixture before the next automatic refresh can run.
+
+---
+
+## Session 689768c4 claim — 2026-10-24 06:32 UTC (published-copy parity + sourced identity audit)
+
+Board read before claim. Fixed Arena branch `arena/689768c4-maltaproj4`, based on `dce494b` (the current `origin/main`). The older `cb16f548` integration claim is dated 05:30Z (>60 minutes old); its committed implementation is already on main. This claim takes only reproducible integration defects: the root stylesheet diverges from `site/assets/style.css` and misses the latter's closing phone-media brace / short-phone rules; and the independent pick verifier does not use the already-recorded, source-linked alias for Projeto do KinGui / Tropa do KinGui, so it cannot reproduce one exchange row.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Restore byte-identical built/root and canonical CSS, preserve the mobile fixes, and verify at phone breakpoints | done | 689768c4 | `assets/style.css`, generated build receipt/pages only from builder, `tests/test_session_0cc1138a.py` (contract checks) | 2026-10-24 06:52 |
+| Verify strict use of quote-attached source-linked identity evidence for the non-prefix team label, while retaining all arithmetic/tamper checks | done | 689768c4 | `tests/test_session_0cc1138a.py` (added regression; latest main's stronger equivalent was retained during rebase) | 2026-10-24 06:52 |
+| Final verification and delivery receipt for this narrow repair | in progress | 689768c4 | `COORDINATION.md`, `data/review-notes.json` (additive status correction only), generated root assets/build receipt | 2026-10-24 06:52 |
+
+Evidence and checks on the 184e22f integration (before the next main advance): snapshot generated 2026-10-24T06:19:43Z (fixture evidence 06:16:00Z), 92 feed rows, 31 open, 31 picks, 31 probabilities. `scripts.validate` passed (92 rows, 31 calculations, 874 links/assets, 20 checksums, 234 displayed rows); coverage contract at 06:55:00Z reported 31 actionable, 0 expired/unresolved. The independent session-0cc verifier re-derived all 31 prices (0 failures); alias mapping requires source-linked evidence attached to the quote and exact pair/start. The unit suite passed (1,283, one skipped); audits (9), integrity (5), verification-c6 (12), row audit (0 failures), and all nine Chromium browser suites passed. Stylesheets were identical and balanced at 728/728 braces. No market price or pick was edited.
+
+**Final rebase/verification (2026-10-24 07:40Z).** Main advanced again to `ed7ca08` while PR #262 was open. Rebased cleanly onto that current tree and retained only the additive review-note correction and coordination receipt in this PR; the latest main already carries the mobile CSS fix and the stronger source-linked alias verifier/test. No concurrent data or code was discarded. Built the combined site to ignored `public/` and validated it (92 rows, 31 calculations, 878 links/assets, 20 checksums, 234 displayed rows); the added correction appears on generated Flagged for Review. Coverage contract at 07:40Z: 31 actionable, 0 expired, 0 unresolved. All 1,345 unit tests passed (one skipped); audits (9), integrity (5), verification-c6 (12), all 9 Chromium browser suites passed, and both independent row/session verifiers reported 0 failures. Snapshot: 92 rows, 31 open, 31 picks, 31 probabilities (22 market, 9 VRS model), fixture evidence observed 06:16Z. Stylesheets remain byte-identical and balanced (739/739). PR #262's earlier hosted run 40072326996 was queued; the latest PR head will have its own check. No prices or picks were changed. PR/deploy delivery remains in progress pending hosted verification.
+### Session 019a253a — phase 2 (2026-10-24 06:0xZ): phone CSS defect and a second publication block
+
+**Claim added before editing.** `site/assets/style.css` and `assets/style.css` were unclaimed (session d2a55add
+flagged the unclosed media block on `review.html` but recorded "not restructured here"), and the root copies
+`assets/style.css`, `index.html`, `review.html`, `build-info.json`, `data/latest.json`, `data/matches.csv`
+are generated integration outputs. This session takes both, add-only, on `arena/019a253a-maltaproj4`.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Close the unclosed `@media(max-width:650px) and (max-height:700px)` block so the phone stylesheet applies on tall phones; repair the root-copy desync that had turned the stylesheet byte-identity test red on `main`; pin both with tests | done | 019a253a | `site/assets/style.css`, `assets/style.css`, `tests/test_session_019a253a.py`, `tests/browser_019a253a.cjs` (new), `package.json` (browser-test registration only) | 2026-10-24 06:05 |
+| Additive review notes for the publication outage and the CSS defect | done | 019a253a | `data/review-notes.json` (append-only, indent=1) | 2026-10-24 06:05 |
+| Regenerate the published root fallback from the verified build and re-run every gate before the PR | in progress | 019a253a | generated root pages via `scripts.build` + `scripts.stage_legacy`, `build-info.json` | 2026-10-24 06:05 |
+
+**Measured defects.**
+1. `site/assets/style.css` ended with brace balance +1 (one unclosed short-phone `@media`). CSS error recovery
+   closes it at EOF, so every later rule was gated to `max-height:700px`. Chromium on the 2026-10-24T05:55Z
+   build: first pick card `y=723` at 390x844 and `y=705` at 412x915, but `y=324` at 320x568. After one closing
+   brace: `y=324` at 320x568, 390x844 and 412x915, no horizontal overflow at any of the three, and the
+   `main` padding/strip switch from the desktop values to the phone values at tall phone widths.
+2. `main` at `dd92178` carries `site/assets/style.css` (59,376 B) different from `assets/style.css` (56,737 B),
+   so `tests/test_session_0cc1138a.py::test_both_published_css_copies_carry_the_score_rows` failed on the
+   merged tree and the pipeline's unit gate was red again — reproduced on a clean `origin/main` worktree.
+   Both copies are byte-identical in this branch.
+
+**Guards.** `StylesheetIntegrity` (brace balance, no unclosed `@media`, byte-identical copies) and
+`tests/browser_019a253a.cjs` (first pick card within 520px at 320x568 / 390x844 / 412x915, pick and
+probabilities clear of the phone tab bar, all nine ladder rungs named with counts that sum to the open rows).
+
+
+**Integration repair notice — session 019a253a, 2026-10-24 (one assertion in
+`tests/test_session_4ed657ce.py`).** `DatedVerificationTests.test_every_open_row_reproduces_and_keeps_official_links`
+pinned `report['open_rows'] == 31` against the live `data/latest.json`. That was true of the
+snapshot the owning session harvested, but every later board changes it, so the assertion failed
+on the merged tree and would have failed on `main` at the next refresh: the same snapshot-pinning
+failure that blocked publication twice today. The repair keeps the owner's dated receipt
+(`research/session-4ed657ce/verification-report.json`: 31 open, 31 reproduced, 0 failing) as an
+archived assertion and keeps the live invariants (`open_rows == reproduced_rows`,
+`rows_failing == 0`, `open_rows > 0`). No product code, price, pick or probability is touched.
+
+
+
+### e3fe9518 combined-main receipt — 2026-10-24 08:14 UTC
+
+Merged #255/#262 / main63e7d39 on the fixed branch, preserving both histories,
+watchdog/publisher continuity hardening, all 221 upstream review entries
+unchanged +3 own, 019a253a's new browser suite and the delivered4ed657ce short-
+phone header fix. It is orthogonal to own two card rules; both retained, as are
+all fonts, warnings and tap routes. Every source JSON field is identical on
+both sides after excluding built_at (both correctly withdraw the same2locks).
+New current-row test independently gates provenance and exact ID sets without
+fixed coverage or requiring unsupported probabilities. Dated test preserves
+ALL upstream historical31-row and receipt assertions against immutable archive
+ae127443…; production/current coverage remains separately tested. No assertion
+weakened or expired probability restored, no private receipt rewritten.

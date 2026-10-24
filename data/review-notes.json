@@ -4123,8 +4123,8 @@
  },
  {
   "id": "session-d2a55add-css-unclosed-media-2026-10-24",
-  "status": "Observed — one unclosed @media block in the shipped stylesheet gates later phone rules to short viewports; not restructured here",
-  "finding": "site/assets/style.css (and its byte-identical assets/style.css copy) has a brace balance of +1: the '@media(max-width:650px) and (max-height:700px)' block opened for the 9b97d585/f89bb1f8 phone work is never closed, so every rule appended after it — including the fresh-next strip rules, phone card typography and the short-phone index ordering — only applies at viewport heights of 700px or less, whatever its own media query says. Session d2a55add measured the effect at 390x844 (the executive-summary bar rendered in DOM order at y=538 and pushed the pick list to y=901) and placed its own block before that @media at brace depth 0 instead of closing the block: closing it would switch on dozens of other sessions' rules at tall phone heights with no gate measuring that layout. Needs an owner decision and a dedicated browser pass at 390x844 before any fix.",
+  "status": "Superseded by the 2026-10-24 06:32 UTC repair: site/assets/style.css was balanced; the stale root assets/style.css copy had the missing brace and phone rules. Both copies are now synced.",
+  "finding": "Historical correction: the prior checkout described site/assets/style.css (and its root copy) as unclosed. The 2026-10-24 06:32 UTC audit found site/assets/style.css balanced (728 opening/728 closing braces), while assets/style.css was shorter by 421 bytes, lacked the close for the max-width:360px block and lacked tested short-phone rules. The root fallback was synchronized from the canonical site asset. The added repair record documents the corrected location and the validator/browser verification. This earlier finding is retained for audit history, not presented as a current open defect.",
   "sources": [
    {
     "label": "Shipped stylesheet (brace balance +1; unclosed block at the 9b97d585 section)",
@@ -4522,8 +4522,8 @@
  },
  {
   "id": "session-4ed657ce-pages-deployment-lag-2026-10-24",
-  "status": "Observed — live Pages lagged the verified repository snapshot; confirm after merge",
-  "finding": "At 06:25 UTC the live GitHub Pages home page still advertised the 05:59 UTC snapshot (88 feed rows / 25 open picks) while the repository's verified snapshot was 06:19 UTC (92 rows / 31 open picks). A Pages deployment was queued. The hidden expiry fallback text also appears in text-only extractions even when JavaScript keeps it hidden; a real browser measurement confirmed it was not visible. This note will be updated with the final deployment receipt after the integration PR merges.",
+  "status": "Flagged for review — PR #267 merged and green; Pages deployment queue stuck in a cancel loop",
+  "finding": "PR #267 merged to main at 2026-10-24T07:14:28Z (commit d0faf73). All local and merged-tree gates pass: 1,317 unit tests, nine Chromium suites, validator, coverage contract, independent row audit and 31/31 dated source re-derivation. Because this repository's Pages source is legacy main:/, every merge queues a 'pages build and deployment' run. Between 05:52Z and 07:40Z every queued deployment (40067946765, 40068511869, 40068640205, 40069833889, 40069996301, 40071235253, 40071675577, 40071931371, 40072039651, 40072339424, 40072448075, 40072778665, 40073062798, 40073354156, 40073618384, 40074000515, 40074434472, 40074774780) was cancelled by the next rapid main push before it could run. A direct Pages build API request returned HTTP 403 for this integration, so the queue cannot be forced from the token. The live site nevertheless serves the earlier verified dd92178 build: 92 feed rows, 31 open, 31 picks, 31 probabilities, snapshot 06:19:43Z, inside its eight-hour evidence window. Session 4ed657ce is merging a tiny receipt PR with the documented [release-queue-reset] tag to drain obsolete queued runs; the exact merged bytes are confirmed after that run completes.",
   "sources": [
    {
     "label": "Live GitHub Pages home page",
@@ -4937,6 +4937,55 @@
    {
     "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/data/identities.json",
     "label": "Committed identity register record"
+   }
+  ]
+ },
+ {
+  "id": "session-689768c4-css-copy-parity-2026-10-24",
+  "status": "Resolved: root and canonical CSS match, all blocks are balanced, and validator plus all nine browser suites pass on 2026-10-24.",
+  "finding": "A checkout audit found assets/style.css was stale and differed from site/assets/style.css, missing phone styling. The published static build copies site/assets/style.css, while the legacy main:/ fallback serves assets/style.css. The root copy now matches the canonical site asset byte for byte. The standard page validator and all nine Chromium browser suites passed; phone checks at 320x568 and 390x844 verify pick/probability placement and accessibility. This corrects the earlier CSS note, which described the unclosed block at the wrong path.",
+  "sources": [
+   {
+    "label": "Canonical site stylesheet in the repository",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/site/assets/style.css"
+   },
+   {
+    "label": "Root stylesheet used by the legacy Pages fallback",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/assets/style.css"
+   }
+  ]
+ },
+ {
+  "id": "session-019a253a-publication-outage-2026-10-24",
+  "status": "Fixed and verified end to end — the publisher had stopped running, and the pages did not say so",
+  "finding": "Every scheduled run of the publication workflow failed from 2026-10-23T12:49Z to 2026-10-24T04:23Z at the step \"Unit and independent failure-mode tests\", which runs before the source refresh, the build and the deploy. Because that gate never passed, no refresh ever ran: the committed snapshot froze and the public board withheld every pick once its eight-hour evidence window closed, which is the reported \"we have no picks\". The failing assertion was tests/test_session_0cc1138a.py::LiveHotspawnCoverage, which pinned the 30 fixtures the lobby showed at 09:44Z and indexed the rotating data/latest.json by them; two of those fixtures started at 11:00Z, so Hotspawn's status=scheduled feed correctly stopped returning them and the assertion raised KeyError: '1079655'. The historical parity contract is now pinned to the retained archive with each fixture's archived start, so a fixture may leave the feed only once its own start has passed, and a still-future fixture that vanishes still fails. Two further deadlocks were removed in the same pass: three Chromium suites required the committed baseline to be inside its eight-hour window, and the published assets/style.css copy had drifted from site/assets/style.css, which turns the byte-identity test red. PR #240 merged as 60a150b and its push run 40067946986 is green end-to-end including \"Verify live Pages bytes match this exact build\". The remaining irregularity is GitHub's scheduled-delivery record: no new schedule event was delivered for the 06:04 and 06:19Z slots, so refreshes still ride on pushes and on the watchdog.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40067946986",
+    "label": "Successful publication run: refresh, build, browser suites, deploy and live-byte verification"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40062143026",
+    "label": "The last failing scheduled run before the fix (fails at the unit gate)"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/pull/240",
+    "label": "PR #240 — pipeline unblock and fallback ladder"
+   }
+  ]
+ },
+ {
+  "id": "session-019a253a-stylesheet-unclosed-media-2026-10-24",
+  "status": "Fixed and measured — the phone layout now applies on tall phones",
+  "finding": "site/assets/style.css ended inside an open @media(max-width:650px) and (max-height:700px) block: one missing closing brace, so CSS error recovery put every later rule inside it and the phone stylesheet only applied on viewports 700px tall or less. Measured on the 2026-10-24T05:55Z build with this repository's Chromium: the first pick card on the executive summary was at y=723 on a 390x844 phone and y=705 at 412x915, while a 320x568 phone already had it at y=324. The block is closed now (brace balance 0, never negative) and the measurement reads y=320-324 at 320x568, 390x844 and 412x915 with no horizontal overflow. The published assets/style.css copy had also drifted from the source file, which fails the byte-identity test that runs in the unit gate before every refresh; both copies are identical again. tests/test_session_019a253a.py::StylesheetIntegrity and tests/browser_019a253a.cjs fail if either condition returns.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/site/assets/style.css",
+    "label": "The stylesheet (brace balanced)"
+   },
+   {
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/index.html",
+    "label": "The published executive summary this measurement was taken on"
    }
   ]
  },
