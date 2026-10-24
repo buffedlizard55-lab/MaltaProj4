@@ -4177,5 +4177,93 @@
     "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-cb16f548/phone-final.json"
    }
   ]
+ },
+ {
+  "id": "session-ea2e254c-tall-phone-css-trap-2026-10-24",
+  "status": "Repaired upstream and now pinned semantically — balanced braces alone did not catch it",
+  "finding": "At this session's base (dce494b) the served root stylesheet assets/style.css had drifted from site/assets/style.css and was missing one closing brace, so the '@media(max-width:650px) and (max-height:700px)' block swallowed the remaining ~9 KB, including the home-page phone ordering that puts the pick board first and the executive summary directly after it. At 390x844 (taller than 700px) none of those rules applied, which is the reported 'confusing on my phone'. Main now ships both copies balanced and byte-identical (6 lines added to the canonical file by PR #251) and tests/test_session_174afa4f.py pins brace balance. This session adds the part balance cannot catch: a rule can sit, perfectly balanced, inside a max-height query and tall phones still lose it. tests/test_session_ea2e254c.py walks brace depth and asserts the enclosing at-rule for the specific phone-ordering selectors, and that the served copy equals the canonical copy byte for byte. Verified on the merged tree: both files identical, brace depth ends at 0, and the Chromium suite passes the phone-first checks at 320x568 AND 390x844.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/assets/style.css",
+    "label": "Served root stylesheet"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/site/assets/style.css",
+    "label": "Canonical stylesheet copied into the published artifact"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/.github/workflows/pages.yml",
+    "label": "Workflow: the unit suite runs before refresh"
+   }
+  ]
+ },
+ {
+  "id": "session-ea2e254c-alias-verify-2026-10-24",
+  "status": "Verified by fixture parity — the rename statement itself still needs a human read",
+  "finding": "Fixture 1083121 is CCT South America 2026 Series 7, 24 Oct 16:00Z, MEIA NOITE vs 'Projeto do KinGui' on Hotspawn, and Polymarket market 6081997 prices 'Tropa do KinGui' vs MEIA NOITE at the identical 16:00Z start. The reviewed alias register (data/identities.json, copied onto the row as identity_sources) lists both names with an HLTV match as its source. Read live this session: HLTV fields a Brazilian club called Tropa do KinGui (team/13151) in that same CCT 2026 South America Series 7 on 22 Oct, and the Polymarket question, opponent and UTC start match the Hotspawn fixture exactly. NOT independently re-confirmed: no HLTV page read this session states that 'Projeto do KinGui' is the former or current name of Tropa do KinGui, so the mapping rests on the reviewed register plus fixture parity. The published 61.5% is unchanged and re-derives exactly from the exchange prices; the verifier accepts a source label only through an https-sourced register group naming BOTH labels, and a tampered price on this row is still rejected (locked by tests/test_session_ea2e254c.py).",
+  "sources": [
+   {
+    "url": "https://gamma-api.polymarket.com/markets/6081997",
+    "label": "Polymarket market: Tropa do KinGui vs MEIA NOITE, 16:00Z"
+   },
+   {
+    "url": "https://www.hotspawn.com/matches/meia-noite-vs-projeto-do-kingui-cct-south-america-2026-series-7-1083121",
+    "label": "Hotspawn fixture 1083121 (Projeto do KinGui)"
+   },
+   {
+    "url": "https://www.hltv.org/team/13151/tropa-do-kingui",
+    "label": "HLTV team page: Tropa do KinGui"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7",
+    "label": "HLTV fixture dated 22 Oct 2026 in the same event"
+   }
+  ]
+ },
+ {
+  "id": "session-ea2e254c-pickem-lobby-render-2026-10-24",
+  "status": "Flagged — source-side count/render discrepancy; the board follows the fixture API and each match page",
+  "finding": "Read at ~06:32Z on 24 Oct 2026, the CS2 pick'em page's own filter said 'All tournaments (88)' while the fixtures API returned 92 CS2 rows and the build recorded coverage api/page/lobby/retained = 92/92/92/92 at 06:16Z. The rendered lobby view showed 25 pickable cards and did not show six fixtures the board carries (1082695, 1083120, 1083121, 1083122, 1083123, 1083140), even though each has its own www.hotspawn.com match page. This note exists so a reviewer sees the discrepancy rather than assuming the board invented rows: 1082695 (Galorys vs paiN, Circuit X Curitiba #4, 24 Oct 18:00) was opened directly and its page carries a 'Pick'Ems - Predict the winner of this match' prompt, both lineups and the same 18:00 slot, so the fixture is real and pick'em-eligible. The board is a superset of the rendered lobby view, never a substitute for it; every extra row still names its own Hotspawn fixture URL.",
+  "sources": [
+   {
+    "url": "https://play.hotspawn.com/cs2-pickems",
+    "label": "Hotspawn CS2 pick'em lobby (filter count 88, 25 cards rendered)"
+   },
+   {
+    "url": "https://www.hotspawn.com/matches/galorys-vs-pain-circuit-x-curitiba-4-1082695",
+    "label": "Hotspawn match page with a pick'em prompt (board row, absent from the rendered lobby view)"
+   },
+   {
+    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+    "label": "Official fixtures API used for the board's inventory"
+   }
+  ]
+ },
+ {
+  "id": "session-ea2e254c-live-line-spotchecks-2026-10-24",
+  "status": "Verified live — 3 of 5 pricing methods re-read exactly; 1 of 2 mirror points re-read",
+  "finding": "Independent of the pipeline, this session re-read the external sources behind one row of each pricing method on 24 Oct 2026 between 06:30Z and 07:00Z. Polymarket market 6065787 returned outcomePrices ['0.78','0.22'] with bestBid 0.77 / bestAsk 0.79 and gameStartTime 2026-10-24 08:00:00+00, exactly the published row 1079193. Polymarket 6098193 returned ['0.585','0.415'] for BakS eSports vs ILLYRIANS with bid 0.37 / ask 0.80, exactly row 1081154 (labelled wide/low precision for that spread). bo3.gg's Grêmio vs Yawara page carried Thunderpick odds 2.97 / 1.32, which de-vig to 0.30769/0.69231 - exactly row 1083123. Valve's official standings file at commit eec4853 lists HAVU 937 (#124) and Azuolas 863 (#140), exactly row 1081152's stored points, and Valve's published Glicko expectation plus the 0.7986 calibration reproduces the published 58.157% by hand. For the HLTV-mirror tier, HLTV's Valve regional ranking dated 24 Oct 2026 lists BORRACHEIROS at 744 points (#34), matching row 1083122's stored pair; LOS NINOS (573) was not located in the sampled chunks of that 24-chunk page, so that one value is verified only arithmetically by both independent auditors.",
+  "sources": [
+   {
+    "url": "https://gamma-api.polymarket.com/markets/6065787",
+    "label": "Polymarket 6065787 (FOKUS vs ex-6666)"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/markets/6098193",
+    "label": "Polymarket 6098193 (BakS eSports vs ILLYRIANS)"
+   },
+   {
+    "url": "https://bo3.gg/matches/gremio-vs-yawara-esports-24-10-2026",
+    "label": "Thunderpick odds via bo3.gg (2.97 / 1.32)"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "label": "Valve official standings (HAVU 937, Azuolas 863)"
+   },
+   {
+    "url": "https://www.hltv.org/valve-ranking/teams/2026/october/24/region/Americas",
+    "label": "HLTV Valve regional ranking 24 Oct 2026 (BORRACHEIROS 744, #34)"
+   }
+  ]
  }
 ]
