@@ -154,6 +154,16 @@ discarded; conflicts resolved as unions. `git pull --rebase` precedes the final 
 
 ---
 
+---
+
+## Session 174afa4f — PR #251 merged, live bytes verified (2026-10-24 06:42 UTC)
+
+[PR #251](https://github.com/buffedlizard55-lab/MaltaProj4/pull/251) merged to `main` at `2026-10-24T06:42:01Z`, merge commit `5ddf0f2`, without approval per protocol (flagged items non-blocking). It carried: the second deadlock proof (`scripts/audit_174afa4f.py` + tests), the fail-closed HLTV team-page rank tier (`scripts/core.py`/`validate.py`/verification-c6 replays), the CSS brace repair (convergent with cb16f548), the fallback-source probe + dated limitations, the harvest `| tee` pipefail fix, and the reviewed-alias replay in `research/session-0cc1138a/verify_0cc1138a.py` (Projeto/Tropa do KinGui). Duplicate executive-summary bars were reconciled to d2a55add's; two `origin/main` merges (#240/#246, then #245) were resolved without discarding either side.
+
+**Live verification (2026-10-24T06:51Z read of the public site):** `build-info.json` serves the 06:19:43Z build, 92 rows; the landing page states "31 open CS2 match(es) · 31 with a pick · 31 with a win probability · 0 unresolved", next pick FOKUS 78.0% (08:00 UTC), visible executive summary with in-site taps to Updated picks / picks on this page / Unresolved & limitations, and the Picks-at-a-glance list. Final gates on the merged tree before merge: unit 1254 OK, audits 9 OK, verification-95b588c2 5 OK, verification-c6 12 OK + snapshot audit 0 failures, validate clean (234 rows), all 9 browser suites pass; phone first pick card at 324px on 320x568 and 390x844.
+
+**Still flagged for review (non-blocking):** earlier harvest workflows keep the `| tee` masking pattern; HLTV ranking/EGW listing 403 limitations dated 2026-10-24; `1082860` stored `1.001/12.0` line; PR #233 untouched. Session tasks: **done**.
+
 ## Session 174afa4f — merge of PR #251 with PRs #240/#246 + final receipt (2026-10-24)
 
 **Parallel-work merge, resolved without discarding either side.** While this session ran, `019a253a` (PR #240) and `d2a55add` (PR #246) merged their own deadlock repair, visible executive-summary bar and fresh board. This branch merged `origin/main` (`f54b37a`) and resolved as follows, file by file:
