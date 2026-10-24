@@ -1,3 +1,87 @@
+## Session ec033870 receipt — every past feed row now carries a sourced value (2026-10-24 17:45 UTC)
+
+**Owner:** session `ec033870` · branch `arena/ec033870-maltaproj4` · status: **complete, `origin/main` merged in**
+Full write-up, per-source links and verification receipts:
+[`research/session-ec033870/REPORT.md`](research/session-ec033870/REPORT.md).
+
+### Delivered
+
+The brief asks for a pick for **every** match on the board. The integrated baseline
+(`2026-10-24T16:50:01Z`, fixture evidence `16:46:26Z`) carries 83 rows: 20 open, all
+priced, and 63 not open — **61 of which are past fixtures that published nothing**. All 61
+now carry a sourced value in a separate, explicitly labelled `historical` block:
+
+| Tier | Rows | Published |
+| --- | --- | --- |
+| `model_vrs` | 24 | pick **and** both win probabilities (Valve points → Valve's own formula) |
+| `research_vrs_single` | 21 | pick only — exactly one team is in the standings |
+| `research_vrs_invariant` | 7 | pick only — repeated label, but every candidate roster agrees on the favourite |
+| `unresolved` | 9 | blank + flagged, never 50/50 |
+| **resolved** | **52 / 61 = 85.2 %** | |
+
+New `scripts/vrs_history.py` vendors all ten of Valve's official monthly global standings at
+pinned commits and hash-checks them on load (`load()` raises on any SHA-256 mismatch); each
+row is priced from the file that was current for **its own** sourced start, not from the
+current file. New `scripts/historical.py` writes the blocks; `scripts/build.py` renders a
+`Past fixtures` section anchored `#past-picks` plus a separate `#past-unresolved` section,
+both linked from the executive summary; `scripts/validate.py` re-derives all 61 blocks from
+the vendored bytes. `data/matches.csv` gains `past_fixture_*` columns. No `not_open` row was
+given a live `pick`/`probabilities`/`fair_odds`/`method`, so `audits/audit_9b97d585.py` and
+`audits/audit_cecfe864.py` stay satisfied.
+
+### A defect in my own work, found at integration and fixed
+
+Keying the tier on `state != 'open'` was wrong. A row goes `not_open` when its **pick lock**
+passes at the *build* clock, which can be well after the snapshot's own
+`fixtures_observed_at`; on the 16:50:01Z baseline that meant rows `1079661` (Nuclear TigeRES
+vs ex-Zero Tenacity) and `1081154` (BakS vs ILLYRIANS) got a `historical` block and were
+rendered as "Past fixture" even though both start at 17:00Z, **after** the 16:46:26Z
+observation — a Valve-standings reconstruction of two matches nobody had played yet. It also
+broke `tests/test_session_51a9c98a.py`, the publisher's own past-row contract. The tier now
+covers exactly `scripts.build.past_dated_rows` (start before `fixtures_observed_at`), via
+`scripts/historical.past_rows`, and `validate_historical` asserts that no row outside that
+cut carries a block. Regression added:
+`test_a_locked_row_that_has_not_started_is_never_called_a_past_fixture`.
+
+### Scope deviations, logged per protocol
+
+1. **`data/review-notes.json` was appended to** (union with `main`: 244 notes, ids unique,
+   `indent=1` preserved) although the claim said "not touched". Three findings had nowhere
+   else to live: the dated-standings ladder, the current-roster-anchor counter-example, and
+   the nine unresolvable rows. Nothing existing was edited.
+2. **No cross-scope test edits shipped.** I had patched `tests/browser_9b97d585.cjs` and
+   `tests/browser_ce45f672.cjs` for two stale-baseline failures I could prove were
+   pre-existing (they reproduce byte-identically on the unmodified branch point, verified by
+   building `45fc6ba` in a separate worktree). At integration `origin/main` had advanced 71
+   commits and its owners had independently repaired both suites against the newer `app.js`,
+   more completely than mine. I discarded my versions and kept theirs:
+   `git diff --stat origin/main -- tests/browser_9b97d585.cjs tests/browser_ce45f672.cjs` is
+   **empty**. The diagnosis is in the report for whoever owns those files.
+
+### Integration decisions
+
+`origin/main` moved 71 commits while this branch was open, so it was merged in rather than
+rebased, and every conflict resolved toward the newer evidence: `main`'s `data/latest.json`
+(the 16:50:01Z capture) kept, historical tier re-derived on top; `data/review-notes.json`
+the union of both sides; both `style.css` copies the union of both sides' appended rules and
+byte-identical (68 768 bytes, 41 matched braces); the browser suites `main`'s. `built_at`
+was left at the value the pipeline derives — overwriting it with `generated_at` had silently
+turned two locked-but-unstarted rows into "future" rows for three of `main`'s coverage
+tests, which is how the defect above surfaced.
+
+### Verification (all executed on the integrated tree, no exceptions)
+
+`unittest discover -s tests` **Ran 1548 tests, OK (skipped=7)** · `-s audits` **9 OK** ·
+`verification-95b588c2/test_integrity.py` **5 OK** · `unittest discover -s verification-c6`
+**12 OK** · `scripts.coverage_contract --snapshot data/latest.json` **problems: []**,
+`inventory_fresh: true` · `scripts.build` **83 sourced rows, 20 with percentages, 0
+unresolved** + `scripts.stage_legacy` **22 files** · `scripts.validate --site .` **PASS**
+(`rows 83, probabilities 20, pages 15, links 801, checksums 20, displayed rows 191,
+historical_rows_present 61, historical_rows_reproduced 61,
+historical_probabilities_reproduced 24, historical_unresolved 9, coverage_pct 85.2`) ·
+`npm run test:browser` **exit 0, 11/11 suites**, on the fresh path.
+New regressions: `tests/test_session_ec033870.py`, 20 tests.
+
 ## Session 2b856884 — final receipt: PR #285 merged, pipeline verified end to end (2026-10-24 17:45 UTC)
 
 **PR [#285](https://github.com/buffedlizard55-lab/MaltaProj4/pull/285) merged to `main` at

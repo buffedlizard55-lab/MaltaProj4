@@ -468,6 +468,7 @@ def run(previous=None):
     # published expected-win formula and calibration. Used only where no market
     # line passed its gates; shown beside market lines for comparison.
     from scripts import vrs
+    from scripts import vrs_history
     from scripts import vrs_anchor_2d0a85f2 as vrs_anchor  # R-1: anchors for duplicated Valve labels
     standings, vrs_meta, vrs_problem = vrs.fetch(src, datetime.now(timezone.utc), os.environ.get('GITHUB_TOKEN'))
     if vrs_problem:
@@ -571,7 +572,7 @@ def run(previous=None):
     stale_count = sum(m['state']!='open' for m in matches)
     if stale_count:
         flags.append(issue('feed_status',f'{stale_count} feed entries are not open by sourced timestamps/status. They remain in All matches and are not treated as future picks.',FIXTURES))
-    return {'schema_version':2,'generated_at':iso(completed),'last_attempt_at':iso(completed),
+    snapshot={'schema_version':2,'generated_at':iso(completed),'last_attempt_at':iso(completed),
         'refresh_started_at':iso(now),
         'fixtures_observed_at':fixture_observed, 'coverage':coverage,
         'refresh_hours':1,'stale_after_hours':8, 'matches':matches,
@@ -579,6 +580,18 @@ def run(previous=None):
         'coverage_counts':inventory['counts'], 'fixture_conflicts':inventory['conflicts'],
         'inventory_changes':inventory['changes'],
         'fixture_evidence':[{k:v for k,v in x.items() if 'picked' not in k and k!='total_picks'} for x in raw if x.get('sport_alias')=='cs2']}
+    # Every row the feed returns gets a value, including the ones past their own
+    # sourced lock or start. Same originated ladder as the open rows, but priced
+    # from the Valve standings file that was current for each fixture, and
+    # written to a separate block so the two audits that forbid an actionable
+    # value on a not-open row keep holding. Best-effort: a failed vendoring
+    # keeps the copies already committed and is published as an issue.
+    from scripts import historical as historical_picks
+    history_problem = vrs_history.fetch_history(token=os.environ.get('GITHUB_TOKEN'))
+    if history_problem:
+        snapshot['issues'].append(issue('vrs_history', history_problem, vrs.BLOB.rsplit('/blob', 1)[0]))
+    historical_picks.apply_all(snapshot, now=completed)
+    return snapshot
 
 
 def main():
