@@ -1,0 +1,48 @@
+name: Live coverage diagnosis 6b8b4be0
+on:
+  workflow_dispatch:
+  push:
+    branches: [arena/6b8b4be0-maltaproj4]
+    paths: [.github/workflows/audit-6b8b4be0.yml]
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+      - name: Refresh public sources without publishing
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p runtime
+          cp data/latest.json runtime/latest.json
+          python -m scripts.refresh --output runtime/latest.json
+          python -m scripts.quarantine runtime/latest.json
+          python -m scripts.build --data runtime/latest.json
+          python -m scripts.validate --data runtime/latest.json
+          python -m scripts.stage_legacy
+      - name: Reproduce staged-root gate with API-readable failures
+        run: |
+          python - <<'PY'
+          import subprocess
+          result = subprocess.run(['python', '-m', 'unittest', 'discover', '-s', 'tests'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
+          print(result.stdout)
+          for block in result.stdout.split('======================================================================'):
+              if block.lstrip().startswith(('FAIL:', 'ERROR:')):
+                  message = block.strip()[:12000].replace('%', '%25').replace('\r', '%0D').replace('\n', '%0A')
+                  print('::error title=Staged root test failure::' + message)
+          raise SystemExit(result.returncode)
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: live-audit-6b8b4be0
+          path: |
+            runtime/
+            public/build-info.json
