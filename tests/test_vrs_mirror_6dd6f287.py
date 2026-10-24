@@ -177,7 +177,14 @@ class ApplyTests(unittest.TestCase):
         row = fixture()
         vrs_mirror.apply(row, level, META, {}, OFFICIAL)
         self.assertIsNone(row['pick'])
-        self.assertEqual([0.5, 0.5], row['probabilities'])
+        # Equal inputs stay available as evidence, but do not stop later
+        # research or fabricate a directional recommendation.
+        self.assertIsNone(row['probabilities'])
+        self.assertIsNone(row['fair_odds'])
+        self.assertEqual([0.5, 0.5], row['no_edge_lines'][0]['probabilities'])
+        self.assertEqual(META['observed_at'], row['no_edge_lines'][0]['observed_at'])
+        self.assertEqual('unresolved', row['attempts'][-1]['status'])
+        self.assertEqual(row['no_edge_lines'][0], row['attempts'][-1]['rejected_quote'])
 
 
 class ValidatorTests(unittest.TestCase):

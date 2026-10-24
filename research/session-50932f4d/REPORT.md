@@ -152,3 +152,29 @@ kinds must remain distinct. This recovery capture is not proof of deployment.
 [Durability request to the completed owner](https://github.com/buffedlizard55-lab/MaltaProj4/pull/282#issuecomment-6386834312):
 tests of fixed historical prices must remain entirely archival when live prices
 or evidence tiers rotate. Scope remains with #281; no competing test edits here.
+
+## Residual neutral-model repair and integrated gate results
+
+The independently sourced official-file and dated-mirror model tiers could
+still stop on equal points with percentages but no pick. Five new synthetic
+regressions reproduced this separate future publication risk. Both tiers now
+preserve the complete neutral quote, identity inputs, original observation and
+source in inspectable rejected/context evidence, leave recommendation fields
+blank, and continue later research. A newer mirror may supply its own distinct
+estimate; it cannot relabel the old neutral estimate or infer a winner. A
+missing club or conflicting roster cannot produce neutral context at all.
+The formula, nonneutral estimates, source clocks and no-overwrite gates are
+unchanged. The legacy mirror test now asserts that exact evidence-preserving
+contract, not a forced winner.
+
+**22 session tests pass**, including the 17 parser cases and five model cases.
+The combined baseline and real recovered staged-root gates each run **1,506
+tests successfully** (one / seven documented skips respectively). The recovered
+root reproduces **22 probability pairs across 83 retained fixtures**, with 15
+pages, 788 links/assets, 20 manifest hashes and 195 displayed rows validated.
+This is the independently replayed 16:36 capture, not a refreshed source read.
+
+The full fresh browser chain subsequently exposed the same **320px picks-page
+y=863** issue independently repaired by completed PR #281. That upstream layout
+repair is being adopted rather than duplicated; final browser and actual-clock
+public checks must still be recorded after integration.

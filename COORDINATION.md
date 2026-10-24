@@ -8268,3 +8268,33 @@ or current PR claims this file. Keep the strict no-invented-pick requirement,
 add exact preserved neutral evidence/source-clock assertions, and require the
 recommendation fields to stay blank so later research can run. No validator or
 live-row audit will be relaxed. Other model tests remain unchanged.
+
+### 50932f4d combined gates / completed-owner integration — 2026-10-24 16:54 UTC
+
+The residual model change and its aligned legacy mirror assertion pass **1,506
+unit tests** (baseline: one skip; real recovered 83-row staged root: seven
+historical skips). Recovered root validation: **83 rows / 22 independently
+reproduced calculations / 15 pages / 788 links/assets / 20 hashes / 195 displayed
+rows**. The 22 session tests include five new neutral-model continuity cases;
+no current captured nonneutral probability or chosen team was changed.
+
+The complete fresh browser chain exposed the exact tall-phone failure now
+fixed by **merged PR #281**: first picks-page pick y=863 at 320px. Its completed
+CSS change puts optional filters after the board without relaxing the threshold.
+Adopting that completed change rather than editing the UI owner's files. #281
+also preserves/reveals neutral source context and supplies a fresh main snapshot;
+its successful Pages job is not this session's independent public-byte receipt.
+
+Final-integration follow-through claim: **only the two completed-owner dated
+fixture tests** (`tests/test_session_35c6e1e9.py` alias mutation row and
+`tests/test_session_e9be3e6b.py` fixed arithmetic case). PR #281 deliberately
+adopted #282's conditional archive fallback, so the request in our #282 comment
+remains unresolved: a current row can still overwrite the archive and change
+its price/tier under a fixed expected number. Freeze only those historical
+examples to the already-retained 08:06Z capture; all current-row audits stay
+current. No active/unmerged implementation scope is taken over.
+
+Readback workflow YAML, seven shell blocks and two embedded Python blocks
+validate locally; its actual receipt path/revision field match the checker.
+A post-merge `release-target.json` can bind push-triggered readback to the real
+merge SHA, avoiding an unbound live-success claim. The workflow has not run yet.

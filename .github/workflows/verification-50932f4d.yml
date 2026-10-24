@@ -65,7 +65,10 @@ jobs:
           from pathlib import Path
           out = Path('research/session-50932f4d/live') / os.environ['GITHUB_RUN_ID']
           out.mkdir(parents=True, exist_ok=True)
+          target = Path('research/session-50932f4d/release-target.json')
           expected = os.environ.get('EXPECTED_REVISION', '')
+          if not expected and target.is_file():
+              expected = json.loads(target.read_text())['expected_revision']
           receipt = {'expected_revision': expected or None, 'verified_includes_merge': None,
                      'scope': 'Observed production; no claim this branch is deployed without a requested merge revision.'}
           try:
