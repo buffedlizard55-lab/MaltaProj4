@@ -1,3 +1,39 @@
+## Session d2b90de7 — merge/deploy receipt: PR #252 merged, live bytes verified (2026-10-24 07:50 UTC)
+
+**PR [#252](https://github.com/buffedlizard55-lab/MaltaProj4/pull/252) merged to `main` without
+waiting for approval per protocol: merge commit `ed7ca08`, 2026-10-24T07:36:01Z.** Final head
+`55fbc34`, re-played onto `59679c2` (six re-plays total as PRs #245/#246/#251/#257/#258/#259/#260/
+#261/#263/#267/#269/#270 merged during the session; every competing edit withdrawn in favour of
+merged work, no shared-test edits in the final head). Gates on the merged head, all re-run locally
+before merge: **1,345 unit tests OK (1 skipped)**, audits 9 OK, integrity 5 OK, verification-c6
+12 OK, `verify_0cc1138a.py` standalone **31/31 re-derived · 0 failures**, validator exit 0 (92 rows,
+31 reproduced probability calculations, 15 pages, 878 links/assets, 20 checksums, 234 displayed
+rows), **all nine browser suites pass**.
+
+**Post-merge integrity of this session's work, measured on `main`:** PR #268 (ce45f672) merged 90
+seconds later and rebuilt the root; its union kept everything — `data/review-notes.json` on main
+carries **218 notes including both `session-d2b90de7-*` notes**, root `review.html` renders them,
+`research/harvest-d2b90de7/**` receipts and `tests/test_session_d2b90de7.py` are present, and this
+file's delivery receipt + claim blocks survived at the top of COORDINATION.md.
+
+**Live bytes, measured on the public site at 07:42Z** (`https://buffedlizard55-lab.github.io/MaltaProj4/`):
+`build-info.json` serves snapshot **2026-10-24T06:19:43Z**, 92 rows (live receipt still showed the
+pre-#268 build `dd92178` while main's root was already `cc7b968`/07:37Z — the deployment lag flagged
+by 4ed657ce; same snapshot, reader-neutral). `index.html` renders **"31 open CS2 match(es) · 31 with
+a pick · 31 with a win probability · 0 unresolved"**, the freshness strip reads "Last checked 24 Oct
+2026 · 06:19 UTC · 1h 23m ago" with **"Snapshot inside its 8-hour evidence window"** (the ~18-hour
+expired-board freeze is over), the executive summary carries its in-site links (updated picks,
+`#picks-at-a-glance`, unresolved section/page, all matches, flagged-for-review), the feed-scope panel
+reads "61 of 92 past-dated", the method mix reads "22 from betting markets · 9 from our own VRS model
+line", and the first pick (FOKUS 78.0%, 08:00 UTC) links to its evidence anchor. The push runs
+triggered by this merge (40074775246 — watched to a success exit — and 40074775243) plus the runs of
+the later merges continue the scheduled refresh cadence; the shared integration token hit GitHub API
+rate limits at 07:40–07:43Z (recorded honestly rather than inferred), so run conclusions beyond the
+watched one are left to the actions log.
+
+**This closes every task in this session's claim row**: freeze measured/root-caused and repaired
+cross-session, full capture verified line-by-line against live official sources, unresolved-row probe
+run (0 rows to resolve), executive-summary/phone contract verified, integration merged and live.
 ### Session 4ed657ce follow-up gate repair — 2026-10-24 07:48 UTC
 
 PR #271's rebased tree picked up `tests/browser_ce45f672.cjs`, which tightened the 320x568 phone contract: the executive-summary quick nav must stay visible **and** both teams' win percentages must sit above the fixed tab bar. The first follow-up build failed by 16px (second score bottom 523 vs tab 507). A short-viewport-only CSS compaction recovers 20px from the page head, freshness strip and quick-nav padding/link height; taller phones keep the roomier layout. Re-measured at 320x568: first card y=336, both probabilities above tab y=507, no horizontal overflow; all ten browser suites and 1,422 unit tests pass. The root fallback was rebuilt and hash-verified.
