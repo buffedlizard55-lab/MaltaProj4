@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "revision": "cbe3f3d9d7bb5ecbb7a41dcb21860acd50a25370",
+  "built_at": "2026-10-24T16:28:45.072904Z",
+  "snapshot_generated_at": "2026-10-24T16:28:44.690826Z",
+  "rows": 83,
+  "files": {
+    "404.html": "2fbf7abac9b1d77b3df43707ac64f116e1d6bfe3e8c84863b7bf62b799a664bd",
+    "analysis.html": "2ad9c119cc755b3980090cc9915e6858ba744d02668a0907549c23ef635b6b91",
+    "assets/app.js": "8991e02f04c20410a946d92e1429a56d945f10da28d6fed587c9a9cf40aa21f8",
+    "assets/favicon.svg": "5b0ba0da9b9bec504dc4695b59291abad789479745d4a18581fb78b0215738ba",
+    "assets/style.css": "7a68a91d2641db0fa40cc4cf9ea098f21faca69fffea2ac0b5a99db490848050",
+    "data/latest.json": "f40ede283eadc27b0e16d1c0a7c76a8b4b2257afae43ed562bcbcca1f9ef232e",
+    "data/matches.csv": "a4eebe39fa20e0cabaa845afa87a812794fb71d226698f5b26c817bfcb0bb58d",
+    "evidence.html": "366cfa9f454680ff7e4efc80f79896509957baa20f525992bcb2bf5a606b79d2",
+    "index.html": "6de1a8dd7aebe28ffbb85f3067c3b3941ba26cf8a835a99cb3ae992522d26738",
+    "matches.html": "ebb68b9c7a949f2028b7276e0d724c39d3374995c93a1848d3614272d446f0e5",
+    "methodology.html": "db6dd3e60721627f0629397fd4d76b07f3f9ea5ab15b72348f3bee3b35a094ae",
+    "picks.html": "de1683db454247d594202d55bd0e344da3fd3ea1bd0066e9a588c76a3c07c994",
+    "review.html": "56c994b3be5bfa68d9a3c5b2f3d73f97b956bc33a3de9b0539fb96167c26a651",
+    "site/index.html": "7ad39335aef2960a4c7f3a8f9f2322d358e59fd45631acfa19f456575ec491db",
+    "site/methodology.html": "130024ea27020261e759b42920f78c42bebcbb44f226ef5216c8bbb1a2684b33",
+    "site/picks.html": "de8e71d8a3a1f7b287299108b460956d7c52391255b567fc71cc9974f8dcd76c",
+    "site/review.html": "91547a7e0d0e5b1e9bde9a89cad48c38173aefee74ea25afd75c17d9de3937cf",
+    "site/unresolved.html": "d8c18e13a798f6d0f0f3cf8ee21bb42ed941d6077c82c8031ae3476d6120bded",
+    "sources.html": "957e2bf9f3a11578cf896c9e1e824ee81d08b7a1c68fc4e8c9ae2c4924ea8008",
+    "unresolved.html": "3c56963449a4985fb8e1bb652d7555017ae955eec5b723b133bacf20b165c528"
+  }
+}
