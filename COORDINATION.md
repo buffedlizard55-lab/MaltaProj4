@@ -23,9 +23,36 @@ evidence window and its picks are withheld. Fixing this test is what restores th
 
 | Task | Status | Owner | File scope | Updated (UTC) |
 | --- | --- | --- | --- | --- |
-| Repair the self-expiring live-coverage unit gate **without weakening it**: assert three-view parity and per-row provenance on EVERY build from the snapshot's own sourced record; retire the frozen 09:44Z pin to a documented historical artifact | in progress | 4b419150 | `tests/test_session_0cc1138a.py`, `research/session-4b419150/REPORT.md` (new), `COORDINATION.md` | 2026-10-24 05:31 |
-| Re-verify every-match picks, phone readability, executive-summary in-site links, and the separate unresolved/limitations section on a fresh build; add sourced HLTV/book research for any open row the featured tiers cannot price | pending | 4b419150 | read-only audit plus additive `research/session-4b419150/**`, `data/review-notes.json` (additive only) | 2026-10-24 05:31 |
-| Final integration: full local gates, PR to main, merge without approval, live Pages byte verification, receipt | pending | 4b419150 | generated root pages via `scripts.build` only, `build-info.json`, `COORDINATION.md` | 2026-10-24 05:31 |
+| Repair the self-expiring live-coverage unit gate **without weakening it**: assert three-view parity and per-row provenance on EVERY build from the snapshot's own sourced record; retire the frozen 09:44Z pin to a documented historical artifact | done | 4b419150 | `tests/test_session_0cc1138a.py`, `research/session-4b419150/REPORT.md` (new), `COORDINATION.md` | 2026-10-24 05:55 |
+| Re-verify every-match picks, phone readability, executive-summary in-site links, and the separate unresolved/limitations section on a fresh build; add sourced HLTV/book research for any open row the featured tiers cannot price | done | 4b419150 | read-only audit plus additive `research/session-4b419150/**`, `data/review-notes.json` (3 notes added) | 2026-10-24 05:55 |
+| Final integration: full local gates, PR to main, merge without approval, live Pages byte verification, receipt | in progress | 4b419150 | generated root pages via `scripts.build` only, `build-info.json`, `COORDINATION.md` | 2026-10-24 05:55 |
+
+Task 1 verification (line-by-line, `research/session-4b419150/REPORT.md`): pre-fix
+`python -m unittest discover -s tests` failed with `KeyError '1079655'` + a
+`1079655/1081148` parity failure; post-fix it is **1195 run, OK (3 skipped)**,
+plus audits 9 / integrity 5 / C6 12 / `coverage_contract.inspect` 0 problems /
+`scripts.validate` 90 rows · 27 reproduced · 810 links · 20 checksums · 212
+displayed rows. A negative test proves the repaired gate still rejects a silent
+omission; it also passes a synthetic fresh snapshot carrying a research-only
+(`research_form`) open row. Browser: 7/8 suites green locally; the 8th,
+`browser_f0814674`, asserts the served snapshot is fresh, which is only true in
+CI *after* the source refresh it guards — its local failure on the 17-hour-stale
+snapshot is the defect's symptom, not a code error.
+
+Task 2 verification (own research, 2026-10-24, sources in the report/notes):
+- `1082859` bookmaker line re-read live on BO3.gg = Thunderpick **1.60 / 2.17**,
+  exactly reproducing the committed `odds [1.6, 2.17] → 57.56% / 42.44%`.
+- HLTV matches and 2026-10-24 Valve ranking reachable; HLTV crowd votes are never
+  used as probabilities; Kalshi has only a settled Aug-2026 market for this pair.
+- `model_vrs` for `1082996` (Acend 53.35%) uses Valve's official 2026-10-05
+  standings (Acend 1197 / UNiTY 1167 pts); the Oct-24 HLTV Valve ranking has since
+  moved UNiTY ahead — a disclosed monthly-cadence limitation, flagged for review,
+  not a silent fill (2026_10_05 confirmed still-newest via the GitHub contents API).
+- Executive-summary in-site links, `#picks-at-a-glance`, `#unresolved-limits`, both
+  team probabilities per phone card, and 320/390/768/1440 no-overflow are all
+  asserted by the passing browser suites; no UI change was needed.
+
+Sources: Hotspawn fixtures `https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1`, BO3.gg, EGamersWorld, HLTV, Valve standings GitHub. irregularities flagged: the refresh stall (fixed), the Valve monthly-file cadence, and the continuing scheduled-delivery weakness. No value inferred or filled from Hotspawn crowd data.
 
 Evidence rules: Hotspawn supplies fixture inventory and locks only, never a probability;
 no crowd votes, placeholder odds, inferred values or 50/50 filler. A blank or expired

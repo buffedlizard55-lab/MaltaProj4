@@ -4101,5 +4101,66 @@
     "label": "Polymarket market 6066473 backing the row's probability"
    }
   ]
+ },
+ {
+  "id": "session-4b419150-refresh-stall-restored-2026-10-24",
+  "status": "Fixed — scheduled refresh restored 2026-10-24",
+  "finding": "Measured 2026-10-24T05:38Z: the public site still served the 2026-10-23T11:47:19Z snapshot (revision 92d248d2), i.e. 17+ h old and past its own 8-hour evidence window. The five most recent pages.yml schedule runs on main (40062143026, 40042111432, 40025828846, 39998307424, 39956197341) all failed at the “Unit and independent failure-mode tests” step before scripts.refresh could run: tests/test_session_0cc1138a.py::LiveHotspawnCoverage pinned a frozen 2026-10-23 09:44Z lobby set (30 IDs) against the live data/latest.json, and Hotspawn had rotated 1079655 and 1081148 out of the feed (the 11:47Z snapshot no longer listed them as removed). That gate was repaired to bind coverage on every build from the snapshot's own sourced three-view parity record plus a clock-aware per-row provenance/pick contract (with a negative test proving it still rejects silent omissions); the frozen 09:44Z set is retained as a verified historical artifact. Result: 1195 unit tests green, audits/integrity/C6 green, refresh unblocked. See research/session-4b419150/REPORT.md.",
+  "sources": [
+   {
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json",
+    "label": "Public build receipt — served revision 92d248d2, built 2026-10-23T11:47:19Z (read 2026-10-24 05:38Z)"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40062143026",
+    "label": "Failing scheduled run 40062143026 (unit step), Actions"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40025828846",
+    "label": "Failing scheduled run 40025828846 (unit step), Actions"
+   }
+  ]
+ },
+ {
+  "id": "session-4b419150-fallback-lines-reverified-2026-10-24",
+  "status": "Verified — bookmaker & HLTV fallback lines reproduce",
+  "finding": "Independent 2026-10-24 re-verification of the sources that price matches the featured Polymarket exchange tier cannot resolve. (1) 1082859 NEXVOID vs Alter Ego (DFRAG Invitational): the live BO3.gg page shows Thunderpick 1.60 / 2.17, and EGamersWorld lists the match (NEXVOID 1.8). The committed bookmaker_fallback evidence is odds [1.6, 2.17] → de-vig 57.56% / 42.44%, pick NEXVOID — the live read reproduces it exactly; the fixture start is 2026-10-26 03:00Z so it remains actionable after a fresh refresh. (2) HLTV match pages and the 2026-10-24 Valve ranking are reachable; HLTV's own crowd “pick a winner” vote (e.g. 1082996 Acend 16.7% / UNiTY 83.3%) is correctly NOT used as a probability. (3) Kalshi surfaced only a settled Aug-2026 NEXVOID–Alter Ego market, not a live line, so it cannot price an upcoming fixture. No probability is taken from Hotspawn or a crowd vote; all lines originate outside the pick'em game.",
+  "sources": [
+   {
+    "url": "https://bo3.gg/matches/nexvoid-vs-alter-ego-26-10-2026",
+    "label": "BO3.gg NEXVOID vs Alter Ego — Thunderpick 1.60 / 2.17 (read 2026-10-24)"
+   },
+   {
+    "url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/nexvoid-vs-alter-ego-HfdcJeXmT",
+    "label": "EGamersWorld NEXVOID vs Alter Ego listing (read 2026-10-24)"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399112/acend-vs-unity-nodwin-clutch-series-13",
+    "label": "HLTV Acend vs UNiTY match page (community vote shown, not used as a line)"
+   },
+   {
+    "url": "https://www.hltv.org/valve-ranking/teams/2026/october/24",
+    "label": "HLTV Valve global ranking 2026-10-24 (read 2026-10-24)"
+   }
+  ]
+ },
+ {
+  "id": "session-4b419150-vrs-model-cadence-2026-10-24",
+  "status": "Observed — Valve monthly standings lag live ranking",
+  "finding": "The model_vrs line for 1082996 (Acend 53.35% / UNiTY 46.65%, pick Acend) is derived from Valve's official standings_global_2026_10_05.md (Acend rank 63 / 1197 pts vs UNiTY rank 69 / 1167 pts) using Valve's published Glicko fit (RD 75, calibration slope 0.7986). On 2026-10-24 HLTV's live Valve ranking shows UNiTY (#61) ahead of Acend (#75), i.e. the monthly official file lags live form. Verified via the GitHub contents API that 2026_10_05 is STILL the newest file in ValveSoftware/counter-strike_regional_standings/live/2026 (others 09_07, 08_03, …), so the model is correctly using the latest official file and MAX_STANDINGS_AGE_DAYS=62 tolerates the 19-day age. This is a disclosed source-cadence limitation, not a silent fill: the pick and percentage are a labelled model estimate, never a market price, and the direction may differ from fresh market sentiment. Retained for manual review.",
+  "sources": [
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/main/live/2026/standings_global_2026_10_05.md",
+    "label": "Valve official global standings 2026-10-05 (Acend 1197 / UNiTY 1167)"
+   },
+   {
+    "url": "https://www.hltv.org/valve-ranking/teams/2026/october/24",
+    "label": "HLTV Valve ranking 2026-10-24 (UNiTY #61 ahead of Acend #75)"
+   },
+   {
+    "url": "https://api.github.com/repos/ValveSoftware/counter-strike_regional_standings/contents/live/2026",
+    "label": "GitHub contents API — 2026_10_05 confirmed newest official standings file"
+   }
+  ]
  }
 ]
