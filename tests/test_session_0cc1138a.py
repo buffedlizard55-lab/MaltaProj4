@@ -65,6 +65,7 @@ class IndependentReDerivation(unittest.TestCase):
             if not r['published']:
                 continue
             p = r['re_derived']
+            self.assertIsNotNone(p, r['id'])  # a priced row must re-derive, never skip
             self.assertEqual(r['pick'], r['teams'][p.index(max(p))], r['id'])
 
     def test_a_tampered_percentage_is_rejected(self):
@@ -81,9 +82,13 @@ class IndependentReDerivation(unittest.TestCase):
         doc = copy.deepcopy(SNAPSHOT)
         row = next(m for m in doc['matches'] if m['state'] == 'open' and m['probabilities'])
         row['pick'] = row['teams'][1 - row['teams'].index(row['pick'])]
-        failures = [r for r in V.audit(doc) if r['problems']]
-        self.assertEqual(len(failures), 1)
-        self.assertIn('not the larger probability', ' '.join(failures[0]['problems']))
+        offenders = [r for r in V.audit(doc) if r['problems']]
+        # Exactly the row this test flipped may fail; what must never happen is
+        # the tamper passing. (Anchoring the total failure count assumed the rest
+        # of the committed board had no unrelated defect, which is not this
+        # test's subject -- session e334b970.)
+        self.assertEqual([r['id'] for r in offenders], [row['id']])
+        self.assertIn('not the larger probability', ' '.join(offenders[0]['problems']))
 
     def test_a_missing_source_link_is_rejected(self):
         doc = copy.deepcopy(SNAPSHOT)
