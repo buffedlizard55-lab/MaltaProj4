@@ -4522,8 +4522,8 @@
  },
  {
   "id": "session-4ed657ce-pages-deployment-lag-2026-10-24",
-  "status": "Observed — live Pages lagged the verified repository snapshot; confirm after merge",
-  "finding": "At 06:25 UTC the live GitHub Pages home page still advertised the 05:59 UTC snapshot (88 feed rows / 25 open picks) while the repository's verified snapshot was 06:19 UTC (92 rows / 31 open picks). A Pages deployment was queued. The hidden expiry fallback text also appears in text-only extractions even when JavaScript keeps it hidden; a real browser measurement confirmed it was not visible. This note will be updated with the final deployment receipt after the integration PR merges.",
+  "status": "Flagged for review — PR #267 merged and green; Pages deployment queue stuck in a cancel loop",
+  "finding": "PR #267 merged to main at 2026-10-24T07:14:28Z (commit d0faf73). All local and merged-tree gates pass: 1,317 unit tests, nine Chromium suites, validator, coverage contract, independent row audit and 31/31 dated source re-derivation. Because this repository's Pages source is legacy main:/, every merge queues a 'pages build and deployment' run. Between 05:52Z and 07:40Z every queued deployment (40067946765, 40068511869, 40068640205, 40069833889, 40069996301, 40071235253, 40071675577, 40071931371, 40072039651, 40072339424, 40072448075, 40072778665, 40073062798, 40073354156, 40073618384, 40074000515, 40074434472, 40074774780) was cancelled by the next rapid main push before it could run. A direct Pages build API request returned HTTP 403 for this integration, so the queue cannot be forced from the token. The live site nevertheless serves the earlier verified dd92178 build: 92 feed rows, 31 open, 31 picks, 31 probabilities, snapshot 06:19:43Z, inside its eight-hour evidence window. Session 4ed657ce is merging a tiny receipt PR with the documented [release-queue-reset] tag to drain obsolete queued runs; the exact merged bytes are confirmed after that run completes.",
   "sources": [
    {
     "label": "Live GitHub Pages home page",

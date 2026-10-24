@@ -1,3 +1,19 @@
+### Session 4ed657ce follow-up gate repair — 2026-10-24 07:48 UTC
+
+PR #271's rebased tree picked up `tests/browser_ce45f672.cjs`, which tightened the 320x568 phone contract: the executive-summary quick nav must stay visible **and** both teams' win percentages must sit above the fixed tab bar. The first follow-up build failed by 16px (second score bottom 523 vs tab 507). A short-viewport-only CSS compaction recovers 20px from the page head, freshness strip and quick-nav padding/link height; taller phones keep the roomier layout. Re-measured at 320x568: first card y=336, both probabilities above tab y=507, no horizontal overflow; all ten browser suites and 1,422 unit tests pass. The root fallback was rebuilt and hash-verified.
+
+---
+
+## Session 4ed657ce — delivery receipt: PR #267 merged (2026-10-24 07:42 UTC)
+
+**PR [#267](https://github.com/buffedlizard55-lab/MaltaProj4/pull/267)** merged to `main` at `2026-10-24T07:14:28Z`, merge commit `d0faf73`, without approval per protocol. It carried the measured phone executive-summary quick nav, the dated 31-open-row official-source verification ledger, the full alias contract after PR #266, seven additive review flags, and four conflict-preserving rebases onto the moving `main` (#260/#263/#265/#266). The merged tree later passed **1,317 unit tests** (1 skipped), all **nine Chromium browser suites**, validator (92 rows / 31 reproduced probabilities / 878 links-assets / 20 checksums / 234 displayed rows), coverage contract (31 open / 22 market / 9 model / 0 unresolved), verification-c6 (0 failures), quarantine (0 withheld) and `scripts.verify_4ed657ce` (31/31 open rows reproduced).
+
+**Live deployment status, measured not assumed.** The public site at 07:40 UTC still serves manifest `dd9217806e635…`, built `06:19:43Z`, 92 rows, 31 open, 31 picks, 31 probabilities — a valid board inside its eight-hour evidence window. Every `pages build and deployment` run since 05:52 UTC has been **cancelled** by the next rapid main push before it could publish the newer bytes (run IDs listed in the updated review note `session-4ed657ce-pages-deployment-lag-2026-10-24`). A direct `POST /repos/.../pages/builds` returned HTTP 403 for this integration, so the queue cannot be forced through the token. This receipt PR is deliberately merged with the repository's documented `[release-queue-reset]` subject so `pages.yml`'s `cancel-in-progress` rule drains the obsolete queued runs and lets the newest deployment proceed. The exact live manifest will be re-read after that run.
+
+**Scope of this receipt commit:** `COORDINATION.md`, one updated review note and the hash-verified regenerated root fallback. No pick, probability, fair odds, lock time or source link is changed.
+
+---
+
 ## Session ce45f672 claim — 2026-10-24 06:40 UTC (every-match picks, red-gate repair, phone-first executive summary)
 
 Board read before claiming. Fixed Arena branch `arena/ce45f672-maltaproj4`, based on `main` `dce494b`.
