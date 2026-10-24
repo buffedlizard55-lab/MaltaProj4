@@ -4101,5 +4101,36 @@
     "label": "Polymarket market 6066473 backing the row's probability"
    }
   ]
+ },
+ {
+  "id": "session-f533492a-reviewed-inventory-supplement-1083045-2026-10-24",
+  "status": "Flagged for review — Hotspawn's own current-week views disagree; one exact ended row is retained from a bounded official supplement",
+  "finding": "Independent review on 2026-10-24 found the CS2-specific pick'em filters reporting 89 entries, including one VOID Autumn Cup 2026 entry, while the general lobby reported 88. Runner captures 40066481741, 40067086847 and 40067947765 each returned 88 hydrated IDs in the scheduled API, CS2 page and general lobby; the raw bytes are retained, so this is an upstream response disagreement rather than a parser count adjustment. The official competition-scoped API identifies the extra reviewed row as 1083045 Chinggis Warriors vs Rare Atom, VOID Autumn Cup 2026, start 2026-10-24T03:00:00Z; the official Hotspawn match page confirms FIN, Chinggis Warriors 2–0 Rare Atom. The 89-row candidate retains only this exact ID through a receipt that is revalidated every refresh and expires at 2026-10-26T00:00:00Z; the other 12 competition-history rows are not imported. It remains not_open with no retrospective pick or probability, and Hotspawn crowd fields are not used. Coverage stays partial and the unresolved upstream filter/hydration disagreement remains visible rather than being relabelled as three-view parity.",
+  "sources": [
+   {
+    "url": "https://play.hotspawn.com/cs2-pickems",
+    "label": "Hotspawn CS2 pick'em filters (89 entries at independent review)"
+   },
+   {
+    "url": "https://play.hotspawn.com/lobby",
+    "label": "Hotspawn general lobby (88 entries at independent review)"
+   },
+   {
+    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&competition_id=36412&tenantId=1",
+    "label": "Official competition-scoped fixture API containing exact row 1083045"
+   },
+   {
+    "url": "https://www.hotspawn.com/matches/chinggis-warriors-vs-rare-atom-void-autumn-cup-2026-1083045",
+    "label": "Official Hotspawn match page: FIN, Chinggis Warriors 2–0 Rare Atom"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40067947765",
+    "label": "Runner capture and raw-response receipts for the 89-row candidate"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/data/inventory-receipts.json",
+    "label": "Bounded exact-row inventory receipt register"
+   }
+  ]
  }
 ]

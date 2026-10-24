@@ -7,9 +7,11 @@ committed snapshot and rebuilds each number from the archived primary evidence:
   ``outcomePrices`` string exactly as the Gamma API returned it.
 * EGamersWorld listing rows: decimal odds de-vigged with ``q_i = 1 / d_i`` and
   ``p_i = q_i / (q_1 + q_2)``; the overround is ``q_1 + q_2 - 1``.
-* Valve VRS model rows: Valve's own Glicko expectation at fixed rating deviation
-  (``model/fit.js`` -> ``model/glicko.js``) and Valve's published fit slope from
-  ``modelfit.png`` (observed = 0.7986 x expected + 0.126).
+* Valve VRS model rows, including HLTV's dated mirror of Valve points: Valve's
+  own Glicko expectation at fixed rating deviation (``model/fit.js`` ->
+  ``model/glicko.js``) and Valve's published fit slope from ``modelfit.png``
+  (observed = 0.7986 x expected + 0.126). The mirror must retain those exact
+  parameters; its archived points, not its published probability, are the input.
 
 It then checks, for every row: the pick is the larger probability, the fair
 decimal line is ``1 / p``, the two sides sum to one, the evidence carries a
@@ -79,9 +81,17 @@ def order_prices(labels, prices, teams):
 def evidence_probabilities(ev, teams=None):
     """Independent probabilities from a single evidence record, in fixture team order."""
     provider = ev.get('provider')
-    if provider == 'Valve VRS model':
-        raw = glicko_expect(ev['points'][0], ev['points'][1])
-        return [calibrate(raw), 1 - calibrate(raw)], 'valve_vrs'
+    if provider in {'Valve VRS model', 'HLTV Valve ranking (Valve points)'}:
+        if provider != 'Valve VRS model':
+            if ev.get('calibration_slope') != SLOPE or ev.get('rating_deviation') != RD:
+                raise ValueError('Valve mirror changed the formula/calibration parameters')
+        points = ev['points']
+        if not isinstance(points, list) or len(points) != 2 \
+                or any(not isinstance(value, (int, float)) or not math.isfinite(value) for value in points):
+            raise ValueError('Valve model needs two finite point values')
+        raw = glicko_expect(points[0], points[1])
+        kind = 'valve_vrs' if provider == 'Valve VRS model' else 'valve_vrs_mirror'
+        return [calibrate(raw), 1 - calibrate(raw)], kind
     if 'decimal_odds' in ev:
         q = [1 / float(d) for d in ev['decimal_odds']]
         p = [v / sum(q) for v in q]

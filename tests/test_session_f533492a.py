@@ -19,6 +19,7 @@ import json
 from pathlib import Path
 import unittest
 
+from scripts.audit_9b97d585 import common_row_problems
 from scripts.core import FIXTURES, HOTSPAWN, dt, iso
 from scripts.inventory import LOBBY, discover, validate_inventory_receipt
 
@@ -223,6 +224,21 @@ class ReviewedInventorySupplementTests(unittest.TestCase):
                 self.assertEqual(result["coverage"], "partial")
                 self.assertNotIn("1083045", {row["id"] for row in result["matches"]})
                 self.assertFalse(any("example.com" in call for call in src.calls))
+
+    def test_independent_auditor_replays_the_registered_scoped_feed(self):
+        result, _ = run_discovery()
+        row = next(row for row in result["matches"] if row["id"] == "1083045")
+        self.assertEqual(common_row_problems(row), [])
+        tampered = copy.deepcopy(row)
+        changed = REVIEW["api_url"].replace("competition_id=36412", "competition_id=1")
+        tampered["feed_url"] = changed
+        tampered["inventory_receipt"]["api_url"] = changed
+        tampered["fixture_sources"][0]["url"] = changed
+        self.assertIn("row lacks the exact scheduled feed or registered reviewed fixture-feed link",
+                      common_row_problems(tampered))
+        del tampered["inventory_receipt"]
+        self.assertIn("row lacks the exact scheduled feed or registered reviewed fixture-feed link",
+                      common_row_problems(tampered))
 
     def test_committed_receipt_is_official_bounded_and_inventory_only(self):
         self.assertEqual(validate_inventory_receipt(REVIEW), "1083045")

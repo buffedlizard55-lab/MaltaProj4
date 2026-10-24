@@ -100,10 +100,29 @@ def audit(snapshot, now=None):
             failures.append('%s: closed/past row still publishes a pick or a probability' % match['id'])
 
     counts = snapshot.get('coverage_counts') or {}
-    for key in COUNT_KEYS:
-        if counts.get(key) != len(matches):
-            failures.append('coverage_counts.%s=%r does not match %d retained rows'
-                            % (key, counts.get(key), len(matches)))
+    primary_counts = [counts.get(key) for key in COUNT_KEYS]
+    reviewed_ids = [str(match['id']) for match in matches if match.get('inventory_receipt')]
+    if len(set(reviewed_ids)) != len(reviewed_ids):
+        failures.append('duplicate reviewed inventory supplement IDs')
+    if any(not isinstance(value, int) or isinstance(value, bool) or value < 0
+           for value in primary_counts):
+        for key in COUNT_KEYS:
+            value = counts.get(key)
+            if not isinstance(value, int) or isinstance(value, bool) or value < 0:
+                failures.append('coverage_counts.%s=%r is not a non-negative integer' % (key, value))
+    elif len(set(primary_counts)) != 1:
+        for key in COUNT_KEYS[1:]:
+            if counts.get(key) != counts.get('api'):
+                failures.append('coverage_counts.%s=%r disagrees with primary api count %r'
+                                % (key, counts.get(key), counts.get('api')))
+    else:
+        # A reviewed supplement is an additional retained row, not a reason to
+        # pretend the primary views suddenly contained it. Any other unexplained
+        # retained/primary difference remains a loud failure.
+        expected = primary_counts[0] + len(set(reviewed_ids))
+        if len(matches) != expected:
+            failures.append('coverage_counts retained=%d is not primary=%d plus reviewed supplements=%d'
+                            % (len(matches), primary_counts[0], len(set(reviewed_ids))))
 
     observed = moment(snapshot['fixtures_observed_at'])
     if not timedelta(0) <= now - observed < timedelta(hours=8):
@@ -119,6 +138,7 @@ def audit(snapshot, now=None):
         'future_research_only': research,
         'future_unresolved': unresolved,
         'counts': {key: counts.get(key) for key in COUNT_KEYS},
+        'reviewed_supplements': sorted(set(reviewed_ids)),
     }
 
 

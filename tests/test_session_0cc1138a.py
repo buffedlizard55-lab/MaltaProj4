@@ -102,6 +102,21 @@ class IndependentReDerivation(unittest.TestCase):
         self.assertAlmostEqual(V.glicko_expect(1000, 1000), 0.5, places=12)
         self.assertAlmostEqual(V.glicko_expect(1200, 1000) + V.glicko_expect(1000, 1200), 1.0, places=12)
 
+    def test_hltv_valve_points_mirror_replays_the_same_valve_formula(self):
+        evidence = {
+            'provider': 'HLTV Valve ranking (Valve points)',
+            'points': [1030, 819], 'calibration_slope': 0.7986,
+            'rating_deviation': 75.0,
+        }
+        probabilities, kind = V.evidence_probabilities(evidence, ['Spirit Academy', 'LFO 10'])
+        raw = V.glicko_expect(1030, 819)
+        self.assertEqual(kind, 'valve_vrs_mirror')
+        self.assertAlmostEqual(probabilities[0], V.calibrate(raw), places=12)
+        self.assertAlmostEqual(sum(probabilities), 1.0, places=12)
+        evidence['calibration_slope'] = 0.5
+        with self.assertRaisesRegex(ValueError, 'changed the formula'):
+            V.evidence_probabilities(evidence, ['Spirit Academy', 'LFO 10'])
+
     def test_team_labels_map_onto_the_fixture_order(self):
         # An exchange listing the fixture in the opposite order must not flip the pick.
         self.assertEqual(V.order_prices(['Beta', 'Alpha'], [0.3, 0.7], ['Alpha', 'Beta']), [0.7, 0.3])
