@@ -7993,3 +7993,23 @@ model limits remain explicit. Full proof research/session-e3fe9518/PUBLICATION.m
 and public-release-verification.json. This source/proof branch update does not
 claim its new receipt files deployed and deliberately makes NO MAIN PUSH, so it
 does not restart a queued native Pages build. No user input or credentials used.
+
+
+### e3fe9518 staged-publisher diagnostic claim — 2026-10-24 10:57 UTC
+
+Actual public release is VERIFIED (10:29 source+mobile,20 exact files,normal
+Pages built10:29:09). Proof committed on own branch33014ec and posted to #264
+comment6383323670, without restarting main. Two trusted but older queued main
+publishers stopped at the fatal staged validator/unit gate; generic annotations
+correctly prevented bad commits but do not identify the failing assertion, and
+the log/result host is outside the sandbox allowlist. Do not guess the cause.
+
+Claim a new private `scripts/release_gate_e3fe9518.py` plus tests, and only the
+completed-owner .github/workflows/pages.yml staged validate/unit invocations:
+run the SAME validator arguments and ALL unittest discovery, preserve exact
+nonzero exits/return3, emit bounded redacted normal Checks failure diagnostics.
+Update only completed a30d31a0/cecfe864 static invocation pins to the equivalent
+explicit wrapper; add actual pass/fail/argument/exit tests. No assertion skipped
+or relaxed, no data/probability/source timestamp changed. This is an observable
+error report, not a fix invented from a generic failure. App/public files stay
+byte-identical; future rotating-cache protection is already separately tested.
