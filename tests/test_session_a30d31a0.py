@@ -175,6 +175,7 @@ class RootFallbackStepExecution(unittest.TestCase):
         (scripts / '__init__.py').write_text('')
         shutil.copyfile(ROOT / 'scripts/publish_root_fallback.py', scripts / 'publish_root_fallback.py')
         shutil.copyfile(ROOT / 'scripts/stage_legacy.py', scripts / 'stage_legacy.py')
+        shutil.copyfile(ROOT / 'scripts/staged_gate.py', scripts / 'staged_gate.py')
         (scripts / 'validate.py').write_text(FAKE_VALIDATE)
         (self.seed / 'tests').mkdir()
         (self.seed / 'tests/test_ok.py').write_text(TRIVIAL_TEST)
@@ -292,8 +293,15 @@ class WorkflowStepContract(unittest.TestCase):
         self.step = step_script()
 
     def test_in_step_gates_are_fatal(self):
-        self.assertIn('python -m scripts.validate --data data/latest.json --site . || return 3', self.step)
-        self.assertIn('python -m unittest discover -s tests || return 3', self.step)
+        # Session 572c65b7 replaced the two bare gate lines with scripts.staged_gate,
+        # which still refuses the commit with rc 3 for a validator failure and for a
+        # unit failure that also fails against the pre-staging snapshot. The gate
+        # itself now names a rotation-only unit failure instead of freezing the board.
+        self.assertIn('python -m scripts.staged_gate --check data '
+                      '--previous runtime/pre-staging-latest.json || return 3', self.step)
+        self.assertIn('python -m scripts.staged_gate --check units '
+                      '--previous runtime/pre-staging-latest.json || return 3', self.step)
+        self.assertNotIn('python -m unittest discover -s tests || return 3', self.step)
         self.assertEqual(self.step.count('[ "$rc" = "3" ] && {'), 2)
 
     def test_pre_push_hook_is_installed_before_the_first_push(self):

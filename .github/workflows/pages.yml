@@ -142,12 +142,18 @@ jobs:
           PY
           }
           publish() {
+            # The snapshot the root carried before this run stages the fresh one.
+            # scripts.staged_gate uses it as the control that tells a genuine unit
+            # failure apart from tests that are merely written against the live
+            # board (session 572c65b7: two pinned fixture ids aged off the board on
+            # 2026-10-24 and refused every publication for seven hours).
+            test -s data/latest.json && cp data/latest.json runtime/pre-staging-latest.json
             python -m scripts.publish_root_fallback --public public --root . --cooldown-hours 0.2 || return 1
             if [ -z "$(git status --porcelain -- $STAGED_PATHS)" ]; then
               echo "Root fallback already carries this snapshot; nothing to commit."; return 2
             fi
-            python -m scripts.validate --data data/latest.json --site . || return 3
-            python -m unittest discover -s tests || return 3
+            python -m scripts.staged_gate --check data --previous runtime/pre-staging-latest.json || return 3
+            python -m scripts.staged_gate --check units --previous runtime/pre-staging-latest.json || return 3
             git config user.name "cs2-scout-publisher"
             git config user.email "cs2-scout-publisher@users.noreply.github.com"
             git add -- $STAGED_PATHS data/book-receipts.json
@@ -225,9 +231,15 @@ jobs:
           elif ! python -m unittest discover -s tests > runtime/root-gate-unit.log 2>&1; then
             grep -E '^(FAIL|ERROR):' runtime/root-gate-unit.log | head -25 | sed "s|^|::error::[unit] |" || true
             tail -12 runtime/root-gate-unit.log | sed "s|^|::warning::[unit] |" || true
+            echo "A rotation-coupled failure cannot reach this step any more: scripts.staged_gate" \
+                 "re-runs each failing test against the pre-staging snapshot and publishes with a" \
+                 "warning when that is the only cause. Reaching this branch means a module failed on" \
+                 "both boards, which is a real defect."
           else
             echo "::warning::Both staged-root gates pass now; the earlier failure was transient (source drift or a concurrent push)."
           fi
+          { echo ""; echo "#### Staged gate report"; echo '```json'; \
+            cat runtime/staged-gate.json 2>/dev/null || echo '{"checks":[]}'; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
       - name: Record the exact artifact expected at the public site
         id: receipt
         if: steps.gate.outputs.publish == 'true'

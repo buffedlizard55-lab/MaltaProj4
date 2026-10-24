@@ -164,7 +164,10 @@ class TestRefreshFixtureLineupsAndPagesGate(unittest.TestCase):
         rest = yml[idx_step:]
         following = rest.find('\n      - name:', 1)
         step_block = rest if following == -1 else rest[:following]
-        self.assertLess(step_block.index('unittest discover -s tests'),
+        # Session 572c65b7 moved the unit gate behind scripts.staged_gate, which
+        # runs the same suite and classifies a rotation-only failure instead of
+        # freezing the board; it must still run before the root is committed.
+        self.assertLess(step_block.index('scripts.staged_gate --check units'),
                         step_block.index('git commit -m "Publish the verified build'))
 
 

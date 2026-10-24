@@ -64,8 +64,10 @@ class RootFallbackCannotWithholdTheBoard(unittest.TestCase):
     def test_the_staging_step_keeps_its_own_safety_gates(self):
         # rc 3 must still refuse to commit: the whole point of the 2026-10-24
         # freeze was that a broken root was *not* published after dce494b.
-        self.assertIn('python -m scripts.validate --data data/latest.json --site .', self.staging)
-        self.assertIn('python -m unittest discover -s tests', self.staging)
+        # Both gates now run through scripts.staged_gate, which is the module that
+        # tells a rotation-coupled unit failure apart from a real one.
+        self.assertIn('python -m scripts.staged_gate --check data', self.staging)
+        self.assertIn('python -m scripts.staged_gate --check units', self.staging)
         self.assertIn('return 3', self.staging)
         self.assertIn('report 3 pinned-gate', self.staging)
         self.assertEqual(self.staging.count('[ "$rc" = "3" ]'), 2,
@@ -73,10 +75,17 @@ class RootFallbackCannotWithholdTheBoard(unittest.TestCase):
 
     def test_the_gates_are_checked_before_anything_is_committed(self):
         commit = self.staging.index('git commit -m "Publish the verified build')
-        for gate in ('scripts.validate --data data/latest.json --site .',
-                     'python -m unittest discover -s tests'):
+        for gate in ('scripts.staged_gate --check data',
+                     'scripts.staged_gate --check units'):
             self.assertLess(self.staging.index(gate), commit,
                             '%s must run before the root is committed' % gate)
+
+    def test_the_pre_staging_snapshot_is_captured_before_the_root_is_staged(self):
+        # The control the units gate compares against has to be the board the root
+        # carried *before* this run, so it is copied before the stager runs.
+        capture = self.staging.index('runtime/pre-staging-latest.json')
+        stage = self.staging.index('scripts.publish_root_fallback --public public')
+        self.assertLess(capture, stage)
 
     def test_a_failure_writes_a_machine_readable_report(self):
         self.assertIn("runtime/root-fallback.json", self.staging)
@@ -191,3 +200,110 @@ class EvenLinesNeverFreezeTheLadder(unittest.TestCase):
         self.assertLess(tight, update, 'the even check must run before the row is priced')
         self.assertIn('ladder continues', source[wide:update],
                       'the rejected even line must be explained, not silently dropped')
+
+
+class RotationOnlyFailuresCannotFreezeTheBoard(unittest.TestCase):
+    """A unit failure that only exists because the board advanced must not refuse.
+
+    Measured on 2026-10-24: the staged gate returned 3 for seven hours because the
+    freshly refreshed snapshot no longer contained fixtures 1083121 and 1081152,
+    which two modules index in ``data/latest.json``. The tree, the build and the
+    fresh data were all sound. ``scripts.staged_gate`` re-runs each failing module
+    against the pre-staging snapshot and only then decides.
+    """
+
+    def setUp(self):
+        import tempfile
+        self.tmp = tempfile.TemporaryDirectory()
+        self.root = Path(self.tmp.name)
+        (self.root / 'tests').mkdir()
+        (self.root / 'data').mkdir()
+        (self.root / 'runtime').mkdir()
+        (self.root / 'data' / 'latest.json').write_text('{"matches": [{"id": "2222222"}]}\n')
+        self.previous = self.root / 'previous.json'
+        self.previous.write_text('{"matches": [{"id": "1111111"}, {"id": "2222222"}]}\n')
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def write_module(self, name, body):
+        (self.root / 'tests' / (name + '.py')).write_text(body)
+
+    def run_gate(self, *extra):
+        import contextlib
+        import io
+        from scripts import staged_gate
+        # The gate prints the captured suite output on refusal; keep the test log clean.
+        with contextlib.redirect_stdout(io.StringIO()):
+            return staged_gate.main(['--check', 'units', '--root', str(self.root),
+                                     '--previous', str(self.previous),
+                                     '--report', str(self.root / 'runtime' / 'gate.json')]
+                                    + list(extra))
+
+    def test_the_parser_reads_unittest_lines_and_ignores_auditor_lines(self):
+        from scripts import staged_gate
+        log = (
+            'FAIL: 1082769 K27 vs NEXORA: unresolved method must be None\n'
+            'ERROR: setUpClass (test_session_35c6e1e9.VerifierConsultsTheSourcedAliasRegister)\n'
+            'ERROR: test_known (test_session_e9be3e6b.SourceLadderVerification.test_known)\n'
+            'FAIL: same_module_again (test_session_e9be3e6b.Other.test_x)\n'
+        )
+        self.assertEqual(staged_gate.failing_modules(log),
+                         ['test_session_35c6e1e9', 'test_session_e9be3e6b'])
+        self.assertEqual(staged_gate.failing_targets(log),
+                         ['test_session_35c6e1e9.VerifierConsultsTheSourcedAliasRegister',
+                          'test_session_e9be3e6b.SourceLadderVerification.test_known',
+                          'test_session_e9be3e6b.Other.test_x'])
+
+    def test_a_failure_that_disappears_on_the_older_board_is_published(self):
+        self.write_module('test_pinned', (
+            'import json, pathlib, unittest\n'
+            'DATA = json.loads((pathlib.Path(__file__).resolve().parents[1] / "data" / "latest.json").read_text())\n'
+            'class Pinned(unittest.TestCase):\n'
+            '    def test_fixture_is_live(self):\n'
+            '        self.assertIn("1111111", [m["id"] for m in DATA["matches"]])\n'))
+        self.assertEqual(self.run_gate(), 0)
+        # The staged snapshot must be back on disk, not the control copy.
+        self.assertIn('2222222', (self.root / 'data' / 'latest.json').read_text())
+        report = (self.root / 'runtime' / 'gate.json').read_text()
+        self.assertIn('test_pinned', report)
+        self.assertIn('rotation_coupled', report)
+
+    def test_a_failure_that_reproduces_on_the_older_board_still_refuses(self):
+        self.write_module('test_broken', (
+            'import unittest\n'
+            'class Broken(unittest.TestCase):\n'
+            '    def test_always_fails(self):\n'
+            '        self.assertEqual(1, 2)\n'))
+        self.assertEqual(self.run_gate(), 3)
+        report = (self.root / 'runtime' / 'gate.json').read_text()
+        self.assertIn('not caused by the snapshot advancing', report)
+
+    def test_no_previous_snapshot_means_refuse_rather_than_guess(self):
+        # Fail closed: without the control the failure is unexplained, and an
+        # unexplained failure must never be published green.
+        self.write_module('test_pinned', (
+            'import json, pathlib, unittest\n'
+            'DATA = json.loads((pathlib.Path(__file__).resolve().parents[1] / "data" / "latest.json").read_text())\n'
+            'class Pinned(unittest.TestCase):\n'
+            '    def test_fixture_is_live(self):\n'
+            '        self.assertIn("1111111", [m["id"] for m in DATA["matches"]])\n'))
+        self.previous.unlink()
+        self.assertEqual(self.run_gate(), 3)
+        self.assertIn('no pre-staging snapshot', (self.root / 'runtime' / 'gate.json').read_text())
+
+
+class StagedGateIsWiredIntoTheWorkflow(unittest.TestCase):
+    def setUp(self):
+        self.staging = step(STAGING_NAME, job())
+
+    def test_the_explanation_step_reports_the_gate_result(self):
+        explain = step(EXPLAIN_NAME, job())
+        self.assertIn('runtime/staged-gate.json', explain)
+        self.assertIn('GITHUB_STEP_SUMMARY', explain)
+
+    def test_the_classifier_is_documented_where_the_decision_is_made(self):
+        source = (ROOT / 'scripts' / 'staged_gate.py').read_text()
+        self.assertIn('rotation', source)
+        self.assertIn('fail-closed', source)
+        self.assertIn('pre-staging snapshot', source)

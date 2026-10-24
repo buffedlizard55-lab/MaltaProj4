@@ -111,11 +111,18 @@ class PublisherWorkflowHardeningTests(unittest.TestCase):
             "python -m scripts.publish_root_fallback --public public --root . --cooldown-hours 0.2 || return 1",
             self.step,
         )
+        # Session 572c65b7 moved both gates behind scripts.staged_gate so a unit
+        # failure caused only by the board advancing cannot refuse a verified
+        # commit (measured: seven hours of withheld picks on 2026-10-24). A
+        # validator failure and a genuine unit failure still return 3.
         self.assertIn(
-            "python -m scripts.validate --data data/latest.json --site . || return 3",
+            "python -m scripts.staged_gate --check data --previous runtime/pre-staging-latest.json || return 3",
             self.step,
         )
-        self.assertIn("python -m unittest discover -s tests || return 3", self.step)
+        self.assertIn(
+            "python -m scripts.staged_gate --check units --previous runtime/pre-staging-latest.json || return 3",
+            self.step,
+        )
         self.assertIn("--check-drift --revision", self.step)
 
 

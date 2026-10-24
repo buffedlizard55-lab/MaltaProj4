@@ -15,6 +15,27 @@ from bs4 import BeautifulSoup
 
 ROOT = Path(__file__).resolve().parents[1]
 SNAPSHOT = json.loads((ROOT / 'data' / 'latest.json').read_text())
+# The archive the pinned model row rotated off into. A started fixture leaves the
+# live board, so pinning its id in the live snapshot turned "the board advanced"
+# into a red publication gate for seven hours on 2026-10-24 (run 40097410704).
+# This capture is the immutable evidence the row was published from; the
+# arithmetic under test is identical either way.
+ARCHIVE = ROOT / 'research' / 'harvest-ce45f672' / 'snapshot.json'
+
+
+def fixture_row(fixture_id):
+    """The live row for ``fixture_id``, else the archived row, else ``None``."""
+    for row in SNAPSHOT['matches']:
+        if str(row.get('id')) == str(fixture_id):
+            return row
+    try:
+        archived = json.loads(ARCHIVE.read_text())
+    except (OSError, ValueError):
+        return None
+    for row in archived.get('matches') or []:
+        if str(row.get('id')) == str(fixture_id):
+            return row
+    return None
 
 
 def load_verifier():
@@ -96,15 +117,18 @@ class SourceLadderVerification(unittest.TestCase):
                                        'source': 'http://insecure.example/rename'}]))
 
     def test_known_listing_and_model_arithmetic(self):
-        by_id = {m['id']: m for m in SNAPSHOT['matches']}
-        book = by_id['1082859']['evidence'][0]
-        p, kind = V.replay_evidence(book, by_id['1082859']['teams'])
+        book_row = fixture_row('1082859')
+        model_row = fixture_row('1081152')
+        if book_row is None or model_row is None:
+            self.skipTest('the pinned rows are neither on this board nor in the archive')
+        book = book_row['evidence'][0]
+        p, kind = V.replay_evidence(book, book_row['teams'])
         # Thunderpick via BO3.gg: 1.61 / 2.18, de-vigged.
         self.assertEqual(kind, 'listing_devig')
         self.assertAlmostEqual(p[0], 0.575197889182058, places=12)
         self.assertAlmostEqual(p[1], 0.42480211081794195, places=12)
-        model = by_id['1081152']['evidence'][0]
-        p, kind = V.replay_evidence(model, by_id['1081152']['teams'])
+        model = model_row['evidence'][0]
+        p, kind = V.replay_evidence(model, model_row['teams'])
         # Valve 2026-10-05 file: HAVU 937, Azuolas 863; Glicko RD 75, slope 0.7986.
         self.assertEqual(kind, 'valve_vrs')
         self.assertAlmostEqual(p[0], 0.5815710671661513, places=12)

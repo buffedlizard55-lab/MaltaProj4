@@ -5168,5 +5168,88 @@
     "label": "Committed identity registry the alias group must appear in"
    }
   ]
+ },
+ {
+  "id": "session-572c65b7-legacy-root-froze-publication-2026-10-24",
+  "status": "Repaired by session 572c65b7 — the legacy-root fallback can no longer withhold a verified board",
+  "finding": "Measured: every pages.yml run on main from 2026-10-24T09:03Z to 16:07Z failed at step 15, \"Keep the legacy main:/ root fallback on the verified build\" (runs 40080448344, 40082763751, 40084520702, 40097410704). In each run the refresh, quarantine, build, independent row audit and all Chromium gates succeeded first (job 120882445087: refresh 13:17:02Z-13:20:38Z, build 13:20:38Z-13:20:40Z, browser gates 13:20:40Z-13:21:41Z) and only the staging step failed, with its own annotation \"The staged root failed its own validator or unit gate\" (i.e. publish() returned 3). Because a failed step fails the job, upload-pages-artifact and the whole deploy job were skipped as well, so a fully verified fresh snapshot was never published. The public board kept serving the 2026-10-24T08:06:51Z snapshot (build-info revision 71eddff) until its eight-hour window closed at 16:06Z, and then withheld every pick: the independent audit job 120919620027 measured the live page at 16:07Z with inventoryFresh=false, actionable=0, snapshot_age_seconds=29041. The rendered board then read \"22 open CS2 match(es) - 0 with a pick\". The repair keeps every existing gate (rc 3 still refuses to commit the root) and makes the step continue-on-error, so the verified artifact deploys and the failure is published as annotations plus runtime/root-fallback.json instead of freezing the board.",
+  "sources": [
+   {
+    "label": "Failed run 40097410704",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40097410704"
+   },
+   {
+    "label": "Independent live audit that measured the withheld board",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40110028068"
+   },
+   {
+    "label": "Publisher module",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/scripts/publish_root_fallback.py"
+   }
+  ]
+ },
+ {
+  "id": "session-572c65b7-even-line-blocked-the-contract-suite-2026-10-24",
+  "status": "Repaired by session 572c65b7 — an exactly even line no longer stops the ladder",
+  "finding": "Root cause of the freeze above, reproduced twice from live captures. The 2026-10-24T16:24Z/16:28Z capture contained one open row that published a probability and no pick: fixture 1079200 Color vs ex-Zero Tenacity, Polymarket moneyline 0.500/0.500, reason \"Equal verified prices; no directional edge.\" scripts.core.resolve() published the even price and deliberately set pick=None. The repository then contradicts itself: the method page documents that behaviour, scripts.coverage_contract accepts it, but the committed unit suite (about 40 assertions across roughly 25 test files) and verification-86b56cf6 require that any open row without a pick has probabilities, fair_odds and method all null. Replayed faithfully in a throwaway worktree from the retained 16:28Z snapshot (research/session-572c65b7/diag/latest.json), scripts.validate --site . passed (83 rows, 22 calculations, 784 links, 20 checksums) while the unit gate failed, which is exactly the \"validator or unit gate\" the 09:03Z-16:07Z runs reported. The repair extends the rule already applied to the wide tier: an exactly even accepted line is not published as a probability, it is retained as rejected evidence with its real numbers, and the ladder continues to the Valve-VRS model or a research tier so the match still carries a labelled pick. A row that is still exactly even after every tier (for example a model tie) is classified as a documented no-edge row by scripts.summary.is_no_edge() and counted separately, so picks + no-edge + unresolved always equal the open board.",
+  "sources": [
+   {
+    "label": "Retained fresh capture used for the replay",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/tree/main/research/session-572c65b7/diag"
+   },
+   {
+    "label": "Independent diagnosis of the same gate",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40111427675"
+   }
+  ]
+ },
+ {
+  "id": "session-572c65b7-actions-evidence-access-2026-10-24",
+  "status": "Limitation recorded — not a defect of the site",
+  "finding": "The authoring sandbox reaches github.com, api.github.com, registry.npmjs.org and pypi.org only. play.hotspawn.com, www.hltv.org, Polymarket, Pinnacle and every bookmaker answer with a TLS reset, and both \"gh run view --log-failed\" and \"gh run download\" redirect to productionresultssa*.blob.core.windows.net, which is also blocked; the workflow log HTML page answers \"Sign in to view logs\". The only machine-readable failure detail available is the check-run annotations API, which in this case carried just \"The staged root failed its own validator or unit gate\". Every real source read in this session therefore ran on GitHub Actions runners, and each diagnostic committed its snapshot, logs and report back to the session branch so the failure could be replayed locally. This is a tooling limitation, not evidence about the sources or the board.",
+  "sources": [
+   {
+    "label": "Diagnostic workflow used as the workaround",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/.github/workflows/diag-572c65b7.yml"
+   },
+   {
+    "label": "Retained evidence directory",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/tree/main/research/session-572c65b7"
+   }
+  ]
+ },
+ {
+  "id": "session-572c65b7-parallel-sessions-duplicated-the-same-repair-2026-10-24",
+  "status": "Needs review — coordination, not data",
+  "finding": "At least fifteen Arena sessions were dispatched against the same failure within about fifteen minutes of each other (branches ac5bcb06, a22008ff, f2e04d1a, 6b8b4be0, aeafcbe6, e38056d4, 3bd3be25, 93f6951a, e86697a6, acd2a4a8, 2a7cdfb7, afed58c5, bf1b12c7, 2b856884, 50932f4d, b0163396 and this one), each adding its own diagnostic workflow and each queueing runs that read the same rate-limited sources. Two sessions independently landed the same publication fix (this branch and bf1b12c7, both on 2026-10-24T16:28Z) and two others independently diagnosed the same staged-root gate. The queue delay meant this session's own diagnostic waited about ten minutes before starting. Nothing published by any of them conflicts, but the duplicated runner load and the duplicated edits to the same contracts (pages.yml, the node-edge tests) make integration risk higher than necessary. Flagged for the human, not blocking.",
+  "sources": [
+   {
+    "label": "COORDINATION.md task board",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/COORDINATION.md"
+   },
+   {
+    "label": "The parallel branch that landed the same publisher fix",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/arena/bf1b12c7-maltaproj4/.github/workflows/pages.yml"
+   }
+  ]
+ },
+ {
+  "id": "session-572c65b7-fixture-rotation-held-publication-2026-10-24",
+  "status": "Repaired by session 572c65b7 — rotation can no longer refuse a verified commit",
+  "finding": "Measured after the even-line repair was verified on a runner (run 40112854117, 2026-10-24T16:52Z): the fresh capture held 22 open rows, all 22 with a pick and a win probability, 0 withheld by the independent audit, scripts.validate rc 0 over 83 rows/22 calculations/787 links/20 checksums, and the independent c6 audit 12/12 — yet the staged unit suite still failed with errors=2, so publish() returned 3 and the root was not committed. Both errors were fixture ids, not code: test_session_35c6e1e9.setUpClass raised StopIteration looking for fixture 1083121 in data/latest.json, and test_session_e9be3e6b raised KeyError \"1081152\". The committed 08:06:51Z snapshot has 92 matches and carries both ids; the 16:47:02Z capture has 83 and carries neither, because both fixtures had started and a started fixture leaves the board. The repository already documents this class (\"snapshot-coupled assertions running as a blocking publication gate\", tests/test_session_35c6e1e9.py) and 7 other tests skip cleanly for the same reason; these two did not. The repair reads the pinned rows from the immutable capture they were published from (research/harvest-ce45f672/snapshot.json) and adds scripts/staged_gate, which replays only the failing test targets against the pre-staging snapshot and refuses the commit (rc 3) unless every one of them passes there, so an unexplained or genuine failure still blocks publication.",
+  "sources": [
+   {
+    "label": "Diagnostic run with the failing staged unit gate",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40112854117"
+   },
+   {
+    "label": "Archived capture used as the rotation control",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/harvest-ce45f672/snapshot.json"
+   },
+   {
+    "label": "Staged gate module",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/scripts/staged_gate.py"
+   }
+  ]
  }
 ]

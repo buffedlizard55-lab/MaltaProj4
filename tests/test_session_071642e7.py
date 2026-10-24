@@ -97,7 +97,8 @@ class Session071642e7VerificationTests(unittest.TestCase):
         wf = (ROOT / '.github/workflows/pages.yml').read_text(encoding='utf-8')
         self.assertIn("cron: '4,19,34,49 * * * *'", wf)
         publish_idx = wf.index('python -m scripts.publish_root_fallback')
-        post_test_idx = wf.index('python -m unittest discover -s tests', publish_idx)
+        # Session 572c65b7: the unit gate now runs through scripts.staged_gate.
+        post_test_idx = wf.index('python -m scripts.staged_gate --check units', publish_idx)
         commit_idx = wf.index('git config user.name "cs2-scout-publisher"', publish_idx)
         self.assertLess(publish_idx, post_test_idx)
         self.assertLess(post_test_idx, commit_idx)

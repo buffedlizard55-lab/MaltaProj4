@@ -131,8 +131,11 @@ class VerifiedArtifactPublicationContract(unittest.TestCase):
         self.assertNotIn('|| true\n          [ "$rc" = "3" ]', step)
         for required in (
             "python -m scripts.publish_root_fallback",
-            "python -m scripts.validate --data data/latest.json --site .",
-            "python -m unittest discover -s tests",
+            # Session 572c65b7: the validator and the unit suite still gate the
+            # commit, now through scripts.staged_gate, which only downgrades a
+            # unit failure proven to be caused by the board advancing.
+            "python -m scripts.staged_gate --check data",
+            "python -m scripts.staged_gate --check units",
             "git commit -m",
         ):
             self.assertIn(required, step)

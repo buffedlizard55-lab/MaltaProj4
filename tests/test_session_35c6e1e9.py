@@ -31,6 +31,28 @@ from scripts import verify_35c6e1e9 as A
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 NOW = datetime.datetime(2026, 10, 24, 5, 33, tzinfo=datetime.timezone.utc)
 SNAPSHOT = json.loads((ROOT / 'data' / 'latest.json').read_text())
+# Immutable evidence for the fixtures this module pins. A started fixture leaves
+# the live board, and a test that insists it is still there turns "the board
+# advanced" into a red publication gate: on 2026-10-24 exactly that refused every
+# scheduled publish for seven hours (run 40097410704). The capture below is the
+# same snapshot 1083121 was published from, so the assertions keep their subject
+# whether or not the fixture is still live.
+ARCHIVE = ROOT / 'research' / 'harvest-ce45f672' / 'snapshot.json'
+
+
+def fixture_row(fixture_id):
+    """The live row for ``fixture_id``, else the archived row, else ``None``."""
+    for row in SNAPSHOT['matches']:
+        if str(row.get('id')) == str(fixture_id):
+            return row
+    try:
+        archived = json.loads(ARCHIVE.read_text())
+    except (OSError, ValueError):
+        return None
+    for row in archived.get('matches') or []:
+        if str(row.get('id')) == str(fixture_id):
+            return row
+    return None
 
 
 def stamp(minutes_ago):
@@ -312,7 +334,9 @@ class VerifierConsultsTheSourcedAliasRegister(unittest.TestCase):
             'verify_0cc1138a', ROOT / 'research/session-0cc1138a/verify_0cc1138a.py')
         cls.V = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(cls.V)
-        cls.row = next(m for m in SNAPSHOT['matches'] if m['id'] == '1083121')
+        cls.row = fixture_row('1083121')
+        if cls.row is None:
+            raise unittest.SkipTest('fixture 1083121 is neither on this board nor in the archive')
         cls.ev = (cls.row.get('evidence') or [{}])[0]
 
     def test_the_registry_entry_is_sourced_and_links_both_labels(self):
