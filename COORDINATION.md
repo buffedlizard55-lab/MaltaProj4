@@ -1,3 +1,31 @@
+## Session d2a55add — final receipt: PR #246 merged, live bytes verified (2026-10-24 06:20 UTC)
+
+**PR [#246](https://github.com/buffedlizard55-lab/MaltaProj4/pull/246) merged to `main` at
+2026-10-24T06:00:55Z** as merge commit `dd92178`, after its `verify-build` check passed
+(run [40068309787](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40068309787);
+deploy correctly skipped on the PR). The merge commit first merged `origin/main` (`60a150b`,
+session 019a253a's PR #240) with the two logged conflict resolutions above.
+
+**Live verification, measured from the deployment my merge triggered.** The post-merge
+`Verify, refresh and publish CS2 Scout` run
+[40068512182](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40068512182)
+completed **success**: `verify-build` refreshed the sources again (one root-fallback replay
+after `main` moved under it, annotation logged by the workflow itself) and the `deploy` job
+passed including its **"Verify live Pages bytes match this exact build"** step. The build it
+published, read from the committed `main:/` root it staged (`dce494b`): `build-info.json`
+revision `dd92178` (this session's merge commit), built `2026-10-24T06:19:43Z`, snapshot
+`2026-10-24T06:19:43Z`, **92 feed rows, 31 open, 31 with a pick, 31 with a win probability,
+coverage verified (92/92/92)** — and `index.html` on `main` contains `id="exec-summary"`.
+GitHub Pages reports `status: built`, legacy `main:/` source, at
+https://buffedlizard55-lab.github.io/MaltaProj4/. Nothing here is claimed from a branch
+build: the figures are the run's own published snapshot, one refresh newer than the
+05:33Z board the PR was gated on.
+
+**Cadence note (measured):** that refresh step took ~19 minutes wall-clock inside a queued
+job (HLTV rate-limit waits are paced, never bypassed), and two `pages build and deployment`
+runs were cancelled by newer `main` pushes in the same window — the legacy root and the
+Actions artifact still converged on the same verified bytes, and the site's freshness strip
+states the snapshot's real age either way.
 ## Session 019a253a — delivery receipt (2026-10-24 08:35 UTC)
 
 **The board was empty because the publisher had stopped, not because the sources had nothing.**
