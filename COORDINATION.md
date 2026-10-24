@@ -1,3 +1,45 @@
+## Session d2a55add — delivery receipt: PR #246 (2026-10-24)
+
+**PR [#246](https://github.com/buffedlizard55-lab/MaltaProj4/pull/246)** carries this
+session's work to `main`. Harvest run
+[40066440282](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40066440282)
+(all steps green) captured the fresh board: snapshot `2026-10-24T05:33:25Z`, fixtures
+observed `2026-10-24T05:29:46Z`, coverage `verified` (88/88/88), **88 feed rows, 25 open,
+25 with a pick, 25 with a win probability, 0 research-only, 0 unresolved** (12 featured
+exchange, 2 wide exchange, 2 researched bookmaker listings, 7 VRS model, 2 VRS model via
+HLTV's dated Valve ranking). The 13 non-featured rows are ledgered HLTV-first then
+esportsbook-next in `research/harvest-d2a55add/unresolved-ledger.md` (0 irregularities).
+The home page gained the always-visible `#exec-summary` bar (in-site links to the updated
+picks, the at-a-glance list, the unresolved section/page, all matches, flagged-for-review);
+measured pick-list placement y=314 (320x568) and y=538 (390x844) with the summary ordered
+directly after the list on phones. Gates on the integrated tree: 1,208 unit tests OK,
+audits 9, verification-c6 12, integrity 5, validator (88 rows, 25 calculations, 823
+links/assets, 20 checksums, 217 displayed rows), coverage audit 25/25/25/0, and all eight
+Chromium browser suites. Full log: `research/session-d2a55add/REPORT.md`.
+
+**Integration repairs to other sessions' pins (minimal, logged, intent preserved).**
+(1) `research/session-0cc1138a/verify_0cc1138a.py` now re-derives the documented
+`model_vrs_mirror` provider (rows 1081156/1081158) with the same Valve Glicko/calibration
+math under its own label instead of reporting it irreproducible. (2)
+`tests/test_session_0cc1138a.py`: the sourced feed-removal excuse extends to fixtures
+absent from the snapshot's own raw feed evidence (1079655, 1081148). (3)
+`tests/test_session_f89bb1f8.py`: the literal `23 Oct` strip date is derived from the
+first pick's own start. No product code, price, pick or probability was changed for any
+of these, and no assertion was weakened: parity, pick and re-derivation checks still bind
+every row the feed still returns.
+
+**Flagged for review (published on review.html, non-blocking):**
+`session-d2a55add-book-access-2026-10-24` (GG.BET/EGamersWorld HTTP 403 on the 2026-10-24
+run; nine rows carry labelled model lines instead of book prices) and
+`session-d2a55add-css-unclosed-media-2026-10-24` (pre-existing brace balance +1 in
+`site/assets/style.css`: the `max-height:700px` block never closes and gates all later
+rules to short viewports; this session placed its block at brace depth 0 rather than
+restructure other sessions' measured CSS). The harvest workflow's own coverage-audit
+step initially aimed at the raw snapshot and a `tee` pipe hid the crash; it now audits
+the built `public/data/latest.json`, re-verified locally.
+
+---
+
 ## Session d2a55add claim — 2026-10-24 05:30 UTC
 
 Board read before claiming. Fixed Arena branch `arena/d2a55add-maltaproj4`, based on `5d56f35`
@@ -10,9 +52,9 @@ a folded `<details class="briefing-more">` block on the home page.
 
 | Task | Status | Owner | File scope | Updated (UTC) |
 | --- | --- | --- | --- | --- |
-| Fresh Hotspawn CS2 harvest on a runner (sandbox egress reaches GitHub/package registries only): full refresh ladder (Polymarket strict -> HLTV research -> Pinnacle -> wide exchange -> book listings -> VRS model -> HLTV mirror/rank/form), quarantine, independent audit, and an explicit unresolved-row ledger proving HLTV-first then esportsbook attempts for every row without a featured (exchange) pick | in progress | d2a55add | `.github/workflows/harvest-d2a55add.yml` (new), `scripts/gap_probe_d2a55add.py` (new), `research/harvest-d2a55add/**`, `tests/test_session_d2a55add.py` (new) | 2026-10-24 05:30 |
-| Executive summary visibility: move the executive-summary banner + in-site links out of the folded details so the updated-picks links and the unresolved/limitations section are readable on a phone without a tap; keep picks-first first-screen order and all existing anchors/counters | in progress | d2a55add | `scripts/build.py` (overview ordering only), generated root pages via `scripts.build` only, `tests/test_session_d2a55add.py` | 2026-10-24 05:30 |
-| Final integration: integrate the fresh verified snapshot, all unit/audit/integrity/validator/browser gates, PR to main, merge without approval, live Pages verification, receipt | in progress | d2a55add | `COORDINATION.md`, `data/latest.json`, `data/matches.csv`, `data/review-notes.json` (additive only), generated root pages, `build-info.json`, `.github/workflows/pages.yml` (this branch registration only) | 2026-10-24 05:30 |
+| Fresh Hotspawn CS2 harvest on a runner (sandbox egress reaches GitHub/package registries only): full refresh ladder (Polymarket strict -> HLTV research -> Pinnacle -> wide exchange -> book listings -> VRS model -> HLTV mirror/rank/form), quarantine, independent audit, and an explicit unresolved-row ledger proving HLTV-first then esportsbook attempts for every row without a featured (exchange) pick | done | d2a55add | `.github/workflows/harvest-d2a55add.yml` (new), `scripts/gap_probe_d2a55add.py` (new), `research/harvest-d2a55add/**`, `tests/test_session_d2a55add.py` (new) | 2026-10-24 05:30 |
+| Executive summary visibility: an always-visible executive-summary bar with in-site links (the folded banner itself is pinned inside details by other sessions' tests, so it was left untouched) so the updated-picks links and the unresolved/limitations section are readable on a phone without a tap; keep picks-first first-screen order and all existing anchors/counters | done | d2a55add | `scripts/build.py` (overview ordering only), generated root pages via `scripts.build` only, `tests/test_session_d2a55add.py` | 2026-10-24 05:30 |
+| Final integration: integrate the fresh verified snapshot, all unit/audit/integrity/validator/browser gates, PR to main, merge without approval, live Pages verification, receipt | done | d2a55add | `COORDINATION.md`, `data/latest.json`, `data/matches.csv`, `data/review-notes.json` (additive only), generated root pages, `build-info.json`, `.github/workflows/pages.yml` (this branch registration only) | 2026-10-24 05:30 |
 
 Evidence rules: Hotspawn supplies fixture inventory/locks only, never a probability; no crowd
 votes, placeholder odds, inferred values or 50/50 filler. A pick for a low-tier/unlisted match
