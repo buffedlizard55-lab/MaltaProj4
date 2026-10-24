@@ -7341,3 +7341,22 @@ all source times, and all ce45f672/4ed657ce rules. No hiding stale/overdue text.
 Add a deterministic two-hour browser-clock case alongside the unchanged real-
 clock test, so the new state cannot regress after the page becomes90m old.
 This is not a change to freshness policy or numeric evidence.
+
+
+### e3fe9518 runtime current-first ordering claim — 2026-10-24 07:53 UTC
+
+The two-rule CSS repair now passes ce45f672's unchanged real-clock/full-bottom
+assertions. The new deterministic two-hour case then catches a different real
+problem: two correctly withdrawn closed cards stay before the first current
+model pick, whose score pair is consequently at y793. The raw source remains
+unchanged and the cards rightly say NOT CURRENT; they must not bury valid picks.
+Claim only the long-delivered existing expiry loop in `site/assets/app.js`:
+move **closed home-glance LI nodes** after still-current cards, once at their
+actual lock/start. Do not hide or delete any card or warning, change source data,
+renew observations, invent a next pick, or touch queue/review/evidence pages.
+Keep the existing withdrawal logic before reordering. Thus every captured row
+and every caution stays inspectable while current picks remain visually first.
+The unchanged all-card/first-pair assertions and new120m scenario must pass; no
+other owner's private test needs changing. Existing claim/read-only test scope
+covers the deterministic browser-clock case (always explicitly non-live); live
+runs reject any simulated offset. Canonical workflow will retain both receipts.
