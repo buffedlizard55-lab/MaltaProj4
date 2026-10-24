@@ -110,9 +110,17 @@ class DatedVerificationTests(unittest.TestCase):
         self.assertEqual(len(EXTERNAL['valve_monthly_file']['sha256']), 64)
 
     def test_every_open_row_reproduces_and_keeps_official_links(self):
+        # Integration repair (session ce45f672, 2026-10-24): the 31 here pinned
+        # the open count of the 06:19Z board. Hotspawn rotates its lobby every
+        # few hours, so a fresher committed snapshot (29 open at 08:03Z) broke
+        # this gate without breaking anything it means to check. The count is
+        # now read from the snapshot under test; the invariant that every open
+        # row reproduces, keeps its official links and has no problem stands.
+        open_rows = [m for m in SNAPSHOT['matches'] if m['state'] == 'open']
+        self.assertTrue(open_rows, 'a board with no open match cannot prove coverage')
         report, _ = audit(copy.deepcopy(SNAPSHOT), EXTERNAL)
-        self.assertEqual(report['open_rows'], 31)
-        self.assertEqual(report['reproduced_rows'], 31)
+        self.assertEqual(report['open_rows'], len(open_rows))
+        self.assertEqual(report['reproduced_rows'], len(open_rows))
         self.assertEqual(report['rows_failing'], 0)
         for row in report['rows']:
             self.assertTrue(row['fixture_source'].startswith('https://'))
