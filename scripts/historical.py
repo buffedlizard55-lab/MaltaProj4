@@ -337,6 +337,28 @@ def resolve_row(match, standings, meta, lineups=None):
     return block
 
 
+def past_rows(data):
+    """The rows this tier is allowed to cover.
+
+    Delegates to ``scripts.build.past_dated_rows`` so the site's own "Past
+    fixture" label and this tier can never disagree about which rows are past:
+    a row is past only when its sourced ``start`` is before the snapshot's own
+    ``fixtures_observed_at``, never before the machine clock.
+
+    ``state == 'not_open'`` is not the same test and must not be used here. A
+    row goes ``not_open`` when its pick lock passes at the *build* clock, which
+    can be well after ``fixtures_observed_at``; such a match has not been played
+    yet as far as the sourced evidence goes, so reconstructing it from Valve
+    standings and calling the result a past fixture would be a fabrication.
+    Measured on the 2026-10-24T16:50:01Z snapshot (observation 16:46:26Z): rows
+    1079661 (Nuclear TigeRES vs ex-Zero Tenacity) and 1081154 (BakS vs
+    ILLYRIANS) are both ``not_open`` with a 16:54Z lock, but they start at
+    17:00Z — after the observation — and so are excluded here.
+    """
+    from scripts import build  # local import: scripts.build imports this module
+    return build.past_dated_rows(data['matches'], data)
+
+
 def apply_all(data, standings=None, meta=None, now=None):
     """Resolve every non-open row in place; return the coverage summary.
 
@@ -360,8 +382,9 @@ def apply_all(data, standings=None, meta=None, now=None):
     counts = {'rows': 0, 'model_vrs': 0, 'research_vrs_single': 0, 'research_vrs_invariant': 0, 'unresolved': 0}
     files_used = {}
     unresolved = []
+    covered = {m['id'] for m in past_rows(data)}
     for match in data['matches']:
-        if match.get('state') == 'open':
+        if match.get('state') == 'open' or match['id'] not in covered:
             match.pop('historical', None)
             continue
         counts['rows'] += 1
@@ -418,11 +441,12 @@ def apply_all(data, standings=None, meta=None, now=None):
         ],
         'unresolved': unresolved,
         'limitations': list(LIMITATIONS),
-        'note': ('Resolved for inventory completeness only. Every row here is past its own sourced lock or start, so '
-                 'none of these is a current recommendation, and none comes from a betting market: a market on a '
-                 'match that has already started is closed. Each row is priced from the newest official Valve '
-                 'standings file published on or before its own sourced start, through Valve\'s own published formula '
-                 'and calibration.'),
+        'note': ('Resolved for inventory completeness only. Every row here started before this snapshot observed the '
+                 'feed, so none of these is a current recommendation, and none comes from a betting market: a market '
+                 'on a match that has already started is closed. A row that has only locked, but not started, is not '
+                 'included: it has not been played, and reconstructing it would be a fabrication. Each row here is '
+                 'priced from the newest official Valve standings file published on or before its own sourced start, '
+                 'through Valve\'s own published formula and calibration.'),
     }
     data['historical_coverage'] = coverage
     return coverage

@@ -2,10 +2,10 @@
 
 ## Task and acceptance criteria
 
-Hotspawn's CS2 board carries rows whose `lock_time` and `start_time` are already in the
-past. The existing ladder prices a row only while it is open (`scripts/vrs.py` `apply()`
-and `research_single()` both early-return when `state != 'open'`), so on the
-`2026-10-24T08:06:51Z` baseline **63 of 92 rows published no pick, no percentage and no
+Hotspawn's CS2 board carries rows whose sourced `start_time` is already in the past. The
+existing ladder prices a row only while it is open (`scripts/vrs.py` `apply()` and
+`research_single()` both early-return when `state != 'open'`), so on the integrated
+`2026-10-24T16:50:01Z` baseline **61 of 83 rows published no pick, no percentage and no
 odds at all**. The brief requires picks for every match on the board, with a separate
 section for the rows that cannot be resolved, that section referenced from the executive
 summary, every value traceable to an official source, and nothing inferred.
@@ -37,30 +37,35 @@ official source is left blank and flagged.
    from the vendored standings bytes and the published Valve formula, independently of the
    collector, and checks it against what the site displays.
 
-## Measured result on the `2026-10-24T08:06:51Z` baseline
+## Measured result on the integrated `2026-10-24T16:50:01Z` baseline
 
-92 rows · 29 open · 63 locked. All 63 locked rows now carry a sourced value.
+83 rows · 20 open (all priced) · 63 not open, of which **61 are past fixtures** and all 61
+now carry a sourced value.
 
 | Tier | Rows | What is published |
 | --- | --- | --- |
-| `model_vrs` | 25 | pick **and** both win probabilities, from Valve points |
+| `model_vrs` | 24 | pick **and** both win probabilities, from Valve points |
 | `research_vrs_single` | 21 | pick only — exactly one of the two teams is in the standings |
-| `research_vrs_invariant` | 8 | pick only — a repeated label, but every candidate roster gives the same favourite |
+| `research_vrs_invariant` | 7 | pick only — a repeated label, but every candidate roster gives the same favourite |
 | `unresolved` | 9 | nothing; blank and flagged, never 50/50 |
-| **resolved** | **54 of 63 = 85.7 %** | |
+| **resolved** | **52 of 61 = 85.2 %** | |
 
 Standings file used per row (selected by the row's own sourced `start`):
 `standings_global_2026_06_01.md` × 58, `standings_global_2026_07_06.md` × 1,
-`standings_global_2026_10_05.md` × 4.
+`standings_global_2026_10_05.md` × 2.
 
-Pricing all 63 rows from the *current* file instead would resolve only 42, because the
-October file repeats 12 labels that the June file lists once. That measurement is the
-reason dated selection exists.
+Pricing every row from the *current* file instead resolves far fewer, because the October
+file repeats 12 labels that the June file lists once. That measurement is the reason dated
+selection exists.
+
+The other two not-open rows (1079661 Nuclear TigeRES vs ex-Zero Tenacity, 1081154 BakS vs
+ILLYRIANS) are deliberately **not** covered: they had only locked (16:54Z) at the build
+clock and start at 17:00Z, after the 16:46:26Z observation. See irregularity 5.
 
 `scripts.validate --data data/latest.json --site .` reports
-`historical_rows_present 63, historical_rows_reproduced 63,
-historical_probabilities_reproduced 25, historical_unresolved 9, historical_coverage_pct
-85.7`.
+`historical_rows_present 61, historical_rows_reproduced 61,
+historical_probabilities_reproduced 24, historical_unresolved 9, historical_coverage_pct
+85.2`.
 
 ## Official sources
 
@@ -139,14 +144,14 @@ The last six are Svenska CS-Ligan and Urban Riga Open #5 clubs sitting below the
 floor. HLTV team pages exist for some, but HLTV publishes no pre-match probability and no
 bookmaker line was found for any of them, so nothing was inferred.
 
-### 3. Eight rows are safe despite a repeated label
+### 3. Seven rows are safe despite a repeated label
 
 For these, every candidate roster for the repeated label produces the same favourite, so
 the pick does not depend on which club played: 1052748 Inner Circle Academy over sAw ·
 1051801 Bounty Hunters over UNO MILLE · 1052185 Entropy over sAw · 1052698 ex-KRÜ over
 MAGICOS · 1052186 Lilmix over Subtop De France · 1051804 Fluxo over UNO MILLE · 1055478
-Lavked over illwill · 1079193 FOKUS over ex-6666. No percentage is published for any of
-them, because one input of the two-team formula is still unknown.
+Lavked over illwill. No percentage is published for any of them, because one input of the
+two-team formula is still unknown.
 
 ### 4. Duplicate labels in `2026-10-05` (380 teams)
 
@@ -156,63 +161,92 @@ Lilmix #167/#244 · 6666 / ex-6666 #127/#368 · METANOIA Wolves #235/#339.
 Absent from that file: Sharks, ex-Tricked, ReThink, Wampirki, GAMEHARMONY, SINQU REHTI.
 Any future row touching these labels needs the invariant test, not a blind match.
 
-## Two pre-existing defects in the browser suite, found and fixed
+### 5. `state != 'open'` is not the test for "this match has been played"
+
+Found while integrating, and it is the one defect in this session's own work. A row goes
+`not_open` when its **pick lock** passes at the *build* clock, which can be well after the
+snapshot's own `fixtures_observed_at`. Keying the tier on `state != 'open'` gave rows
+1079661 (Nuclear TigeRES vs ex-Zero Tenacity) and 1081154 (BakS vs ILLYRIANS) a
+`historical` block: both were `not_open` with a 16:54Z lock, but they start at 17:00Z,
+after the 16:46:26Z observation. The board then rendered a Valve-standings reconstruction
+of two matches nobody had played yet and labelled them "Past fixture" — a fabrication, and
+a direct contradiction of the publisher's own past-row contract
+(`scripts/build.past_dated_rows`, enforced by `tests/test_session_51a9c98a.py`).
+
+The tier now covers exactly `past_dated_rows`: a row is past only when its sourced `start`
+is before `fixtures_observed_at`. `scripts/historical.past_rows` delegates to that one
+function so the label and the tier cannot drift, `scripts/validate.validate_historical`
+re-derives against the same cut and asserts that no row outside it carries a block, and
+`has_past_picks` uses it too so a snapshot of only locked-but-unstarted rows never
+advertises a section it cannot fill. Regression:
+`HistoricalLadderTests.test_a_locked_row_that_has_not_started_is_never_called_a_past_fixture`.
+
+## Two pre-existing defects in the browser suite
 
 Neither was caused by this change: `git diff --stat 45fc6ba HEAD -- assets/app.js
-site/assets/app.js` is empty. Both reproduce byte-identically on unmodified `main`,
-verified by building `45fc6ba` in a separate worktree and running the same suite against
-it. They are the same class of defect — a test that assumes the committed snapshot is
-fresh, while `.github/workflows/pages.yml` refreshes only on `main`, so every pull request
-runs the suite against an ageing baseline.
+site/assets/app.js` is empty against the branch point, and both reproduced byte-identically
+on the unmodified branch point, verified by building `45fc6ba` in a separate worktree and
+running the same suite against it. Both are the same class of defect — a test that assumes
+the committed snapshot is fresh, while `.github/workflows/pages.yml` refreshes only on
+`main`, so a pull request runs the suite against an ageing baseline.
 
-1. **`tests/browser_9b97d585.cjs:112`** — `data.matches.find(m => m.state === 'open')`
-   takes the first *open* row, but `app.js` hides rows whose lock has passed at the
-   reader's clock. At 16:58Z against the 08:06:51Z baseline, `picks.html` had 29 rows but
-   only 20 visible, and the chosen row `1079659` (Spirit Academy vs Lavked, locked 10:54Z)
-   was already hidden, so the filter matched 0 rows. The check now derives its target and
-   its expected counts from `tr[data-match]:visible` itself, and when nothing is live it
-   asserts the snapshot is at least eight hours old and reports the case as not
-   applicable — the escape hatch the withheld-pick branch of the same file already used.
-2. **`tests/browser_ce45f672.cjs:90`** — `a win probability is hidden behind the tab bar`
-   fired on **placeholder text**. `app.js` keeps the `.glance-card-score` elements when it
-   withholds a card and rewrites them to "Withheld" / "Expired · pick withheld", so
-   counting them cannot distinguish a live card from a withheld one, and the suite then
-   asserted the geometry of two rows of text that are not win probabilities at all.
-   Detection is now content-based; a withheld card is asserted to say so, and the
-   snapshot-age guard proves the case only applies to an aged baseline. The board
-   assertions were split into the two halves that are actually true at any clock: every
-   open row is in the DOM, and no row past its lock is still visible (20 of 29 at 17:00Z).
+**Outcome: no edit of mine shipped.** `origin/main` had advanced 71 commits by integration
+time and its owners had independently repaired both suites against the newer `app.js`, more
+completely than my patches: `browser_ce45f672.cjs` now resolves the fixture behind the
+first card and derives the expectation from `fixture.probabilities`, and
+`browser_9b97d585.cjs` derives its filter target and post-reset count from the runtime
+rows. Per the coordination protocol I discarded my versions and kept theirs; the merged
+tree carries `git diff --stat origin/main -- tests/browser_*.cjs` **empty**. My patches had
+been written against the older tree, so keeping them would have overwritten a concurrent
+repair. They are recorded here only as the diagnosis.
 
-Both files belong to other sessions' scopes, so the edits are logged in `COORDINATION.md`.
+1. **`browser_9b97d585.cjs:112`** took `data.matches.find(m => m.state === 'open')`, but
+   `app.js` hides rows whose lock has passed at the reader's clock: 29 rows on the page,
+   only 20 visible at 16:58Z, and the chosen row `1079659` (Spirit Academy vs Lavked) had
+   locked at 10:54Z, so the filter matched 0.
+2. **`browser_ce45f672.cjs:90`** asserted `a win probability is hidden behind the tab bar`
+   about **placeholder text**: `app.js` keeps the `.glance-card-score` elements when it
+   withholds a card and rewrites their text to "Withheld" / "Expired · pick withheld", so
+   counting them cannot distinguish a live card from a withheld one.
 
-## Verification receipts (all executed on this tree)
+## Verification receipts (all executed on the integrated tree)
 
-- `.venv/bin/python -m unittest discover -s tests` → **Ran 1503 tests, OK (skipped=1)**
-  (baseline before this work: 1484).
+- `.venv/bin/python -m unittest discover -s tests` → **Ran 1548 tests, OK (skipped=7)**
 - `.venv/bin/python -m unittest discover -s audits` → **9 OK**
 - `.venv/bin/python verification-95b588c2/test_integrity.py` → **5 OK**
 - `.venv/bin/python -m unittest discover -s verification-c6` → **12 OK**
-- `.venv/bin/python verification-c6/audit_snapshot.py data/latest.json --output
-  runtime/independent-row-audit.md` → **0 failures**
 - `.venv/bin/python -m scripts.coverage_contract --snapshot data/latest.json` →
-  `problems: []`
-- `.venv/bin/python -m scripts.build --data data/latest.json --now 2026-10-24T08:06:51Z`
-  → `92 sourced rows, 29 with percentages, 0 without, 0 unresolved`;
+  `problems: []`, `inventory_fresh: true`, 83 total / 20 actionable
+- `.venv/bin/python -m scripts.build --data data/latest.json` →
+  `83 sourced rows, 20 with percentages, 0 without, 0 unresolved`;
   `.venv/bin/python -m scripts.stage_legacy` → `Staged verified static root fallback (22 files)`
 - `.venv/bin/python -m scripts.validate --data data/latest.json --site .` → **PASS**,
-  `rows 92, probabilities 29, pages 15, links 888, checksums 20, displayed rows 227,
-  historical 63/63/25/9, coverage 85.7`
-- `npm run test:browser` → **exit 0, 11 of 11 suites passed**
+  `rows 83, probabilities 20, pages 15, links 801, checksums 20, displayed rows 191,
+  historical 61/61/24/9, coverage 85.2`
+- `npm run test:browser` → **exit 0, 11 of 11 suites passed**, on the fresh path (the
+  baseline was under an hour old, so no stale-baseline branch was taken)
 
-New regression coverage: `tests/test_session_ec033870.py` (19 tests) — dated standings
-selection, the historical ladder including 8 corruption cases that must raise, and the
-rendered site.
+New regression coverage: `tests/test_session_ec033870.py` (20 tests) — dated standings
+selection, the historical ladder including 8 corruption cases that must raise, the
+locked-but-unstarted exclusion, and the rendered site.
 
 ## Public review record
 
-Three notes were **appended** to `data/review-notes.json` (229 → 232, ids verified unique;
-appended rather than edited so the existing literal-date assertions stay valid):
+Three notes were **appended** to `data/review-notes.json` (union with `main` at integration:
+244 notes, ids verified unique, `indent=1` serialisation preserved; nothing existing was
+edited, so the literal-date assertions on older findings still hold):
 
 - `session-ec033870-past-fixtures-priced-from-dated-valve-standings-2026-10-24`
 - `session-ec033870-current-roster-anchor-would-pick-the-wrong-valve-row-2026-10-24`
 - `session-ec033870-nine-past-rows-unresolved-2026-10-24`
+
+## Integration note
+
+`origin/main` moved 71 commits while this branch was open. It was merged in rather than
+rebased, and every conflict resolved toward the newer evidence: `main`'s
+`data/latest.json` (the 16:50:01Z capture) was kept and the historical tier re-derived on
+top of it; `data/review-notes.json` is the union of both sides; the two `style.css` copies
+are the union of both sides' appended rules and are byte-identical (68 768 bytes, 41
+matched braces); the two browser suites are `main`'s. `built_at` was left at the value the
+pipeline derives, because overwriting it with `generated_at` had silently turned two
+locked-but-unstarted rows into "future" rows for three of `main`'s coverage tests.

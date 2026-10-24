@@ -106,38 +106,21 @@ const chromium = require('@sparticuz/chromium');
     fs.mkdirSync('runtime', {recursive: true});
     await page.screenshot({path: 'runtime/picks-320-9b97d585.png'});
 
-    // Session ec033870: this used to take the snapshot's first open row and assume
-    // it was still on the board. app.js applies the reader's own clock, so once the
-    // committed baseline is older than that row's lock the row is correctly hidden
-    // and the filter legitimately returns zero. Measured on 2026-10-24 at 16:58Z
-    // against the 08:06:51Z baseline: 20 of 29 open rows visible, and the first open
-    // row (1079659, Spirit Academy vs Lavked) locked at 10:54Z. The same stale row
-    // also broke the post-reset count, which was compared with all 29 open rows.
-    // Both counts are now derived from the rows the page itself still shows, and a
-    // build so stale that nothing is live says so instead of freezing the gate —
-    // the same escape hatch the withheld-pick branch above already uses.
-    const liveIds = await page.locator('tr[data-match]:visible')
-      .evaluateAll(nodes => nodes.map(node => node.dataset.match));
-    if (liveIds.length) {
-      await page.locator('#search').fill(String(liveIds[0]));
-      assert.equal(await page.locator('tr[data-match]:visible').count(), 1, 'match-id filter after the board');
-      assert.match(await page.locator('#result-count').textContent(), /^1 match/);
-      await page.locator('#reset').click();
-      // Reset deliberately restores the whole board (the status filter goes to
-      // "all"), so the expected count is every open row, not the live subset —
-      // measured after #reset on 2026-10-24: 29 visible against 20 live.
-      assert.equal(await page.locator('tr[data-match]:visible').count(),
-        data.matches.filter(match => match.state === 'open').length);
-      report.filter = {target: liveIds[0], liveRows: liveIds.length,
-        openRows: data.matches.filter(m => m.state === 'open').length};
-    } else {
-      const snapshotAge = (Date.now() - Date.parse(data.fixtures_observed_at)) / 3600000;
-      assert.ok(snapshotAge >= 8,
-        `a fresh build must render at least one live row; snapshot is only ${snapshotAge.toFixed(1)} h old`);
-      console.log('Not applicable: every open row in this committed baseline is past its own lock, '
-        + 'so the match-id filter had no live row to narrow to.');
-      report.filter = {target: null, liveRows: 0, openRows: data.matches.filter(m => m.state === 'open').length};
-    }
+    // Read the runtime-visible rows, not the snapshot's capture-time state.
+    // A Hotspawn lock can legitimately pass while the preceding Chromium
+    // suites run; filtering that just-locked ID must not be treated as a
+    // broken search box. The lock enforcement itself remains unchanged.
+    const visibleIds = await page.locator('tr[data-match]:visible')
+      .evaluateAll(rows => rows.map(row => row.dataset.match));
+    assert.ok(visibleIds.length > 0, 'fresh candidate must contain a runtime-open row for the filter check');
+    await page.locator('#search').fill(visibleIds[0]);
+    assert.equal(await page.locator('tr[data-match]:visible').count(), 1, 'match-id filter after the board');
+    assert.match(await page.locator('#result-count').textContent(), /^1 match/);
+    const allBoardRows = await page.locator('tr[data-match]').count();
+    await page.locator('#reset').click();
+    // Reset intentionally selects “All entries”, including a row that locked
+    // during the test; it does not restore the capture-time Open filter.
+    assert.equal(await page.locator('tr[data-match]:visible').count(), allBoardRows);
 
     await page.setViewportSize({width: 390, height: 844});
     await page.goto(base + 'picks.html');

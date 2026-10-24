@@ -217,8 +217,9 @@ def validate_mirror_row(m, q, now):
 def validate_historical(data):
     """Re-derive every past-fixture research value from Valve's own files.
 
-    The historical tier publishes a pick for feed rows whose sourced lock or
-    start has passed — rows the live fields must stay blank on, because
+    The historical tier publishes a pick for feed rows whose sourced start is
+    before this snapshot's own observation clock — rows the live fields must
+    stay blank on, because
     ``audit_9b97d585`` and ``audit_cecfe864`` both fail a not-open row that
     carries an actionable value. So the value lives in its own block, and this
     is what stops that block becoming a place a number can be written by hand:
@@ -235,7 +236,11 @@ def validate_historical(data):
     from scripts import historical as hist_mod
     from scripts import vrs_history
     coverage = data.get('historical_coverage')
-    rows = [m for m in data['matches'] if m.get('state') != 'open']
+    # The same cut the publisher uses to label a row "Past fixture", so this
+    # check and the rendered page can never disagree about the row set. A row
+    # that is merely locked, but has not started yet at the snapshot's own
+    # observation clock, is not a past fixture and must carry no block.
+    rows = [m for m in hist_mod.past_rows(data) if m.get('state') != 'open']
     if coverage is None and not any(m.get('historical') for m in data['matches']):
         return {'historical_rows_present': 0}
     assert coverage, 'Snapshot has non-open rows but no historical coverage block'
@@ -295,9 +300,12 @@ def validate_historical(data):
     assert [u['id'] for u in coverage.get('unresolved') or []] == sorted(
         [m['id'] for m in rows if (m.get('historical') or {}).get('status') == 'unresolved'],
         key=[m['id'] for m in rows].index), 'Unresolved ledger differs from the rows'
+    covered = {m['id'] for m in rows}
     for m in data['matches']:
-        if m.get('state') == 'open':
-            assert not m.get('historical'), 'Open row %s must not carry a historical block' % m['id']
+        if m['id'] not in covered:
+            assert not m.get('historical'), (
+                'Row %s is not a past fixture at this snapshot\'s own observation clock, so it must not '
+                'carry a historical block' % m['id'])
     assert coverage.get('limitations'), 'Historical coverage publishes no limitations'
     return {'historical_rows_present': counts['rows'],
             'historical_rows_reproduced': counts['rows'],

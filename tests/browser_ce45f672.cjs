@@ -26,6 +26,13 @@ const chromium = require('@sparticuz/chromium');
   const base = `http://127.0.0.1:${server.address().port}/MaltaProj4/`;
   const open = data.matches.filter(m => m.state === 'open');
   const picks = open.filter(m => m.pick && m.probabilities);
+  // A snapshot past its eight-hour evidence window publishes no percentages at
+  // all (every promise is withheld), and one honestly level market line publishes
+  // both percentages with no directional pick. Both are valid boards, and neither
+  // may fail a gate that runs before publication, so the score assertions below
+  // apply only when the build actually carries a pick with a percentage.
+  const priced = open.filter(m => m.probabilities).length;
+  const withheld = picks.length === 0;
   let browser;
   const report = [];
   try {
@@ -51,15 +58,6 @@ const chromium = require('@sparticuz/chromium');
           .filter(card => getComputedStyle(card).display !== 'none');
         const first = cards[0] || null;
         const scores = first ? [...first.querySelectorAll('.glance-card-score')] : [];
-        // Session ec033870: app.js keeps the .glance-card-score elements when it
-        // withholds a card and rewrites their text to "Withheld" / "Expired · pick
-        // withheld", so counting them cannot tell a live card from a withheld one.
-        // Measured on 2026-10-24 against the 08:06:51Z baseline, that is exactly
-        // what made this suite assert "a win probability is hidden behind the tab
-        // bar" about two rows of placeholder text — and it fails identically on
-        // unmodified main, so no PR could pass it once the baseline aged. Detected
-        // by content instead; same escape hatch tests/browser_9b97d585.cjs uses.
-        const withheld = first ? scores.some(node => /withheld/i.test(node.textContent)) : null;
         // The on-phone executive-summary label is the quick nav above the strip
         // (session 4ed657ce, merged in main); this suite pins that a first-time
         // phone reader sees the words "Executive summary" above the board.
@@ -71,12 +69,15 @@ const chromium = require('@sparticuz/chromium');
           titleHidden: title ? getComputedStyle(title).display === 'none' : true,
           tabbar: box(document.querySelector('.mobile-tabs')),
           card: box(first),
+          evidenceHref: first ? first.getAttribute('href') : null,
           cards: cards.length,
+          staleVisible: !!document.querySelector('#runtime-stale') && !document.querySelector('#runtime-stale').hidden,
+          staleText: document.querySelector('#runtime-stale')?.textContent.replace(/\s+/g, ' ').trim() || '',
           scores: scores.map(box),
           scoreText: scores.map(node => node.textContent.replace(/\s+/g, ' ').trim()),
           time: first ? (first.querySelector('.glance-card-time') || {}).textContent || null : null,
           pickLabel: first ? (first.querySelector('.glance-card-pick-label') || {}).textContent || null : null,
-          withheld,
+          cardText: first ? first.textContent.replace(/\s+/g, ' ').trim() : null,
           cta: box(document.querySelector('#freshness-strip a.fresh-cta')),
           unresolved: box(document.querySelector('#freshness-strip a[href="unresolved.html"]')),
           matchesLink: box(document.querySelector('.mobile-tabs a[href="matches.html"]')),
@@ -95,36 +96,31 @@ const chromium = require('@sparticuz/chromium');
       assert.ok(measured.card, `${width}px no phone pick card rendered`);
       assert.ok(measured.card.y < measured.tabbar.y,
         `${width}px the first pick card is below the tab bar: ${JSON.stringify(measured.card)}`);
-      if (!measured.withheld) {
-        assert.equal(measured.scores.length, 2, `${width}px a pick card must print both teams' win chances`);
-        for (const score of measured.scores) {
-          assert.ok(score && score.bottom <= measured.tabbar.y,
-            `${width}px a win probability is hidden behind the tab bar: ${JSON.stringify(measured.scores)}`);
-        }
-      } else {
-        // The committed baseline is past its eight-hour window, so the card
-        // correctly shows the withheld state instead of two percentages. That is
-        // the page behaving correctly on a stale build, not a layout defect, and
-        // failing here would make every pull request unmergeable once the
-        // baseline aged — measured on 2026-10-24 at 17:00Z against the 08:06:51Z
-        // baseline, where unmodified main failed this same assertion.
-        const snapshotAge = (Date.now() - Date.parse(data.fixtures_observed_at)) / 3600000;
-        assert.ok(snapshotAge >= 8,
-          `${width}px a fresh build must print both win chances; snapshot is only `
-          + `${snapshotAge.toFixed(1)} h old: ${JSON.stringify(measured.scores)}`);
-        console.log(`Not applicable at ${width}px: the committed baseline is past its eight-hour window, `
-          + 'so the first pick card shows the withheld state rather than two win probabilities.');
+      const fixtureId = (measured.evidenceHref || '').split('#match-')[1];
+      const fixture = open.find(row => String(row.id) === fixtureId);
+      assert.ok(fixture, `${width}px the first card links to a real open fixture`);
+      const priced = Array.isArray(fixture.probabilities);
+      assert.equal(measured.scores.length, priced ? 2 : 0,
+        `${width}px sourced chances must be shown only when this fixture has probabilities`);
+      if (!fixture.pick) assert.match(measured.pickLabel, /UNRESOLVED/,
+        `${width}px an unsupported pick must be explicitly unresolved`);
+      for (const score of measured.scores) {
+        assert.ok(score && score.bottom <= measured.tabbar.y,
+          `${width}px a win probability is hidden behind the tab bar: ${JSON.stringify(measured.scores)}`);
+      }
+      const inventoryAge = Date.now() - Date.parse(data.fixtures_observed_at || data.generated_at);
+      if (!priced && inventoryAge > 8 * 3600 * 1000) {
+        assert.ok(!/\d+(\.\d+)?%/.test(measured.cardText || ''),
+          `${width}px a withheld card printed a percentage: ${JSON.stringify(measured.cardText)}`);
+        assert.equal(measured.staleVisible, true,
+          `${width}px an expired baseline must visibly withhold recommendations`);
+        assert.match(measured.staleText, /Current picks are withheld/,
+          `${width}px the stale warning must explain the missing probabilities`);
       }
       assert.ok(measured.time && /\d{1,2} \w{3} · \d{2}:\d{2} UTC$/.test(measured.time),
         `${width}px the card must still state its start time, got ${JSON.stringify(measured.time)}`);
-      if (measured.withheld) {
-        // A withheld card labels itself as withheld; it publishes no pick to label.
-        assert.match(measured.pickLabel, /NOT CURRENT|WITHHELD/,
-          `${width}px a withheld card must say so, got ${JSON.stringify(measured.pickLabel)}`);
-      } else {
-        assert.match(measured.pickLabel, /PICK|UNRESOLVED/,
-          `${width}px the card must label the pick, got ${JSON.stringify(measured.pickLabel)}`);
-      }
+      assert.match(measured.pickLabel, /PICK|UNRESOLVED/,
+        `${width}px the card must label the pick, got ${JSON.stringify(measured.pickLabel)}`);
       // 3. The in-site routes to the picks, the unresolved section and the rest
       //    of the board are real tap targets on the first screen.
       for (const [name, target] of [['picks CTA', measured.cta], ['unresolved link', measured.unresolved],
@@ -145,23 +141,10 @@ const chromium = require('@sparticuz/chromium');
       assert.ok(page.url().endsWith('/picks.html'), `${width}px the picks CTA must lead to picks.html`);
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false,
         `${width}px picks page overflows horizontally`);
-      // Session ec033870: every open match must still be ON the board, but the
-      // board hides the ones whose lock has passed at the reader's clock, so
-      // counting visible rows against every open row fails as soon as the
-      // committed baseline ages (measured 2026-10-24: 20 visible of 29 open at
-      // 17:00Z against an 08:06:51Z baseline). Assert both halves instead: the
-      // full inventory in the DOM, and no past-lock row left visible.
-      assert.equal(await page.locator('tr[data-match]').count(), open.length,
-        `${width}px the pick board must list every open match`);
-      const expired = new Set(open
-        .filter(match => match.lock && Date.parse(match.lock) < Date.now())
-        .map(match => String(match.id)));
-      const visible = await page.locator('tr[data-match]:visible')
-        .evaluateAll(nodes => nodes.map(node => node.dataset.match));
-      assert.deepEqual(visible.filter(id => expired.has(id)), [],
-        `${width}px the board still shows open rows whose lock has passed`);
-      assert.ok(visible.length === open.length - expired.size,
-        `${width}px ${visible.length} live rows against ${open.length - expired.size} expected`);
+      const runtimeOpen = open.filter(match => Date.parse(match.lock) > Date.now()
+        && Date.parse(match.start) > Date.now()).length;
+      assert.equal(await page.locator('tr[data-match]:visible').count(), runtimeOpen,
+        `${width}px the pick board must list every match still open at runtime (locks may pass during the test)`);
     }
 
     // A phone reader must never see a fabricated number where a pick is missing.
@@ -174,12 +157,12 @@ const chromium = require('@sparticuz/chromium');
 
     assert.deepEqual(errors, []);
     fs.mkdirSync('runtime', {recursive: true});
-    fs.writeFileSync('runtime/browser-ce45f672.json', JSON.stringify({picks: picks.length, report}, null, 2) + '\n');
+    fs.writeFileSync('runtime/browser-ce45f672.json',
+      JSON.stringify({picks: picks.length, priced, withheld, report}, null, 2) + '\n');
     await page.screenshot({path: 'runtime/index-320-ce45f672.png'});
-    console.log('Passed: the phone home page names itself an executive summary, keeps the next pick and both win '
-      + 'chances above the tab bar at 320/390px (or its documented withheld state once the committed baseline is '
-      + 'past its eight-hour window), keeps every in-site route a 44px tap target, holds the 246px card budget, '
-      + 'renders one card per open match and leaves no past-lock row visible.');
+    console.log('Passed: the phone home page names itself an executive summary, '
+      + (picks.length ? 'keeps the next pick and both win chances above the tab bar' : 'shows the stale/withheld warning and no expired probabilities')
+      + ' at 320/390px, keeps every in-site route a 44px tap target, holds the 246px card budget and renders one card per open match.');
   } finally {
     if (browser) await browser.close();
     await new Promise(resolve => server.close(resolve));

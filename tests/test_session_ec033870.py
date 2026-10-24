@@ -1,8 +1,9 @@
 """Session ec033870 — a sourced pick for every row the Hotspawn feed returns.
 
 The requirement is a pick for every CS2 match listed on Hotspawn. The committed
-snapshot had 29 open rows, all priced, and 63 rows with nothing at all: their
-own sourced lock or start predates the snapshot, so ``scripts.build`` withdraws
+snapshot had open rows, all priced, and every other row with nothing at all:
+its own sourced start predates the snapshot's observation of the feed, so
+``scripts.build`` withdraws
 ``pick``/``probabilities``/``fair_odds``/``method`` and two independent audits
 (``scripts/audit_9b97d585.py``, ``scripts/audit_cecfe864.py``) fail any not-open
 row that carries one. Those audits are correct and are kept, so the resolved
@@ -82,6 +83,24 @@ class DatedStandingsSelectionTests(unittest.TestCase):
         self.assertIn('predates every vendored copy', note)
 
 
+def past_ids(data):
+    """The rows the historical tier covers, derived here from the stated rule.
+
+    A feed row is a past fixture when its sourced ``start`` is before the
+    snapshot's own ``fixtures_observed_at``. ``state != 'open'`` is *not* the
+    test: a row goes ``not_open`` when its pick lock passes at the build clock,
+    which can be well after the observation, and a match that has not started
+    must not be presented as a past result. Measured on the
+    2026-10-24T16:50:01Z snapshot (observation 16:46:26Z): 1079661 and 1081154
+    are ``not_open`` with a 16:54Z lock but start at 17:00Z, so they are out.
+    Deliberately re-implemented rather than imported, so a change to the cut
+    under test cannot silently move the expectation with it.
+    """
+    observed = dt(data['fixtures_observed_at'])
+    return {str(m['id']) for m in data['matches']
+            if m.get('start') and dt(m['start']) < observed}
+
+
 class HistoricalLadderTests(unittest.TestCase):
     """Each tier publishes exactly what its evidence supports."""
 
@@ -89,10 +108,11 @@ class HistoricalLadderTests(unittest.TestCase):
     def setUpClass(cls):
         cls.history = vrs_history.load()
         cls.data = snapshot()
-        cls.past = [m for m in cls.data['matches'] if m.get('state') != 'open']
+        cls.past_ids = past_ids(cls.data)
+        cls.past = [m for m in cls.data['matches'] if str(m['id']) in cls.past_ids]
 
-    def test_the_committed_snapshot_resolves_every_not_open_row(self):
-        self.assertTrue(self.past, 'the committed snapshot has no non-open row to test')
+    def test_the_committed_snapshot_resolves_every_past_row(self):
+        self.assertTrue(self.past, 'the committed snapshot has no past row to test')
         for m in self.past:
             block = m.get('historical')
             self.assertIsNotNone(block, 'row %s has no historical block' % m['id'])
@@ -105,10 +125,32 @@ class HistoricalLadderTests(unittest.TestCase):
             for field in ('pick', 'probabilities', 'fair_odds', 'method'):
                 self.assertIsNone(m.get(field), 'row %s carries a live %s' % (m['id'], field))
 
-    def test_no_open_row_carries_a_historical_block(self):
+    def test_no_row_outside_the_past_cut_carries_a_historical_block(self):
         for m in self.data['matches']:
-            if m.get('state') == 'open':
-                self.assertNotIn('historical', m, 'open row %s' % m['id'])
+            if str(m['id']) not in self.past_ids:
+                self.assertNotIn('historical', m, 'row %s is not a past fixture' % m['id'])
+
+    def test_a_locked_row_that_has_not_started_is_never_called_a_past_fixture(self):
+        """Regression for the defect this cut exists to prevent.
+
+        On the 2026-10-24T16:50:01Z snapshot, rows 1079661 (Nuclear TigeRES vs
+        ex-Zero Tenacity) and 1081154 (BakS vs ILLYRIANS) are ``not_open``
+        because their 16:54Z lock passed at the 17:09:55Z build clock, but they
+        start at 17:00Z — after the 16:46:26Z observation. Keying the tier on
+        ``state != 'open'`` gave both a ``historical`` block and rendered a
+        Valve-standings reconstruction of a match nobody had played yet as
+        "Past fixture", which also broke the publisher's own past-row contract
+        (``tests/test_session_51a9c98a.py``).
+        """
+        locked_unstarted = [m for m in self.data['matches']
+                            if m.get('state') != 'open' and str(m['id']) not in self.past_ids]
+        for m in locked_unstarted:
+            self.assertGreater(dt(m['start']), dt(self.data['fixtures_observed_at']),
+                               'row %s is past-dated and belongs in the tier' % m['id'])
+            self.assertNotIn('historical', m,
+                             'row %s has not started, so no past result may be published for it' % m['id'])
+        self.assertTrue(locked_unstarted,
+                        'this snapshot has no locked-but-unstarted row; the cut is untested here')
 
     def test_every_published_number_is_valves_own_formula(self):
         priced = [m for m in self.past if m['historical']['status'] == 'model_vrs']
@@ -184,7 +226,7 @@ class HistoricalLadderTests(unittest.TestCase):
     @staticmethod
     def _first(doc, status):
         row = next((m for m in doc['matches']
-                    if m.get('state') != 'open' and m['historical']['status'] == status), None)
+                    if m.get('historical') and m['historical']['status'] == status), None)
         if row is None:
             raise unittest.SkipTest('this snapshot has no %s row to corrupt' % status)
         return row
@@ -219,7 +261,7 @@ class HistoricalLadderTests(unittest.TestCase):
         doc['historical_coverage']['counts']['unresolved'] += 1
 
     def _tamper_live_pick(self, doc):
-        row = next(m for m in doc['matches'] if m.get('state') != 'open')
+        row = next(m for m in doc['matches'] if m.get('historical'))
         row['pick'] = row['teams'][0]
 
 
@@ -246,10 +288,10 @@ class RenderedSiteTests(unittest.TestCase):
 
     def test_every_past_row_renders_a_labelled_value_and_no_live_pick(self):
         soup = BeautifulSoup(self.matches, 'html.parser')
-        past_ids = {str(m['id']) for m in self.data['matches'] if m.get('state') != 'open'}
-        self.assertTrue(past_ids)
+        expected = past_ids(self.data)
+        self.assertTrue(expected)
         for row in soup.select('tr[data-match]'):
-            if row['data-match'] not in past_ids:
+            if row['data-match'] not in expected:
                 continue
             block = next(m for m in self.data['matches'] if str(m['id']) == row['data-match'])['historical']
             self.assertIn('Past fixture', row.get_text(' ', strip=True))
@@ -290,6 +332,7 @@ class RenderedSiteTests(unittest.TestCase):
         data = json.loads(json.dumps(self.data))
         for m in data['matches']:
             m['state'] = 'open'
+        data['fixtures_observed_at'] = '2020-01-01T00:00:00Z'
         data.pop('historical_coverage', None)
         self.assertFalse(has_past_picks(data))
         self.assertEqual(historical_section(data), '')
