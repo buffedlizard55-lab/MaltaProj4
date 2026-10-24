@@ -1,3 +1,75 @@
+## Session 11afca43 claim — 2026-10-24 16:30 UTC (fresh verified snapshot, line-by-line re-verification, integration to main)
+
+Board read before claiming. Arena-fixed branch `arena/11afca43-maltaproj4`, based on `main` `45fc6ba`
+(PR #244). No other branch is created, checked out or pushed. Earlier `in progress` rows in this file are
+dated 2026-10-24 05:30–08:35 UTC and are stale by the 60-minute rule; this session does not reopen their
+private research files and does not edit their production scopes.
+
+**Measured starting state (not assumed).** `main` == `origin/main` == `45fc6ba`. The committed snapshot is
+`data/latest.json` generated `2026-10-24T08:06:51Z` (fixture evidence `08:03:11Z`): 92 feed rows,
+92/92/92/92 three-view parity, **29 open · 29 picks · 29 win probabilities · 0 unresolved** (14 exchange,
+6 exchange_wide, 3 bookmaker_fallback, 5 model_vrs, 1 model_vrs_mirror). At claim time that snapshot is
+outside its 8-hour evidence window, so the committed board would withhold picks if served as-is.
+`python -m scripts.validate --data data/latest.json --site .` reproduces 92 rows / 29 calculations / 15
+pages / 858 links-assets / 20 checksums / 227 displayed rows; `python -m unittest discover -s tests` is
+**1,484 tests OK (1 skipped)** on the committed tree.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Fresh official-source capture on a GitHub runner (Hotspawn feed + lobby, HLTV, Polymarket, Pinnacle, books, Valve VRS), full pick/probability coverage for every open match, receipts committed to this branch | in progress | 11afca43 | `.github/workflows/harvest-11afca43.yml` (new), `research/harvest-11afca43/**` (new) | 2026-10-24 16:30 |
+| Line-by-line re-verification of the refreshed board: pick/probability arithmetic, evidence URL, expiry, source label; flag anything unverifiable | in progress | 11afca43 | `research/session-11afca43/**` (new), `tests/test_session_11afca43.py` (new) | 2026-10-24 16:30 |
+| Final integration: fresh verified build, all unit/audit/integrity/validator/browser gates, PR to main, merge without approval, live Pages verification, receipt | in progress | 11afca43 | `COORDINATION.md`, `data/latest.json`, `data/matches.csv`, generated root pages, `build-info.json` | 2026-10-24 16:30 |
+
+Evidence rules unchanged: Hotspawn supplies fixture inventory and locks only, never a probability; no crowd
+votes, placeholder odds, inferred values or 50/50 filler. A pick for a low-tier or unlisted match comes only
+from the sourced ladder (HLTV identity/rank/form, a verified esportsbook/exchange line, or the labelled VRS
+model); anything left stays in the separate unresolved section with its attempted sources and limitation.
+
+**Fresh capture (run 40112115767, 2026-10-24 16:38Z) and the single defect it exposed.** The runner refreshed
+the board to **83 feed rows / 22 open / 21 picks / 22 win probabilities / 1 priced-but-unpicked**, quarantine
+0, validate 783 links, published-row audit 0 failures. Every one of the 42 unit failures and 3 errors traced
+to one row: `1079200` Color vs ex-Zero Tenacity, a genuine Polymarket even market (`6072812`: bestBid 0.49 /
+bestAsk 0.51, outcomePrices "0.5","0.5", liquidity $6144, acceptingOrders true). `scripts/core.py resolve()`
+accepted that tight even quote into the strict tier and published `probabilities=[0.5,0.5]`, `pick=None`,
+`reason="Equal verified prices; no directional edge."` — a row with a probability and no pick, which breaks the
+"every open match has a pick" contract, the no-50/50 policy, and the unresolved section (which keys off
+`probabilities is None`). The wide tier already refused an even midpoint; the strict tier did not.
+
+**Fix (this session).** `scripts/core.py resolve()` now refuses an exactly-even exchange quote as evidence in
+**every** tier, recording it as a `rejected_quote`, so the `scripts/refresh.py` ladder keeps falling through to
+the model tier. For `1079200` that yields the VRS model line `[0.688, 0.312]` → pick **Color**. Two contract
+tests that pinned the old "no directional edge" publish were updated to the new contract
+(`tests/test_core.py::test_equal_market_no_pick`, `tests/test_session_ce45f672.py`,
+`tests/test_session_92e3275c.py`), and a regression test was added (`tests/test_session_11afca43.py`).
+`scripts/build.py` and `site/assets/app.js` were made robust so a priced row without a pick can never be counted
+as picked or read as "every match has a pick". `README.md` documents the refusal.
+
+**Past-dated rows, not a data regression.** Nine rows in the previous snapshot (`1079193`, `1079195`, `1079658`,
+`1079659`, `1079660`, `1081152`, `1081153`, `1083120`, `1083121`) started between the 08:06Z and 16:38Z
+harvests and left the Hotspawn feed, so a fresh snapshot correctly no longer carries them. Two tests that
+hard-coded those ids were made robust rather than dropped: `tests/test_session_35c6e1e9.py` skips its three
+row-bound alias tests when `1083121` is absent (the registry and label tests still run), and
+`tests/test_session_e9be3e6b.py::test_known_listing_and_model_arithmetic` pins the Valve-VRS arithmetic on
+whatever model row the snapshot carries instead of the now-past `1081152`.
+
+**Gate honesty.** The first run's `success` was false: every gate step piped through `| tail`, so the exit code
+was `tail`'s. That is corrected so a failing build can no longer be reported green.
+
+**Second capture (run 40115724079, 2026-10-24 17:27Z) — green.** With the fix in place the runner refreshed to
+**81 feed rows / 20 open / 20 picks / 20 win probabilities / 0 unresolved** (12 exchange, 3 bookmaker_fallback,
+3 model_vrs, 1 model_vrs_mirror, 1 exchange_wide); `1079200` is now `method=model_vrs`, `pick=Color`,
+`probabilities=[0.6884, 0.3116]`. Every gate passed on the runner and was re-confirmed locally:
+`unittest discover -s tests` **1,488 OK (10 skipped)**, `audits` 9 OK, `test_integrity` 5 OK, `verification-c6`
+12 OK, `scripts.validate` 81 rows / 20 calculations / 15 pages / 767 links / 20 checksums,
+`verification-767649ba` auditor **0 failures**, `npm run test:browser` all 11 suites passed. The executive
+summary now reads "Every one of the 20 open matches has a pick, and every pick carries a win probability."
+
+---
+
+---
+
+---
+
 ## Session bf1b12c7 — final receipt: PR #295 merged, live site verified (2026-10-24 18:05 UTC)
 
 - **[PR #295](https://github.com/buffedlizard55-lab/MaltaProj4/pull/295) was merged at 2026-10-24T17:34:42Z** as `147f06d`.
