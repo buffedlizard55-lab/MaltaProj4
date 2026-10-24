@@ -217,11 +217,16 @@ function expire() {
   const priced = open.filter(m => !globalStale && m.priced && Date.parse(m.expires_at) > now);
   const researched = open.filter(m => !globalStale && m.research && !m.priced && Date.parse(m.expires_at) > now);
   const modelled = priced.filter(m => m.model);
+  // Session 11afca43: "picked" counts rows that actually publish a pick, and
+  // "unresolved" counts the rows that do not. A priced row normally carries a
+  // pick, but a genuinely even line publishes probabilities with no direction,
+  // so deriving either from the priced set would hide an unresolved pick.
+  const picked = [...priced, ...researched].filter(m => m.picked).length;
   const counts = {open: open.length, priced: priced.length, researched: researched.length,
-    picked: [...priced, ...researched].filter(m => m.picked).length,
+    picked: picked,
     model: modelled.length, market: priced.length - modelled.length,
     missing: open.length - priced.length,
-    unresolved: open.length - priced.length - researched.length,
+    unresolved: open.length - picked,
     percent: open.length ? Math.round(priced.length / open.length * 100) : 0};
   for (const el of document.querySelectorAll('[data-count]')) el.textContent = String(counts[el.dataset.count] ?? '');
   for (const el of document.querySelectorAll('[data-completeness]')) {
