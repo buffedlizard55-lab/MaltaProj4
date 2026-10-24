@@ -508,6 +508,8 @@ def resolve(fixture, candidates, provider, now, relax=False):
             quote['identity_sources'] = copy.deepcopy([item for item in IDENTITIES if any(plain_name(t) in {plain_name(n) for n in item['names']} for t in c['teams'])])
             if c.get('source_receipts'):
                 quote['source_receipts'] = c['source_receipts']
+            if c.get('team_metadata'):
+                quote['team_metadata'] = c['team_metadata']
             p = quote['probabilities']
             # A neutral quote establishes a market line but not a directional
             # recommendation. Preserve it as context and continue the existing

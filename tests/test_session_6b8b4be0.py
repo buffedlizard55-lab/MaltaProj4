@@ -56,3 +56,27 @@ class NeutralSourceLadder(unittest.TestCase):
         resolve(row, polymarket_candidates([bad], iso(NOW)), 'Polymarket', NOW)
         self.assertNotIn('no_edge_lines', row)
         self.assertIsNone(row['pick'])
+
+    def test_retained_neutral_sources_replay_from_original_fields(self):
+        from scripts.validate import reconstruct_quote
+        from scripts.core import calculator_for, orientation, dt
+        path = ROOT / 'research/session-6b8b4be0/live/snapshot.json'
+        snapshot = json.loads(path.read_text())
+        found = 0
+        for row in snapshot['matches']:
+            for quote in row.get('no_edge_lines') or []:
+                # Older capture stored metadata inside its original event only.
+                retained = dict(quote)
+                if quote.get('provider') == 'Polymarket':
+                    retained.setdefault('team_metadata', (quote.get('event') or {}).get('teams') or [])
+                candidate = reconstruct_quote(retained, snapshot['schema_version'])
+                order = orientation(row, candidate['teams'], candidate['start'])
+                self.assertIsNotNone(order)
+                calculator = calculator_for(quote['provider'])
+                kwargs = {'allow_wide': True} if quote.get('tier') == 'wide_exchange' else {}
+                replay = calculator(candidate, order, dt(quote['observed_at']), **kwargs)
+                self.assertEqual(quote['probabilities'], replay['probabilities'])
+                self.assertLess(abs(replay['probabilities'][0] - replay['probabilities'][1]), .0001)
+                self.assertTrue(quote['source_receipts'])
+                found += 1
+        self.assertGreater(found, 0, 'the dated capture must exercise genuine neutral context')

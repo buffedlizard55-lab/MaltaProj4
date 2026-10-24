@@ -693,3 +693,16 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
   body[data-page="index"] .glance-card-teams .vs{display:inline-block;padding:0 6px;letter-spacing:.5px}
   body[data-page="index"] .glance-card-pick{padding:6px 10px;gap:4px}
 }
+
+/* Board-first on tall phones too: optional filters must not bury the pick. */
+@media(max-width:650px){
+  body[data-page=picks] main>.table-wrap{order:3}
+  body[data-page=picks] main>.filters,body[data-page=picks] main>#filter-empty{order:4}
+  body[data-page=picks] main>.section-nav{order:5}
+  body[data-page=picks] main>.board-method{order:6}
+  body[data-page=picks] tbody tr td.team-col{order:0}
+  body[data-page=picks] tbody tr td.pick-cell{order:1}
+  body[data-page=picks] tbody tr td.time-cell,body[data-page=picks] tbody tr td:nth-child(3){order:2}
+  body[data-page=picks] tbody tr td.review-reason{order:3}
+  body[data-page=picks] tbody tr td.source-links{order:4}
+}
