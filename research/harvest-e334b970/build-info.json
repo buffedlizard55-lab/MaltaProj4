@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "revision": "5e09e726848057e118eff20219df555fcceb16d7",
+  "built_at": "2026-10-24T05:37:21.165678Z",
+  "snapshot_generated_at": "2026-10-24T05:37:20.660266Z",
+  "rows": 88,
+  "files": {
+    "404.html": "4e8a7b52cbd608318c453f01d6d5f6ec444adab579d10dbc83fa71bb3f33fdd6",
+    "analysis.html": "0f4a25d814cd20f93359759d43a71228333eea5fdc55a0d72393c25d279a848d",
+    "assets/app.js": "a2d7109e84a637f835a3dfa486302f93bd51f5b12ec3080b8164a4e2908e2c67",
+    "assets/favicon.svg": "5b0ba0da9b9bec504dc4695b59291abad789479745d4a18581fb78b0215738ba",
+    "assets/style.css": "fe26e6ab6bb889de7fc9474fa585f2a89dfd7230f595ce112c1297c609545201",
+    "data/latest.json": "392707a5093b763b5b8937c37f14c4fc46801f5b947bc5f693a76affd219b7ae",
+    "data/matches.csv": "df35a11f78d8411f3930ba3608465b6001ab5881b7c5d1a70640ffbd7ec8365c",
+    "evidence.html": "35b9708eec952434e8fed9f43b4ba39de6aeb1b952b534985f9e36d19a136141",
+    "index.html": "07f3c58ee54b6d269ea53b96700379925ff0dbd0b5896e84be4e4f8bd65a4cf4",
+    "matches.html": "bfa932826df71a9c5cbde9bfafcc09052dbe7d7d5870b5bbd5efb76d453077f2",
+    "methodology.html": "db6dd3e60721627f0629397fd4d76b07f3f9ea5ab15b72348f3bee3b35a094ae",
+    "picks.html": "7943dc2e2505d4cf4fe71120351bd3bb622d6d2a9bfa38ebd90ff84a1465dfa2",
+    "review.html": "e76877fd719a8ce4b73b1b1380b71070a3bd6f2b977f3e101a6a25dd73511084",
+    "site/index.html": "7ad39335aef2960a4c7f3a8f9f2322d358e59fd45631acfa19f456575ec491db",
+    "site/methodology.html": "130024ea27020261e759b42920f78c42bebcbb44f226ef5216c8bbb1a2684b33",
+    "site/picks.html": "de8e71d8a3a1f7b287299108b460956d7c52391255b567fc71cc9974f8dcd76c",
+    "site/review.html": "91547a7e0d0e5b1e9bde9a89cad48c38173aefee74ea25afd75c17d9de3937cf",
+    "site/unresolved.html": "d8c18e13a798f6d0f0f3cf8ee21bb42ed941d6077c82c8031ae3476d6120bded",
+    "sources.html": "4d62a2c6d4652f9f1f2e62f58a08f984b766015ca4b49649a469828307b24f9d",
+    "unresolved.html": "303ba18527feb238629eeae0e15d5ef40975361d09448cb2893cdf2e18e208b1"
+  }
+}

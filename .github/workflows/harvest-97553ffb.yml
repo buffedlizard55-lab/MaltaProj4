@@ -1,0 +1,136 @@
+name: Fresh CS2 coverage harvest 97553ffb (non-publishing)
+
+# Runs the production source ladder on GitHub's normal egress, then replays the
+# exact candidate through independent evidence, build/link, unit and browser
+# gates. A green run may commit that verified candidate to this fixed session
+# branch; it never deploys Pages and never pushes to main. A failed run commits
+# only dated research receipts so the failure remains reviewable.
+on:
+  push:
+    branches: [arena/97553ffb-maltaproj4]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: coverage-harvest-97553ffb
+  cancel-in-progress: true
+
+jobs:
+  capture:
+    if: github.ref == 'refs/heads/arena/97553ffb-maltaproj4' && (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[capture]'))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+          cache: npm
+      - run: pip install -r requirements.txt
+      - run: npm ci --ignore-scripts
+      - name: Verify the committed board before touching any source
+        run: |
+          python -m unittest discover -s tests
+          python -m unittest discover -s audits -p 'test_*.py'
+          python verification-95b588c2/test_integrity.py
+          python -m unittest discover -s verification-c6 -p 'test_*.py'
+          python -m scripts.validate --data data/latest.json --site .
+      - name: Refresh official Hotspawn, HLTV, exchange, book and Valve sources
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -o pipefail
+          mkdir -p runtime research/harvest-97553ffb
+          python -m scripts.refresh --output runtime/latest.json 2>&1 | tee research/harvest-97553ffb/refresh.log
+      - name: Quarantine any row the independent evidence replay cannot reproduce
+        run: |
+          set -o pipefail
+          python -m scripts.quarantine runtime/latest.json 2>&1 | tee research/harvest-97553ffb/quarantine.log
+      - name: Independently replay the refreshed rows before building
+        run: python verification-c6/audit_snapshot.py runtime/latest.json --output runtime/independent-row-audit.md
+      - name: Build and validate the fresh candidate
+        run: |
+          python -m scripts.build --data runtime/latest.json
+          python -m scripts.validate --data runtime/latest.json
+          python verification-c6/audit_snapshot.py public/data/latest.json --output research/harvest-97553ffb/published-row-audit.md
+      - name: Write the row-by-row source ledger and current coverage contract
+        run: |
+          python -m scripts.audit_9b97d585 --snapshot public/data/latest.json --previous data/latest.json --output research/harvest-97553ffb
+          cp runtime/independent-row-audit.md research/harvest-97553ffb/independent-row-audit.md
+          python -m scripts.coverage_contract --snapshot public/data/latest.json --output research/harvest-97553ffb/coverage-contract.json
+          python - <<'PY'
+          import json
+          report = json.load(open('research/harvest-97553ffb/coverage-contract.json'))
+          # Fresh evidence is mandatory. Three-view parity is not: when official
+          # Hotspawn views disagree, the collector's sourced union and its flag
+          # are the honest publishable result, not a reason to freeze old picks.
+          assert report['inventory_fresh'], 'candidate fixture evidence is not fresh'
+          assert not report['problems'], report['problems']
+          PY
+      - name: Phone, desktop, accessibility and exact expiry checks on the fresh candidate
+        run: |
+          set -o pipefail
+          npm run test:browser 2>&1 | tee research/harvest-97553ffb/browser.log
+      - name: Re-run every offline gate against the exact fresh data and root fallback
+        run: |
+          set -o pipefail
+          python -m scripts.stage_legacy
+          python -m scripts.validate --data data/latest.json --site .
+          python -m unittest discover -s tests 2>&1 | tee research/harvest-97553ffb/unit-after-refresh.log
+          python -m unittest discover -s audits -p 'test_*.py'
+          python verification-95b588c2/test_integrity.py
+          python -m unittest discover -s verification-c6 -p 'test_*.py'
+      - name: Record runner identity without changing source timestamps
+        if: always()
+        env:
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+          RUN_SHA: ${{ github.sha }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          receipt = {'workflow_run_id': os.environ['RUN_ID'], 'attempt': os.environ['RUN_ATTEMPT'],
+                     'checkout_sha': os.environ['RUN_SHA'], 'run_url': os.environ['RUN_URL'],
+                     'publishes_pages': False, 'snapshot': 'research/harvest-97553ffb/snapshot.json'}
+          Path('research/harvest-97553ffb').mkdir(parents=True, exist_ok=True)
+          Path('research/harvest-97553ffb/run.json').write_text(json.dumps(receipt, indent=1) + '\n')
+          PY
+      - name: Commit the verified fresh candidate to the fixed session branch
+        if: success()
+        run: |
+          git config user.name "cs2-evidence-runner"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- research/harvest-97553ffb 404.html analysis.html assets build-info.json data/latest.json data/matches.csv data/book-receipts.json evidence.html index.html matches.html methodology.html picks.html review.html site sources.html unresolved.html .nojekyll
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Publish verified fresh CS2 candidate from run ${GITHUB_RUN_ID} [skip ci]"
+          git pull --rebase origin arena/97553ffb-maltaproj4
+          git push origin arena/97553ffb-maltaproj4
+      - name: Retain failed-candidate research without publishing its data
+        if: failure()
+        run: |
+          git config user.name "cs2-evidence-runner"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- research/harvest-97553ffb
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Retain failed CS2 candidate diagnostics from run ${GITHUB_RUN_ID} [skip ci]"
+          git pull --rebase origin arena/97553ffb-maltaproj4
+          git push origin arena/97553ffb-maltaproj4
+      - name: Retain candidate and audit artifacts
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: coverage-harvest-97553ffb-${{ github.run_id }}
+          path: |
+            research/harvest-97553ffb
+            runtime/latest.json
+            runtime/independent-row-audit.md
+            public/build-info.json
+          retention-days: 14

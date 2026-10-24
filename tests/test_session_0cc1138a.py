@@ -335,10 +335,11 @@ def archived_coverage_problems(snapshot):
 
 
 class LiveHotspawnCoverage(unittest.TestCase):
-    """Parity with the 09:44Z lobby observation, asserted on the archive.
+    """Archived lobby parity plus current raw official-inventory coverage.
 
-    The observation, its archived start times and the reason the assertions
-    are shaped this way are documented above ``OBSERVED_OPEN_STARTS``.
+    The archived observation and its start times are documented above
+    ``OBSERVED_OPEN_STARTS``; the rotating board is checked separately against
+    its own retained official fixture evidence.
     """
 
     def test_archived_observation_lists_every_fixture_with_a_pick(self):
@@ -373,6 +374,48 @@ class LiveHotspawnCoverage(unittest.TestCase):
         }
         problems = archived_coverage_problems(rotated)
         self.assertIn('1079193: still-future fixture is missing from the board', problems)
+
+    def test_snapshot_covers_the_current_official_fixture_evidence(self):
+        # Completed-owner handoff (session 97553ffb, 2026-10-24): the 09:44Z
+        # observation above is durable historical evidence, not a list that can
+        # bind every later snapshot. Hotspawn subsequently removed completed
+        # fixtures 1081148 and 1079655; requiring them forever blocked the unit
+        # step before any refresh could run (five scheduled failures). Current
+        # parity is instead checked against the raw official fixture evidence
+        # retained in this snapshot. This is stronger for newly added matches:
+        # they are covered too, rather than only the original 30 IDs.
+        known = {str(m['id']) for m in SNAPSHOT['matches']}
+        raw = {str(m['id']) for m in SNAPSHOT.get('fixture_evidence', [])
+               if m.get('sport_alias') == 'cs2'}
+        self.assertTrue(raw, 'current official fixture evidence is required')
+        self.assertEqual(known, raw, 'published fixture IDs differ from current official evidence')
+        if SNAPSHOT.get('coverage') == 'verified':
+            counts = SNAPSHOT.get('coverage_counts') or {}
+            for source in ('api', 'page', 'lobby', 'retained'):
+                self.assertEqual(counts.get(source), len(raw), source)
+
+    def test_each_current_open_fixture_has_a_pick_or_documented_limit_and_an_official_link(self):
+        # Apply the original coverage intent to the current open set, including
+        # matches added after 2026-10-23. A supported pick and a fully documented
+        # unresolved outcome are both explicit; silently dropping a row is not.
+        # Lock/expiry arithmetic and every numerical calculation remain guarded
+        # by the independent re-derivation and coverage-contract suites above.
+        for row in SNAPSHOT['matches']:
+            if row.get('state') != 'open':
+                continue
+            fixture = str(row['id'])
+            url = row.get('source_url', '')
+            self.assertTrue(url.startswith('https://www.hotspawn.com/') or
+                            url.startswith('https://play.hotspawn.com/'), fixture)
+            if row.get('pick'):
+                self.assertIn(row['pick'], row['teams'], fixture)
+                if row.get('probabilities') is not None:
+                    self.assertTrue((row.get('evidence') or [{}])[0].get('url'), fixture)
+            else:
+                self.assertIsNone(row.get('probabilities'), fixture)
+                self.assertTrue(row.get('reason'), fixture)
+                self.assertTrue(any(a.get('url') and a.get('reason')
+                                    for a in row.get('attempts', [])), fixture)
 
 
 if __name__ == '__main__':

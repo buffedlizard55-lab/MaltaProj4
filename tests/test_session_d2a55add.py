@@ -121,10 +121,13 @@ class ExecutiveSummaryBarTests(unittest.TestCase):
         site_css = (ROOT / 'site' / 'assets' / 'style.css').read_bytes()
         self.assertEqual(root_css, site_css)
         css = site_css.decode('utf-8')
-        # Phones order the bar directly after the pick list (order 5): with it
-        # above the list the first picks sat at y=901 on a 390px phone, past
-        # the 750px first-screen gate other suites enforce.
-        self.assertIn('body[data-page="index"] main>#exec-summary{order:5}', css)
+        # The bar stays directly under freshness and before the pick list.
+        # The earlier order-5 workaround treated the y=901 symptom; final
+        # integration fixed the unclosed short-phone media block that nested
+        # the tall-phone rules. Both the summary and first pick now pass at
+        # 320/390px without moving the summary behind the recommendations.
+        self.assertIn('body[data-page="index"] main>#exec-summary{order:3}', css)
+        self.assertIn('body[data-page=picks] .prob-pair span{white-space:nowrap}\n}\n/* Session f89bb1f8', css)
         self.assertIn('.exec-bar-link', css)
         self.assertIn('min-height:44px', css)
 

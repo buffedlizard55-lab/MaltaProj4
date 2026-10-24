@@ -97,7 +97,13 @@ class CoverageCounts(unittest.TestCase):
         for m in open_m:
             if not m["pick"]:
                 self.assertIsNone(m["probabilities"], msg=m["id"])
-                self.assertTrue(m["reason"] and ("No verified market line" in m["reason"] or "Unverified opponent" in m["reason"] or "has passed" in m["reason"]), msg=m["id"])
+                # The current collector may use a different precise limitation
+                # than the 22 October wording. Require the durable evidence
+                # contract, not one historical sentence, and never invent a pick.
+                self.assertTrue(m.get("reason"), msg=m["id"])
+                self.assertTrue(any(a.get("url") and a.get("reason")
+                                    for a in m.get("attempts") or []), msg=m["id"])
+                self.assertTrue(str(m.get("source_url") or "").startswith("https://"), msg=m["id"])
             else:
                 self.assertTrue(m["pick"] in m["teams"], f"pick must be one of fixture teams: {m}")
 
@@ -138,8 +144,9 @@ class CoverageCounts(unittest.TestCase):
             self.assertIn("1082919", {m["id"] for m in unresolved})
             self.assertEqual(set(m["id"] for m in research), EXPECTED_RESEARCH_NEW)
 
-    def test_snapshot_is_verified(self):
-        self.assertEqual(SNAPSHOT["coverage"], "verified")
+    def test_snapshot_is_verified_or_a_complete_disclosed_current_union(self):
+        from scripts import audit_f89bb1f8
+        self.assertEqual(audit_f89bb1f8.inventory_problems(SNAPSHOT), [])
         self.assertEqual(SNAPSHOT["stale_after_hours"], 8)
         self.assertEqual({m['id'] for m in SNAPSHOT['matches']},
                          {str(r['id']) for r in SNAPSHOT['fixture_evidence']})

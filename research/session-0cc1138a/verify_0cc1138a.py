@@ -7,9 +7,11 @@ committed snapshot and rebuilds each number from the archived primary evidence:
   ``outcomePrices`` string exactly as the Gamma API returned it.
 * EGamersWorld listing rows: decimal odds de-vigged with ``q_i = 1 / d_i`` and
   ``p_i = q_i / (q_1 + q_2)``; the overround is ``q_1 + q_2 - 1``.
-* Valve VRS model rows: Valve's own Glicko expectation at fixed rating deviation
-  (``model/fit.js`` -> ``model/glicko.js``) and Valve's published fit slope from
-  ``modelfit.png`` (observed = 0.7986 x expected + 0.126).
+* Valve VRS model rows (official file or HLTV's dated mirror of Valve points):
+  Valve's own Glicko expectation at fixed rating deviation (``model/fit.js`` ->
+  ``model/glicko.js``) and Valve's published fit slope from ``modelfit.png``
+  (observed = 0.7986 x expected + 0.126). The mirror supplies rating inputs,
+  never a crowd or Hotspawn probability.
 
 It then checks, for every row: the pick is the larger probability, the fair
 decimal line is ``1 / p``, the two sides sum to one, the evidence carries a
@@ -79,19 +81,21 @@ def order_prices(labels, prices, teams):
 def evidence_probabilities(ev, teams=None):
     """Independent probabilities from a single evidence record, in fixture team order."""
     provider = ev.get('provider')
-    if provider == 'Valve VRS model':
+    if provider in {'Valve VRS model', 'HLTV Valve ranking (Valve points)'}:
+        # Integration repair (97553ffb): the dated HLTV mirror retains the same
+        # two Valve point inputs and formula receipts as the official-file tier.
+        # Re-derive both tiers independently; do not reject a valid new method
+        # merely because its provider label names the mirror.
+        if (not isinstance(ev.get('points'), list) or len(ev['points']) != 2
+                or float(ev.get('rating_deviation')) != RD
+                or float(ev.get('calibration_slope')) != SLOPE):
+            raise ValueError('Valve model inputs or calibration receipt are incomplete')
         raw = glicko_expect(ev['points'][0], ev['points'][1])
-        return [calibrate(raw), 1 - calibrate(raw)], 'valve_vrs'
-    if provider == 'HLTV Valve ranking (Valve points)':
-        # Integration repair (session d2a55add, 2026-10-24): the documented
-        # model_vrs_mirror tier (scripts.summary.ORIGINS) postdates this
-        # verifier. Its evidence carries the same Valve points in fixture
-        # order and the pipeline applies the identical Glicko expectation and
-        # calibration, so the row is re-derived here under its own label
-        # instead of being reported as irreproducible. No math is shared with
-        # the pipeline beyond Valve's published formula, as before.
-        raw = glicko_expect(ev['points'][0], ev['points'][1])
-        return [calibrate(raw), 1 - calibrate(raw)], 'valve_vrs_hltv_mirror'
+        retained_raw = ev.get('raw_expected')
+        if retained_raw is not None and abs(float(retained_raw[0]) - raw) > TOL:
+            raise ValueError('retained raw Valve expectation does not match its points')
+        kind = 'valve_vrs' if provider == 'Valve VRS model' else 'hltv_valve_vrs_mirror'
+        return [calibrate(raw), 1 - calibrate(raw)], kind
     if 'decimal_odds' in ev:
         q = [1 / float(d) for d in ev['decimal_odds']]
         p = [v / sum(q) for v in q]
