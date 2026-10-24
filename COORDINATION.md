@@ -1,3 +1,128 @@
+## Session d2b90de7 — delivery receipt: PR #252 (2026-10-24)
+
+**PR [#252](https://github.com/buffedlizard55-lab/MaltaProj4/pull/252)** carries this session's work to
+`main`. What it contains, and what it deliberately does not:
+
+**1. The 18-hour publication freeze, measured and root-caused (flagged note
+`session-d2b90de7-publish-deadlock-2026-10-24`).** All five scheduled publish runs delivered after
+2026-10-23 12:49Z (39956197341, 39998307424, 40025828846, 40042111432, 40062143026) died in under 60s at
+*Unit and independent failure-mode tests*, before any refresh; the live site fail-closed correctly and
+served the expired-board banner for ~17.7h. Reproduced locally (1195 tests, 1 failure + 1 error):
+`LiveHotspawnCoverage` pinned the 30 lobby fixtures observed at 23 Oct 09:44Z, the feed rotated
+`1081148`/`1079655` out, and the `removed_ids`-diff excuse was empty again at the next rotation.
+
+**2. Concurrent-repair integration — supersession, not overwrite.** While this session's capture ran,
+four sessions merged: cb16f548 **PR #245** (archive-pinned rotation-proof parity repair + the newer
+board, snapshot `2026-10-24T06:19:43Z`, 92/92/92/92, **31 open · 31 picks · 31 probabilities**),
+d2a55add **PR #246** (verifier `model_vrs_mirror` branch, `'23 Oct'` strip pin), 174afa4f **PRs
+#251/#258** (verifier maps reviewed identity aliases from the evidence; root regenerated on the 06:19Z
+board), a30d31a0 **PR #260** (root fallback refuses builds made from older source; in-step gates
+fatal), ea2e254c **PR #257** (semantic tall-phone CSS pins; sourced-alias regressions) and cecfe864
+**PRs #261/#263** (`alias_groups` hardened to dual registration — https source AND written basis AND
+the committed `data/identities.json` registry; publisher-replay hardening; 31-open board ledger). This session had independently repaired the same deadlock on its own branch (excuse keyed to the
+snapshot's retained raw `fixture_evidence`, 11 regressions), staged its own 05:57Z board, and — after
+measuring pristine `dce494b` RED in the sandbox (3 failures + 1 error: the board's new row `1083121`
+published Hotspawn's *Projeto do KinGui* against Polymarket outcome *Tropa do KinGui* under the sourced
+alias record session 9f3e77d2 stored on 22 Oct, which the strict verifier refused, freezing the gate
+again; and the legacy root `assets/style.css` was stale against `site/assets/style.css`, so d2a55add's
+unclosed-`@media` repair had not propagated) — developed equivalents of both second-order repairs. **All
+competing edits to shared files were dropped at integration in favour of the merged repairs** (the branch
+was re-played onto `dce494b`, then onto `afaa07a`); nothing of any other session was discarded, and no
+price, pick or probability was changed by this session's PR. Second measured RED, same deadlock
+mode one hour later: merging #257's alias tests with #263's hardened `alias_groups` left main
+`7be8660` RED in its own unit gate (the synthetic fixture lacked the `basis` field the hardening
+requires — measured failing on pristine `7be8660`; the published board was never affected, real
+evidence carries source and basis, verify standalone 31/31 on every tree). This session prepared a
+dated takeover supplying the basis; 4ed657ce's **PR #267** (alias-gate deadlock resolved: row
+receipt plus committed register, full dual-registration contract, root rebuilt) shipped first, so
+the takeover was withdrawn — this PR ships no shared-test edits at all. What it keeps: the capture receipts
+(`research/harvest-d2b90de7/**`), the independent lobby read and report (`research/session-d2b90de7/**`),
+the harvest workflow, the offline invariant suite (`tests/test_session_d2b90de7.py`, incl. regressions
+that a recorded alias reproduces and an UNrecorded rename is still refused), the two dated review notes
+union-merged into `data/review-notes.json` (187 total, none removed) and the note-driven regeneration of
+`review.html`/`build-info.json` through the pipeline's own `scripts.build`.
+
+**3. Independent full capture retained as dated evidence (flagged note
+`session-d2b90de7-coverage-measurement-2026-10-24`).** Non-publishing runner capture
+[40067605793](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40067605793), snapshot
+`2026-10-24T05:57:43Z`: parity 88/88/88/88, quarantine 0, audits 0 failures, unresolved-probe **0 rows
+to probe** → 25 open · 25 picks · 25 probabilities · 0 unresolved. Session-side verification sharing no
+code with the pipeline: the 25 open IDs equal this session's own 05:28Z lobby read 1:1
+(`research/session-d2b90de7/lobby-read-2026-10-24T0530Z.md`, crowd votes recorded as refused context and
+asserted never equal to a published probability); the vendored Valve standings file is byte-identical to
+Valve's pinned commit `eec4853d…` (sha256 via api.github.com); Polymarket market `6075573` re-read live
+(moneyline, exact pair/start, accepting orders, same-direction drift); both BO3.gg/Thunderpick lines
+de-vig to the published digits exactly (1.60/2.17 → 57.6/42.4; 1.001/12 → 92.3/7.7); HLTV's dated 24 Oct
+Valve-ranking view confirms #102 Spirit Academy 1030 pts and #151 LFO 10 819 pts with matching rosters,
+and both mirror probabilities re-derive by hand from Valve's published formula. The 23 Oct lobby/feed
+count mismatch (94 vs 92) rotated away — this capture read 88/88, main's next read 92/92/92/92 — while
+its structural note stays flagged. Full log: `research/session-d2b90de7/REPORT.md`.
+
+**Gates on the exact integrated tree (all re-run after the final re-play onto `59679c2`, PR #269):** 1,345 unit tests OK
+(1 skipped) · audits 9 OK · integrity 5 OK · verification-c6 12 OK · `verify_0cc1138a.py` standalone on
+the committed board: **31 rows checked · 31 re-derived · 0 failures** · validator exit 0 (92 rows, 31
+reproduced probability calculations, 15 pages, 878 links/assets, 20 checksums, 234 displayed rows) ·
+**all nine Chromium browser suites pass**.
+
+**Handoff notes for future sessions:** `verify_0cc1138a.py` now carries dated additive branches from
+several sessions (mirror via d2a55add, evidence aliases via 174afa4f, dual registration via
+cecfe864); extend re-derivers additively
+whenever a documented method or reviewed alias lands, or the next board deadlocks publication. Identity
+aliases must stay recorded in `data/identities.json` **and** stored on the row evidence
+(`identity_sources`) — the verifier only trusts the evidence copy. Do not pin mutable snapshot values
+(fixture ID sets, literal dates, retained-row floors) in shared gates; key excuses to the snapshot's own
+retained evidence or use archived observations with rotation guards (PR #245's pattern), and keep the
+root fallback byte-consistent with `scripts.build` output (PR #260 now enforces source drift).
+
+*(Merge/deploy receipt — merge commit, publish run and live-byte verification — is appended in a
+follow-up receipt commit once `main` deploys, per the pattern of sessions 51a9c98a and d2a55add.)*
+
+---
+
+## Session d2b90de7 claim — 2026-10-24 05:40 UTC (publication-deadlock repair, fresh full-coverage capture, unresolved-row research, integration)
+
+Board read before claiming. Arena fixes this session to branch `arena/d2b90de7-maltaproj4`, based on
+`5d56f35` (== `origin/main` at claim time). No other branch is created, checked out or pushed. The 12
+open PRs of earlier sessions are left untouched; stale `in progress` rows below belong to sessions whose
+delivery receipts are merged, and their private research/receipt files are not reopened here.
+
+**Measured P0 — the live site has been frozen for ~18h and every scheduled publish is dead.** The public
+receipt (`https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json`, read 05:30Z) serves the
+2026-10-23T11:47:19Z build (revision `92d248d`, 90 rows). `stale_after_hours` is 8, so a reader today gets
+a withheld/expired board. Every `schedule` publish run delivered since the 11:37Z success has failed in
+under 60s at *Unit and independent failure-mode tests*:
+[39956197341](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39956197341) (12:49Z),
+[39998307424](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39998307424) (17:50Z),
+[40025828846](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40025828846) (21:18Z),
+[40042111432](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40042111432) (23:53Z),
+[40062143026](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40062143026) (04:23Z).
+Reproduced locally in the sandbox: **1195 tests, 1 failure + 1 error**, both in
+`tests/test_session_0cc1138a.py::LiveHotspawnCoverage`. The pinned 09:44Z lobby set still demands fixtures
+`1081148` and `1079655`, but the Hotspawn feed itself no longer returns them: both are absent from the
+11:47Z snapshot's 90 retained raw `fixture_evidence` records **and** from its 90 rows, while its
+`inventory_changes` compares against the immediately previous 11:25Z snapshot — by which time both were
+already gone, so `removed_ids` is `[]` and the b6e37c61/f89bb1f8 excuse no longer fires. This is the third
+rotation-deadlock of the same pinned observation (the two prior repairs are dated comments inside the same
+class); a repair keyed to a hand-maintained diff will deadlock again at the next rotation, so this repair
+keys the excuse to the snapshot's **own retained raw feed evidence**.
+
+**Takeover note (60-minute rule).** Owning session 0cc1138a's last receipt is 2026-10-23 11:05Z (>18h old,
+no commits since; its parity task is already marked *needs review*). This session takes over the narrow
+repair of `LiveHotspawnCoverage` in `tests/test_session_0cc1138a.py` only; no other 0cc1138a file is touched.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| P0: repair the snapshot-pinned lobby-parity tests deadlocking every scheduled publish, with regressions that keep the parity teeth (a row the feed still returns can never be excused) | done — superseded at integration by the merged cross-session repairs (PRs #245/#246/#251/#258/#260); freeze record + receipt §1–2 | d2b90de7 | `tests/test_session_0cc1138a.py` (takeover: `LiveHotspawnCoverage` only), `tests/test_session_d2b90de7.py` (new) | 2026-10-24 07:55 |
+| Fresh full Hotspawn CS2 capture on a runner (authoring-sandbox bash egress cannot reach esports hosts) plus a live lobby read from this session; line-by-line audit of every open row against the retained receipts | done — run 40067605793 green, receipts in `research/harvest-d2b90de7/**` | d2b90de7 | `.github/workflows/harvest-d2b90de7.yml` (new), `research/harvest-d2b90de7/**`, `research/session-d2b90de7/**` | 2026-10-24 07:55 |
+| Own-research resolution pass for every open row that still publishes no win probability after the fresh capture: HLTV first (fixture page, betting table, rankings), then esportsbooks/betting lines; publish a number only from a reproducible external line or the labelled originated VRS model, otherwise keep the blank and record the dated refusal | done — probe found 0 rows to resolve; all 25 open rows externally priced or labelled-originated | d2b90de7 | `research/session-d2b90de7/**`, `data/book-receipts.json` (additive only), `data/review-notes.json` (additive only) | 2026-10-24 07:55 |
+| Verify executive-summary in-site links to the updated picks, the separate unresolved-picks-&-limitations section, and phone readability at 320/390px; repair only measured defects | done — verified on candidate and integrated boards; no measured defect required edits | d2b90de7 | generated root pages via `scripts.build` only; `scripts/build.py` / `assets/**` / `site/assets/**` only if a defect is measured | 2026-10-24 07:55 |
+| Final integration: stage the fresh verified snapshot, all unit/audit/integrity/c6/validator/browser gates, PR to `main`, merge without approval, confirm the Pages deploy and live bytes, record the receipt here | done pending merge receipt — PR #252; two post-merge REDs measured, repairs shipped via #251/#260/#267, competing edits withdrawn (receipt §2) | d2b90de7 | `COORDINATION.md`, `README.md` (additive), `data/latest.json`, `data/matches.csv`, generated root pages, `build-info.json` | 2026-10-24 07:55 |
+
+Evidence rules unchanged: Hotspawn supplies fixture inventory/locks only, never a probability; crowd-vote
+percentages on the lobby are not market lines and are never used; no placeholder odds (identical 1.8/1.8
+refused), no inferred values, no 50/50 filler; a row that cannot be resolved keeps a blank percentage and a
+source-linked dated limitation. Every push stays on the fixed Arena branch and `git pull --rebase` precedes it.
+
 ## Session e9be3e6b claim — 2026-10-24 06:35 UTC (independent source ladder verification + mobile discoverability audit + final integration)
 
 Board read before claiming. The Arena platform fixes this session to
