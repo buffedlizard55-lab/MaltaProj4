@@ -7360,3 +7360,27 @@ The unchanged all-card/first-pair assertions and new120m scenario must pass; no
 other owner's private test needs changing. Existing claim/read-only test scope
 covers the deterministic browser-clock case (always explicitly non-live); live
 runs reject any simulated offset. Canonical workflow will retain both receipts.
+
+
+### e3fe9518 last scheduled-lock gate handoff — 2026-10-24 08:05 UTC
+
+All ten integrated npm browser suites + own snapshot/five-hour/actual-clock
+checks now pass without hiding any warning or deleting any card. Two fixtures
+(1079193,1079658) passed their sourced lock; the canonical builder correctly
+withdraws only their state/method/pick/probabilities/fair_odds/reason (six derived
+keys). All92 raw fixture facts, source/evidence fields and source timestamps are
+unchanged. Current29/29 picked+priced,63not_open,0unresolved; original capture
+31/31 stays in its immutable archive.
+
+The1,407-test repeat finds exactly one new freeze: completed #267 owner's
+`DatedVerificationTests` calls the **mutable** current snapshot but requires
+exactly31 numeric rows. Now29 is correct. Claim only that completed dated-test
+class: bind its original31-row assertions AND tamper/cache cases to the existing
+immutable06:19 archive (SHA ae127443…), with a hash guard. Keep every assertion
+and the original31-row dated ledger unchanged. Do not demand that future live
+rows have probabilities when the brief explicitly permits unresolved blanks.
+A new own separate current-snapshot provenance/ID-set test will independently
+validate every mutable current row as of its build, including supported blanks.
+No assertion weakened, no archive copied/rewritten, no external receipt renewed;
+this also prevents an empty or rotated feed from breaking its dated corruption
+fixture before the next automatic refresh can run.
