@@ -171,3 +171,30 @@ tree every gate above was run against; no broken site was merged.
 
 Full coordination receipt: [`COORDINATION.md`](../../COORDINATION.md), section *"Session e9be3e6b —
 final integration receipt"*.
+
+## 9. Post-merge Pages deployment diagnosis (2026-10-24 08:40 UTC)
+
+Precise root cause of the deployment lag, read from GitHub's own Pages API rather than inferred.
+`GET /repos/buffedlizard55-lab/MaltaProj4/pages` reports `build_type: legacy`,
+`source: {branch: main, path: /}` and overall `status: errored`. The last **successful** publish was
+commit `dce494b` at **2026-10-24T06:23:08Z**; the root `build-info.json` it published still carried
+revision `dd92178`, which is why the live manifest reads `dd92178` even though `main` has moved far
+beyond it. Every legacy build since 06:42Z is `errored` with the generic message *"Page build
+failed."*, but the timestamps show these are **supersessions, not content failures**: each errored
+build's `updated_at` is exactly the next build's `created_at` (e.g. `63e7d39` errored 08:12:41 =
+`7b2a8a1` created 08:12:41; `7b2a8a1` errored 08:16:20 = `c515169` created 08:16:20; `067f43f`
+errored 08:36:29 = `6a554dd` created 08:36:29). With many concurrent agent sessions merging to
+`main` every 2–9 minutes, the legacy builder (which must copy the full 100 MiB / 1,799-file root)
+never gets a quiet window long enough to finish; the `pages.yml` Action runs are likewise queued or
+cancelled with *"a higher priority waiting request for cs2-scout-refs/heads/main exists"*.
+
+This is an environment-wide contention issue, **not a broken site**: the committed root on `main` is
+hash-verified, all six `session-e9be3e6b-*` flags render in its `review.html`, and every gate in
+section 8 is green on that tree. The live bytes that *are* served were read back at 08:20Z: the
+executive summary reported **29 open · 29 picks · 29 win probabilities · 0 unresolved**, carried
+in-site links to updated picks / unresolved-limits / flagged review / all matches, and the separate
+`unresolved.html` published the eight-rung source ladder and the coverage-boundary table. Those
+bytes come from the 06:23Z successful build (same 06:19:43Z snapshot), so the six newest additive
+review flags and the newer `a1df6e9` root build will appear only when the next legacy build is not
+superseded. No further push from this session was made after PR #273, to avoid restarting the builder
+again; the fix is a quiet interval on `main`, not a code change.

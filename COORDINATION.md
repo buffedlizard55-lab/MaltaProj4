@@ -7869,3 +7869,18 @@ asset or rendered artifact changes. Both board additions retained. The full
 1,472-unit/14-browser gate remains bound to unchanged production inputs; repeat
 full units after this dated-fixture update and recheck exact manifest bytes.
 All previous raw facts/29current prices and224 review entries remain unchanged.
+
+### Session e9be3e6b — Pages deployment root-cause addendum (2026-10-24 08:40 UTC)
+
+Read from GitHub's Pages API, not inferred: Pages is `build_type: legacy`, `source main:/`, overall
+`status: errored`. The last successful publish was `dce494b` at 06:23:08Z (its root `build-info.json`
+still said `dd92178`, which is what the live manifest reports). Every legacy build after 06:42Z is
+`errored — "Page build failed."`, but each errored build's `updated_at` equals the next build's
+`created_at` (63e7d39 08:12:41 -> 7b2a8a1 08:12:41; 7b2a8a1 08:16:20 -> c515169 08:16:20;
+067f43f 08:36:29 -> 6a554dd 08:36:29). These are **supersessions**: with cross-session merges to
+`main` every 2–9 minutes, the legacy builder copying the full 100 MiB / 1,799-file root never gets a
+quiet window to finish. Not a broken site — the committed root is hash-verified, all six
+`session-e9be3e6b-*` flags render, and the 1,429-test / 11-browser-suite gate set is green on it.
+Live bytes read at 08:20Z still served the verified 29/29/29/0 board with the in-site executive
+links and the separate unresolved page. This session makes **no further push to `main`** so as not to
+restart the builder; the remaining deploy step needs a quiet interval on `main`, not a code change.
