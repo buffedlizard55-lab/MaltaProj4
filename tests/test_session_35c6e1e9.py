@@ -312,7 +312,20 @@ class VerifierConsultsTheSourcedAliasRegister(unittest.TestCase):
             'verify_0cc1138a', ROOT / 'research/session-0cc1138a/verify_0cc1138a.py')
         cls.V = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(cls.V)
-        cls.row = next(m for m in SNAPSHOT['matches'] if m['id'] == '1083121')
+        # Integration repair (session bf1b12c7, 2026-10-24): fixture 1083121
+        # locked and left Hotspawn's scheduled feed, so on the 16:34Z refresh
+        # ``next(...)`` raised StopIteration inside the publisher's root gate
+        # (harvest run 40112589540). The alias contract is a property of the
+        # verifier, so the row is read from the live snapshot when it is still
+        # listed, else from the retained capture that published it (08:06Z,
+        # research/harvest-ce45f672/snapshot.json). The full-board audit below
+        # still runs over the live snapshot.
+        cls.row = next((m for m in SNAPSHOT['matches'] if m['id'] == '1083121'), None)
+        cls.archived = None
+        if cls.row is None or not (cls.row.get('evidence') or []):
+            archive = json.loads((ROOT / 'research/harvest-ce45f672/snapshot.json').read_text())
+            cls.row = next(m for m in archive['matches'] if m['id'] == '1083121')
+            cls.archived = archive
         cls.ev = (cls.row.get('evidence') or [{}])[0]
 
     def test_the_registry_entry_is_sourced_and_links_both_labels(self):

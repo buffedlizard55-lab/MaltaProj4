@@ -100,7 +100,10 @@ jobs:
           # (that is exactly what happened on run 40087400028, whose rehearsal
           # output was silently discarded).
           cp "$LOG" research/harvest-bf1b12c7/post-refresh-unit.log
-          git checkout -- . ':(exclude)research/harvest-bf1b12c7/post-refresh-unit.log' ':(exclude)research/harvest-bf1b12c7/rehearsal-summary.txt'
+          # Exclude this session's whole receipt folder: on run 40112589540 a
+          # per-file exclusion restored the PREVIOUS run's committed snapshot and
+          # coverage receipt over the fresh ones, so only the logs advanced.
+          git checkout -- . ':(exclude)research/harvest-bf1b12c7'
           git clean -fdq -- assets site data ':(exclude)research' || true
       - name: Phone, desktop, accessibility and exact expiry checks on the fresh candidate
         continue-on-error: true
