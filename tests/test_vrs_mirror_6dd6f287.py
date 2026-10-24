@@ -177,7 +177,9 @@ class ApplyTests(unittest.TestCase):
         row = fixture()
         vrs_mirror.apply(row, level, META, {}, OFFICIAL)
         self.assertIsNone(row['pick'])
-        self.assertEqual([0.5, 0.5], row['probabilities'])
+        self.assertIsNone(row['probabilities'])
+        self.assertEqual(row['attempts'][-1]['status'], 'unresolved')
+        self.assertIn('Equal mirror estimate', row['attempts'][-1]['reason'])
 
 
 class ValidatorTests(unittest.TestCase):

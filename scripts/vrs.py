@@ -165,10 +165,17 @@ def apply(fixture, standings, meta, lineups=None):
         fixture['attempts'].append(attempt)
         return
     p = quote['probabilities']
+    # A model estimate that is exactly even is no directional edge either; the
+    # mirror and research tiers continue instead of publishing an even pair.
+    if abs(p[0] - p[1]) < .0001:
+        attempt.update(status='unresolved',
+                       reason='Equal model estimate (%.4f/%.4f); no directional edge, so the '
+                              'mirror and research tiers continue.' % (p[0], p[1]))
+        fixture['attempts'].append(attempt)
+        return
     fixture.update(probabilities=p, fair_odds=[1 / x for x in p],
-                   pick=None if abs(p[0] - p[1]) < .0001 else fixture['teams'][0 if p[0] > p[1] else 1],
-                   method='model_vrs', evidence=[quote],
-                   reason='Equal model estimate; no directional edge.' if abs(p[0] - p[1]) < .0001 else None)
+                   pick=fixture['teams'][0 if p[0] > p[1] else 1],
+                   method='model_vrs', evidence=[quote], reason=None)
     fixture['flags'].append(MODEL_FLAG)
     if any(c['overlap'] is None for c in quote['roster_checks']):
         fixture['flags'].append('VRS roster continuity not checked for at least one team (no HLTV lineup available).')

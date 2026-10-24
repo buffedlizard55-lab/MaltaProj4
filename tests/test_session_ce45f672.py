@@ -240,11 +240,16 @@ class EvenWideQuoteNeverBecomesA50Fifty(unittest.TestCase):
         self.assertAlmostEqual(row['probabilities'][0], 0.75, places=12)
         self.assertTrue(any('wide' in flag.lower() for flag in row['flags']))
 
-    def test_a_tight_even_market_keeps_the_documented_no_edge_answer(self):
+    def test_a_tight_even_market_is_rejected_as_evidence_too(self):
+        # Superseded rule, recorded honestly: until 2026-10-24 a tight even
+        # market published 0.50/0.50 with no pick. That row type froze every
+        # publish once it appeared on the live board, so a level price is now
+        # rejected evidence at every tier and the ladder continues.
         row = self._resolve(prices=('0.5', '0.5'), bid='0.49', ask='0.51')
-        self.assertEqual(row['probabilities'], [0.5, 0.5])
+        self.assertIsNone(row['probabilities'])
         self.assertIsNone(row['pick'])
-        self.assertIn('no directional edge', (row['reason'] or '').lower())
+        self.assertIsNone(row['method'])
+        self.assertIn('exactly even', row['attempts'][0]['reason'])
 
     def test_the_published_board_publishes_a_probability_without_a_pick_only_for_even_lines(self):
         for match in [m for m in SNAPSHOT['matches'] if m['state'] == 'open']:

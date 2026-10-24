@@ -446,10 +446,20 @@ def book_research_pick(fixture, receipts=None, now=None):
         if candidate['raw'].get('source_receipts'):
             quote['source_receipts'] = copy.deepcopy(candidate['raw']['source_receipts'])
         p = quote['probabilities']
-        pick = None if abs(p[0] - p[1]) < .0001 else fixture['teams'][0 if p[0] > p[1] else 1]
+        # Session f2e04d1a: equal decimal prices on both sides de-vig to exactly
+        # 0.50/0.50, which is a level market, not a recommendation. Publishing it
+        # would stop the row before the model and research tiers and leave a
+        # priced row with no pick, which the coverage contracts (rightly) reject.
+        if abs(p[0] - p[1]) < .0001:
+            fixture['attempts'].append({'provider': 'Book research', 'status': 'unresolved',
+                'reason': 'Researched two-way listing de-vigs to exactly even (%.4f/%.4f); a level '
+                          'price supports no directional pick, so the model and research tiers continue.'
+                          % (p[0], p[1]),
+                'url': candidate['url']})
+            continue
+        pick = fixture['teams'][0 if p[0] > p[1] else 1]
         fixture.update(probabilities=p, fair_odds=[1 / x for x in p], pick=pick,
-            method='bookmaker_fallback', evidence=[quote],
-            reason='Equal researched book line; no directional edge.' if pick is None else None)
+            method='bookmaker_fallback', evidence=[quote], reason=None)
         fixture['flags'].append('Bookmaker line from a researched listing (no automated adapter for this book): ' + quote['warning'])
         fixture['attempts'].append({'provider': 'Book research', 'status': 'resolved',
             'reason': 'Exact fixture id, opponent pair and UTC start verified against the listed two-way book line; probabilities de-vigged by scripts.core.quote_book and replayed by the validator.',
@@ -502,24 +512,38 @@ def resolve(fixture, candidates, provider, now, relax=False):
             if c.get('source_receipts'):
                 quote['source_receipts'] = c['source_receipts']
             p = quote['probabilities']
-            # Session ce45f672: an even price inside the *wide* tier is the
-            # midpoint of a spread that already failed the strict ceiling, not a
-            # market view. Publishing it as a probability would put an
-            # uninformative 50/50 on the board and, worse, stop the row before
-            # the model and research tiers that can still originate a real
-            # pick. It is recorded as rejected evidence instead, so the ladder
-            # continues. A genuinely two-sided, tight market that happens to be
-            # even is unaffected: that stays a documented "no directional edge".
-            if quote.get('tier') == 'wide_exchange' and abs(p[0] - p[1]) < .0001:
-                raise ValueError('Wide exchange quote is exactly even; the midpoint of a '
-                                 'spread beyond the strict ceiling is not a usable estimate.')
+            # An exactly even two-sided price cannot support a directional pick.
+            #
+            # Session ce45f672 added this for the *wide* tier only, on the
+            # reasoning that a wide midpoint is uninformative. Session f2e04d1a
+            # measured the strict tier on a live snapshot (2026-10-24T16:37Z):
+            # fixture 1079200 Color vs ex-Zero Tenacity returned a tight,
+            # two-sided Polymarket mid of exactly 0.50/0.50, so `resolve` stored
+            # probabilities with `pick=None`, and because every later tier is
+            # gated on `probabilities is None` the row could never be rescued.
+            # The published board then carried one priced row with no pick,
+            # which the unit suite correctly refuses, so *every* scheduled
+            # publish from 09:03Z onward failed and the live page withheld all
+            # picks once the snapshot aged out.
+            #
+            # A level market is real evidence that the market sees no edge; it
+            # is not a directional recommendation. Recording it as rejected
+            # evidence lets the model and research tiers originate a pick from
+            # their own dated sources, which is exactly what this site promises.
+            # The alternative in the old code - publish 0.50/0.50 with no pick -
+            # is a 50/50 placeholder the coverage contracts forbid.
+            if abs(p[0] - p[1]) < .0001:
+                raise ValueError('Two-sided %s quote is exactly even (%.4f/%.4f); a level '
+                                 'price supports no directional pick, so the model and '
+                                 'research tiers continue instead of publishing an even pair '
+                                 'with no pick.' % (quote.get('tier') or provider, p[0], p[1]))
             if c.get('team_metadata'):
                 quote['team_metadata'] = c['team_metadata']
             fixture.update(probabilities=p, fair_odds=[1/x for x in p],
-                pick=None if abs(p[0]-p[1]) < .0001 else fixture['teams'][0 if p[0]>p[1] else 1],
+                pick=fixture['teams'][0 if p[0]>p[1] else 1],
                 method=('exchange_wide' if quote.get('tier') == 'wide_exchange' else ('exchange' if provider == 'Polymarket' else 'bookmaker_fallback')),
                 evidence=[quote],
-                reason='Equal verified prices; no directional edge.' if abs(p[0]-p[1]) < .0001 else None)
+                reason=None)
             if quote.get('warning'):
                 fixture['flags'].append(quote['warning'])
             attempt.update(status='resolved',reason='Exact pair and UTC start; two-way series winner validated.' + (' Low-confidence spread tier used; strict rejection: ' + quote['strict_rejection'] if quote.get('strict_rejection') else ''))
