@@ -4695,5 +4695,127 @@
     "label": "GitHub contents API — 2026_10_05 confirmed newest official standings file"
    }
   ]
+ },
+ {
+  "id": "session-e9be3e6b-vrs-vintage-2026-10-24",
+  "status": "Observed — two accepted model tiers use different vintages of Valve points; request the summary card print the input date beside each model line",
+  "finding": "The 2026-10-24T06:19Z board prices six rows with the `model_vrs` tier from Valve's monthly global standings file dated 2026-10-05 (commit eec4853) and three more with `model_vrs_mirror` from HLTV's dated Valve ranking of 2026-10-24. Both tiers apply the identical Valve Glicko expectation (RD 75) and published calibration slope 0.7986, so every number re-derives exactly, but the two vintages are not directly comparable. Worked example, fixture 1081152 HAVU vs Azuolas: the board publishes 58.16% / 41.84% from the 5 Oct file (HAVU 937 pts, #124; Azuolas 863 pts, #140). HLTV's 24 Oct Europe Valve ranking lists HAVU #79 with 1011 points and Azuolas #126 with 750 points; the same published formula would give 74.90% / 25.10%. The evidence page already prints the standings vintage, but the phone card currently shows only 'Our model line'. This session did not alter a published price and did not edit another session's scripts/build.py: the owner of that card is asked to render `standings_as_of` (or the HLTV ranking date) next to every model percentage so readers cannot mistake a 19-day-old input for a live one.",
+  "sources": [
+   {
+    "label": "Valve official global standings, 2026-10-05 (pinned commit)",
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+   },
+   {
+    "label": "HLTV Valve regional ranking for Europe, 24 October 2026 (HAVU 1011, Azuolas 750)",
+    "url": "https://www.hltv.org/valve-ranking/teams/2026/october/24/region/Europe"
+   },
+   {
+    "label": "HLTV fixture 2399502, HAVU vs Azuolas, 24 October 2026",
+    "url": "https://www.hltv.org/matches/2399502/havu-vs-azuolas-cct-2026-europe-series-12"
+   }
+  ]
+ },
+ {
+  "id": "session-e9be3e6b-egw-listing-vs-detail-2026-10-24",
+  "status": "Observed — eight real two-way esportsbook lines on EGamersWorld's CS2 listing were not collected; one model-vs-market direction conflict is flagged separately",
+  "finding": "Two reads of EGamersWorld's CS2 matches listing through the agent's fetch tool on 24 October 2026 (~06:40Z and ~06:52Z) found real, asymmetric two-way prices for eight fixtures on the board, while the collector's own attempt log shows only 403s, skips or the symmetric 1.8/1.8 placeholder for those hosts. EGW renders its local times in UTC-4, which explains the apparent 4-hour 'timezone conflict': HAVU 24.10 07:00 = Hotspawn 11:00Z, Grêmio 24.10 18:00 = 22:00Z, HOTU 31.10 05:00 = 09:00Z. Exact opponent pair and exact UTC start would still be required before any line is used. Observed listing lines (decimal, de-vigged) versus the published board: Grêmio 2.98 / Yawara 1.32 -> 30.70% / 69.30% (board BO3.gg 30.77% / 69.23%, pick Yawara); Metizport 1.34 / BakS 2.85 -> 68.02% / 31.98% (board wide exchange 70.50% / 29.50%, pick Metizport); Ground Zero 3.505 / Off Chops 1.26 -> 26.44% / 73.56% (board wide exchange 29.00% / 71.00%); NEXVOID 1.60 / Alter Ego 2.17 -> 57.56% / 42.44% (board BO3.gg 57.52% / 42.48%); LOS NINOS 3.40 / BORRACHEIROS 1.25 -> 26.88% / 73.12% (board HLTV-mirrored Valve model 32.22% / 67.78%); Rooster 2.10 / Team Abyssal 1.66 -> 44.15% / 55.85% (board model 48.21% / 51.79%); FlyQuest 1 / Staqued 25 -> 96.15% / 3.85% (board BO3.gg 92.30% / 7.70%); HOTU / The Huns moved from 1.10 / 5.80 (84.06% / 15.94%) at ~06:40Z to 1.09 / 6.80 (86.19% / 13.81%) at ~06:52Z while the board's originated Valve line stayed 85.18% / 14.82%. Direction agrees in every one of these eight cases. The same site's match-detail page for HOTU vs The Huns served 1.8 / 1.8 on the same read, and HAVU/Azuolas, 6yuBoJlbl/Saint Sinners, FORZE Reload/ex-RUSTEC, 1WIN/5star, BakS/ILLYRIANS, Isurus/RED Canids Academy and Projeto do KinGui/MEIA NOITE all showed the 1.8/1.8 placeholder — those are correctly refused. Request: add the dated listing page as an independent esportsbook candidate before a model fallback, keep the 403 receipt when the runner is blocked, and never accept a symmetric placeholder. No published number was changed by this session.",
+  "sources": [
+   {
+    "label": "EGamersWorld CS2 matches listing (31.10 and 26.10 sections read 24 Oct 2026)",
+    "url": "https://egamersworld.com/counterstrike/matches"
+   },
+   {
+    "label": "EGamersWorld match detail, HOTU vs The Huns Esports (1.8 / 1.8 placeholder on the same read)",
+    "url": "https://egamersworld.com/counterstrike/match/EkalRNMvVx/hotu-vs-the-huns-esports-SfdtzDhiK"
+   },
+   {
+    "label": "Board evidence for HOTU vs The Huns (fixture 1082792)",
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/evidence.html#match-1082792"
+   },
+   {
+    "label": "Board evidence for Rooster vs Abyssal (fixture 1082861)",
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/evidence.html#match-1082861"
+   }
+  ]
+ },
+ {
+  "id": "session-e9be3e6b-divergent-short-price-2026-10-24",
+  "status": "Observed — two listing sites disagree on the same extreme favourite; one renders a degenerate 1.00 decimal price",
+  "finding": "Fixture 1082860 FlyQuest vs Staqued (2026-10-27T03:00:00Z) is published as a researched single-operator listing: BO3.gg/Thunderpick 1.001 / 12.0, de-vigged to 92.30% / 7.70%. The BO3.gg page header renders the first price as exactly 1.00 (two decimals) while its prediction panel prints 1.001; a decimal price of 1.00 is degenerate because it returns only the stake. EGamersWorld's CS2 listing, re-read at ~06:52Z, shows 1 / 25 for the same 26.10 23:00 UTC-4 slot, which de-vigs to 96.15% / 3.85% — a 3.85-point disagreement on the underdog and a favourite price that is also exactly 1. The row already carries the limitation 'Researched bookmaker listing; the listing supplies no price-update timestamp', and the board does not claim a multi-book consensus. This session did not substitute either quote. Human review should decide whether to display both listings, prefer one operator, or widen the limitation text for extreme short prices.",
+  "sources": [
+   {
+    "label": "BO3.gg match page, FlyQuest vs Staqued (header 1.00 / 12.00; prediction 1.001 / 12)",
+    "url": "https://bo3.gg/matches/flyquest-vs-staqued-27-10-2026"
+   },
+   {
+    "label": "EGamersWorld CS2 matches listing (26.10 section: FlyQuest 1 / Staqued 25)",
+    "url": "https://egamersworld.com/counterstrike/matches"
+   },
+   {
+    "label": "Board evidence for fixture 1082860",
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/evidence.html#match-1082860"
+   }
+  ]
+ },
+ {
+  "id": "session-e9be3e6b-publish-gate-repairs-2026-10-24",
+  "status": "Repaired in this branch — two pre-existing unit-suite failures blocked the refresh gate; logged because both files are owned by earlier sessions",
+  "finding": "At claim time `python -m unittest discover -s tests` failed with 8 failures and 1 error on `main` dce494b, so the publish workflow would never reach its refresh/build/deploy steps. (1) `assets/style.css` (the legacy root fallback) had drifted from the canonical `site/assets/style.css`: the root copy lacked the closing brace of the 650px media block (brace balance +1) and the short-phone index block, while the build already shipped the balanced canonical copy. This session re-staged the verified build so both copies are byte-identical and brace-balanced; no new CSS rule was invented. (2) `research/session-0cc1138a/verify_0cc1138a.py` rejected the documented rename `Tropa do KinGui` / `Projeto do KinGui` on fixture 1083121, although the row's own `identity_sources` carries the HLTV match page and five-player roster basis and verification-c6 already accepts it. The independent verifier now accepts a rename only when the row carries the https-sourced identity record; an unsourced or http-sourced name is still refused. After both repairs: 1,233 unit tests OK (1 skipped), audits 9, integrity 5, verification-c6 12, row audit 0 failures, validator 92 rows / 31 calculations / 874 links / 20 checksums / 234 displayed rows, coverage contract 31/31/31/0 and all nine Chromium browser suites green. No pick, price or probability was changed. Upstream PR #261 (cecfe864, merge e74413b) independently fixed the same two defects while this branch was open; the merge kept the stronger upstream alias rule (evidence receipt AND committed identities.json, both with https source and written basis) instead of the local duplicate. One merged-tree unit failure remained: test_session_ea2e254c's synthetic positive alias case omitted the written basis and failed at 1,302 tests. The synthetic input was given the basis the reviewed register carries; both negative cases still assert refusal. Re-run after merge: 1,302 unit tests OK.",
+  "sources": [
+   {
+    "label": "Published workflow whose unit step runs before refresh (pages.yml)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/.github/workflows/pages.yml"
+   },
+   {
+    "label": "HLTV match 2399904 underpinning the registered rename",
+    "url": "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7"
+   },
+   {
+    "label": "Independent source-ladder verifier added by this session",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/verification-e9be3e6b/verify_source_ladder.py"
+   }
+  ]
+ },
+ {
+  "id": "session-e9be3e6b-phone-summary-order-2026-10-24",
+  "status": "Repaired upstream and adopted here — the executive-summary bar was below the entire 31-match pick list on phones",
+  "finding": "Chromium measurement on this branch at both 320x568 and 390x844 found the always-visible #exec-summary bar at y=8661 and y=8506 respectively, i.e. after all 31 phone pick cards. Cause: two mobile order blocks both end with `main>*{order:7}` and neither assigns #exec-summary an explicit order. This branch first repaired it by moving a compact full bar to y=309; upstream PR #267 (session 4ed657ce) independently measured the same y=8661 defect and instead added a 48px `#exec-quicknav` above the list while leaving the full bar after it. On merging origin/main this branch adopted the upstream quick-nav and dropped its duplicate CSS block so both sessions' tests pass. Re-measured on the combined tree: quick nav y=314, first pick y=370, both probabilities y=497, fixed tab bar y=507 at 320x568; no horizontal overflow at 320/390/768/1440; the quick-nav CTA lands on picks.html. The full summary keeps all ten in-site links and remains outside any <details>. Consolidating the two older duplicated order blocks is still left to their owner.",
+  "sources": [
+   {
+    "label": "Measured browser geometry and assertions added by this session",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/verification-e9be3e6b/mobile_probe.cjs"
+   },
+   {
+    "label": "Served executive summary (live after the Pages deployment)",
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/#exec-summary"
+   },
+   {
+    "label": "Served pick board linked from the summary",
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/picks.html"
+   }
+  ]
+ },
+ {
+  "id": "session-e9be3e6b-acend-unity-direction-2026-10-24",
+  "status": "Observed — a real esportsbook listing disagrees with the published model pick's DIRECTION, not merely its magnitude",
+  "finding": "Fixture 1082996 Acend vs UNiTY (NODWIN Clutch Series 13, 2026-10-25T09:00:00Z) is priced by the `model_vrs` tier from Valve's 2026-10-05 global standings: Acend 1197 pts vs UNiTY 1167 pts -> 53.35% / 46.65%, pick Acend. EGamersWorld's CS2 matches listing (read ~06:52Z, row labelled 'Acend VS UNITY Esports', 25.10.26 05:00 UTC-4 = 09:00Z) publishes 2.42 / 1.50, which de-vigs to 38.27% / 61.73% — favouring UNiTY. EGW's own displayed world ranks also put UNITY #111 ahead of Acend #128, whereas Valve's 5 October file put Acend #76 ahead of UNiTY #82. This is the only one of the eight real EGW lines found in this session where the favourite direction flips. The board's number is internally reproducible from its stated inputs and is labelled 'not a market price', so it is not a calculation error; it is a vintage/identity risk in an originated line. This session did not overwrite the pick. Human review should decide whether to prefer the accessible book listing (after exact-opponent and exact-UTC identity checks and the normal overround/freshness gates) or to publish both with the model's vintage stated.",
+  "sources": [
+   {
+    "label": "EGamersWorld CS2 matches listing, 25.10 section (Acend 2.42 / UNITY Esports 1.50)",
+    "url": "https://egamersworld.com/counterstrike/matches"
+   },
+   {
+    "label": "EGamersWorld match page, Acend vs UNITY Esports",
+    "url": "https://egamersworld.com/counterstrike/match/Nk9F-Ov54e/acend-vs-unity-esports-iwaKSVfgf"
+   },
+   {
+    "label": "Valve official global standings, 2026-10-05 (the board's model input)",
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+   },
+   {
+    "label": "Board evidence for fixture 1082996",
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/evidence.html#match-1082996"
+   }
+  ]
  }
 ]

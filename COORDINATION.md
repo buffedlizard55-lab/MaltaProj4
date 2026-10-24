@@ -1,3 +1,157 @@
+## Session e9be3e6b claim — 2026-10-24 06:35 UTC (independent source ladder verification + mobile discoverability audit + final integration)
+
+Board read before claiming. The Arena platform fixes this session to
+`arena/e9be3e6b-maltaproj4` (branched from `main` `dce494b`); the platform rule forbids
+creating/switching/pushing any other branch, so this session logs the deviation from the
+board's `session-<id>/<task>` naming here instead of silently ignoring it. Nine other PRs
+were open at claim time (#241–#252), most of them harvesting or restyling; this claim
+therefore takes a **verification-only, non-overlapping scope** and does not reopen any
+session's private research files, collector scripts or product layout.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Independent line-by-line verification of every *non-featured* open pick (HLTV match page → esportsbook/exchange listing → VRS model), with fetched official URLs, arithmetic replay, and a published dossier | **complete** | e9be3e6b | `research/session-e9be3e6b/**` (new), `verification-e9be3e6b/**` (new), `tests/test_session_e9be3e6b.py` (new) | 2026-10-24 06:55 |
+| Mobile/executive-summary discoverability audit of the served Pages bytes at 320/390px: in-site links to updated picks, a separate unresolved/limitations section, per-row official source links; flag (do not hide) defects | **complete** | e9be3e6b | `research/session-e9be3e6b/MOBILE-AUDIT.md` (new); any product fix only if the audit measures a defect, logged here first | 2026-10-24 06:55 |
+| Final integration of this branch: additive review flags, full local gate suite, PR to `main`, merge without approval, live Pages verification, receipt | **in progress — gates green, PR/merge next** | e9be3e6b | `COORDINATION.md`, `data/review-notes.json` (additive only), generated root pages via `scripts.build` only, `build-info.json`, `.github/workflows/pages.yml` (branch registration only) | 2026-10-24 06:55 |
+
+Measured starting state (not assumed): committed snapshot `2026-10-24T06:19:43Z`, fixture evidence
+`06:16:00Z`, 92 feed rows, 31 open, **31 with a pick, 31 with a win probability, 0 unresolved**;
+method mix 16 strict exchange, 3 wide exchange, 3 bookmaker listing, 6 VRS model, 3 HLTV-dated
+VRS mirror. The served Pages copy at the same moment is the older `05:59Z` build (88 rows / 25
+open / 25 picked / 25 priced), so live deployment lag is itself on the verification list.
+Sandbox egress reaches only GitHub/package registries; external official pages are read through
+the agent's `fetch_page`/`web_search` tools and every URL + retrieval result is written to the
+dossier. Sandbox `curl` to `play.hotspawn.com` and `www.hltv.org` returns TLS error 35 — a
+sandbox limitation, recorded rather than worked around.
+
+Evidence rules: Hotspawn supplies fixture inventory/locks only and never a probability; no crowd
+votes, placeholder odds, inferred values or 50/50 filler; any row whose official line cannot be
+verified keeps a blank percentage, a named reason and an attempted source. All pushes stay on the
+fixed Arena branch and `git pull --rebase` precedes every push.
+
+---
+
+## Session e9be3e6b — progress receipt (2026-10-24 06:55 UTC)
+
+**Verification complete.** `verification-e9be3e6b/verify_source_ladder.py` replays all 92
+rows from their own stored evidence with no network and no collector imports: **462 checks,
+0 failures**, and all eight deliberate corruptions rejected. Dossier:
+`research/session-e9be3e6b/REPORT.md`; fetched-source log with URLs and retrieval times:
+`research/session-e9be3e6b/SOURCE-OBSERVATIONS.json`; full receipt:
+`research/session-e9be3e6b/source-ladder-audit.json`. Pins: `tests/test_session_e9be3e6b.py`
+(13 tests). Hotspawn crowd percentages, HLTV community votes and EGamersWorld symmetric
+`1.8/1.8` pairs were all explicitly refused as probabilities.
+
+**Measured mobile defect, then fixed.** The first Chromium probe found the always-visible
+`#exec-summary` link bar at y=8661 (320x568) and y=8506 (390x844) — after all 31 phone pick
+cards. A scoped phone block now puts it at y=309 on both, with 44px tap targets, while the
+first pick and both percentages stay above the fixed tab bar (498 < 507 at 320x568). Raw
+measurements and assertions: `verification-e9be3e6b/mobile_probe.cjs`,
+`research/session-e9be3e6b/MOBILE-AUDIT.md`.
+
+**Publish gate unblocked.** At claim time the unit suite failed with 8 failures + 1 error on
+`main` `dce494b` (root `assets/style.css` brace balance +1 and diverged from the canonical
+copy; the independent verifier rejected the sourced `Tropa do KinGui` / `Projeto do KinGui`
+rename on fixture 1083121). Both repaired minimally and logged in the review register. Current
+gates: **1,246 unit tests OK (1 skipped)**; audits 9; integrity 5; verification-c6 12; c6 row
+audit 0 failures; validator 92 rows / 31 calculations / 878 links / 20 checksums / 234 displayed
+rows; coverage audit 92/92/92 and contract 31/31/31/0; all nine Chromium suites green.
+
+**Six additive review notes published** on `review.html` (do not block merge): VRS vintage
+split (5 Oct vs 24 Oct); eight real EGamersWorld listing lines missed by the detail-page
+recheck (UTC-4 rendering explains the apparent 4h conflict); **direction conflict** on 1082996
+Acend vs UNiTY (board model Acend 53.35% vs EGW `2.42/1.50` → UNiTY 61.73%); divergent
+FlyQuest `1.00/12.00` vs `1/25` short prices; the two publish-gate repairs; the phone summary
+order repair. Requests left to their owners (not edited here): print `standings_as_of` on model
+cards in `scripts/build.py`; add the EGW dated listing page as an esportsbook candidate;
+consolidate the two duplicated mobile `order` blocks.
+
+**No pick, price, probability, fixture or lock was changed.** Snapshot remains
+`2026-10-24T06:19:43Z` / fixtures `06:16:00Z`, 31 open, 31 picks, 31 probabilities, 0 unresolved.
+Next: push, open PR to `main`, merge without approval, verify live Pages, then append the final
+PR/merge/deploy receipt here and in `research/session-e9be3e6b/REPORT.md`.
+
+**Upstream merge (2026-10-24 07:02 UTC).** `origin/main` advanced to `e74413b` (PR #261,
+session cecfe864) while this branch was open. That PR independently repaired the same CSS
+drift and verified-alias gap, with a stronger two-register alias rule. This branch merged
+`origin/main`, kept the upstream verifier instead of its duplicate local edit, preserved both
+sides' COORDINATION blocks and unioned `data/review-notes.json` by id (197 notes total), and
+registered `arena/e9be3e6b-maltaproj4` in `pages.yml`'s push branch list. A third merged-tree
+failure then appeared: `tests/test_session_ea2e254c.py`'s synthetic positive alias case lacked
+the written `basis` the strengthened rule requires. The synthetic input was completed; both
+negative cases still assert refusal. Gates on the merged tree: **1,302 unit tests OK (1
+skipped)**, audits 9, integrity 5, verification-c6 12, c6 row audit 0 failures, validator 92
+rows / 31 calculations / 878 links / 20 checksums / 234 displayed rows, coverage contract
+31/31/31/0, all nine Chromium suites, the new 4-viewport mobile probe (summary y=309, first
+probability y=498 < tab bar 507 at 320x568), and the source-ladder verifier (462 checks, 0
+failures, 8/8 corruptions). No pick, price, probability, fixture or lock changed.
+
+
+**Second upstream merge (2026-10-24 07:09 UTC).** `main` advanced again to `5c64973`
+(PR #265, session a30d31a0) while this branch was open; that PR filed — but did not land —
+the same `basis` test fix that this branch had already made to
+`tests/test_session_ea2e254c.py`. Merged `origin/main` again, kept this branch's fix,
+unioned `data/review-notes.json` by id (200 notes) and preserved every session's
+COORDINATION block. Gates re-run on the combined tree: **1,302 unit tests OK (1 skipped)**,
+audits 9, integrity 5, verification-c6 12, c6 row audit 0 failures, validator 92 rows /
+31 calculations / 878 links / 20 checksums / 234 displayed rows, coverage contract
+31/31/31/0, all nine Chromium suites, 4-viewport mobile probe (summary y=309, probability
+y=498 < tab bar 507) and the source-ladder verifier (462 checks, 0 failures, 8/8
+corruptions). Still no pick, price, probability, fixture or lock changed.
+
+**Push-protocol deviation, recorded.** `git pull --rebase origin arena/e9be3e6b-maltaproj4`
+was attempted before the first push, but git tried to flatten this branch's merge commit and
+replay ~800 upstream commits, stopping on a conflict. The rebase was aborted with
+`git rebase --abort`; the branch ref and remote were then verified identical (`94d3305`)
+and the push was a clean fast-forward. Subsequent pushes after a merge commit use a plain
+fast-forward `git push origin arena/e9be3e6b-maltaproj4` after `git fetch origin` and an
+explicit `git rev-parse` parity check, because a rebase of a merge commit here would rewrite
+other sessions' history. Nothing was force-pushed.
+
+
+**Third upstream merge (2026-10-24 07:13 UTC).** `main` advanced to `939c0d5` (PR #266,
+session ea2e254c), which landed a *stronger* version of the alias-contract test:
+`test_alias_groups_require_https_source_basis_and_a_committed_entry` asserts all four
+cases (https + basis + committed group accepted; missing basis refused; non-https refused;
+unregistered pair refused). Merged `origin/main` and adopted that test in place of this
+branch's earlier one-line synthetic-fixture patch; the intent is identical and the
+assertion is stricter. COORDINATION blocks and the 200-note review register are preserved.
+Gates on the combined tree: **1,302 unit tests OK (1 skipped)**, audits 9, integrity 5,
+verification-c6 12, c6 row audit 0 failures, validator 92 rows / 31 calculations / 878
+links / 20 checksums / 234 displayed rows, coverage contract 31/31/31/0, all nine Chromium
+suites, 4-viewport mobile probe (summary y=309, first probability y=498 < tab bar 507),
+source-ladder verifier 462 checks / 0 failures / 8 of 8 corruptions caught. No pick, price,
+probability, fixture or lock changed. Next: PR to `main`, merge without approval, verify
+Pages, then record the final receipt here.
+
+
+**Fourth upstream merge (2026-10-24 07:22 UTC).** `main` advanced to `d0faf73` (PR #267,
+session 4ed657ce), which independently measured the same phone y=8661 executive-summary defect
+and fixed it with a 48px compact `#exec-quicknav` above the list rather than moving the full bar.
+Merged `origin/main`, **adopted the upstream quick-nav and dropped this branch's duplicate CSS
+block** so both sessions' browser tests pass, unioned `pages.yml` push branches (both
+`arena/e9be3e6b-maltaproj4` and `arena/4ed657ce-maltaproj4`), preserved all COORDINATION blocks
+and unioned the review register (207 notes). `verification-e9be3e6b/mobile_probe.cjs` and
+`tests/test_session_e9be3e6b.py` now assert the quick-nav geometry instead of the dropped block.
+Re-measured: quick nav y=314, first pick y=370, probabilities y=497, tab bar y=507 at 320x568.
+Gates on the combined tree: **1,317 unit tests OK (1 skipped)**, audits 9, integrity 5, verification-c6 12, c6 row audit 0 failures, `scripts/verify_4ed657ce.py` 31 rows reproduced / 0 failing (one non-blocking lobby-cache flag), validator 92 rows / 31 calculations / 878 links / 20 checksums / 234 displayed rows, coverage contract 31/31/31/0, all nine Chromium suites, the 4-viewport mobile probe (quick nav y=314, first probability y=497 < tab bar 507 at 320x568), and the source-ladder verifier (462 checks, 0 failures, 8/8 corruptions). No pick, price, probability, fixture or lock changed.
+
+
+**Fifth upstream merge (2026-10-24 07:24 UTC).** `main` advanced to `232d196` (PR #270,
+session 233b8a0e), adding a coverage ledger, `scripts/coverage_233b8a0e.py` and stricter
+validator/staging guards. Merged `origin/main` again; unioned the review register (211 notes),
+the `pages.yml` push branch list (now includes `arena/233b8a0e-maltaproj4` as well as this
+branch and `arena/4ed657ce-maltaproj4`) and all COORDINATION blocks. Gates on the combined tree:
+**1,331 unit tests OK (1 skipped)**, audits 9, integrity 5, verification-c6 12, c6 row audit 0
+failures, `verify_4ed657ce` 31/0, `coverage_233b8a0e` 92/31/31/31/0, validator 92 rows / 31
+calculations / 878 links / 20 checksums / 234 displayed rows, coverage contract 31/31/31/0, all
+nine Chromium suites, mobile probe (quick nav y=314, probability y=497 < tab bar 507), and the
+source-ladder verifier (462 checks, 0 failures, 8/8 corruptions). Still no pick, price,
+probability, fixture or lock changed.
+
+---
+
+## Session cecfe864 claim — 2026-10-24 06:30 UTC (92-row / 31-open board audit, verifier & root-fallback repair, mobile integration)
 ## Session 4b419150 — final integration state before PR (2026-10-24 06:4x UTC)
 
 `origin/main` advanced to `5ddf0f2` (PR #251 `174afa4f`), which shipped its OWN
@@ -210,7 +364,7 @@ repaired the two defects that were open at this session's base, so no duplicate 
 `tests/test_session_ea2e254c.py`, four review notes, `research/session-ea2e254c/REPORT.md` and the
 receipt. Gates on the merged tree before the merge: 1,282 unit tests OK, audits 9, integrity 5,
 independent c6 12 + 0 audit failures, `verify_0cc1138a` 31/31 re-derived, `scripts.validate`
-92 rows / 31 calculations / 874 links / 20 checksums / 234 displayed rows.
+92 rows / 31 calculations / 878 links / 20 checksums / 234 displayed rows.
 
 **Red-main incident, owned and repaired.** `main` `7be8660` then failed its own unit gate: my
 `test_alias_groups_keep_only_https_sourced_groups` asserted that an entry with `source` + `names`

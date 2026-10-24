@@ -1,0 +1,148 @@
+{
+ "session": "e9be3e6b",
+ "collected_by": "agent fetch_page and web_search tools; sandbox curl is TLS-blocked for these hosts",
+ "timezone_note": "EGamersWorld lists local match times in UTC-4 on these reads; every comparison below was checked against the Hotspawn UTC start before being recorded. No start time was corrected.",
+ "reads": [
+  {
+   "url": "https://play.hotspawn.com/lobby",
+   "read_at_utc": "2026-10-24T06:27:00Z",
+   "finding": "CS2 filter reads 'All tiers (88)'; closing-soon and upcoming sections show crowd 'picked' percentages. Refused as probabilities. Hotspawn is used only for fixture identity, start and lock.",
+   "use": "fixture inventory only"
+  },
+  {
+   "url": "https://www.hltv.org/matches",
+   "read_at_utc": "2026-10-24T06:30:00Z",
+   "finding": "Confirms the official CS2 match inventory. HLTV match pages carry a community 'Pick a winner' vote, which is a fan poll, not a betting line.",
+   "use": "identity and roster confirmation; votes refused"
+  },
+  {
+   "url": "https://www.hltv.org/matches/2399502/havu-vs-azuolas-cct-2026-europe-series-12",
+   "read_at_utc": "2026-10-24T06:31:00Z",
+   "fixture_id": "1081152",
+   "finding": "HAVU vs Azuolas, BO3, 24 Oct, CCT Europe Series 12. Community vote 91.7% / 8.3% — refused as a probability.",
+   "use": "identity; vote refused"
+  },
+  {
+   "url": "https://www.hltv.org/matches/2399437/hotu-vs-the-huns-gluck-moscow-cyber-games-2026",
+   "read_at_utc": "2026-10-24T06:32:00Z",
+   "fixture_id": "1082792",
+   "finding": "HOTU vs The Huns, BO3 LAN semi-final, 31 Oct. Community vote 77.6% / 22.4% — refused as a probability.",
+   "use": "identity; vote refused"
+  },
+  {
+   "url": "https://www.hltv.org/valve-ranking/teams/2026/october/24/region/Europe",
+   "read_at_utc": "2026-10-24T06:33:00Z",
+   "finding": "HLTV's dated view of Valve's regional ranking. HAVU #79 with 1011 points, Azuolas #126 with 750 points. With Valve's published Glicko expectation (RD 75) and slope 0.7986 this pair gives 74.90% / 25.10%, versus the board's 58.16% / 41.84% from Valve's 5 October file (937 / 863).",
+   "use": "vintage sensitivity demonstration; not applied to the board"
+  },
+  {
+   "url": "https://www.hltv.org/valve-ranking/teams/2026/october/24",
+   "read_at_utc": "2026-10-24T06:33:00Z",
+   "finding": "Dated global Valve ranking view used by the board's model_vrs_mirror tier for fixtures 1083122, 1081156 and 1081158.",
+   "use": "accepted source for three rows"
+  },
+  {
+   "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+   "read_at_utc": "2026-10-24T06:34:00Z",
+   "finding": "Official Valve monthly standings file, commit dated 2026-10-05. Supplies points for the six model_vrs rows, including 1081152 (937/863) and 1082792 (1437/944).",
+   "use": "accepted source for six rows; vintage flagged"
+  },
+  {
+   "url": "https://gamma-api.polymarket.com/markets/6098193",
+   "read_at_utc": "2026-10-24T06:28:37Z",
+   "fixture_id": "1081154",
+   "finding": "BakS eSports vs ILLYRIANS outcome prices 0.56 / 0.44, spread 0.34, liquidity $822.9866. The 06:19Z snapshot used 0.585 / 0.415 at market update 06:14:37Z. Drift of 2.5 points in nine minutes is expected for a live order book; the snapshot's quoted time is retained with its own receipt.",
+   "use": "drift check on a published wide-exchange row; not substituted"
+  },
+  {
+   "url": "https://gamma-api.polymarket.com/markets/6072799",
+   "read_at_utc": "2026-10-24T06:28:00Z",
+   "fixture_id": "1079198",
+   "finding": "Metizport vs BakS eSports prices 0.705 / 0.295, spread 0.31, liquidity $4570.8815 — matches the snapshot.",
+   "use": "corroboration of a published wide-exchange row"
+  },
+  {
+   "url": "https://gamma-api.polymarket.com/markets/6066508",
+   "read_at_utc": "2026-10-24T06:28:00Z",
+   "fixture_id": "1082858",
+   "finding": "Ground Zero vs Off Chops prices 0.295 / 0.705, spread 0.33, liquidity $5361.9515. Snapshot used 0.29 / 0.71; drift 0.5 points.",
+   "use": "drift check on a published wide-exchange row"
+  },
+  {
+   "url": "https://polymarket.com/event/cs2-tdkg-meiano-2026-10-24",
+   "read_at_utc": "2026-10-24T06:16:06Z",
+   "fixture_id": "1083121",
+   "finding": "Polymarket market 6081997 lists the fixture's first team as 'Tropa do KinGui' while Hotspawn fixture 1083121 says 'Projeto do KinGui'. The snapshot carries an https HLTV identity record for that rename; the independent verifier was repaired to accept it only when that sourced record is present.",
+   "use": "identity-register confirmation; publish-gate repair"
+  },
+  {
+   "url": "https://bo3.gg/matches/gremio-vs-yawara-esports-24-10-2026",
+   "read_at_utc": "2026-10-24T06:36:00Z",
+   "fixture_id": "1083123",
+   "finding": "Thunderpick-affiliated line 2.97 / 1.32. De-vig 30.77% / 69.23%, matching the board's pick Yawara.",
+   "use": "accepted bookmaker listing"
+  },
+  {
+   "url": "https://bo3.gg/matches/nexvoid-vs-alter-ego-26-10-2026",
+   "read_at_utc": "2026-10-24T06:36:00Z",
+   "fixture_id": "1082859",
+   "finding": "Line 1.61 / 2.18. De-vig 57.52% / 42.48%, matching the board's pick NEXVOID. EGamersWorld independently shows 1.60 / 2.17 (57.56% / 42.44%).",
+   "use": "accepted bookmaker listing, independently corroborated"
+  },
+  {
+   "url": "https://bo3.gg/matches/flyquest-vs-staqued-27-10-2026",
+   "read_at_utc": "2026-10-24T06:36:00Z",
+   "fixture_id": "1082860",
+   "finding": "Header renders 1.00 / 12.00; the prediction panel prints 1.001 / 12. The board stores 1.001 / 12 -> 92.30% / 7.70%. EGamersWorld shows 1 / 25 -> 96.15% / 3.85%.",
+   "use": "accepted listing; divergence flagged for human review"
+  },
+  {
+   "url": "https://egamersworld.com/counterstrike/matches",
+   "read_at_utc": "2026-10-24T06:40:00Z",
+   "finding": "First listing read. Asymmetric lines found for HOTU/The Huns 1.10/5.80, Ground Zero/Off Chops 3.505/1.26, NEXVOID/Alter Ego 1.60/2.17, FlyQuest/Staqued 1/25, Rooster/Team Abyssal 2.10/1.66. Symmetric 1.8/1.8 placeholders seen for HAVU/Azuolas, 6yuBoJlbl/Saint Sinners, 1WIN/5star and several non-board fixtures.",
+   "use": "esportsbook research; placeholders refused"
+  },
+  {
+   "url": "https://egamersworld.com/counterstrike/matches",
+   "read_at_utc": "2026-10-24T06:52:00Z",
+   "finding": "Second listing read across all 13 chunks. Additional lines: Grêmio/Yawara 2.98/1.32; Metizport/BakS 1.34/2.85; Acend/UNITY Esports 2.42/1.50; LOS NINOS/BORRACHEIROS 3.40/1.25. HOTU/The Huns had moved to 1.09/6.80 within roughly twelve minutes. The symmetric 1.8/1.8 placeholder also appeared for FORZE Reload/ex-RUSTEC, BakS/ILLYRIANS, Projeto do KinGui/MEIA NOITE, Isurus/RED Canids Academy, Spirit Academy/(blank opponent) and several non-board fixtures.",
+   "use": "esportsbook research; drift and direction-conflict evidence"
+  },
+  {
+   "url": "https://egamersworld.com/counterstrike/match/EkalRNMvVx/hotu-vs-the-huns-esports-SfdtzDhiK",
+   "read_at_utc": "2026-10-24T06:45:00Z",
+   "fixture_id": "1082792",
+   "finding": "Match-detail page serves the symmetric 1.8/1.8 placeholder on the same read in which the listing page showed 1.10/5.80 (later 1.09/6.80). The page header prints 31.10.26 05:00, consistent with the listing's UTC-4 rendering and Hotspawn's 09:00Z start; it is not a conflicting match time.",
+   "use": "explains the collector's 403/skip gap; placeholder refused"
+  },
+  {
+   "url": "https://egamersworld.com/counterstrike/match/HiXMAaC8L/havu-vs-azuolas-Dm2JAvY3OO",
+   "read_at_utc": "2026-10-24T06:44:00Z",
+   "fixture_id": "1081152",
+   "finding": "Symmetric 1.8/1.8 placeholder; EGW's displayed ranks HAVU #204, Azuolas #688. Placeholder refused.",
+   "use": "attempted esportsbook source; refused"
+  }
+ ],
+ "egw_listing_lines": [
+  {"fixture_id": "1081152", "pair": "HAVU vs Azuolas", "odds": [1.8, 1.8], "verdict": "symmetric placeholder, refused"},
+  {"fixture_id": "1081153", "pair": "6yuBoJlbl vs Saint Sinners", "odds": [1.8, 1.8], "verdict": "symmetric placeholder, refused"},
+  {"fixture_id": "1081154", "pair": "BakS eSports vs ILLYRIANS", "odds": [1.8, 1.8], "verdict": "symmetric placeholder, refused"},
+  {"fixture_id": "1079198", "pair": "Metizport vs BakS eSports", "odds": [1.34, 2.85], "de_vig": [0.6802, 0.3198], "board": [0.705, 0.295], "direction_agrees": true},
+  {"fixture_id": "1082996", "pair": "Acend vs UNITY Esports", "odds": [2.42, 1.5], "de_vig": [0.3827, 0.6173], "board": [0.5335, 0.4665], "direction_agrees": false},
+  {"fixture_id": "1081158", "pair": "FORZE Reload vs ex-RUSTEC", "odds": [1.8, 1.8], "verdict": "symmetric placeholder, refused"},
+  {"fixture_id": "1083122", "pair": "LOS NINOS vs BORRACHEIROS", "odds": [3.4, 1.25], "de_vig": [0.2688, 0.7312], "board": [0.3222, 0.6778], "direction_agrees": true},
+  {"fixture_id": "1083123", "pair": "Grêmio vs Yawara", "odds": [2.98, 1.32], "de_vig": [0.307, 0.693], "board": [0.3077, 0.6923], "direction_agrees": true},
+  {"fixture_id": "1082858", "pair": "Ground Zero vs Off Chops", "odds": [3.505, 1.26], "de_vig": [0.2644, 0.7356], "board": [0.29, 0.71], "direction_agrees": true},
+  {"fixture_id": "1082859", "pair": "NEXVOID vs Alter Ego", "odds": [1.6, 2.17], "de_vig": [0.5756, 0.4244], "board": [0.5752, 0.4248], "direction_agrees": true},
+  {"fixture_id": "1082860", "pair": "FlyQuest vs Staqued", "odds": [1.0, 25.0], "de_vig": [0.9615, 0.0385], "board": [0.923, 0.077], "direction_agrees": true},
+  {"fixture_id": "1082861", "pair": "Rooster vs Team Abyssal", "odds": [2.1, 1.66], "de_vig": [0.4415, 0.5585], "board": [0.4821, 0.5179], "direction_agrees": true},
+  {"fixture_id": "1082792", "pair": "HOTU vs The Huns", "odds_first_read": [1.1, 5.8], "odds_second_read": [1.09, 6.8], "de_vig_second_read": [0.8619, 0.1381], "board": [0.8518, 0.1482], "direction_agrees": true},
+  {"fixture_id": "1082793", "pair": "1WIN vs 5star eSports", "odds": [1.8, 1.8], "verdict": "symmetric placeholder, refused"}
+ ],
+ "refused_as_probabilities": [
+  {"source": "https://play.hotspawn.com/lobby", "what": "crowd 'picked' percentages", "reason": "user instruction; Hotspawn defines fixtures and locks only"},
+  {"source": "https://www.hltv.org/matches/2399502/havu-vs-azuolas-cct-2026-europe-series-12", "what": "community vote 91.7% / 8.3%", "reason": "fan poll, not a betting line"},
+  {"source": "https://www.hltv.org/matches/2399437/hotu-vs-the-huns-gluck-moscow-cyber-games-2026", "what": "community vote 77.6% / 22.4%", "reason": "fan poll, not a betting line"},
+  {"source": "https://egamersworld.com/counterstrike/matches", "what": "any symmetric 1.8 / 1.8 pair", "reason": "placeholder with an 11.11% overround; already refused by the collector"}
+ ]
+}
