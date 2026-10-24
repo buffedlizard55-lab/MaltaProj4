@@ -618,6 +618,23 @@ All new main publisher/source-drift guards and tall-phone semantic tests retaine
 
 ---
 
+### e3fe9518 completed-owner documentation handoff — 2026-10-24
+
+Main PR #258 adds 174afa4f's receipt: PR #251 is merged, its live read is dated
+06:51Z, and **"Session tasks: done"** explicitly releases that scope. The single
+methodology sentence requested in comment 6380987169 is still present and still
+overstated for the three accepted BO3 listings. Final integration therefore claims
+**only that verification-scope copy correction** in `scripts/build.py` (no ladder,
+calculation, navigation or layout change), its own regression assertion, and the
+canonical generated `sources.html`/review/root receipts. Replace the blanket claim
+about every price being raw operator evidence with accurate publisher-origin,
+operator-vs-listing-vs-mirror wording and an explicit operator-link-is-not-price-
+confirmation limitation. The source-truth request is resolved, not left misleading
+once the completed owner has handed it off. All source records and numbers stay
+unchanged. This does not take over any pending PR's feature work.
+
+---
+
 ## Session d2a55add — delivery receipt: PR #246 (2026-10-24)
 
 **PR [#246](https://github.com/buffedlizard55-lab/MaltaProj4/pull/246)** carries this
