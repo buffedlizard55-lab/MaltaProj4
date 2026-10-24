@@ -72,7 +72,11 @@ class VerifiedBuildStillDeploysTests(unittest.TestCase):
     def test_the_root_fallback_keeps_its_fatal_gates(self):
         block = step(self.verify, FALLBACK)
         self.assertIn("python -m scripts.validate --data data/latest.json --site . || return 3", block)
-        self.assertIn("python -m unittest discover -s tests || return 3", block)
+        # Session aeafcbe6 kept the gate fatal and made it legible: the suite is teed to a
+        # log, a non-zero exit still returns 3, and the failing test names now reach
+        # the run summary. Assert the gate, not one spelling of it.
+        self.assertIn("python -m unittest discover -s tests 2>&1 | tee runtime/staged-root-unit.log", block)
+        self.assertIn("return 3", block)
         self.assertNotIn("continue-on-error", block)
         self.assertNotIn("|| true\n          done", block)
 

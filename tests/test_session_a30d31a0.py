@@ -293,7 +293,11 @@ class WorkflowStepContract(unittest.TestCase):
 
     def test_in_step_gates_are_fatal(self):
         self.assertIn('python -m scripts.validate --data data/latest.json --site . || return 3', self.step)
-        self.assertIn('python -m unittest discover -s tests || return 3', self.step)
+        # Session aeafcbe6 kept the gate fatal and made it legible: the suite is teed to a
+        # log and a non-zero exit still returns 3 (and now publishes the failing test
+        # names to the run summary). Assert the gate, not one exact spelling of it.
+        self.assertIn('python -m unittest discover -s tests 2>&1 | tee runtime/staged-root-unit.log', self.step)
+        self.assertIn('return 3', self.step[self.step.index('if [ "${PIPESTATUS[0]}" != "0" ]'):])
         self.assertEqual(self.step.count('[ "$rc" = "3" ] && {'), 2)
 
     def test_pre_push_hook_is_installed_before_the_first_push(self):
