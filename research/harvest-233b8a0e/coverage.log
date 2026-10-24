@@ -1,0 +1,24 @@
+{
+ "snapshot_generated_at": "2026-10-24T07:36:31.680308Z",
+ "fixtures_observed_at": "2026-10-24T07:32:55.654765Z",
+ "coverage": "verified",
+ "observed_utc": "2026-10-24T07:32:55.654765Z",
+ "rows_total": 92,
+ "rows_past_dated": 61,
+ "rows_open": 31,
+ "open_with_pick": 31,
+ "open_with_probability": 31,
+ "open_research_only": 0,
+ "open_unresolved": 0
+}
+16     Polymarket exchange line, strict gate                          exchange
+6      Wide exchange quote, labelled low confidence                   exchange_wide
+3      Researched bookmaker listing (Thunderpick via bo3.gg)          bookmaker_fallback
+0      Bookmaker moneyline                                            bookmaker
+0      Pinnacle esports moneyline                                     pinnacle
+5      Our own Valve-VRS model line                                   model_vrs
+1      Our VRS model from HLTV's dated Valve ranking                  model_vrs_mirror
+0      HLTV ranking-order research pick (no percentage)               research_rank
+0      HLTV one-sided ranking research pick (no percentage)           research_rank_single
+0      One-sided Valve standings research pick (no percentage)        research_vrs_single
+0      HLTV recent-form research pick (no percentage)                 research_form

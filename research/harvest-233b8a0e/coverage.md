@@ -1,0 +1,33 @@
+# Every-match coverage — snapshot 2026-10-24T07:36:31.680308Z
+
+Fixture evidence read at **2026-10-24T07:32:55.654765Z** (UTC). Coverage status: **verified**.
+
+| Measure | Rows |
+| --- | --- |
+| Hotspawn CS2 feed records | 92 |
+| Past-dated records (not presented as current picks) | 61 |
+| Open matches | 31 |
+| Open matches with a pick | 31 |
+| Open matches with a win probability | 31 |
+| Open matches with a research pick and no percentage | 0 |
+| Open matches with no pick at all | 0 |
+
+## Which rung produced each pick
+
+| Rung (publication order) | Rows | Fixture IDs |
+| --- | --- | --- |
+| Polymarket exchange line, strict gate (`exchange`) | 16 | 1079193, 1079658, 1079659, 1083120, 1079195, 1079660, 1083121, 1079661, 1082695, 1083140, 1079199, 1079200, 1082897, 1082898, 1082900, 1082901 |
+| Wide exchange quote, labelled low confidence (`exchange_wide`) | 6 | 1081153, 1081154, 1083122, 1079198, 1081158, 1082858 |
+| Researched bookmaker listing (Thunderpick via bo3.gg) (`bookmaker_fallback`) | 3 | 1083123, 1082859, 1082860 |
+| Bookmaker moneyline (`bookmaker`) | 0 | — |
+| Pinnacle esports moneyline (`pinnacle`) | 0 | — |
+| Our own Valve-VRS model line (`model_vrs`) | 5 | 1081152, 1082996, 1082861, 1082792, 1082793 |
+| Our VRS model from HLTV's dated Valve ranking (`model_vrs_mirror`) | 1 | 1081156 |
+| HLTV ranking-order research pick (no percentage) (`research_rank`) | 0 | — |
+| HLTV one-sided ranking research pick (no percentage) (`research_rank_single`) | 0 | — |
+| One-sided Valve standings research pick (no percentage) (`research_vrs_single`) | 0 | — |
+| HLTV recent-form research pick (no percentage) (`research_form`) | 0 | — |
+
+## Unresolved ledger (HLTV first, then esportsbook lines)
+
+None: every open match in this snapshot carries a pick. The section stays published on the site so a later snapshot that cannot price a row is visible in the same place.
