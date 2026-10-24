@@ -1,0 +1,308 @@
+verify-build	Keep the legacy main:/ root fallback on the verified build	﻿2026-10-24T17:48:44.7722807Z ##[group]Run STAGED_PATHS="404.html analysis.html assets build-info.json data/latest.json data/matches.csv evidence.html index.html matches.html methodology.html picks.html review.html site sources.html unresolved.html .nojekyll"
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7724834Z ^[[36;1mSTAGED_PATHS="404.html analysis.html assets build-info.json data/latest.json data/matches.csv evidence.html index.html matches.html methodology.html picks.html review.html site sources.html unresolved.html .nojekyll"^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7725758Z ^[[36;1mpublish() {^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7726239Z ^[[36;1m  python -m scripts.publish_root_fallback --public public --root . --cooldown-hours 0.2 || return 1^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7726841Z ^[[36;1m  if [ -z "$(git status --porcelain -- $STAGED_PATHS)" ]; then^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7727365Z ^[[36;1m    echo "Root fallback already carries this snapshot; nothing to commit."; return 2^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7727797Z ^[[36;1m  fi^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7728153Z ^[[36;1m  python -m scripts.validate --data data/latest.json --site . || return 3^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7728677Z ^[[36;1m  python -m unittest discover -s tests || return 3^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7729064Z ^[[36;1m  git config user.name "cs2-scout-publisher"^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7729509Z ^[[36;1m  git config user.email "cs2-scout-publisher@users.noreply.github.com"^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7729973Z ^[[36;1m  git add -- $STAGED_PATHS data/book-receipts.json^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7730324Z ^[[36;1m  if git diff --cached --quiet; then^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7730806Z ^[[36;1m    echo "Root fallback already carries this snapshot; nothing staged to commit."; return 2^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7731257Z ^[[36;1m  fi^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7731471Z ^[[36;1m  git status --short^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7731872Z ^[[36;1m  git commit -m "Publish the verified build to the legacy main:/ root fallback"^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7732289Z ^[[36;1m}^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7732612Z ^[[36;1m# publish(): 0 = committed, 2 = already current or refused, 3 = the staged^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7733128Z ^[[36;1m# root failed its own gate, 1 = failure. Session a30d31a0 (2026-10-24):^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7733868Z ^[[36;1m# `dce494b` was committed by this step with 8 unit failures and a root^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7734400Z ^[[36;1m# stylesheet rolled back past PR #245. set +e is active around publish(),^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7734937Z ^[[36;1m# so its validate/unit lines never stopped the commit; they now return 3^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7735440Z ^[[36;1m# and fail the step before anything is pushed, keeping main green.^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7735946Z ^[[36;1m# scripts.publish_root_fallback refuses a build made from older source^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7736466Z ^[[36;1m# than the checkout (the replay path), and this pre-push hook re-checks at^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7736978Z ^[[36;1m# the moment of every push against the exact commit the push would^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7737477Z ^[[36;1m# fast-forward, so the rebase path cannot roll newer source back either.^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7738393Z ^[[36;1mprintf '#!/bin/sh\nwhile read lref lsha rref rsha; do python -m scripts.publish_root_fallback --check-drift --revision %s --against "$rsha" || exit 1; done\n' "$GITHUB_SHA" > .git/hooks/pre-push^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7739207Z ^[[36;1mchmod +x .git/hooks/pre-push^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7739508Z ^[[36;1mset +e; publish; rc=$?; set -e^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7739797Z ^[[36;1m[ "$rc" = "2" ] && exit 0^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7740376Z ^[[36;1m[ "$rc" = "3" ] && { echo "::error::The staged root failed its own validator or unit gate, so it was not committed and main stays green."; exit 1; }^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7741149Z ^[[36;1m[ "$rc" = "0" ] || { echo "::error::The verified build could not be staged at the root."; exit 1; }^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7741607Z ^[[36;1mfor attempt in 1 2 3; do^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7742028Z ^[[36;1m  if git pull --rebase --autostash origin main && git push origin HEAD:main; then^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7742463Z ^[[36;1m    exit 0^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7742855Z ^[[36;1m  fi^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7743595Z ^[[36;1m  # A conflicting rebase used to wedge every later attempt, so a green^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7744144Z ^[[36;1m  # build never reached the root. Drop it and replay the verified build^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7744629Z ^[[36;1m  # on top of the current origin/main, validators included.^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7745031Z ^[[36;1m  git rebase --abort >/dev/null 2>&1 || true^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7745377Z ^[[36;1m  git merge --abort >/dev/null 2>&1 || true^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7745951Z ^[[36;1m  echo "::warning::main moved during publication (attempt $attempt); replaying the verified build on origin/main."^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7746505Z ^[[36;1m  git fetch origin main^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7746850Z ^[[36;1m  git checkout -B publish-root-fallback origin/main^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7747216Z ^[[36;1m  set +e; publish; rc=$?; set -e^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7747513Z ^[[36;1m  [ "$rc" = "2" ] && exit 0^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7748107Z ^[[36;1m  [ "$rc" = "3" ] && { echo "::error::The re-staged root failed its own validator or unit gate, so it was not committed and main stays green."; exit 1; }^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7748911Z ^[[36;1m  [ "$rc" = "0" ] || { echo "::error::The verified build could not be re-staged on origin/main."; exit 1; }^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7749393Z ^[[36;1m  sleep $((attempt * 10))^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7749658Z ^[[36;1mdone^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7749973Z ^[[36;1m# Only the root-push race is non-blocking. Every refresh, build,^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7750469Z ^[[36;1m# validation, unit and browser gate above must already have passed.^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7750962Z ^[[36;1m# A newer main root must not strand this verified Actions artifact.^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7751375Z ^[[36;1mgit rebase --abort >/dev/null 2>&1 || true^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7752154Z ^[[36;1mecho "::warning::Could not push the staged root fallback after three attempts; deploying the verified Actions artifact while the newest main:/ root publishes independently."^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7752893Z ^[[36;1mexit 0^[[0m
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7815644Z shell: /usr/bin/bash -e {0}
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7815918Z env:
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7816200Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.17/x64
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7816658Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib/pkgconfig
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7817096Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7817493Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7817891Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7818294Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.7818635Z ##[endgroup]
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:44.8397812Z {"publish": true, "reason": "staging the verified build: 2026-10-24T17:47:01.898408Z replaces 2026-10-24T16:50:01.253200Z", "snapshot_generated_at": "2026-10-24T17:47:01.898408Z", "committed_snapshot": "2026-10-24T16:50:01.253200Z", "revision": "a73f4ef3cbc0644852cd5f80be501a34ad50ab6f", "source_drift": [], "files": [".nojekyll", "404.html", "analysis.html", "assets/app.js", "assets/favicon.svg", "assets/style.css", "build-info.json", "data/latest.json", "data/matches.csv", "evidence.html", "index.html", "matches.html", "methodology.html", "picks.html", "review.html", "site/index.html", "site/methodology.html", "site/picks.html", "site/review.html", "site/unresolved.html", "sources.html", "unresolved.html"], "asset_divergence": []}
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:47.2127787Z {
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:47.2128626Z   "rows_verified_against_primary_snapshot": 81,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:47.2129497Z   "probability_calculations_reproduced": 20,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:47.2130185Z   "pages": 15,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:47.2130780Z   "internal_links_and_assets_checked": 767,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:47.2131537Z   "artifact_checksums_verified": 20,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:47.2132263Z   "displayed_match_rows_verified": 189
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:47.2132744Z }
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:48:48.7405439Z ............................................................................................................................................................................................................................................................FNo refreshed snapshot at /tmp/tmpbqpmclen/nope.json; nothing to harvest.
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:01.1302534Z Built 9 primary pages + 6 legacy redirects; 81 sourced rows, 20 with percentages, 0 without percentages, 0 unresolved.
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:02.9118961Z Built 9 primary pages + 6 legacy redirects; 81 sourced rows, 20 with percentages, 0 without percentages, 0 unresolved.
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2000387Z Built 9 primary pages + 6 legacy redirects; 81 sourced rows, 20 with percentages, 0 without percentages, 0 unresolved.
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2001372Z {
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2001718Z  "coverage": "verified",
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2002132Z  "coverage_counts": {
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2002502Z   "open": 1
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2002820Z  },
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2003277Z  "fixtures_observed_at": "2026-10-15T21:33:48Z",
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2004112Z  "generated_at": "2026-10-15T22:37:11Z",
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2004626Z  "issues": [],
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2005083Z  "last_attempt_at": "2026-10-15T22:37:11Z",
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2005645Z  "open_pick_methods": {
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2006064Z   "None": 1
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2006401Z  },
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2006798Z  "rows_open": 1,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2007250Z  "rows_open_with_pick_no_price": 0,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2007762Z  "rows_open_with_prices": 0,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2008236Z  "rows_open_without_pick": 1,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2008671Z  "rows_total": 1,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2009049Z  "unresolved_open_ids": [
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2009419Z   "1"
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2009729Z  ]
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2010021Z }
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2011096Z Built 9 primary pages + 6 legacy redirects; 81 sourced rows, 20 with percentages, 0 without percentages, 0 unresolved.
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2012584Z receipt = egw-NTRtiger-l6k0vg5-nemesis-nuclear -> already on file for fixture 1081552
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2014039Z receipt = egw-V1JAWhPomg-astral-leo -> already on file for fixture 1081532
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2015272Z receipt = egw-Nk9F-Ov54e-fireflux-ex6666 -> already on file for fixture 1079181
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2016431Z receipt = egw-rW8GEyWK-lavked-ex6666 -> already on file for fixture 1079646
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2017652Z receipt = egw-41yaj8BdVx-sangal-aurorayoungblud -> already on file for fixture 1082157
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2018461Z {
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2018817Z  "receipts_added": 0,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2019250Z  "rejections_added": 0,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2019681Z  "aliases_added": 0,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2020088Z  "notes_added": 0
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2020470Z }
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2021523Z Built 9 primary pages + 6 legacy redirects; 81 sourced rows, 20 with percentages, 0 without percentages, 0 unresolved.
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2023154Z Built 9 primary pages + 6 legacy redirects; 4 sourced rows, 2 with percentages, 2 without percentages, 1 unresolved.
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2024941Z Built 9 primary pages + 6 legacy redirects; 4 sourced rows, 2 with percentages, 2 without percentages, 1 unresolved.
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2026580Z Built 9 primary pages + 6 legacy redirects; 4 sourced rows, 2 with percentages, 2 without percentages, 1 unresolved.
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2028181Z Built 9 primary pages + 6 legacy redirects; 4 sourced rows, 2 with percentages, 2 without percentages, 1 unresolved.
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2029763Z Built 9 primary pages + 6 legacy redirects; 2 sourced rows, 1 with percentages, 1 without percentages, 0 unresolved.
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2031387Z Built 9 primary pages + 6 legacy redirects; 81 sourced rows, 20 with percentages, 0 without percentages, 0 unresolved.
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2032991Z Built 9 primary pages + 6 legacy redirects; 2 sourced rows, 2 with percentages, 0 without percentages, 0 unresolved.
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2034859Z Built 9 primary pages + 6 legacy redirects; 75 sourced rows, 10 with percentages, 3 without percentages, 1 unresolved.
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2036498Z Built 9 primary pages + 6 legacy redirects; 1 sourced rows, 0 with percentages, 1 without percentages, 0 unresolved.
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2038621Z Built 9 primary pages + 6 legacy redirects; 1 sourced rows, 0 with percentages, 1 without percentages, 1 unresolved.
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2040245Z Built 9 primary pages + 6 legacy redirects; 1 sourced rows, 0 with percentages, 1 without percentages, 1 unresolved.
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2041861Z Built 9 primary pages + 6 legacy redirects; 75 sourced rows, 10 with percentages, 3 without percentages, 1 unresolved.
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2043294Z receipt = egw-NTRtiger-l6k0vg5-nemesis-nuclear -> already on file for fixture 1081552
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2044692Z receipt = egw-V1JAWhPomg-astral-leo -> already on file for fixture 1081532
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2045841Z receipt = egw-Nk9F-Ov54e-fireflux-ex6666 -> already on file for fixture 1079181
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2046977Z receipt = egw-rW8GEyWK-lavked-ex6666 -> already on file for fixture 1079646
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2048191Z receipt = egw-41yaj8BdVx-sangal-aurorayoungblud -> already on file for fixture 1082157
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2049014Z {
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2049377Z  "receipts_added": 0,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2049805Z  "rejections_added": 0,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2050236Z  "aliases_added": 0,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2050643Z  "notes_added": 0
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2051018Z }
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2051831Z receipt = egw-NTRtiger-l6k0vg5-nemesis-nuclear -> already on file for fixture 1081552
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2053017Z receipt = egw-V1JAWhPomg-astral-leo -> already on file for fixture 1081532
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2054348Z receipt = egw-Nk9F-Ov54e-fireflux-ex6666 -> already on file for fixture 1079181
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2055471Z receipt = egw-rW8GEyWK-lavked-ex6666 -> already on file for fixture 1079646
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2056688Z receipt = egw-41yaj8BdVx-sangal-aurorayoungblud -> already on file for fixture 1082157
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2057501Z {
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2057858Z  "receipts_added": 0,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2058281Z  "rejections_added": 0,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2058713Z  "aliases_added": 0,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2059136Z  "notes_added": 0
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2059512Z }
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2060532Z Built 9 primary pages + 6 legacy redirects; 3 sourced rows, 2 with percentages, 1 without percentages, 0 unresolved.
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2061467Z {
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2061819Z   "schema_version": 1,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2062395Z   "snapshot_generated_at": "2026-10-24T17:47:01.898408Z",
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2063066Z   "audit_clock": "2026-10-24T17:47:01.898408Z",
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2063938Z   "clock_basis": "snapshot_generation_time_not_live",
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2064522Z   "counts": {
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2064918Z     "hltv_mirror_model": 1,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2065364Z     "not_open": 61,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2065818Z     "official_input_model": 3,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2066301Z     "operator_market": 13,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2066751Z     "third_party_listing": 3
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2067196Z   },
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2067612Z   "actionable_at_audit_clock": 20,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2068101Z   "errors": [],
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2069200Z   "scope": "Retained-evidence provenance and independent arithmetic replay, not live upstream confirmation or forecast accuracy.",
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2070665Z   "snapshot_sha256": "0c04c089d7b48ae65900e98c84f905906a616e2c77576b02043d022754ccded1"
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2071450Z }
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2072486Z Built 9 primary pages + 6 legacy redirects; 1 sourced rows, 0 with percentages, 1 without percentages, 1 unresolved.
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2073608Z {
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2073974Z   "verified": true,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2074406Z   "revision": "TEST_ONLY",
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2074922Z   "built_at": "2026-10-22T08:30:00Z",
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2075441Z   "files_checked": 20,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2076051Z   "snapshot_generated_at": "2026-10-22T07:49:59.960210Z",
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2076815Z   "fixtures_observed_at": "2026-10-22T07:44:36.467004Z",
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2077839Z   "live_manifest_sha256": "bac79bdd9069623d5080dd9b797d97c52954dd198ed03e376f10ff209b5e6721",
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2079303Z   "snapshot_sha256": "9c6f1c7e1944447d6618d767299418f4f2a6a5d904cbfa49e5d8aebc009ebb67",
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2080298Z   "snapshot_counts": {
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2080737Z     "feed_rows": 107,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2081171Z     "open": 46,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2081568Z     "with_pick": 45,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2082017Z     "with_probability": 39,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2082470Z     "market": 27,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2082851Z     "model": 12,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2083285Z     "official_file_models": 12,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2084122Z     "hltv_mirror_models": 0,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2084784Z     "research_only": 6,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2085210Z     "unresolved": 1
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2085607Z   },
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2085968Z   "run_id": "40116877511",
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2086659Z   "note": "Exact public bytes; no source/quote timestamp was renewed."
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2087250Z }
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2088210Z Built 9 primary pages + 6 legacy redirects; 107 sourced rows, 0 with percentages, 25 without percentages, 25 unresolved.
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2089335Z receipt: /tmp/tmp3_v_h2af/audit-receipt.json
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2089898Z {
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2090338Z  "rows_with_official_source": 107,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2090855Z  "open_with_pick": 0,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2091287Z  "open_with_probability": 0,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2091806Z  "probabilities_reproduced": 0,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2092295Z  "research_only": 0,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2092770Z  "research_listed_on_both_pages": 0,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2093258Z  "unresolved": 25,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2094027Z  "unresolved_listed_on_both_pages": 25
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2094532Z }
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2094905Z checks: 282  failures: 0
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2095585Z receipt: /tmp/tmp3_v_h2af/audit-receipt.json
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2096118Z {
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2096521Z  "rows_with_official_source": 107,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2097009Z  "open_with_pick": 0,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2097433Z  "open_with_probability": 0,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2097945Z  "probabilities_reproduced": 0,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2098427Z  "research_only": 0,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2098901Z  "research_listed_on_both_pages": 0,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2099387Z  "unresolved": 25,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2099852Z  "unresolved_listed_on_both_pages": 25
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2100332Z }
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2100704Z checks: 282  failures: 1
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2101424Z FAIL: 1082769 K27 vs NEXORA: unresolved probabilities must be None
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2102265Z receipt: /tmp/tmp3_v_h2af/audit-receipt.json
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2102859Z {
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2103298Z  "rows_with_official_source": 107,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2104089Z  "open_with_pick": 0,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2104534Z  "open_with_probability": 0,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2105053Z  "probabilities_reproduced": 0,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2105523Z  "research_only": 0,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2105997Z  "research_listed_on_both_pages": 0,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2106494Z  "unresolved": 25,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2106960Z  "unresolved_listed_on_both_pages": 25
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2107447Z }
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2107828Z checks: 282  failures: 1
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2108529Z FAIL: 1082769 K27 vs NEXORA: unresolved fair_odds must be None
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2109297Z receipt: /tmp/tmp3_v_h2af/audit-receipt.json
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2109825Z {
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2110230Z  "rows_with_official_source": 107,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2110717Z  "open_with_pick": 0,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2111145Z  "open_with_probability": 0,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2111671Z  "probabilities_reproduced": 0,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2112147Z  "research_only": 0,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2112615Z  "research_listed_on_both_pages": 0,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2113109Z  "unresolved": 25,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2113796Z  "unresolved_listed_on_both_pages": 25
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2114294Z }
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2114667Z checks: 282  failures: 1
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2115333Z FAIL: 1082769 K27 vs NEXORA: unresolved method must be None
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2116095Z receipt: /tmp/tmp3_v_h2af/audit-receipt.json
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2116617Z {
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2117014Z  "rows_with_official_source": 107,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2117889Z  "open_with_pick": 0,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2118330Z  "open_with_probability": 0,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2118850Z  "probabilities_reproduced": 0,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2119326Z  "research_only": 0,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2119802Z  "research_listed_on_both_pages": 0,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2120299Z  "unresolved": 25,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2120763Z  "unresolved_listed_on_both_pages": 25
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2121247Z }
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2121629Z checks: 282  failures: 1
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2122328Z FAIL: 1082769 K27 vs NEXORA: unresolved row lacks its limitation
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2123110Z receipt: /tmp/tmp3_v_h2af/audit-receipt.json
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2123837Z {
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2124245Z  "rows_with_official_source": 107,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2124740Z  "open_with_pick": 0,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2125169Z  "open_with_probability": 0,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2125691Z  "probabilities_reproduced": 0,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2126163Z  "research_only": 0,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2126632Z  "research_listed_on_both_pages": 0,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2127134Z  "unresolved": 25,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2127598Z  "unresolved_listed_on_both_pages": 25
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2128082Z }
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2128452Z checks: 282  failures: 1
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2129161Z FAIL: 1082769 K27 vs NEXORA: unresolved row lacks source attempts
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2129955Z receipt: /tmp/tmp3_v_h2af/audit-receipt.json
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2130477Z {
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2130870Z  "rows_with_official_source": 107,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2131352Z  "open_with_pick": 0,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2131787Z  "open_with_probability": 0,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2132307Z  "probabilities_reproduced": 0,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2132779Z  "research_only": 0,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2133250Z  "research_listed_on_both_pages": 0,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2133927Z  "unresolved": 25,
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2134395Z  "unresolved_listed_on_both_pages": 25
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2134883Z }
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2135258Z checks: 282  failures: 1
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2135999Z FAIL: 1082769 K27 vs NEXORA: unresolved row lacks official fixture URL
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2137371Z Built 9 primary pages + 6 legacy redirects; 107 sourced rows, 0 with percentages, 0 without percentages, 0 unresolved.
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:29.2139009Z Built 9 primary pages + 6 legacy redirects; 107 sourced rows, 36 with percentages, 7 without percentages, 1 unresolved.
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:32.8207959Z ...........................................................................................................................................................................s....................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................s...............................................................................................................................................................................................................................................................................ss.................................................................................................................................sss...............................................................................................................................................................................................
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:32.8212697Z ======================================================================
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:32.8214194Z FAIL: test_main_writes_summary_and_reports_digests (test_harvest_0e407ec7.SummariserTest.test_main_writes_summary_and_reports_digests)
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:32.8215408Z ----------------------------------------------------------------------
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:32.8216651Z Traceback (most recent call last):
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:32.8217772Z   File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_harvest_0e407ec7.py", line 74, in test_main_writes_summary_and_reports_digests
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:32.8218941Z     self.assertEqual(sorted(summary['files']), ['latest.json'])
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:32.8219927Z AssertionError: Lists differ: ['latest.json', 'published-row-audit.md'] != ['latest.json']
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:32.8220490Z 
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:32.8220759Z First list contains 1 additional elements.
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:32.8221228Z First extra element 1:
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:32.8221626Z 'published-row-audit.md'
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:32.8221879Z 
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:32.8222145Z - ['latest.json', 'published-row-audit.md']
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:32.8222630Z + ['latest.json']
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:32.8222829Z 
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:32.8223194Z ----------------------------------------------------------------------
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:32.8223962Z Ran 1586 tests in 45.005s
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:32.8224204Z 
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:32.8224432Z FAILED (failures=1, skipped=7)
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:32.8225504Z Built 9 primary pages + 6 legacy redirects; 107 sourced rows, 0 with percentages, 25 without percentages, 25 unresolved.
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:32.8226889Z coverage: 20 open · 20 with a pick · 20 with a win probability
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:33.2296319Z ##[error]The staged root failed its own validator or unit gate, so it was not committed and main stays green.
+verify-build	Keep the legacy main:/ root fallback on the verified build	2026-10-24T17:49:33.2305409Z ##[error]Process completed with exit code 1.

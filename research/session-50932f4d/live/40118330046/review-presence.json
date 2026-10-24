@@ -1,0 +1,17 @@
+{
+  "checked_at": "2026-10-24T17:57:53.591713+00:00",
+  "verified": true,
+  "scope": "Actual public review rows and exact adjacent manifest bytes; no publication.",
+  "review_sha256": "8d70a60cda314bf87d71f71422894f09b88c43835ff704cd83eb296dac7e6f74",
+  "review_hash_matches_manifest": true,
+  "published_revision": "0fc9719042366ed5cf4d95f1eb151fdc2f531a2c",
+  "notes_present": {
+    "session-50932f4d-listing-event-binding": true,
+    "session-50932f4d-source-authority-and-calibration": true,
+    "session-50932f4d-neutral-model-and-rotating-test-gates": true,
+    "session-50932f4d-corrected-capture-prose": true
+  },
+  "expected_revision": "a73f4ef3cbc0644852cd5f80be501a34ad50ab6f",
+  "comparison_status": "ahead",
+  "verified_includes_merge": true
+}

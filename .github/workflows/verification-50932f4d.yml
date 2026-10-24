@@ -13,6 +13,8 @@ on:
         type: string
 permissions:
   contents: write
+  actions: read
+  pages: read
 concurrency:
   group: release-readback-50932f4d
   cancel-in-progress: false
@@ -36,6 +38,12 @@ jobs:
           cache: npm
       - run: pip install -r requirements.txt
       - run: npm ci --ignore-scripts
+      - name: Retain the exact failed publisher artifact and gate log when requested
+        id: diagnosis
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python research/session-50932f4d/publisher_diagnosis.py
       - name: Verify exact public bytes, evidence clocks and source arithmetic
         id: public
         continue-on-error: true
@@ -90,6 +98,14 @@ jobs:
           print(json.dumps(receipt, indent=2))
           raise SystemExit(int('error' in receipt))
           PY
+      - name: Verify every session finding reached the public review table
+        id: review
+        if: always()
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EXPECTED_REVISION: ${{ inputs.expected_revision }}
+        run: python research/session-50932f4d/review_presence.py
       - name: Retain dated receipts and official Pages status
         if: always()
         env:
@@ -97,6 +113,7 @@ jobs:
           PUBLIC_OUTCOME: ${{ steps.public.outcome }}
           MOBILE_OUTCOME: ${{ steps.mobile.outcome }}
           REVISION_OUTCOME: ${{ steps.revision.outcome }}
+          REVIEW_OUTCOME: ${{ steps.review.outcome }}
         run: |
           python - <<'PY'
           import json, os, shutil, subprocess
@@ -114,7 +131,8 @@ jobs:
                      'run_url': f'https://github.com/{os.environ["GITHUB_REPOSITORY"]}/actions/runs/{os.environ["GITHUB_RUN_ID"]}',
                      'checkout': os.environ['GITHUB_SHA'], 'publishes_pages': False,
                      'public_check': os.environ['PUBLIC_OUTCOME'], 'mobile_check': os.environ['MOBILE_OUTCOME'],
-                     'revision_check': os.environ['REVISION_OUTCOME']}
+                     'revision_check': os.environ['REVISION_OUTCOME'],
+                     'review_presence_check': os.environ['REVIEW_OUTCOME']}
           for endpoint, name in (('pages', 'github-pages.json'), ('pages/builds/latest', 'github-pages-build.json')):
               result = subprocess.run(['gh', 'api', f'repos/{os.environ["GITHUB_REPOSITORY"]}/{endpoint}'], capture_output=True, text=True)
               if result.returncode == 0:
@@ -128,7 +146,7 @@ jobs:
           git add -- research/session-50932f4d/live
           if ! git diff --cached --quiet; then
             git commit -m "Record production readback $GITHUB_RUN_ID [skip ci]"
-            git pull --rebase origin arena/50932f4d-maltaproj4
+            git pull --rebase=merges origin arena/50932f4d-maltaproj4
             git push origin arena/50932f4d-maltaproj4
           fi
       - name: Fail if any verification failed
@@ -137,7 +155,9 @@ jobs:
           PUBLIC_OUTCOME: ${{ steps.public.outcome }}
           MOBILE_OUTCOME: ${{ steps.mobile.outcome }}
           REVISION_OUTCOME: ${{ steps.revision.outcome }}
+          REVIEW_OUTCOME: ${{ steps.review.outcome }}
         run: |
           test "$PUBLIC_OUTCOME" = success
           test "$MOBILE_OUTCOME" = success
           test "$REVISION_OUTCOME" = success
+          test "$REVIEW_OUTCOME" = success

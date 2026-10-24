@@ -650,6 +650,87 @@ Evidence rules: Hotspawn supplies fixture inventory and locks only, never a prob
 
 ---
 
+### 50932f4d completion receipt / completed upstream adoption — 2026-10-24T18:16:30.143726+00:00
+
+Completed main through `dbb042f` merged without a conflict or overlapping edit.
+This includes ac5bcb06's exact harvester test isolation fix `bf14ce5`. New own
+ambient-file case reproduces the one failure before adoption and passes after;
+29 focused checks and the full **1,602 units (7 skips) / 13 browser suites** pass.
+The regression preserves both synthetic ambient audit files and restores cwd.
+The adopted aeafcbe6 browser suite writes its own tracked measurement receipt;
+that test side-effect was restored to the owner's committed bytes. Its successful
+measurements are retained in this session's `release-browser.log` instead.
+No published data, probability, source clock, helper or other owner's test was
+changed for this repair. Total own deterministic regressions: **25**.
+
+Primary task is delivered: PR #294 merged; replacement publisher 40117720878
+and independent actual-byte/mobile/revision/review readback 40118330046 all
+pass. Full receipts are retained in `research/session-50932f4d/live/40118330046/`;
+concise summary and source limitations in `research/session-50932f4d/RELEASE.md`.
+Only a receipt/regression follow-up remains to merge; no new production input
+or generated root is included. Old failure 40116877511 remains recorded, not
+rewritten as success. No source recollection is performed by the readback.
+
+Nonblocking diagnostic follow-up was requested rather than editing owner
+scope: https://github.com/buffedlizard55-lab/MaltaProj4/pull/300#issuecomment-6387752015
+(the upload currently precedes creation of its log, and the summary's deployment
+wording predates #280). The actual successful pipeline and public readback are
+independent of that optional logging issue.
+
+### 50932f4d live delivery verified / hermeticity regression claim — 2026-10-24T18:08:23.088338+00:00
+
+**Actual public readback 40118330046 succeeded in all four gates** at
+17:57:44–54Z. Public revision `0fc9719042366ed5cf4d95f1eb151fdc2f531a2c`
+includes PR #294's merge; 20 file hashes and the adjacent snapshot agree.
+Official API/page/lobby/retained parity is **81/81/81/81**; **19 current open
+rows / 19 picks / 19 pairs**, 62 not open, 15 market-derived / 4 models. All
+four own review entries are in actual public table rows and match the manifest.
+Phone/desktop widths 320/390/768/1440 pass at the actual clock. Two former IDs
+1079661/1081154 are absent from the new official capture, not silently discarded
+from a still-listed inventory. Earlier 83-row captures remain archived.
+
+The exact failed-run artifact/log isolates **one** failure: the harvester test
+expected only `latest.json` but read ambient `runtime/published-row-audit.md`.
+No forecast/data change is needed. Completed upstream `bf14ce5` already fixes
+that test's working-directory isolation. Replacement publisher **40117720878**
+passes verify-build, the strict staged-root gate and deploy; the old failed
+run remains an honest historical receipt. Adopting the completed fix, not
+editing its owner's helper/test. **Claiming only `tests/test_session_50932f4d.py`
+for one deterministic synthetic ambient-runtime regression**, so this failure
+is exercised even on a clean pre-refresh test run. Own research/receipt update
+only otherwise. Existing production sources, percentages and clocks untouched.
+
+The independent live recheck found 12 operator markets accessible, 10 still at
+the captured inputs and two moved-price comparisons (1082996 and 1079199).
+Those are dated snapshot estimates, not claimed current ticks. Three BO3 book
+listings still lack direct operator confirmation. Model accuracy and future
+cron timeliness are not proven by this successful release.
+
+### 50932f4d fresh-root gate diagnosis — 2026-10-24T17:55:23.132365+00:00
+
+Post-merge publisher **40116877511** validated and uploaded its artifact and
+its deploy job succeeded, but verify-build failed in the staged-root validator/
+unit gate (annotations 307/308). This is **not** a successful end-to-end release.
+Claiming exact-artifact/log diagnosis in this session's isolated readback and
+research files only; no other owner's production/test file is edited without
+a verified cause and logged handoff. The artifact ID/name and failed run were
+read from GitHub. The readback now retains that exact uploaded Pages archive
+and failed-step log, without collecting, publishing, staging or writing main.
+Local post-merge main code on the older 16:50 capture passes **1,586 units (7
+skips) and all 12 browser suites**; that does not diagnose the new capture.
+
+### 50932f4d merge confirmed / public readback pending — 2026-10-24T17:41:02.619152+00:00
+
+**PR #294 merged at 17:36:16Z** as `a73f4ef3cbc0644852cd5f80be501a34ad50ab6f`.
+The explicit `gh pr merge 294 --merge` operation succeeded. Both required runs
+passed: independent audit 40115817738 (44s), verify-build 40115817739 (2m51s);
+deploy correctly skipped on the PR. The main publish run is 40116877511 and
+is still pending, not a claimed deployment. `release-target.json` binds the
+readback to this real merge SHA. The nonpublishing checker additionally verifies
+all four own findings in actual public table rows and exact manifest bytes;
+real generated rows pass, while missing-row/wrong-byte synthetic cases fail.
+No source refresh or production write is added to the verification workflow.
+
 ## Session 50932f4d integration log — placement handoff (2026-10-24T17:22:18.013566+00:00)
 
 PR #294 now includes completed #291/#293/#297. Repeated parallel append/prepend
@@ -708,7 +789,7 @@ will be checked against source bytes or GitHub's API, not copied as verified pro
 | Task | Status | Owner | File scope | Updated (UTC) |
 | --- | --- | --- | --- | --- |
 | Independently inspect the fallback source trust boundary: exact fixture identity, two-sided odds, source clocks, reproducible probabilities, and rejection of placeholders/crowd votes; repair only demonstrated defects in the unclaimed bookmaker adapter | done | 50932f4d | `scripts/books.py` (only if a demonstrated defect), `tests/test_session_50932f4d.py` (new), `research/session-50932f4d/**` (new) | 2026-10-24 16:25 UTC |
-| Re-verify a fresh runner capture row by row and test mobile pick links/blank-value disclosure without editing the active owners' UI or collector scopes | in progress | 50932f4d | `research/session-50932f4d/**`, `tests/browser_50932f4d.cjs` (new, if needed), `.github/workflows/verification-50932f4d.yml` (new read-only verification, if needed) | 2026-10-24 16:25 UTC |
+| Re-verify a fresh runner capture row by row and test mobile pick links/blank-value disclosure without editing the active owners' UI or collector scopes | done — actual public readback 40118330046 | 50932f4d | `research/session-50932f4d/**`, `tests/browser_50932f4d.cjs` (new, if needed), `.github/workflows/verification-50932f4d.yml` (new read-only verification, if needed) | 2026-10-24 16:25 UTC |
 | Final integration of completed non-overlapping changes; all gates, explicit PR merge to main, official Pages deployment/byte receipt | unclaimed until research and other active owners' work are done | 50932f4d | `COORDINATION.md` (additive), `data/review-notes.json` (own IDs only after handoff), generated outputs via canonical build/staging only | 2026-10-24 16:25 UTC |
 
 **Coordination requests to 2b856884 / a22008ff:** please retain and make available
@@ -893,7 +974,7 @@ combined parser/model/alias/arithmetic tests pass**, including 24 session tests.
 
 | Task | Status | Owner/session | File scope |
 | --- | --- | --- | --- |
-| Publish this session's source-trust, neutral-model and fixture-test findings; finish verification and PR integration | claimed before shared-output work | 50932f4d | `data/review-notes.json` (append unique `session-50932f4d-*` IDs only); canonical regenerated root outputs from the completed upstream snapshot; own reports/receipts and fixed-branch readback workflow |
+| Publish this session's source-trust, neutral-model and fixture-test findings; finish verification and PR integration | done — PR #294 merged; all four findings verified live | 50932f4d | `data/review-notes.json` (append unique `session-50932f4d-*` IDs only); canonical regenerated root outputs from the completed upstream snapshot; own reports/receipts and fixed-branch readback workflow |
 
 All incorporated implementation dependencies (#279, #282, #281 and #283) are
 completed/merged. Builder, CSS, collector and publisher changes still claimed by

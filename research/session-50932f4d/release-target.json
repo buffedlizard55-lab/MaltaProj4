@@ -1,0 +1,17 @@
+{
+  "expected_revision": "a73f4ef3cbc0644852cd5f80be501a34ad50ab6f",
+  "pull_request": 294,
+  "pull_request_url": "https://github.com/buffedlizard55-lab/MaltaProj4/pull/294",
+  "merged_at": "2026-10-24T17:36:16Z",
+  "source": "GitHub pull-request API; gh pr merge 294 --merge exited 0",
+  "ci": {
+    "verify_build": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40115817739",
+    "independent_audit": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40115817738"
+  },
+  "publication_verified": true,
+  "verified_run": 40118330046,
+  "verified_published_revision": "0fc9719042366ed5cf4d95f1eb151fdc2f531a2c",
+  "verified_at": "2026-10-24T17:57:44.039637+00:00",
+  "historical_failed_publisher_run": 40116877511,
+  "recovery_publisher_run": 40117720878
+}

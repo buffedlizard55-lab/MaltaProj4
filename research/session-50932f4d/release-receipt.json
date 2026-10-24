@@ -1,0 +1,65 @@
+{
+  "recorded_at": "2026-10-24T18:16:30.136862+00:00",
+  "status": "production_verified",
+  "implementation_pr": 294,
+  "implementation_merge": "a73f4ef3cbc0644852cd5f80be501a34ad50ab6f",
+  "published_revision": "0fc9719042366ed5cf4d95f1eb151fdc2f531a2c",
+  "publisher_run": 40117720878,
+  "publisher_verify_build": "success",
+  "publisher_staged_root_gate": "success",
+  "publisher_deploy": "success",
+  "readback_run": 40118330046,
+  "readback_checked_at": "2026-10-24T17:57:44.039637+00:00",
+  "snapshot_generated_at": "2026-10-24T17:54:57.706448Z",
+  "fixtures_observed_at": "2026-10-24T17:51:18.025822Z",
+  "snapshot_sha256": "fea56f2252d3a97a9f25dc8c7a396172b6a7fc5013b4a2a5639c07ca4196525d",
+  "inventory_parity": {
+    "api": 81,
+    "page": 81,
+    "lobby": 81,
+    "retained": 81
+  },
+  "retained": 81,
+  "open_at_check": 19,
+  "picks": 19,
+  "probability_pairs": 19,
+  "unresolved": 0,
+  "source_categories": {
+    "hltv_mirror_model": 1,
+    "not_open": 62,
+    "official_input_model": 3,
+    "operator_market": 12,
+    "third_party_listing": 3
+  },
+  "artifact_hashes_verified": 20,
+  "review_findings_verified": 4,
+  "actual_clock_viewports": [
+    320,
+    390,
+    768,
+    1440
+  ],
+  "operator_rechecks": {
+    "total": 12,
+    "same_captured_inputs": 10,
+    "changed_price_comparisons": [
+      "1082996",
+      "1079199"
+    ]
+  },
+  "direct_operator_confirmation_for_secondary_listings": null,
+  "branch_regression_gate": {
+    "unit_tests": 1602,
+    "skipped_historical_cases": 7,
+    "browser_suites": 13,
+    "own_tests": 25
+  },
+  "historical_failed_publisher": 40116877511,
+  "historical_failure": "One test read ambient runtime/published-row-audit.md, changing the expected output file list.",
+  "upstream_fix": "bf14ce5",
+  "regression": "AmbientHarvestIsolationTests: failure reproduced before adoption, passes after adoption; ambient files stay intact.",
+  "nonblocking_followups": [
+    "https://github.com/buffedlizard55-lab/MaltaProj4/pull/284#issuecomment-6387046793",
+    "https://github.com/buffedlizard55-lab/MaltaProj4/pull/300#issuecomment-6387752015"
+  ]
+}

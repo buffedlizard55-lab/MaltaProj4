@@ -1,0 +1,25 @@
+test_harvest_test_ignores_ambient_reports_without_deleting_them (tests.test_session_50932f4d.AmbientHarvestIsolationTests.test_harvest_test_ignores_ambient_reports_without_deleting_them)
+The post-build environment must not silently change a clean unit fixture. ... FAIL
+
+======================================================================
+FAIL: test_harvest_test_ignores_ambient_reports_without_deleting_them (tests.test_session_50932f4d.AmbientHarvestIsolationTests.test_harvest_test_ignores_ambient_reports_without_deleting_them)
+The post-build environment must not silently change a clean unit fixture.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/MaltaProj4/tests/test_session_50932f4d.py", line 320, in test_harvest_test_ignores_ambient_reports_without_deleting_them
+    case.test_main_writes_summary_and_reports_digests()
+  File "/home/user/MaltaProj4/tests/test_harvest_0e407ec7.py", line 74, in test_main_writes_summary_and_reports_digests
+    self.assertEqual(sorted(summary['files']), ['latest.json'])
+AssertionError: Lists differ: ['latest.json', 'published-row-audit.md', 'row-audit.md'] != ['latest.json']
+
+First list contains 2 additional elements.
+First extra element 1:
+'published-row-audit.md'
+
+- ['latest.json', 'published-row-audit.md', 'row-audit.md']
++ ['latest.json']
+
+----------------------------------------------------------------------
+Ran 1 test in 0.005s
+
+FAILED (failures=1)

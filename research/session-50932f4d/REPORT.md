@@ -1,6 +1,54 @@
 # Session 50932f4d — fallback evidence and release verification
 
-## Current integration status — 2026-10-24T17:04:53.547342+00:00
+## Verified release — 2026-10-24 17:57 UTC
+
+**Delivered on [GitHub Pages](https://buffedlizard55-lab.github.io/MaltaProj4/).**
+[PR #294](https://github.com/buffedlizard55-lab/MaltaProj4/pull/294) merged as
+`a73f4ef3cbc0644852cd5f80be501a34ad50ab6f`. The actual public revision
+`0fc9719042366ed5cf4d95f1eb151fdc2f531a2c` includes that merge.
+[Replacement publisher 40117720878](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40117720878)
+passes verify-build, the strict staged-root gate and deployment.
+[Independent readback 40118330046](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40118330046)
+checks actual public bytes, source arithmetic/clocks, four device sizes, merge
+ancestry and all four published review entries — **all successful**.
+
+Current-at-check official inventory parity: **81 API / 81 page / 81 lobby / 81
+retained**. **19 open / 19 picks / 19 probability pairs / 0 unresolved**, with
+62 retained not-open rows. Pricing comprises 12 operator-origin markets, three
+explicit secondary book listings, three official-input models and one dated
+HLTV mirror model. Snapshot generated 17:54:57Z; fixture observation 17:51:18Z.
+The two IDs absent relative to the earlier 83-row capture are 1079661/1081154;
+the earlier capture remains archived, not overwritten or relabelled current.
+
+See [concise release report](RELEASE.md), [machine-readable receipt](release-receipt.json),
+[actual public row ledger](live/40118330046/live-source-audit.md),
+[mobile receipt](live/40118330046/live-mobile.json),
+[merge binding](live/40118330046/revision-binding.json) and
+[public review proof](live/40118330046/review-presence.json).
+
+The first post-merge publisher's one failure was **test environment leakage**,
+not a pricing defect: its harvester fixture read ambient `runtime/published-row-audit.md`.
+Completed upstream `bf14ce5` isolates the test's working directory. We adopted
+that fix rather than editing the owner's helper/test, and added a deterministic
+synthetic regression in our own test file. It fails before the completed fix,
+passes after it, verifies restoration of the caller's directory, and checks
+that ambient evidence was not deleted to make the assertion pass. The final
+combined branch passes **1,602 units (7 explicit historical skips) and all 13
+browser suites**, including 25 own regressions. Full logs retain intentional
+negative-test diagnostics; their overall unittest result is `OK`.
+
+Limitations remain explicit: two of 12 operator price comparisons moved after
+the capture (1082996/1079199); their archived values are not claimed to be
+current ticks. Three book listings are not directly operator-confirmed. A
+reproducible originated model is not a proven forecast. Cron is best-effort.
+The dated #284 prose/input discrepancy and #300 diagnostic-upload ordering/text
+request remain nonblocking review follow-ups; their owners' files are untouched.
+
+All following candidate/diagnosis sections are **historical**, including files
+named `final-*`; the actual delivery receipt is the `live/40118330046/` record
+above. No source timestamps were advanced to conceal any failure.
+
+## Historical integration status — 2026-10-24T17:04:53.547342+00:00
 
 **Locally verified; own PR/public readback still pending.** The combined candidate
 retains all **83** source fixtures. At **16:59:31 UTC**, **20** remain open and all
