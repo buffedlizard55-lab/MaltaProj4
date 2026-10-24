@@ -5168,5 +5168,54 @@
     "label": "Committed identity registry the alias group must appear in"
    }
   ]
+ },
+ {
+  "id": "session-a22008ff-even-market-line-2026-10-24",
+  "status": "Repaired in this session; published behaviour changed and needs a human decision",
+  "finding": "Measured on the 2026-10-24T16:28Z refresh of the official sources: the live board held one open fixture whose external Polymarket line was EXACTLY even (Color vs ex-Zero Tenacity, fixture 1079200, 0.50/0.50, market 6072812). scripts.core.resolve stored that as the row's probabilities with pick=None, so the board published one row per refresh that carried a price but no pick. No coverage contract in this repository allows that shape (\"priced but unpicked\", and \"open with probability\" must not exceed \"open with pick\"), so the publish rehearsal on the refreshed snapshot reported 42 failures and 3 errors, and main's publisher was refused at its root-fallback gate on runs 40084520702, 40082763751 and 40097410704, each annotated \"The staged root failed its own validator or unit gate\". The repair keeps the observation instead of discarding it: the even line is stored as even_market_line with its operator URL and observation time, published beside the row and in the unresolved section, and the ladder continues to the originated Valve-VRS line or a labelled research pick. A market that prices a match 50/50 has no directional edge, so it must never become a pick; what changes is that the row still gets a pick from a lower rung instead of blocking publication. Human check wanted: confirm that publishing the even market line as an observation beside a model-derived pick is the presentation you want, rather than leaving such a row unpicked.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40097410704",
+    "label": "Scheduled publisher refused at the legacy root gate on the same annotation"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40112346618",
+    "label": "This session's publish rehearsal with the 42 failures and 3 errors it recorded"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/markets/6072812",
+    "label": "The exactly-even market the row was priced from (0.50 / 0.50)"
+   }
+  ]
+ },
+ {
+  "id": "session-a22008ff-first-pick-margin-2026-10-24",
+  "status": "Repaired in this session; the margin had been reduced to single digits by earlier sessions",
+  "finding": "The first-pick gate (tests/browser_f0814674.cjs) requires the first .pick on picks.html to sit above 844px at a 320px-wide phone. Measured three times on 2026-10-24: y=863 on the GitHub runner both before and after this session's summary changes (run 40112346618 and run 40113115243), and y=819 with this repository's own Chromium in the authoring sandbox on the same build. The gate was living on a 25px margin that depends on font metrics, and two earlier sessions (ddd2e34/dddcb90d) had already trimmed whitespace to keep it under the line. Rather than tune pixels again, the explanatory disclosure \"How picks, model lines & blanks work\" now follows the cards on phones, exactly as the shortcut chips and the notice already do: measured y=737 at 320x844 (107px of margin) and the first probability at y=598. It stays in the DOM, keeps its native disclosure and its deep link, and desktop order is unchanged.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40113115243",
+    "label": "Runner measurement: first pick at y=863 of 844 at 320px"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/arena/a22008ff-maltaproj4/research/measure_picks_a22008ff.cjs",
+    "label": "The measurement script that produced the before/after numbers"
+   }
+  ]
+ },
+ {
+  "id": "session-a22008ff-coordination-receipts-2026-10-24",
+  "status": "Unverified coordination note, not a data or site claim",
+  "finding": "COORDINATION.md records delivery receipts for merge commits dd92178, 63e7d39 and 59679c2 among others, but the actual history of origin/main ends at 45fc6ba (2026-10-24T10:05:19Z, PR #244) and none of those commits is an ancestor of it. Earlier sessions also pinned live-fixture ids in tests that run inside the publish gate (1083121 in tests/test_session_35c6e1e9.py, 1082859/1081152 in tests/test_session_e9be3e6b.py); Hotspawn rotated those fixtures out, and the rehearsal showed the resulting errors. Both tests now find their subject by property and fall back to a retained dated capture, failing loudly when no retained row qualifies. Flagged because the narrative receipts cannot be reconciled with the branch they describe.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/commits/main",
+    "label": "History of main: head is 45fc6ba, the receipted merge commits are absent"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-a22008ff/logs/unit-staged.txt",
+    "label": "Rehearsal log naming the rotation-coupled failures"
+   }
+  ]
  }
 ]

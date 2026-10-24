@@ -6,6 +6,46 @@ A simple, mobile-first pick dashboard for **every CS2 fixture returned by Hotspa
 
 **[Executive summary](https://buffedlizard55-lab.github.io/MaltaProj4/)** · **[Updated picks](https://buffedlizard55-lab.github.io/MaltaProj4/picks.html)** · [Unresolved & research-only picks](https://buffedlizard55-lab.github.io/MaltaProj4/unresolved.html) · [All matches](https://buffedlizard55-lab.github.io/MaltaProj4/matches.html) · [TWC results & Day-5 guide](https://buffedlizard55-lab.github.io/MaltaProj4/analysis.html) · [Flagged for Review](https://buffedlizard55-lab.github.io/MaltaProj4/review.html) · [Sources & methodology](https://buffedlizard55-lab.github.io/MaltaProj4/sources.html) · [Evidence ledger](https://buffedlizard55-lab.github.io/MaltaProj4/evidence.html)
 
+### Publication unblocked at its real cause; a phone-readable executive summary — 24 October 2026
+
+**The publisher was not short of data. It was failing its own gate on one row.** Between 10:05Z and 17:00Z on
+24 October every scheduled publish stopped at *Keep the legacy main:/ root fallback on the verified build*
+(runs [40084520702](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40084520702),
+[40082763751](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40082763751),
+[40097410704](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40097410704)) with
+*"The staged root failed its own validator or unit gate"*. Replaying that exact step on a runner
+([40111407958](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40111407958)) reproduced it:
+**42 failures and 3 errors**, caused by one fixture whose Polymarket line was *exactly* even
+(Color vs ex-Zero Tenacity, fixture 1079200, market 6072812, 0.50/0.50). That row was being stored as
+"priced but unpicked", a shape no coverage contract here permits, and by three tests that pinned
+live fixture ids which Hotspawn had since rotated out.
+
+**What the fix does.** An exactly even line is still never turned into a pick — a market that prices a match
+50/50 has no favourite. It is now published as a **dated market observation** (`even_market_line`: operator,
+URL, observation time, both sides) beside whichever pick the ladder does produce, and the ladder continues to
+our originated Valve-VRS line or a labelled research pick instead of stopping publication. Tests that pinned
+rotating fixture ids now find their subject by property and replay from retained dated captures; three suites
+that silently *skipped* when a fixture rotated now read the retained capture and fail if no row qualifies
+(silent skips in the publish gate: 7 → 1).
+
+**Where the picks are, on a phone.** The compact executive-summary row on the home page was a single
+nowrap scroller — at 390px its status line was clipped off the right edge. It now reads status line →
+*Updated picks* → *Unresolved & limits*, both 44px in-site buttons that wrap instead of overflowing, ending
+above the fixed tab bar (measured 320x568: 290→364, tab bar at 507; 390x844: 300→393). The full summary bar
+also states the real cadence (four attempts an hour at :04/:19/:34/:49 UTC) and the 8-hour withhold rule, both
+read from the snapshot's own policy fields. On the pick board the explanatory disclosure now follows the cards
+on phones, so the first pick and both win chances sit far inside the first screen (y=737 and y=598 at 320x844)
+instead of on a 25px margin that moved with font metrics.
+
+**Delivered snapshot, read from the runner that staged it:** 2026-10-24T17:03:18Z, coverage `verified`
+83/83/83/83 — **83 feed rows, 20 open, 20 picks, 20 win probabilities, 0 unresolved** (12 strict exchange,
+1 labelled wide exchange, 3 researched bookmaker listings, 3 originated Valve-VRS lines, 1 HLTV-dated
+Valve-ranking mirror). Run [40114007482](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40114007482)
+recorded `gate-ok` — unit **1503 tests OK**, `validate --site .` reproduced every row, calculation, page,
+link and checksum — and all **11 Chromium suites passed**, including the 320px first-pick gate that was red on
+`main`. The separate [Unresolved & non-market page](https://buffedlizard55-lab.github.io/MaltaProj4/unresolved.html)
+and the executive summary's limitations section stay published even when the current unresolved count is zero.
+
 ### Live board repair and full-coverage capture — 24 October 2026
 
 **The public board was frozen because a test, not the data, failed.** The scheduled publisher runs the

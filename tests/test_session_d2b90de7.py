@@ -43,6 +43,27 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+
+# Session a22008ff (2026-10-24): when Hotspawn rotates this fixture out of the
+# lobby the row correctly disappears from the live board, and this test used to
+# skip -- leaving the alias contract unexercised (seven silent skips on the
+# 17:03Z board). The retained capture below is this repository's own dated
+# evidence of the board while the row was open, so the property is checked
+# against it instead. A row missing from both places is a failure, not a skip.
+ALIAS_ARCHIVE = ROOT / 'research' / 'harvest-ce45f672' / 'snapshot.json'
+
+
+def retained_alias_row(row_id, rows):
+    for match in rows:
+        if str(match.get('id')) == str(row_id):
+            return match, 'data/latest.json'
+    if not ALIAS_ARCHIVE.exists():
+        raise AssertionError('the retained alias capture %s is missing' % ALIAS_ARCHIVE)
+    archived = json.loads(ALIAS_ARCHIVE.read_text()).get('matches') or []
+    for match in archived:
+        if str(match.get('id')) == str(row_id):
+            return match, str(ALIAS_ARCHIVE.relative_to(ROOT))
+    raise AssertionError('fixture %s is in neither the board nor the retained capture' % row_id)
 HARVEST = ROOT / 'research' / 'harvest-d2b90de7'
 SESSION = ROOT / 'research' / 'session-d2b90de7'
 SNAP = json.loads((HARVEST / 'refresh-snapshot.json').read_text())
@@ -227,9 +248,8 @@ class StoredIdentityAliasesAreHonoredNotGuessed(unittest.TestCase):
 
     def board_row(self):
         doc = json.loads((ROOT / 'data' / 'latest.json').read_text())
-        row = next((m for m in doc['matches'] if m['id'] == '1083121'), None)
-        if row is None or row['state'] != 'open':
-            self.skipTest('fixture 1083121 has rotated off the published board')
+        row, _source = retained_alias_row('1083121', doc['matches'])
+        self.assertEqual(row['state'], 'open')
         return row
 
     def test_published_alias_row_reproduces_from_its_stored_record(self):

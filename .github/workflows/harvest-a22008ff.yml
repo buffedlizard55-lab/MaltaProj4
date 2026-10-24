@@ -112,8 +112,15 @@ jobs:
             sources.html unresolved.html .nojekyll
           if git diff --cached --quiet; then echo "Root already carries this verified build."; exit 0; fi
           git commit -m "Stage the verified fresh build on the session branch (never main) [skip ci]"
-          git pull --rebase origin arena/a22008ff-maltaproj4
-          git push origin arena/a22008ff-maltaproj4
+          push_branch() {
+            for attempt in 1 2 3; do
+              git pull --rebase --autostash origin arena/a22008ff-maltaproj4 || { git rebase --abort >/dev/null 2>&1 || true; sleep $((attempt * 5)); continue; }
+              git push origin arena/a22008ff-maltaproj4 && return 0
+              sleep $((attempt * 5))
+            done
+            return 1
+          }
+          push_branch
       - name: Restore the staged outputs if the rehearsal gate failed
         if: always()
         run: |
@@ -153,5 +160,18 @@ jobs:
           git add -- research/session-a22008ff
           if git diff --cached --quiet; then echo "No capture change to commit."; exit 0; fi
           git commit -m "Retain publish-gate diagnosis from run ${GITHUB_RUN_ID} [skip ci]"
-          git pull --rebase origin arena/a22008ff-maltaproj4
-          git push origin arena/a22008ff-maltaproj4
+          # Measured on run 40114007482: a single `git pull --rebase` here exits 128
+          # when the just-pushed staging commit and this one race, and the whole
+          # diagnosis run then reads as a failure even though both commits landed.
+          # Retry with autostash, and report a real failure only after three tries.
+          for attempt in 1 2 3; do
+            if git pull --rebase --autostash origin arena/a22008ff-maltaproj4 && git push origin arena/a22008ff-maltaproj4; then
+              echo "Evidence pushed on attempt $attempt."
+              exit 0
+            fi
+            git rebase --abort >/dev/null 2>&1 || true
+            echo "::warning::push attempt $attempt failed (run ${GITHUB_RUN_ID}); retrying."
+            sleep $((attempt * 10))
+          done
+          echo "::error::Could not push the retained evidence after three attempts."
+          exit 1

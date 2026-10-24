@@ -1,3 +1,67 @@
+## Session a22008ff — publication unblocked at its real cause, and the phone summary rebuilt (2026-10-24 17:20 UTC)
+
+**Status: done, pending the integration PR below.** Branch `arena/a22008ff-maltaproj4`.
+
+**What was broken, measured rather than assumed.** `main`'s history ends at `45fc6ba`
+(2026-10-24T10:05:19Z, PR #244) and its committed board was the 2026-10-24T08:06:51Z snapshot: 92 feed rows,
+**0 open, 0 picks**, every pick withheld by the site's own expiry rule. Every scheduled publish after 10:05Z
+failed at *Keep the legacy main:/ root fallback on the verified build* (runs 40084520702, 40082763751,
+40097410704) with the annotation *"The staged root failed its own validator or unit gate"*. Action job logs are
+not downloadable from the authoring sandbox (`results-receiver…: EOF`), so this session replayed that exact gate
+on a runner: `.github/workflows/harvest-a22008ff.yml` refreshes the official sources, builds, stages the root
+exactly as `pages.yml` does, then runs `scripts.validate --site .` and the full unit suite, and commits nothing
+until both pass.
+
+**Root cause (run [40111407958](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40111407958)).**
+On the refreshed 16:28Z snapshot the unit gate reported **42 failures and 3 errors**. The single decisive defect:
+`scripts/core.resolve` stored an *exactly even* strict exchange line as the row's probabilities with
+`pick = None`. Fixture 1079200 (Color vs ex-Zero Tenacity, Polymarket market 6072812, 0.50/0.50) became a
+"priced but unpicked" row — a shape no coverage contract in this repository allows, so 17 suites failed and the
+staged root could never validate. The rest were rotation coupling: `tests/test_session_35c6e1e9.py` pinned
+fixture 1083121 and `tests/test_session_e9be3e6b.py` pinned 1082859/1081152 out of the rotating snapshot, and
+Hotspawn had rotated them out (`StopIteration`, `KeyError: '1081152'`), plus five alias tests that skipped
+silently for the same reason.
+
+**What shipped.**
+1. `scripts/core.resolve`: an exactly even two-way line is **never a pick** and is **no longer the row's price**.
+   It is retained as `even_market_line` (operator URL, tier, observation time, both probabilities) and the ladder
+   continues, so the row still gets a pick from the originated Valve-VRS line or a labelled research tier. `scripts/build.py`
+   publishes that observation with its source link beside the pick, on the pick cards, in the tables and in the
+   unresolved section, and the methodology page states the rule.
+2. Rotation-proof tests: the alias contract finds its subject by property (receipted `identity_sources`) and the
+   ladder arithmetic replays from the retained `research/harvest-d2b90de7/snapshot.json`; three suites that
+   *skipped* on rotation now read the retained `research/harvest-ce45f672/snapshot.json` instead. A row missing
+   from both places fails. Silent skips in the publish gate: 7 → 1 (the remaining one is a genuinely conditional
+   case, not rotation).
+3. **Executive summary on a phone.** The compact row above the pick list was a single nowrap scroller: at 390px
+   the status line was clipped off the right edge with no affordance. It now reads status line → two 44px in-site
+   buttons (*Updated picks*, *Unresolved & limits*), wraps instead of overflowing, and the full summary bar now
+   also states the real refresh cadence (four attempts an hour at :04/:19/:34/:49 UTC) and the 8-hour withhold rule,
+   both read from the snapshot's own policy fields. Measured: 320x568 row 290→364 above the tab bar at 507;
+   390x844 row 300→393.
+4. **Pick board on a phone.** The first-pick gate (`tests/browser_f0814674.cjs`, first `.pick` above 844px at
+   320px) had been living on a ~25px margin that depends on font metrics: y=819 with this repository's Chromium,
+   y=863 on the GitHub runner for the same build (runs 40112346618 and 40113115243). The explanatory disclosure
+   *How picks, model lines & blanks work* now follows the cards on phones, as the shortcut chips and the notice
+   already did. Measured y=737 (107px of margin), first probability y=598. DOM, accessibility, deep links and
+   desktop order unchanged.
+
+**Verified state of the tree this session is delivering (from the runner, not from a local guess).**
+Snapshot **2026-10-24T17:03:18Z**, coverage `verified` 83/83/83/83, **83 feed rows, 20 open, 20 picks,
+20 win probabilities, 0 unresolved** — 12 strict exchange, 1 labelled wide exchange, 3 researched bookmaker
+listings, 3 originated Valve-VRS lines, 1 HLTV-dated Valve-ranking mirror. Run
+[40114007482](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40114007482) recorded `gate-ok`
+(unit **1503 tests OK**, `validate --site .` reproduced 83 rows / 20 calculations / 15 pages / 788 links) and all
+**11 Chromium suites passed**, including the 320px first-pick gate that was red on `main`. Local re-run on the
+delivered tree: **1507 unit tests OK** (1 skip), audits 9, integrity 5, verification-c6 12, `scripts.validate`
+83 rows / 20 calculations / 772 links / 20 checksums.
+
+**Flagged for review (non-blocking, published on Flagged for Review).** `session-a22008ff-even-market-line-2026-10-24`
+(presentation decision: an even market line is published as a dated observation beside a model pick — confirm you
+want that rather than an unpicked row), `session-a22008ff-first-pick-margin-2026-10-24` (the gate's margin depended
+on font metrics), `session-a22008ff-coordination-receipts-2026-10-24` (this file carried receipts for merge commits
+`dd92178`, `63e7d39`, `59679c2` … that are not in `origin/main`'s history, whose head is `45fc6ba`).
+
 ## Session a22008ff — CLAIMED 2026-10-24 16:30 UTC (branch `arena/a22008ff-maltaproj4`)
 
 **Task board entry (this session).** Claimed at 2026-10-24T16:30Z; status `in progress`.

@@ -56,6 +56,27 @@ from tests.test_session_0cc1138a import archived_coverage_problems
 
 ROOT = Path(__file__).resolve().parents[1]
 SNAPSHOT = json.loads((ROOT / 'data' / 'latest.json').read_text())
+
+# Session a22008ff (2026-10-24): when Hotspawn rotates this fixture out of the
+# lobby the row correctly disappears from the live board, and this test used to
+# skip -- leaving the alias contract unexercised (seven silent skips on the
+# 17:03Z board). The retained capture below is this repository's own dated
+# evidence of the board while the row was open, so the property is checked
+# against it instead. A row missing from both places is a failure, not a skip.
+ALIAS_ARCHIVE = ROOT / 'research' / 'harvest-ce45f672' / 'snapshot.json'
+
+
+def retained_alias_row(row_id, rows):
+    for match in rows:
+        if str(match.get('id')) == str(row_id):
+            return match, 'data/latest.json'
+    if not ALIAS_ARCHIVE.exists():
+        raise AssertionError('the retained alias capture %s is missing' % ALIAS_ARCHIVE)
+    archived = json.loads(ALIAS_ARCHIVE.read_text()).get('matches') or []
+    for match in archived:
+        if str(match.get('id')) == str(row_id):
+            return match, str(ALIAS_ARCHIVE.relative_to(ROOT))
+    raise AssertionError('fixture %s is in neither the board nor the retained capture' % row_id)
 ARCHIVE = json.loads((ROOT / 'research' / 'harvest-9b97d585' / 'snapshot.json').read_text())
 INDEX = overview(copy.deepcopy(SNAPSHOT))
 
@@ -340,9 +361,8 @@ class RegisteredAliasesReplayInTheIndependentVerifier(unittest.TestCase):
             {'identity_sources': [{'names': ['A', 'B'], 'source': 'https://example.org/x', 'basis': 'x'}]}), [])
 
     def test_the_published_row_that_used_the_alias_still_replays(self):
-        row = next((m for m in SNAPSHOT['matches'] if m['id'] == '1083121'), None)
-        if row is None or row.get('method') != 'exchange':
-            self.skipTest('fixture 1083121 is not on this snapshot as an exchange row')
+        row, _source = retained_alias_row('1083121', SNAPSHOT['matches'])
+        self.assertEqual(row.get('method'), 'exchange')
         ev = row['evidence'][0]
         labels = json.loads(ev['raw']['outcomes'])
         prices = [0.615, 0.385]
