@@ -450,10 +450,16 @@ class RootFallbackCannotDivergePairedAssets(unittest.TestCase):
     def test_the_committed_copies_are_identical_right_now(self):
         # The repair itself: both committed copies carry the build's own output,
         # including the exec-bar rules the phone layout needs.
+        #
+        # Only *committed* files are compared. An earlier revision of this test
+        # also compared ROOT/public/assets/style.css and failed the moment main
+        # moved forward, because public/ is a gitignored scratch directory: it
+        # holds whatever build happened to run last in this checkout, not the
+        # repository's state. Asserting on it pins an ephemeral artifact, which
+        # is the same category of mistake as pinning a point-in-time board.
         root_css = (ROOT / 'assets' / 'style.css').read_bytes()
-        self.assertEqual(root_css, (ROOT / 'site' / 'assets' / 'style.css').read_bytes())
-        self.assertEqual(root_css, (ROOT / 'public' / 'assets' / 'style.css').read_bytes()
-                         if (ROOT / 'public' / 'assets' / 'style.css').is_file() else root_css)
+        self.assertEqual(root_css, (ROOT / 'site' / 'assets' / 'style.css').read_bytes(),
+                         'the two committed CSS copies must stay byte-identical')
         self.assertIn(b'.exec-bar-link', root_css)
         self.assertIn(b'body[data-page="index"] main>#exec-summary{order:5}', root_css)
 
