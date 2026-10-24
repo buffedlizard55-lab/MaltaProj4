@@ -8017,3 +8017,35 @@ asset or rendered artifact changes. Both board additions retained. The full
 1,472-unit/14-browser gate remains bound to unchanged production inputs; repeat
 full units after this dated-fixture update and recheck exact manifest bytes.
 All previous raw facts/29current prices and224 review entries remain unchanged.
+
+## Session aeafcbe6 — claim: full-coverage picks for every Hotspawn match, unresolved-limits section, mobile executive summary, and the 8-hour publication outage (2026-10-24 16:3x UTC)
+
+**Branch:** `arena/aeafcbe6-maltaproj4` (base `45fc6ba`). **Session ID:** aeafcbe6.
+
+Measured context for this claim (all from the GitHub API, this sandbox has no egress to
+Hotspawn/HLTV/Polymarket):
+
+* `pages.yml` on `main` has failed at the step **"Keep the legacy main:/ root fallback on the
+  verified build"** on every run since 2026-10-24T08:12Z (40077144677 `7b2a8a1`, 40080448344
+  `1ae6445`, 40082763751 `99253f7`, 40084520702 `45fc6ba`, 40097410704 `45fc6ba` at 13:16Z).
+  Steps 8–14 (unit gate, refresh, quarantine, build+independent row audit, browser/phone gates)
+  all report **success** in those runs; step 19 `upload-pages-artifact` and the `deploy` job are
+  **skipped** because step 15 exits non-zero. The commits that touch `refresh`, `build` or `data`
+  therefore cannot reach Pages, and the public `build-info.json` still advertises the
+  `2026-10-24T08:06:51Z` snapshot, which is now past the site's own 8-hour window.
+* The failure is **not reproducible from the committed tree**: `python -m scripts.build`,
+  `python -m scripts.publish_root_fallback` (refusal, exit 0) and `python -m scripts.validate
+  --site .` all reproduce cleanly on a fresh clone of `45fc6ba` (92 rows, 29 calculations,
+  15 pages, 858 links, 20 checksums, 227 displayed rows). The difference must be the *fresh*
+  snapshot the runner installs, so the diagnosis has to run on GitHub's egress, not here.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Diagnose the root-fallback failure with a real refresh on GitHub egress and retain the logs as a dated receipt | in progress | aeafcbe6 | `.github/workflows/diagnose-aeafcbe6.yml` (new), `research/diagnose-aeafcbe6/**` (new) | 2026-10-24 16:35 |
+| Repair publication so a stale-root gate can never suppress the deploy of an already-verified build; keep every existing gate | unclaimed→aeafcbe6 (pending diagnosis) | aeafcbe6 | `.github/workflows/pages.yml`, `tests/test_session_aeafcbe6.py` (new) | 2026-10-24 16:35 |
+| Executive-summary coverage block: in-site links to the updated picks, the unresolved-limits section and the ladder counts, readable at 320 px | unclaimed→aeafcbe6 | aeafcbe6 | `scripts/build.py` (executive summary only), `scripts/summary.py`, `site/assets/style.css` + `assets/style.css` (paired), `tests/browser_aeafcbe6.cjs` (new) | 2026-10-24 16:35 |
+| Full-coverage contract: every open Hotspawn row carries a pick *and* a win probability, and every unpriced row is published on the unresolved page with its own limitation | unclaimed→aeafcbe6 | aeafcbe6 | `scripts/coverage_233b8a0e.py` (report only), `tests/test_session_aeafcbe6.py` | 2026-10-24 16:35 |
+
+No other session's scope is claimed here. `data/latest.json`, the generated root pages and
+`build-info.json` remain integration outputs and will only be regenerated at integration, from a
+verified fresh capture.
