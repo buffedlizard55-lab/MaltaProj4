@@ -88,10 +88,10 @@ The first complete Chromium replay then failed on the dedicated phone pick board
 The final local replay used the merged snapshot generated **2026-10-24T16:40:40.748952Z**, with fixtures observed at 16:37:04Z: **83 official fixture rows, 22 captured-open picks and 22 probability pairs**. Both 16:54 locks subsequently passed during the browser run, leaving 20 runtime-open rows; closed rows remain visible with warnings and Reset intentionally shows all entries.
 
 - 1,490 unit tests passed, 7 skipped; 9 independent audit tests and 12 C6 tests passed.
-- Root and staged-site validation passed: 83 source rows, 22 reproduced calculations, 15 pages, 787 links/assets, 20 checksums and 195 displayed rows.
-- C6 reported zero failures against source and public data. The second independent re-derivation exited zero. Fresh coverage reported 22 actionable rows and zero problems; the complete ledger reported zero integrity failures.
+- Root validation passed with 83 source rows, 22 reproduced calculations, 15 pages, 787 links/assets, 20 checksums and 195 displayed rows. The post-lock staged build also passed: 771 links/assets and 191 displayed rows.
+- C6 reported zero failures against source and public data. The second independent re-derivation exited zero. Post-lock fresh coverage reported 20 runtime-actionable rows and zero problems; the complete captured-data ledger reported zero integrity failures.
 - The complete real Chromium chain passed after two test-only lock-boundary corrections. The tests now select runtime-visible rows and distinguish the default Open board from Reset's All entries view; no production lock behavior was changed.
-- Exact logs, build manifest, hashes and retained failed attempts are in `final/`. The source snapshot SHA-256 is `5fdeefc003771b6fba7a55d3108baddbe16b4345a63d2fab63e52a8ac821c49b`; staged public data is `47390594b7d893a4aeccdf56a9752d56f80ab0b638ec33a88fa4a4006ce39f6b`.
+- Exact logs, build manifest, hashes and retained failed attempts are in `final/`. The source snapshot SHA-256 is `5fdeefc003771b6fba7a55d3108baddbe16b4345a63d2fab63e52a8ac821c49b`; final staged public data is `64640ecee5b5895f6e14bce4361a01232ab7539684beb1426167e8efb7e9a48c`.
 
 PR, merge and successful Pages/live-byte receipts remain to be appended; no live-deployment claim is made here.
 

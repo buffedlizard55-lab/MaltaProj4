@@ -6,21 +6,22 @@ This directory records local verification of the merged implementation and `data
 
 - Snapshot generated: `2026-10-24T16:40:40.748952Z`
 - Fixtures observed: `2026-10-24T16:37:04.190185Z`
-- Local build: `2026-10-24T16:53:10.015363Z`, revision `0b21241f6f478d61f64b2facce0090b7322ce3bc`
+- Final post-rebase local build: `2026-10-24T17:00:29.092798Z`, revision `20336d56a229e6e698cc5130977e39895aff6fae`
 - 83 official fixture rows; 22 captured-open picks; 22 probability pairs
 - Methods: 14 exchange, 1 wide exchange, 3 bookmaker fallback, 3 official-file VRS model, 1 HLTV-mirror VRS model
 - Source snapshot SHA-256: `5fdeefc003771b6fba7a55d3108baddbe16b4345a63d2fab63e52a8ac821c49b`
-- Staged public-data SHA-256: `47390594b7d893a4aeccdf56a9752d56f80ab0b638ec33a88fa4a4006ce39f6b`
+- Final staged public-data SHA-256: `64640ecee5b5895f6e14bce4361a01232ab7539684beb1426167e8efb7e9a48c`
 
 ## Passing gates
 
 - `unit.log`: 1,490 tests, 7 skipped, OK
 - `audits.log`: 9 tests, OK
 - `c6-tests.log`: 12 tests, OK
-- `root-validate.log` and `public-validate.log`: 83 rows, 22 calculations, 15 pages, 787 links/assets, 20 checksums, 195 displayed rows
+- `root-validate.log`: 83 rows, 22 calculations, 15 pages, 787 links/assets, 20 checksums, 195 displayed rows
+- `public-validate.log`: post-lock staged build, 83 rows, 22 calculations, 15 pages, 771 links/assets, 20 checksums, 191 displayed rows
 - `c6.log` / `published-c6.log`: zero independent row failures
 - `independent-rederivation.json`: second independent replay exited zero
-- `coverage-contract.json`: inventory fresh, 22 actionable rows, zero problems
+- `coverage-contract.json`: inventory fresh, 20 runtime-actionable rows after the two locks, zero problems
 - `ledger/`: 22/22 captured-open coverage complete, zero integrity failures
 - `browser.log`: complete `npm run test:browser` chain passed with `pipefail` enabled
 
