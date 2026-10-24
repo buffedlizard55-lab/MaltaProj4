@@ -325,6 +325,35 @@ Evidence rules: Hotspawn supplies fixture inventory and locks only, never a prob
 
 ---
 
+### 50932f4d live delivery verified / hermeticity regression claim — 2026-10-24T18:08:23.088338+00:00
+
+**Actual public readback 40118330046 succeeded in all four gates** at
+17:57:44–54Z. Public revision `0fc9719042366ed5cf4d95f1eb151fdc2f531a2c`
+includes PR #294's merge; 20 file hashes and the adjacent snapshot agree.
+Official API/page/lobby/retained parity is **81/81/81/81**; **19 current open
+rows / 19 picks / 19 pairs**, 62 not open, 15 market-derived / 4 models. All
+four own review entries are in actual public table rows and match the manifest.
+Phone/desktop widths 320/390/768/1440 pass at the actual clock. Two former IDs
+1079661/1081154 are absent from the new official capture, not silently discarded
+from a still-listed inventory. Earlier 83-row captures remain archived.
+
+The exact failed-run artifact/log isolates **one** failure: the harvester test
+expected only `latest.json` but read ambient `runtime/published-row-audit.md`.
+No forecast/data change is needed. Completed upstream `bf14ce5` already fixes
+that test's working-directory isolation. Replacement publisher **40117720878**
+passes verify-build, the strict staged-root gate and deploy; the old failed
+run remains an honest historical receipt. Adopting the completed fix, not
+editing its owner's helper/test. **Claiming only `tests/test_session_50932f4d.py`
+for one deterministic synthetic ambient-runtime regression**, so this failure
+is exercised even on a clean pre-refresh test run. Own research/receipt update
+only otherwise. Existing production sources, percentages and clocks untouched.
+
+The independent live recheck found 12 operator markets accessible, 10 still at
+the captured inputs and two moved-price comparisons (1082996 and 1079199).
+Those are dated snapshot estimates, not claimed current ticks. Three BO3 book
+listings still lack direct operator confirmation. Model accuracy and future
+cron timeliness are not proven by this successful release.
+
 ### 50932f4d fresh-root gate diagnosis — 2026-10-24T17:55:23.132365+00:00
 
 Post-merge publisher **40116877511** validated and uploaded its artifact and
