@@ -1,0 +1,9 @@
+generated_at 2026-10-24T16:30:56.920446Z
+coverage verified {'api': 83, 'page': 83, 'lobby': 83, 'retained': 83}
+rows 83 open 22
+open_with_pick 21
+open_with_probability 22
+open_research_only 0
+open_no_pick 1
+methods Counter({'exchange': 15, 'bookmaker_fallback': 3, 'model_vrs': 2, 'model_vrs_mirror': 1, 'exchange_wide': 1})
+NO_PICK 1079200 ['Color', 'ex-Zero Tenacity'] 2026-10-25T18:00:00Z Equal verified prices; no directional edge.
