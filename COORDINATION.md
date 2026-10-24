@@ -1,3 +1,35 @@
+## Session 4b419150 — second merge (PR #245 cb16f548) + sourced-alias verifier fix (2026-10-24 06:3x UTC)
+
+While integrating, `origin/main` advanced to `dce494b` (PR #245 `cb16f548`, a newer
+06:19:43Z refresh: **92 rows, 31 open, 31 picks, 31 probabilities**). Merged it in
+(unions again; generated/data/CSS taken from the newer refresh, notes/board unioned).
+The new snapshot exposed a genuine independent-verifier gap, fixed here honestly:
+fixture `1083121` "Projeto do KinGui vs MEIA NOITE" is priced from a Polymarket
+market whose outcome label is "Tropa do KinGui". The two labels do not fuzzy-match,
+so `research/session-0cc1138a/verify_0cc1138a.py` (intentionally shares no pipeline
+code) rejected it. The rename is *officially sourced*: the evidence carries
+`identity_sources` with a documented `basis` and HTTPS sources (HLTV match 2399904,
+Polymarket market 6033256, EGamersWorld 3j3hkufF0, Valve roster-continuity), also
+registered in `data/identities.json`. The verifier's `order_prices` now maps a team
+to a source outcome **only** through such a retained sourced alias (requires
+`basis` + `https://` source + both names present) — never a name guess. This
+converges with session `f533492a`'s identical independent fix (its PR #249 is
+open/mergeable on the same snapshot), and is pinned by a new regression test that
+proves an unsourced alias is still refused. No probability is inferred from Hotspawn
+or a crowd vote; the row re-derives to the published 0.615/0.385 from its sourced
+price. Rebuilt on the 92-row snapshot; CSS byte-identical (59814), 3 research notes
+embedded, always-visible exec bar shipped.
+
+**Gates after this second merge:** `unittest discover -s tests` **1234 run, OK (1
+skipped)**; audits 9 / integrity 5 / C6 12 OK; independent row audit 0 failures;
+quarantine 0 withheld; `validate --site .` and `--site public` **92 rows · 31
+calculations · 874 links · 20 checksums · 234 displayed rows**; `npm run
+test:browser` **9/9 suites pass** (now including cb16f548's phone-layout suite).
+The `1082769 …` stdout lines are the read-only historical `verification-86b56cf6` /
+`session-2ec8cd6c` auditors printing, never an assertion (unit exit 0).
+
+---
+
 ## Session 4b419150 — integration gates PASS on the merged tree (2026-10-24 06:25 UTC)
 
 **Final-integration receipt (before PR).** Merged `origin/main` (`f54b37a`, PRs
@@ -194,6 +226,24 @@ IDs the lobby showed at 09:44Z on 23 Oct; those fixtures have legitimately left 
 Evidence rules unchanged: Hotspawn supplies fixture inventory and locks only, never a probability; no
 crowd votes, placeholder odds, inferred values or 50/50 filler; a row with no sourced evidence stays
 blank with a source-linked limitation.
+---
+
+## Session cb16f548 claim — 2026-10-24 05:30 UTC (refresh recovery, complete picks, mobile integration)
+
+Arena fixes this session to `arena/cb16f548-maltaproj4`; no other branch is created, switched, renamed or pushed. The board was read before claiming. Existing implementation claims and open PRs are more than 60 minutes old with no commits (the newest open-PR update is 2026-10-23), so this is a stale-claim handoff under the board rule; all prior research, tests and receipts remain preserved. Base `origin/main` is `5d56f35`, whose committed snapshot is `2026-10-23T11:47:19Z` (90 rows, 27 picked rows at that snapshot clock). Scheduled `pages.yml` runs at 12:49Z, 17:50Z, 21:18Z, 23:53Z and 04:23Z failed, so freshness recovery is the first integration gate.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Reproduce and repair the current scheduled-publication failure without weakening source, expiry, arithmetic or browser gates; obtain a fresh three-view Hotspawn CS2 capture on an authorized GitHub runner | in progress | cb16f548 | `.github/workflows/pages.yml` (this fixed branch registration and demonstrated publication defects only), production scripts/tests only for reproduced defects, `research/session-cb16f548/**`, `tests/test_session_cb16f548.py` (new) | 2026-10-24 05:30 |
+| Audit every current open Hotspawn CS2 fixture; for only rows unresolved by the featured path, try HLTV first and then esportsbooks/betting lines; retain a sourced pick or an explicit source-linked limitation, never a fabricated percentage | in progress | cb16f548 | `research/session-cb16f548/**`, additive evidence/register files only when a live source proves a new fact, fallback-source scripts only if a new reproducible adapter is required | 2026-10-24 05:30 |
+| Verify and improve executive-summary in-site pick links, a separate unresolved/limitations section, and phone-readable both-team probability cards; all shared UI edits through the canonical builder/assets | in progress | cb16f548 | `scripts/build.py`, `site/assets/**`, generated `assets/**` through the build, `tests/browser_cb16f548.cjs` (new), `package.json` (browser-test registration only) | 2026-10-24 05:30 |
+| Final integration: line-by-line evidence replay, every unit/audit/validator/browser gate, no broken links, PR to `main`, merge without approval, confirm live Pages bytes, publish irregularities and record the receipt | in progress | cb16f548 | `COORDINATION.md`, `README.md`, `data/review-notes.json` (additive), generated root pages/data only from the verified build, `build-info.json` | 2026-10-24 05:30 |
+
+Evidence rules: Hotspawn supplies fixture inventory and locks only, never win probability. Hotspawn/HLTV crowd votes are excluded. External prices or the documented originated model must reproduce every displayed number; unverifiable values stay blank and are flagged. No guessed aliases, 50/50 filler, manual pick entry or unsupported inference. `git pull --rebase` precedes every push, and concurrent work is unioned rather than discarded.
+
+**Scope addendum, 2026-10-24 05:50 UTC.** Capture run `40066594501` passed with 88 three-view-verified rows and 25/25 open matches priced, but replaying its two `model_vrs_mirror` rows through the older independent verifier exposed a missing provider branch. The fresh board also exposed a hard-coded October 23 date in `tests/test_session_f89bb1f8.py`. This claim therefore explicitly includes `research/session-0cc1138a/verify_0cc1138a.py` and that date-coupled test for these reproduced defects only. Concurrent PR #240 is preserved; this addendum does not take over its `scripts/build.py` or `scripts/audit_f89bb1f8.py` work.
+
+---
 
 ## Session 51a9c98a — final receipt: PR #231 shipped, live bytes verified (2026-10-23 11:15 UTC)
 
@@ -6314,3 +6364,7 @@ no-JavaScript warning states). Five exchange rows rest on documented label varia
 Esports`, `LPH`/`LPH Gaming`, `BakS`/`BakS eSports`, one swapped outcome order); their arithmetic
 reproduces exactly but the identities deserve a human look. Full report:
 [`research/session-138cbedd/REPORT.md`](research/session-138cbedd/REPORT.md).
+
+### cb16f548 second integration rebase — 2026-10-24 06:05Z
+
+`main` advanced again while the integration branch was being rebased. Rebased onto `f54b37a`, retained both the short-phone boundary repair and the concurrent executive-summary/phone work, and resolved generated-file conflicts in favour of main's newer `2026-10-24T05:59:34Z` snapshot rather than overwriting it with this session's older `05:40:24Z` capture. Superseded intermediate generated-root receipts were not carried forward; the combined tree is being rebuilt and gated from the retained newer snapshot before any push or merge. The historical capture remains immutable under `research/session-cb16f548/harvest/`.
