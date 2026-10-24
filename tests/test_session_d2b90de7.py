@@ -43,6 +43,31 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+
+# Session a22008ff (2026-10-24): seven tests across this file, test_session_d2b90de7.py
+# and test_session_ea2e254c.py reported `skipped` on the 16:50Z and 17:03Z boards
+# because Hotspawn rotated fixture 1083121 out of its lobby. The rotation is correct
+# and must not be undone, but the alias contract they check -- an https, written-basis
+# identity record that names both labels maps a source outcome onto a team -- is not
+# about one fixture staying listed. Skipping it stops the alias path being exercised
+# inside the publish gate. research/harvest-ce45f672/snapshot.json is this repository's
+# own retained capture of the board while the row was open, so the property is checked
+# against that dated evidence instead. A row missing from both places is a failure,
+# never a skip.
+ALIAS_ARCHIVE = ROOT / 'research' / 'harvest-ce45f672' / 'snapshot.json'
+
+
+def retained_alias_row(row_id, rows):
+    for match in rows:
+        if str(match.get('id')) == str(row_id):
+            return match, 'data/latest.json'
+    if not ALIAS_ARCHIVE.exists():
+        raise AssertionError('the retained alias capture %s is missing' % ALIAS_ARCHIVE)
+    archived = json.loads(ALIAS_ARCHIVE.read_text()).get('matches') or []
+    for match in archived:
+        if str(match.get('id')) == str(row_id):
+            return match, str(ALIAS_ARCHIVE.relative_to(ROOT))
+    raise AssertionError('fixture %s is in neither the board nor the retained capture' % row_id)
 HARVEST = ROOT / 'research' / 'harvest-d2b90de7'
 SESSION = ROOT / 'research' / 'session-d2b90de7'
 SNAP = json.loads((HARVEST / 'refresh-snapshot.json').read_text())
@@ -227,9 +252,8 @@ class StoredIdentityAliasesAreHonoredNotGuessed(unittest.TestCase):
 
     def board_row(self):
         doc = json.loads((ROOT / 'data' / 'latest.json').read_text())
-        row = next((m for m in doc['matches'] if m['id'] == '1083121'), None)
-        if row is None or row['state'] != 'open':
-            self.skipTest('fixture 1083121 has rotated off the published board')
+        row, _source = retained_alias_row('1083121', doc['matches'])
+        self.assertEqual(row['state'], 'open')
         return row
 
     def test_published_alias_row_reproduces_from_its_stored_record(self):

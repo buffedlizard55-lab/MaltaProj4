@@ -30,6 +30,31 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SNAPSHOT = json.loads((ROOT / 'data' / 'latest.json').read_text())
+
+# Session a22008ff (2026-10-24): seven tests across this file, test_session_d2b90de7.py
+# and test_session_ea2e254c.py reported `skipped` on the 16:50Z and 17:03Z boards
+# because Hotspawn rotated fixture 1083121 out of its lobby. The rotation is correct
+# and must not be undone, but the alias contract they check -- an https, written-basis
+# identity record that names both labels maps a source outcome onto a team -- is not
+# about one fixture staying listed. Skipping it stops the alias path being exercised
+# inside the publish gate. research/harvest-ce45f672/snapshot.json is this repository's
+# own retained capture of the board while the row was open, so the property is checked
+# against that dated evidence instead. A row missing from both places is a failure,
+# never a skip.
+ALIAS_ARCHIVE = ROOT / 'research' / 'harvest-ce45f672' / 'snapshot.json'
+
+
+def retained_alias_row(row_id, rows):
+    for match in rows:
+        if str(match.get('id')) == str(row_id):
+            return match, 'data/latest.json'
+    if not ALIAS_ARCHIVE.exists():
+        raise AssertionError('the retained alias capture %s is missing' % ALIAS_ARCHIVE)
+    archived = json.loads(ALIAS_ARCHIVE.read_text()).get('matches') or []
+    for match in archived:
+        if str(match.get('id')) == str(row_id):
+            return match, str(ALIAS_ARCHIVE.relative_to(ROOT))
+    raise AssertionError('fixture %s is in neither the board nor the retained capture' % row_id)
 SERVED_CSS = (ROOT / 'assets' / 'style.css').read_text()
 SITE_CSS = (ROOT / 'site' / 'assets' / 'style.css').read_text()
 
@@ -102,14 +127,8 @@ class AliasedExchangeRowStillReproduces(unittest.TestCase):
 
     def row(self, row_id=None):
         row_id = row_id or self.ROW_ID
-        rows = [m for m in SNAPSHOT['matches'] if m['id'] == row_id]
-        if not rows:
-            # The board rotates: fixtures lock and leave the feed. The invariants
-            # below are about how an aliased exchange row is verified, not about
-            # one fixture staying open, so a rotated row is skipped rather than
-            # pinned (a pinned ID is what froze earlier pipelines).
-            self.skipTest('fixture %s has rotated out of the feed' % row_id)
-        return rows[0]
+        row, _source = retained_alias_row(row_id, SNAPSHOT['matches'])
+        return row
 
     def test_the_row_ships_its_alias_evidence(self):
         ev = self.row()['evidence'][0]

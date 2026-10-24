@@ -5416,5 +5416,70 @@
     "label": "HLTV match 2399438 (1WIN vs 5star, Moscow Cyber Games 2026)"
    }
   ]
+ },
+ {
+  "id": "session-a22008ff-even-market-line-2026-10-24",
+  "status": "Flagged for manual review — an exactly even exchange quote yields an originated model pick, not a market-implied one",
+  "finding": "Fixture 1079200 Color vs ex-Zero Tenacity (2026-10-25T18:00:00Z) is quoted by Polymarket market 6072812 at exactly 0.50 / 0.50 (bestBid 0.49, bestAsk 0.51, liquidity $6,152.31, quote updated 2026-10-24T16:44:40Z and observed 2026-10-24T16:46:31Z). An even quote carries no directional edge, so scripts.core.resolve records it as rejected evidence — the attempt is published with the reason 'Exchange quote is exactly even (no directional edge); it is kept as rejected evidence and the ladder continues to the next source' and the intact 0.50/0.50 record attached as rejected_quote — and the ladder continues. HLTV, Pinnacle and Thunderpick returned no fixture-level price for this match, so the published line is the originated Valve VRS estimate: Color 0.6884 / ex-Zero Tenacity 0.3116 (fair odds 1.45 / 3.21), pick Color, method model_vrs. The row is therefore NOT a market-backed pick even though the Polymarket quote exists on the same match, and it is not listed as unresolved because the pick itself is resolved. This note flags the residual ambiguity for manual review: a visitor who compares the site with Polymarket sees 50/50 there and 68.8/31.2 here, and the difference is the originated model line rather than a mispriced market. The row is badged as an originated model line and carries its Valve standings plus HLTV fixture links, and no Hotspawn page or Hotspawn crowd vote is read anywhere in the ladder.",
+  "sources": [
+   {
+    "url": "https://gamma-api.polymarket.com/markets/6072812",
+    "label": "Polymarket market 6072812 (Color vs ex-Zero Tenacity), the even 0.50/0.50 quote kept as rejected evidence"
+   },
+   {
+    "url": "https://www.hotspawn.com/matches/color-vs-ex-zero-tenacity-nodwin-clutch-series-13-1079200",
+    "label": "Hotspawn fixture 1079200 (match list only; never a probability input)"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399115/color-vs-ex-zero-tenacity-nodwin-clutch-series-13",
+    "label": "HLTV fixture and lineups for 1079200"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings",
+    "label": "Valve official regional standings used by the originated VRS line"
+   }
+  ]
+ },
+ {
+  "id": "session-a22008ff-first-pick-margin-2026-10-24",
+  "status": "Flagged for manual review — the first-screen pick guarantee is held by measured margins, not by a fixed layout",
+  "finding": "The brief requires that the pick and both win probabilities be obvious on a phone. Measured in Chromium against the built pages on 2026-10-24 (research/measure_a22008ff.cjs, machine-readable output in research/measure_a22008ff.json, snapshot 2026-10-24T16:50:01Z, 83 rows / 20 open / 20 priced / 0 unresolved): on picks.html the first pick sits at y=368 with its probability pair at y=425 on a 320x568 viewport, and at y=334 / y=392 on 390x844, both far above the fixed bottom tab bar (y=507 and y=783). The index executive-summary row occupies y=290-347 at 320x568 and y=300-365 at 390x844 and links in-page to picks.html and #unresolved-limits; no horizontal overflow was measured at 320, 390, 412, 768 or 1440 CSS px. This is a flag rather than a defect because the guarantee is a margin, not an invariant: the earlier publish run 40113115243 failed exactly here (first pick measured at y=863 on that runner, i.e. below the fold) before the disclosure block was moved behind the pick board. Any future row that adds content above the table can consume this margin again, so the measurements are now pinned by tests/test_session_a22008ff.py.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40113115243",
+    "label": "Failed publish run 40113115243: first pick measured at y=863, below the phone fold"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40114007482",
+    "label": "Passing publish run 40114007482 after the picks disclosure was moved behind the board"
+   },
+   {
+    "url": "https://play.hotspawn.com/lobby",
+    "label": "Hotspawn lobby (the match list this site reads; no probability input)"
+   }
+  ]
+ },
+ {
+  "id": "session-a22008ff-gate-skips-and-coordination-2026-10-24",
+  "status": "Flagged for manual review — seven publish-gate tests were skipping, and parallel work overlapped this branch",
+  "finding": "The unit suite that pages.yml runs before it publishes reported 'OK (skipped=7)' on the 2026-10-24T16:50:01Z board. All seven were the same conditional: fixture 1083121 (Projeto do KinGui vs MEIA NOITE) had rotated out of Hotspawn's lobby, so tests/test_session_019a253a.py, tests/test_session_d2b90de7.py and tests/test_session_ea2e254c.py skipped the alias contract instead of checking it — a gate that reports OK while exercising nothing. They now fall back to this repository's own retained capture of the board while the row was open (research/harvest-ce45f672/snapshot.json, Polymarket market 6081997 at 0.595 / 0.405, identity record citing the HLTV fixture for 'Tropa do KinGui' / 'Projeto do KinGui') and raise instead of skipping when no retained row qualifies. Skips in the gate: 7 -> 1, and the remaining one is a genuinely conditional register case, not rotation. Separately: main advanced from 45fc6ba to 6feaafe (work by sessions bf1b12c7, 11afca43, 3bd3be25, f2e04d1a, 2a7cdfb7 and caca91b8, PRs #289-#297) while this branch held its own fix for the same even-quote defect, and main's implementation (scripts.core.resolve no_edge_lines plus a rejected attempt) is the one that stands. This branch was therefore re-based onto main's code rather than merged over it; nothing from main was reverted. Receipts and merge details are recorded in COORDINATION.md.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40114007482",
+    "label": "Publish-gate rehearsal run 40114007482 (gate-ok, 11 Chromium suites green)"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/markets/6081997",
+    "label": "Polymarket market 6081997 behind fixture 1083121's retired alias row"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7",
+    "label": "HLTV fixture cited by the alias identity record for 'Tropa do KinGui' = 'Projeto do KinGui'"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/pull/296",
+    "label": "This session's pull request and its review record"
+   }
+  ]
  }
 ]

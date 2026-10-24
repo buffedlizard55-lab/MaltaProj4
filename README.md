@@ -307,4 +307,28 @@ the tab bar, 44 px in-site routes, 246 px card budget, one card per open match) 
 Findings published, non-blocking: `session-ce45f672-shipped-stylesheet-drift-2026-10-24` and
 `session-ce45f672-team-label-alias-2026-10-24`. Detail: [`research/session-ce45f672/REPORT.md`](research/session-ce45f672/REPORT.md).
 
+## 2026-10-24 — the alias gate stops skipping, and the phone routes are pinned (session a22008ff)
+
+`main` at `6feaafe` passed its unit suite with `OK (skipped=7)`, and all seven skips were one conditional: fixture
+`1083121` had rotated out of Hotspawn's lobby, so three alias-contract suites skipped instead of checking that a source
+label may be mapped onto a team only via a receipted, https-backed identity record. The publish workflow runs that suite
+before it deploys, so the property was unguarded while the gate still read green. Those three files now fall back to this
+repository's own retained capture of the board while the row was open (`research/harvest-ce45f672/snapshot.json`) and
+**fail** rather than skip when neither the live board nor the capture carries the row: `Ran 1550 tests ... OK (skipped=1)`, and the single
+remaining skip is a historical-snapshot conditional for a fixture present in neither place, not a rotation skip.
+
+Measured with Chromium on the built pages and pinned in `tests/test_session_a22008ff.py`: the first pick on `picks.html`
+sits at y=368 with both win probabilities at y=425 on a 320x568 phone (y=334 / y=392 at 390x844), the index
+executive-summary row links in-site to the picks and to the unresolved/limitations section, every phone tab target is a
+real page, and no page overflows horizontally at 320, 390, 412, 768 or 1440 px. The same suite checks that every open
+row ships a pick, two summing probabilities and an https evidence link, that no probability is read from Hotspawn, and
+that no closed row is priced.
+
+The exactly-even exchange quote this branch originally repaired is now fixed on `main` in a different shape
+(`scripts.core.resolve` keeps it as rejected evidence and publishes `no_edge_lines`), so this branch adopts main's
+implementation instead of duplicating it; fixture `1079200` is picked `Color` by the originated VRS line at
+0.6884 / 0.3116 with Polymarket's 0.50/0.50 quote shown as rejected context. Three findings are published on
+`review.html` for manual review. Full gates: 1,550 unit tests, validator (20 calculations reproduced, 15 pages, 771
+links/assets, 20 checksums, 191 displayed rows) and all twelve browser suites.
+
 Missing data is an intentional, visible result—not a placeholder to fill with guesses. No winning outcome, profitable strategy, current roster or complete sportsbook coverage is certified.

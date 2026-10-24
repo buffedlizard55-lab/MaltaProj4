@@ -1,3 +1,55 @@
+## Session a22008ff — alias gate un-skipped, even-line findings, phone routes pinned (2026-10-24 17:55 UTC)
+
+**Claim, logged before work:** the alias-contract tests, the picks-page first-screen margin, the even-market-line
+finding and the review receipts. Nothing in this session touched the probability tiers, the cadence, the stylesheet or
+the publish workflow's gating steps — those were owned by sessions `2b856884`, `caca91b8`, `bf1b12c7`, `11afca43`,
+`3bd3be25`, `f2e04d1a` and `2a7cdfb7`, whose work is already on `main` at `6feaafe`.
+
+| Task | Status | Session | Files |
+| --- | --- | --- | --- |
+| Keep the alias contract exercised after rotation (7 gate skips -> 1) | done | a22008ff | `tests/test_session_019a253a.py`, `tests/test_session_d2b90de7.py`, `tests/test_session_ea2e254c.py`, `tests/test_session_a22008ff.py` |
+| Pin the phone routes and the first-screen pick margin | done | a22008ff | `tests/test_session_a22008ff.py`, `research/measure_a22008ff.cjs`, `research/measure_a22008ff.json`, `research/measure_picks_a22008ff.cjs` |
+| Publish the even-market-line and gate-skip findings for manual review | done | a22008ff | `data/review-notes.json` (3 additive `session-a22008ff-*` notes), `review.html` |
+| Non-publishing publish-gate rehearsal with push retries | done | a22008ff | `.github/workflows/harvest-a22008ff.yml` |
+| Read/claim, PR, merge, live Pages verification | in progress | a22008ff | `COORDINATION.md`, generated root pages |
+
+**What was wrong, measured on `main` @ `6feaafe`, not inferred.** `python3 -m unittest discover -s tests` reported
+`Ran 1535 tests ... OK (skipped=7)`, and every one of the seven was the same conditional: fixture `1083121`
+(Projeto do KinGui vs MEIA NOITE) had rotated out of Hotspawn's lobby, so `019a253a`, `d2b90de7` and `ea2e254c` skipped
+the alias contract — the property that only a receipted, https-backed identity record may map a source label onto a
+team — instead of checking it. `pages.yml` runs that suite *before* it refreshes and publishes, so a gate that reports
+OK while exercising nothing is exactly the state that let the 2026-10-23/24 freeze through. All three files now call
+`retained_alias_row(row_id, rows)`, which returns the live board row when present and otherwise falls back to this
+repository's own retained capture of the board while the row was open
+(`research/harvest-ce45f672/snapshot.json`, Polymarket market `6081997` at 0.595/0.405), and raises — never skips —
+when neither place has the row. Rotation is still honoured: the tests check the recorded row, not a pinned board slot.
+
+**Phone placement, measured with Chromium on the built pages** (`research/measure_a22008ff.json`): at 320x568 the
+first pick on `picks.html` is at y=368 with its probability pair at y=425, and at 390x844 they are at y=334 / y=392 —
+above the fixed tab bar (y=507 / y=783) in both cases. The index executive-summary row runs y=290-347 at 320x568 and
+links in-site to `picks.html` and `#unresolved-limits`. No horizontal overflow at 320, 390, 412, 768 or 1440 CSS px.
+These are pinned in `tests/test_session_a22008ff.py` (15 tests) so a later layout change cannot bury the pick again;
+the earlier publish run 40113115243 is the evidence that this can regress (first pick at y=863 on that runner).
+
+**Overlap with `main`, handled by adopting main's code.** `origin/main` advanced from `45fc6ba` to `6feaafe` while this
+branch carried an independent fix for the same exactly-even exchange quote (fixture `1079200`, Polymarket `6072812`).
+Main's implementation stands: `scripts.core.resolve` keeps an even quote only as a rejected attempt carrying
+`rejected_quote`, publishes `no_edge_lines`, and never leaves a priced-but-unpicked row; `1079200` is therefore picked
+`Color` by the originated `model_vrs` line (0.6884 / 0.3116) with the 0.50/0.50 Polymarket quote retained as rejected
+evidence. There was no parallel claim on the three alias-test files, `research/measure_a22008ff.*` or
+`tests/test_session_a22008ff.py`, and no merge conflict was recorded.
+
+**Gates after the change** (all run locally on `6feaafe` + this branch): `python3 -m scripts.build --data data/latest.json`
+-> 83 rows / 20 open / 20 with percentages / 0 unresolved; `python3 -m scripts.stage_legacy` staged the verified static
+root (22 files); `python3 -m scripts.validate --data data/latest.json --site .` -> 20 calculations reproduced, 15 pages,
+771 links and assets, 20 checksums, 191 displayed rows; `python3 -m unittest discover -s tests` -> `Ran 1550 tests ...
+OK (skipped=1)` (the one remaining skip is a historical-snapshot conditional in `test_session_92e3275c.py`, whose fixture 1082919 is in neither the live board nor the retained capture — not a rotation skip);
+`npm run test:browser` -> all twelve Chromium suites green.
+
+**Findings published, non-blocking:** `session-a22008ff-even-market-line-2026-10-24`,
+`session-a22008ff-first-pick-margin-2026-10-24`, `session-a22008ff-gate-skips-and-coordination-2026-10-24`
+(`review.html`, `data/review-notes.json`).
+
 ## Session 2b856884 — delivery receipt (2026-10-24 17:20 UTC)
 
 **The live site was serving zero picks when this session started. Measured, not inferred:** scheduled audit
