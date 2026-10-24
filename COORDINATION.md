@@ -498,6 +498,41 @@ Evidence rules: Hotspawn is fixture inventory/lock only, never a probability; no
 
 ---
 
+### e3fe9518 audit checkpoint — 2026-10-24 06:38 UTC
+
+Read-only source work is complete on the 06:19:43Z capture: **92 rows / 31 open /
+31 picks / 31 probabilities / 0 unresolved**; strict exchange 16, wide exchange 3,
+third-party book listings 3, official-file models 6, HLTV-mirror models 3. Every
+non-featured row records HLTV before the esportsbook stage. C6 replay and the new
+receipt-authority graph have zero errors. All 12 official-model team/point/roster
+inputs match the actual immutable Valve file retrieved through GitHub's Contents
+API (SHA-256 `df96e7fc...e61b`), not merely internally consistent copied numbers.
+Official formula, chart (visually read), and roster-rule files were fetched at
+`eec4853`; exact links/hashes are in
+`research/session-e3fe9518/primary-document-checks.json`. The primary-only market
+column stays blank for all third-party listings and all models.
+
+New regression gates: 37 tests pass; mobile at 320x568, 390x844, 768x1024, 1440x900
+checks every card's two shares, pick, source-class label, first-screen pick link,
+one-tap evidence and genuine expiry without DOM overrides. No owned builder or
+asset file was edited. Read-only `.github/workflows/verification-e3fe9518.yml`
+retains source/live/mobile receipts and audits every six hours (no git write or
+pick generation). Research row ledger and current limitations are in
+`research/session-e3fe9518/REPORT.md`.
+
+**Measured integration blockers, not falsely marked green:** full baseline unit
+suite: 1,233 run, 8 failures, 1 error, 1 skipped. Root CSS is stale relative to the
+already-repaired canonical CSS; fixture 1083121's explicit Projeto/Tropa KinGui
+alias is absent from the legacy independent verifier's mapping. Both are owned by
+PR #250; [exact reproduction sent](https://github.com/buffedlizard55-lab/MaltaProj4/pull/250#issuecomment-6380914486).
+The methodology's blanket claim that *every* accepted price retains the official
+operator's raw response overstates the three BO3 listings; the one-sentence repair
+is [requested from PR #251's builder owner](https://github.com/buffedlizard55-lab/MaltaProj4/pull/251#issuecomment-6380987169).
+These requests are not competing edits. Live Pages verification remains pending;
+a queued build is never treated as a successful deployment.
+
+---
+
 ## Session d2a55add — delivery receipt: PR #246 (2026-10-24)
 
 **PR [#246](https://github.com/buffedlizard55-lab/MaltaProj4/pull/246)** carries this

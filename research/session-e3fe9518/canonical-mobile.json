@@ -1,0 +1,30 @@
+{
+  "clock": "snapshot_time_not_live",
+  "viewports": [
+    {
+      "width": 320,
+      "height": 568,
+      "verified": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "verified": true
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "verified": true
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "verified": true
+    }
+  ],
+  "snapshot": "2026-10-24T06:19:43.492019Z",
+  "inventoryFresh": true,
+  "open": 31,
+  "actionable": 31,
+  "expiryVerified": true
+}
