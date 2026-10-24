@@ -1,3 +1,48 @@
+## Session ac5bcb06 claim — 2026-10-24 16:30 UTC (publisher repair: the live board is expired because every `main` publish has failed since 09:38Z)
+
+Board read before claiming (top 300 lines + `gh run list`). Fixed Arena branch `arena/ac5bcb06-maltaproj4`, based on `main` `45fc6ba`.
+No other branch is created or pushed. Measured at claim time (not assumed):
+
+- Published snapshot is `2026-10-24T08:06:51Z`; it is now 16:2xZ, so the site's own 8-hour window has closed and **every pick is withheld**
+  (independent live check run 40110028068: `Live snapshot is expired; do not claim the deployment is current`).
+- `pages.yml` on `main` has failed on every run since 09:38Z (40082763751, 40084520702, schedule 40097410704). All three pass the unit gate,
+  refresh, quarantine, build, validate and all browser suites and then fail at **"Keep the legacy main:/ root fallback on the verified build"**
+  with `The staged root failed its own validator or unit gate` — i.e. the refreshed snapshot, once installed at the root, reddens
+  `scripts.validate` or `unittest discover -s tests`. Job logs are not retrievable from this sandbox (blob host blocked), so the cause is being captured by a
+  diagnostic workflow that retains the refreshed snapshot and the failing test output on this branch.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Capture the failing staged-root gate on a real runner (refreshed snapshot + validator/unit output) | in progress | ac5bcb06 | `.github/workflows/diag-ac5bcb06.yml` (new), `research/diag-ac5bcb06/**` | 2026-10-24 16:30 |
+| Repair whatever pins the rotating snapshot / blocks the staged root, with a regression test | unclaimed until diagnosis | ac5bcb06 | `tests/**`, `scripts/**` (only the files the diagnosis names) | 2026-10-24 16:30 |
+| Re-publish a fresh every-match board; verify coverage, PR to `main`, merge, confirm Pages | unclaimed until diagnosis | ac5bcb06 | `COORDINATION.md`, generated root pages | 2026-10-24 16:30 |
+
+Evidence rules unchanged: Hotspawn supplies fixture inventory only, never a probability; no placeholder odds, inferred values or 50/50 filler.
+
+---
+
+### Session ac5bcb06 — diagnosis and repair receipt (2026-10-24 17:00 UTC)
+
+**Root cause (measured on a real runner, receipts in `research/diag-ac5bcb06/`).** Run
+[40111427675](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40111427675) performed a real refresh, quarantine, build
+and validate, staged the root exactly as `pages.yml` does, and ran the root gate. The refreshed board had **22 open fixtures,
+21 with a pick**: *Color vs ex-Zero Tenacity* (NODWIN Clutch Series #13, Hotspawn `1079200`) had a tight Polymarket market priced exactly
+0.50/0.50 (bid 0.49, ask 0.51), which `scripts/core.resolve` published as a probability **with no pick** and which stopped the row before the
+VRS model tier. That single row failed 42 "every open match has a pick" unit tests (`validate` itself passed), so the staged root was refused on every
+`main` publish since 09:38Z, the snapshot froze at 08:06Z and the site withheld all picks once its 8-hour window closed.
+
+**Repairs.** (1) `scripts/core.py`: an exactly even exchange quote or researched book line is no directional evidence — it is kept on the row as
+*rejected evidence* (with its numbers and the reason) and the ladder continues to Pinnacle, the labelled VRS model and the HLTV research tiers. Re-run on a real
+refresh (run [40112050437](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40112050437)): **22 open · 22 with a pick · 22 with a win probability**, row `1079200`
+now carries the labelled Valve-standings model line (Color #57 vs ex-Zero Tenacity #93 in Valve's 2026-10-05 file). (2) Two tests pinned fixture ids of the rotating live
+feed (`1083121`, `1081152`) and failed once those fixtures started (the same defect class as session 019a253a's lobby-parity fix); they now read the retained
+08:06Z capture when the fixture has left the feed. (3) Three tests that pinned the old "publish 50/50 with no pick" answer were updated to the new contract.
+
+**Verification.** Offline replay of the staged root from that real refresh (build → `publish_root_fallback` → `scripts.validate` → `unittest discover -s tests`): validate green, **1,484 tests OK**.
+
+**Policy note (flagged, non-blocking).** For an exactly even liquid market the pick now comes from our labelled Valve-standings model, not from the market; the market's even quote
+stays visible as a rejected observation on the row's evidence. The model line is not a market price and the row says so.
+
 ## Session d2a55add — final receipt: PR #246 merged, live bytes verified (2026-10-24 06:20 UTC)
 
 **PR [#246](https://github.com/buffedlizard55-lab/MaltaProj4/pull/246) merged to `main` at
@@ -8018,23 +8063,42 @@ asset or rendered artifact changes. Both board additions retained. The full
 full units after this dated-fixture update and recheck exact manifest bytes.
 All previous raw facts/29current prices and224 review entries remain unchanged.
 
----
+## Session b0163396 claim — expiry-safe fallback ladder browser assertion (2026-10-24 UTC)
 
-## Session caca91b8 — claim (2026-10-24 16:31 UTC, branch `arena/caca91b8-maltaproj4`)
-
-**Board read before starting:** `origin/main` at `45fc6ba3244750e2b7fa2118b15b5e7114901e5b` (PR #244); committed `build-info.json` built `2026-10-24T08:26:58.964839Z`, snapshot `2026-10-24T08:06:51.009717Z` (92 feed rows, 29 open at capture, 22 still before lock at `16:28Z`, >8h window expired at `16:06:51Z`).
-
-**Measured root causes already reproduced from official GitHub API check-run annotations and local gate execution (zero guesswork):**
-1. **Scheduled & push publication freeze on `main` (runs `40082763751`, `40084520702`, `40097410704`):** `pages.yml` step 15 (*Keep the legacy main:/ root fallback on the verified build*) fails with `The staged root failed its own validator or unit gate` because `tests/test_session_e9be3e6b.py` (completed session `e9be3e6b`, >8h inactive) indexes `by_id['1081152']['evidence'][0]` unconditionally on rotated live snapshots.
-2. **PR browser-gate deadlock once the committed snapshot passed 8 hours (`16:06:51Z`):** locally running `scripts.build --data data/latest.json && npm run test:browser` at `16:28Z` fails in two completed-session browser suites:
-   - `tests/browser_019a253a.cjs:139` (completed session `019a253a`, >8h inactive): filters out `none=` before checking that ladder rung counts sum to `openRows` (`0 !== 22` when picks are withheld due to expiry, and would also fail whenever `none > 0`).
-   - `tests/browser_ce45f672.cjs:88` (completed session `ce45f672`, >8h inactive): requires `measured.scores.length === 2` and `measured.cards === data.matches.filter(m => m.state === 'open').length` even when the committed baseline is past its 8-hour window and 7 matches have locked since `08:06Z`.
+Read the shared board before claiming. No active owner is editing this browser assertion. The product's freshness gate intentionally removes expired percentages; the fallback ladder then puts those open rows under its explicit `none` rung. The existing browser test incorrectly excludes `none` when summing rung counts, so it fails on a valid stale/withheld snapshot (reproduced against the committed snapshot after its 8-hour evidence window). This is a test-contract correction only; do not alter picks, source data, expiry behavior, rendered pages, or shared navigation.
 
 | Task | Status | Owner | File scope | Updated (UTC) |
 | --- | --- | --- | --- | --- |
-| Live Hotspawn/HLTV/exchange/bookmaker/Valve harvest, low-tier match gap probe, and publisher rehearsal on a GitHub runner | in progress | caca91b8 | `.github/workflows/harvest-caca91b8.yml`, `scripts/probe_caca91b8.py`, `research/session-caca91b8/**` | 2026-10-24 16:31 |
-| Line-by-line independent verification of every feed row, probability formula, official source link, and mobile executive-summary layout | in progress | caca91b8 | `scripts/audit_caca91b8.py`, `verification-caca91b8/**`, `tests/test_session_caca91b8.py`, `tests/browser_caca91b8.cjs` | 2026-10-24 16:31 |
-| Completed-owner stale/rotated-snapshot test handoff repairs (logged above; owners inactive >8h) | in progress | caca91b8 | `tests/test_session_e9be3e6b.py`, `tests/browser_019a253a.cjs`, `tests/browser_ce45f672.cjs` (plus any additional completed-owner rotated-ID pins caught by live rehearsal) | 2026-10-24 16:31 |
-| Sourced low-tier CS2 coverage & additive review flags for any newly listed Hotspawn fixtures in the 16:3xZ feed | unclaimed until capture completes | caca91b8 | `data/identities.json`, `data/book-receipts.json`, `data/lineup-receipts.json`, `data/vrs-anchors.json`, `data/review-notes.json` (additive only, merged cleanly with `origin/main`) | 2026-10-24 16:31 |
-| Final integration: pull/merge `origin/main` without discarding peer work, rebuild & validate fresh board, PR to `main`, merge without approval, verify live GitHub Pages deployment, record receipt | unclaimed until tasks above complete | caca91b8 | `COORDINATION.md`, `package.json` (browser suite registration), generated root fallback via `scripts.build` + `scripts.stage_legacy` | 2026-10-24 16:31 |
+| Make the executive-summary fallback ladder browser assertion sum every rung, including `none`, and verify both fully priced and withheld/expired scenarios | done | b0163396 | `tests/browser_019a253a.cjs`, `COORDINATION.md` | 2026-10-24 |
 
+Verification performed before editing: `python -m scripts.validate --data data/latest.json --site .` passed (92 rows, 29 reproduced calculations, 15 pages, 858 links/assets, 20 checksums, 227 displayed rows); Python unit suite passed (1,484 tests, 1 skipped). Building `public/` from the retained snapshot at the actual runner clock correctly withheld old probabilities, after which `npm run test:browser` exposed the bad assumption: 22 open rows were in `none`, but the assertion summed only zero-price-method rows. This does not establish a current live refresh; the retained snapshot is older than its eight-hour evidence window and the site correctly fails closed.
+
+### Session b0163396 follow-up claim — stale-baseline mobile gate handoff (2026-10-24 UTC)
+
+The complete `npm run test:browser` run now passes the corrected ladder test, but exposes a separate post-expiry assumption in the already-delivered `tests/browser_ce45f672.cjs`: it requires two probability nodes on the first card even when the baseline is correctly withheld after eight hours. The owning session's delivery receipt is dated 07:50 UTC, over 60 minutes before this takeover; no active work is recorded on this test. Taking over only this regression test (no styles, builder, data, or other session's product scope). Keep its fresh-snapshot checks strict, and in the expired state require the visible stale/withheld warning and zero fabricated score nodes.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Make the delivered first-fold mobile test cover both a fresh priced baseline and the valid expired/withheld baseline without relaxing either UI contract | done | b0163396 (takeover after >60m) | `tests/browser_ce45f672.cjs`, `COORDINATION.md` | 2026-10-24 |
+
+Evidence: after the ladder fix, `npm run test:browser` reaches the independent ce45f672 suite and fails at 320px with `0 !== 2` score elements. In the same built artifact the stale notice says “Snapshot expired or timestamp unverified. Current picks are withheld.” The correct mobile state is zero percentages, not a stale pick card with fabricated or expired odds.
+
+**b0163396 completion receipt (2026-10-24 UTC).** The executive-summary count assertion now includes all nine rungs, including the zero-probability `none` rung, so fresh priced and correctly expired boards both reconcile exactly to the open-row count. The ce45f672 phone suite now keeps its strict two-score/above-tabbar assertion when current picks exist; when the baseline is expired it instead asserts zero score nodes and a visible `#runtime-stale` notice stating that current picks are withheld. No production file, match data, quote, probability, source timestamp, stylesheet or navigation was changed.
+
+Checks on the resulting tree: full Python unit suite **1,484 passed, 1 skipped**; audit tests **9 passed**; integrity **5 passed**; verification-c6 **12 passed**; `scripts.validate` **92 rows, 29 independently reproduced calculations, 15 pages, 858 links/assets, 20 checksums, 227 displayed rows**; retained-source row audit **0 failures**; full `npm run test:browser` **all 11 suites passed**. Browser run included 320×568 and 390×844 checks and correctly reported the committed snapshot was beyond the eight-hour evidence window; every expired quote was withheld. The live freshness contract therefore reports **22 open, 22 expired, 0 actionable** at 2026-10-24T16:32Z; this is not a current source refresh or live deployment verification. Build output and browser artifacts are ignored under `public/` and `runtime/`.
+
+---
+
+## Session caca91b8 — claim & upstream merge log (2026-10-24 16:31–16:45 UTC, branch `arena/caca91b8-maltaproj4`)
+
+**Board read before starting:** `origin/main` at `45fc6ba3244750e2b7fa2118b15b5e7114901e5b` (PR #244); subsequently merged `origin/main` at `ea4418ca7b97416c15775fc89de2ba597a4abc4d` (PRs #279 by `b0163396` and #282 by `ac5bcb06`) with zero peer work discarded:
+- Adopted `b0163396`'s `tests/browser_019a253a.cjs` and `tests/browser_ce45f672.cjs` verbatim.
+- Adopted `ac5bcb06`'s `scripts/core.py` tie-rejection + `tests/test_session_35c6e1e9.py` + `tests/test_core.py` + `tests/test_session_92e3275c.py` + `tests/test_session_ce45f672.py`, and in `tests/test_session_e9be3e6b.py` combined `ac5bcb06`'s archived `08:06Z` check with dynamic live replay while removing the unsafe `by_id.update(...)` overwrite that would raise `IndexError` or fail on a 1-cent quote move when `1082859` locks or reprices.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Live Hotspawn/HLTV/exchange/bookmaker/Valve harvest, low-tier match gap probe, and publisher rehearsal on a GitHub runner | in progress | caca91b8 | `.github/workflows/harvest-caca91b8.yml`, `scripts/probe_caca91b8.py`, `research/session-caca91b8/**` | 2026-10-24 16:45 |
+| Line-by-line independent verification of every feed row, probability formula, official source link, and mobile executive-summary layout | in progress | caca91b8 | `scripts/audit_caca91b8.py`, `verification-caca91b8/**`, `tests/test_session_caca91b8.py`, `tests/browser_caca91b8.cjs` | 2026-10-24 16:45 |
+| Harden `tests/test_session_e9be3e6b.py` against `1082859` repricing / locking (`by_id.update` bug in #282) | done | caca91b8 | `tests/test_session_e9be3e6b.py` | 2026-10-24 16:45 |
+| Publish additive review flags for verified findings (even-market tie fallback on `1079200`, `1082859` archive-overwrite bug in #282, stale `main:/` root before refresh lands) | in progress | caca91b8 | `data/review-notes.json` (additive IDs `session-caca91b8-*` only, `indent=1`) | 2026-10-24 16:45 |
+| Final integration: fresh verified live board staged to `main:/`, all unit/audit/validator/browser gates green, PR to `main`, merge without approval, verify live GitHub Pages deployment, record receipt | unclaimed until tasks above complete | caca91b8 | `COORDINATION.md`, `package.json` (browser suite registration), generated root fallback via `scripts.build` + `scripts.stage_legacy` | 2026-10-24 16:45 |

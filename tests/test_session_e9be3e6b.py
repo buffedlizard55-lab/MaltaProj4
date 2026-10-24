@@ -123,8 +123,25 @@ class SourceLadderVerification(unittest.TestCase):
         return None, None
 
     def test_known_listing_and_model_arithmetic(self):
+        # Historical dated check on the retained 2026-10-24T08:06Z archive:
+        # never overwrite with SNAPSHOT rows that may have locked (evidence=[])
+        # or repriced on a later live board.
+        archive = json.loads((ROOT / 'research/harvest-ce45f672/snapshot.json').read_text())
+        arch_by_id = {m['id']: m for m in archive['matches']}
+        book = arch_by_id['1082859']['evidence'][0]
+        p, kind = V.replay_evidence(book, arch_by_id['1082859']['teams'])
+        # Thunderpick via BO3.gg: 1.61 / 2.18, de-vigged.
+        self.assertEqual(kind, 'listing_devig')
+        self.assertAlmostEqual(p[0], 0.575197889182058, places=12)
+        self.assertAlmostEqual(p[1], 0.42480211081794195, places=12)
+        model = arch_by_id['1081152']['evidence'][0]
+        p, kind = V.replay_evidence(model, arch_by_id['1081152']['teams'])
+        # Valve 2026-10-05 file: HAVU 937, Azuolas 863; Glicko RD 75, slope 0.7986.
+        self.assertEqual(kind, 'valve_vrs')
+        self.assertAlmostEqual(p[0], 0.5815710671661513, places=12)
         self.assertAlmostEqual(V.glicko_expect(1011, 750) * 0.7986 + 0.1007,
                                V.calibrate(V.glicko_expect(1011, 750)), places=12)
+        # Dynamic replay on the current live SNAPSHOT (survives quote movement and rotation):
         by_id = {m['id']: m for m in SNAPSHOT['matches']}
         book_row, book = self._row_with_evidence(
             by_id, '1082859', 'listing_devig', lambda e: 'decimal_odds' in e)

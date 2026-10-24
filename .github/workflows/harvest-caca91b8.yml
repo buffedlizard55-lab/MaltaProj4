@@ -45,6 +45,7 @@ jobs:
       - name: Rehearse full publisher path (build -> stage_legacy -> validate -> unittest -> browser)
         continue-on-error: true
         run: |
+          set +e
           python -m scripts.build --data runtime/latest.json 2>&1 | tee research/session-caca91b8/rehearsal-build.log
           python -m scripts.validate --data runtime/latest.json 2>&1 | tee -a research/session-caca91b8/rehearsal-build.log
           python -m scripts.stage_legacy --public public --root . 2>&1 | tee -a research/session-caca91b8/rehearsal-build.log
@@ -57,7 +58,9 @@ jobs:
           npm run test:browser > research/session-caca91b8/browser.log 2>&1
           echo "BROWSER_RC=$?" >> research/session-caca91b8/browser.log
           git checkout -- 404.html analysis.html assets build-info.json data/latest.json data/matches.csv evidence.html index.html matches.html methodology.html picks.html review.html site sources.html unresolved.html .nojekyll
+          exit 0
       - name: Record runner receipt
+        if: always()
         env:
           RUN_ID: ${{ github.run_id }}
           RUN_ATTEMPT: ${{ github.run_attempt }}
@@ -78,11 +81,13 @@ jobs:
           Path('research/session-caca91b8/run.json').write_text(json.dumps(receipt, indent=2) + '\n')
           PY
       - name: Commit dated research receipts back to arena/caca91b8-maltaproj4
+        if: always()
         run: |
+          git checkout -- . ':!research/session-caca91b8' || true
           git config user.name "cs2-evidence-runner"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A -- research/session-caca91b8
           if git diff --cached --quiet; then exit 0; fi
           git commit -m "Retain live coverage harvest from run ${GITHUB_RUN_ID} [skip ci]"
-          git pull --rebase origin arena/caca91b8-maltaproj4
+          git pull --rebase --autostash origin arena/caca91b8-maltaproj4
           git push origin arena/caca91b8-maltaproj4
