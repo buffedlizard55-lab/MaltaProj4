@@ -5187,5 +5187,58 @@
     "label": "Exchange fixture requiring no-edge handling"
    }
   ]
+ },
+ {
+  "id": "session-d15e84e5-level-line-blocked-publication-2026-10-24",
+  "status": "Needs review — repaired upstream, receipt kept",
+  "finding": "Every main publish between 09:38Z and 16:06Z on 2026-10-24 failed at step 15 (\"Keep the legacy main:/ root fallback on the verified build\") while steps 8-14 passed, so the deploy job was skipped and the public board froze at the 08:06Z snapshot until it withheld every pick. The step's own annotation names the post-staging gate. Cause, measured on a read-only runner replay: Polymarket quoted Color vs ex-Zero Tenacity (fixture 1079200) at exactly 0.5/0.5, the row published both percentages with no directional pick, and the committed suite still assumed every priced row has a strictly larger side; two more pinned rotating fixture IDs (1081152, 1083121) were also gone. Repaired upstream in PR #281, which makes an exactly even quote continue down the ladder instead of stopping it, so every open row now resolves to a sourced pick. This session adds the publication resilience that keeps a verified build deployable if any post-verification step fails again.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40097410704",
+    "label": "Failing main run: steps 7-14 success, step 15 failure, deploy skipped"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/events?slug=cs2-color-zerote-2026-10-25",
+    "label": "Polymarket event for Color vs ex-Zero Tenacity: outcomePrices [0.5, 0.5]"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/pull/281",
+    "label": "Upstream repair: an exactly even quote can no longer originate a pick"
+   }
+  ]
+ },
+ {
+  "id": "session-d15e84e5-legacy-pages-source-oscillation-2026-10-24",
+  "status": "Needs review — mitigated in this branch, owner action required",
+  "finding": "GitHub Pages for this repository is still build_type legacy with source main:/ (read at 16:41Z), so every push republishes the committed root pages over the artifact the pipeline just deployed, and the PUT that would switch it to build_type workflow answers 403 for the integration token. Mitigation in this branch: the verified public/ tree is uploaded as the Pages artifact before the legacy-root staging step, the manifest receipt is recorded even if that step fails, and the deploy job runs on that verified artifact even when a later verify-build step is red. The run still goes red, so the fault is not hidden. Residual risk: while the committed root is stale, a push republishes the stale root until the next pipeline run deploys the fresh artifact.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/.github/workflows/pages.yml",
+    "label": "pages.yml: artifact upload, receipt and deploy conditions"
+   },
+   {
+    "url": "https://docs.github.com/en/rest/pages/pages#update-information-about-a-apiname-pages-site",
+    "label": "GitHub Pages REST API (PUT /repos/{owner}/{repo}/pages) — answered 403 here"
+   },
+   {
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json",
+    "label": "Live manifest: still the 08:06Z snapshot six hours after the failure began"
+   }
+  ]
+ },
+ {
+  "id": "session-d15e84e5-observed-lobby-size-vs-board-2026-10-24",
+  "status": "Needs review — coverage bound, measured",
+  "finding": "Hotspawn's own CS2 pick'em page, read at 16:24Z, reported 226 matches for the current week with 85 currently listed fixtures (tier B 36, tier C 49). The refreshed board captured at 16:31Z carries 83 feed rows with 22 open matches. The two counts are not the same measure (the page counts a week's fixtures including completed ones, the feed carries scheduled entries), and this sandbox cannot reach the fixtures API to reconcile them in the same minute, so no coverage claim is made beyond those two readings. What does hold: on the 16:40Z snapshot every one of the 22 open matches has a pick and a win probability, and any row a future refresh cannot resolve is published in the separate unresolved section with the provider it tried and the limitation that stopped it.",
+  "sources": [
+   {
+    "url": "https://play.hotspawn.com/cs2-pickems",
+    "label": "Hotspawn CS2 pick'em lobby, read 2026-10-24 16:24Z"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/data/latest.json",
+    "label": "Published snapshot: 83 rows, 22 open, 22 picks (16:40Z)"
+   }
+  ]
  }
 ]
