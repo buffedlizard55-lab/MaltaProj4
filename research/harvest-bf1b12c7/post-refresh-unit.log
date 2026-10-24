@@ -1,18 +1,18 @@
 # Fresh-snapshot publisher rehearsal
 
-Snapshot: 2026-10-24T16:54:24.311021Z
+Snapshot: 2026-10-24T17:18:48.961351Z
 Commands: scripts.build -> scripts.publish_root_fallback -> scripts.validate -> unittest discover -s tests (pages.yml publish())
 
 ## scripts.publish_root_fallback
-{"publish": true, "reason": "staging the verified build: 2026-10-24T16:54:24.311021Z replaces 2026-10-24T08:06:51.009717Z", "snapshot_generated_at": "2026-10-24T16:54:24.311021Z", "committed_snapshot": "2026-10-24T08:06:51.009717Z", "revision": "b201a158e2f62267640475c0a9fd404ec3ecbfe8", "source_drift": [], "files": [".nojekyll", "404.html", "analysis.html", "assets/app.js", "assets/favicon.svg", "assets/style.css", "build-info.json", "data/latest.json", "data/matches.csv", "evidence.html", "index.html", "matches.html", "methodology.html", "picks.html", "review.html", "site/index.html", "site/methodology.html", "site/picks.html", "site/review.html", "site/unresolved.html", "sources.html", "unresolved.html"], "asset_divergence": []}
+{"publish": true, "reason": "staging the verified build: 2026-10-24T17:18:48.961351Z replaces 2026-10-24T08:06:51.009717Z", "snapshot_generated_at": "2026-10-24T17:18:48.961351Z", "committed_snapshot": "2026-10-24T08:06:51.009717Z", "revision": "10dc48973ca529d83dbf52163bc6b4f204c970ad", "source_drift": [], "files": [".nojekyll", "404.html", "analysis.html", "assets/app.js", "assets/favicon.svg", "assets/style.css", "build-info.json", "data/latest.json", "data/matches.csv", "evidence.html", "index.html", "matches.html", "methodology.html", "picks.html", "review.html", "site/index.html", "site/methodology.html", "site/picks.html", "site/review.html", "site/unresolved.html", "sources.html", "unresolved.html"], "asset_divergence": []}
 ## scripts.validate
 {
-  "rows_verified_against_primary_snapshot": 83,
+  "rows_verified_against_primary_snapshot": 81,
   "probability_calculations_reproduced": 20,
   "pages": 15,
-  "internal_links_and_assets_checked": 771,
+  "internal_links_and_assets_checked": 767,
   "artifact_checksums_verified": 20,
-  "displayed_match_rows_verified": 191
+  "displayed_match_rows_verified": 189
 }
 ## unittest discover -s tests
 test_guidance_marks_it_as_now_listed (test_ab18fe2a.GroupBDeciderIsListed.test_guidance_marks_it_as_now_listed) ... ok
@@ -271,7 +271,7 @@ test_wide_tier_has_a_ceiling (test_fallback.WideTierTests.test_wide_tier_has_a_c
 test_wide_tier_never_accepts_unfunded_market (test_fallback.WideTierTests.test_wide_tier_never_accepts_unfunded_market) ... ok
 test_counts_are_rederived_not_authored (test_harvest_0e407ec7.SummariserTest.test_counts_are_rederived_not_authored) ... ok
 test_main_writes_summary_and_reports_digests (test_harvest_0e407ec7.SummariserTest.test_main_writes_summary_and_reports_digests) ... ok
-test_missing_runtime_exits_without_writing (test_harvest_0e407ec7.SummariserTest.test_missing_runtime_exits_without_writing) ... No refreshed snapshot at /tmp/tmpjnz3_r0d/nope.json; nothing to harvest.
+test_missing_runtime_exits_without_writing (test_harvest_0e407ec7.SummariserTest.test_missing_runtime_exits_without_writing) ... No refreshed snapshot at /tmp/tmpgdq8w9ng/nope.json; nothing to harvest.
 ok
 test_none_method_survives_sorted_json (test_harvest_0e407ec7.SummariserTest.test_none_method_survives_sorted_json) ... ok
 test_context_never_uses_fan_votes (test_hltv.HltvTests.test_context_never_uses_fan_votes) ... ok
@@ -855,7 +855,7 @@ test_post_pr83_reread_records_merged_build_and_current_final_rows (test_session_
 test_thunderpick_calculation_and_selected_pick_reproduce (test_session_69389f44.Session69389f44ReceiptTests.test_thunderpick_calculation_and_selected_pick_reproduce) ... ok
 test_thunderpick_capture_window_is_not_claimed_as_provider_time (test_session_69389f44.Session69389f44ReceiptTests.test_thunderpick_capture_window_is_not_claimed_as_provider_time) ... ok
 test_book_and_lineup_receipt_ledgers_are_clean_and_primary_sourced (test_session_7271c5d5.Session7271c5d5Tests.test_book_and_lineup_receipt_ledgers_are_clean_and_primary_sourced) ... ok
-test_full_board_and_fresh_build_pass_independent_auditor (test_session_7271c5d5.Session7271c5d5Tests.test_full_board_and_fresh_build_pass_independent_auditor) ... Built 9 primary pages + 6 legacy redirects; 83 sourced rows, 20 with percentages, 0 without percentages, 0 unresolved.
+test_full_board_and_fresh_build_pass_independent_auditor (test_session_7271c5d5.Session7271c5d5Tests.test_full_board_and_fresh_build_pass_independent_auditor) ... Built 9 primary pages + 6 legacy redirects; 81 sourced rows, 20 with percentages, 0 without percentages, 0 unresolved.
 ok
 test_k27_nexora_receipt_end_to_end_validator_and_c6_audit (test_session_7271c5d5.Session7271c5d5Tests.test_k27_nexora_receipt_end_to_end_validator_and_c6_audit) ... ok
 test_reobserve_renews_valid_pair_and_rejects_placeholder_default (test_session_7271c5d5.Session7271c5d5Tests.test_reobserve_renews_valid_pair_and_rejects_placeholder_default) ... ok
@@ -881,7 +881,7 @@ test_research_deep_dive_vrs_2026_10_22_math (test_session_7601d5ee.Session7601d5
 test_vave_bookmaker_quotes_math (test_session_7601d5ee.Session7601d5eeTests.test_vave_bookmaker_quotes_math) ... ok
 test_apply_is_strictly_idempotent (test_session_767649ba.Session767649baTests.test_apply_is_strictly_idempotent) ... ok
 test_book_receipt_present_and_dead_noncanonical_slugs_repaired (test_session_767649ba.Session767649baTests.test_book_receipt_present_and_dead_noncanonical_slugs_repaired) ... ok
-test_independent_auditor_passes_fresh_build_zero_failures (test_session_767649ba.Session767649baTests.test_independent_auditor_passes_fresh_build_zero_failures) ... Built 9 primary pages + 6 legacy redirects; 83 sourced rows, 20 with percentages, 0 without percentages, 0 unresolved.
+test_independent_auditor_passes_fresh_build_zero_failures (test_session_767649ba.Session767649baTests.test_independent_auditor_passes_fresh_build_zero_failures) ... Built 9 primary pages + 6 legacy redirects; 81 sourced rows, 20 with percentages, 0 without percentages, 0 unresolved.
 ok
 test_k27_nexora_receipt_replays_exact_probabilities_and_corroboration (test_session_767649ba.Session767649baTests.test_k27_nexora_receipt_replays_exact_probabilities_and_corroboration) ... ok
 test_reobserve_accepts_live_asymmetric_pair_and_refuses_18_placeholder (test_session_767649ba.Session767649baTests.test_reobserve_accepts_live_asymmetric_pair_and_refuses_18_placeholder) ... ok
@@ -1420,7 +1420,7 @@ test_probe_accepts_honest_blank_but_rejects_unsupported_values (test_session_eaf
 test_official_valve_root_is_exact_not_a_broad_github_allowance (test_session_eaff7cce.ReleaseIntegrationBoundaryTests.test_official_valve_root_is_exact_not_a_broad_github_allowance) ... ok
 test_original_zero_capture_guard_ends_at_exact_retained_deadline (test_session_eaff7cce.ReleaseIntegrationBoundaryTests.test_original_zero_capture_guard_ends_at_exact_retained_deadline) ... ok
 test_queue_recovery_requires_explicit_trusted_main_push_marker (test_session_eaff7cce.ReleaseIntegrationBoundaryTests.test_queue_recovery_requires_explicit_trusted_main_push_marker) ... ok
-Built 9 primary pages + 6 legacy redirects; 83 sourced rows, 20 with percentages, 0 without percentages, 0 unresolved.
+Built 9 primary pages + 6 legacy redirects; 81 sourced rows, 20 with percentages, 0 without percentages, 0 unresolved.
 {
  "coverage": "verified",
  "coverage_counts": {
@@ -1442,7 +1442,7 @@ Built 9 primary pages + 6 legacy redirects; 83 sourced rows, 20 with percentages
   "1"
  ]
 }
-Built 9 primary pages + 6 legacy redirects; 83 sourced rows, 20 with percentages, 0 without percentages, 0 unresolved.
+Built 9 primary pages + 6 legacy redirects; 81 sourced rows, 20 with percentages, 0 without percentages, 0 unresolved.
 receipt = egw-NTRtiger-l6k0vg5-nemesis-nuclear -> already on file for fixture 1081552
 receipt = egw-V1JAWhPomg-astral-leo -> already on file for fixture 1081532
 receipt = egw-Nk9F-Ov54e-fireflux-ex6666 -> already on file for fixture 1079181
@@ -1454,13 +1454,13 @@ receipt = egw-41yaj8BdVx-sangal-aurorayoungblud -> already on file for fixture 1
  "aliases_added": 0,
  "notes_added": 0
 }
-Built 9 primary pages + 6 legacy redirects; 83 sourced rows, 20 with percentages, 0 without percentages, 0 unresolved.
+Built 9 primary pages + 6 legacy redirects; 81 sourced rows, 20 with percentages, 0 without percentages, 0 unresolved.
 Built 9 primary pages + 6 legacy redirects; 4 sourced rows, 2 with percentages, 2 without percentages, 1 unresolved.
 Built 9 primary pages + 6 legacy redirects; 4 sourced rows, 2 with percentages, 2 without percentages, 1 unresolved.
 Built 9 primary pages + 6 legacy redirects; 4 sourced rows, 2 with percentages, 2 without percentages, 1 unresolved.
 Built 9 primary pages + 6 legacy redirects; 4 sourced rows, 2 with percentages, 2 without percentages, 1 unresolved.
 Built 9 primary pages + 6 legacy redirects; 2 sourced rows, 1 with percentages, 1 without percentages, 0 unresolved.
-Built 9 primary pages + 6 legacy redirects; 83 sourced rows, 20 with percentages, 0 without percentages, 0 unresolved.
+Built 9 primary pages + 6 legacy redirects; 81 sourced rows, 20 with percentages, 0 without percentages, 0 unresolved.
 Built 9 primary pages + 6 legacy redirects; 2 sourced rows, 2 with percentages, 0 without percentages, 0 unresolved.
 Built 9 primary pages + 6 legacy redirects; 75 sourced rows, 10 with percentages, 3 without percentages, 1 unresolved.
 Built 9 primary pages + 6 legacy redirects; 1 sourced rows, 0 with percentages, 1 without percentages, 0 unresolved.
@@ -1492,12 +1492,12 @@ receipt = egw-41yaj8BdVx-sangal-aurorayoungblud -> already on file for fixture 1
 Built 9 primary pages + 6 legacy redirects; 3 sourced rows, 2 with percentages, 1 without percentages, 0 unresolved.
 {
   "schema_version": 1,
-  "snapshot_generated_at": "2026-10-24T16:54:24.311021Z",
-  "audit_clock": "2026-10-24T16:54:24.311021Z",
+  "snapshot_generated_at": "2026-10-24T17:18:48.961351Z",
+  "audit_clock": "2026-10-24T17:18:48.961351Z",
   "clock_basis": "snapshot_generation_time_not_live",
   "counts": {
     "hltv_mirror_model": 1,
-    "not_open": 63,
+    "not_open": 61,
     "official_input_model": 3,
     "operator_market": 13,
     "third_party_listing": 3
@@ -1505,7 +1505,7 @@ Built 9 primary pages + 6 legacy redirects; 3 sourced rows, 2 with percentages, 
   "actionable_at_audit_clock": 20,
   "errors": [],
   "scope": "Retained-evidence provenance and independent arithmetic replay, not live upstream confirmation or forecast accuracy.",
-  "snapshot_sha256": "d6917ac0c3ff7e0f635d421b6672c9547e450de5176bb1313d96bd4ed21fa4be"
+  "snapshot_sha256": "92d512404ed53a847b70278483cb8088a5041815f653242464b856f47c628a3d"
 }
 Built 9 primary pages + 6 legacy redirects; 1 sourced rows, 0 with percentages, 1 without percentages, 1 unresolved.
 {
@@ -1515,7 +1515,7 @@ Built 9 primary pages + 6 legacy redirects; 1 sourced rows, 0 with percentages, 
   "files_checked": 20,
   "snapshot_generated_at": "2026-10-22T07:49:59.960210Z",
   "fixtures_observed_at": "2026-10-22T07:44:36.467004Z",
-  "live_manifest_sha256": "78796b33b14a004e307ea4e59f940745f68f94724b81bedbcca8b7e2f91c8ea9",
+  "live_manifest_sha256": "64713d4151d733b0b69846879b6d12f8209cc59ca564de2ae9a48a797d07c3fe",
   "snapshot_sha256": "9c6f1c7e1944447d6618d767299418f4f2a6a5d904cbfa49e5d8aebc009ebb67",
   "snapshot_counts": {
     "feed_rows": 107,
@@ -1529,11 +1529,11 @@ Built 9 primary pages + 6 legacy redirects; 1 sourced rows, 0 with percentages, 
     "research_only": 6,
     "unresolved": 1
   },
-  "run_id": "40113352989",
+  "run_id": "40115154679",
   "note": "Exact public bytes; no source/quote timestamp was renewed."
 }
 Built 9 primary pages + 6 legacy redirects; 107 sourced rows, 0 with percentages, 25 without percentages, 25 unresolved.
-receipt: /tmp/tmpib_r0xxm/audit-receipt.json
+receipt: /tmp/tmptm4r7hww/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -1545,7 +1545,7 @@ receipt: /tmp/tmpib_r0xxm/audit-receipt.json
  "unresolved_listed_on_both_pages": 25
 }
 checks: 282  failures: 0
-receipt: /tmp/tmpib_r0xxm/audit-receipt.json
+receipt: /tmp/tmptm4r7hww/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -1558,7 +1558,7 @@ receipt: /tmp/tmpib_r0xxm/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved probabilities must be None
-receipt: /tmp/tmpib_r0xxm/audit-receipt.json
+receipt: /tmp/tmptm4r7hww/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -1571,7 +1571,7 @@ receipt: /tmp/tmpib_r0xxm/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved fair_odds must be None
-receipt: /tmp/tmpib_r0xxm/audit-receipt.json
+receipt: /tmp/tmptm4r7hww/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -1584,7 +1584,7 @@ receipt: /tmp/tmpib_r0xxm/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved method must be None
-receipt: /tmp/tmpib_r0xxm/audit-receipt.json
+receipt: /tmp/tmptm4r7hww/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -1597,7 +1597,7 @@ receipt: /tmp/tmpib_r0xxm/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved row lacks its limitation
-receipt: /tmp/tmpib_r0xxm/audit-receipt.json
+receipt: /tmp/tmptm4r7hww/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -1610,7 +1610,7 @@ receipt: /tmp/tmpib_r0xxm/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved row lacks source attempts
-receipt: /tmp/tmpib_r0xxm/audit-receipt.json
+receipt: /tmp/tmptm4r7hww/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -1745,7 +1745,7 @@ test_refresh_tries_the_mirror_only_when_a_row_is_still_unpriced (test_vrs_mirror
 test_validator_dispatches_the_new_method (test_vrs_mirror_6dd6f287.WiringTests.test_validator_dispatches_the_new_method) ... ok
 
 ----------------------------------------------------------------------
-Ran 1493 tests in 35.372s
+Ran 1493 tests in 43.482s
 
 OK (skipped=7)
 

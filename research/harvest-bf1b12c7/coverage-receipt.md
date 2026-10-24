@@ -1,13 +1,13 @@
 # Live coverage receipt — session e334b970
 
-**Capture clock (fixtures observed at):** `2026-10-24T16:50:50.220894Z`  
-**Board built at:** `2026-10-24T16:54:24.311021Z`  
-**Accounting evaluated at:** `2026-10-24T16:50:50.220894Z` (the capture's own clock, never the reader's)
+**Capture clock (fixtures observed at):** `2026-10-24T17:15:15.645274Z`  
+**Board built at:** `2026-10-24T17:18:48.961351Z`  
+**Accounting evaluated at:** `2026-10-24T17:15:15.645274Z` (the capture's own clock, never the reader's)
 
 | Measure | Value |
 | --- | --- |
-| Hotspawn CS2 feed rows | 83 |
-| Board rows | 83 |
+| Hotspawn CS2 feed rows | 81 |
+| Board rows | 81 |
 | Inventory coverage | `verified` |
 | Open matches | 20 |
 | Open with a pick | 20 |
@@ -31,33 +31,33 @@ None: every open match carried a sourced pick and a win probability at this capt
 
 | Source | HTTP | Status | Observed | Bytes |
 | --- | --- | --- | --- | --- |
-| Hotspawn CS2 fixtures | 200 | ok | 2026-10-24T16:50:50.220894Z | 64837 |
-| Hotspawn CS2 lobby | 200 | ok | 2026-10-24T16:50:51.420610Z | 346186 |
-| Hotspawn general lobby | 200 | ok | 2026-10-24T16:50:52.152767Z | 347209 |
-| HLTV Valve ranking mirror (dated view) | 200 | ok | 2026-10-24T16:50:52.664959Z | 1668299 |
-| Polymarket sports registry | 200 | ok | 2026-10-24T16:40:35.904807Z | 155942 |
-| Polymarket events page 1 | 200 | ok | 2026-10-24T16:49:07.921605Z | 3262918 |
-| HLTV fallback discovery | 200 | ok | 2026-10-24T16:50:54.658913Z | 615729 |
-| HLTV match 1083123 | 200 | ok | 2026-10-24T16:50:55.116406Z | 387989 |
-| HLTV match 1081156 | 200 | ok | 2026-10-24T16:50:55.686414Z | 392665 |
-| HLTV match 1079200 | 200 | ok | 2026-10-24T16:50:56.433698Z | 427810 |
-| HLTV match 1082858 | 200 | ok | 2026-10-24T16:50:57.460065Z | 370839 |
-| HLTV match 1082859 | 200 | ok | 2026-10-24T16:50:58.592115Z | 396626 |
-| HLTV match 1082860 | 200 | ok | 2026-10-24T16:50:59.603200Z | 335810 |
-| HLTV match 1082792 | 200 | ok | 2026-10-24T16:51:00.550008Z | 427896 |
-| HLTV match 1082793 | 200 | ok | 2026-10-24T16:51:01.103489Z | 428356 |
-| Pinnacle esports fixtures | 200 | ok | 2026-10-24T16:38:40.406605Z | 100575 |
-| Pinnacle esports moneylines | 200 | ok | 2026-10-24T16:39:49.431289Z | 498940 |
-| Thunderpick fallback access | 200 | ok | 2026-10-24T16:51:01.797041Z | 14610 |
+| Hotspawn CS2 fixtures | 200 | ok | 2026-10-24T17:15:15.645274Z | 63290 |
+| Hotspawn CS2 lobby | 200 | ok | 2026-10-24T17:15:16.628269Z | 329113 |
+| Hotspawn general lobby | 200 | ok | 2026-10-24T17:15:17.312986Z | 330074 |
+| HLTV Valve ranking mirror (dated view) | 200 | ok | 2026-10-24T17:15:17.784918Z | 1664472 |
+| Polymarket sports registry | 200 | ok | 2026-10-24T16:57:50.602139Z | 155942 |
+| Polymarket events page 1 | 200 | ok | 2026-10-24T17:13:44.622457Z | 3285699 |
+| HLTV fallback discovery | 200 | ok | 2026-10-24T17:15:19.970438Z | 614652 |
+| HLTV match 1083123 | 200 | ok | 2026-10-24T17:15:20.410373Z | 388176 |
+| HLTV match 1081156 | 200 | ok | 2026-10-24T17:15:21.030566Z | 393311 |
+| HLTV match 1079200 | 200 | ok | 2026-10-24T17:15:21.686324Z | 427946 |
+| HLTV match 1082858 | 200 | ok | 2026-10-24T17:15:22.602008Z | 371016 |
+| HLTV match 1082859 | 200 | ok | 2026-10-24T17:15:23.169585Z | 396803 |
+| HLTV match 1082860 | 200 | ok | 2026-10-24T17:15:24.196572Z | 335987 |
+| HLTV match 1082792 | 200 | ok | 2026-10-24T17:15:24.904897Z | 428076 |
+| HLTV match 1082793 | 200 | ok | 2026-10-24T17:15:25.637619Z | 428528 |
+| Pinnacle esports fixtures | 200 | ok | 2026-10-24T17:08:50.043815Z | 93899 |
+| Pinnacle esports moneylines | 200 | ok | 2026-10-24T17:10:01.070557Z | 447393 |
+| Thunderpick fallback access | 200 | ok | 2026-10-24T17:15:26.539351Z | 14610 |
 | GG.BET fallback access | 403 | error | None | None |
-| BO3.gg CS2 upcoming feed page 1 | 200 | ok | 2026-10-24T16:52:42.797579Z | 219814 |
-| BO3.gg CS2 upcoming feed page 2 | 200 | ok | 2026-10-24T16:52:43.163106Z | 210773 |
-| BO3.gg CS2 upcoming feed page 3 | 200 | ok | 2026-10-24T16:52:43.364023Z | 112793 |
+| BO3.gg CS2 upcoming feed page 1 | 200 | ok | 2026-10-24T17:17:07.323425Z | 223175 |
+| BO3.gg CS2 upcoming feed page 2 | 200 | ok | 2026-10-24T17:17:07.680890Z | 206465 |
+| BO3.gg CS2 upcoming feed page 3 | 200 | ok | 2026-10-24T17:17:08.158112Z | 104656 |
 | Book listing gap recheck 1082792 | 403 | error | None | None |
 | Book listing gap recheck 1082793 | None | error | None | None |
-| Valve VRS standings index 2026 | 200 | ok | 2026-10-24T16:54:23.942983Z | 46751 |
-| Valve VRS standings commit | 200 | ok | 2026-10-24T16:54:24.173609Z | 3621 |
-| Valve VRS global standings | 200 | ok | 2026-10-24T16:54:24.233707Z | 77872 |
+| Valve VRS standings index 2026 | 200 | ok | 2026-10-24T17:18:48.665287Z | 46751 |
+| Valve VRS standings commit | 200 | ok | 2026-10-24T17:18:48.832596Z | 3621 |
+| Valve VRS global standings | 200 | ok | 2026-10-24T17:18:48.873020Z | 77872 |
 
 Accounting and provenance shape only. Source truth and the arithmetic behind every percentage are replayed independently by verification-c6/audit_snapshot.py.
 

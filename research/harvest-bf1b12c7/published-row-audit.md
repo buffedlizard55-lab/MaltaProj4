@@ -1,9 +1,9 @@
 # Independent retained-evidence audit
 
 This audits the archived evidence and arithmetic, not the present live lobby or current prices.
-Snapshot: `2026-10-24T16:54:24.311021Z` · SHA-256: `d6917ac0c3ff7e0f635d421b6672c9547e450de5176bb1313d96bd4ed21fa4be`
+Snapshot: `2026-10-24T17:18:48.961351Z` · SHA-256: `92d512404ed53a847b70278483cb8088a5041815f653242464b856f47c628a3d`
 
-Rows checked: **83** · Arithmetic/field failures: **0**
+Rows checked: **81** · Arithmetic/field failures: **0**
 
 | Fixture | Teams | Probability source | Result |
 | --- | --- | --- | --- |
@@ -68,8 +68,6 @@ Rows checked: **83** · Arithmetic/field failures: **0**
 | [1055478](https://play.hotspawn.com/cs2-pickems) | illwill / Lavked | Not priced; blank values checked | Consistent with stored evidence |
 | [1081105](https://play.hotspawn.com/cs2-pickems) | SUKEBAN / your end | Not priced; blank values checked | Consistent with stored evidence |
 | [1079621](https://play.hotspawn.com/cs2-pickems) | Gothic / Lavked | Not priced; blank values checked | Consistent with stored evidence |
-| [1079661](https://www.hotspawn.com/matches/nuclear-tigeres-vs-ex-zero-tenacity-cct-europe-2026-series-11-1079661) | Nuclear TigeRES / ex-Zero Tenacity | [Polymarket](https://gamma-api.polymarket.com/markets/6081658) | Consistent with stored evidence |
-| [1081154](https://www.hotspawn.com/matches/baks-vs-illyrians-cct-europe-2026-series-12-1081154) | BakS / ILLYRIANS | [Polymarket](https://gamma-api.polymarket.com/markets/6098193) | Consistent with stored evidence |
 | [1082695](https://www.hotspawn.com/matches/galorys-vs-pain-circuit-x-curitiba-4-1082695) | Galorys / paiN | [Polymarket](https://gamma-api.polymarket.com/markets/6101181) | Consistent with stored evidence |
 | [1083122](https://www.hotspawn.com/matches/los-ninos-vs-borracheiros-cct-south-america-2026-series-7-1083122) | LOS NINOS / BORRACHEIROS | [Polymarket](https://gamma-api.polymarket.com/markets/6107049) | Consistent with stored evidence |
 | [1083140](https://www.hotspawn.com/matches/bestia-vs-imperial-circuit-x-curitiba-4-1083140) | BESTIA / Imperial | [Polymarket](https://gamma-api.polymarket.com/markets/6101189) | Consistent with stored evidence |
