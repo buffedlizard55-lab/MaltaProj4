@@ -136,9 +136,57 @@ and unioned the review register (207 notes). `verification-e9be3e6b/mobile_probe
 Re-measured: quick nav y=314, first pick y=370, probabilities y=497, tab bar y=507 at 320x568.
 Gates on the combined tree: **1,317 unit tests OK (1 skipped)**, audits 9, integrity 5, verification-c6 12, c6 row audit 0 failures, `scripts/verify_4ed657ce.py` 31 rows reproduced / 0 failing (one non-blocking lobby-cache flag), validator 92 rows / 31 calculations / 878 links / 20 checksums / 234 displayed rows, coverage contract 31/31/31/0, all nine Chromium suites, the 4-viewport mobile probe (quick nav y=314, first probability y=497 < tab bar 507 at 320x568), and the source-ladder verifier (462 checks, 0 failures, 8/8 corruptions). No pick, price, probability, fixture or lock changed.
 
+
+**Fifth upstream merge (2026-10-24 07:24 UTC).** `main` advanced to `232d196` (PR #270,
+session 233b8a0e), adding a coverage ledger, `scripts/coverage_233b8a0e.py` and stricter
+validator/staging guards. Merged `origin/main` again; unioned the review register (211 notes),
+the `pages.yml` push branch list (now includes `arena/233b8a0e-maltaproj4` as well as this
+branch and `arena/4ed657ce-maltaproj4`) and all COORDINATION blocks. Gates on the combined tree:
+**1,331 unit tests OK (1 skipped)**, audits 9, integrity 5, verification-c6 12, c6 row audit 0
+failures, `verify_4ed657ce` 31/0, `coverage_233b8a0e` 92/31/31/31/0, validator 92 rows / 31
+calculations / 878 links / 20 checksums / 234 displayed rows, coverage contract 31/31/31/0, all
+nine Chromium suites, mobile probe (quick nav y=314, probability y=497 < tab bar 507), and the
+source-ladder verifier (462 checks, 0 failures, 8/8 corruptions). Still no pick, price,
+probability, fixture or lock changed.
+
 ---
 
 ## Session cecfe864 claim — 2026-10-24 06:30 UTC (92-row / 31-open board audit, verifier & root-fallback repair, mobile integration)
+## Session 233b8a0e claim — 2026-10-24 06:30 UTC (green pipeline + every-match coverage + phone-first executive summary)
+
+Board read before claiming. Fixed Arena branch `arena/233b8a0e-maltaproj4`, based on `main` `dce494b`.
+Every earlier claim is older than 60 minutes with a merged or open delivery receipt (PRs #246/#248–#252),
+so this session takes the integration scope and does not reopen their private research files.
+
+**Measured starting state (reproduced locally, not assumed).** On `main` `dce494b` the pre-refresh gate
+`python -m unittest discover -s tests` is **RED**: `Ran 1233 tests … FAILED (failures=8, errors=1)`.
+That step runs *before* refresh in `.github/workflows/pages.yml`, so every scheduled publish run dies
+before it can collect new lines — the exact reason the live board keeps reverting to a stale, withdrawn
+board. The nine failures are:
+
+| # | Failing gate | Measured cause |
+| --- | --- | --- |
+| 1 | `test_session_cb16f548.StylesheetBoundaryTests::test_canonical_css_has_balanced_blocks_and_matches_published_copy` | Root `assets/style.css` (the file the live legacy `main:/` site actually serves) has 725 `{` vs 724 `}`: the `}` closing `@media(max-width:650px) and (max-height:700px)` after `.prob-pair span` was dropped, so every later phone rule is nested inside a short-phone media query and never applies on a normal phone. |
+| 2–5 | `test_session_138cbedd::test_stylesheet_marks_an_overdue_snapshot`, `test_session_5f1df842::test_the_site_stylesheet_is_the_one_that_ships`, `test_session_d2a55add::test_phone_ordering_rule_and_identical_css_copies`, `test_session_dddcb90d::test_style_copies_stay_byte_identical` | Same drift: root copy ≠ canonical `site/assets/style.css`. |
+| 6–7 | `test_session_0cc1138a.IndependentReDerivation::test_every_committed_open_row_reproduces_with_no_shared_code`, `::test_every_pick_is_the_larger_re_derived_probability` | Fixture `1083121` *Projeto do KinGui* vs MEIA NOITE: the independent verifier's prefix matcher cannot map Hotspawn's label onto Polymarket's listed outcome *Tropa do KinGui*, although `data/identities.json` carries that rename with HLTV/EGamersWorld/Valve roster evidence. |
+| 8 | `test_session_0cc1138a.IndependentReDerivation::test_a_tampered_pick_is_rejected` | Knock-on of #6–7 (two failures, not one). |
+| 9 | `test_session_0cc1138a::test_both_published_css_copies_carry_the_score_rows` | Knock-on of #1–5. |
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Repo gate repair: restore root `assets/style.css` to the canonical stylesheet, teach the independent verifier the *registered* alias (evidence-backed, never fuzzy), and add a post-stage guard so the committed root can never drift from the verified build again | in progress | 233b8a0e | `assets/style.css` (regenerated only), `research/session-0cc1138a/verify_0cc1138a.py`, `scripts/publish_root_fallback.py`, `scripts/validate.py` (append-only check), `tests/test_session_233b8a0e.py` (new) | 2026-10-24 06:30 |
+| Fresh Hotspawn CS2 harvest (sandbox cannot reach the sources): run the repository's own refresh ladder on a runner, commit the snapshot only if every open match carries a pick and a win probability, and publish the per-rung method mix | in progress | 233b8a0e | `.github/workflows/harvest-233b8a0e.yml` (new), `research/harvest-233b8a0e/**` (new), `data/latest.json`, `data/matches.csv` (via `scripts.build` only) | 2026-10-24 06:30 |
+| Executive summary: keep one always-visible summary at the top of the home page that links (in-site) to the updated pick list, the at-a-glance list, the separate unresolved/limitations section and page, all matches and flagged-for-review, and states the fallback ladder + limitations in the summary itself | in progress | 233b8a0e | `scripts/build.py` (executive-summary markup only), `site/assets/style.css` (append-only block at brace depth 0), generated root pages | 2026-10-24 06:30 |
+| Phone verification: measure real Chromium geometry at 320×568 and 390×844 (first pick, both probabilities, tap targets, no horizontal scroll) and fix what fails | in progress | 233b8a0e | `tests/browser_233b8a0e.cjs` (new), `site/assets/style.css` | 2026-10-24 06:30 |
+| Final integration: all gates green, PR to `main`, merge without waiting, confirm GitHub Pages serves the new bytes, receipt in this file | in progress | 233b8a0e | `COORDINATION.md`, `build-info.json`, generated root pages | 2026-10-24 06:30 |
+
+Evidence rules: Hotspawn supplies the fixture inventory and lock times only, never a probability. A pick
+comes from a verified external line, a registered HLTV/Valve identity, or our own labelled VRS model —
+never from a crowd vote, a default 50/50, or a guessed alias. Anything that cannot be resolved stays in
+the separate unresolved section with its attempted sources and its limitation, linked from the
+executive summary. All work and pushes stay on the fixed Arena branch; `git pull --rebase` precedes
+every push.
+
 ### Session 4ed657ce fourth rebase + final alias contract — 2026-10-24 07:26 UTC
 
 **Rebased onto `origin/main` (`939c0d5`, PR #266).** PR #266 resolved the alias-gate deadlock at its source by rewriting `tests/test_session_ea2e254c.py` to assert the *full* contract: an https source, a written basis on the row receipt, and a matching committed `data/identities.json` group. This session therefore reverted its interim compromise and adopted that stricter rule in `research/session-0cc1138a/verify_0cc1138a.py`; the published alias review note now describes the final contract. The real 1083121 row already carries a written basis, so 31/31 prices still reproduce. `COORDINATION.md` conflicts again kept both sides; the generated-output commit was skipped and the root fallback rebuilt from the merged code.
@@ -146,6 +194,7 @@ Gates on the combined tree: **1,317 unit tests OK (1 skipped)**, audits 9, integ
 **Merged-tree receipts:** validator 92 rows / 31 reproduced probabilities / 15 pages / 878 links-assets / 20 checksums / 234 displayed rows; Chromium 320x568 first card y=370, answer above tab y=507, no overflow; `scripts.verify_4ed657ce` 31/31 open rows reproduced. Full unit and nine browser suites follow.
 
 ---
+
 
 ## Session ea2e254c — merge receipt and red-main repair (2026-10-24 07:25 UTC)
 

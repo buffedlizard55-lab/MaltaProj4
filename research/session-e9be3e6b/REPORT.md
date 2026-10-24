@@ -116,7 +116,7 @@ missing and the full source ladder.
 
 | Gate | Result |
 |---|---|
-| `python -m unittest discover -s tests` | **1,317 tests OK** (1 skipped), after merging `origin/main` PRs #261, #265, #266 and #267 |
+| `python -m unittest discover -s tests` | **1,331 tests OK** (1 skipped), after merging `origin/main` PRs #261, #265, #266, #267 and #270 |
 | `npm run test:browser` (9 Chromium suites) | **all green** |
 | `python -m unittest discover -s audits` | 9 OK |
 | `verification-95b588c2/test_integrity.py` | 5 OK |
@@ -128,6 +128,7 @@ missing and the full source ladder.
 | `verification-e9be3e6b/verify_source_ladder.py --self-test` | 92 rows · 462 checks · 0 failures · 8/8 corruptions caught |
 | `verification-e9be3e6b/mobile_probe.cjs` | 4 viewports · quick nav above list (y=314) · first probability y=497 < tab bar 507 · no overflow · CTA navigates |
 | `scripts/verify_4ed657ce.py` (upstream) | 31 rows reproduced · 0 failing · one non-blocking lobby-cache flag |
+| `scripts/coverage_233b8a0e.py --snapshot data/latest.json` (upstream) | 92 rows · 31 open · 31 picks · 31 probabilities · 0 unresolved |
 
 ## 7. Scope, deviations and requests to other sessions
 
