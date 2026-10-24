@@ -1,0 +1,6 @@
+### after installing the fresh snapshot as data/latest.json
+root validate exit: 1
+unit suite exit: 1
+stage exit: 0
+post-stage validate exit: 0
+post-stage unit exit: 1

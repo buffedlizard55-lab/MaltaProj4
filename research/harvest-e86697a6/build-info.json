@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "revision": "8586ee1b789ed4ce0fb4a3d29da6f9bef1d95364",
+  "built_at": "2026-10-24T16:31:36.985533Z",
+  "snapshot_generated_at": "2026-10-24T16:31:36.459705Z",
+  "rows": 83,
+  "files": {
+    "404.html": "fc9e32f2212a6a1c556a3920c73bfdc94dc50891c6b15a9c8b509258d722ece7",
+    "analysis.html": "989a81f7256eb12d5b791258ea35cd5b9c03e4338df1fe1930214804e1e72561",
+    "assets/app.js": "8991e02f04c20410a946d92e1429a56d945f10da28d6fed587c9a9cf40aa21f8",
+    "assets/favicon.svg": "5b0ba0da9b9bec504dc4695b59291abad789479745d4a18581fb78b0215738ba",
+    "assets/style.css": "7a68a91d2641db0fa40cc4cf9ea098f21faca69fffea2ac0b5a99db490848050",
+    "data/latest.json": "738d1845aa17781c92a5888b17c2e7083b32295c0fbda513031e6aeb08d3ce17",
+    "data/matches.csv": "315bbc6b1a7531da85b11d6beca9756473e6764819f055746ab32e127793f372",
+    "evidence.html": "de7d964cae586e58372e54a4b96c4e3db1de12d997aae3bff3c04d93165a90fc",
+    "index.html": "0095983e5fb6b174922d5c0d14010476e456b1146afdf71315fbd7b546fa3b22",
+    "matches.html": "459c8df58eebc17c32af09e7e5db694f91f638d60d2fd4660a00ede8a808142a",
+    "methodology.html": "db6dd3e60721627f0629397fd4d76b07f3f9ea5ab15b72348f3bee3b35a094ae",
+    "picks.html": "37200cfc715da2154061183f648136b262f372a68c9a0bebea1cfb8f56e2dd69",
+    "review.html": "9ec9cbb95bc98b65eff973e10a5d840c46f359daff8c6c9841388fc605d06a9b",
+    "site/index.html": "7ad39335aef2960a4c7f3a8f9f2322d358e59fd45631acfa19f456575ec491db",
+    "site/methodology.html": "130024ea27020261e759b42920f78c42bebcbb44f226ef5216c8bbb1a2684b33",
+    "site/picks.html": "de8e71d8a3a1f7b287299108b460956d7c52391255b567fc71cc9974f8dcd76c",
+    "site/review.html": "91547a7e0d0e5b1e9bde9a89cad48c38173aefee74ea25afd75c17d9de3937cf",
+    "site/unresolved.html": "d8c18e13a798f6d0f0f3cf8ee21bb42ed941d6077c82c8031ae3476d6120bded",
+    "sources.html": "71fc44c3709a0ca665479fa4c5c5907cbf40ec294c9db51b8189427979c5b817",
+    "unresolved.html": "b476dd90dcf2de804bc4a0474f687a635c0efbf19aeed80c731145eb5a43a1fc"
+  }
+}
