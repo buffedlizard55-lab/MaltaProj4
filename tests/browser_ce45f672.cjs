@@ -60,6 +60,7 @@ const chromium = require('@sparticuz/chromium');
           title: box(title),
           titleText: title ? (title.querySelector('.exec-quicknav-line') || title).textContent.replace(/\s+/g, ' ').trim() : null,
           titleHidden: title ? getComputedStyle(title).display === 'none' : true,
+          stale: (() => { const n = document.querySelector('#runtime-stale'); return Boolean(n && !n.hidden); })(),
           tabbar: box(document.querySelector('.mobile-tabs')),
           card: box(first),
           cards: cards.length,
@@ -85,7 +86,15 @@ const chromium = require('@sparticuz/chromium');
       assert.ok(measured.card, `${width}px no phone pick card rendered`);
       assert.ok(measured.card.y < measured.tabbar.y,
         `${width}px the first pick card is below the tab bar: ${JSON.stringify(measured.card)}`);
-      assert.equal(measured.scores.length, 2, `${width}px a pick card must print both teams' win chances`);
+      // Session bf1b12c7 (2026-10-24): once the committed baseline leaves its
+      // 8-hour window every pick is withheld by design, so every pull request
+      // failed here while main's board was stale (measured on 45fc6ba). A stale
+      // build must print NO number at all; a fresh build must print both.
+      if (measured.stale) {
+        assert.equal(measured.scores.length, 0, `${width}px a withheld (stale) card must not print a win chance`);
+      } else {
+        assert.equal(measured.scores.length, 2, `${width}px a pick card must print both teams' win chances`);
+      }
       for (const score of measured.scores) {
         assert.ok(score && score.bottom <= measured.tabbar.y,
           `${width}px a win probability is hidden behind the tab bar: ${JSON.stringify(measured.scores)}`);

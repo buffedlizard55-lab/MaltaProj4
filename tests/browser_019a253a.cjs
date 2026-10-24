@@ -136,7 +136,25 @@ const chromium = require('@sparticuz/chromium');
     const openRows = data.matches.filter(row => row.state === 'open').length;
     const counted = ladder.counts.filter(item => !item.startsWith('none='))
       .reduce((total, item) => total + Number(item.split('=')[1]), 0);
-    assert.equal(counted, openRows, 'the ladder counts must add up to the open matches');
+    const none = ladder.counts.filter(item => item.startsWith('none='))
+      .reduce((total, item) => total + Number(item.split('=')[1]), 0);
+    // Session bf1b12c7 (2026-10-24): every open row sits on exactly one rung,
+    // the "none" rung included. The old form (rungs without "none" == open
+    // rows) also demanded zero unresolved rows, so it failed every pull request
+    // once the committed baseline left its 8-hour window (each row is then
+    // withheld onto "none" by design, measured: none=20) and it would have
+    // blocked a fresh build carrying one honestly unresolved row.
+    const stale = await page.evaluate(() => {
+      const banner = document.querySelector('#runtime-stale');
+      return Boolean(banner && !banner.hidden);
+    });
+    assert.equal(counted + none, openRows, 'the ladder counts (none included) must add up to the open matches');
+    if (stale) {
+      assert.equal(none, openRows, 'a build past its evidence window withholds every open row onto the none rung');
+    } else {
+      const noPick = data.matches.filter(row => row.state === 'open' && !row.pick).length;
+      assert.equal(none, noPick, 'the none rung counts exactly the open rows without a pick');
+    }
 
     assert.deepEqual(errors, [], `no page errors: ${errors.join('; ')}`);
     fs.mkdirSync('runtime', {recursive: true});
