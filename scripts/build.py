@@ -482,7 +482,7 @@ def exec_summary_quicknav(data):
         + str(past) + '">' + str(past) + '</span> past feed rows are not open</span>.</p>'
         '<span class="exec-quicknav-actions">'
         + link('picks.html', 'Updated picks →', 'exec-quicknav-primary')
-        + (link('#withheld-picks', 'Withheld ↓ (' + str(c['withheld']) + ')', 'exec-quicknav-link')
+        + (link('#withheld-picks', 'Withheld ↓ (' + count_span('withheld', c['withheld']) + ')', 'exec-quicknav-link')
            if c['withheld'] else '')
         + link('#unresolved-limits', 'Unresolved & limits ↓', 'exec-quicknav-link')
         + '</span></nav>'
@@ -680,20 +680,18 @@ def unresolved_page_intro(data):
         f'<p><span data-completeness>{e(summary.completeness_sentence(c))}</span></p>'
         # Session e86697a6: the two reasons a match can show no pick are named
         # here, before the rows, so "no pick" is never mistaken for "no source".
-        '<div class="table-wrap"><table class="source-table" role="table">'
-        '<caption>Two different reasons a row can show no pick.</caption>'
-        '<thead><tr><th scope="col">State</th><th scope="col">What it means</th>'
-        '<th scope="col">What fixes it</th></tr></thead><tbody>'
-        '<tr><td data-label="State"><strong>Withheld</strong></td>'
-        '<td data-label="What it means">A pick was sourced and recorded, but the snapshot is outside its '
-        'eight-hour evidence window or the quote deadline passed, so it may not be presented as current.</td>'
-        '<td data-label="What fixes it">The next successful refresh. ' + link(REPO + '/actions', 'Refresh status ↗') + '</td></tr>'
-        '<tr><td data-label="State"><strong>Unresolved</strong></td>'
-        '<td data-label="What it means">No rung of the source ladder produced a pick: no accepted two-way line, '
-        'no two-team model input, and no HLTV ranking, standings or recent-form edge that supports a direction.</td>'
-        '<td data-label="What fixes it">More published evidence — a bookmaker line, an HLTV fixture page or a '
-        'Valve standings row. Until then the row stays blank, never 50/50.</td></tr>'
-        '</tbody></table></div>'
+        '<div class="notice info" id="withheld-vs-unresolved">'
+        '<h3>Two different reasons a row can show no pick</h3>'
+        '<dl class="withheld-vs-unresolved">'
+        '<dt>Withheld</dt><dd>A pick was sourced and recorded, but the snapshot is outside its eight-hour '
+        'evidence window or the quote deadline passed, so it may not be presented as current. Fix: the next '
+        'successful refresh — ' + link(REPO + '/actions', 'refresh status ↗') + ' · '
+        + link('sources.html', 'source health ↗') + '</dd>'
+        '<dt>Unresolved</dt><dd>No rung of the source ladder produced a pick: no accepted two-way line, no '
+        'two-team model input, and no HLTV ranking, standings or recent-form edge that supports a direction. '
+        'Fix: more published evidence — see ' + link('sources.html#method', 'the ladder and its official sources ↗')
+        + ' · ' + link('https://www.hltv.org/matches', 'HLTV matches ↗') + '</dd>'
+        '</dl></div>'
         '<details class="method-details"><summary>How these matches are researched</summary>'
         '<h3>Every source tried, in order, before a blank</h3>'
         '<ol class="checklist ladder">' + ladder_list() + '</ol></details>'
