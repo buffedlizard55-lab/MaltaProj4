@@ -1,0 +1,94 @@
+name: Harvest 148be742 (branch-only source read)
+
+# Why this file exists
+# --------------------
+# The publishing workflow (pages.yml) reads the official sources only on a push
+# to a listed branch or on a schedule, and this repository's GitHub App token
+# cannot create a `workflow_dispatch` event (HTTP 403 Resource not accessible by
+# integration, measured 2026-10-24T05:44Z). The sandbox that authored session
+# 148be742 has no egress to play.hotspawn.com, hltv.org or the editors' APIs, so
+# the only way to verify the new pick-resolution tiers against live sources
+# before merging is to run them here.
+#
+# Scope: read the public sources, run the same quarantine + independent audit +
+# build + validator chain the publisher uses, then commit ONLY the resulting
+# snapshot plus its audit receipt onto the session branch. It never deploys, it
+# never pushes to main, and it never edits a data file it did not just generate.
+on:
+  push:
+    branches: [arena/148be742-maltaproj4]
+    paths:
+      - '.harvest-148be742'
+      - 'scripts/**'
+      - 'tests/test_session_148be742.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: harvest-148be742
+  cancel-in-progress: false
+
+jobs:
+  harvest:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: arena/148be742-maltaproj4
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Read the official sources
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python -m scripts.refresh --output runtime/latest.json
+      - name: Withhold any row the independent audit cannot reproduce
+        run: python -m scripts.quarantine runtime/latest.json
+      - name: Independent row audit and build
+        run: |
+          python verification-c6/audit_snapshot.py runtime/latest.json --output runtime/independent-row-audit.md
+          python -m scripts.build --data runtime/latest.json
+          python -m scripts.validate --data runtime/latest.json
+      - name: Coverage receipt
+        run: |
+          python - <<'PY'
+          import json, collections
+          d = json.load(open('runtime/latest.json'))
+          open_rows = [m for m in d['matches'] if m['state'] == 'open']
+          print(json.dumps({
+              'snapshot': d['generated_at'],
+              'fixtures_observed_at': d['fixtures_observed_at'],
+              'rows': len(d['matches']),
+              'open': len(open_rows),
+              'open_with_pick': sum(1 for m in open_rows if m.get('pick')),
+              'open_with_probability': sum(1 for m in open_rows if m.get('probabilities')),
+              'open_without_any_pick': sum(1 for m in open_rows if not m.get('pick')),
+              'methods': dict(collections.Counter(m.get('method') for m in open_rows if m.get('pick'))),
+              'unresolved_ids': [m['id'] for m in open_rows if not m.get('pick')],
+              'research_only_ids': [m['id'] for m in open_rows if m.get('pick') and not m.get('probabilities')],
+          }, indent=1, sort_keys=True))
+          PY
+      - name: Commit the verified snapshot and audit receipt to the session branch
+        run: |
+          mkdir -p research/session-148be742
+          cp runtime/latest.json research/session-148be742/snapshot.json
+          cp runtime/independent-row-audit.md research/session-148be742/independent-row-audit.md
+          git config user.name "cs2-scout-harvest"
+          git config user.email "cs2-scout-harvest@users.noreply.github.com"
+          git add research/session-148be742/snapshot.json research/session-148be742/independent-row-audit.md
+          git diff --cached --quiet && { echo "Snapshot unchanged; nothing to commit."; exit 0; }
+          git commit -m "Record the branch harvest snapshot and independent row audit"
+          for attempt in 1 2 3; do
+            if git pull --rebase --autostash origin arena/148be742-maltaproj4 && git push origin HEAD:arena/148be742-maltaproj4; then
+              exit 0
+            fi
+            git rebase --abort >/dev/null 2>&1 || true
+            sleep $((attempt * 5))
+          done
+          echo "::error::Could not push the harvest receipt."
+          exit 1
