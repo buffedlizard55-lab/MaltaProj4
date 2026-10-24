@@ -1,3 +1,53 @@
+## Session e334b970 — delivery receipt: PR #244 merged to main (2026-10-24 10:05:19Z)
+
+**PR [#244](https://github.com/buffedlizard55-lab/MaltaProj4/pull/244) merged** at
+`2026-10-24T10:05:19Z` as merge commit `45fc6ba`, after both required checks passed on the rebased
+head: `verify-build` **pass** (3m6s, run [40082251497](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40082251497))
+and `audit` **pass** (36s, run [40082251561](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40082251561)).
+No approval was waited for, per the standing instruction.
+
+**What shipped (additive; the site repairs main already carried were not re-done):**
+
+| Path | Content |
+| --- | --- |
+| `research/harvest-e334b970/` | Dated live capture from run [40066532380](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40066532380), clock `2026-10-24T05:33:45Z`: raw snapshot, independent row audits, refresh/quarantine/browser logs, coverage receipt. 88 feed rows = 88 board rows, 25 open, 25 picks, 25 win probabilities, 0 unresolved. |
+| `research/session-e334b970/REPORT.md`, `ROW-LEDGER.md` | Line-by-line verification log and per-row source ledger (25 rows, each with its evidence URL, observation time, expiry and official Hotspawn link). |
+| `scripts/audit_e334b970.py` | Dated coverage receipt, evaluated at the capture's **own** clock, listing every unresolved row with its limitation and recorded attempts and every source read with its HTTP status. |
+| `tests/test_session_e334b970.py` | 12 tests: every priced tier must be re-derivable by the independent verifier; a scanner that fails if a live-snapshot test pins a literal calendar day; receipt contracts (counts from the snapshot, blanks never become numbers, no invented picks); the harvest workflow must stay non-publishing. |
+| `tests/test_session_0cc1138a.py` | Two small hardening edits: a priced row must re-derive (`assertIsNotNone`) and a tampered pick must fail **its own** row rather than a fixed global count. |
+| `data/review-notes.json` | Four Flagged-for-Review notes, each with sources (see below). |
+
+**Flagged for review (published on the site, non-blocking):** the `model_vrs_mirror` tier was priced in
+production while the independent verifier had no branch for it (repaired on main by session d2a55add the
+same morning; this session found it independently); the pinned-test publication freeze of 2026-10-23/24;
+63 of 88 feed rows past-dated yet still `status: scheduled`; GG.BET / EGamersWorld 403s recorded as access
+limits. A fifth note records the stale alias assertion that was failing on main itself and was repaired by
+its owning session in PR #266.
+
+**Gates on the merged tree (local, exact rebase head):** 1,484 unit tests OK (1 skip), 9 audit tests,
+5 integrity checks, 12 independent-c6 tests, `verification-c6/audit_snapshot.py` **0 failures**,
+`scripts.validate` clean, and all 11 browser suites (32 axe/overflow viewport scans, phone first-screen
+placement, expiry and prose/counter agreement).
+
+**Publication state, measured — and a defect that is NOT mine to close.** `pages build and deployment`
+succeeded for the merge commit (run [40084520418](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40084520418)),
+so the committed root is served. But main's `Verify, refresh and publish CS2 Scout` run for the same
+commit ([40084520702](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40084520702)) failed at
+**Keep the legacy main:/ root fallback on the verified build**, which also skipped `deploy`. That failure is
+**pre-existing**: the two previous main publish runs failed at the same step —
+[40082763751](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40082763751) (09:38Z, before
+this PR merged) and [40080448344](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40080448344)
+(09:03Z) — so the fresh snapshot is not reaching the root and the board ages out between merges.
+Reproduction attempts: the failure mechanism is `publish()` returning 1, i.e. the root `scripts.validate`
+or the unit suite failing **on the freshly refreshed snapshot** (the PR gate never refreshes, which is why
+PR runs stay green). Substituting the newest retained capture (`research/harvest-ce45f672/snapshot.json`,
+08:06Z) into a clean worktree of the merge commit and staging it exactly as the publisher does gives
+1,484 tests OK and a clean validator, so the offending assertion needs the 10:0xZ snapshot, which this
+sandbox cannot obtain (runner artifacts and logs live on Azure blob / results-receiver, both outside the
+sandbox's egress allowlist). A diagnostic capture is running from this branch to name the failing tests on
+a genuinely fresh snapshot; the result will be recorded here and in a follow-up PR. **Nothing above is
+inferred: run IDs, step names and merge times are read from the Actions API.**
+
 ## Session 019a253a — delivery receipt (2026-10-24 08:35 UTC)
 
 **The board was empty because the publisher had stopped, not because the sources had nothing.**
