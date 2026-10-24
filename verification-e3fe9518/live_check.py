@@ -82,13 +82,28 @@ def check_quote(item):
             'receipt': receipt, 'comparison': comparison}
 
 
+def expectation(reference, root_bytes, published_bytes=None):
+    """An unmerged branch may audit production, never claim its own release live."""
+    if reference and reference != 'refs/heads/main':
+        if published_bytes is None:
+            raise ValueError('Cannot establish the current production manifest')
+        return published_bytes, 'observed_production_not_this_unmerged_branch'
+    return root_bytes, 'this_merged_main_build_or_a_coherent_newer_release'
+
+
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
-    expected_bytes = (ROOT / 'build-info.json').read_bytes()
-    expected = json.loads(expected_bytes)
     stamp = os.environ.get('GITHUB_RUN_ID') or str(int(time.time()))
+    reference = os.environ.get('GITHUB_REF')
+    published_bytes = None
+    if reference and reference != 'refs/heads/main':
+        published_bytes, _ = fetch(SITE + 'build-info.json?verification=' + stamp)
+    expected_bytes, expectation_mode = expectation(
+        reference, (ROOT / 'build-info.json').read_bytes(), published_bytes)
+    expected = json.loads(expected_bytes)
     receipt = verify(SITE, hashlib.sha256(expected_bytes).hexdigest(), expected['built_at'],
-                     stamp, deadline_seconds=240, interval_seconds=15)
+                     stamp, deadline_seconds=360, interval_seconds=15)
+    receipt['expectation_mode'] = expectation_mode
     (OUT / 'live-build-receipt.json').write_text(json.dumps(receipt, indent=2) + '\n')
     raw, snapshot_receipt = fetch(SITE + 'data/latest.json?verification=' + stamp)
     if raw is None:

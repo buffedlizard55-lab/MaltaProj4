@@ -44,6 +44,13 @@ class SourceAuthorityTests(unittest.TestCase):
     def test_a_bookmaker_link_does_not_verify_a_quote(self):
         self.assertFalse(audit.receipt_ok({'url': 'https://thunderpick.io/match/123'}))
 
+    def test_methodology_does_not_upgrade_listing_inputs_to_operator_evidence(self):
+        source = (ROOT / 'scripts/build.py').read_text()
+        self.assertNotIn('Every accepted price retains the official operator’s raw fields', source)
+        self.assertIn('publisher’s captured fields, source receipts and observation time', source)
+        self.assertIn('a bookmaker link in a listing is not independent confirmation', source)
+        self.assertIn('our derived estimates, not official forecasts', source)
+
 
 class ReceiptAndClassificationTests(unittest.TestCase):
     @classmethod
@@ -242,6 +249,25 @@ class ReceiptAndClassificationTests(unittest.TestCase):
             result = json.loads((out / 'source-audit.json').read_text())
             self.assertEqual(result['snapshot_sha256'], hashlib.sha256(path.read_bytes()).hexdigest())
             self.assertTrue((out / 'source-audit.md').exists())
+
+
+class PublicationExpectationTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        spec = importlib.util.spec_from_file_location('live_expectation_e3fe9518', ROOT / 'verification-e3fe9518/live_check.py')
+        cls.live = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(cls.live)
+
+    def test_unmerged_branch_can_audit_production_but_cannot_claim_its_release_live(self):
+        self.assertEqual(self.live.expectation('refs/heads/arena/e3fe9518-maltaproj4', b'branch', b'production'),
+                         (b'production', 'observed_production_not_this_unmerged_branch'))
+        with self.assertRaises(ValueError):
+            self.live.expectation('refs/heads/arena/e3fe9518-maltaproj4', b'branch')
+
+    def test_main_and_local_checks_require_the_merged_build_or_a_newer_release(self):
+        for ref in ('refs/heads/main', None):
+            self.assertEqual(self.live.expectation(ref, b'merged', b'previously-published'),
+                             (b'merged', 'this_merged_main_build_or_a_coherent_newer_release'))
 
 
 class LiveComparisonTests(unittest.TestCase):

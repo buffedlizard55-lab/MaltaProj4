@@ -161,3 +161,9 @@ choice**, not an official forecast or a claim of current out-of-sample calibrati
 ### Final integrated local gates
 
 All **1,291 unit tests (one skip), 9 audits, 5 integrity, 12 C6 tests and ten browser suites** pass after the three own review notes are added, with canonical indent=1 UTF-8 preserved. Root and public validators pass: 92 rows, 31 calculations, 874 internal links/assets, 20 checksums, 234 displayed rows. All 185 existing review entries are preserved unchanged. [Exact release receipt](release-verification.json) · [Browser log](browser-release.log). Actual publication is still tracked separately.
+
+### Completed-owner copy handoff and strict release expectation
+
+PR #258/main `4b083af` records owner 174afa4f's **tasks done**. The previously requested one-sentence verification-scope correction was still unmade. After publishing a narrow handoff claim, final integration corrected **only that copy** in `scripts/build.py`; no fallback, calculation or navigation changed. A new assertion prevents a bookmaker listing/link from again being represented as an official operator raw response. The source-linked review finding remains open for the genuinely unconfirmed operator ticks, not for copy now repaired. Main PR #260 (`afaa07a`)'s source-drift publication guard and fatal gates are preserved.
+
+Unmerged-branch remote checks now explicitly label their expected release as **observed production, not this unmerged branch**. Main (and local strict-release runs) must match the merged manifest or a coherent newer release. Two negative/positive tests prevent branch checks from silently claiming an unreleased build is live. No GitHub API quota workaround is involved; these are ordinary public-site HTTP reads.
