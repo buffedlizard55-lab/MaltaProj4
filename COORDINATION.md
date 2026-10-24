@@ -105,6 +105,8 @@ Measured starting point (repository receipt only, not yet a live-source claim): 
 
 Evidence rules: Hotspawn supplies fixture inventory and locks only, never a probability or crowd-vote input. Every displayed value must replay from its linked external evidence or the explicitly labelled originated model; otherwise it stays blank and is flagged. No guessed identities, placeholder odds, inferred values, 50/50 filler, manual pick entry or unsupported claims. `git pull --rebase` precedes every push; conflicts are resolved without discarding concurrent work and are logged here.
 
+**Scoped stale-owner test handoff (16:34 UTC).** A local Chromium run reproduced `tests/browser_019a253a.cjs` failing only after the committed snapshot expired: its ladder counter discarded the `none` bucket even though the builder correctly puts all 22 withheld open rows there (`0 != 22`). The owning delivery is over eight hours old. This session claims only that assertion: count the explicit unresolved/`none` bucket in the all-open accounting while retaining the separate resolved-method count and every phone/source assertion. No pick, source value, production stylesheet or expiry behaviour is changed to accommodate the test. The next suite exposed the same stale-only assumption in `tests/browser_ce45f672.cjs`; its fresh two-probability assertion is retained, while an actually expired baseline must instead expose the visible `UNRESOLVED / No percentage` card and pass the unchanged navigation, overflow, card-count and no-filler checks.
+
 ---
 
 ## Session d2a55add — final receipt: PR #246 merged, live bytes verified (2026-10-24 06:20 UTC)
