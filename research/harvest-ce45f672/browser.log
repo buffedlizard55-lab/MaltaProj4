@@ -1,0 +1,18 @@
+
+> hotspawn-cs2-scout@1.0.0 test:browser
+> node tests/browser.cjs && node tests/expiry.cjs && node tests/browser_ac4743a3.cjs && node tests/browser_eaff7cce.cjs && node tests/browser_fe7f5de4.cjs && node tests/browser_f0814674.cjs && node tests/browser_138cbedd.cjs && node tests/browser_9b97d585.cjs && node tests/browser_cb16f548.cjs
+
+Passed: 32 page/viewport accessibility and no-overflow scans, 320/390/768/1440px layout, subpath URLs, navigation, filters, six legacy redirects, evidence anchors and expiry.
+Passed: seven board expiry scenarios (including live No percentage filter/count updates) plus four research-quote boundary/future-clock scenarios.
+Passed: eight phone/desktop/queue/unresolved-summary/research expiry and live-count scenarios.
+Passed: first-screen 44px pick CTA, first list within 1700px at 320/390px, four legacy hidden-anchor reveals, native keyboard disclosures, unresolved records visible.
+locator.textContent: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator('tr[data-match="1083122"]').locator('.pick-cell .pick')
+
+    at /home/runner/work/MaltaProj4/MaltaProj4/tests/browser_fe7f5de4.cjs:71:63 {
+  log: [
+    `  - waiting for locator('tr[data-match="1083122"]').locator('.pick-cell .pick')`
+  ],
+  name: 'TimeoutError'
+}

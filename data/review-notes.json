@@ -4899,5 +4899,45 @@
     "label": "Valve official global standings, pinned commit — vendored copy verified byte-identical (sha256 match via api.github.com)"
    }
   ]
+ },
+ {
+  "id": "session-ce45f672-shipped-stylesheet-drift-2026-10-24",
+  "status": "Repaired — the shipped copy now equals the canonical copy, blocks balanced",
+  "finding": "The repository root's assets/style.css — the copy the legacy main:/ Pages fallback actually serves — was one closing brace short of the canonical site/assets/style.css. The unclosed @media(max-width:650px) and (max-height:700px) block gated every later phone rule to short viewports. Five unit tests pinned the two files as identical and were failing on main at commit dce494b, together with the manifest-hash checks. This session copied the canonical file over the shipped one (728 opening and 728 closing braces, verified by test) and re-staged the verified build so build-info.json, index.html and review.html match the bytes that ship. No layout value, pick or probability was changed.",
+  "impact": "Without this, a tall phone kept short-phone layout rules and the served stylesheet diverged from the one the build verifies. The published picks, probabilities and sources were unaffected.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/assets/style.css",
+    "label": "Shipped stylesheet (root fallback)"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/site/assets/style.css",
+    "label": "Canonical stylesheet the build copies"
+   }
+  ]
+ },
+ {
+  "id": "session-ce45f672-team-label-alias-2026-10-24",
+  "status": "Needs review — label variant accepted only with a source-linked identity record",
+  "finding": "Fixture 1083121 (CCT South America 2026 Series #7) is listed by Hotspawn as 'Projeto do KinGui vs MEIA NOITE', while Polymarket's market 6081997 prices 'Tropa do KinGui vs MEIA NOITE' at 0.615/0.385 for the same BO3 and the same 2026-10-24T16:00:00Z start. The two labels name one team per the committed identity record, which rests on fixture parity plus a five-for-five active-roster match (ALLE, ckzao, drg, xureba, lash) between HLTV match 2399904 and the Polymarket/EGamersWorld listing, with Valve's 2026-10-05 standings carrying the same core at #144 ex-Keyd Stars. The independent re-derivation in research/session-0cc1138a refused the row before this session because its label matcher only accepted identical or prefix-equal names; it now also accepts a label pair that appears together in the row's own evidence identity_sources record, and only when that record carries an https primary source. Free-form similarity, a record naming one side only, a non-https record and two teams sharing one outcome are all still refused, with tests for each case.",
+  "impact": "No probability changed: the published 0.615/0.385 is the exchange mid read from the market's own outcomePrices. The review question is whether Hotspawn's 'Projeto do KinGui' and Polymarket's 'Tropa do KinGui' are the same club today; the roster evidence in the identity record is the basis, and it is published rather than assumed.",
+  "sources": [
+   {
+    "url": "https://www.hotspawn.com/matches/meia-noite-vs-projeto-do-kingui-cct-south-america-2026-series-7-1083121",
+    "label": "Hotspawn fixture (Projeto do KinGui vs MEIA NOITE)"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/markets/6081997",
+    "label": "Polymarket market 6081997 (Tropa do KinGui vs MEIA NOITE, 0.615/0.385)"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7",
+    "label": "HLTV match 2399904 (roster basis)"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/data/identities.json",
+    "label": "Committed identity register record"
+   }
+  ]
  }
 ]

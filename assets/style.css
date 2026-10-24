@@ -651,3 +651,25 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
   .exec-quicknav-primary{background:#255d3b;color:#fff}
   .exec-quicknav-link{border:1px solid #255d3b;background:#fff;color:#255d3b}
 }
+
+/* Session ce45f672 (2026-10-24): the strip at the top of the home page is the
+   executive summary's first screen, so it says so, and the phone card carries
+   its start time in the meta line instead of a second header row. Measured on
+   the 2026-10-24 board with Chromium at 320x568 with main's compact quick nav
+   already present: the executive-summary label sits at y=129, the first card at
+   y=326 and both win chances end at y=488, above the fixed tab bar at 507. */
+@media(max-width:650px){
+  /* The decorative status dot shares the row with the freshness line on a
+     phone and costs a whole wrapped line; the state is stated in words on the
+     line below it, so the dot is redundant here. */
+  .fresh-dot{display:none}
+  /* Session ce45f672: with the compact executive-summary quick nav above the
+     strip, the pick card's own padding is part of what keeps BOTH win chances
+     above the fixed tab bar at 320x568. Two pixels a side bought the second
+     score row on the 2026-10-24 board. */
+  body[data-page="index"] .glance-card-mobile{padding:10px 12px}
+  body[data-page="index"] .glance-card-pick{padding:7px 12px;gap:4px}
+  body[data-page="index"] .glance-card-top{margin-bottom:3px}
+  body[data-page="index"] .glance-card-teams{line-height:1.2}
+}
+.glance-card-meta .glance-card-time{display:inline;margin:0;font-size:11px;color:var(--muted);white-space:normal}

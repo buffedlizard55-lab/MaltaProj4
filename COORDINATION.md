@@ -1,3 +1,32 @@
+## Session ce45f672 claim — 2026-10-24 06:40 UTC (every-match picks, red-gate repair, phone-first executive summary)
+
+Board read before claiming. Fixed Arena branch `arena/ce45f672-maltaproj4`, based on `main` `dce494b`.
+No other branch is created, checked out or pushed. Earlier claims are dated 2026-10-24 05:30–06:05 UTC and
+belong to other active sessions; this session does not touch their research folders, and takes the scope
+below because it is the measured state of `main` at claim time, not a duplicate of their work.
+
+**Measured starting defects (not assumed).** On a clean checkout of `dce494b`, `python -m unittest
+discover -s tests` is **RED: 8 failures + 1 error**. (1) `assets/style.css` is one closing brace short of
+the canonical `site/assets/style.css` — the `@media(max-width:650px) and (max-height:700px)` block never
+closes, so every later phone rule is gated to short viewports — which fails five stylesheet-contract
+tests plus the manifest-hash tests. (2) The independent re-derivation (`research/session-0cc1138a/`) cannot
+map Hotspawn's `Projeto do KinGui` to Polymarket's `Tropa do KinGui` on open row `1083121`, so that row was
+published unverified. Both are repaired and pinned by tests in this session (see receipt below).
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Repair the red gates on `main`: byte-identical stylesheet copies with balanced blocks, and alias-aware independent re-derivation that accepts only a source-linked `identity_sources` record | in progress | ce45f672 | `assets/style.css`, `research/session-0cc1138a/verify_0cc1138a.py`, `tests/test_session_ce45f672.py` (new) | 2026-10-24 06:40 |
+| Every-match pick coverage on a fresh live snapshot: HLTV first, then esportsbook/exchange lines, then the labelled VRS model; publish the per-rung counts and an explicit unresolved/limitations section linked from the executive summary | in progress | ce45f672 | `.github/workflows/harvest-ce45f672.yml` (new), `research/harvest-ce45f672/**`, `scripts/build.py` (append-only) | 2026-10-24 06:40 |
+| Phone/mobile readability: pick list and executive-summary links measurable on the first screen at 320×568 and 390×844, with no horizontal overflow | in progress | ce45f672 | `scripts/build.py`, `site/assets/style.css`, `tests/browser_ce45f672.cjs` (new) | 2026-10-24 06:40 |
+| Final integration: fresh snapshot, all gates, PR to `main`, merge without waiting, live Pages verification, receipt | in progress | ce45f672 | `COORDINATION.md`, `data/latest.json`, `data/matches.csv`, generated root pages, `build-info.json` | 2026-10-24 06:40 |
+
+Evidence rules unchanged: Hotspawn supplies fixture inventory and locks only, never a probability; no crowd
+votes, placeholder odds, inferred values or 50/50 filler. A pick for a low-tier or unlisted match comes only
+from the sourced ladder (HLTV identity/rank/form, a verified esportsbook line, or the labelled VRS model);
+anything left stays in the separate unresolved section with its attempted sources and limitation.
+
+---
+
 ## Session d2b90de7 — delivery receipt: PR #252 (2026-10-24)
 
 **PR [#252](https://github.com/buffedlizard55-lab/MaltaProj4/pull/252)** carries this session's work to

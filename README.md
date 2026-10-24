@@ -246,4 +246,26 @@ The separately completed d1bae160 dashboard and its eight passing tests are reta
 | `data/review-notes.json` | Sourced findings published on Flagged for Review, including this session's `flacons` alias, the unproven `ex-CYBERSHOKE` identity and the Zetta–LOS NINOS line gap |
 | `research/`, `COORDINATION.md` | Primary-source research, preserved handoffs and integration record |
 
+## 2026-10-24 — executive summary on the first phone screen, and a green gate set (session ce45f672)
+
+`main` was red at `dce494b`: the **shipped** `assets/style.css` was one closing brace short of the canonical
+`site/assets/style.css` (the `max-height:700px` block never closed), which failed five stylesheet-contract tests and
+three manifest-hash tests, and the independent re-derivation refused open row `1083121` because Hotspawn's
+`Projeto do KinGui` and Polymarket's `Tropa do KinGui` are different labels. Both are repaired:
+the shipped copy is byte-identical to the canonical one (728/728 braces), and the verifier now accepts a label
+difference **only** when the row's own evidence carries an `identity_sources` record naming both labels with an https
+primary source — every refusal case (undocumented, non-https, one-sided, two teams on one outcome) has a test.
+
+On a phone the executive summary is the compact `#exec-quicknav` bar (added in main by session 4ed657ce) plus the
+freshness strip below it; this session keeps both, drops the decorative status dot below 650 px, moves the phone
+card's start time into its meta row and tightens the index card's padding — measured with Chromium so that **both**
+win chances stay above the fixed tab bar at 320×568. The 2026-10-24T07:09Z runner harvest also exposed a row
+published as an even `0.500/0.500` with no pick (the midpoint of a 52-point spread); `scripts/core.resolve` now
+rejects that quote as evidence so the row falls through to the model and research tiers that can originate a pick. New suites: `tests/browser_ce45f672.cjs` (label on the first screen, both probabilities above
+the tab bar, 44 px in-site routes, 246 px card budget, one card per open match) and `tests/test_session_ce45f672.py`
+(14 tests). Full gates: 1,247 unit tests OK, audits 9, verification-95b588c2 5, verification-c6 12, validator
+(31 calculations reproduced, 874 links/assets, 20 checksums, 234 displayed rows) and all ten browser suites.
+Findings published, non-blocking: `session-ce45f672-shipped-stylesheet-drift-2026-10-24` and
+`session-ce45f672-team-label-alias-2026-10-24`. Detail: [`research/session-ce45f672/REPORT.md`](research/session-ce45f672/REPORT.md).
+
 Missing data is an intentional, visible result—not a placeholder to fill with guesses. No winning outcome, profitable strategy, current roster or complete sportsbook coverage is certified.
