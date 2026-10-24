@@ -13,6 +13,8 @@ on:
         type: string
 permissions:
   contents: write
+  actions: read
+  pages: read
 concurrency:
   group: release-readback-50932f4d
   cancel-in-progress: false
@@ -36,6 +38,12 @@ jobs:
           cache: npm
       - run: pip install -r requirements.txt
       - run: npm ci --ignore-scripts
+      - name: Retain the exact failed publisher artifact and gate log when requested
+        id: diagnosis
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python research/session-50932f4d/publisher_diagnosis.py
       - name: Verify exact public bytes, evidence clocks and source arithmetic
         id: public
         continue-on-error: true
@@ -138,7 +146,7 @@ jobs:
           git add -- research/session-50932f4d/live
           if ! git diff --cached --quiet; then
             git commit -m "Record production readback $GITHUB_RUN_ID [skip ci]"
-            git pull --rebase origin arena/50932f4d-maltaproj4
+            git pull --rebase=merges origin arena/50932f4d-maltaproj4
             git push origin arena/50932f4d-maltaproj4
           fi
       - name: Fail if any verification failed

@@ -8,5 +8,7 @@
     "verify_build": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40115817739",
     "independent_audit": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40115817738"
   },
-  "publication_verified": false
+  "publication_verified": false,
+  "failed_publisher_run": 40116877511,
+  "publisher_status": "verify-build failed at staged-root gate; deploy succeeded; release not declared complete"
 }

@@ -325,6 +325,19 @@ Evidence rules: Hotspawn supplies fixture inventory and locks only, never a prob
 
 ---
 
+### 50932f4d fresh-root gate diagnosis — 2026-10-24T17:55:23.132365+00:00
+
+Post-merge publisher **40116877511** validated and uploaded its artifact and
+its deploy job succeeded, but verify-build failed in the staged-root validator/
+unit gate (annotations 307/308). This is **not** a successful end-to-end release.
+Claiming exact-artifact/log diagnosis in this session's isolated readback and
+research files only; no other owner's production/test file is edited without
+a verified cause and logged handoff. The artifact ID/name and failed run were
+read from GitHub. The readback now retains that exact uploaded Pages archive
+and failed-step log, without collecting, publishing, staging or writing main.
+Local post-merge main code on the older 16:50 capture passes **1,586 units (7
+skips) and all 12 browser suites**; that does not diagnose the new capture.
+
 ### 50932f4d merge confirmed / public readback pending — 2026-10-24T17:41:02.619152+00:00
 
 **PR #294 merged at 17:36:16Z** as `a73f4ef3cbc0644852cd5f80be501a34ad50ab6f`.
