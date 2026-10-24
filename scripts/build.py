@@ -413,6 +413,41 @@ def executive_banner(data):
     )
 
 
+def exec_summary_bar(data):
+    """Always-visible executive summary, directly under the freshness strip.
+
+    Session d2a55add. The fuller executive banner and the coverage block sit
+    inside the folded site guide (DOM-early for deep links and no-JS readers,
+    visually ordered below the board on phones), so a first-time phone visitor
+    met only the one-line freshness strip. This bar is the summary itself,
+    never folded: one completeness sentence counted from this snapshot (and
+    re-written live by app.js under the same expiry rules as every other
+    count), then one tap each to the updated pick list, the picks on this
+    page, the separate unresolved-and-limitations section and page, every
+    match, and the flagged-for-review page. No count is typed by hand.
+    """
+    c = summary.counts(data['matches'])
+    return (
+        '<section class="exec-bar" id="exec-summary" aria-label="Executive summary">'
+        '<p class="eyebrow muted">Executive summary</p>'
+        '<p class="exec-bar-line"><span data-completeness>' + e(summary.completeness_sentence(c)) + '</span></p>'
+        '<nav class="exec-bar-links" aria-label="Executive summary — where the updated picks are">'
+        + link('picks.html', 'Updated picks →', 'button exec-bar-primary')
+        + link('#picks-at-a-glance', 'Every pick on this page ↓', 'exec-bar-link')
+        + link('unresolved.html', 'Unresolved & limitations →', 'exec-bar-link')
+        + link('#unresolved-summary', 'Why a pick can be missing ↓', 'exec-bar-link')
+        + link('matches.html', 'All matches →', 'exec-bar-link')
+        + link('review.html', 'Flagged for review →', 'exec-bar-link')
+        + '</nav>'
+        '<p class="exec-bar-note">Probabilities come from external betting lines or our own labelled '
+        'VRS model — never from Hotspawn. ' + count_span('missing', c['without_percentage'])
+        + ' open match(es) publish no percentage; every one is named with its reason in the '
+        + link('#unresolved-summary', 'unresolved section below') + ' and on the '
+        + link('unresolved.html', 'unresolved page') + '.</p>'
+        '</section>'
+    )
+
+
 def fresh_strip(data, opens, priced, researched, unresolved):
 
     """One-glance answer to \"is this current, and where are the picks?\".
@@ -887,6 +922,29 @@ def unresolved_limits_card(data):
                 looked.setdefault(provider, set()).add(m['id'])
     if not opens:
         return ''
+    # Session 019a253a: the section that explains a missing pick must also show
+    # how the *other* matches got theirs, rung by rung, because a reader asked
+    # "why does this one have no price when that one does". The counts are the
+    # snapshot's own methods mapped onto scripts.summary.LADDER, so they cannot
+    # disagree with the tags on the rows; nothing here is typed by hand.
+    step_counts = {}
+    for m in opens:
+        step = summary.METHOD_STEP.get(m.get('method')) if m.get('probabilities') is not None or m.get('pick') else None
+        step_counts[step or 'none'] = step_counts.get(step or 'none', 0) + 1
+    rung_text = ' · '.join(
+        '%s <strong data-ladder-count="%s">%d</strong>' % (e(step['title']), e(step['key']), step_counts.get(step['key'], 0))
+        for step in summary.ladder_rows())
+    rung_none = step_counts.get('none', 0)
+    ladder_block = (
+        '<p class="small" data-ladder-counts="1"><strong>How each of the open matches got a pick, in the order '
+        'it was tried:</strong> ' + rung_text + '</p>'
+        '<p class="small">A match that no book or exchange prices is not dropped: it moves down the ladder to '
+        + link('https://www.hltv.org/matches', 'HLTV') + ' for the exact fixture, ranking and lineup, then to a '
+        'dated ' + link('https://egamersworld.com/counterstrike/matches', 'esportsbook listing') + ', and finally '
+        'to ' + link('sources.html#model', 'our own Valve-standings model line') + ', which originates a percentage '
+        'rather than quoting one. Only when every rung records a refusal or an absence does a row stay blank — '
+        '<strong data-ladder-count="none">' + str(rung_none) + '</strong> at this snapshot. '
+        + link('unresolved.html', 'The full ladder, with the official source for each step →') + '</p>')
     if missing:
         headline = ('<strong data-count="missing">%d</strong> of the <strong data-count="open">%d</strong> open matches '
                     'publish <strong>no win percentage</strong>; <strong data-count="unresolved">%d</strong> of those '
@@ -926,7 +984,8 @@ def unresolved_limits_card(data):
             '<p class="eyebrow muted">Executive summary &middot; unresolved picks &amp; limitations</p>'
             '<h2>Unresolved picks, and why a pick can be missing</h2>'
             '<p>' + headline + '</p>'
-            '<ul class="checklist">' + ''.join(items) + '</ul>'
+            + ladder_block
+            + '<ul class="checklist">' + ''.join(items) + '</ul>'
             '<p class="glance-actions">'
             + link('#unresolved-summary', 'Full unresolved section ↓', 'button secondary')
             + link('unresolved.html', 'Open the unresolved page →', 'button secondary')
@@ -972,6 +1031,7 @@ def overview(data):
         queue_html='<div class="queue"><p class="eyebrow muted">Then next</p><ul>'+items+'</ul></div>'
     body=head('Executive summary','CS2 picks & probabilities.','Every open Hotspawn CS2 match, with our pick first and the supporting sources one tap away.',data)
     body+=fresh_strip(data, opens, priced, researched, unresolved)
+    body+=exec_summary_bar(data)
     # Two blocks directly under the freshness strip, before the hero: the plain
     # answer to "is the board complete and where are the picks", and the separate
     # unresolved section the summary has to carry. Both are rendered from

@@ -48,9 +48,8 @@ run [40066630014](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/
 
 | Field | Value |
 | --- | --- |
-| Snapshot generated | `2026-10-24T05:44:31.614923Z` |
-| Fixture evidence observed | `2026-10-24T05:40:50.615207Z` |
-| Coverage verdict | `verified` — API 88 / page 88 / lobby 88 / retained 88 |
+| Snapshot generated | `2026-10-24T05:33:25.228862Z` (the capture this branch ships) |
+| Fixture evidence observed | `2026-10-24T05:29:46.418656Z` |
 | Feed rows | 88 |
 | Open CS2 matches | **25** |
 | Open with a pick | **25** |
@@ -63,7 +62,20 @@ Method mix of the 25 open rows: 12 `exchange`, 7 `model_vrs`, 2 `exchange_wide`,
 2 `bookmaker_fallback`. Evidence providers: Polymarket 14, Valve VRS 7, HLTV Valve ranking (Valve points)
 2, Thunderpick via BO3.gg API 2.
 
-Independent row audit shipped with that capture:
+**Second, independent capture (cross-check).** The harness run above produced its own capture eleven
+minutes later, committed as [`snapshot.json`](snapshot.json) —
+`generated_at 2026-10-24T05:44:31.614923Z`, `fixtures_observed_at 2026-10-24T05:40:50.615207Z`,
+coverage `verified` at 88/88/88/88. Compared field by field with the capture this branch ships:
+
+* identical fixture set — 88 feed records, 25 open matches, in both;
+* identical pick on all 25 rows;
+* four exchange mids moved between the two reads, as a live order book does: 1079658 `33.0 → 31.5%`,
+  1079661 `62.5 → 61.0%`, 1082858 `29.0 → 28.5%`, 1082898 `34.5 → 35.0%` for the first-listed team.
+
+Both captures therefore agree on the inventory and on every directional pick, and neither is treated as
+more authoritative than its own observation timestamp says.
+
+Independent row audit shipped with the harness capture:
 [`independent-row-audit.md`](independent-row-audit.md) — 88 rows checked, 0 arithmetic/field failures.
 
 ## 3. Line-by-line verification of the published numbers

@@ -83,14 +83,15 @@ def evidence_probabilities(ev, teams=None):
         raw = glicko_expect(ev['points'][0], ev['points'][1])
         return [calibrate(raw), 1 - calibrate(raw)], 'valve_vrs'
     if provider == 'HLTV Valve ranking (Valve points)':
-        # Session 148be742 additive repair: the mirror tier (scripts/vrs_mirror)
-        # was added to the pipeline after this verifier was written, and it uses
-        # the same Valve formula on Valve points read from HLTV's dated Valve
-        # ranking page instead of Valve's monthly GitHub file. The re-derivation
-        # is unchanged (vrs.expected / vrs.calibrate, RD=75, slope 0.7986); only
-        # the points' page of origin differs, and that page is in the record.
+        # Integration repair (session d2a55add, 2026-10-24): the documented
+        # model_vrs_mirror tier (scripts.summary.ORIGINS) postdates this
+        # verifier. Its evidence carries the same Valve points in fixture
+        # order and the pipeline applies the identical Glicko expectation and
+        # calibration, so the row is re-derived here under its own label
+        # instead of being reported as irreproducible. No math is shared with
+        # the pipeline beyond Valve's published formula, as before.
         raw = glicko_expect(ev['points'][0], ev['points'][1])
-        return [calibrate(raw), 1 - calibrate(raw)], 'valve_vrs_mirror'
+        return [calibrate(raw), 1 - calibrate(raw)], 'valve_vrs_hltv_mirror'
     if 'decimal_odds' in ev:
         q = [1 / float(d) for d in ev['decimal_odds']]
         p = [v / sum(q) for v in q]
