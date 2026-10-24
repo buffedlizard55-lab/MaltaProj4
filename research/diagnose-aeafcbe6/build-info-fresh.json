@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "revision": "5a9aa462f16d42368cd1297b83862cb42bb371f7",
+  "built_at": "2026-10-24T16:37:29.321548Z",
+  "snapshot_generated_at": "2026-10-24T16:37:28.993492Z",
+  "rows": 83,
+  "files": {
+    "404.html": "2a98fbbcdb39da829b0ee85ae2d969e0134e758b4f5248a37ff1407fc253a5f6",
+    "analysis.html": "ce11fa41db485e1cf0f2f8c0668e4e12efa4f76144d722eef34f8f6885821386",
+    "assets/app.js": "8991e02f04c20410a946d92e1429a56d945f10da28d6fed587c9a9cf40aa21f8",
+    "assets/favicon.svg": "5b0ba0da9b9bec504dc4695b59291abad789479745d4a18581fb78b0215738ba",
+    "assets/style.css": "7a68a91d2641db0fa40cc4cf9ea098f21faca69fffea2ac0b5a99db490848050",
+    "data/latest.json": "3e0734e986d61047815065a4b680c518f6c14a8b5707280907ec48a08b9be58c",
+    "data/matches.csv": "b0924ed089c1aa0313d9a7b6c9e233f89d5acc31fcc82e6dba93b5f93655636f",
+    "evidence.html": "7dede63c0ec28fe5f55441356d7249fe6cca2e03382156c1668d1136d0989ff6",
+    "index.html": "ab74e31712988ee05b398667347be1cf935152c2978077a6e92b959029b02d45",
+    "matches.html": "ee1726825001e50c45261fcfc7235750ba3b1b5f7ac20a41f1617ad2ef0ed41d",
+    "methodology.html": "db6dd3e60721627f0629397fd4d76b07f3f9ea5ab15b72348f3bee3b35a094ae",
+    "picks.html": "8cd18eeb9295bb1cdf29517ed01e47786c1d5c9da408f7f0aeae9baab89ec375",
+    "review.html": "37f02a8a20191c84d762214c6202da1c3e9be24da10c8133a4bb8a6e7a4735b5",
+    "site/index.html": "7ad39335aef2960a4c7f3a8f9f2322d358e59fd45631acfa19f456575ec491db",
+    "site/methodology.html": "130024ea27020261e759b42920f78c42bebcbb44f226ef5216c8bbb1a2684b33",
+    "site/picks.html": "de8e71d8a3a1f7b287299108b460956d7c52391255b567fc71cc9974f8dcd76c",
+    "site/review.html": "91547a7e0d0e5b1e9bde9a89cad48c38173aefee74ea25afd75c17d9de3937cf",
+    "site/unresolved.html": "d8c18e13a798f6d0f0f3cf8ee21bb42ed941d6077c82c8031ae3476d6120bded",
+    "sources.html": "eeb2a24713706b2754ec6eb7bd6c06a87d9dac4efa002372fbeafec60b419753",
+    "unresolved.html": "18ce393eb3d6879c32225cab7c4a0936a47ab3e6656feaf207cf72fc3d5cc734"
+  }
+}
