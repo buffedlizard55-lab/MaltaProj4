@@ -4817,5 +4817,87 @@
     "url": "https://buffedlizard55-lab.github.io/MaltaProj4/evidence.html#match-1082996"
    }
   ]
+ },
+ {
+  "id": "session-d2b90de7-publish-deadlock-2026-10-24",
+  "status": "Fixed on main by PRs #245/#246/#251/#258/#260 across sessions cb16f548, d2a55add, 174afa4f and a30d31a0 — rotated-snapshot test pins and a refused evidence-recorded alias had frozen every scheduled publish for ~18 hours; the live site correctly withheld its expired picks throughout",
+  "finding": "Measured, not assumed: the public receipt read at 2026-10-24 05:30Z still served the 2026-10-23T11:47:19Z build (revision 92d248d, 90 rows), ~17.7h old and outside the 8-hour evidence window, so the executive summary rendered 'Snapshot expired or timestamp unverified. Current picks are withheld.' Every schedule run of the publish workflow delivered after the 11:37Z success — 39956197341 (12:49:03Z), 39998307424 (17:50:02Z), 40025828846 (21:18:45Z), 40042111432 (23:53:03Z), 40062143026 (04:23:24Z) — failed in under 60s at the unit-test step, before any refresh could run. Reproduced locally by this session: tests/test_session_0cc1138a.py::LiveHotspawnCoverage pinned the 30 fixture IDs observed on the lobby at 2026-10-23 09:44Z, but the Hotspawn feed itself rotated fixtures 1081148 and 1079655 out before its 11:25Z snapshot, and the excuse keyed to inventory_changes.removed_ids is a diff against the immediately previous snapshot only — empty again at the 11:47Z rotation, so the pinned IDs deadlocked the suite (1 failure + 1 error in 1195 tests). The repair that shipped on main is session cb16f548's PR #245 (merged 2026-10-24 06:20:45Z): parity is asserted on an archived same-instant observation with rotation guards (a fully rotated board cannot break the gate; a still-future fixture that vanishes is still reported), together with session d2a55add's repairs of the independent re-deriver's missing model_vrs_mirror branch and the freshness strip's literal '23 Oct' pin. Post-merge, the tree at dce494b was still RED in its own unit gate — the board's new row 1083121 (Hotspawn 'Projeto do KinGui' vs Polymarket outcome 'Tropa do KinGui') was refused by the strict independent re-deriver despite the sourced alias record session 9f3e77d2 stored on the evidence (HLTV match 2399904 fixture parity + Valve roster continuity, 22 Oct), and the legacy root assets/style.css was stale against site/assets/style.css (d2a55add's unclosed-@media repair had not propagated) — so the next scheduled run would have deadlocked again. Those two defects were repaired by session 174afa4f's PR #251 (verifier maps reviewed identity aliases from the evidence; board regenerated on the 06:19Z snapshot) and session a30d31a0's PR #260 (root fallback refuses builds from older source, in-step gates fatal). This session found the same RED concurrently, developed the same two repairs on its own branch (an alias_teams() branch in the verifier, a rebuilt/re-staged root) and had independently repaired the original deadlock earlier (excuse derived from the snapshot's retained raw fixture_evidence, 11 regressions); at integration all of these competing edits to shared files were dropped in favour of the merged repairs rather than layered over them, and this session's regression suite (tests/test_session_d2b90de7.py) pins its own retained evidence instead, including offline checks that recorded aliases reproduce and unrecorded renames are refused. Second recurrence, same mode, one hour later: merging PR #257's alias tests (session ea2e254c) with PR #263's hardened alias_groups (session cecfe864 — evidence records now need an https source AND a written basis, plus dual registration in data/identities.json) left main 7be8660 RED in its own unit gate: the synthetic fixture in tests/test_session_ea2e254c.py::test_alias_groups_keep_only_https_sourced_groups predates the hardening and lacks the basis, so alias_groups returns 0 groups where the test asserts 1 (this session measured the failure on pristine 7be8660 in the sandbox and prepared a dated takeover supplying the basis; the published board itself always re-derived 31/31 with 0 failures because the real evidence record carries source and basis). Session 4ed657ce's PRs #266/#267 shipped the repair first — 'Resolve alias-gate deadlock: row receipt plus committed register', adopting the full alias contract, updating the synthetic fixtures and rebuilding the root fallback — so this session's takeover was withdrawn at integration rather than layered over the merged repair. Structural follow-up (open):  any test that pins a mutable snapshot value can deadlock publication again — tests/test_session_f0814674.py already fails a research-tier re-pin, and PR #245's guard tests plus this session's receipt-pinning suite cover the rest.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39956197341",
+    "label": "Scheduled publish run 39956197341, failure at the unit step (2026-10-23 12:49Z)"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40062143026",
+    "label": "Scheduled publish run 40062143026, the fifth consecutive unit-step failure (2026-10-24 04:23Z)"
+   },
+   {
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json",
+    "label": "Live build receipt read 2026-10-24 05:30Z: built_at 2026-10-23T11:47:19Z, revision 92d248d, 90 rows"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/tests/test_session_0cc1138a.py",
+    "label": "The pinned lobby-parity class (repaired in place, with the dated takeover comment)"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/tests/test_session_d2b90de7.py",
+    "label": "Regressions: the excuse is evidence-derived and a feed-returned row can never be excused"
+   },
+   {
+    "url": "https://play.hotspawn.com/lobby",
+    "label": "Hotspawn lobby — the fixture inventory that rotated (read 2026-10-24 05:28Z: 88 CS2 entries)"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/pull/245",
+    "label": "PR #245 (session cb16f548) — the archive-pinned parity repair that shipped on main, merged 2026-10-24 06:20:45Z"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/pull/251",
+    "label": "PR #251 (session 174afa4f) — verifier maps reviewed identity aliases from the evidence; board regenerated"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/pull/260",
+    "label": "PR #260 (session a30d31a0) — root fallback refuses builds made from older source; in-step gates fatal"
+   }
+  ]
+ },
+ {
+  "id": "session-d2b90de7-coverage-measurement-2026-10-24",
+  "status": "Measured — full coverage on the 2026-10-24 board: 88 feed rows, 25 open, 25 picks, 25 win probabilities, 0 unresolved; lobby/feed counts agree at 88",
+  "finding": "Fresh runner capture (run 40067605793, snapshot generated 2026-10-24T05:57:43Z, fixture evidence observed 05:54:04Z) re-read every official source: Hotspawn API / CS2 page / general lobby / retained board parity is 88/88/88/88, quarantine withheld 0 rows, the independent C6 row audit found 0 failures, and the unresolved-row research probe found 0 rows to probe — every open fixture already carries a sourced pick and win probability. Method mix: 12 strict Polymarket exchange lines, 2 labelled wide-exchange lines (Metizport–BakS 70.5%, Ground Zero–Off Chops 73.0% — low precision, flagged on their rows, not featured certainty), 2 dated bookmaker listings read through BO3.gg's Thunderpick odds (NEXVOID–Alter Ego 1.60/2.17 de-vigged to 57.6/42.4; FlyQuest–Staqued 1.001/12.0 de-vigged to 92.3/7.7 — both re-derived to the digit in this session and corroborated against the live bo3.gg match pages), 5 originated Valve-VRS model lines from Valve's official 2026-10-05 standings file (verified byte-identical to Valve's pinned commit, sha256 df96e7fc…ae61b, via api.github.com this session), and 2 labelled model_vrs_mirror lines read from HLTV's dated 2026-10-24 view of the Valve ranking where Valve's monthly file cannot resolve a club (LFO 10 is absent from the October file; ex-RUSTEC appears twice in it). This session independently confirmed that page live: #102 Spirit Academy 1030 points and #151 LFO 10 819 points, rosters matching the stored evidence exactly. Session-independent lobby read at 05:28Z listed the same 25 open fixtures 1:1 (table in research/session-d2b90de7/lobby-read-2026-10-24T0530Z.md); its crowd-vote percentages were recorded as refused context only and never used as lines. The 2026-10-23 flagged lobby/feed count mismatch (94 vs 92) is not present on this capture: the lobby's own facet counts total 88 and the feed returns 88 — the discrepancy rotated away, while the structural risk it described (a fixture can vanish between refreshes instead of being retained) stands as documented in that note. Remaining disclosed limitations on this capture: GG.BET answered HTTP 403 for the whole run, Thunderpick's own site yields no automated two-sided quote (its odds arrive via BO3.gg's dated listings), Pinnacle listed none of the 25 fixtures, and the 63 past-dated feed rows are labelled 'Past fixture · not in the lobby' and never priced. Postscript (same session, updated at integration): main published a newer capture within the hour — PR #245's board generated 2026-10-24T06:19:43Z, 92 feed rows, 31 open, 31 picks, 31 win probabilities — which supersedes the 05:57Z board measured here. This note remains the dated independent measurement of the 05:57Z capture (its own runner receipts, lobby read and live spot-checks); the two captures agree on every fixture open in both.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40067605793",
+    "label": "Runner capture 40067605793 — refresh, quarantine, audits, build, validators and all 8 browser suites on the fresh candidate"
+   },
+   {
+    "url": "https://play.hotspawn.com/lobby",
+    "label": "Hotspawn lobby read 2026-10-24 05:28Z: 88 CS2 facet entries, 25 open cards"
+   },
+   {
+    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+    "label": "Hotspawn CS2 scheduled fixture API (88 entries at 05:54Z)"
+   },
+   {
+    "url": "https://polymarket.com/event/cs2-ace1-forzer-2026-10-24",
+    "label": "Spot-checked exchange market 6075573 (Acend vs FORZE Reload), re-read live at 06:04Z: moneyline 0.315/0.685 vs 0.325/0.675 observed — same direction, pick unchanged"
+   },
+   {
+    "url": "https://bo3.gg/matches/nexvoid-vs-alter-ego-26-10-2026",
+    "label": "BO3.gg match page: NEXVOID 1.60 / Alter Ego 2.17 — de-vig reproduces the published 57.6%/42.4% exactly"
+   },
+   {
+    "url": "https://bo3.gg/matches/flyquest-vs-staqued-27-10-2026",
+    "label": "BO3.gg match page: FlyQuest 1.001 / Staqued 12 — de-vig reproduces the published 92.3%/7.7% exactly"
+   },
+   {
+    "url": "https://www.hltv.org/valve-ranking/teams/2026/october/24",
+    "label": "HLTV dated Valve-ranking view (24 Oct 2026): #102 Spirit Academy 1030 pts, #151 LFO 10 819 pts — both verified live this session"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "label": "Valve official global standings, pinned commit — vendored copy verified byte-identical (sha256 match via api.github.com)"
+   }
+  ]
  }
 ]
