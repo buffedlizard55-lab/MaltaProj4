@@ -6,6 +6,7 @@ at all (``None``) cannot break the JSON summary that the coordination log quotes
 """
 import importlib
 import json
+import os
 import pathlib
 import tempfile
 import unittest
@@ -68,8 +69,19 @@ class SummariserTest(unittest.TestCase):
             (runtime / 'latest.json').write_text(json.dumps(snapshot(rows)))
             out = root / 'harvest'
             argv = ['harvest', '--runtime', str(runtime / 'latest.json'), '--output', str(out)]
-            with unittest.mock.patch('sys.argv', argv):
-                self.assertEqual(harvest.main(), 0)
+            # Session ac5bcb06: harvest.main() also copies ``runtime/row-audit.md`` and
+            # ``runtime/published-row-audit.md`` from the *current working directory*.
+            # In the publisher those files exist by the time the staged-root unit gate
+            # runs (the build step writes them), so this test passed everywhere except
+            # inside pages.yml and made every publication fail at that gate. Run it from
+            # an empty directory so ambient pipeline output cannot leak into the result.
+            cwd = os.getcwd()
+            os.chdir(root)
+            try:
+                with unittest.mock.patch('sys.argv', argv):
+                    self.assertEqual(harvest.main(), 0)
+            finally:
+                os.chdir(cwd)
             summary = json.loads((out / 'harvest-summary.json').read_text())
             self.assertEqual(sorted(summary['files']), ['latest.json'])
             self.assertEqual(summary['files']['latest.json'],
