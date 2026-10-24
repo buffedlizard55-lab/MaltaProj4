@@ -8368,3 +8368,23 @@ its full source-context disclosure, tall-phone board-first correction, strict
 mobile guards and already-verified fresh main-root snapshot. Only conflict was
 concurrent appended board notes; both complete blocks retained. No production
 conflict and no edit to the active owners' builder, stylesheet or collector.
+
+### 50932f4d dated-fixture repair / final integration claim — 2026-10-24 16:57 UTC
+
+The two added synthetic live-tier mutations reproduced **one failure and one
+error** in the conditional archival fallback even with the same fixture IDs
+still present. Both narrowly scoped historical tests now always use the genuine
+retained 08:06Z source rows; current-board verification is untouched. The **106
+combined parser/model/alias/arithmetic tests pass**, including 24 session tests.
+
+| Task | Status | Owner/session | File scope |
+| --- | --- | --- | --- |
+| Publish this session's source-trust, neutral-model and fixture-test findings; finish verification and PR integration | claimed before shared-output work | 50932f4d | `data/review-notes.json` (append unique `session-50932f4d-*` IDs only); canonical regenerated root outputs from the completed upstream snapshot; own reports/receipts and fixed-branch readback workflow |
+
+All incorporated implementation dependencies (#279, #282, #281 and #283) are
+completed/merged. Builder, CSS, collector and publisher changes still claimed by
+other active sessions are not edited. This is bounded final integration of the
+completed changes, not takeover of their unfinished implementation. Raw source
+observations and inventory are retained; rebuilding is not a source refresh.
+Every reported irregularity will be visible on Flagged for Review. No live
+success is claimed until the post-merge actual-clock/public-byte readback.

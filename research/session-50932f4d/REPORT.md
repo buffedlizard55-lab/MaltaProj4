@@ -178,3 +178,16 @@ The full fresh browser chain subsequently exposed the same **320px picks-page
 y=863** issue independently repaired by completed PR #281. That upstream layout
 repair is being adopted rather than duplicated; final browser and actual-clock
 public checks must still be recorded after integration.
+
+## Historical test isolation completed
+
+Two additional synthetic mutations leave the historical fixture IDs in the
+rotating feed but change their evidence tier. The previously conditional archive
+fallback then fails (one assertion failure, one indexing error). The two dated
+alias/arithmetic cases now **always** use their genuine retained 08:06 source
+rows. No current-board audit is weakened or switched to old data. The 24 session
+tests and combined 106 parser/model/alias/arithmetic cases pass.
+
+Completed upstream #281/#283 has now been merged into this fixed branch: its
+source-context disclosure and exact y=863 mobile repair are adopted unchanged.
+The next gate runs against that combined tree and its 16:40 source capture.

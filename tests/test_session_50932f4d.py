@@ -7,6 +7,7 @@ import copy
 import json
 import unittest
 from datetime import datetime, timezone
+from unittest.mock import patch
 
 from scripts import books, core, vrs, vrs_mirror
 
@@ -177,6 +178,27 @@ class ListingWidgetSelectionTests(unittest.TestCase):
                 renewed, record = self.renew(page(widgets='<div>' + widget + '</div>'))
                 self.assertEqual(record['status'], 'parse_miss')
                 self.assertEqual(renewed, receipt())
+
+
+class HistoricalFixtureIsolationTests(unittest.TestCase):
+    def test_fixed_arithmetic_does_not_take_a_changed_live_tier(self):
+        from tests import test_session_e9be3e6b as legacy
+        rotating = {'matches': [{'id': key, 'evidence': []}
+                                for key in ('1082859', '1081152')]}
+        with patch.object(legacy, 'SNAPSHOT', rotating):
+            case = legacy.SourceLadderVerification('test_known_listing_and_model_arithmetic')
+            case.test_known_listing_and_model_arithmetic()
+
+    def test_archived_alias_mutation_case_does_not_take_a_changed_live_tier(self):
+        from tests import test_session_35c6e1e9 as legacy
+        rotating = {'matches': [{'id': '1083121', 'evidence': []}]}
+        case = legacy.VerifierConsultsTheSourcedAliasRegister
+        try:
+            with patch.object(legacy, 'SNAPSHOT', rotating):
+                case.setUpClass()
+                self.assertTrue(case.row['evidence'], 'The mutation target must be the sourced archival row')
+        finally:
+            case.setUpClass()
 
 
 class NeutralModelContinuityTests(unittest.TestCase):
