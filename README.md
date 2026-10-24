@@ -6,9 +6,42 @@ A simple, mobile-first pick dashboard for **every CS2 fixture returned by Hotspa
 
 **[Executive summary](https://buffedlizard55-lab.github.io/MaltaProj4/)** · **[Updated picks](https://buffedlizard55-lab.github.io/MaltaProj4/picks.html)** · [All matches](https://buffedlizard55-lab.github.io/MaltaProj4/matches.html) · [Unresolved & research-only picks](https://buffedlizard55-lab.github.io/MaltaProj4/unresolved.html) · [TWC results & Day-5 guide](https://buffedlizard55-lab.github.io/MaltaProj4/analysis.html) · [Flagged for Review](https://buffedlizard55-lab.github.io/MaltaProj4/review.html) · [Sources & methodology](https://buffedlizard55-lab.github.io/MaltaProj4/sources.html) · [Evidence ledger](https://buffedlizard55-lab.github.io/MaltaProj4/evidence.html)
 
-### 92-row / 31-open board audit and publisher-replay repair — 24 October 2026
+### Publication-freeze measurement, independent capture and evidence — 24 October 2026
 
-Snapshot **`2026-10-24T06:19:43.492019Z`** (fixtures observed **`2026-10-24T06:16:00.648005Z`**) reconciles **92 / 92 / 92 / 92** CS2 records across Hotspawn's API, `/cs2-pickems` and `/lobby`: **31 open matches, 31 picks, 31 win probabilities, 0 research-only without percentage, 0 unresolved** (plus 61 past-dated scheduled feed rows retained in *All matches*). Six newly added open fixtures (`1083120` Isurus–RED Canids Academy, `1083121` Projeto do KinGui–MEIA NOITE, `1082897` B8–K27, `1082898` Alliance–FaZe, `1082900` Luminosity–HOTU, `1082901` Envy–GamerLegion) are all priced from strict Polymarket series-winner markets. Across the 31 open rows the method mix is **16 `exchange`, 3 `exchange_wide`, 3 `bookmaker_fallback` (live Thunderpick moneylines via BO3.gg CS2 API), 6 `model_vrs` (official `2026-10-05` Valve global standings) and 3 `model_vrs_mirror` (HLTV's dated `2026-10-24` Valve ranking)**. Every non-featured row records an explicit HLTV attempt first and esportsbook/betting-line attempts next (`research/session-cecfe864/REPORT.md`, `research/session-cecfe864/board-ledger.json`). Two `dce494b` pre-refresh test-gate regressions (`pages.yml` `publish()` running under `set +e` without `|| return 1` or rebuilding `public/` on `origin/main` replay, and `verify_0cc1138a.py` omitting receipted `identity_sources` on `1083121`) are repaired and pinned by `tests/test_session_cecfe864.py`.
+**This session measured and documented the ~18-hour publication freeze, and its capture evidence is retained.** All five scheduled publish runs delivered after 2026-10-23 12:49Z (39956197341, 39998307424, 40025828846, 40042111432, 40062143026) died in under 60s at *Unit and independent failure-mode tests*, before any refresh; the live site fail-closed correctly and served `Snapshot expired or timestamp unverified. Current picks are withheld.` Reproduced locally: `LiveHotspawnCoverage` in [`tests/test_session_0cc1138a.py`](tests/test_session_0cc1138a.py) pinned the 30 lobby fixtures observed at 23 Oct 09:44Z, the feed rotated `1081148`/`1079655` out, and the `removed_ids`-diff excuse had gone empty at the next rotation. The repairs that shipped on main are cross-session: cb16f548's [PR #245](https://github.com/buffedlizard55-lab/MaltaProj4/pull/245) (archive-pinned parity with rotation guards), d2a55add's re-deriver and freshness-strip repairs, 174afa4f's [PR #251](https://github.com/buffedlizard55-lab/MaltaProj4/pull/251) (verifier maps reviewed identity aliases from the evidence — the post-merge refusal of row `1083121`'s recorded *Projeto do KinGui* ↔ *Tropa do KinGui* alias, which would have re-frozen publication) a30d31a0's [PR #260](https://github.com/buffedlizard55-lab/MaltaProj4/pull/260) (root fallback refuses builds from older source), and — after PR #263's verifier hardening collided with PR #257's synthetic alias fixture and left main briefly RED again — 4ed657ce's [PRs #266/#267](https://github.com/buffedlizard55-lab/MaltaProj4/pull/267) (alias-gate deadlock resolved with the full dual-registration contract). This session independently found and repaired the same defects on its own branch; every competing edit was dropped at integration in favour of the merged repairs rather than layered over them (logged in COORDINATION.md).
+
+**Independent full capture retained as dated evidence.** The non-publishing runner capture [`40067605793`](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40067605793) ([receipts](research/harvest-d2b90de7/)) produced snapshot **2026-10-24T05:57:43Z**: parity **88/88/88/88**, quarantine 0, independent audits 0 failures, unresolved-probe **0 rows to probe** — **25 open · 25 picks · 25 win probabilities · 0 unresolved** (12 strict exchange, 2 labelled wide, 2 dated BO3.gg/Thunderpick listings, 7 originated Valve-VRS lines, 2 labelled HLTV-mirror VRS lines). Session-side verification, sharing no code with the pipeline: the 25 open IDs equal this session's own 05:28Z lobby read 1:1 ([table](research/session-d2b90de7/lobby-read-2026-10-24T0530Z.md), crowd votes recorded as refused context); the vendored Valve standings file is byte-identical to Valve's pinned commit `eec4853d…` (sha256 match via api.github.com); Polymarket market `6075573` re-read live through the Gamma API (moneyline, exact pair/start, accepting orders); both BO3.gg lines de-vig to the published digits exactly (1.60/2.17 → 57.6/42.4; 1.001/12 → 92.3/7.7); HLTV's dated 24 Oct Valve-ranking view confirms #102 Spirit Academy 1030 pts and #151 LFO 10 819 pts with matching rosters, and both mirror probabilities re-derive by hand from Valve's published formula. The 23 Oct lobby/feed count mismatch (94 vs 92) rotated away — both read 88 on this capture, and main's next capture read 92/92/92/92 — while its structural note stays flagged. Offline regressions pinning these receipts: [`tests/test_session_d2b90de7.py`](tests/test_session_d2b90de7.py). Full log: [`research/session-d2b90de7/REPORT.md`](research/session-d2b90de7/REPORT.md); flagged notes `session-d2b90de7-publish-deadlock-2026-10-24` and `session-d2b90de7-coverage-measurement-2026-10-24`.
+
+### Finding the picks on a phone, and a guard against the layout drift — 24 October 2026
+
+**The board was complete; the first screen did not say where it was.** Measured with headless Chromium
+on the 06:16Z snapshot at 320×568, the always-visible executive summary rendered after all 31 cards.
+While this session was measuring its own five-destination map, session 4ed657ce landed a measured
+compact summary row (`#exec-quicknav`) on `main` first — a 48px row above the pick list carrying the
+updated-picks link, the unresolved-limits link and the live counts, hidden on desktop where the full
+bar is already high up, with a browser receipt in `research/session-4ed657ce/`. This integration
+adopts that row and drops the duplicate rather than stacking two navigation blocks on the first
+screen, and its own tests pin the contract (one nav, never folded, before the pick list, in-site
+links, counts read from the snapshot).
+
+**The served stylesheet cannot drift silently again.** The root `assets/style.css` — the file the
+legacy `main:/` Pages source actually serves — is only regenerated by a staged publish. A single
+missing `}` there nests every later phone rule inside a short-phone media query, which is how the
+phone layout broke earlier on 24 October. `scripts/stage_legacy.ensure_stylesheet_parity()` now
+repairs that drift while staging, and `scripts/validate.validate_stylesheet()` fails any build whose
+served stylesheet is unbalanced or differs from the canonical `site/assets/style.css` (unit-tested for
+a missing and an extra brace). Both copies are byte-identical and balanced on this tree.
+
+**Every match, rung by rung.** `scripts/coverage_233b8a0e` republishes, from each capture, how many
+open rows came from each step of the ladder plus the full unresolved ledger (HLTV first, then
+esportsbook lines) with each row's own recorded reason and attempts. On this snapshot: 92 feed
+records, 61 past-dated, **31 open, 31 picks, 31 win probabilities, 0 unresolved** — 16 strict
+exchange, 3 labelled wide exchange, 3 researched bookmaker listings, 6 from our own Valve-VRS model
+line, 3 from the same model on HLTV's dated view of Valve's ranking. The unresolved section is
+rendered when the count is zero too, because "nothing is missing today" is not a claim about tomorrow.
+
+Gates on the integrated tree: the full unit suite, audits, integrity, verification-c6, the validator and all nine Chromium suites, audits, integrity, verification-c6, the
+validator and all nine Chromium suites.
 
 ### Final full-coverage and phone verification — 23 October 2026
 
@@ -212,5 +245,27 @@ The separately completed d1bae160 dashboard and its eight passing tests are reta
 | `scripts/twc_day4_37bf28f4.py` | Re-runnable, idempotent applier for the day-4 block: scoring facts, streak bonus, Sunday schedule, group structure, day-2 map sourcing and the withdrawn-count correction |
 | `data/review-notes.json` | Sourced findings published on Flagged for Review, including this session's `flacons` alias, the unproven `ex-CYBERSHOKE` identity and the Zetta–LOS NINOS line gap |
 | `research/`, `COORDINATION.md` | Primary-source research, preserved handoffs and integration record |
+
+## 2026-10-24 — executive summary on the first phone screen, and a green gate set (session ce45f672)
+
+`main` was red at `dce494b`: the **shipped** `assets/style.css` was one closing brace short of the canonical
+`site/assets/style.css` (the `max-height:700px` block never closed), which failed five stylesheet-contract tests and
+three manifest-hash tests, and the independent re-derivation refused open row `1083121` because Hotspawn's
+`Projeto do KinGui` and Polymarket's `Tropa do KinGui` are different labels. Both are repaired:
+the shipped copy is byte-identical to the canonical one (728/728 braces), and the verifier now accepts a label
+difference **only** when the row's own evidence carries an `identity_sources` record naming both labels with an https
+primary source — every refusal case (undocumented, non-https, one-sided, two teams on one outcome) has a test.
+
+On a phone the executive summary is the compact `#exec-quicknav` bar (added in main by session 4ed657ce) plus the
+freshness strip below it; this session keeps both, drops the decorative status dot below 650 px, moves the phone
+card's start time into its meta row and tightens the index card's padding — measured with Chromium so that **both**
+win chances stay above the fixed tab bar at 320×568. The 2026-10-24T07:09Z runner harvest also exposed a row
+published as an even `0.500/0.500` with no pick (the midpoint of a 52-point spread); `scripts/core.resolve` now
+rejects that quote as evidence so the row falls through to the model and research tiers that can originate a pick. New suites: `tests/browser_ce45f672.cjs` (label on the first screen, both probabilities above
+the tab bar, 44 px in-site routes, 246 px card budget, one card per open match) and `tests/test_session_ce45f672.py`
+(14 tests). Full gates: 1,247 unit tests OK, audits 9, verification-95b588c2 5, verification-c6 12, validator
+(31 calculations reproduced, 874 links/assets, 20 checksums, 234 displayed rows) and all ten browser suites.
+Findings published, non-blocking: `session-ce45f672-shipped-stylesheet-drift-2026-10-24` and
+`session-ce45f672-team-label-alias-2026-10-24`. Detail: [`research/session-ce45f672/REPORT.md`](research/session-ce45f672/REPORT.md).
 
 Missing data is an intentional, visible result—not a placeholder to fill with guesses. No winning outcome, profitable strategy, current roster or complete sportsbook coverage is certified.

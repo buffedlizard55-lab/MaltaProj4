@@ -1,0 +1,406 @@
+{
+ "measured_at": "2026-10-24T08:08:50.320Z",
+ "base": "/MaltaProj4/",
+ "viewports": [
+  {
+   "width": 320,
+   "height": 568,
+   "index": {
+    "overflow": false,
+    "execBarTop": 7323,
+    "execBarVisible": true,
+    "execBarInsideDetails": false,
+    "execLinks": [
+     {
+      "href": "picks.html",
+      "label": "Updated picks →",
+      "height": 44
+     },
+     {
+      "href": "#picks-at-a-glance",
+      "label": "Every pick on this page ↓",
+      "height": 44
+     },
+     {
+      "href": "unresolved.html",
+      "label": "Unresolved & limitations →",
+      "height": 44
+     },
+     {
+      "href": "#unresolved-summary",
+      "label": "Why a pick can be missing ↓",
+      "height": 44
+     },
+     {
+      "href": "#unresolved-limits",
+      "label": "Visible limitations ↓",
+      "height": 44
+     },
+     {
+      "href": "matches.html",
+      "label": "All matches →",
+      "height": 44
+     },
+     {
+      "href": "review.html",
+      "label": "Flagged for review →",
+      "height": 44
+     },
+     {
+      "href": "#unresolved-summary",
+      "label": "unresolved section below",
+      "height": 15
+     },
+     {
+      "href": "unresolved.html",
+      "label": "unresolved page",
+      "height": 15
+     },
+     {
+      "href": "matches.html",
+      "label": "All matches",
+      "height": 15
+     }
+    ],
+    "quicknavTop": 307,
+    "quicknavVisible": true,
+    "quicknavInsideDetails": false,
+    "quicknavLinks": [
+     {
+      "href": "picks.html",
+      "label": "Updated picks →",
+      "height": 36
+     },
+     {
+      "href": "#unresolved-limits",
+      "label": "Unresolved & limits ↓",
+      "height": 36
+     }
+    ],
+    "staleHidden": true,
+    "staleDisplay": "none",
+    "completeness": "Every one of the 29 open matches has a pick, and every pick carries a win probability.",
+    "firstPickTop": 353,
+    "firstProbabilityTop": 447,
+    "unresolvedSectionPresent": true,
+    "unresolvedLinkPresent": true,
+    "tabBarTop": 507
+   },
+   "picks": {
+    "overflow": false,
+    "visibleRows": 29,
+    "firstRowTop": 280,
+    "hotspawnLinks": 29,
+    "externalSourceLinks": 38,
+    "unresolvedLimitLink": true
+   },
+   "unresolved": {
+    "overflow": false,
+    "ladderItems": 8,
+    "hasLimitationsText": true,
+    "backToSummary": true
+   }
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "index": {
+    "overflow": false,
+    "execBarTop": 7160,
+    "execBarVisible": true,
+    "execBarInsideDetails": false,
+    "execLinks": [
+     {
+      "href": "picks.html",
+      "label": "Updated picks →",
+      "height": 44
+     },
+     {
+      "href": "#picks-at-a-glance",
+      "label": "Every pick on this page ↓",
+      "height": 44
+     },
+     {
+      "href": "unresolved.html",
+      "label": "Unresolved & limitations →",
+      "height": 44
+     },
+     {
+      "href": "#unresolved-summary",
+      "label": "Why a pick can be missing ↓",
+      "height": 44
+     },
+     {
+      "href": "#unresolved-limits",
+      "label": "Visible limitations ↓",
+      "height": 44
+     },
+     {
+      "href": "matches.html",
+      "label": "All matches →",
+      "height": 44
+     },
+     {
+      "href": "review.html",
+      "label": "Flagged for review →",
+      "height": 44
+     },
+     {
+      "href": "#unresolved-summary",
+      "label": "unresolved section below",
+      "height": 15
+     },
+     {
+      "href": "unresolved.html",
+      "label": "unresolved page",
+      "height": 15
+     },
+     {
+      "href": "matches.html",
+      "label": "All matches",
+      "height": 32
+     }
+    ],
+    "quicknavTop": 300,
+    "quicknavVisible": true,
+    "quicknavInsideDetails": false,
+    "quicknavLinks": [
+     {
+      "href": "picks.html",
+      "label": "Updated picks →",
+      "height": 40
+     },
+     {
+      "href": "#unresolved-limits",
+      "label": "Unresolved & limits ↓",
+      "height": 40
+     }
+    ],
+    "staleHidden": true,
+    "staleDisplay": "none",
+    "completeness": "Every one of the 29 open matches has a pick, and every pick carries a win probability.",
+    "firstPickTop": 360,
+    "firstProbabilityTop": 454,
+    "unresolvedSectionPresent": true,
+    "unresolvedLinkPresent": true,
+    "tabBarTop": 783
+   },
+   "picks": {
+    "overflow": false,
+    "visibleRows": 29,
+    "firstRowTop": 517,
+    "hotspawnLinks": 29,
+    "externalSourceLinks": 38,
+    "unresolvedLimitLink": true
+   },
+   "unresolved": {
+    "overflow": false,
+    "ladderItems": 8,
+    "hasLimitationsText": true,
+    "backToSummary": true
+   }
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "index": {
+    "overflow": false,
+    "execBarTop": 510,
+    "execBarVisible": true,
+    "execBarInsideDetails": false,
+    "execLinks": [
+     {
+      "href": "picks.html",
+      "label": "Updated picks →",
+      "height": 44
+     },
+     {
+      "href": "#picks-at-a-glance",
+      "label": "Every pick on this page ↓",
+      "height": 44
+     },
+     {
+      "href": "unresolved.html",
+      "label": "Unresolved & limitations →",
+      "height": 44
+     },
+     {
+      "href": "#unresolved-summary",
+      "label": "Why a pick can be missing ↓",
+      "height": 44
+     },
+     {
+      "href": "#unresolved-limits",
+      "label": "Visible limitations ↓",
+      "height": 44
+     },
+     {
+      "href": "matches.html",
+      "label": "All matches →",
+      "height": 44
+     },
+     {
+      "href": "review.html",
+      "label": "Flagged for review →",
+      "height": 44
+     },
+     {
+      "href": "#unresolved-summary",
+      "label": "unresolved section below",
+      "height": 17
+     },
+     {
+      "href": "unresolved.html",
+      "label": "unresolved page",
+      "height": 17
+     },
+     {
+      "href": "matches.html",
+      "label": "All matches",
+      "height": 17
+     }
+    ],
+    "quicknavTop": 0,
+    "quicknavVisible": false,
+    "quicknavInsideDetails": false,
+    "quicknavLinks": [
+     {
+      "href": "picks.html",
+      "label": "Updated picks →",
+      "height": 0
+     },
+     {
+      "href": "#unresolved-limits",
+      "label": "Unresolved & limits ↓",
+      "height": 0
+     }
+    ],
+    "staleHidden": true,
+    "staleDisplay": "none",
+    "completeness": "Every one of the 29 open matches has a pick, and every pick carries a win probability.",
+    "firstPickTop": 0,
+    "firstProbabilityTop": 0,
+    "unresolvedSectionPresent": true,
+    "unresolvedLinkPresent": true,
+    "tabBarTop": 0
+   },
+   "picks": {
+    "overflow": false,
+    "visibleRows": 29,
+    "firstRowTop": 645,
+    "hotspawnLinks": 29,
+    "externalSourceLinks": 38,
+    "unresolvedLimitLink": true
+   },
+   "unresolved": {
+    "overflow": false,
+    "ladderItems": 8,
+    "hasLimitationsText": true,
+    "backToSummary": true
+   }
+  },
+  {
+   "width": 1440,
+   "height": 900,
+   "index": {
+    "overflow": false,
+    "execBarTop": 461,
+    "execBarVisible": true,
+    "execBarInsideDetails": false,
+    "execLinks": [
+     {
+      "href": "picks.html",
+      "label": "Updated picks →",
+      "height": 44
+     },
+     {
+      "href": "#picks-at-a-glance",
+      "label": "Every pick on this page ↓",
+      "height": 44
+     },
+     {
+      "href": "unresolved.html",
+      "label": "Unresolved & limitations →",
+      "height": 44
+     },
+     {
+      "href": "#unresolved-summary",
+      "label": "Why a pick can be missing ↓",
+      "height": 44
+     },
+     {
+      "href": "#unresolved-limits",
+      "label": "Visible limitations ↓",
+      "height": 44
+     },
+     {
+      "href": "matches.html",
+      "label": "All matches →",
+      "height": 44
+     },
+     {
+      "href": "review.html",
+      "label": "Flagged for review →",
+      "height": 44
+     },
+     {
+      "href": "#unresolved-summary",
+      "label": "unresolved section below",
+      "height": 17
+     },
+     {
+      "href": "unresolved.html",
+      "label": "unresolved page",
+      "height": 17
+     },
+     {
+      "href": "matches.html",
+      "label": "All matches",
+      "height": 17
+     }
+    ],
+    "quicknavTop": 0,
+    "quicknavVisible": false,
+    "quicknavInsideDetails": false,
+    "quicknavLinks": [
+     {
+      "href": "picks.html",
+      "label": "Updated picks →",
+      "height": 0
+     },
+     {
+      "href": "#unresolved-limits",
+      "label": "Unresolved & limits ↓",
+      "height": 0
+     }
+    ],
+    "staleHidden": true,
+    "staleDisplay": "none",
+    "completeness": "Every one of the 29 open matches has a pick, and every pick carries a win probability.",
+    "firstPickTop": 0,
+    "firstProbabilityTop": 0,
+    "unresolvedSectionPresent": true,
+    "unresolvedLinkPresent": true,
+    "tabBarTop": 0
+   },
+   "picks": {
+    "overflow": false,
+    "visibleRows": 29,
+    "firstRowTop": 559,
+    "hotspawnLinks": 29,
+    "externalSourceLinks": 38,
+    "unresolvedLimitLink": true
+   },
+   "unresolved": {
+    "overflow": false,
+    "ladderItems": 8,
+    "hasLimitationsText": true,
+    "backToSummary": true
+   }
+  }
+ ],
+ "ctaNavigation": {
+  "url": "/MaltaProj4/picks.html",
+  "heading": "Updated CS2 picks."
+ }
+}

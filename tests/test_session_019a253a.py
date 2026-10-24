@@ -43,6 +43,7 @@ What this suite proves, and why
 """
 import copy
 import json
+import re
 import unittest
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -227,6 +228,128 @@ class RegistriesAgree(unittest.TestCase):
     def test_every_published_method_maps_to_a_ladder_rung(self):
         keys = {step['key'] for step in summary.ladder_rows()}
         self.assertLessEqual(set(summary.METHOD_STEP.values()), keys)
+
+
+class StylesheetIntegrity(unittest.TestCase):
+    """A stylesheet that ends inside a media block silently disables phone CSS.
+
+    Session 019a253a measured this on the 2026-10-24 build: one unclosed
+    ``@media(max-width:650px) and (max-height:700px)`` block meant every rule
+    after it only applied on screens 700px tall or less, so a 390x844 phone never
+    received the phone layout (first pick card at y=723 instead of y=324).
+    """
+
+    COPIES = ('site/assets/style.css', 'assets/style.css')
+
+    def test_both_published_copies_are_byte_identical(self):
+        texts = [(ROOT / name).read_text() for name in self.COPIES]
+        self.assertEqual(texts[0], texts[1],
+                         'the source stylesheet and the published root copy must match')
+
+    def test_no_block_is_left_open_at_end_of_file(self):
+        text = (ROOT / 'site' / 'assets' / 'style.css').read_text()
+        stripped = re.sub(r'/\*.*?\*/', '', text, flags=re.S)          # comments
+        stripped = re.sub(r'"[^"\n]*"|\'[^\'\n]*\'', '', stripped)      # quoted values
+        depth = 0
+        for index, character in enumerate(stripped):
+            if character == '{':
+                depth += 1
+            elif character == '}':
+                depth -= 1
+                self.assertGreaterEqual(depth, 0,
+                    'unbalanced closing brace at offset %d' % index)
+        self.assertEqual(depth, 0,
+            'the stylesheet ends inside an open block; every rule after it is gated to that block')
+
+    def test_phone_media_queries_are_closed_where_they_open(self):
+        # A cheap structural check: each @media query's braces must close before
+        # the next top-level @media, which is what the unclosed block broke.
+        text = (ROOT / 'site' / 'assets' / 'style.css').read_text()
+        stripped = re.sub(r'/\*.*?\*/', '', text, flags=re.S)
+        depth = 0
+        for match in re.finditer(r'@media[^{]*\{', stripped):
+            start = match.end() - 1
+            depth = 0
+            for character in stripped[start:]:
+                depth += 1 if character == '{' else (-1 if character == '}' else 0)
+                if depth == 0:
+                    break
+            self.assertEqual(depth, 0, 'unclosed @media block: %s' % match.group(0).strip())
+
+
+class RegisteredAliasesReplayInTheIndependentVerifier(unittest.TestCase):
+    """A documented alias must be reproducible by the independent re-derivation.
+
+    Session 019a253a: fixture 1083121 (Projeto do KinGui vs MEIA NOITE) published
+    a Polymarket price under Polymarket's own label "Tropa do KinGui". The mapping
+    is registered in data/identities.json with primary sources, and PR #266
+    aligned the verifier on the full contract: an alias is honoured only when the
+    *evidence record itself* carries a receipted identity source (https source and
+    written basis) **and** the same label pair belongs to a group in the committed
+    register. This suite pins both halves, so neither a receipt without a register
+    entry nor a register entry without a receipt can silently price a row.
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        import importlib.util
+        spec = importlib.util.spec_from_file_location(
+            'verify_0cc1138a_alias', ROOT / 'research' / 'session-0cc1138a' / 'verify_0cc1138a.py')
+        cls.verifier = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(cls.verifier)
+
+    def sourced_entries(self):
+        register = json.loads((ROOT / 'data' / 'identities.json').read_text())
+        return [e for e in register['aliases']
+                if str(e.get('source') or '').startswith('https://')
+                and len(str(e.get('basis') or '')) > 40 and e.get('names')]
+
+    def test_every_sourced_register_group_is_receipted(self):
+        entries = self.sourced_entries()
+        self.assertGreaterEqual(len(entries), 20)
+        for entry in entries:
+            groups = self.verifier.alias_groups({'identity_sources': [entry]})
+            self.assertEqual(len(groups), 1, entry['canonical'])
+            for name in [entry['canonical']] + list(entry['names']):
+                self.assertIn(self.verifier.norm(name), groups[0], entry['canonical'])
+
+    def test_a_register_entry_without_a_receipt_is_refused(self):
+        # Choose a register pair that prefix matching cannot already bridge
+        # (Tropa do KinGui / Projeto do KinGui), otherwise the assertion would
+        # pass for the wrong reason.
+        pair = None
+        for entry in self.sourced_entries():
+            for name in entry['names']:
+                if not self.verifier.same_team(entry['canonical'], name):
+                    pair = (entry['canonical'], name)
+                    break
+            if pair:
+                break
+        self.assertIsNotNone(pair, 'the register must contain at least one non-prefix alias')
+        self.assertEqual(self.verifier.alias_groups({}), [])
+        self.assertEqual(self.verifier.alias_groups({'identity_sources': []}), [])
+        # No receipt: the two labels must not be treated as one team.
+        self.assertFalse(self.verifier.same_team(*pair))
+        # With the receipt they are, which is the contract that prices the row.
+        entry = next(e for e in self.sourced_entries() if e['canonical'] == pair[0])
+        self.assertEqual(len(self.verifier.alias_groups({'identity_sources': [entry]})), 1)
+
+    def test_an_unregistered_or_unreceipted_alias_is_refused(self):
+        self.assertFalse(self.verifier.same_team('Projeto do KinGui', 'Some Other Club'))
+        self.assertEqual(self.verifier.alias_groups(
+            {'identity_sources': [{'names': ['A', 'B'], 'source': 'https://example.org/x', 'basis': 'x'}]}), [])
+
+    def test_the_published_row_that_used_the_alias_still_replays(self):
+        row = next((m for m in SNAPSHOT['matches'] if m['id'] == '1083121'), None)
+        if row is None or row.get('method') != 'exchange':
+            self.skipTest('fixture 1083121 is not on this snapshot as an exchange row')
+        ev = row['evidence'][0]
+        labels = json.loads(ev['raw']['outcomes'])
+        prices = [0.615, 0.385]
+        self.assertEqual(self.verifier.order_prices(labels, prices, row['teams'], ev=ev), prices)
+        with self.assertRaises(ValueError):
+            # Without the row's receipt the same labels cannot be mapped.
+            self.verifier.order_prices(labels, prices, row['teams'])
 
 
 class MobileEntryPoint(unittest.TestCase):

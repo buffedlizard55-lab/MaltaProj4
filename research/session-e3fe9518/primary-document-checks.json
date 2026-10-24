@@ -1,0 +1,37 @@
+{
+  "checked_at": "2026-10-24T06:36:57.174647+00:00",
+  "retrieval_method": "Successful gh api GitHub Contents API calls using application/vnd.github.raw+json at the immutable commit; no source values inferred",
+  "commit": "eec4853d7bcf0f1f7efe7f0d901234bef7e98b75",
+  "documents": [
+    {
+      "api_url": "https://api.github.com/repos/ValveSoftware/counter-strike_regional_standings/contents/live/2026/standings_global_2026_10_05.md?ref=eec4853d7bcf0f1f7efe7f0d901234bef7e98b75",
+      "official_url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+      "sha256": "df96e7fc3cd91a2687ec08cac0128e50cc4e4e55346581679572e881d79ae61b",
+      "bytes": 77872
+    },
+    {
+      "api_url": "https://api.github.com/repos/ValveSoftware/counter-strike_regional_standings/contents/model/fit.js?ref=eec4853d7bcf0f1f7efe7f0d901234bef7e98b75",
+      "official_url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/model/fit.js",
+      "sha256": "89a1fbd2396b69ea4463cf8c12034e9cd872733cef6ae774c9a215dfdde11dd0",
+      "bytes": 5744
+    },
+    {
+      "api_url": "https://api.github.com/repos/ValveSoftware/counter-strike_regional_standings/contents/model/glicko.js?ref=eec4853d7bcf0f1f7efe7f0d901234bef7e98b75",
+      "official_url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/model/glicko.js",
+      "sha256": "516206722f8f75463a9b39f8bc7e911a22c15023f0b2bfce4dbc06c2cc85afbd",
+      "bytes": 4036
+    },
+    {
+      "api_url": "https://api.github.com/repos/ValveSoftware/counter-strike_regional_standings/contents/model/team.js?ref=eec4853d7bcf0f1f7efe7f0d901234bef7e98b75",
+      "official_url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/model/team.js",
+      "sha256": "2bd63b09711c8f86f40002afdbc985dd4268a8cc5ee75098ac4963038ff39a01",
+      "bytes": 13058
+    },
+    {
+      "api_url": "https://api.github.com/repos/ValveSoftware/counter-strike_regional_standings/contents/modelfit.png?ref=eec4853d7bcf0f1f7efe7f0d901234bef7e98b75",
+      "official_url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/modelfit.png",
+      "sha256": "c8fc0fd54d38b33b289844caa713d387b1289fba5604fe2d507c0b1ed11c09cf",
+      "bytes": 18741
+    }
+  ]
+}

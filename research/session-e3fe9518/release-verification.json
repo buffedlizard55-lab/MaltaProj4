@@ -1,0 +1,95 @@
+{
+  "checked_at": "2026-10-24T08:19:29.755686+00:00",
+  "integrated_main": "0fc34cd",
+  "tested_source_revision": "5c18911e2e490639f20a9ac8663849346809cb8c",
+  "build_source_revision": "5c18911e2e490639f20a9ac8663849346809cb8c",
+  "unit_tests": 1472,
+  "unit_skipped": 1,
+  "own_supplemental_tests": 43,
+  "audit_tests": 9,
+  "integrity_tests": 5,
+  "c6_tests": 12,
+  "c6_independent_failures": 0,
+  "browser_suites_passed": 11,
+  "own_clock_runs_passed": 3,
+  "own_viewports_per_clock_run": 4,
+  "browser_pass_messages": 14,
+  "clock_run_scope": [
+    "Local canonical snapshot clock",
+    "Local canonical simulated +300min, explicitly not live",
+    "Local canonical actual device clock, explicitly not public Pages proof"
+  ],
+  "source_audit_errors": 0,
+  "rows": 92,
+  "open_at_build": 29,
+  "current_picks": 29,
+  "current_probability_pairs": 29,
+  "not_open": 63,
+  "unresolved": 0,
+  "source_kind_counts": {
+    "hltv_mirror_model": 3,
+    "not_open": 63,
+    "official_input_model": 6,
+    "operator_market": 17,
+    "third_party_listing": 3
+  },
+  "official_file_model_rows_crosschecked": 6,
+  "upstream_review_notes_preserved": 221,
+  "own_review_notes": 3,
+  "validator": {
+    "pages": 15,
+    "rows": 92,
+    "calculations": 29,
+    "links_and_assets": 862,
+    "checksums": 20,
+    "displayed_rows": 230
+  },
+  "source_snapshot_generated_at": "2026-10-24T06:19:43.492019Z",
+  "fixtures_observed_at": "2026-10-24T06:16:00.648005Z",
+  "built_at": "2026-10-24T08:15:30.323828Z",
+  "snapshot_sha256": "d78762e61abff806b81c973c532c599db762cd920c7f990735cece392e8b659d",
+  "source_preservation": "Every raw fixture fact, observation/receipt/evidence field and source timestamp is identical to the original 06:19 capture. Only built_at plus six derived fields on exactly two passed-lock rows change; all other rows remain identical. No price refreshed or invented.",
+  "lock_derived_withdrawals": [
+    {
+      "id": "1079193",
+      "teams": [
+        "FOKUS",
+        "ex-6666"
+      ],
+      "lock": "2026-10-24T07:54:00Z",
+      "changed_derived_fields": [
+        "fair_odds",
+        "method",
+        "pick",
+        "probabilities",
+        "reason",
+        "state"
+      ]
+    },
+    {
+      "id": "1079658",
+      "teams": [
+        "Acend",
+        "FORZE Reload"
+      ],
+      "lock": "2026-10-24T07:54:00Z",
+      "changed_derived_fields": [
+        "fair_odds",
+        "method",
+        "pick",
+        "probabilities",
+        "reason",
+        "state"
+      ]
+    }
+  ],
+  "live_publication": "Pending merged-release verification. Branch audits of observed production never prove this unmerged release is deployed.",
+  "non_executable_integration_after_full_browser_run": "0fc34cd changes only COORDINATION and dated e9be3e6b reports/measurements/audit receipts; production code, source snapshot and every public byte are unchanged.",
+  "checked_at_after_docs_only_integration": "2026-10-24T08:24:54.442823+00:00",
+  "full_unit_repeat_after_docs_only_integration": {
+    "tests": 1472,
+    "skipped": 1,
+    "result": "OK",
+    "tested_revision": "a7ed8d6bd155f9e42eadd3af80f5531b93805f47"
+  }
+}

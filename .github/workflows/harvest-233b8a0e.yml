@@ -1,0 +1,102 @@
+name: Fresh coverage harvest 233b8a0e (non-publishing)
+
+# Session 233b8a0e. The authoring sandbox reaches GitHub and package registries
+# only (measured: hltv.org, gamma-api.polymarket.com and play.hotspawn.com all
+# fail TLS/egress from it), so a real refresh has to run on a GitHub runner.
+# This workflow never deploys Pages and never pushes a board to main: it keeps
+# dated receipts (snapshot, refresh/quarantine/build logs, the independent row
+# audit and the every-match coverage report) beside the fixed session branch so
+# the integration step can copy and re-verify them locally.
+on:
+  push:
+    branches: [arena/233b8a0e-maltaproj4]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: coverage-harvest-233b8a0e
+  cancel-in-progress: false
+
+jobs:
+  capture:
+    if: github.ref == 'refs/heads/arena/233b8a0e-maltaproj4' && (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[harvest]'))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+          cache: npm
+      - run: pip install -r requirements.txt
+      - run: npm ci --ignore-scripts
+      - name: Refresh Hotspawn, Polymarket, HLTV, Pinnacle, books and Valve sources
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p runtime research/harvest-233b8a0e
+          python -m scripts.refresh --output runtime/latest.json 2>&1 | tee research/harvest-233b8a0e/refresh.log
+          cp runtime/latest.json research/harvest-233b8a0e/snapshot-raw.json
+      - name: Quarantine any row the independent evidence replay cannot reproduce
+        run: python -m scripts.quarantine runtime/latest.json 2>&1 | tee research/harvest-233b8a0e/quarantine.log
+      - name: Independently audit every refreshed row
+        run: |
+          python verification-c6/audit_snapshot.py runtime/latest.json --output runtime/independent-row-audit.md
+          cp runtime/independent-row-audit.md research/harvest-233b8a0e/independent-row-audit.md
+      - name: Every-match coverage and unresolved ledger (rung by rung)
+        run: |
+          python -m scripts.coverage_233b8a0e --snapshot runtime/latest.json --output research/harvest-233b8a0e 2>&1 | tee research/harvest-233b8a0e/coverage.log
+          cp runtime/latest.json research/harvest-233b8a0e/snapshot.json
+      - name: Build and validate the fresh candidate exactly as publication does
+        run: |
+          python -m scripts.build --data runtime/latest.json 2>&1 | tee research/harvest-233b8a0e/build.log
+          python -m scripts.validate --data runtime/latest.json 2>&1 | tee research/harvest-233b8a0e/validate.log
+          python verification-c6/audit_snapshot.py public/data/latest.json --output research/harvest-233b8a0e/published-row-audit.md
+      - name: Phone, desktop, accessibility and exact expiry checks
+        run: npm run test:browser 2>&1 | tee research/harvest-233b8a0e/browser.log
+      - name: Record runner identity without changing source timestamps
+        env:
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+          RUN_SHA: ${{ github.sha }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          receipt = {'workflow_run_id': os.environ['RUN_ID'], 'attempt': os.environ['RUN_ATTEMPT'],
+                     'checkout_sha': os.environ['RUN_SHA'], 'run_url': os.environ['RUN_URL'],
+                     'publishes_pages': False,
+                     'snapshot': 'research/harvest-233b8a0e/snapshot.json'}
+          Path('research/harvest-233b8a0e/run.json').write_text(json.dumps(receipt, indent=1) + '\n')
+          PY
+      - name: Commit only the dated research receipts to the fixed session branch
+        run: |
+          git config user.name "cs2-evidence-runner"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- research/harvest-233b8a0e
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Retain fresh coverage harvest from run ${GITHUB_RUN_ID} [skip ci]"
+          for attempt in 1 2 3; do
+            git pull --rebase --autostash origin arena/233b8a0e-maltaproj4 && git push origin HEAD:arena/233b8a0e-maltaproj4 && exit 0
+            git rebase --abort >/dev/null 2>&1 || true
+            sleep $((attempt * 5))
+          done
+          echo "::warning::Could not push the harvest receipt after three attempts."
+      - name: Retain candidate and audit artifacts even when a gate fails
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: coverage-harvest-233b8a0e-${{ github.run_id }}
+          path: |
+            research/harvest-233b8a0e
+            runtime/latest.json
+            runtime/independent-row-audit.md
+            public/build-info.json
+          retention-days: 14
