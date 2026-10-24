@@ -4,7 +4,7 @@
 
 Passed: 32 page/viewport accessibility and no-overflow scans, 320/390/768/1440px layout, subpath URLs, navigation, filters, six legacy redirects, evidence anchors and expiry.
 Passed: seven board expiry scenarios (including live No percentage filter/count updates) plus four research-quote boundary/future-clock scenarios.
-Passed: phone-first summary on 3 viewports (320x568 y=336, 390x844 y=360, 412x915 y=360), pick board clear of the tab bar, and the 9-rung fallback ladder with counts totalling 22.
+Passed: phone-first summary on 3 viewports (320x568 y=371, 390x844 y=406, 412x915 y=406), pick board clear of the tab bar, and the 9-rung fallback ladder with counts totalling 22.
 Passed: freshness clock on 2 viewports x 3 snapshot ages (6 reads) and the phone pick board's per-row observation/expiry times — the advertised slot is always ahead of the reader and the snapshot age is always stated.
 Passed: count-aware runtime summary copy; first pick and both probabilities above the 320x568 phone tab bar; post-board filters and 390px layout.
 Passed: eight phone/desktop/queue/unresolved-summary/research expiry and live-count scenarios.

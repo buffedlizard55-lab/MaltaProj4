@@ -1,1 +1,1 @@
-{"audit_at": "2026-10-24T16:28:49.242252Z", "inventory_fresh": true, "counts": {"total": 83, "open_now": 22, "market": 19, "model": 3, "research_only": 0, "unresolved": 0, "expired": 0, "not_open": 61, "actionable": 22}, "problems": []}
+{"audit_at": "2026-10-24T16:51:24.657967Z", "inventory_fresh": true, "counts": {"total": 83, "open_now": 22, "market": 18, "model": 4, "research_only": 0, "unresolved": 0, "expired": 0, "not_open": 61, "actionable": 22}, "problems": []}

@@ -1,20 +1,20 @@
 {
- "snapshot_generated_at": "2026-10-24T16:28:49.053341Z",
- "fixtures_observed_at": "2026-10-24T16:25:19.498068Z",
+ "snapshot_generated_at": "2026-10-24T16:51:24.303397Z",
+ "fixtures_observed_at": "2026-10-24T16:47:54.250154Z",
  "coverage": "verified",
- "observed_utc": "2026-10-24T16:25:19.498068Z",
+ "observed_utc": "2026-10-24T16:47:54.250154Z",
  "rows_total": 83,
  "rows_past_dated": 61,
  "rows_open": 22,
- "open_with_pick": 21,
+ "open_with_pick": 22,
  "open_with_probability": 22,
  "open_research_only": 0,
- "open_unresolved": 1,
+ "open_unresolved": 0,
  "rungs": [
   {
    "method": "exchange",
    "label": "Polymarket exchange line, strict gate",
-   "rows": 15,
+   "rows": 14,
    "ids": [
     "1079661",
     "1081154",
@@ -24,7 +24,6 @@
     "1082996",
     "1079198",
     "1079199",
-    "1079200",
     "1081158",
     "1082861",
     "1082897",
@@ -66,8 +65,9 @@
   {
    "method": "model_vrs",
    "label": "Our own Valve-VRS model line",
-   "rows": 2,
+   "rows": 3,
    "ids": [
+    "1079200",
     "1082792",
     "1082793"
    ]
@@ -106,25 +106,5 @@
   }
  ],
  "unknown_methods": [],
- "unresolved_ledger": [
-  {
-   "id": "1079200",
-   "teams": [
-    "Color",
-    "ex-Zero Tenacity"
-   ],
-   "start": "2026-10-25T18:00:00Z",
-   "competition": "NODWIN Clutch Series #13",
-   "source_url": "https://www.hotspawn.com/matches/color-vs-ex-zero-tenacity-nodwin-clutch-series-13-1079200",
-   "reason": "Equal verified prices; no directional edge.",
-   "attempts": [
-    {
-     "provider": "Polymarket",
-     "status": "resolved",
-     "reason": "Exact pair and UTC start; two-way series winner validated.",
-     "url": "https://gamma-api.polymarket.com/markets/6072812"
-    }
-   ]
-  }
- ]
+ "unresolved_ledger": []
 }

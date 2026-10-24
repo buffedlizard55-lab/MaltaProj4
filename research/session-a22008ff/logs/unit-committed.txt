@@ -1,7 +1,7 @@
-.............................................................................................................................................................................................................................................................No refreshed snapshot at /tmp/tmpo_n8fqa2/nope.json; nothing to harvest.
-..........................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................Built 9 primary pages + 6 legacy redirects; 92 sourced rows, 0 with percentages, 22 without percentages, 22 unresolved.
+.............................................................................................................................................................................................................................................................No refreshed snapshot at /tmp/tmpapjk4jbc/nope.json; nothing to harvest.
+...........................................................................................................................................................................................F..............................................................................................................................................................................................................................F...............................................................................................................................................................Built 9 primary pages + 6 legacy redirects; 92 sourced rows, 0 with percentages, 22 without percentages, 22 unresolved.
 .........................Built 9 primary pages + 6 legacy redirects; 92 sourced rows, 0 with percentages, 22 without percentages, 22 unresolved.
-..............................................................................................s..........................................................................................................................................................................................................................................................................................................................................................................................................................................Built 9 primary pages + 6 legacy redirects; 92 sourced rows, 29 with percentages, 0 without percentages, 0 unresolved.
+..............................................................................................s..................................................................................................................................................................................................................F.........................................................................F.............................................................................................................................................Built 9 primary pages + 6 legacy redirects; 92 sourced rows, 29 with percentages, 0 without percentages, 0 unresolved.
 {
  "coverage": "verified",
  "coverage_counts": {
@@ -96,7 +96,7 @@ Built 9 primary pages + 6 legacy redirects; 1 sourced rows, 0 with percentages, 
   "files_checked": 20,
   "snapshot_generated_at": "2026-10-22T07:49:59.960210Z",
   "fixtures_observed_at": "2026-10-22T07:44:36.467004Z",
-  "live_manifest_sha256": "a75d59a3b56a94bd08a3027c00ad8c828c02cdc09cc7d836562dbaf5819f8e85",
+  "live_manifest_sha256": "967aa310b5f3a2409a82f156503b3a0f19267ae3d889bdeaa2877dd7ed1958f3",
   "snapshot_sha256": "9c6f1c7e1944447d6618d767299418f4f2a6a5d904cbfa49e5d8aebc009ebb67",
   "snapshot_counts": {
     "feed_rows": 107,
@@ -110,11 +110,11 @@ Built 9 primary pages + 6 legacy redirects; 1 sourced rows, 0 with percentages, 
     "research_only": 6,
     "unresolved": 1
   },
-  "run_id": "40111407958",
+  "run_id": "40113115243",
   "note": "Exact public bytes; no source/quote timestamp was renewed."
 }
 Built 9 primary pages + 6 legacy redirects; 107 sourced rows, 0 with percentages, 25 without percentages, 25 unresolved.
-receipt: /tmp/tmphea9u44c/audit-receipt.json
+receipt: /tmp/tmpzc_ik47g/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -126,7 +126,7 @@ receipt: /tmp/tmphea9u44c/audit-receipt.json
  "unresolved_listed_on_both_pages": 25
 }
 checks: 282  failures: 0
-receipt: /tmp/tmphea9u44c/audit-receipt.json
+receipt: /tmp/tmpzc_ik47g/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -139,7 +139,7 @@ receipt: /tmp/tmphea9u44c/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved probabilities must be None
-receipt: /tmp/tmphea9u44c/audit-receipt.json
+receipt: /tmp/tmpzc_ik47g/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -152,7 +152,7 @@ receipt: /tmp/tmphea9u44c/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved fair_odds must be None
-receipt: /tmp/tmphea9u44c/audit-receipt.json
+receipt: /tmp/tmpzc_ik47g/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -165,7 +165,7 @@ receipt: /tmp/tmphea9u44c/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved method must be None
-receipt: /tmp/tmphea9u44c/audit-receipt.json
+receipt: /tmp/tmpzc_ik47g/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -178,7 +178,7 @@ receipt: /tmp/tmphea9u44c/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved row lacks its limitation
-receipt: /tmp/tmphea9u44c/audit-receipt.json
+receipt: /tmp/tmpzc_ik47g/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -191,7 +191,7 @@ receipt: /tmp/tmphea9u44c/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved row lacks source attempts
-receipt: /tmp/tmphea9u44c/audit-receipt.json
+receipt: /tmp/tmpzc_ik47g/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -207,9 +207,61 @@ FAIL: 1082769 K27 vs NEXORA: unresolved row lacks official fixture URL
 Built 9 primary pages + 6 legacy redirects; 107 sourced rows, 0 with percentages, 0 without percentages, 0 unresolved.
 Built 9 primary pages + 6 legacy redirects; 107 sourced rows, 36 with percentages, 7 without percentages, 1 unresolved.
 Built 9 primary pages + 6 legacy redirects; 107 sourced rows, 0 with percentages, 25 without percentages, 25 unresolved....................................................................................................................
+======================================================================
+FAIL: test_independent_line_by_line_auditor_passes_and_catches_corruptions (test_session_071642e7.Session071642e7VerificationTests.test_independent_line_by_line_auditor_passes_and_catches_corruptions)
 ----------------------------------------------------------------------
-Ran 1484 tests in 34.858s
+Traceback (most recent call last):
+  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_071642e7.py", line 111, in test_independent_line_by_line_auditor_passes_and_catches_corruptions
+    self.assertEqual(receipt['errors'], [])
+AssertionError: Lists differ: ['SHA-256 mismatch in build-info.json for assets/style.css'] != []
 
-OK (skipped=1)
+First list contains 1 additional elements.
+First extra element 0:
+'SHA-256 mismatch in build-info.json for assets/style.css'
+
+- ['SHA-256 mismatch in build-info.json for assets/style.css']
++ []
+
+======================================================================
+FAIL: test_the_manifest_describes_the_css_that_ships (test_session_35c6e1e9.RootFallbackCannotDivergePairedAssets.test_the_manifest_describes_the_css_that_ships)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_35c6e1e9.py", line 544, in test_the_manifest_describes_the_css_that_ships
+    self.assertEqual(man['files']['assets/style.css'], shipped)
+AssertionError: '7a68a91d2641db0fa40cc4cf9ea098f21faca69fffea2ac0b5a99db490848050' != 'e05425d735977c904fb263249c63b0932ced9676200a6d56d8d9848211a6ccc5'
+- 7a68a91d2641db0fa40cc4cf9ea098f21faca69fffea2ac0b5a99db490848050
++ e05425d735977c904fb263249c63b0932ced9676200a6d56d8d9848211a6ccc5
+
+
+======================================================================
+FAIL: test_appliers_leave_identities_untouched_and_independent_audit_passes (test_session_cf8f94b9.TestWorkingTreeCleanlinessAndIndependentAudit.test_appliers_leave_identities_untouched_and_independent_audit_passes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_cf8f94b9.py", line 137, in test_appliers_leave_identities_untouched_and_independent_audit_passes
+    self.assertEqual(report['problems'], [])
+AssertionError: Lists differ: ['SHA-256 mismatch on assets/style.css'] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+'SHA-256 mismatch on assets/style.css'
+
+- ['SHA-256 mismatch on assets/style.css']
++ []
+
+======================================================================
+FAIL: test_manifest_sha_matches_shipped_css (test_session_dddcb90d.StalePhoneLayoutFix.test_manifest_sha_matches_shipped_css)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_dddcb90d.py", line 110, in test_manifest_sha_matches_shipped_css
+    self.assertEqual(man['files']['assets/style.css'], shipped)
+AssertionError: '7a68a91d2641db0fa40cc4cf9ea098f21faca69fffea2ac0b5a99db490848050' != 'e05425d735977c904fb263249c63b0932ced9676200a6d56d8d9848211a6ccc5'
+- 7a68a91d2641db0fa40cc4cf9ea098f21faca69fffea2ac0b5a99db490848050
++ e05425d735977c904fb263249c63b0932ced9676200a6d56d8d9848211a6ccc5
+
+
+----------------------------------------------------------------------
+Ran 1484 tests in 41.766s
+
+FAILED (failures=4, skipped=1)
 
 coverage: 29 open · 29 with a pick · 29 with a win probability

@@ -1,8 +1,12 @@
-{
-  "rows_verified_against_primary_snapshot": 92,
-  "probability_calculations_reproduced": 29,
-  "pages": 15,
-  "internal_links_and_assets_checked": 858,
-  "artifact_checksums_verified": 20,
-  "displayed_match_rows_verified": 227
-}
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/runner/work/MaltaProj4/MaltaProj4/scripts/validate.py", line 603, in <module>
+    main()
+  File "/home/runner/work/MaltaProj4/MaltaProj4/scripts/validate.py", line 596, in main
+    report = validate_data(json.loads(Path(args.data).read_text())) | validate_site(args.site)
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/MaltaProj4/MaltaProj4/scripts/validate.py", line 585, in validate_site
+    assert hashlib.sha256(target.read_bytes()).hexdigest()==digest, 'Build manifest checksum mismatch: '+relative
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Build manifest checksum mismatch: assets/style.css
