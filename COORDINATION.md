@@ -21,6 +21,18 @@ Evidence rules unchanged: Hotspawn supplies fixture inventory only, never a prob
 
 ---
 
+### Session ac5bcb06 — second root cause: an ambient-state test (2026-10-24 17:40 UTC)
+
+PR [#282](https://github.com/buffedlizard55-lab/MaltaProj4/pull/282) merged (`ea4418c`) and session 6b8b4be0 landed an equivalent even-market repair at the same time
+(PR #281/#283; theirs keeps the neutral quote as `no_edge_lines` context and is what `main` now carries in `scripts/core.py`). `main` stayed red at the publisher:
+`pages.yml` runs 40113508445 (`c458f94`) and 40114235228 (`3cc4363`) still failed at *Keep the legacy main:/ root fallback* even though a real refresh on the same code passed
+the staged-root gate in my first diagnosis. The difference was measured by making the diagnosis workflow replicate `pages.yml` faithfully (cache baseline restored from `main`, quarantine, row audits,
+build, **`npm run test:browser`**, then stage the root): run [40115150627](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40115150627) reproduced **exactly one failure** in
+`tests/test_harvest_0e407ec7.py::SummariserTest::test_main_writes_summary_and_reports_digests`: `['latest.json', 'published-row-audit.md'] != ['latest.json']`.
+`scripts/harvest_0e407ec7.main()` copies `runtime/published-row-audit.md` from the **current working directory**; that file only exists after the publisher's build step, so the
+test passed on every clean checkout and failed only inside the publisher, reddening the staged-root gate for any snapshot (not just this one).
+Repair: the test now runs `main()` from an empty temp directory. Demonstrated locally: with a stray `runtime/published-row-audit.md` the old test fails, the new one passes.
+
 ### Session ac5bcb06 — diagnosis and repair receipt (2026-10-24 17:00 UTC)
 
 **Root cause (measured on a real runner, receipts in `research/diag-ac5bcb06/`).** Run
