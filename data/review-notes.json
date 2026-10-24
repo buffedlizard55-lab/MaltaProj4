@@ -5168,5 +5168,89 @@
     "label": "Committed identity registry the alias group must appear in"
    }
   ]
+ },
+ {
+  "id": "session-bf1b12c7-root-gate-stranded-verified-artifact-2026-10-24",
+  "status": "Observed and repaired (session bf1b12c7) — the live board expired at 16:06Z because no fresh build had been deployed since 08:06Z",
+  "finding": "Read from the GitHub Actions API: every `Verify, refresh and publish CS2 Scout` run on main from 09:03Z (40080448344, 40082763751, 40084520702 and the scheduled 40097410704) failed at the step `Keep the legacy main:/ root fallback on the verified build`. That step runs the unit suite against the freshly refreshed snapshot, and two tests indexed fixtures that had rotated out of Hotspawn's scheduled feed (test_session_e9be3e6b on fixture 1081152, found by session e334b970 but never merged; test_session_35c6e1e9 on fixture 1083121, found by this session's harvest run 40112589540). Because the Pages artifact was uploaded only after that step, deploy was skipped every time, so the public site kept the 2026-10-24T08:06:51Z snapshot until its 8-hour window closed, and every pick was withheld (independent audit run 40110028068: 'Live snapshot is expired', actionable 0). Repair: both tests now read the rotated row from its retained capture or a live equivalent, and pages.yml uploads the verified artifact after every build/validator/row-audit/browser gate but BEFORE the root commit. Deploy then ships it even if the root step fails, and a final deploy step keeps the run red so a root-gate failure is never silent.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40097410704",
+    "label": "Scheduled publish run failing at the root-fallback step (deploy skipped)"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40110028068",
+    "label": "Independent audit: live snapshot expired"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40112589540",
+    "label": "bf1b12c7 harvest rehearsal naming the remaining rotated-fixture test"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/.github/workflows/pages.yml",
+    "label": "Repaired workflow order"
+   }
+  ]
+ },
+ {
+  "id": "session-bf1b12c7-even-exchange-line-falls-through-2026-10-24",
+  "status": "Observed and repaired (session bf1b12c7) — an even 0.50/0.50 market used to leave a row with no pick",
+  "finding": "On the 16:34Z live capture (harvest run 40111718546) Polymarket listed Color vs ex-Zero Tenacity (Hotspawn fixture 1079200) as market 6072812 at outcomePrices 0.5/0.5, bid 0.49 / ask 0.51, both team records 0-0. Before this repair a tight even market was published as a 50/50 probability with no pick. That stopped the row before HLTV, the bookmaker tiers and the VRS model could originate a pick, and it broke the board contracts that treat an open row without a pick as unresolved: 42 unit failures and 2 errors in the publisher rehearsal. Now an exactly even line in any market tier is kept as rejected evidence, numbers included, and the row continues down the ladder. On the 16:50Z capture (run 40113352989) the row went through HLTV (no numeric line), Pinnacle (no exact match), Thunderpick (no adapter), GG.BET (HTTP 403) and BO3.gg (no moneyline posted yet), and was then priced by the labelled VRS model: Color 68.8% / ex-Zero Tenacity 31.2%, from Valve's 2026-10-05 standings (Color 1249 points, rank 57; ex-Zero Tenacity 1066 points, rank 93). This is our originated line, not a market price. Please review whether a just-listed even market should instead be shown alongside the model line.",
+  "sources": [
+   {
+    "url": "https://www.hotspawn.com/matches/color-vs-ex-zero-tenacity-nodwin-clutch-series-13-1079200",
+    "label": "Official Hotspawn fixture 1079200"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/markets/6072812",
+    "label": "Polymarket market 6072812 (captured at 0.50/0.50)"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "label": "Valve official global standings 2026-10-05 (Color line 62, ex-Zero Tenacity line 98)"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/harvest-bf1b12c7/coverage-receipt.md",
+    "label": "Coverage receipt for the 16:50Z capture"
+   }
+  ]
+ },
+ {
+  "id": "session-bf1b12c7-phone-pick-below-fold-2026-10-24",
+  "status": "Observed and repaired (session bf1b12c7) — on a 320x844 phone the first pick sat below the first screen",
+  "finding": "Measured with the repository's Chromium on the 16:34Z capture: on picks.html at 320x844 the first card (Nuclear TigeRES vs ex-Zero Tenacity) broke '64.0%' across two lines, and its pick label was at y=863, below the probability, fair line and model line. That is off the first screen, and it failed tests/browser_f0814674.cjs. The short-phone rules (pick directly under the team names, percent sign kept with its number) only applied when the screen was 700px tall or less. They now apply at every phone height, so the pick is the first thing on each card.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/site/assets/style.css",
+    "label": "Canonical stylesheet (session bf1b12c7 block at the end)"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/tests/browser_f0814674.cjs",
+    "label": "Phone first-screen pick assertion"
+   }
+  ]
+ },
+ {
+  "id": "session-bf1b12c7-esportsbook-access-limits-2026-10-24",
+  "status": "Open limitation, not blocking — some esportsbooks cannot be read automatically",
+  "finding": "Measured on the 16:50Z capture's source receipts: GG.BET answered HTTP 403 after three paced waits, and so did the EGamersWorld book-listing recheck for fixture 1082792. Thunderpick's page loads, but no validated two-sided series price can be extracted without a browser-rendering adapter. HLTV's match pages expose no numeric two-way line in the response. BO3.gg lists some fixtures before any sportsbook moneyline is posted. Access controls are not bypassed. Low-tier rows therefore fall to the labelled VRS model (Valve's official standings) or to a research-only HLTV pick. Every open row on this capture still had a sourced pick and a win probability: 20/20, 0 unresolved.",
+  "sources": [
+   {
+    "url": "https://gg.bet/en/esports/counter-strike",
+    "label": "GG.BET CS2 (HTTP 403 to automation)"
+   },
+   {
+    "url": "https://thunderpick.io/esports/cs2-betting",
+    "label": "Thunderpick CS2"
+   },
+   {
+    "url": "https://www.hltv.org/matches",
+    "label": "HLTV matches"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/harvest-bf1b12c7/coverage-receipt.md",
+    "label": "Source read results with HTTP status"
+   }
+  ]
  }
 ]
