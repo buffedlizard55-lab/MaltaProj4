@@ -632,3 +632,49 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
   body[data-page="index"] #picks-at-a-glance{padding-top:0}
   body[data-page="index"] #picks-at-a-glance>.glance-list{margin-top:6px}
 }
+
+/* Session 233b8a0e (2026-10-24): the picks have to be findable from the first
+   screen, not after thirty-one cards. The always-visible executive summary is
+   pinned inside a full-height pick list by earlier sessions' measured layout,
+   so this block adds a separate, never-folded map of destinations directly
+   under the freshness strip: no number, no pick, five labelled 44px targets
+   that never require a horizontal swipe. Below 650px it is ordered between the
+   strip and the pick list, and the summary block keeps the slot directly after
+   the list. */
+.exec-quick{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin:0 0 16px}
+.exec-quick a{display:flex;align-items:center;justify-content:center;min-height:44px;padding:8px 10px;
+  border:1px solid #cad6cd;border-radius:9px;background:#fff;color:#255d3b;font-size:12.5px;
+  font-weight:650;text-align:center;line-height:1.25;text-decoration:none}
+.exec-quick a:hover,.exec-quick a:focus-visible{border-color:#255d3b;text-decoration:none}
+.exec-quick a.exec-quick-primary{background:var(--green);border-color:var(--green);color:#fff}
+@media(max-width:900px){
+  .exec-quick{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .exec-quick a.exec-quick-primary{grid-column:1/-1}
+}
+@media(max-width:650px){
+  .exec-quick{margin:0 0 10px;gap:7px}
+  body[data-page="index"] main>#exec-quick{order:4}
+  body[data-page="index"] main>#picks-at-a-glance{order:5}
+  body[data-page="index"] main>#exec-summary{order:6}
+  body[data-page="index"] main>#unresolved-picks{order:6}
+  body[data-page="index"] main>details.briefing-more{order:7}
+  body[data-page="index"] main>*{order:8}
+  /* Wrap instead of scrolling sideways: a phone must never need a hidden
+     horizontal swipe to discover the unresolved list. */
+  .exec-bar-links{flex-wrap:wrap;overflow-x:visible}
+  .exec-bar-links a{flex:1 1 46%;min-height:44px;white-space:normal;text-align:center;justify-content:center}
+  .exec-bar-link{white-space:normal;line-height:1.25}
+}
+/* A 568px-tall phone cannot hold five 44px destinations plus the first pick
+   card above the fixed tab bar (measured: card at 486px, its probability block
+   at 614px, tab bar at 507px). Keep the two destinations that are not already
+   in the always-visible bottom bar — the pick board and the unresolved list —
+   and let the tab bar carry Matches, Review and this page's own list. */
+@media(max-width:650px) and (max-height:700px){
+  .exec-quick{grid-template-columns:repeat(2,minmax(0,1fr));margin:0 0 4px}
+  .exec-quick a.exec-quick-primary{grid-column:auto}
+  .exec-quick a{min-height:44px;padding:4px 8px;font-size:12px;line-height:1.15}
+  .exec-quick a[href="#picks-at-a-glance"],
+  .exec-quick a[href="matches.html"],
+  .exec-quick a[href="review.html"]{display:none}
+}

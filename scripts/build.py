@@ -448,6 +448,30 @@ def exec_summary_bar(data):
     )
 
 
+def exec_quick_links(data):
+    """A two-row, thumb-sized map from the top of the page to the picks.
+
+    Session 233b8a0e. Measured with Chromium on the 2026-10-24 board: at
+    320x568 the freshness strip ended at y=314, so the first phone screen held
+    only the strip and the top of the first pick card — the always-visible
+    executive summary (`#exec-summary`) that names the updated pick board only
+    appeared after all 31 cards, which is exactly the "I cannot find the picks
+    on my phone" complaint. This block is never folded, sits directly under the
+    strip in DOM order and in the phone's visual order, and gives every
+    destination its own 44px tap target without a horizontal swipe. It is a
+    navigation aid only: it renders no number and no pick.
+    """
+    return (
+        '<nav class="exec-quick" id="exec-quick" aria-label="Where the updated picks are">'
+        '<a class="exec-quick-primary" href="picks.html">Updated picks →</a>'
+        + link('#picks-at-a-glance', 'Picks on this page ↓', 'exec-quick-link')
+        + link('unresolved.html', 'Unresolved & limits →', 'exec-quick-link')
+        + link('matches.html', 'All matches →', 'exec-quick-link')
+        + link('review.html', 'Flagged for review →', 'exec-quick-link')
+        + '</nav>'
+    )
+
+
 def fresh_strip(data, opens, priced, researched, unresolved):
 
     """One-glance answer to \"is this current, and where are the picks?\".
@@ -1022,6 +1046,9 @@ def overview(data):
         queue_html='<div class="queue"><p class="eyebrow muted">Then next</p><ul>'+items+'</ul></div>'
     body=head('Executive summary','CS2 picks & probabilities.','Every open Hotspawn CS2 match, with our pick first and the supporting sources one tap away.',data)
     body+=fresh_strip(data, opens, priced, researched, unresolved)
+    # Session 233b8a0e: the thumb-sized map to the picks, never folded, on the
+    # first phone screen (see exec_quick_links). Pure navigation; no numbers.
+    body+=exec_quick_links(data)
     body+=exec_summary_bar(data)
     # Two blocks directly under the freshness strip, before the hero: the plain
     # answer to "is the board complete and where are the picks", and the separate
