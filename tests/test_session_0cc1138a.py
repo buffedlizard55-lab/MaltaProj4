@@ -232,6 +232,45 @@ class UnresolvedSectionInTheSummary(unittest.TestCase):
         self.assertIn('default 50/50', html)
 
 
+def feed_removed_ids(snapshot, observed_ids):
+    """Observed IDs the snapshot's own verified feed evidence proves are gone.
+
+    Durable parity rule (session 174afa4f, 2026-10-24). The earlier rule
+    excused only IDs in ``inventory_changes.removed_ids`` — the delta against
+    the *previous* snapshot. When Hotspawn removed 1079655 and 1081148
+    between the 09:44Z lobby observation and the 11:25Z comparison snapshot,
+    the committed 11:47Z snapshot recorded ``removed_ids: []`` while its raw
+    feed evidence no longer contained either ID, so this suite failed on
+    every scheduled run from 2026-10-23T12:49Z (runs 39956197341,
+    39998307424, 40025828846, 40042111432, 40062143026) *before* the refresh
+    step could run — a self-sustaining publish deadlock.
+
+    An ID therefore also counts as feed-removed when the snapshot itself
+    proves the collector dropped nothing:
+
+    * ``coverage == 'verified'`` (the Hotspawn views agreed with each
+      other; partial/retained snapshots prove nothing and excuse nothing),
+    * the raw CS2 ``fixture_evidence`` ID set equals the published
+      ``matches`` ID set exactly (the same completeness invariant
+      ``scripts.validate`` asserts), and
+    * the ID is absent from that raw evidence.
+
+    A collector-side drop (ID present in the raw evidence, missing from
+    ``matches``) can never satisfy this, so parity still fails loudly where
+    it matters. ``inventory_changes.removed_ids`` remains sufficient on its
+    own, as before.
+    """
+    removed = {str(x) for x in (snapshot.get('inventory_changes') or {}).get('removed_ids', [])}
+    excused = {i for i in observed_ids if i in removed}
+    if snapshot.get('coverage') != 'verified':
+        return excused
+    evidence = {str(x.get('id')) for x in snapshot.get('fixture_evidence') or [] if x.get('id') is not None}
+    known = {str(m['id']) for m in snapshot.get('matches') or []}
+    if not evidence or evidence != known:
+        return excused
+    return excused | {i for i in observed_ids if i not in evidence}
+
+
 class LiveHotspawnCoverage(unittest.TestCase):
     """The board must list the fixtures the public lobby lists.
 
@@ -248,6 +287,13 @@ class LiveHotspawnCoverage(unittest.TestCase):
         '1082859', '1082860', '1082861', '1082897', '1082898', '1082900', '1082901',
         '1082792', '1082793',
     }
+    # Live read 09:44-09:56Z (research/session-0cc1138a/REPORT.md, section 2).
+    # The strict "every still-open observed fixture carries its pick"
+    # assertion is only meaningful inside the project's own eight-hour
+    # evidence window from that read; after it, those picks have expired by
+    # design and live completeness is asserted snapshot-relatively (summary
+    # counts, validator, coverage contract), never against fixed IDs.
+    OBSERVED_AT = datetime.fromisoformat('2026-10-23T09:44:00+00:00')
 
     def test_snapshot_covers_the_observed_lobby_fixtures(self):
         # Integration repair (session b6e37c61, 2026-10-23): Hotspawn itself
@@ -257,8 +303,12 @@ class LiveHotspawnCoverage(unittest.TestCase):
         # no longer contains it). Parity still binds for every fixture the
         # feed still returns; only feed-removed IDs, per the pipeline's own
         # sourced record, are excused.
+        # Durable extension (session 174afa4f, 2026-10-24): feed removal is
+        # proved by feed_removed_ids() from the snapshot's verified raw
+        # evidence, not only by the one-step removed_ids delta — see that
+        # helper for the deadlock this prevents.
         known = {m['id'] for m in SNAPSHOT['matches']}
-        removed = {str(x) for x in (SNAPSHOT.get('inventory_changes') or {}).get('removed_ids', [])}
+        removed = feed_removed_ids(SNAPSHOT, self.OBSERVED_OPEN)
         self.assertEqual(self.OBSERVED_OPEN - known - removed, set(), 'lobby fixture missing from the board')
 
     def test_each_observed_fixture_is_published_with_a_pick_and_an_official_link(self):
@@ -270,20 +320,33 @@ class LiveHotspawnCoverage(unittest.TestCase):
         # coverage intent is unchanged: parity and the official link are still
         # asserted for all 30 fixtures, and a pick is still required for every one
         # that is not yet past its lock at the snapshot's own clock.
+        # Window rule (session 174afa4f, 2026-10-24): that pick requirement
+        # binds while the snapshot's fixture evidence is inside the
+        # eight-hour window from the 09:44Z read. Outside it the observed
+        # picks have expired by design, so only parity (above), the official
+        # link, and "no pick without its evidence link" bind here; current
+        # completeness is then a property of the new snapshot's own rows.
         rows = {m['id']: m for m in SNAPSHOT['matches']}
         # Rows are derived against the build clock (scripts.build applies the
         # lock/start cutoff when it renders), so that is the clock to compare to.
         clock = SNAPSHOT.get('built_at') or SNAPSHOT['fixtures_observed_at']
         observed = datetime.fromisoformat(clock.replace('Z', '+00:00'))
-        # Same repair as the parity test above (b6e37c61): a fixture the feed
-        # itself removed (snapshot's own inventory_changes record) cannot be
-        # published by a later snapshot; every fixture the feed still returns
-        # keeps the full assertions below.
-        removed = {str(x) for x in (SNAPSHOT.get('inventory_changes') or {}).get('removed_ids', [])}
+        feed_clock = datetime.fromisoformat(SNAPSHOT['fixtures_observed_at'].replace('Z', '+00:00'))
+        from datetime import timedelta
+        in_window = feed_clock <= self.OBSERVED_AT + timedelta(hours=8)
+        removed = feed_removed_ids(SNAPSHOT, self.OBSERVED_OPEN)
         for fixture in self.OBSERVED_OPEN:
             if fixture in removed and fixture not in rows:
                 continue
             row = rows[fixture]
+            if not in_window:
+                url = row.get('source_url', '')
+                self.assertTrue(url.startswith('https://www.hotspawn.com/') or url.startswith('https://play.hotspawn.com/'), fixture)
+                if row.get('pick'):
+                    self.assertIn(row['pick'], row['teams'], fixture)
+                    if row.get('probabilities') is not None:
+                        self.assertTrue((row.get('evidence') or [{}])[0].get('url'), fixture)
+                continue
             lock = datetime.fromisoformat(row['lock'].replace('Z', '+00:00')) if row.get('lock') else None
             live = lock is None or lock > observed
             if live:
