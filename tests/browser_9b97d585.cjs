@@ -106,13 +106,21 @@ const chromium = require('@sparticuz/chromium');
     fs.mkdirSync('runtime', {recursive: true});
     await page.screenshot({path: 'runtime/picks-320-9b97d585.png'});
 
-    const firstOpen = data.matches.find(match => match.state === 'open');
-    assert.ok(firstOpen, 'fresh candidate must contain an open row for the filter check');
-    await page.locator('#search').fill(String(firstOpen.id));
+    // Read the runtime-visible rows, not the snapshot's capture-time state.
+    // A Hotspawn lock can legitimately pass while the preceding Chromium
+    // suites run; filtering that just-locked ID must not be treated as a
+    // broken search box. The lock enforcement itself remains unchanged.
+    const visibleIds = await page.locator('tr[data-match]:visible')
+      .evaluateAll(rows => rows.map(row => row.dataset.match));
+    assert.ok(visibleIds.length > 0, 'fresh candidate must contain a runtime-open row for the filter check');
+    await page.locator('#search').fill(visibleIds[0]);
     assert.equal(await page.locator('tr[data-match]:visible').count(), 1, 'match-id filter after the board');
     assert.match(await page.locator('#result-count').textContent(), /^1 match/);
+    const allBoardRows = await page.locator('tr[data-match]').count();
     await page.locator('#reset').click();
-    assert.equal(await page.locator('tr[data-match]:visible').count(), data.matches.filter(match => match.state === 'open').length);
+    // Reset intentionally selects “All entries”, including a row that locked
+    // during the test; it does not restore the capture-time Open filter.
+    assert.equal(await page.locator('tr[data-match]:visible').count(), allBoardRows);
 
     await page.setViewportSize({width: 390, height: 844});
     await page.goto(base + 'picks.html');

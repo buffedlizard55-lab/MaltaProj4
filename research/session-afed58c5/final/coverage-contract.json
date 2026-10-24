@@ -1,0 +1,1643 @@
+{
+  "audit_at": "2026-10-24T16:53:12.519728Z",
+  "snapshot_generated_at": "2026-10-24T16:40:40.748952Z",
+  "fixtures_observed_at": "2026-10-24T16:37:04.190185Z",
+  "inventory_fresh": true,
+  "inventory_coverage": "verified",
+  "scope": "Coverage accounting only; source truth and arithmetic require the independent row auditor.",
+  "counts": {
+    "total": 83,
+    "open_now": 22,
+    "market": 18,
+    "model": 4,
+    "research_only": 0,
+    "unresolved": 0,
+    "expired": 0,
+    "not_open": 61,
+    "actionable": 22
+  },
+  "problems": [],
+  "rows": [
+    {
+      "id": "1052746",
+      "teams": [
+        "Fortress",
+        "Endless Journey"
+      ],
+      "start": "2026-06-26T10:30:00Z",
+      "lock": "2026-06-26T10:24:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-26T10:24:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1052746",
+      "problems": []
+    },
+    {
+      "id": "1051339",
+      "teams": [
+        "Acend",
+        "Infinite"
+      ],
+      "start": "2026-06-26T12:00:00Z",
+      "lock": "2026-06-26T11:54:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-26T11:54:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1051339",
+      "problems": []
+    },
+    {
+      "id": "1051301",
+      "teams": [
+        "CYBERSHOKE Prospects",
+        "PCIFIC"
+      ],
+      "start": "2026-06-26T13:00:00Z",
+      "lock": "2026-06-26T12:54:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-26T12:54:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1051301",
+      "problems": []
+    },
+    {
+      "id": "1053068",
+      "teams": [
+        "Johnny Speeds",
+        "ReThink"
+      ],
+      "start": "2026-06-26T13:00:00Z",
+      "lock": "2026-06-26T12:54:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-26T12:54:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1053068",
+      "problems": []
+    },
+    {
+      "id": "1052747",
+      "teams": [
+        "Sashi Academy",
+        "eternal premium"
+      ],
+      "start": "2026-06-26T13:10:00Z",
+      "lock": "2026-06-26T13:04:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-26T13:04:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1052747",
+      "problems": []
+    },
+    {
+      "id": "1053146",
+      "teams": [
+        "Atrix",
+        "Clutchain"
+      ],
+      "start": "2026-06-26T14:00:00Z",
+      "lock": "2026-06-26T13:54:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-26T13:54:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1053146",
+      "problems": []
+    },
+    {
+      "id": "1051340",
+      "teams": [
+        "Walczaki",
+        "Inner Circle"
+      ],
+      "start": "2026-06-26T15:00:00Z",
+      "lock": "2026-06-26T14:54:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-26T14:54:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1051340",
+      "problems": []
+    },
+    {
+      "id": "1053069",
+      "teams": [
+        "roamsfiest",
+        "train launcher"
+      ],
+      "start": "2026-06-26T16:45:00Z",
+      "lock": "2026-06-26T16:39:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-26T16:39:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1053069",
+      "problems": []
+    },
+    {
+      "id": "1052686",
+      "teams": [
+        "shimmer",
+        "MIBR fe"
+      ],
+      "start": "2026-06-26T17:45:00Z",
+      "lock": "2026-06-26T17:39:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-26T17:39:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1052686",
+      "problems": []
+    },
+    {
+      "id": "1051789",
+      "teams": [
+        "MIBR Academy",
+        "Isurus"
+      ],
+      "start": "2026-06-26T18:00:00Z",
+      "lock": "2026-06-26T17:54:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-26T17:54:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1051789",
+      "problems": []
+    },
+    {
+      "id": "1053070",
+      "teams": [
+        "ReThink",
+        "train launcher"
+      ],
+      "start": "2026-06-26T19:00:00Z",
+      "lock": "2026-06-26T18:54:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-26T18:54:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1053070",
+      "problems": []
+    },
+    {
+      "id": "1051790",
+      "teams": [
+        "Keyd",
+        "Yawara"
+      ],
+      "start": "2026-06-26T21:00:00Z",
+      "lock": "2026-06-26T20:54:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-26T20:54:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1051790",
+      "problems": []
+    },
+    {
+      "id": "1052748",
+      "teams": [
+        "Inner Circle Academy",
+        "sAw"
+      ],
+      "start": "2026-06-27T08:00:00Z",
+      "lock": "2026-06-27T07:54:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-27T07:54:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1052748",
+      "problems": []
+    },
+    {
+      "id": "1053071",
+      "teams": [
+        "Johnny Speeds",
+        "roamsfiest"
+      ],
+      "start": "2026-06-27T10:00:00Z",
+      "lock": "2026-06-27T09:54:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-27T09:54:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1053071",
+      "problems": []
+    },
+    {
+      "id": "1052749",
+      "teams": [
+        "Misa",
+        "WROTBERRY"
+      ],
+      "start": "2026-06-27T10:30:00Z",
+      "lock": "2026-06-27T10:24:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-27T10:24:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1052749",
+      "problems": []
+    },
+    {
+      "id": "1052180",
+      "teams": [
+        "NEW VISION",
+        "Julie&Cie"
+      ],
+      "start": "2026-06-27T11:00:00Z",
+      "lock": "2026-06-27T10:54:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-27T10:54:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1052180",
+      "problems": []
+    },
+    {
+      "id": "1052181",
+      "teams": [
+        "Just Players",
+        "OlyBet"
+      ],
+      "start": "2026-06-27T11:00:00Z",
+      "lock": "2026-06-27T10:54:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-27T10:54:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1052181",
+      "problems": []
+    },
+    {
+      "id": "1051800",
+      "teams": [
+        "ShindeN",
+        "MIBR Academy"
+      ],
+      "start": "2026-06-27T13:00:00Z",
+      "lock": "2026-06-27T12:54:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-27T12:54:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1051800",
+      "problems": []
+    },
+    {
+      "id": "1052699",
+      "teams": [
+        "Vasco",
+        "Red Feet"
+      ],
+      "start": "2026-06-27T13:00:00Z",
+      "lock": "2026-06-27T12:54:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-27T12:54:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1052699",
+      "problems": []
+    },
+    {
+      "id": "1052183",
+      "teams": [
+        "Misa",
+        "Wampirki"
+      ],
+      "start": "2026-06-27T13:45:00Z",
+      "lock": "2026-06-27T13:39:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-27T13:39:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1052183",
+      "problems": []
+    },
+    {
+      "id": "1051341",
+      "teams": [
+        "Sharks",
+        "Inner Circle"
+      ],
+      "start": "2026-06-27T13:50:00Z",
+      "lock": "2026-06-27T13:44:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-27T13:44:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1051341",
+      "problems": []
+    },
+    {
+      "id": "1052599",
+      "teams": [
+        "Mai Tai",
+        "Megoshort"
+      ],
+      "start": "2026-06-27T14:00:00Z",
+      "lock": "2026-06-27T13:54:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-27T13:54:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1052599",
+      "problems": []
+    },
+    {
+      "id": "1053072",
+      "teams": [
+        "train launcher",
+        "roamsfiest"
+      ],
+      "start": "2026-06-27T14:10:00Z",
+      "lock": "2026-06-27T14:04:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-27T14:04:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1053072",
+      "problems": []
+    },
+    {
+      "id": "1052357",
+      "teams": [
+        "BIG Academy",
+        "BERG"
+      ],
+      "start": "2026-06-27T15:00:00Z",
+      "lock": "2026-06-27T14:54:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-27T14:54:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1052357",
+      "problems": []
+    },
+    {
+      "id": "1051801",
+      "teams": [
+        "Bounty Hunters",
+        "UNO MILLE"
+      ],
+      "start": "2026-06-27T16:00:00Z",
+      "lock": "2026-06-27T15:54:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-27T15:54:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1051801",
+      "problems": []
+    },
+    {
+      "id": "1052700",
+      "teams": [
+        "GameHunters",
+        "VEXA"
+      ],
+      "start": "2026-06-27T16:00:00Z",
+      "lock": "2026-06-27T15:54:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-27T15:54:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1052700",
+      "problems": []
+    },
+    {
+      "id": "1051342",
+      "teams": [
+        "ex-Tricked",
+        "Acend"
+      ],
+      "start": "2026-06-27T17:00:00Z",
+      "lock": "2026-06-27T16:54:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-27T16:54:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1051342",
+      "problems": []
+    },
+    {
+      "id": "1053073",
+      "teams": [
+        "roamsfiest",
+        "ReThink"
+      ],
+      "start": "2026-06-27T17:00:00Z",
+      "lock": "2026-06-27T16:54:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-27T16:54:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1053073",
+      "problems": []
+    },
+    {
+      "id": "1052701",
+      "teams": [
+        "paiN Academy",
+        "Alka"
+      ],
+      "start": "2026-06-27T19:00:00Z",
+      "lock": "2026-06-27T18:54:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-27T18:54:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1052701",
+      "problems": []
+    },
+    {
+      "id": "1053313",
+      "teams": [
+        "Fake do Biru",
+        "LP"
+      ],
+      "start": "2026-06-27T19:00:00Z",
+      "lock": "2026-06-27T18:54:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-27T18:54:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1053313",
+      "problems": []
+    },
+    {
+      "id": "1051803",
+      "teams": [
+        "Fluxo",
+        "Keyd"
+      ],
+      "start": "2026-06-27T22:00:00Z",
+      "lock": "2026-06-27T21:54:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-27T21:54:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1051803",
+      "problems": []
+    },
+    {
+      "id": "1052702",
+      "teams": [
+        "Procyon",
+        "BESTIA Academy"
+      ],
+      "start": "2026-06-27T22:00:00Z",
+      "lock": "2026-06-27T21:54:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-27T21:54:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1052702",
+      "problems": []
+    },
+    {
+      "id": "1052750",
+      "teams": [
+        "Honvéd",
+        "OlyBet"
+      ],
+      "start": "2026-06-28T08:00:00Z",
+      "lock": "2026-06-28T07:54:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-28T07:54:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1052750",
+      "problems": []
+    },
+    {
+      "id": "1052751",
+      "teams": [
+        "ex-MANA",
+        "Subtop De France"
+      ],
+      "start": "2026-06-28T10:50:00Z",
+      "lock": "2026-06-28T10:44:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-28T10:44:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1052751",
+      "problems": []
+    },
+    {
+      "id": "1052185",
+      "teams": [
+        "sAw",
+        "Entropy"
+      ],
+      "start": "2026-06-28T11:00:00Z",
+      "lock": "2026-06-28T10:54:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-28T10:54:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1052185",
+      "problems": []
+    },
+    {
+      "id": "1053431",
+      "teams": [
+        "GAMEHARMONY",
+        "Coalesce"
+      ],
+      "start": "2026-06-28T11:00:00Z",
+      "lock": "2026-06-28T10:54:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-28T10:54:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1053431",
+      "problems": []
+    },
+    {
+      "id": "1053432",
+      "teams": [
+        "Leo",
+        "Aimhaus"
+      ],
+      "start": "2026-06-28T11:00:00Z",
+      "lock": "2026-06-28T10:54:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-28T10:54:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1053432",
+      "problems": []
+    },
+    {
+      "id": "1053433",
+      "teams": [
+        "GAMEHARMONY",
+        "Aimhaus"
+      ],
+      "start": "2026-06-28T12:00:00Z",
+      "lock": "2026-06-28T11:54:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-28T11:54:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1053433",
+      "problems": []
+    },
+    {
+      "id": "1053434",
+      "teams": [
+        "Leo",
+        "Coalesce"
+      ],
+      "start": "2026-06-28T12:00:00Z",
+      "lock": "2026-06-28T11:54:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-28T11:54:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1053434",
+      "problems": []
+    },
+    {
+      "id": "1052698",
+      "teams": [
+        "ex-KRÜ",
+        "MAGICOS"
+      ],
+      "start": "2026-06-28T13:00:00Z",
+      "lock": "2026-06-28T12:54:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-28T12:54:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1052698",
+      "problems": []
+    },
+    {
+      "id": "1053435",
+      "teams": [
+        "GAMEHARMONY",
+        "Leo"
+      ],
+      "start": "2026-06-28T13:00:00Z",
+      "lock": "2026-06-28T12:54:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-28T12:54:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1053435",
+      "problems": []
+    },
+    {
+      "id": "1053436",
+      "teams": [
+        "Aimhaus",
+        "Coalesce"
+      ],
+      "start": "2026-06-28T13:00:00Z",
+      "lock": "2026-06-28T12:54:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-28T12:54:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1053436",
+      "problems": []
+    },
+    {
+      "id": "1051343",
+      "teams": [
+        "Sharks",
+        "ex-Tricked"
+      ],
+      "start": "2026-06-28T13:35:00Z",
+      "lock": "2026-06-28T13:29:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-28T13:29:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1051343",
+      "problems": []
+    },
+    {
+      "id": "1052186",
+      "teams": [
+        "Lilmix",
+        "Subtop De France"
+      ],
+      "start": "2026-06-28T13:45:00Z",
+      "lock": "2026-06-28T13:39:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-28T13:39:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1052186",
+      "problems": []
+    },
+    {
+      "id": "1052187",
+      "teams": [
+        "BIG Academy",
+        "Endless Journey"
+      ],
+      "start": "2026-06-28T13:45:00Z",
+      "lock": "2026-06-28T13:39:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-28T13:39:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1052187",
+      "problems": []
+    },
+    {
+      "id": "1052184",
+      "teams": [
+        "Atreides",
+        "Donstu"
+      ],
+      "start": "2026-06-28T14:05:00Z",
+      "lock": "2026-06-28T13:59:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-28T13:59:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1052184",
+      "problems": []
+    },
+    {
+      "id": "1052696",
+      "teams": [
+        "Yawara",
+        "Blitzkrieg"
+      ],
+      "start": "2026-06-28T16:00:00Z",
+      "lock": "2026-06-28T15:54:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-28T15:54:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1052696",
+      "problems": []
+    },
+    {
+      "id": "1053439",
+      "teams": [
+        "6666",
+        "ASTRAL"
+      ],
+      "start": "2026-06-28T16:00:00Z",
+      "lock": "2026-06-28T15:54:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-28T15:54:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1053439",
+      "problems": []
+    },
+    {
+      "id": "1053469",
+      "teams": [
+        "BERG",
+        "SINQU REHTI"
+      ],
+      "start": "2026-06-28T16:00:00Z",
+      "lock": "2026-06-28T15:54:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-28T15:54:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1053469",
+      "problems": []
+    },
+    {
+      "id": "1053441",
+      "teams": [
+        "ASTRAL",
+        "BERG"
+      ],
+      "start": "2026-06-28T17:00:00Z",
+      "lock": "2026-06-28T16:54:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-28T16:54:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1053441",
+      "problems": []
+    },
+    {
+      "id": "1053470",
+      "teams": [
+        "6666",
+        "SINQU REHTI"
+      ],
+      "start": "2026-06-28T17:00:00Z",
+      "lock": "2026-06-28T16:54:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-28T16:54:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1053470",
+      "problems": []
+    },
+    {
+      "id": "1051344",
+      "teams": [
+        "Inner Circle",
+        "Acend"
+      ],
+      "start": "2026-06-28T17:30:00Z",
+      "lock": "2026-06-28T17:24:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-28T17:24:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1051344",
+      "problems": []
+    },
+    {
+      "id": "1051804",
+      "teams": [
+        "Fluxo",
+        "UNO MILLE"
+      ],
+      "start": "2026-06-28T18:00:00Z",
+      "lock": "2026-06-28T17:54:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-28T17:54:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1051804",
+      "problems": []
+    },
+    {
+      "id": "1053442",
+      "teams": [
+        "6666",
+        "BERG"
+      ],
+      "start": "2026-06-28T18:00:00Z",
+      "lock": "2026-06-28T17:54:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-28T17:54:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1053442",
+      "problems": []
+    },
+    {
+      "id": "1053471",
+      "teams": [
+        "ASTRAL",
+        "SINQU REHTI"
+      ],
+      "start": "2026-06-28T18:00:00Z",
+      "lock": "2026-06-28T17:54:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-28T17:54:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1053471",
+      "problems": []
+    },
+    {
+      "id": "1052697",
+      "teams": [
+        "METANOIA Wolves",
+        "Guara"
+      ],
+      "start": "2026-06-28T19:05:00Z",
+      "lock": "2026-06-28T18:59:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-28T18:59:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1052697",
+      "problems": []
+    },
+    {
+      "id": "1053679",
+      "teams": [
+        "ShindeN",
+        "LP"
+      ],
+      "start": "2026-06-28T21:15:00Z",
+      "lock": "2026-06-28T21:09:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-28T21:09:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1053679",
+      "problems": []
+    },
+    {
+      "id": "1052695",
+      "teams": [
+        "MIBR Academy",
+        "Patins de Ferrari"
+      ],
+      "start": "2026-06-28T22:00:00Z",
+      "lock": "2026-06-28T21:54:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-06-28T21:54:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1052695",
+      "problems": []
+    },
+    {
+      "id": "1055478",
+      "teams": [
+        "illwill",
+        "Lavked"
+      ],
+      "start": "2026-07-10T08:00:00Z",
+      "lock": "2026-07-10T07:54:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-07-10T07:54:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1055478",
+      "problems": []
+    },
+    {
+      "id": "1081105",
+      "teams": [
+        "SUKEBAN",
+        "your end"
+      ],
+      "start": "2026-10-13T22:00:00Z",
+      "lock": "2026-10-13T21:54:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-10-13T21:54:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1081105",
+      "problems": []
+    },
+    {
+      "id": "1079621",
+      "teams": [
+        "Gothic",
+        "Lavked"
+      ],
+      "start": "2026-10-14T08:00:00Z",
+      "lock": "2026-10-14T07:54:00Z",
+      "category": "not_open",
+      "actionable": false,
+      "pick": null,
+      "method": null,
+      "effective_expiry": "2026-10-14T07:54:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "research_sources": [],
+      "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "evidence_url": "evidence.html#match-1079621",
+      "problems": []
+    },
+    {
+      "id": "1079661",
+      "teams": [
+        "Nuclear TigeRES",
+        "ex-Zero Tenacity"
+      ],
+      "start": "2026-10-24T17:00:00Z",
+      "lock": "2026-10-24T16:54:00Z",
+      "category": "market",
+      "actionable": true,
+      "pick": "Nuclear TigeRES",
+      "method": "exchange",
+      "effective_expiry": "2026-10-24T16:54:00Z",
+      "source_url": "https://www.hotspawn.com/matches/nuclear-tigeres-vs-ex-zero-tenacity-cct-europe-2026-series-11-1079661",
+      "research_sources": [
+        "https://polymarket.com/event/cs2-ntr-zerote-2026-10-24"
+      ],
+      "limitation": null,
+      "evidence_url": "evidence.html#match-1079661",
+      "problems": []
+    },
+    {
+      "id": "1081154",
+      "teams": [
+        "BakS",
+        "ILLYRIANS"
+      ],
+      "start": "2026-10-24T17:00:00Z",
+      "lock": "2026-10-24T16:54:00Z",
+      "category": "market",
+      "actionable": true,
+      "pick": "BakS",
+      "method": "exchange",
+      "effective_expiry": "2026-10-24T16:54:00Z",
+      "source_url": "https://www.hotspawn.com/matches/baks-vs-illyrians-cct-europe-2026-series-12-1081154",
+      "research_sources": [
+        "https://polymarket.com/event/cs2-baks-ill4-2026-10-24"
+      ],
+      "limitation": null,
+      "evidence_url": "evidence.html#match-1081154",
+      "problems": []
+    },
+    {
+      "id": "1082695",
+      "teams": [
+        "Galorys",
+        "paiN"
+      ],
+      "start": "2026-10-24T18:00:00Z",
+      "lock": "2026-10-24T17:54:00Z",
+      "category": "market",
+      "actionable": true,
+      "pick": "paiN",
+      "method": "exchange",
+      "effective_expiry": "2026-10-24T17:54:00Z",
+      "source_url": "https://www.hotspawn.com/matches/galorys-vs-pain-circuit-x-curitiba-4-1082695",
+      "research_sources": [
+        "https://polymarket.com/event/cs2-gls1-pain-2026-10-24"
+      ],
+      "limitation": null,
+      "evidence_url": "evidence.html#match-1082695",
+      "problems": []
+    },
+    {
+      "id": "1083122",
+      "teams": [
+        "LOS NINOS",
+        "BORRACHEIROS"
+      ],
+      "start": "2026-10-24T19:00:00Z",
+      "lock": "2026-10-24T18:54:00Z",
+      "category": "market",
+      "actionable": true,
+      "pick": "BORRACHEIROS",
+      "method": "exchange",
+      "effective_expiry": "2026-10-24T18:54:00Z",
+      "source_url": "https://www.hotspawn.com/matches/los-ninos-vs-borracheiros-cct-south-america-2026-series-7-1083122",
+      "research_sources": [
+        "https://polymarket.com/event/cs2-ln-chama-2026-10-24"
+      ],
+      "limitation": null,
+      "evidence_url": "evidence.html#match-1083122",
+      "problems": []
+    },
+    {
+      "id": "1083140",
+      "teams": [
+        "BESTIA",
+        "Imperial"
+      ],
+      "start": "2026-10-24T21:00:00Z",
+      "lock": "2026-10-24T20:54:00Z",
+      "category": "market",
+      "actionable": true,
+      "pick": "Imperial",
+      "method": "exchange",
+      "effective_expiry": "2026-10-24T20:54:00Z",
+      "source_url": "https://www.hotspawn.com/matches/bestia-vs-imperial-circuit-x-curitiba-4-1083140",
+      "research_sources": [
+        "https://polymarket.com/event/cs2-bst-imp11-2026-10-24"
+      ],
+      "limitation": null,
+      "evidence_url": "evidence.html#match-1083140",
+      "problems": []
+    },
+    {
+      "id": "1083123",
+      "teams": [
+        "Grêmio",
+        "Yawara"
+      ],
+      "start": "2026-10-24T22:00:00Z",
+      "lock": "2026-10-24T21:54:00Z",
+      "category": "market",
+      "actionable": true,
+      "pick": "Yawara",
+      "method": "bookmaker_fallback",
+      "effective_expiry": "2026-10-24T21:54:00Z",
+      "source_url": "https://www.hotspawn.com/matches/gremio-vs-yawara-cct-south-america-2026-series-7-1083123",
+      "research_sources": [
+        "https://bo3.gg/matches/gremio-vs-yawara-esports-24-10-2026"
+      ],
+      "limitation": null,
+      "evidence_url": "evidence.html#match-1083123",
+      "problems": []
+    },
+    {
+      "id": "1082996",
+      "teams": [
+        "Acend",
+        "UNiTY"
+      ],
+      "start": "2026-10-25T09:00:00Z",
+      "lock": "2026-10-25T08:54:00Z",
+      "category": "market",
+      "actionable": true,
+      "pick": "UNiTY",
+      "method": "exchange",
+      "effective_expiry": "2026-10-25T00:36:39.060852Z",
+      "source_url": "https://www.hotspawn.com/matches/acend-vs-unity-nodwin-clutch-series-13-1082996",
+      "research_sources": [
+        "https://polymarket.com/event/cs2-ace1-unity-2026-10-25"
+      ],
+      "limitation": null,
+      "evidence_url": "evidence.html#match-1082996",
+      "problems": []
+    },
+    {
+      "id": "1079198",
+      "teams": [
+        "Metizport",
+        "BakS"
+      ],
+      "start": "2026-10-25T12:00:00Z",
+      "lock": "2026-10-25T11:54:00Z",
+      "category": "market",
+      "actionable": true,
+      "pick": "Metizport",
+      "method": "exchange",
+      "effective_expiry": "2026-10-25T00:36:39.060852Z",
+      "source_url": "https://www.hotspawn.com/matches/metizport-vs-baks-nodwin-clutch-series-13-1079198",
+      "research_sources": [
+        "https://polymarket.com/event/cs2-mzp-baks-2026-10-25"
+      ],
+      "limitation": null,
+      "evidence_url": "evidence.html#match-1079198",
+      "problems": []
+    },
+    {
+      "id": "1081156",
+      "teams": [
+        "Spirit Academy",
+        "LFO 10"
+      ],
+      "start": "2026-10-25T12:00:00Z",
+      "lock": "2026-10-25T11:54:00Z",
+      "category": "model",
+      "actionable": true,
+      "pick": "Spirit Academy",
+      "method": "model_vrs_mirror",
+      "effective_expiry": "2026-10-25T00:37:04.190185Z",
+      "source_url": "https://www.hotspawn.com/matches/spirit-academy-vs-lfo-10-cct-europe-2026-series-12-1081156",
+      "research_sources": [
+        "https://www.hltv.org/valve-ranking/teams/2026/october/24"
+      ],
+      "limitation": null,
+      "evidence_url": "evidence.html#match-1081156",
+      "problems": []
+    },
+    {
+      "id": "1079199",
+      "teams": [
+        "Infinite",
+        "BRUTE"
+      ],
+      "start": "2026-10-25T15:00:00Z",
+      "lock": "2026-10-25T14:54:00Z",
+      "category": "market",
+      "actionable": true,
+      "pick": "BRUTE",
+      "method": "exchange",
+      "effective_expiry": "2026-10-25T00:36:39.060852Z",
+      "source_url": "https://www.hotspawn.com/matches/infinite-vs-brute-nodwin-clutch-series-13-1079199",
+      "research_sources": [
+        "https://polymarket.com/event/cs2-inf6-brute-2026-10-25"
+      ],
+      "limitation": null,
+      "evidence_url": "evidence.html#match-1079199",
+      "problems": []
+    },
+    {
+      "id": "1079200",
+      "teams": [
+        "Color",
+        "ex-Zero Tenacity"
+      ],
+      "start": "2026-10-25T18:00:00Z",
+      "lock": "2026-10-25T17:54:00Z",
+      "category": "model",
+      "actionable": true,
+      "pick": "Color",
+      "method": "model_vrs",
+      "effective_expiry": "2026-10-25T00:37:04.190185Z",
+      "source_url": "https://www.hotspawn.com/matches/color-vs-ex-zero-tenacity-nodwin-clutch-series-13-1079200",
+      "research_sources": [
+        "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+      ],
+      "limitation": null,
+      "evidence_url": "evidence.html#match-1079200",
+      "problems": []
+    },
+    {
+      "id": "1081158",
+      "teams": [
+        "FORZE Reload",
+        "ex-RUSTEC"
+      ],
+      "start": "2026-10-25T18:00:00Z",
+      "lock": "2026-10-25T17:54:00Z",
+      "category": "market",
+      "actionable": true,
+      "pick": "FORZE Reload",
+      "method": "exchange",
+      "effective_expiry": "2026-10-25T00:34:38.785157Z",
+      "source_url": "https://www.hotspawn.com/matches/forze-reload-vs-ex-rustec-cct-europe-2026-series-12-1081158",
+      "research_sources": [
+        "https://polymarket.com/event/cs2-forzer-rustec-2026-10-25"
+      ],
+      "limitation": null,
+      "evidence_url": "evidence.html#match-1081158",
+      "problems": []
+    },
+    {
+      "id": "1082858",
+      "teams": [
+        "Ground Zero",
+        "Off Chops"
+      ],
+      "start": "2026-10-26T03:00:00Z",
+      "lock": "2026-10-26T02:54:00Z",
+      "category": "market",
+      "actionable": true,
+      "pick": "Off Chops",
+      "method": "exchange_wide",
+      "effective_expiry": "2026-10-25T00:36:39.060852Z",
+      "source_url": "https://www.hotspawn.com/matches/ground-zero-vs-off-chops-dfrag-invitational-2026-1082858",
+      "research_sources": [
+        "https://polymarket.com/event/cs2-gz1-offcho-2026-10-25"
+      ],
+      "limitation": null,
+      "evidence_url": "evidence.html#match-1082858",
+      "problems": []
+    },
+    {
+      "id": "1082859",
+      "teams": [
+        "NEXVOID",
+        "Alter Ego"
+      ],
+      "start": "2026-10-26T03:00:00Z",
+      "lock": "2026-10-26T02:54:00Z",
+      "category": "market",
+      "actionable": true,
+      "pick": "NEXVOID",
+      "method": "bookmaker_fallback",
+      "effective_expiry": "2026-10-25T00:37:04.190185Z",
+      "source_url": "https://www.hotspawn.com/matches/nexvoid-vs-alter-ego-dfrag-invitational-2026-1082859",
+      "research_sources": [
+        "https://bo3.gg/matches/nexvoid-vs-alter-ego-26-10-2026"
+      ],
+      "limitation": null,
+      "evidence_url": "evidence.html#match-1082859",
+      "problems": []
+    },
+    {
+      "id": "1082860",
+      "teams": [
+        "FlyQuest",
+        "Staqued"
+      ],
+      "start": "2026-10-27T03:00:00Z",
+      "lock": "2026-10-27T02:54:00Z",
+      "category": "market",
+      "actionable": true,
+      "pick": "FlyQuest",
+      "method": "bookmaker_fallback",
+      "effective_expiry": "2026-10-25T00:37:04.190185Z",
+      "source_url": "https://www.hotspawn.com/matches/flyquest-vs-staqued-dfrag-invitational-2026-1082860",
+      "research_sources": [
+        "https://bo3.gg/matches/flyquest-vs-staqued-27-10-2026"
+      ],
+      "limitation": null,
+      "evidence_url": "evidence.html#match-1082860",
+      "problems": []
+    },
+    {
+      "id": "1082861",
+      "teams": [
+        "Rooster",
+        "Abyssal"
+      ],
+      "start": "2026-10-27T03:00:00Z",
+      "lock": "2026-10-27T02:54:00Z",
+      "category": "market",
+      "actionable": true,
+      "pick": "Abyssal",
+      "method": "exchange",
+      "effective_expiry": "2026-10-24T22:08:38.655101Z",
+      "source_url": "https://www.hotspawn.com/matches/rooster-vs-abyssal-dfrag-invitational-2026-1082861",
+      "research_sources": [
+        "https://polymarket.com/event/cs2-rstr-abyssa-2026-10-26"
+      ],
+      "limitation": null,
+      "evidence_url": "evidence.html#match-1082861",
+      "problems": []
+    },
+    {
+      "id": "1082897",
+      "teams": [
+        "B8",
+        "K27"
+      ],
+      "start": "2026-10-27T08:00:00Z",
+      "lock": "2026-10-27T07:54:00Z",
+      "category": "market",
+      "actionable": true,
+      "pick": "B8",
+      "method": "exchange",
+      "effective_expiry": "2026-10-25T00:30:39.169155Z",
+      "source_url": "https://www.hotspawn.com/matches/b8-vs-k27-tesla-cup-2026-1082897",
+      "research_sources": [
+        "https://polymarket.com/event/cs2-b8-k271-2026-10-27"
+      ],
+      "limitation": null,
+      "evidence_url": "evidence.html#match-1082897",
+      "problems": []
+    },
+    {
+      "id": "1082898",
+      "teams": [
+        "Alliance",
+        "FaZe"
+      ],
+      "start": "2026-10-27T11:00:00Z",
+      "lock": "2026-10-27T10:54:00Z",
+      "category": "market",
+      "actionable": true,
+      "pick": "FaZe",
+      "method": "exchange",
+      "effective_expiry": "2026-10-25T00:30:39.169155Z",
+      "source_url": "https://www.hotspawn.com/matches/alliance-vs-faze-tesla-cup-2026-1082898",
+      "research_sources": [
+        "https://polymarket.com/event/cs2-all-faze-2026-10-27"
+      ],
+      "limitation": null,
+      "evidence_url": "evidence.html#match-1082898",
+      "problems": []
+    },
+    {
+      "id": "1082900",
+      "teams": [
+        "Luminosity",
+        "HOTU"
+      ],
+      "start": "2026-10-27T17:00:00Z",
+      "lock": "2026-10-27T16:54:00Z",
+      "category": "market",
+      "actionable": true,
+      "pick": "Luminosity",
+      "method": "exchange",
+      "effective_expiry": "2026-10-25T00:26:39.051057Z",
+      "source_url": "https://www.hotspawn.com/matches/luminosity-vs-hotu-tesla-cup-2026-1082900",
+      "research_sources": [
+        "https://polymarket.com/event/cs2-lg6-hotu-2026-10-27"
+      ],
+      "limitation": null,
+      "evidence_url": "evidence.html#match-1082900",
+      "problems": []
+    },
+    {
+      "id": "1082901",
+      "teams": [
+        "Envy",
+        "GamerLegion"
+      ],
+      "start": "2026-10-27T20:00:00Z",
+      "lock": "2026-10-27T19:54:00Z",
+      "category": "market",
+      "actionable": true,
+      "pick": "GamerLegion",
+      "method": "exchange",
+      "effective_expiry": "2026-10-25T00:30:39.169155Z",
+      "source_url": "https://www.hotspawn.com/matches/envy-vs-gamerlegion-tesla-cup-2026-1082901",
+      "research_sources": [
+        "https://polymarket.com/event/cs2-envy-gl1-2026-10-27"
+      ],
+      "limitation": null,
+      "evidence_url": "evidence.html#match-1082901",
+      "problems": []
+    },
+    {
+      "id": "1082792",
+      "teams": [
+        "HOTU",
+        "The Huns"
+      ],
+      "start": "2026-10-31T09:00:00Z",
+      "lock": "2026-10-31T08:54:00Z",
+      "category": "model",
+      "actionable": true,
+      "pick": "HOTU",
+      "method": "model_vrs",
+      "effective_expiry": "2026-10-25T00:37:04.190185Z",
+      "source_url": "https://www.hotspawn.com/matches/hotu-vs-the-huns-moscow-cyber-games-2026-1082792",
+      "research_sources": [
+        "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+      ],
+      "limitation": null,
+      "evidence_url": "evidence.html#match-1082792",
+      "problems": []
+    },
+    {
+      "id": "1082793",
+      "teams": [
+        "5star",
+        "1WIN"
+      ],
+      "start": "2026-10-31T13:00:00Z",
+      "lock": "2026-10-31T12:54:00Z",
+      "category": "model",
+      "actionable": true,
+      "pick": "1WIN",
+      "method": "model_vrs",
+      "effective_expiry": "2026-10-25T00:37:04.190185Z",
+      "source_url": "https://www.hotspawn.com/matches/5star-vs-1win-moscow-cyber-games-2026-1082793",
+      "research_sources": [
+        "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+      ],
+      "limitation": null,
+      "evidence_url": "evidence.html#match-1082793",
+      "problems": []
+    }
+  ]
+}

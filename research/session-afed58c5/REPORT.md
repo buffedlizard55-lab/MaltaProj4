@@ -81,7 +81,19 @@ After PR #282 merged, this session rebased onto `ea4418c` without retaining the 
 - Sixty-one retained feed rows are past-dated, not open picks. No fixture conflicts were reported. GG.BET access and two book-listing rechecks record 403 limitations; model/listing/wide-quote flags remain visible rather than being converted into certainty.
 - Build and validator: **83 rows, 22 calculations, 15 pages, 788 links/assets, 20 checksums, 195 displayed rows**; published-row replay: **0 failures**.
 
-The first complete Chromium replay then failed on the dedicated phone pick board: at 320×844 the first pick was **y=863**, below the first screen. A height-conditioned rule put the pick directly below teams only below 700px. A focused all-height ordering replay passed at 320/390px, but PR #281 then merged its equivalent correction and a fresh 22/22 candidate at 16:50 UTC. The duplicate stylesheet edit was withdrawn before push; this branch retains the measurement and independent evidence, not a competing CSS change. Full-chain and deployment receipts for the final merged tree remain pending below.
+The first complete Chromium replay then failed on the dedicated phone pick board: at 320×844 the first pick was **y=863**, below the first screen. A height-conditioned rule put the pick directly below teams only below 700px. A focused all-height ordering replay passed at 320/390px, but PR #281 then merged its equivalent correction and a fresh 22/22 candidate at 16:50 UTC. The duplicate stylesheet edit was withdrawn before push; this branch retains the measurement and independent evidence, not a competing CSS change.
+
+## Final merged-candidate gates
+
+The final local replay used the merged snapshot generated **2026-10-24T16:40:40.748952Z**, with fixtures observed at 16:37:04Z: **83 official fixture rows, 22 captured-open picks and 22 probability pairs**. Both 16:54 locks subsequently passed during the browser run, leaving 20 runtime-open rows; closed rows remain visible with warnings and Reset intentionally shows all entries.
+
+- 1,490 unit tests passed, 7 skipped; 9 independent audit tests and 12 C6 tests passed.
+- Root and staged-site validation passed: 83 source rows, 22 reproduced calculations, 15 pages, 787 links/assets, 20 checksums and 195 displayed rows.
+- C6 reported zero failures against source and public data. The second independent re-derivation exited zero. Fresh coverage reported 22 actionable rows and zero problems; the complete ledger reported zero integrity failures.
+- The complete real Chromium chain passed after two test-only lock-boundary corrections. The tests now select runtime-visible rows and distinguish the default Open board from Reset's All entries view; no production lock behavior was changed.
+- Exact logs, build manifest, hashes and retained failed attempts are in `final/`. The source snapshot SHA-256 is `5fdeefc003771b6fba7a55d3108baddbe16b4345a63d2fab63e52a8ac821c49b`; staged public data is `47390594b7d893a4aeccdf56a9752d56f80ab0b638ec33a88fa4a4006ce39f6b`.
+
+PR, merge and successful Pages/live-byte receipts remain to be appended; no live-deployment claim is made here.
 
 ## Integration / publication receipt
 
