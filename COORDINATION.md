@@ -7279,3 +7279,49 @@ failure that blocked publication twice today. The repair keeps the owner's dated
 archived assertion and keeps the live invariants (`open_rows == reproduced_rows`,
 `rows_failing == 0`, `open_rows > 0`). No product code, price, pick or probability is touched.
 
+
+### Session e9be3e6b — final integration receipt: PR #269 merged, gates green, Pages queue recorded (2026-10-24 08:12 UTC)
+
+**PR [#269](https://github.com/buffedlizard55-lab/MaltaProj4/pull/269) was merged to `main` without
+approval at 2026-10-24T07:30:49Z as merge commit `59679c2` (`gh pr merge 269 --merge`).** It closed
+after six upstream integrations on this branch — PR #261 `e74413b`, #265 `5c64973`, #266 `939c0d5`,
+#267 `d0faf73`, #270 `232d196` and #259 `ef7c213`/`4b419150` — each time keeping the newer shared
+generated build, adopting upstream's stronger guards (the four-case alias contract and the compact
+`#exec-quicknav`) in preference to this branch's duplicate phone CSS, unioning every COORDINATION
+block and the additive review register, and changing **no pick, price, probability, fixture or lock**.
+
+The merged tree carries the verified 92-row snapshot (generated 2026-10-24T06:19:43Z, fixture
+evidence 06:16:00Z), the adopted 48px phone quick-nav, all ten `research/session-e9be3e6b/**` and
+`verification-e9be3e6b/**` artefacts, and the six additive `session-e9be3e6b-*` review flags. On
+`main` at the time of writing the review register is **221 notes, six of them ours**, and root
+`review.html` renders all six.
+
+**Gates re-run on `main` `63e7d39` (this branch fast-forwarded to it) before this receipt:**
+**1,429 unit tests OK** (1 skipped); audits 9; integrity 5; verification-c6 12; c6 snapshot audit 0
+failures; `scripts.validate` 92 rows / **29** reproduced calculations / 15 pages / 862 links-assets /
+20 checksums / 230 displayed rows (two more fixtures locked since the 06:19 capture, so the live open
+count is now 29 with 0 unresolved); `coverage_contract --require-fresh` 29 open / 29 priced / 0
+research-only / 0 unresolved / 0 expired; `verify_4ed657ce` 31 archived rows reproduced / 0 failing;
+`coverage_233b8a0e` 92/31/31/31/0 (dated); **all 11 Chromium browser suites pass**; the e9be3e6b
+mobile probe measures quick nav y=307, first pick y=353, first probability y=447 < fixed tab bar
+y=507 at 320x568, no overflow at 320/390/768/1440, CTA reaches `picks.html`; the zero-network source
+ladder verifier replays 92 rows with **446 checks / 0 failures / 8-of-8 corruption cases** caught.
+
+**Pages deployment, stated exactly as measured.** Pages is `build_type: legacy`, source `main:/`, so
+every push to `main` republishes the committed root fallback. Between 07:30Z and 08:07Z `main`
+advanced again through PRs #252/#256/#268/#272/#255, and each `pages build and deployment` request
+was cancelled by GitHub with the annotation *"Canceling since a higher priority waiting request for
+cs2-scout-refs/heads/main exists"*; the push runs for PR #269 itself (40074434570 / Pages 40074434472)
+never reached a runner. At the last live read the public `build-info.json` still advertised the older
+`dd92178` receipt (same 06:19:43Z snapshot), while the served pages do render the verified 92-row
+board with a pick and a sourced win probability for every open row, the in-site executive-summary
+links, the separate unresolved/limitations page and the Flagged for Review table. The **committed**
+root on `main` already carries all six e9be3e6b flags and the newer `a1df6e9`/07:40Z build; it will be
+republished on the next Pages build that is not superseded. This follow-up merge deliberately uses a
+`[release-queue-reset]` merge subject so `pages.yml`'s `cancel-in-progress` guard is true for the
+`main` push and the stalled queue is drained rather than grown. No broken site was merged: every gate
+above is green on the exact tree being published.
+
+Full report: [`research/session-e9be3e6b/REPORT.md`](research/session-e9be3e6b/REPORT.md); mobile
+measurements: [`research/session-e9be3e6b/mobile-measurements.json`](research/session-e9be3e6b/mobile-measurements.json);
+line-by-line receipt: [`research/session-e9be3e6b/source-ladder-audit.json`](research/session-e9be3e6b/source-ladder-audit.json).
