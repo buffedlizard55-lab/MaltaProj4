@@ -448,6 +448,7 @@ def book_research_pick(fixture, receipts=None, now=None):
         p = quote['probabilities']
         if abs(p[0] - p[1]) < .0001:
             fixture.setdefault('no_edge_lines', []).append(copy.deepcopy(quote))
+            fixture['reason'] = 'Equal researched book line; no directional edge. Continue independent research.'
             fixture['attempts'].append({'provider': 'Book research', 'status': 'unresolved',
                 'reason': 'Equal researched book line; no directional edge. Continue independent model/research.',
                 'url': candidate['url']})
@@ -513,6 +514,7 @@ def resolve(fixture, candidates, provider, now, relax=False):
             # fallback ladder; never turn an equal line into an arbitrary pick.
             if abs(p[0] - p[1]) < .0001:
                 fixture.setdefault('no_edge_lines', []).append(copy.deepcopy(quote))
+                fixture['reason'] = 'Equal verified prices; no directional edge. Continue independent research.'
                 if quote.get('tier') == 'wide_exchange':
                     raise ValueError('Wide exchange quote is exactly even; the midpoint of a '
                                      'spread beyond the strict ceiling is not a usable estimate.')
