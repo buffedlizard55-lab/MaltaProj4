@@ -52,26 +52,26 @@ end. Verified: on `60a150b` the suite passes, and run
 
 ### 1.2 The board after recovery
 
-Read from `origin/main` `data/latest.json`, snapshot `2026-10-24T05:59:34.228578Z`, fixtures observed
-`2026-10-24T05:55:58.459230Z`:
+Read from `origin/main` `data/latest.json`, snapshot `2026-10-24T06:19:43.492019Z` (the newest verified snapshot on `main` at integration
+time, `dce494b`), fixtures observed `2026-10-24T06:16:00.648005Z`:
 
 | Measure | Value |
 | --- | --- |
-| Feed rows / three-view parity (`api`/`page`/`lobby`/`retained`) | 88 · **88 / 88 / 88 / 88** · `coverage: verified` |
-| Open matches | **25** |
-| Open matches with a pick | **25 / 25** |
-| Open matches with a win probability | **25 / 25** |
+| Feed rows / three-view parity (`api`/`page`/`lobby`/`retained`) | 92 · **92 / 92 / 92 / 92** · `coverage: verified` |
+| Open matches | **31** |
+| Open matches with a pick | **31 / 31** |
+| Open matches with a win probability | **31 / 31** |
 | Unresolved (open, no pick at all) | **0** |
 | Research-only (pick, no percentage) | **0** |
-| Methods | `exchange` 12 · `model_vrs` 7 · `exchange_wide` 2 · `model_vrs_mirror` 2 · `bookmaker_fallback` 2 |
-| `not_open` feed rows retained for visibility, never priced | 63 |
+| Methods | `exchange` 16 · `model_vrs` 6 · `exchange_wide` 3 · `model_vrs_mirror` 3 · `bookmaker_fallback` 3 → **22 market / 9 model** |
+| `not_open` feed rows retained for visibility, never priced | 61 |
 
 Row-by-row ledger, every row with its official fixture link **and** its official price-evidence link:
-[`OPEN-ROW-LEDGER.md`](OPEN-ROW-LEDGER.md). Independent re-derivation of all 88 rows from their own
+[`OPEN-ROW-LEDGER.md`](OPEN-ROW-LEDGER.md). Independent re-derivation of all 92 rows from their own
 archived evidence: [`independent-row-audit.md`](independent-row-audit.md) — **0 arithmetic/field
 failures**.
 
-Price evidence hosts across the 25 open rows, counted from the snapshot: `polymarket.com`,
+Price evidence hosts across the 31 open rows, counted from the snapshot: `polymarket.com`,
 `github.com` (Valve's own `counter-strike_regional_standings` file, at a pinned commit), `bo3.gg`
 (Thunderpick rendering). **No probability on this board comes from Hotspawn** — Hotspawn supplies
 fixture identity and lock times only, which is the user's rule and the pipeline's contract.
@@ -230,10 +230,10 @@ Verified by parsing the committed `index.html` (regenerated from snapshot
 | Requirement | Verified state |
 | --- | --- |
 | Executive summary with in-site links to the updated picks | `index.html` `<title>` is *Executive summary · CS2 Scout*. `#coverage-now`, `#exec-banner` and `nav.exec-summary-links` carry in-site links to `picks.html`, `#picks-at-a-glance`, `unresolved.html`, `matches.html`, `matches.html#feed-scope`, `sources.html#method`, `review.html` |
-| Picks easy to find on a phone | `#picks-at-a-glance` renders **25** `a.glance-card-mobile` cards, **25/25** `data-glance-priced="1"`; `<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">`; `#exec-summary` with the always-visible `.exec-bar` is present in the page and in `assets/style.css`, and the phone ordering rule `body[data-page="index"] main>#exec-summary{order:5}` keeps the pick list on the first screen |
+| Picks easy to find on a phone | `#picks-at-a-glance` renders **31** `a.glance-card-mobile` cards, **31/31** `data-glance-priced="1"`; `<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">`; `#exec-summary` with the always-visible `.exec-bar` is present in the page and in `assets/style.css`, and the phone ordering rule `body[data-page="index"] main>#exec-summary{order:5}` keeps the pick list on the first screen |
 | Probability obvious per team, pick obvious | Card 1 (`evidence.html#match-1079193`) renders `OUR PICK` + `.glance-card-pick-team` **FOKUS 78.5%** and `.glance-card-score.other` **ex-6666 21.5%**, plus a `.glance-card-prob-bar` at `width:78.5%`. Checked against the snapshot: `teams == ['FOKUS','ex-6666']`, `probabilities == [0.785, 0.215]`, `pick == 'FOKUS'` → the tagged team **is** the larger probability |
 | Separate section for unresolved picks **and** the limitations, inside the executive summary | `#unresolved-limits` (heading *Unresolved picks, and why a pick can be missing*) sits in the summary next to `#picks-at-a-glance`. Its links, read from the page: `#unresolved-summary`, `unresolved.html`, `review.html`, `sources.html#method`, `sources.html#model`, **and the two research fallbacks the user asked for** — `https://www.hltv.org/matches` and `https://egamersworld.com/counterstrike/matches`. `#pick-limitations` lists **9** dated, source-linked limitations; `#unresolved-picks` and `#unresolved-summary` are separate sections; `nav.exec-summary-links` and the anchors `#coverage-now`, `#exec-banner`, `#picks-at-a-glance`, `#unresolved-picks`, `#unresolved-summary`, `#pick-limitations`, `#how-picks`, `#detailed-summary` all resolve |
-| Percentages from outside betting lines, never from Hotspawn | 16 of 25 from betting markets, 9 from our own Valve-standings model; evidence hosts are `polymarket.com`, `github.com` (Valve), `bo3.gg` — see §1.2 |
+| Percentages from outside betting lines, never from Hotspawn | 22 of 31 from betting markets, 9 from our own Valve-standings model; evidence hosts are `polymarket.com`, `github.com` (Valve), `bo3.gg` — see §1.2 |
 | Refresh every 4–8 h | `pages.yml` cron `4,19,34,49 * * * *` (four slots an hour) plus a `*/10` watchdog. **Actual delivery is the binding constraint, not the cron** — see irregularity F3 |
 | No manual input | The whole chain (refresh → quarantine → build → validate → independent audits → browser gates → publish → live-byte verification) is automated; nothing in this session was typed by hand into the data |
 
@@ -267,8 +267,8 @@ Non-blocking, published with their sources, none inferred.
   can move one half of a byte-identical pair. Guarded at the publisher (§2.2); whether `site/assets/`
   should instead be *inside* the staged set is a design question for the owning session, not something
   this session changed unilaterally.
-- **F5 — 63 of 88 feed rows are `not_open`** yet still returned by the endpoint with
-  `status: scheduled`. The snapshot records this itself: *"63 feed entries are not open by sourced
+- **F5 — 61 of 92 feed rows are `not_open`** yet still returned by the endpoint with
+  `status: scheduled`. The snapshot records this itself: *"61 feed entries are not open by sourced
   timestamps/status. They remain in All matches and are not treated as future picks."* They are listed
   and never priced. Official source:
   [the fixtures endpoint](https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1).
@@ -279,6 +279,28 @@ Non-blocking, published with their sources, none inferred.
   [issue #239](https://github.com/buffedlizard55-lab/MaltaProj4/issues/239). Six open PRs
   (#233, #228, #225, #221, #220, #217) still carry stale `data/latest.json` from 2026-10-23 and must
   not be merged over the recovered board.
+- **F8 — the two independent auditors disagreed, and the stricter one blocked the gate for every row.**
+  Row `1083121` *Projeto do KinGui vs MEIA NOITE* (CCT South America 2026 Series #7,
+  2026-10-24T16:00:00Z) is priced from Polymarket market
+  [6081997](https://gamma-api.polymarket.com/markets/6081997), whose own question reads
+  *"Counter-Strike: Tropa do KinGui vs MEIA NOITE (BO3) - CCT South America Series 7 Playoffs"* with
+  `gameStartTime 2026-10-24 16:00:00+00` — the same instant. `verification-c6/audit_snapshot.py`, the
+  auditor wired into `scripts.quarantine` and the publish path, reports **0 failures** on this
+  snapshot. `research/session-0cc1138a/verify_0cc1138a.py` refused it — *"cannot map
+  'Projeto do KinGui' to exactly one source outcome ['Tropa do KinGui', 'MEIA NOITE']"* — failing three
+  assertions in `tests/test_session_0cc1138a.py::IndependentReDerivation` and so blocking publication
+  for all 31 open rows. The pairing is **not** a guess: `data/identities.json` already records
+  `canonical: "Tropa do KinGui"`, `names: ["Tropa do KinGui", "Projeto do KinGui", "ex-Keyd Stars"]`,
+  `source: https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7`,
+  `additional_source: https://gamma-api.polymarket.com/markets/6033256`, basis *"Valve four-player
+  roster-continuity rule (model/team.js TEAM_OVERLAP_TO_SHARE_ROSTER = 3), checked 22 Oct 2026 by
+  session 9f3e77d2"* — the mechanism the site's own published limitation text names as acceptable
+  (*"or a label in the verified alias register"*). **Repaired** by making the verifier consult that
+  register (unsourced entries ignored; zero-match and two-match mappings still raise), pinned by 7 tests
+  in `tests/test_session_35c6e1e9.py`. **Flagged, not silently accepted:** this was a *completed*
+  session's private verifier, taken over under the 60-minute rule, and the deeper question stands — two
+  "independent" auditors that disagree, with only the permissive one wired into quarantine, will keep
+  producing this deadlock. One of them should be the single reproduction gate.
 - **F7 — three `exchange_wide` rows are labelled low-confidence by the pipeline itself** (spread wider
   than the standard gate). They are published with the label `Wide line · low confidence` and their
   numbers, not silently. Source: the row's own badge and `#pick-limitations`.
@@ -291,12 +313,12 @@ Local, on the exact branch head, Python 3.11.2 with the pinned `requirements.txt
 
 | Gate | Result |
 | --- | --- |
-| `python -m unittest discover -s tests` | **Ran 1278 tests — OK (skipped=1)** |
+| `python -m unittest discover -s tests` | **Ran 1289 tests — OK (1 skipped)** |
 | `python -m unittest discover -s audits -p 'test_*.py'` | **Ran 9 — OK** |
 | `python verification-95b588c2/test_integrity.py` | **Ran 5 — OK** |
 | `python -m unittest discover -s verification-c6 -p 'test_*.py'` | **Ran 12 — OK** |
-| `python -m scripts.validate --data data/latest.json --site .` | 88 rows verified · **25 probability calculations reproduced** · 15 pages · 822 internal links/assets · 20 artifact checksums · 216 displayed rows |
-| `python verification-c6/audit_snapshot.py data/latest.json` | 88 rows · **0 failures** |
+| `python -m scripts.validate --data data/latest.json --site .` | 92 rows verified · **31 probability calculations reproduced** · 15 pages · 874 internal links/assets · 20 artifact checksums · 234 displayed rows |
+| `python verification-c6/audit_snapshot.py data/latest.json` | 92 rows · **0 failures** |
 | `python -m scripts.verify_35c6e1e9 --offline` | exit 0 · verdict `current-with-flags` · 2 honest flags, 0 frozen |
 | `python -m unittest tests.test_refresh_watchdog` | **Ran 34 — OK** (was 22) |
 | `python -m unittest tests.test_session_35c6e1e9` | **Ran 32 — OK** |
@@ -317,11 +339,12 @@ the generated CSS and staging the hash-verified build, **0**.
 | `scripts/publish_root_fallback.py` | `asset_divergence()` guard + `PAIRED_ASSETS`; refuses to stage a build that would break a byte-identical pair |
 | `scripts/verify_35c6e1e9.py` | new publication-continuity auditor (advisory; live + offline modes) |
 | `tests/test_session_35c6e1e9.py` | new: 32 tests, incl. the never-a-merge-gate pin and the paired-asset guard |
-| `assets/style.css` | restored from `scripts.build`'s own output to match `site/assets/style.css` |
+| `assets/style.css` | restored from `scripts.build`'s own output to match `site/assets/style.css` — **twice**: `f54b37a` reverted it, then PR #245 moved `site/assets/style.css` forward (`3757d52c`) and left `assets/style.css` behind |
 | `build-info.json`, `index.html`, `review.html`, `data/latest.json`, `data/matches.csv` | regenerated by staging the hash-verified build through `scripts.stage_legacy` |
+| `research/session-0cc1138a/verify_0cc1138a.py` | **completed-owner takeover, logged:** the independent re-derivation now consults the sourced alias register; no assertion weakened — unmapped and ambiguous labels still raise |
 | `research/session-35c6e1e9/**` | this report, the open-row ledger, the independent row audit, two dated continuity receipts |
 | `COORDINATION.md` | claim (additive) + receipt (additive) |
 
-Not touched: `tests/test_session_0cc1138a.py`, `scripts/build.py`, `scripts/summary.py`,
+Not touched: `tests/test_session_0cc1138a.py` (owned by `019a253a`, PR #240), `scripts/build.py`, `scripts/summary.py`,
 `site/assets/**`, `data/review-notes.json`, and every other session's `research/` or
 `verification-*` directory.

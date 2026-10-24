@@ -278,6 +278,77 @@ class VerdictAndExitCodes(unittest.TestCase):
         self.assertAlmostEqual(A.age_minutes(stamp(90), NOW), 90, delta=0.01)
 
 
+class VerifierConsultsTheSourcedAliasRegister(unittest.TestCase):
+    """Row 1083121 blocked the merge gate for all 31 open rows; the pairing was
+    already sourced in the repository's own alias register.
+
+    Hotspawn lists *Projeto do KinGui*; Polymarket market 6081997 lists the
+    outcome *Tropa do KinGui* at the same 2026-10-24T16:00:00Z start with
+    *MEIA NOITE*. ``data/identities.json`` records
+    ``canonical: "Tropa do KinGui"`` with
+    ``names: ["Tropa do KinGui", "Projeto do KinGui", "ex-Keyd Stars"]``, sourced
+    to an HLTV match page and a Polymarket market, basis dated 2026-10-22.
+    Reading the register is not a relaxation: unmapped and ambiguous labels still
+    raise, and an unsourced entry is ignored.
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        import importlib.util
+        spec = importlib.util.spec_from_file_location(
+            'verify_0cc1138a', ROOT / 'research/session-0cc1138a/verify_0cc1138a.py')
+        cls.V = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(cls.V)
+
+    def test_the_register_entry_is_sourced_and_links_both_labels(self):
+        entries = json.loads((ROOT / 'data/identities.json').read_text())['aliases']
+        entry = next(e for e in entries if e.get('canonical') == 'Tropa do KinGui')
+        self.assertIn('Projeto do KinGui', entry['names'])
+        self.assertTrue(entry['source'].startswith('https://www.hltv.org/'), entry['source'])
+        self.assertTrue(entry.get('additional_source', '').startswith('https://'), entry)
+        self.assertIn('roster-continuity', entry['basis'])
+
+    def test_the_blocked_row_now_reproduces(self):
+        self.assertEqual(self.V.order_prices(['Tropa do KinGui', 'MEIA NOITE'], [0.615, 0.385],
+                                             ['Projeto do KinGui', 'MEIA NOITE']), [0.615, 0.385])
+        row = next(m for m in SNAPSHOT['matches'] if m['id'] == '1083121')
+        self.assertEqual(row['pick'], 'Projeto do KinGui')
+        self.assertEqual(row['probabilities'], [0.615, 0.385])
+        failures = [r for r in self.V.audit(SNAPSHOT) if r['problems']]
+        self.assertEqual(failures, [], 'unreproducible: %r' % failures[:2])
+
+    def test_an_ambiguous_or_unmapped_label_is_still_refused(self):
+        with self.assertRaises(ValueError):
+            self.V.order_prices(['Alpha', 'Alpha'], [0.5, 0.5], ['Alpha', 'Beta'])
+        with self.assertRaises(ValueError):
+            self.V.order_prices(['Some Unknown XI', 'Beta'], [0.5, 0.5], ['Unrelated Club', 'Beta'])
+        with self.assertRaises(ValueError):
+            self.V.order_prices(['Tropa do KinGui', 'Tropa do KinGui'], [0.5, 0.5],
+                                ['Projeto do KinGui', 'ex-Keyd Stars'])
+
+    def test_the_previously_pinned_label_behaviours_are_unchanged(self):
+        self.assertEqual(self.V.order_prices(['Beta', 'Alpha'], [0.3, 0.7], ['Alpha', 'Beta']), [0.7, 0.3])
+        self.assertEqual(self.V.order_prices(['BakS eSports', 'Brute'], [0.4, 0.6], ['BakS', 'BRUTE']),
+                         [0.4, 0.6])
+        self.assertEqual(self.V.order_prices(['ALKA', 'Los Ni\u00f1os'], [0.7, 0.3], ['Alka', 'LOS NINOS']),
+                         [0.7, 0.3])
+
+    def test_an_unsourced_register_entry_is_not_evidence(self):
+        # A canonical with no source URL must not buy a match, so the loader skips
+        # it and the label stays refused.
+        table = {}
+        for entry in [{'canonical': 'Real Club', 'names': ['Real Club', 'Fake Club']}]:
+            if entry.get('source'):
+                table[self.V.norm(entry['canonical'])] = entry['canonical']
+        self.assertEqual(table, {})
+        self.assertFalse(self.V.same_team('Fake Club', 'Real Club'))
+
+    def test_the_register_was_actually_loaded(self):
+        self.assertGreater(len(self.V.ALIASES), 0)
+        self.assertEqual(self.V.ALIASES[self.V.norm('Projeto do KinGui')],
+                         self.V.ALIASES[self.V.norm('Tropa do KinGui')])
+
+
 class NeverAMergeGate(unittest.TestCase):
     def test_pages_yml_does_not_invoke_this_auditor(self):
         # The 2026-10-23/24 outage was caused by snapshot-coupled assertions
