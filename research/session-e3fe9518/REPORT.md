@@ -1,5 +1,16 @@
 # Independent source and phone review — session e3fe9518
 
+## Latest complete local release gates — 2026-10-24 08:18 UTC
+
+**Main `63e7d39` plus this integration: 1,472 unit tests OK (one skip), 43 own tests; 9 audits, 5 integrity, 12 independent C6; all 11 npm browser suites and three own four-viewport clock runs pass (14 pass receipts).** Actual-device-clock run is against the **local canonical artifact**, not public Pages proof. Snapshot, honest overdue/90-minute warning, simulated five-hour lock rotation, all source-class labels, both shares on every active card, whole first score-pair bottom, all preserved closed-card warnings and true eight-hour expiry are checked. [Exact release receipt](release-verification.json), [unit log](unit-release.log), [browser log](browser-release.log), [current independent source audit](current-source-audit.md).
+
+Current build: **92 inventory rows, 29 open / 29 picks / 29 probability pairs, 63 not open, zero unresolved.** The original immutable 06:19 capture had31 open: two subsequently passed their sourced locks. Only their six derived recommendation fields are withdrawn; every raw fixture/evidence/source receipt and observation time, and every other row, is identical. This is **not a new harvest or re-pricing**. Models remain9 (6 official-file inputs +3 HLTV-mirror inputs); 3 book listings are not independently operator-confirmed ticks. Current exact primary-source file check covers12 team sides. All221 upstream review entries survive unchanged +3 own (224 total).
+
+Both root and canonical validators: **15 pages, 92 source rows, 29 reproduced pairs, 862 links/assets, 20 checksums, 230 displayed rows**. Independent C6 and source audit: zero failures. `DatedVerificationTests` retains every historical31-row/source/tamper assertion against the existing SHA-bound archive; a separate current-row provenance/ID-set gate allows genuine unsupported blanks rather than freezing collection. No test weakened or source timestamp renewed.
+
+**Public release verification remains pending until merge/deployment.** A local pass or a branch-mode audit of an older production release is never counted as proof that this release is public. GitHub Checks annotations provide compact escaped hash-bound receipts through the allowed API; artifact/log result hosts outside the allowlist are not proxied or bypassed.
+
+
 ## Executive result (dated capture, not a live-site claim)
 
 The audited input is the preserved [snapshot](snapshot.json), generated
