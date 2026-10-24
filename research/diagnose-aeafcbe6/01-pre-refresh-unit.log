@@ -1,7 +1,7 @@
-.............................................................................................................................................................................................................................................................No refreshed snapshot at /tmp/tmpj83zzk4y/nope.json; nothing to harvest.
-..........................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................Built 9 primary pages + 6 legacy redirects; 92 sourced rows, 0 with percentages, 22 without percentages, 22 unresolved.
-.........................Built 9 primary pages + 6 legacy redirects; 92 sourced rows, 0 with percentages, 22 without percentages, 22 unresolved.
-..............................................................................................s..........................................................................................................................................................................................................................................................................................................................................................................................................................................Built 9 primary pages + 6 legacy redirects; 92 sourced rows, 29 with percentages, 0 without percentages, 0 unresolved.
+.............................................................................................................................................................................................................................................................No refreshed snapshot at /tmp/tmp2m_16c5d/nope.json; nothing to harvest.
+..........................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................Built 9 primary pages + 6 legacy redirects; 92 sourced rows, 0 with percentages, 20 without percentages, 20 unresolved.
+.........................Built 9 primary pages + 6 legacy redirects; 92 sourced rows, 0 with percentages, 20 without percentages, 20 unresolved.
+..............................................................................................s.....................................................................................................................................................................................................................................................................................................................................................................................................................................................Built 9 primary pages + 6 legacy redirects; 92 sourced rows, 29 with percentages, 0 without percentages, 0 unresolved.
 {
  "coverage": "verified",
  "coverage_counts": {
@@ -96,7 +96,7 @@ Built 9 primary pages + 6 legacy redirects; 1 sourced rows, 0 with percentages, 
   "files_checked": 20,
   "snapshot_generated_at": "2026-10-22T07:49:59.960210Z",
   "fixtures_observed_at": "2026-10-22T07:44:36.467004Z",
-  "live_manifest_sha256": "4314a6f09b22179c18c88d5c3cdac778e3e63b586e2a8e0631a4d18e89fd960e",
+  "live_manifest_sha256": "c7ce63336c4cdfe86d67bd393d7b49a0509abd5a4523a1a7fd0cddaeef7e2e62",
   "snapshot_sha256": "9c6f1c7e1944447d6618d767299418f4f2a6a5d904cbfa49e5d8aebc009ebb67",
   "snapshot_counts": {
     "feed_rows": 107,
@@ -110,11 +110,11 @@ Built 9 primary pages + 6 legacy redirects; 1 sourced rows, 0 with percentages, 
     "research_only": 6,
     "unresolved": 1
   },
-  "run_id": "40112049937",
+  "run_id": "40114518820",
   "note": "Exact public bytes; no source/quote timestamp was renewed."
 }
 Built 9 primary pages + 6 legacy redirects; 107 sourced rows, 0 with percentages, 25 without percentages, 25 unresolved.
-receipt: /tmp/tmpkf1ug702/audit-receipt.json
+receipt: /tmp/tmpf9muw4ie/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -126,7 +126,7 @@ receipt: /tmp/tmpkf1ug702/audit-receipt.json
  "unresolved_listed_on_both_pages": 25
 }
 checks: 282  failures: 0
-receipt: /tmp/tmpkf1ug702/audit-receipt.json
+receipt: /tmp/tmpf9muw4ie/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -139,7 +139,7 @@ receipt: /tmp/tmpkf1ug702/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved probabilities must be None
-receipt: /tmp/tmpkf1ug702/audit-receipt.json
+receipt: /tmp/tmpf9muw4ie/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -152,7 +152,7 @@ receipt: /tmp/tmpkf1ug702/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved fair_odds must be None
-receipt: /tmp/tmpkf1ug702/audit-receipt.json
+receipt: /tmp/tmpf9muw4ie/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -165,7 +165,7 @@ receipt: /tmp/tmpkf1ug702/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved method must be None
-receipt: /tmp/tmpkf1ug702/audit-receipt.json
+receipt: /tmp/tmpf9muw4ie/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -178,7 +178,7 @@ receipt: /tmp/tmpkf1ug702/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved row lacks its limitation
-receipt: /tmp/tmpkf1ug702/audit-receipt.json
+receipt: /tmp/tmpf9muw4ie/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -191,7 +191,7 @@ receipt: /tmp/tmpkf1ug702/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved row lacks source attempts
-receipt: /tmp/tmpkf1ug702/audit-receipt.json
+receipt: /tmp/tmpf9muw4ie/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -208,7 +208,7 @@ Built 9 primary pages + 6 legacy redirects; 107 sourced rows, 0 with percentages
 Built 9 primary pages + 6 legacy redirects; 107 sourced rows, 36 with percentages, 7 without percentages, 1 unresolved.
 Built 9 primary pages + 6 legacy redirects; 107 sourced rows, 0 with percentages, 25 without percentages, 25 unresolved....................................................................................................................
 ----------------------------------------------------------------------
-Ran 1484 tests in 36.368s
+Ran 1495 tests in 35.505s
 
 OK (skipped=1)
 
