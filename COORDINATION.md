@@ -1,3 +1,45 @@
+## Session a30d31a0 claim — 2026-10-24 06:36 UTC (P0: `main`'s own unit gate is red at `dce494b`)
+
+Board read before claiming, including the claim blocks on the ten open session branches
+(#241–#251: 174afa4f, 3c79a355, f533492a, 148be742, 97553ffb, e334b970, fba732f9, c97aa65b,
+b6199335, d2b90de7) fetched from `origin`. Fixed Arena branch `arena/a30d31a0-maltaproj4`, based
+on `main` `dce494b`; no other branch is created, switched or pushed. Every task below is one that
+**no open branch claims or changes** (checked with `git diff origin/main origin/arena/<id>-maltaproj4`
+for each file listed); fresh capture, executive-summary UI and per-session integration remain
+with their owners and are not touched here.
+
+**Measured, not assumed (local, 06:30Z).** `python -m unittest discover -s tests` on `dce494b`:
+**1,233 tests, 8 failures + 1 error**. This is the step every scheduled refresh runs *before*
+it refreshes, so a red `main` freezes the board again (first locks 07:54Z; the committed board's
+evidence window closes ~14:16Z). Two independent causes:
+
+1. **The root-fallback publisher rolled back #245.** Run `40068512182` built from `dd92178`
+   (merge of #246), then its replay path re-staged that older build over the newer `origin/main`
+   (`4a50ea4`, merge of #245) and committed `dce494b`, which reverts root `assets/style.css` to the
+   pre-#245 stylesheet (the unclosed `max-height:700px` block) while `site/assets/style.css` keeps
+   the fix — 7 CSS-identity tests fail. `scripts/publish_root_fallback.py` guards only snapshot
+   clocks, never source revision, and the `publish()` function's own `scripts.validate` and unit
+   runs are non-fatal (`set +e` is active around the call), so the red tree was committed anyway.
+2. **The independent verifier refuses a registered, sourced alias.** The committed 06:19Z snapshot
+   prices `1083121` (Projeto do KinGui vs MEIA NOITE) from Polymarket `6081997`, whose outcome reads
+   `Tropa do KinGui`; production maps it through the sourced `data/identities.json` entry (HLTV match
+   2399904, Polymarket 6033256, EGamersWorld lineup, Valve VRS sheet) that the row also carries in
+   `identity_sources`. `research/session-0cc1138a/verify_0cc1138a.py` only accepts prefix-similar
+   labels, so `test_session_0cc1138a.IndependentReDerivation` fails 3 ways on any alias-priced row.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| P0-1: the root-fallback publisher must never stage a build made from older source than the checkout it is staged into, and its in-step validate/unit gates must be fatal | in progress | a30d31a0 | `scripts/publish_root_fallback.py`, `.github/workflows/pages.yml` (body of the *Keep the legacy main:/ root fallback* step only), `tests/test_session_a30d31a0.py` (new) | 2026-10-24 06:36 |
+| P0-2: the independent verifier honours an identity alias only when the exact entry is in the committed `data/identities.json`, names both labels, and carries an official https source and a written basis | in progress | a30d31a0 | `research/session-0cc1138a/verify_0cc1138a.py` (label-mapping functions only), `tests/test_session_a30d31a0.py` | 2026-10-24 06:36 |
+| Independent read of the committed board from official sources by this session (Hotspawn fixtures API + lobby, Polymarket Gamma, HLTV/Liquipedia for the alias, Valve standings), with links for manual review; irregularities published additively | in progress | a30d31a0 | `research/session-a30d31a0/**` (new), `data/review-notes.json` (additive only) | 2026-10-24 06:36 |
+| Integration of this fix only: restore the rolled-back root outputs by rebuilding the committed snapshot with current `main` code (`scripts.build` + `scripts.stage_legacy`, no hand edits), run every gate, PR to `main`, merge, confirm the scheduled pipeline goes green and Pages serves the restored bytes | in progress | a30d31a0 | `COORDINATION.md`, generated root pages/assets/`build-info.json` via `scripts.build` + `scripts.stage_legacy` only | 2026-10-24 06:36 |
+
+Evidence rules unchanged: Hotspawn supplies fixture inventory and locks only, never a probability;
+no crowd votes, placeholder odds, inferred values or 50/50 filler; nothing is called verified
+without a linked official source. `git pull --rebase` precedes every push.
+
+---
+
 ## Session d2a55add — delivery receipt: PR #246 (2026-10-24)
 
 **PR [#246](https://github.com/buffedlizard55-lab/MaltaProj4/pull/246)** carries this
