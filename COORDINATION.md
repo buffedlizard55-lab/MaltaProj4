@@ -407,6 +407,36 @@ without a linked official source. `git pull --rebase` precedes every push.
 **This session's own capture:** run [40067406754](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40067406754), fixtures `2026-10-24T05:50:47Z`, 88 fixtures / 25 open / 25 pick+% — independently confirming d2a55add's board minutes apart. Fallback probe (HLTV first, then books) for the 13 non-featured rows: Pinnacle offers none (0 near-misses), BO3 pagination complete (279/3pp), Kalshi none, OddsPortal label-only; HLTV ranking/EGW listing 403 after waits = dated limitations. Full record: `research/session-174afa4f/REPORT.md`, `research/harvest-174afa4f/`.
 
 **Flagged for review (non-blocking):** harvest `| tee` failure-masking fixed in this session's workflow, still present in earlier sessions' harvest workflows; `1082860` stored Thunderpick line `1.001/12.0` extreme but exact; PR #233 untouched.
+## Session e3fe9518 claim — 2026-10-24 06:30 UTC (independent source/probability audit)
+
+Board and open PR file scopes read before claiming. This session stays on Arena's fixed
+`arena/e3fe9518-maltaproj4`, based on `dce494b`; no other branch is created or pushed.
+PRs #241/#247/#248/#250 own stylesheet/mobile fixes; #249/#251 own source-ladder/builder
+changes. Session cb16f548 and 019a253a have already merged delivery work despite stale
+`in progress` labels. This session will not edit their production files or duplicate
+an existing live harvest while the committed 06:19Z snapshot is fresh.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Independent official-source provenance and line-by-line audit of the latest board: separate primary market quotes, aggregator observations, and originated models; independently replay every active row; record HLTV-first/book-next fallback evidence and missing evidence without inventing values | in progress | e3fe9518 | `scripts/audit_e3fe9518.py` (new), `tests/test_session_e3fe9518.py` (new), `research/session-e3fe9518/**` (new), `verification-e3fe9518/**` (new) | 2026-10-24 06:30 |
+| Mobile executive-summary, internal-link and unresolved/limitations acceptance checks; read-only inspection of canonical UI; report needed changes to existing owners rather than editing their scopes | in progress | e3fe9518 | `tests/browser_e3fe9518.cjs` (new), `research/session-e3fe9518/**`, `COORDINATION.md` | 2026-10-24 06:30 |
+| Integration of this non-overlapping audit only: all local gates, PR from this fixed branch, merge without approval after build validation, verify Pages deployment and exact live bytes through a GitHub runner if necessary, record receipt | in progress | e3fe9518 | `COORDINATION.md`, `.github/workflows/verification-e3fe9518.yml` (new, read-only remote verification), `research/session-e3fe9518/**` | 2026-10-24 06:30 |
+
+**Requests to active owners:** the pre-existing unclosed `max-height:700px` media query
+in `site/assets/style.css` is already claimed by PR #250 (also #241/#247); please retain
+that repair and its phone/desktop regression tests on integration. No competing CSS edit
+will be made here. Any source-policy or rendering irregularity found here will be logged
+with exact fixture IDs and primary links for the appropriate owner. Shared generated pages
+and navigation remain untouched by this audit session.
+
+Verification rules: Hotspawn is fixture inventory only, never probability; sourced
+calculations are labelled calculations, not verified forecasts. An aggregator quote is
+not a directly verified bookmaker quote. Missing values stay blank. Only the documented
+source ladder is allowed, and only uncovered featured rows may use its fallbacks.
+`git pull --rebase` precedes each push; conflicts are resolved as a union with all owners'
+work preserved and logged below.
+
+---
 
 ### Session 4ed657ce progress note — 2026-10-24 06:48 UTC (verification ledger, alias repair, published flags)
 
