@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ## Session f2e04d1a — delivery receipt: PR #290 merged, publisher unstuck, live board verified (2026-10-24 18:15 UTC)
 
 **PR [#290](https://github.com/buffedlizard55-lab/MaltaProj4/pull/290) merged to `main` at
@@ -55,7 +54,6 @@ probability or source was affected.
 review: a genuine level market is now shown as no number at all rather than as a 0.50/0.50 row.
 (c) Pages remains `legacy main:/`; switching the source needs a token this session does not have, so the
 root-staging step stays the delivery path and is the step that must keep passing.
-=======
 ## Session 11afca43 claim — 2026-10-24 16:30 UTC (fresh verified snapshot, line-by-line re-verification, integration to main)
 
 Board read before claiming. Arena-fixed branch `arena/11afca43-maltaproj4`, based on `main` `45fc6ba`
@@ -299,7 +297,6 @@ the user-visible defect behind every request in this session.
 | Mobile-first executive summary: in-site links to the live pick list measurable on the first phone screen at 320x568 and 390x844, both probabilities visible per card | in progress | 2b856884 | `scripts/build.py`, `site/assets/style.css`, `tests/browser_2b856884.cjs` (new) | 2026-10-24 16:30 |
 | Independent line-by-line verification with official source links, flagged irregularities published on Flagged for Review | in progress | 2b856884 | `scripts/audit_2b856884.py` (new), `data/review-notes.json` (additive IDs only) | 2026-10-24 16:30 |
 | Final integration: all gates on the combined tree, PR to `main`, merge without approval, live Pages bytes verified, receipt | unclaimed until the rows above are done | 2b856884 | `COORDINATION.md`, `build-info.json`, generated root pages via `scripts.build`/`scripts.stage_legacy` only | 2026-10-24 16:30 |
->>>>>>> origin/main
 
 ## Session f2e04d1a claim — 2026-10-24 16:35 UTC (every-match picks; live board stuck empty; phone-first executive summary)
 
