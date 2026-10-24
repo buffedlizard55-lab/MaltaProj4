@@ -1,5 +1,5 @@
 """Session 233b8a0e: a green pre-refresh gate, no silent CSS drift, and a
-first-screen map to the picks on a phone.
+first-screen route to the picks on a phone.
 
 What this session measured on `main` `dce494b` and what each test here keeps
 fixed:
@@ -32,7 +32,7 @@ from pathlib import Path
 from bs4 import BeautifulSoup
 
 from scripts import stage_legacy, validate
-from scripts.build import exec_quick_links, overview
+from scripts.build import overview
 from scripts.coverage_233b8a0e import RUNG_LABELS, report
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -88,47 +88,55 @@ class ServedStylesheetTests(unittest.TestCase):
                 validate.validate_stylesheet(root)
 
 
-class FirstScreenPickMapTests(unittest.TestCase):
+class FirstScreenSummaryTests(unittest.TestCase):
+    """The first phone screen states where the picks are.
+
+    Session 4ed657ce landed the measured `#exec-quicknav` row on main while this
+    session was measuring a wider map of its own; the integration adopted theirs
+    (one navigation block, their browser receipt) and dropped the duplicate. What
+    this class keeps fixed is the part the briefing asks for, independent of which
+    block renders it: the executive summary's in-site route to the updated picks
+    and to the unresolved limitations exists once, is never inside a folded
+    disclosure, comes before the pick list, and the always-visible summary bar
+    still carries every destination.
+    """
+
     @classmethod
     def setUpClass(cls):
         cls.soup = BeautifulSoup(INDEX, 'html.parser')
-        cls.nav = cls.soup.select_one('#exec-quick')
+        cls.nav = cls.soup.select_one('#exec-quicknav')
 
-    def test_exists_once_and_is_never_folded(self):
-        self.assertEqual(len(self.soup.select('#exec-quick')), 1)
+    def test_a_first_screen_route_to_the_picks_exists_once_and_is_not_folded(self):
         self.assertIsNotNone(self.nav)
+        self.assertEqual(len(self.soup.select('#exec-quicknav')), 1)
         self.assertIsNone(self.nav.find_parent('details'))
 
-    def test_sits_directly_between_the_strip_and_the_pick_list(self):
-        for anchor in ('id="freshness-strip"', 'id="exec-quick"', 'id="exec-summary"',
-                       'id="picks-at-a-glance"'):
-            self.assertIn(anchor, INDEX)
-        self.assertLess(INDEX.index('id="freshness-strip"'), INDEX.index('id="exec-quick"'))
-        self.assertLess(INDEX.index('id="exec-quick"'), INDEX.index('id="picks-at-a-glance"'))
-
-    def test_links_inside_the_site_to_every_destination_the_briefing_names(self):
+    def test_that_route_comes_before_the_pick_list_and_links_inside_the_site(self):
+        self.assertLess(INDEX.index('id="exec-quicknav"'), INDEX.index('id="picks-at-a-glance"'))
         hrefs = [a['href'] for a in self.nav.select('a')]
-        self.assertEqual(hrefs, ['picks.html', '#picks-at-a-glance', 'unresolved.html',
-                                 'matches.html', 'review.html'])
+        self.assertIn('picks.html', hrefs)
+        self.assertIn('#unresolved-limits', hrefs)
         for href in hrefs:
             self.assertFalse(href.startswith('http'), href)
 
-    def test_it_renders_no_number_and_no_pick(self):
-        text = self.nav.get_text(' ', strip=True)
-        self.assertNotIn('%', text)
-        self.assertEqual(self.nav.select('.prob-pair, .pick, [data-count]'), [])
-
-    def test_phone_rules_order_it_before_the_list_with_44px_targets(self):
+    def test_that_route_is_visible_on_a_phone_with_a_tappable_target(self):
         css = (ROOT / 'site' / 'assets' / 'style.css').read_text(encoding='utf-8')
-        self.assertIn('body[data-page="index"] main>#exec-quick{order:4}', css)
-        self.assertIn('body[data-page="index"] main>#picks-at-a-glance{order:5}', css)
-        self.assertIn('.exec-quick a{display:flex;align-items:center;justify-content:center;min-height:44px', css)
-        # The summary stays reachable and visible, just after the list.
-        self.assertIn('body[data-page="index"] main>#exec-summary{order:6}', css)
+        self.assertIn('body[data-page="index"] main>#exec-quicknav{order:3}', css)
+        self.assertIn('.exec-quicknav-actions a', css)
+        self.assertIn('min-height:40px', css)
 
-    def test_shipped_page_carries_it(self):
+    def test_the_full_summary_bar_is_never_folded_and_names_every_destination(self):
+        bar = self.soup.select_one('#exec-summary')
+        self.assertIsNotNone(bar)
+        self.assertIsNone(bar.find_parent('details'))
+        hrefs = {a['href'] for a in bar.select('a')}
+        self.assertTrue({'picks.html', '#picks-at-a-glance', 'unresolved.html',
+                         '#unresolved-summary', '#unresolved-limits', 'matches.html',
+                         'review.html'} <= hrefs)
+
+    def test_the_shipped_page_carries_the_route(self):
         page = BeautifulSoup((ROOT / 'index.html').read_text(encoding='utf-8'), 'html.parser')
-        self.assertIsNotNone(page.select_one('#exec-quick a[href="picks.html"]'))
+        self.assertIsNotNone(page.select_one('#exec-quicknav a[href="picks.html"]'))
 
 
 class CoverageReportTests(unittest.TestCase):

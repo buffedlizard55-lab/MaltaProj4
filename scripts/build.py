@@ -436,6 +436,7 @@ def exec_summary_bar(data):
         + link('#picks-at-a-glance', 'Every pick on this page ↓', 'exec-bar-link')
         + link('unresolved.html', 'Unresolved & limitations →', 'exec-bar-link')
         + link('#unresolved-summary', 'Why a pick can be missing ↓', 'exec-bar-link')
+        + link('#unresolved-limits', 'Visible limitations ↓', 'exec-bar-link')
         + link('matches.html', 'All matches →', 'exec-bar-link')
         + link('review.html', 'Flagged for review →', 'exec-bar-link')
         + '</nav>'
@@ -443,32 +444,38 @@ def exec_summary_bar(data):
         'VRS model — never from Hotspawn. ' + count_span('missing', c['without_percentage'])
         + ' open match(es) publish no percentage; every one is named with its reason in the '
         + link('#unresolved-summary', 'unresolved section below') + ' and on the '
-        + link('unresolved.html', 'unresolved page') + '.</p>'
+        + link('unresolved.html', 'unresolved page') + '. '
+        + str(sum(1 for m in data['matches'] if m.get('state') != 'open'))
+        + ' of ' + str(c['feed_rows']) + ' feed rows are past their lock or start and stay '
+        'unpriced on ' + link('matches.html', 'All matches') + '.</p>'
         '</section>'
     )
 
 
-def exec_quick_links(data):
-    """A two-row, thumb-sized map from the top of the page to the picks.
+def exec_summary_quicknav(data):
+    """Session 4ed657ce: a compact executive summary for the first phone screen.
 
-    Session 233b8a0e. Measured with Chromium on the 2026-10-24 board: at
-    320x568 the freshness strip ended at y=314, so the first phone screen held
-    only the strip and the top of the first pick card — the always-visible
-    executive summary (`#exec-summary`) that names the updated pick board only
-    appeared after all 31 cards, which is exactly the "I cannot find the picks
-    on my phone" complaint. This block is never folded, sits directly under the
-    strip in DOM order and in the phone's visual order, and gives every
-    destination its own 44px tap target without a horizontal swipe. It is a
-    navigation aid only: it renders no number and no pick.
+    Measured on the 2026-10-24T06:19Z build at 320x568, the full #exec-summary
+    bar is visually ordered after all 31 pick cards (y=8661) to keep the first
+    card above the tab bar. This one-line nav keeps the executive summary's
+    in-site links and its unresolved-limitations answer visible before the
+    list. It is hidden on desktop, where the full bar is already at y=425, and
+    is never inside a folded <details>. Counts come from scripts.summary and
+    app.js updates the shared data-count spans under the same expiry rules.
     """
+    c = summary.counts(data['matches'])
+    past = sum(1 for m in data['matches'] if m.get('state') != 'open')
     return (
-        '<nav class="exec-quick" id="exec-quick" aria-label="Where the updated picks are">'
-        '<a class="exec-quick-primary" href="picks.html">Updated picks →</a>'
-        + link('#picks-at-a-glance', 'Picks on this page ↓', 'exec-quick-link')
-        + link('unresolved.html', 'Unresolved & limits →', 'exec-quick-link')
-        + link('matches.html', 'All matches →', 'exec-quick-link')
-        + link('review.html', 'Flagged for review →', 'exec-quick-link')
-        + '</nav>'
+        '<nav class="exec-quicknav" id="exec-quicknav" aria-label="Executive summary — quick links">'
+        '<p class="exec-quicknav-line"><strong>Executive summary</strong> · '
+        + count_span('picked', c['with_pick']) + '/' + count_span('open', c['open'])
+        + ' picks · ' + count_span('missing', c['without_percentage'])
+        + ' unresolved<span class="exec-quicknav-past"> · <span data-past-rows="'
+        + str(past) + '">' + str(past) + '</span> past feed rows are not open</span>.</p>'
+        '<span class="exec-quicknav-actions">'
+        + link('picks.html', 'Updated picks →', 'exec-quicknav-primary')
+        + link('#unresolved-limits', 'Unresolved & limits ↓', 'exec-quicknav-link')
+        + '</span></nav>'
     )
 
 
@@ -1046,10 +1053,12 @@ def overview(data):
         queue_html='<div class="queue"><p class="eyebrow muted">Then next</p><ul>'+items+'</ul></div>'
     body=head('Executive summary','CS2 picks & probabilities.','Every open Hotspawn CS2 match, with our pick first and the supporting sources one tap away.',data)
     body+=fresh_strip(data, opens, priced, researched, unresolved)
-    # Session 233b8a0e: the thumb-sized map to the picks, never folded, on the
-    # first phone screen (see exec_quick_links). Pure navigation; no numbers.
-    body+=exec_quick_links(data)
     body+=exec_summary_bar(data)
+    # Session 4ed657ce: the full bar stays in DOM before the pick list and is
+    # ordered after it on phones; this compact quick nav is what a phone reader
+    # actually sees before the first card. Desktop hides it (CSS) to avoid a
+    # duplicate of the full bar.
+    body+=exec_summary_quicknav(data)
     # Two blocks directly under the freshness strip, before the hero: the plain
     # answer to "is the board complete and where are the picks", and the separate
     # unresolved section the summary has to carry. Both are rendered from
