@@ -574,3 +574,25 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
   body[data-page="index"] #picks-at-a-glance>.glance-foot{padding:0 2px}
   body[data-page="index"] #picks-at-a-glance>h2{margin-top:18px}
 }
+
+/* Session 174afa4f: the always-visible executive summary bar (#exec-summary).
+   It carries the same live completeness sentence and counters as the folded
+   briefing, with three large in-site taps (updated picks, picks on this page,
+   unresolved & limitations). On a phone it is ordered directly under the
+   freshness strip (same order value; DOM order breaks the tie) and ahead of
+   the pick list, so "where are the picks?" is answered before any scrolling
+   without opening the folded guide. Desktop uses document order. */
+.exec-summary{margin-bottom:18px}
+.exec-summary .exec-summary-answer{font-size:16px;line-height:1.5;margin:2px 0 6px;max-width:82ch}
+.exec-summary .exec-summary-counts{font-size:13px;color:var(--muted);margin:0 0 12px;max-width:82ch}
+.exec-summary .exec-summary-actions{gap:8px}
+.exec-summary .button.secondary{background:white;border-color:var(--line);color:var(--ink)}
+@media(max-width:650px){
+  body[data-page="index"] main>#exec-summary{order:3}
+  .exec-summary{padding:14px 16px;margin-bottom:12px}
+  .exec-summary .exec-summary-answer{font-size:14.5px;line-height:1.45}
+  .exec-summary .exec-summary-counts{font-size:12px;line-height:1.5}
+  .exec-summary .exec-summary-actions .button{flex:1 1 100%;min-height:48px;justify-content:center;font-size:14px}
+  .exec-summary .exec-summary-actions .button.secondary{flex:1 1 calc(50% - 4px);min-height:46px;font-size:12.5px;text-align:center}
+  .exec-summary .small{font-size:11.5px;line-height:1.6}
+}

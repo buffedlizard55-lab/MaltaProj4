@@ -551,6 +551,45 @@ def coverage_now(data):
         '</section>')
 
 
+def exec_summary_bar(data):
+    """The always-visible executive summary: completeness + where picks live.
+
+    Session 174afa4f. The full briefing (``coverage_now``, hero, start-here
+    cards) sits inside a closed ``<details>`` so the pick list can lead on a
+    phone — but that also hid the summary itself behind a tap labelled as a
+    site guide. This compact bar is the summary a first-time visitor sees
+    without opening anything: the same ``scripts.summary`` completeness
+    sentence and live ``data-count`` counters the folded briefing carries
+    (``app.js`` updates every instance, including the stale-state wording),
+    plus three large in-site taps — the updated pick board, every pick on
+    this page, and the separate unresolved-&-limitations section below.
+    Nothing here is hand-typed: every number is counted from this snapshot.
+    """
+    c = summary.counts(data['matches'])
+    return (
+        '<section class="panel exec-summary" id="exec-summary" aria-label="Executive summary">'
+        '<p class="eyebrow muted">Executive summary · start here</p>'
+        '<p class="exec-summary-answer"><span data-completeness>'
+        + e(summary.completeness_sentence(c)) + '</span></p>'
+        '<p class="exec-summary-counts">'
+        + count_span('open', c['open']) + ' open · '
+        + count_span('picked', c['with_pick']) + ' with a pick · '
+        + count_span('priced', c['priced']) + ' with a win probability · '
+        + count_span('missing', c['without_percentage']) + ' without % · '
+        + count_span('unresolved', c['no_pick']) + ' unresolved. Any row without % is listed '
+        'in <a href="#unresolved-picks">Unresolved picks &amp; limitations</a> below with its reason and source.</p>'
+        '<div class="actions exec-summary-actions">'
+        '<a class="button" href="picks.html">Updated picks →</a>'
+        '<a class="button secondary" href="#picks-at-a-glance">All picks on this page ↓</a>'
+        '<a class="button secondary" href="#unresolved-picks">Unresolved &amp; limitations ↓</a>'
+        '</div>'
+        '<p class="small">Full board with both win % per match: ' + link('picks.html', 'Picks')
+        + ' · every Hotspawn feed entry incl. past fixtures: ' + link('matches.html', 'All matches')
+        + ' · research queue: ' + link('unresolved.html', 'Unresolved')
+        + ' · how each line is sourced: ' + link('sources.html#method', 'Method') + '.</p>'
+        '</section>')
+
+
 def ladder_list(match=None):
     """The publication ladder as an ordered list, with its official source per step.
 
@@ -957,11 +996,15 @@ def overview(data):
         queue_html='<div class="queue"><p class="eyebrow muted">Then next</p><ul>'+items+'</ul></div>'
     body=head('Executive summary','CS2 picks & probabilities.','Every open Hotspawn CS2 match, with our pick first and the supporting sources one tap away.',data)
     body+=fresh_strip(data, opens, priced, researched, unresolved)
+    # The visible executive summary (session 174afa4f): completeness + the
+    # three in-site taps to the updated picks, this page's pick list and the
+    # unresolved section. The full briefing below stays folded so picks lead.
+    body+=exec_summary_bar(data)
     # Two blocks directly under the freshness strip, before the hero: the plain
     # answer to "is the board complete and where are the picks", and the separate
     # unresolved section the summary has to carry. Both are rendered from
     # scripts.summary on this snapshot, so no count is typed by hand.
-    body+='<details class="briefing-more"><summary>Summary, navigation &amp; site guide</summary>'
+    body+='<details class="briefing-more"><summary>Site guide, navigation &amp; full briefing</summary>'
     body+=executive_banner(data)
     body+=f'<nav class="exec-summary-links" aria-label="Executive summary — where to find the updated picks"><strong>Executive summary</strong> — this page lists every open match. For the focused board: {link("picks.html","Updated picks →")} · {link("#picks-at-a-glance","All picks at a glance ↓")} · {link("unresolved.html","Unresolved & limitations →")} · {link("matches.html",f"All {len(matches)} feed entries →")}<span class="exec-note">Every row below is one tap from its sources and calculation; the phone guide is in the summary above.</span></nav>'
     # Keep the complete executive/navigation guide, but folded: duplicate jump
