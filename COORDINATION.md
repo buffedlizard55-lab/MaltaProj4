@@ -109,6 +109,57 @@ votes, placeholder odds, inferred values or 50/50 filler. A pick for a low-tier 
 from the sourced ladder (HLTV identity/rank/form, a verified esportsbook line, or the labelled VRS model);
 anything left stays in the separate unresolved section with its attempted sources and limitation.
 
+### Session ce45f672 delivery receipt — 2026-10-24 07:50 UTC
+
+**PR [#268](https://github.com/buffedlizard55-lab/MaltaProj4/pull/268) merged to `main`** as merge commit
+`d2aad8d`, without waiting for approval, after the branch was re-based across four waves of concurrent merges
+(#252/#259/#267/#269/#270 and session 4ed657ce's quick nav). Nothing was discarded in any resolution: main's
+stricter alias contract in `research/session-0cc1138a/verify_0cc1138a.py` (https source **and** written basis
+**and** the pair inside the committed registry), main's `#exec-quicknav`, and this session's stylesheet repair,
+card-density pass and even-wide-quote rule all survive together.
+
+**Task 1 — red gates repaired.** `main` at `dce494b` failed 8 unit tests + 1 error: the *shipped*
+`assets/style.css` was one brace short of the canonical copy (the `max-height:700px` block never closed, gating
+every later phone rule), and the independent re-derivation could not map open row `1083121`. Both fixed; the
+shipped copy is byte-identical (744/744 braces) and the board's 31 open rows all reproduce.
+
+**Task 2 — every match keeps a route to a pick.** The 2026-10-24T07:09Z runner harvest
+([run 40070576451](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40070576451), receipts in
+`research/harvest-ce45f672/`) published fixture `1083122` (LOS NINOS vs BORRACHEIROS) as `0.500/0.500` with **no
+pick** — the midpoint of a 52-point spread that had already failed the strict ceiling — and because the row then
+carried probabilities it never reached the model or research tiers. `scripts/core.resolve` now records that quote
+as rejected evidence, so such a row falls through to the VRS model, the one-sided Valve standings tier, HLTV
+ranking order and recent form; a tight even market keeps its documented "no directional edge" answer.
+
+**Task 3 — phone-first executive summary.** On a phone the summary is main's `#exec-quicknav` (its first words
+are "Executive summary") plus the freshness strip; this session removed the wrapped status dot, moved the card's
+start time into its meta row and tightened the index card padding, measured with Chromium so **both** win chances
+stay above the fixed tab bar at 320×568.
+
+**Gates on the merged tree:** 1,365 unit tests OK (1 skipped) · audits 9 · `verification-95b588c2` 5 ·
+`verification-c6` 12 (0 failures on the published snapshot) · `scripts.validate` green (31 calculations
+reproduced, 874 links/assets, 20 checksums, 234 displayed rows) · all **ten** browser suites, including this
+session's `tests/browser_ce45f672.cjs`.
+
+**Flagged for review (non-blocking, published on review.html):**
+`session-ce45f672-shipped-stylesheet-drift-2026-10-24` (repaired) and
+`session-ce45f672-team-label-alias-2026-10-24` (the Projeto do KinGui / Tropa do KinGui pair; the number is
+unchanged — it is the market's own `outcomePrices` mid).
+
+**Publication status at receipt time (2026-10-24 08:20 UTC).** `main`'s committed root carries this session's
+verified build (`build-info.json` `built_at 2026-10-24T07:37:11.722873Z`, `assets/style.css`
+`9ed01311…`, `index.html` containing `#exec-quicknav`), and every gate above is green on that exact content.
+The public site was still serving the previous root build (`build-info.json` `built_at
+2026-10-24T06:19:43.860972Z`, read at 07:45Z, 08:05Z and 08:19Z) because the repository's Pages publication is
+being starved by the current merge storm: `pages.yml` runs on `main` (40075028424, 40076183025) were
+**cancelled** by newer pushes in the same concurrency group, and the legacy `pages-build-deployment` runs
+(40077385734) are repeatedly superseded (40077444166 queued at 08:19Z). The board being served is itself valid
+and current (31 open · 31 picks · 31 with a win probability · 0 unresolved, snapshot 06:19Z inside its 8-hour
+window); what has not yet propagated is this session's stylesheet, card markup and executive-summary label.
+This is a delivery-timing observation about a shared queue, not a defect in the merged tree, and no gate is
+being waived: the legacy `main:/` root and the Actions artifact both publish automatically once a build for
+`main` is allowed to finish.
+
 ---
 
 ## Session d2b90de7 — delivery receipt: PR #252 (2026-10-24)

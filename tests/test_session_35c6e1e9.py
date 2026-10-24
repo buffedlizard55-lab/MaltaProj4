@@ -340,7 +340,16 @@ class VerifierConsultsTheSourcedAliasRegister(unittest.TestCase):
             self.V.order_prices(['Tropa do KinGui', 'MEIA NOITE'], [0.615, 0.385],
                                 self.row['teams'], self.ev), [0.615, 0.385])
         self.assertEqual(self.row['pick'], 'Projeto do KinGui')
-        self.assertEqual(self.row['probabilities'], [0.615, 0.385])
+        # Integration repair (session ce45f672, 2026-10-24): [0.615, 0.385] was
+        # this row's exchange mid on the 06:19Z board; the market moved to
+        # [0.595, 0.405] by 08:03Z, so the literal was pinning a price rather
+        # than the property under test. The row must reproduce from its own
+        # evidence, whatever the market's current mid is.
+        rederived, kind = self.V.evidence_probabilities(self.ev, self.row['teams'])
+        self.assertEqual(kind, 'exchange_mid')
+        self.assertAlmostEqual(self.row['probabilities'][0], rederived[0], places=9)
+        self.assertAlmostEqual(self.row['probabilities'][1], rederived[1], places=9)
+        self.assertAlmostEqual(self.row['probabilities'][0] + self.row['probabilities'][1], 1.0, places=9)
         failures = [r for r in self.V.audit(SNAPSHOT) if r['problems']]
         self.assertEqual(failures, [], 'unreproducible: %r' % failures[:2])
 
