@@ -57,6 +57,14 @@ Using the pinned dependencies in `requirements.txt` and a clean Node install:
 - Missing or contradictory evidence stays blank and appears on **Unresolved & limitations** and **Flagged for Review**. Source access restrictions are recorded, not bypassed.
 - The authoring sandbox cannot make ordinary bash requests to the esports hosts. Retrieval-tool observations are documented above; the full automated source read runs on GitHub-hosted egress with durable receipts.
 
+## Official Valve model-source verification
+
+At 16:30:09 UTC, Valve's official repository head was still [`eec4853d…`](https://github.com/ValveSoftware/counter-strike_regional_standings/commit/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75) (“Updating Regional Standings for 10/5/2026”), and the Contents API listed `standings_global_2026_10_05.md` as the newest global file. The exact official file and the vendored input both hash to `df96e7fc3cd91a2687ec08cac0128e50cc4e4e55346581679572e881d79ae61b` (byte-identical). The official `fit.js`, `glicko.js` and `modelfit.png` were retrieved at that same pinned commit and are retained under [`official-valve/`](official-valve/) with hashes in [`official-valve-check.json`](official-valve-check.json).
+
+The official chart was visually read as **“Expected vs. Observed Win Rate — y = 0.7986x + 0.126.”** The site's methodology explicitly applies only the **0.7986 slope symmetrically around 50%**, not the `+0.126` intercept, so both sides sum to 100%. That is a disclosed project modelling choice; these are originated estimates, not official Valve probabilities or bookmaker lines. This distinction remains mandatory on every model row.
+
+HLTV's dated [Valve global ranking for 24 October 2026](https://www.hltv.org/valve-ranking/teams/2026/october/24) also rendered successfully with the heading “Valve global ranking on October 24th, 2026.” It is a secondary presentation of Valve points and is never mislabeled as an operator price.
+
 ## Integration / publication receipt
 
 Pending. No PR, merge, current coverage count or successful deployment is claimed yet.
