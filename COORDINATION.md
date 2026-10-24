@@ -8433,3 +8433,6 @@ quote above a six-book consensus, and any other session's in-flight publish-gate
 - Phone fix retained: on <=650px cards the pick row renders directly under the team names (first pick y=863 -> 660 at 320px, measured); both stylesheet copies byte-identical, root manifest checksum synced.
 - Verification on this branch pre-merge (snapshot 2026-10-24T17:00:40Z): coverage 83/83/83/83, 20 open / 20 picks / 20 probabilities / 0 unresolved; staged-root unit 1,487 OK, validate OK, all 11 browser suites pass. Receipts: research/session-acd2a4a8/REPORT.md.
 - Flagged for review (non-blocking): acd2a4a8-even-line-fallthrough-2026-10-24 in data/review-notes.json.
+
+## Session acd2a4a8 — post-merge diagnosis (2026-10-24)
+PR #292 merged as 3fdd077 at 17:29:38Z. Its own main run was cancelled by newer merges (#294/#295); the successor main run 40116877511 deployed a verified artifact (deploy job success) but its root-fallback gate still failed on the merged main tree. Re-running the harvest on this branch (now containing main's collector) to identify the remaining staged-root failures. [capture]
