@@ -1,7 +1,7 @@
 # Independent retained-evidence audit
 
 This audits the archived evidence and arithmetic, not the present live lobby or current prices.
-Snapshot: `2026-10-24T17:51:27.845682Z` · SHA-256: `397580ebc1eaed3c065afed9848dafae863683109e1376671ebbe54cef39ee34`
+Snapshot: `2026-10-24T18:04:39.340525Z` · SHA-256: `eab2233ecfc708512ea57d9472340be7c90640ee6c526e8b5bba52efbc2e5cc6`
 
 Rows checked: **81** · Arithmetic/field failures: **0**
 
@@ -68,7 +68,7 @@ Rows checked: **81** · Arithmetic/field failures: **0**
 | [1055478](https://play.hotspawn.com/cs2-pickems) | illwill / Lavked | Not priced; blank values checked | Consistent with stored evidence |
 | [1081105](https://play.hotspawn.com/cs2-pickems) | SUKEBAN / your end | Not priced; blank values checked | Consistent with stored evidence |
 | [1079621](https://play.hotspawn.com/cs2-pickems) | Gothic / Lavked | Not priced; blank values checked | Consistent with stored evidence |
-| [1082695](https://www.hotspawn.com/matches/galorys-vs-pain-circuit-x-curitiba-4-1082695) | Galorys / paiN | [Polymarket](https://gamma-api.polymarket.com/markets/6101181) | Consistent with stored evidence |
+| [1082695](https://play.hotspawn.com/cs2-pickems) | Galorys / paiN | Not priced; blank values checked | Consistent with stored evidence |
 | [1083122](https://www.hotspawn.com/matches/los-ninos-vs-borracheiros-cct-south-america-2026-series-7-1083122) | LOS NINOS / BORRACHEIROS | [Polymarket](https://gamma-api.polymarket.com/markets/6107049) | Consistent with stored evidence |
 | [1083140](https://www.hotspawn.com/matches/bestia-vs-imperial-circuit-x-curitiba-4-1083140) | BESTIA / Imperial | [Polymarket](https://gamma-api.polymarket.com/markets/6101189) | Consistent with stored evidence |
 | [1083123](https://www.hotspawn.com/matches/gremio-vs-yawara-cct-south-america-2026-series-7-1083123) | Grêmio / Yawara | [Thunderpick (via BO3.gg API)](https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament) | Consistent with stored evidence |
