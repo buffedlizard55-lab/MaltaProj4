@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "revision": "9680e51e8205bf9fffea9f0932b7642e522a3a46",
+  "built_at": "2026-10-24T16:58:59.173565Z",
+  "snapshot_generated_at": "2026-10-24T16:58:58.772454Z",
+  "rows": 83,
+  "files": {
+    "404.html": "f5b17edc6e893d9954145b6eaa79420ed533a366526c3e064d71b6be2acc07c1",
+    "analysis.html": "207d9d53543746161ca567ec5ccc6b3bc436d4702f78e34414c0f8d0bc33ae53",
+    "assets/app.js": "8991e02f04c20410a946d92e1429a56d945f10da28d6fed587c9a9cf40aa21f8",
+    "assets/favicon.svg": "5b0ba0da9b9bec504dc4695b59291abad789479745d4a18581fb78b0215738ba",
+    "assets/style.css": "7a68a91d2641db0fa40cc4cf9ea098f21faca69fffea2ac0b5a99db490848050",
+    "data/latest.json": "536816c8137f325bdbe62d89deb9c885dc3a428f5fcef3fa42085efc32655c19",
+    "data/matches.csv": "5221352b22edae445d56153ad0018758c107eab2c509d7d68bc735f0d7a514ae",
+    "evidence.html": "d2eee4e221a4d096ca481d77fecbc2148f2a031c2c58af5e9ce6fcd2f6bc4ebb",
+    "index.html": "1884c9f97e935c0c3880d6866c2227f27238d2b63d9f85b1af13dbd8d124c2ac",
+    "matches.html": "ecb3246fb54f4217bca77b7a7aa9e057293e390a6a060f2df07a651fc808be90",
+    "methodology.html": "db6dd3e60721627f0629397fd4d76b07f3f9ea5ab15b72348f3bee3b35a094ae",
+    "picks.html": "6ea631752338151fc19b2b4d023437e17076d23b9f3aec369b56e21dc6ef119f",
+    "review.html": "b600fbb138bfb649c1d085680706661452d0ce6cb4dd6210c8f19f77ca036885",
+    "site/index.html": "7ad39335aef2960a4c7f3a8f9f2322d358e59fd45631acfa19f456575ec491db",
+    "site/methodology.html": "130024ea27020261e759b42920f78c42bebcbb44f226ef5216c8bbb1a2684b33",
+    "site/picks.html": "de8e71d8a3a1f7b287299108b460956d7c52391255b567fc71cc9974f8dcd76c",
+    "site/review.html": "91547a7e0d0e5b1e9bde9a89cad48c38173aefee74ea25afd75c17d9de3937cf",
+    "site/unresolved.html": "d8c18e13a798f6d0f0f3cf8ee21bb42ed941d6077c82c8031ae3476d6120bded",
+    "sources.html": "bf584591c509699bfaef3a13d93cb3b56caa1a78f7d60bf740cd8f2ae1f1f8c3",
+    "unresolved.html": "dcee917c8b08ce5a96ddf3c805f820c26511444e499f4ca31fc73b292d064ee2"
+  }
+}
