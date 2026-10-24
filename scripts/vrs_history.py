@@ -40,12 +40,15 @@ def _fetch_json(url, headers):
         return json.loads(response.read().decode())
 
 
-def fetch_history(years=None, token=None, now=None):
+def fetch_history(years=None, token=None, now=None, force=False):
     """Vendor every global standings file Valve publishes for these years.
 
     Best-effort: any failure leaves the already-vendored copies untouched and
     returns the problem string, because a refresh must not fail on the
-    historical tier alone.
+    historical tier alone. A month that is already vendored is not re-fetched
+    (Valve does not rewrite a past month, and every copy is checksum-verified
+    on load), so a refresh normally costs one directory listing rather than two
+    API calls per month. ``force`` re-fetches everything.
     """
     now = now or datetime.now(timezone.utc)
     # One year of monthly files is ~750 KB and covers every fixture the feed
@@ -67,6 +70,12 @@ def fetch_history(years=None, token=None, now=None):
         entries = []
         for path in sorted(names):
             name = path.rsplit('/', 1)[1]
+            if not force and name in previous and (DIR / name).is_file():
+                kept = dict(previous[name])
+                raw = (DIR / name).read_bytes()
+                if hashlib.sha256(raw).hexdigest() == kept.get('sha256'):
+                    entries.append(kept)
+                    continue
             commits = _fetch_json(vrs.API + '/commits?path=%s&per_page=1' % path, headers)
             commit = commits[0]['sha']
             raw_url = '%s/%s/%s' % (vrs.RAW, commit, path)

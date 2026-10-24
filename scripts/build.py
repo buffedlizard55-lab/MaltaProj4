@@ -11,7 +11,7 @@ import shutil
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from scripts.core import dt, iso, fresh, pick_deadline, research_observation, HOTSPAWN, FIXTURES, GAMMA, PIN, norm, IDENTITIES as IDENTITY_REGISTER
-from scripts import summary, vrs
+from scripts import summary, vrs, historical
 
 ROOT=Path(__file__).resolve().parents[1]
 REPO='https://github.com/buffedlizard55-lab/MaltaProj4'
@@ -108,6 +108,7 @@ def feed_scope(data):
     rows = data['matches']
     past = past_dated_rows(rows, data)
     c = summary.counts(rows)
+    hist = historical_counts(data)
     if not past:
         return ''
     starts = sorted(m['start'] for m in past if m.get('start'))
@@ -121,8 +122,13 @@ def feed_scope(data):
         f'<p>Hotspawn’s fixture endpoint still returns <strong>{len(past)}</strong> CS2 rows whose scheduled start '
         f'is before this snapshot’s own observation time ({e(date(starts[0]))} to {e(date(starts[-1]))} UTC), '
         'each still carrying <em>status: scheduled</em>. They are kept here for complete inventory and are '
-        f'<strong>never given a pick or a percentage</strong>; only the {count_span("open", c["open"])} open rows carry prices. '
-        'The public lobby lists the open matches it is taking picks on.</p>'
+        f'<strong>never given a pick or a percentage</strong> in the live fields, which is what the two repository '
+        f'audits enforce. They are not blank, though: {hist["resolved"]} of {hist["rows"]} carry a separately '
+        'labelled research pick from Valve&rsquo;s official standings and '
+        f'{hist["unresolved"]} stay unresolved with the reason per team; '
+        f'only the {count_span("open", c["open"])} open rows carry prices. '
+        'The public lobby lists the open matches it is taking picks on.'
+        + (link('#past-picks', 'See every past row and its pick ↓') if has_past_picks(data) else '') + '</p>'
         '<p class="small">Official sources: '
         + link('https://play.hotspawn.com/lobby', 'Hotspawn lobby ↗')
         + ' · ' + link(FIXTURES, 'Hotspawn fixtures endpoint ↗')
@@ -136,6 +142,211 @@ def feed_scope(data):
 
 def is_research(m):
     return str(m.get('method') or '').startswith('research_')
+
+
+HIST_STATUS_TAGS = {
+    'model_vrs': ('Past fixture · our VRS model line', 'model'),
+    'research_vrs_single': ('Past fixture · research only', 'warning'),
+    'research_vrs_invariant': ('Past fixture · research only', 'warning'),
+    'unresolved': ('Past fixture · unresolved', 'gray'),
+}
+
+
+def hist_probability_cell(m):
+    """The win-probability column for a feed row that is not open.
+
+    A row past its own sourced lock or start never publishes a *current*
+    recommendation, and two audits in this repository enforce that
+    (``audit_9b97d585``, ``audit_cecfe864``). The resolved value therefore
+    renders under its own classes — never ``.prob-pair`` or ``.pick-cell
+    .pick``, which the validator reserves for actionable recommendations and
+    would demand an expiry deadline for. What a visitor gets is a value for
+    every row the feed returns, unmistakably labelled as a reconstruction.
+    """
+    block = m.get('historical')
+    if not block:
+        return ''
+    if not block.get('pick') and not block.get('probabilities'):
+        return ('<div class="hist-cell hist-blank" role="group" aria-label="No supportable historical value">'
+                '<p class="hist-why">' + e(block.get('reason')) + '</p>' + hist_source_line(block) + '</div>')
+    if block.get('probabilities'):
+        a = round(block['probabilities'][0] * 100, 1)
+        b = round(100 - a, 1)
+        number = ('<div class="hist-prob-pair"><span class="' + ('fav' if a > b else '') + '" aria-label="'
+                  + e(m['teams'][0]) + ' ' + format(a, '.1f') + ' percent">' + format(a, '.1f')
+                  + '%</span><span class="' + ('fav' if b > a else '') + '" aria-label="' + e(m['teams'][1]) + ' '
+                  + format(b, '.1f') + ' percent">' + format(b, '.1f') + '%</span></div>'
+                  '<div class="prob-bar" aria-hidden="true"><i style="width:' + format(a, '.1f') + '%"></i></div>'
+                  '<div class="prob-label">OUR MODEL LINE (VRS ' + e(block.get('standings_as_of'))
+                  + ') · PAST FIXTURE</div>')
+    else:
+        spread = (block.get('invariant') or {}).get('candidates') or []
+        number = ('<div class="hist-prob-none">No percentage published'
+                  + (' · direction holds for all ' + str(len(spread)) + ' listed rosters' if spread else ' · pick only')
+                  + '</div>')
+    return ('<div class="hist-cell" role="group" aria-label="Historical research value, not a current pick">'
+            + number + '<p class="hist-why">' + e(block.get('reason')) + '</p>'
+            + hist_source_line(block) + '</div>')
+
+
+def hist_source_line(block):
+    return ('<p class="hist-src">Valve standings of ' + e(block.get('standings_as_of')) + ' · '
+            + link(block.get('source'), 'official file ↗') + '</p>')
+
+
+def hist_pick_cell(m):
+    """The pick column for a feed row that is not open: a labelled research pick."""
+    block = m.get('historical')
+    if not block:
+        return ''
+    text, kind = HIST_STATUS_TAGS.get(block['status'], ('Past fixture', 'gray'))
+    if not block.get('pick'):
+        return '<div class="hist-pick-row">' + tag(text, kind) + '</div>'
+    return ('<div class="hist-pick-row"><span class="hist-pick">' + e(block['pick']) + '</span>'
+            + tag(text, kind) + '</div>')
+
+
+def historical_counts(data):
+    """The published coverage summary, tolerant of a snapshot built before it."""
+    coverage = data.get('historical_coverage') or {}
+    counts = coverage.get('counts') or {}
+    return {
+        'rows': counts.get('rows', 0),
+        'model': counts.get('model_vrs', 0),
+        'single': counts.get('research_vrs_single', 0),
+        'invariant': counts.get('research_vrs_invariant', 0),
+        'unresolved': counts.get('unresolved', 0),
+        'resolved': coverage.get('resolved', 0),
+        'pct': coverage.get('coverage_pct'),
+    }
+
+
+def has_past_picks(data):
+    """Whether this snapshot will render the past-fixture pick section.
+
+    Every in-page link to ``#past-picks`` is gated on this, so a snapshot
+    without non-open rows (the unit fixtures) never publishes a dead anchor.
+    """
+    return bool(data.get('historical_coverage')) and any(m.get('state') != 'open' for m in data['matches'])
+
+
+def past_coverage_sentence(data):
+    """One sentence for the always-visible executive summary bar.
+
+    Counts come from the snapshot's own historical coverage block, so the
+    sentence cannot drift from the rows it describes.
+    """
+    c = summary.counts(data['matches'])
+    hc = historical_counts(data)
+    if not hc['rows']:
+        return ('Every one of the ' + str(c['feed_rows']) + ' feed rows is open, and none needs a historical pick.')
+    return (str(hc['rows']) + ' of ' + str(c['feed_rows']) + ' feed rows are past their lock or start. They are not '
+            'current recommendations, but they are not blank: <strong>' + str(hc['resolved']) + ' of '
+            + str(hc['rows']) + '</strong> carry a sourced research pick from Valve&rsquo;s official standings and '
+            + str(hc['unresolved']) + ' are unresolved with the reason per team'
+            + (' — ' + link('#past-picks', 'every past row and its pick ↓') if has_past_picks(data) else '') + '.')
+
+
+def past_unresolved_section(data):
+    """The past feed rows that no source could resolve, named with the reason.
+
+    Sits on the unresolved page so one destination holds every row on the board
+    without a percentage — the open ones above it and the past ones here.
+    """
+    if not has_past_picks(data):
+        return ''
+    coverage = data['historical_coverage']
+    hc = historical_counts(data)
+    rows = coverage.get('unresolved') or []
+    body = ''.join(
+        '<li class="hist-unresolved-row"><strong>' + e(' vs '.join(u['teams'])) + '</strong>'
+        '<span class="muted small">' + e(u.get('competition') or '') + ' · ' + e(date(u.get('start'))) + ' UTC · #'
+        + e(u['id']) + '</span><p>' + e(u['reason']) + '</p><ul class="hist-attempts">'
+        + ''.join('<li><strong>' + e(a.get('provider')) + ' — ' + e(a.get('status')) + ':</strong> '
+                  + e(a.get('reason')) + ' ' + link(a.get('url'), 'source ↗') + '</li>'
+                  for a in u.get('attempts') or [])
+        + '</ul></li>'
+        for u in rows)
+    limits = ''.join('<li>' + e(x) + '</li>' for x in coverage.get('limitations') or [])
+    return (
+        '<section class="panel past-unresolved" id="past-unresolved" aria-label="Unresolved past fixtures">'
+        '<p class="eyebrow muted">Unresolved &middot; past feed rows</p>'
+        '<h2>' + e(str(hc['unresolved'])) + ' past feed row(s) with no supportable pick</h2>'
+        '<p>' + e(str(hc['resolved'])) + ' of ' + e(str(hc['rows'])) + ' past rows resolve to a sourced research pick '
+        'from Valve&rsquo;s official standings; the rows below do not, and each one says exactly why per team. These '
+        'are past fixtures, so nothing here is a current recommendation and no betting market prices them.</p>'
+        + ('<ul class="hist-unresolved">' + body + '</ul>' if rows else
+           '<p>Every past feed row resolved to a sourced pick at this observation.</p>')
+        + details('Limitations for generating picks on past fixtures', '<ul class="checklist">' + limits + '</ul>',
+                  'past-limits')
+        + '<p class="glance-actions">' + link('matches.html#past-picks', 'Every past row and its pick →', 'button secondary')
+        + link('matches.html?status=not_open', 'Past rows in the table →', 'button secondary')
+        + link('sources.html#method', 'Method and gates →', 'button secondary') + '</p></section>'
+    )
+
+
+def historical_section(data, anchor='past-picks'):
+    """Every past feed row: its research pick, its tier, and what is missing.
+
+    This is the section the executive summary links to. It states plainly that
+    none of it is a current recommendation, counts each tier from the snapshot
+    itself, and then names every unresolved row with the reason per team.
+    """
+    if not has_past_picks(data):
+        return ''
+    coverage = data['historical_coverage']
+    c = historical_counts(data)
+    rows = [m for m in data['matches'] if m.get('state') != 'open']
+    tiers = ''.join(
+        '<li><strong>' + e(t['rows']) + '</strong> — ' + e(t['publishes'])
+        + '<span>' + e(t['basis']) + '</span></li>'
+        for t in coverage.get('tiers') or [])
+    limits = ''.join('<li>' + e(x) + '</li>' for x in coverage.get('limitations') or [])
+    files = ''.join(
+        '<li>' + e(name) + ' — ' + e(str(count)) + ' row(s) · '
+        + link('https://github.com/' + e(coverage.get('standings_repository') or '') + '/blob/'
+               + e(next((f for f in (data.get('historical_coverage') or {}).get('files', []) if f == name), name)),
+               'official file ↗') + '</li>'
+        for name, count in sorted((coverage.get('standings_files_used') or {}).items()))
+    unresolved = coverage.get('unresolved') or []
+    unresolved_rows = ''.join(
+        '<li class="hist-unresolved-row"><strong>' + e(' vs '.join(u['teams'])) + '</strong>'
+        '<span class="muted small">' + e(u.get('competition') or '') + ' · ' + e(date(u.get('start'))) + ' UTC · #'
+        + e(u['id']) + '</span><p>' + e(u['reason']) + '</p><p class="small">'
+        + link(u.get('standings_source'), 'Valve standings of ' + e(u.get('standings_as_of')) + ' ↗') + ' · '
+        + link('evidence.html#match-' + e(u['id']), 'every attempt for this row →') + '</p></li>'
+        for u in unresolved)
+    return (
+        '<section class="panel past-picks" id="' + e(anchor) + '" aria-label="Picks for past fixtures">'
+        '<p class="eyebrow muted">Executive summary &middot; every match, including the ones the feed keeps</p>'
+        '<h2>' + e(str(c['resolved'])) + ' of ' + e(str(c['rows'])) + ' past feed rows now carry a sourced pick</h2>'
+        '<p class="notice warning"><strong>None of these is a current recommendation.</strong> Every row in this '
+        'section is past its own sourced Hotspawn lock or start, so the live pick, probability, fair line and method '
+        'fields stay blank and two repository audits enforce that. These are research reconstructions published so the '
+        'inventory is complete, and none of them comes from a betting market: a market on a match that has already '
+        'started is closed.</p>'
+        '<p>' + e(str(c['model'])) + ' carry our originated line with a win probability, '
+        + e(str(c['single'] + c['invariant'])) + ' a sourced pick with no percentage, and '
+        + e(str(c['unresolved'])) + ' remain unresolved and are named below with the reason per team.</p>'
+        + '<ul class="hist-tiers">' + tiers + '</ul>'
+        + '<div class="actions">' + link('matches.html?status=not_open', 'Every past row in the table →', 'button')
+        + link('unresolved.html#past-unresolved', 'Unresolved past rows →', 'button secondary')
+        + link('sources.html#method', 'How these lines are originated →') + '</div>'
+        + details('Limitations for generating picks on past fixtures (' + str(len(coverage.get('limitations') or []))
+                  + ')', '<ul class="checklist">' + limits + '</ul>', 'hist-limits')
+        + details('Which official Valve standings file priced which rows',
+                  '<ul class="hist-files">' + files + '</ul>'
+                  '<p class="small">Each row is priced from the newest official file published on or before its own '
+                  'sourced start. Formula: ' + link(coverage.get('formula_source'), 'Valve model/fit.js ↗')
+                  + ' · calibration: ' + link(coverage.get('calibration_source'), 'Valve modelfit.png ↗') + '</p>',
+                  'hist-files-more')
+        + (details('Show the ' + str(len(unresolved)) + ' past row(s) with no supportable pick',
+                   '<ul class="hist-unresolved">' + unresolved_rows + '</ul>'
+                   '<p class="small">Blank means unverified. None of these is filled with 50/50.</p>', 'hist-gap')
+           if unresolved else
+           '<p class="small">Every past feed row resolved to a sourced pick at this observation.</p>')
+        + '</section>'
+    )
 
 
 def is_model(m):
@@ -202,7 +413,7 @@ def table(matches,review=False,label='Match table',past_ids=frozenset()):
         evidence=m['evidence'][0] if m['evidence'] else {}
         obs=evidence.get('observed_at') or research_observation(m) or ''
         research_only=' research-only' if research else ''
-        pick=(f'<span class="pick{research_only}">{e(m["pick"])}</span>'+tag('Listing estimate' if listing_quote(evidence) else METHOD_TAGS.get(m['method'],'Exchange line'),'warning' if listing_quote(evidence) else METHOD_KIND.get(m['method'],'gray'))) if m['pick'] else tag('No directional edge' if m['probabilities'] is not None else ('Unresolved' if state=='unresolved' else ('Past fixture \u00b7 not in the lobby' if str(m['id']) in past_ids else 'Not open')),'warning' if state=='unresolved' else 'gray')
+        pick=(f'<span class="pick{research_only}">{e(m["pick"])}</span>'+tag('Listing estimate' if listing_quote(evidence) else METHOD_TAGS.get(m['method'],'Exchange line'),'warning' if listing_quote(evidence) else METHOD_KIND.get(m['method'],'gray'))) if m['pick'] else (hist_pick_cell(m) if m.get('historical') else tag('No directional edge' if m['probabilities'] is not None else ('Unresolved' if state=='unresolved' else ('Past fixture \u00b7 not in the lobby' if str(m['id']) in past_ids else 'Not open')),'warning' if state=='unresolved' else 'gray'))
         source=link(m['source_url'],'Hotspawn ↗')+link('evidence.html#match-'+m['id'],'Evidence & lines')
         if evidence and evidence.get('provider')=='Valve VRS model':
             source+=link(evidence['url'],'Valve standings ↗')
@@ -211,6 +422,8 @@ def table(matches,review=False,label='Match table',past_ids=frozenset()):
             source+=link(m['hltv_context'].get('source'),'HLTV fixture & lineups ↗' if is_model(m) else 'HLTV fixture & ranking ↗')
         if m.get('method')=='research_vrs_single' and (m.get('vrs_research') or {}).get('source'):
             source+=link(m['vrs_research']['source'],'Valve standings ↗')
+        if (m.get('historical') or {}).get('source'):
+            source+=link(m['historical']['source'],'Valve standings of '+str(m['historical'].get('standings_as_of'))+' ↗')
         for row in (m.get('hltv_team_pages') or {}).get('teams',[]):
             if row.get('url'):
                 source+=link(row['url'],'HLTV %s team page ↗' % row['team'])
@@ -237,7 +450,7 @@ def table(matches,review=False,label='Match table',past_ids=frozenset()):
                 items.append('Listing source limitation: ' + evidence['raw']['limitation'])
             reason='<td class="review-reason"><ul>'+''.join('<li>'+e(i)+'</li>' for i in dict.fromkeys(items) if i)+'</ul>'+link('evidence.html#match-'+m['id'],'View each attempted source →')+'</td>'
         needs=' needs-pick' if m['state']=='open' and m['probabilities'] is None else ''
-        rows.append(f'''<tr class="row{needs}" data-needs="{'1' if needs else '0'}" data-match="{e(m['id'])}" data-status="{state}" data-search="{e((' '.join(t or '' for t in m['teams'])+' '+(m['competition'] or '')+' '+m['id']).lower())}" data-event="{e(m['competition'])}" data-start="{e(m['start'])}" data-lock="{e(m['lock'])}" data-expires="{e(m.get('expires_at'))}" data-evidence="{e(obs)}"><td class="team-col"><div class="teams">{e(m['teams'][0])}<span>vs</span>{e(m['teams'][1])}</div><div class="competition">{e(m['competition'])} · {e((m['tier'] or '').upper()) or 'Tier unverified'}</div></td><td class="time-cell">{e(date(m['start']))}<span class="small">UTC · locks {e(dt(m['lock']).strftime('%H:%M')) if m['lock'] else 'unverified'}</span></td><td>{probability(m)}</td><td class="pick-cell">{pick}</td>{reason}<td class="source-links">{source}</td></tr>''')
+        rows.append(f'''<tr class="row{needs}" data-needs="{'1' if needs else '0'}" data-match="{e(m['id'])}" data-status="{state}" data-search="{e((' '.join(t or '' for t in m['teams'])+' '+(m['competition'] or '')+' '+m['id']).lower())}" data-event="{e(m['competition'])}" data-start="{e(m['start'])}" data-lock="{e(m['lock'])}" data-expires="{e(m.get('expires_at'))}" data-evidence="{e(obs)}"><td class="team-col"><div class="teams">{e(m['teams'][0])}<span>vs</span>{e(m['teams'][1])}</div><div class="competition">{e(m['competition'])} · {e((m['tier'] or '').upper()) or 'Tier unverified'}</div></td><td class="time-cell">{e(date(m['start']))}<span class="small">UTC · locks {e(dt(m['lock']).strftime('%H:%M')) if m['lock'] else 'unverified'}</span></td><td>{probability(m) if m['state']=='open' else hist_probability_cell(m)}</td><td class="pick-cell">{pick}</td>{reason}<td class="source-links">{source}</td></tr>''')
     return '<div class="table-wrap" tabindex="0" role="region" aria-label="'+e(label)+'"><table role="table"><caption>Whole-match winner only. Blank percentages = unverified; never a default 50/50. Times UTC.</caption><thead><tr><th scope="col">Match / event</th><th scope="col">Start / lock</th><th scope="col">Win probability</th><th scope="col">Our pick</th>'+('<th scope="col">Limitation / review flag</th>' if review else '')+'<th scope="col">Sources</th></tr></thead><tbody>'+''.join(rows)+'</tbody></table></div>'
 
 
@@ -380,9 +593,14 @@ def executive_banner(data):
     past = past_dated_rows(data['matches'], data)
     # 92 feed rows must never read as 92 matches: name the stale records the
     # endpoint still returns, in the same block that publishes the counts.
+    hc = historical_counts(data)
     past_note = (f'<p class="small">Of those {c["feed_rows"]} feed rows, {len(past)} are past-dated records the '
                  'endpoint still returns with <em>status: scheduled</em>. They are listed on '
-                 + link('matches.html', 'All matches') + ', labelled as past fixtures, and never priced. '
+                 + link('matches.html', 'All matches') + ', labelled as past fixtures, and never priced as live '
+                 f'picks — but they are not blank either: <strong>{hc["resolved"]} of {hc["rows"]}</strong> carry a '
+                 'sourced research pick from Valve&rsquo;s official standings and '
+                 f'{hc["unresolved"]} are unresolved with the reason per team. '
+                 + (link('#past-picks', 'Past fixtures & their picks ↓') + ' · ' if has_past_picks(data) else '')
                  + link('matches.html#feed-scope', 'What the feed returns →') + '</p>') if past else ''
     return (
         '<section class="panel exec-banner" id="exec-banner" aria-label="Executive summary — start here">'
@@ -445,9 +663,7 @@ def exec_summary_bar(data):
         + ' open match(es) publish no percentage; every one is named with its reason in the '
         + link('#unresolved-summary', 'unresolved section below') + ' and on the '
         + link('unresolved.html', 'unresolved page') + '. '
-        + str(sum(1 for m in data['matches'] if m.get('state') != 'open'))
-        + ' of ' + str(c['feed_rows']) + ' feed rows are past their lock or start and stay '
-        'unpriced on ' + link('matches.html', 'All matches') + '.</p>'
+        + past_coverage_sentence(data) + '</p>'
         '</section>'
     )
 
@@ -1075,7 +1291,7 @@ def overview(data):
     # all ancestor disclosures when a visitor follows one of these deep links.
     body+=('<nav class="jump-nav" aria-label="Jump to a section of this page">'
         +link('#picks-at-a-glance','All picks at a glance')+link('#today','Today’s picks')+link('#later','Later on the board')
-        +link('#unresolved-picks','Picks with no %')+link('#unresolved-summary','Unresolved & limitations')+link('#unresolved-limits','Why a pick can be missing')+link('#pick-limitations','Every rejected line')+link('#coverage','Coverage')+'</nav>')
+        +link('#unresolved-picks','Picks with no %')+link('#unresolved-summary','Unresolved & limitations')+link('#unresolved-limits','Why a pick can be missing')+(link('#past-picks','Past fixtures & their picks') if has_past_picks(data) else '')+link('#pick-limitations','Every rejected line')+link('#coverage','Coverage')+'</nav>')
     body+=coverage_now(data)
     body+=f'<section class="hero" aria-label="Find your picks"><div><div class="eyebrow">Hotspawn lobby intelligence</div><h2>Your next pick.<br>Backed by external lines.</h2><p><span data-count="priced">{len(priced)}</span> of <span data-count="open">{len(opens)}</span> open matches have a win probability: <span data-count="market">{len(market)}</span> from betting markets and <span data-count="model">{len(model)}</span> from our Valve-standings model. <span data-count="researched">{len(researched)}</span> more carry a research pick and <span data-count="unresolved">{len(unresolved)}</span> have none. Hotspawn’s crowd percentages are never used.</p><div class="actions">{link("#picks-at-a-glance","See every pick ↓","button")}{link("picks.html","View updated picks →","button secondary")}{link("analysis.html","Tournament analysis ↗","button secondary")}{link("unresolved.html","Unresolved & limits →","button secondary")}</div></div><div class="hero-side">{next_html}{queue_html}</div></section>'
     body+=f'''<section class="panel start-here" id="start-here" aria-label="Start here"><p class="eyebrow muted">Start here · tap a card</p><h2>Where the picks are</h2><div class="start-grid"><a class="start-card" href="picks.html"><strong>Updated picks</strong><span>Every open match in one place: market and model probabilities, research-only picks, and unresolved entries with their limitations.</span></a><a class="start-card" href="#unresolved-summary"><strong>Unresolved & limitations</strong><span>Picks without a market line, research-only picks and anything still unresolved, with the reason and its source.</span></a><a class="start-card" href="analysis.html#day-five-results"><strong>TWC final results</strong><span>Aurora 2-1 Falcons (third place) and FURIA 3-2 BETBOOM (grand final). Every score links to HLTV, and the pre-lock picks are scored honestly.</span></a><a class="start-card" href="matches.html"><strong>All matches</strong><span>The complete Hotspawn feed, including closed entries.</span></a></div><p class="start-note">Pick labels, the source ladder and every limitation are on the {link('sources.html','method page')}.</p></section>'''
@@ -1192,6 +1408,7 @@ def overview(data):
                     +gap_ledger([m for m in gap if m['state']=='open'], dt(data['generated_at'])), 'more gap-more')
            +details('Show which line sources were reachable, and what each one returned', access_limitations(data), 'more gap-more')
            +'</section>')
+    body+=historical_section(data)
     body+=f'<div class="freshness">Fixture observation: {e(date(data.get("fixtures_observed_at"),True))} · scheduled checks every 15 minutes at :04, :19, :34 and :49 UTC (GitHub may delay them), with a watchdog check every 10 minutes that dispatches the same verified pipeline when the published snapshot is over 90 minutes old · {link("sources.html","Refresh health ↗")}</div>'
     body+=f'''<div class="two-col"><section class="panel" id="how-picks"><p class="eyebrow muted">How picks are made</p><h2>Evidence before a favorite.</h2><ol class="method-steps"><li><div><strong>Find every Hotspawn CS2 fixture</strong><p>Compare the public lobby’s structured data with its own fixture feed.</p></div></li><li><div><strong>Price it from the market</strong><p>Validated exchange prices (Polymarket) or a bookmaker line (Pinnacle), normalized or de-margined.</p></div></li><li><div><strong>Originate our own line where no market exists</strong><p>Valve’s official standings points through Valve’s published formula and calibration, with HLTV lineups confirming each roster.</p></div></li><li><div><strong>Then research, never guess</strong><p>HLTV-verified identity and ranking order, or one-sided presence in Valve’s official standings, as a research-only pick with no percentage. Anything left stays unresolved.</p></div></li></ol>{link('sources.html#method','Read the methodology →')}{link('analysis.html','TWC review & contrarian screen →')}</section><section class="panel"><p class="eyebrow muted">Coverage notes</p><h2>What needs attention</h2><ul class="checklist"><li><span class="tick">↗</span>{len(matches)-len(opens)} feed entries are not open by sourced timestamps.</li><li><span class="tick">↗</span>Missing series format is left blank, not inferred.</li><li><span class="tick">↗</span>Wide exchange spreads are flagged as low precision; model lines are labelled; research-only picks carry no percentage.</li><li><span class="tick">↗</span>Prices expire at the earliest source TTL, start, lock or bookmaker cutoff.</li></ul>{link('review.html','Open Flagged for Review →')}</section></div>'''
     return body+'</details>'
@@ -1623,6 +1840,15 @@ def evidence_page(data):
         if m.get('hltv_context'):
             context=m['hltv_context']
             line+='<h3>HLTV context (not a probability)</h3><p>'+e(context['limitation'])+' '+link(context['source'],'HLTV match research ↗')+'</p><pre>'+e(json.dumps(context,indent=2,ensure_ascii=False))+'</pre>'
+        if m.get('historical'):
+            hist=m['historical']
+            line+=('<h3>Past-fixture research value (not a current pick)</h3>'
+                   '<p class="notice warning"><strong>'+e(hist.get('label'))+'.</strong> '+e(hist.get('reason'))+'</p>'
+                   +('<p><strong>Published pick:</strong> '+e(hist.get('pick'))+'. <strong>Published win '
+                     'probability:</strong> '+('%.1f%% / %.1f%%'%(hist['probabilities'][0]*100,hist['probabilities'][1]*100) if hist.get('probabilities') else 'none — no single number is supportable')+'.</p>' if hist.get('pick') else '<p><strong>No pick published.</strong> Nothing is filled with 50/50.</p>')
+                   +'<p><strong>Valve standings used:</strong> '+e(hist.get('standings_as_of'))+' ('+e(hist.get('standings_file'))+', commit '+e(hist.get('standings_commit'))+') · '+link(hist.get('source'),'official file ↗')+' · '+link(hist.get('raw_url'),'raw bytes ↗')+'</p>'
+                   +'<p><strong>Attempts:</strong></p><ol>'+''.join('<li><strong>'+e(a.get('provider'))+' — '+e(a.get('status'))+'</strong>: '+e(a.get('reason'))+' '+link(a.get('url'),'Source ↗')+'</li>' for a in hist.get('attempts') or [])+'</ol>'
+                   +'<pre>'+e(json.dumps(hist,indent=2,ensure_ascii=False))+'</pre>')
         if m.get('vrs_research'):
             vresearch=m['vrs_research']
             line+='<h3>Valve standings research (not a probability)</h3><p>One-sided presence in Valve’s official global standings can support a pick only; no percentage is derived from a single points value. '+link(vresearch.get('source'),'Valve standings ↗')+'</p><pre>'+e(json.dumps(vresearch,indent=2,ensure_ascii=False))+'</pre>'
@@ -1647,25 +1873,32 @@ def build(data,out,now=None):
         elif (m['probabilities'] is not None or m.get('pick')) and (not m['expires_at'] or dt(m['expires_at'])<=now or not fresh(data.get('fixtures_observed_at'),now) or (is_research(m) and not fresh(research_observation(m),now)) or not all(fresh(q['observed_at'],now) and (not q.get('updated_at') or fresh(q['updated_at'],now)) for q in m['evidence'])):
             m['probabilities']=m['fair_odds']=m['pick']=m['method']=None
             m['reason']='Evidence deadline passed (observation/update TTL or bookmaker cutoff); historical observation retained in the ledger.'
+    # Every row the feed returns gets a value, including the ones past their own
+    # sourced lock. Recomputed here from the vendored dated Valve standings, so
+    # the published pages and JSON always agree with what the validator replays.
+    historical.apply_all(data, now=now)
     out=Path(out);out.mkdir(parents=True,exist_ok=True)
     shutil.copytree(ROOT/'site/assets',out/'assets',dirs_exist_ok=True)
     (out/'.nojekyll').touch()
     (out/'data').mkdir(exist_ok=True)
     (out/'data/latest.json').write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n')
     with (out/'data/matches.csv').open('w') as f:
-        writer=csv.writer(f);writer.writerow(['hotspawn_id','team_1','team_2','competition','start_utc','lock_utc','state','p_team_1','p_team_2','pick','fair_decimal_1','fair_decimal_2','method','source','price_source','limitation','quote_observed_utc','quote_updated_utc','expires_utc','snapshot_generated_utc','snapshot_fixture_observed_utc','build_utc'])
+        writer=csv.writer(f);writer.writerow(['hotspawn_id','team_1','team_2','competition','start_utc','lock_utc','state','p_team_1','p_team_2','pick','fair_decimal_1','fair_decimal_2','method','source','price_source','limitation','quote_observed_utc','quote_updated_utc','expires_utc','past_fixture_pick','past_fixture_p_team_1','past_fixture_p_team_2','past_fixture_tier','past_fixture_standings_as_of','past_fixture_source','past_fixture_limitation','snapshot_generated_utc','snapshot_fixture_observed_utc','build_utc'])
         for m in data['matches']:
             q=m['evidence'][0] if m['evidence'] else {}
-            writer.writerow([m['id'],*m['teams'],m['competition'],m['start'],m['lock'],m['state'],*(m['probabilities'] or ['','']),m['pick'],*(m['fair_odds'] or ['','']),m['method'],m['source_url'],q.get('api_url'),m['reason'],q.get('observed_at'),q.get('updated_at'),m.get('expires_at'),data['generated_at'],data['fixtures_observed_at'],data['built_at']])
+            # The past-fixture research value is exported beside the live fields,
+            # never in them: state stays not_open and pick stays blank.
+            h=m.get('historical') or {}
+            writer.writerow([m['id'],*m['teams'],m['competition'],m['start'],m['lock'],m['state'],*(m['probabilities'] or ['','']),m['pick'],*(m['fair_odds'] or ['','']),m['method'],m['source_url'],q.get('api_url'),m['reason'],q.get('observed_at'),q.get('updated_at'),m.get('expires_at'),h.get('pick') or '',*((h.get('probabilities') or ['',''])+['',''])[:2],h.get('status') or '',h.get('standings_as_of') or '',h.get('source') or '',h.get('reason') or '',data['generated_at'],data['fixtures_observed_at'],data['built_at']])
     matches=data['matches'];opens=[m for m in matches if m['state']=='open'];priced=[m for m in opens if m['probabilities'] is not None]
     no_probability=[m for m in matches if m['state']=='open' and m['probabilities'] is None]
     unresolved=[m for m in no_probability if not m.get('pick')]
     nonmarket=non_market_rows(matches)
     pages={'index':('Executive summary',overview(data)),
         'picks':('Updated picks',head('The pick board','Updated CS2 picks.','Every open Hotspawn CS2 match: our pick, both supported win probabilities, and direct source links.',data)+'<nav class="section-nav" aria-label="Pick lists">'+link('picks.html','All open matches ('+str(len(opens))+')')+('<a href="unresolved.html?status=needs">No percentage (<span data-count="missing">'+str(len(no_probability))+'</span>)</a>')+link('unresolved.html','No market line ('+str(len(nonmarket))+')')+link('matches.html','All matches')+'</nav><details class="method-details board-method"><summary>How picks, model lines &amp; blanks work</summary><div class="notice info">One complete board: market probabilities first, our labelled VRS model where no accepted market line was collected, and research-only picks with <strong>no percentage</strong> where a number is unsupported. Unresolved entries stay visible, not omitted. Estimates, not promises. '+link('unresolved.html','Read every non-market limitation →')+'</div></details>'+filters(opens,'open')+table(opens,True,label='Every open CS2 match and pick')),
-        'matches':('All matches',head('Complete coverage','Every listed fixture.','All CS2 records returned by the official Hotspawn lobby feed, including not-open entries.',data)+feed_scope(data)+filters(matches,'open')+table(matches,past_ids={str(m['id']) for m in past_dated_rows(matches,data)})),
+        'matches':('All matches',head('Complete coverage','Every listed fixture.','All CS2 records returned by the official Hotspawn lobby feed, including not-open entries.',data)+feed_scope(data)+historical_section(data)+filters(matches,'open')+table(matches,past_ids={str(m['id']) for m in past_dated_rows(matches,data)})),
         'analysis':('TWC analysis',analysis_page(data)),
-        'unresolved':('Unresolved picks',head('Research queue','Unresolved & non-market picks.','Every open match without a usable betting line: our model line, a research-only pick, or an honest blank. Each row states its limitation.',data)+unresolved_page_intro(data)+'<nav class="section-nav" aria-label="Pick lists">'+('<a href="unresolved.html?status=needs">No percentage (<span data-count="missing">'+str(len(no_probability))+'</span>)</a>')+link('picks.html','All open matches ('+str(len(opens))+')')+link('matches.html','All matches')+'</nav><div class="notice">Order of evidence: strict exchange gate → HLTV identity research → Pinnacle bookmaker line → labelled wide-exchange tier → <strong>our VRS model line</strong> (Valve standings, Valve formula, HLTV lineups confirm rosters) → HLTV ranking order as a research-only pick with <strong>no probability</strong>. Thunderpick and GG.BET access is recorded, never bypassed. Name mismatches, stale data, ambiguous rosters and access failures are disclosed below. '+link('sources.html#method','Read the limits →')+'</div>'+filters(nonmarket,'all')+table(nonmarket,True,label='Open matches without a market line')),
+        'unresolved':('Unresolved picks',head('Research queue','Unresolved & non-market picks.','Every open match without a usable betting line: our model line, a research-only pick, or an honest blank. Each row states its limitation.',data)+unresolved_page_intro(data)+'<nav class="section-nav" aria-label="Pick lists">'+('<a href="unresolved.html?status=needs">No percentage (<span data-count="missing">'+str(len(no_probability))+'</span>)</a>')+link('picks.html','All open matches ('+str(len(opens))+')')+link('matches.html','All matches')+'</nav><div class="notice">Order of evidence: strict exchange gate → HLTV identity research → Pinnacle bookmaker line → labelled wide-exchange tier → <strong>our VRS model line</strong> (Valve standings, Valve formula, HLTV lineups confirm rosters) → HLTV ranking order as a research-only pick with <strong>no probability</strong>. Thunderpick and GG.BET access is recorded, never bypassed. Name mismatches, stale data, ambiguous rosters and access failures are disclosed below. '+link('sources.html#method','Read the limits →')+'</div>'+filters(nonmarket,'all')+table(nonmarket,True,label='Open matches without a market line')+past_unresolved_section(data)),
         'sources':('Sources and methodology',methodology(data)),
         'evidence':('Evidence ledger',evidence_page(data))}
     review=head('Published irregularities','Flagged for Review.','These limitations are visible, not silently filled in. They do not prevent publication.',data)

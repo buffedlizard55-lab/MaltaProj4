@@ -5168,5 +5168,90 @@
     "label": "Committed identity registry the alias group must appear in"
    }
   ]
+ },
+ {
+  "id": "session-ec033870-past-fixtures-priced-from-dated-valve-standings-2026-10-24",
+  "status": "Shipped 2026-10-24 — needs review of the method, not of a value",
+  "finding": "Measured 2026-10-24 on the committed 92-row snapshot (generated 2026-10-24T08:06:51Z, fixture evidence 08:03:11Z): 29 rows were open and priced, and 63 rows carried no pick at all because their own sourced Hotspawn lock/start predates the snapshot. Those 63 are now resolved by an originated line, in a separate historical block, never in the live pick/probability/fair-odds/method fields. Each row is priced from the newest official Valve standings file published on or before its own sourced start, not from the current file: 58 rows from standings_global_2026_06_01.md, 1 from standings_global_2026_07_06.md and 4 from standings_global_2026_10_05.md. Result: 25 rows with a win probability, 29 with a sourced pick and no percentage, 9 unresolved. The dated-file rule is what makes the number defensible - pricing the same rows from the current 2026-10-05 file resolves only 42 of 63, because that file repeats 12 labels for two different rosters that the June file lists once. scripts.validate re-derives all 63 blocks offline from the vendored copies.",
+  "sources": [
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/510968f54723dcb698ad3b04d396140fc263c239/live/2026/standings_global_2026_06_01.md",
+    "label": "Valve official standings, 2026-06-01 (prices 58 rows)"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/050a38d71d4f5f07d2618bb8bedd54268b93bddf/live/2026/standings_global_2026_07_06.md",
+    "label": "Valve official standings, 2026-07-06 (prices 1 row)"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "label": "Valve official standings, 2026-10-05 (prices 4 rows)"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/model/fit.js",
+    "label": "Valve's own expected-win formula (priorWinExpectation)"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/modelfit.png",
+    "label": "Valve's published model-fit calibration (0.7986 slope)"
+   },
+   {
+    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+    "label": "Hotspawn fixture feed (the 92 rows, with their own lock/start)"
+   },
+   {
+    "url": "https://play.hotspawn.com/lobby",
+    "label": "Hotspawn lobby (the open matches it is taking picks on)"
+   }
+  ]
+ },
+ {
+  "id": "session-ec033870-current-roster-anchor-would-pick-the-wrong-valve-row-2026-10-24",
+  "status": "Deliberate limitation, measured 2026-10-24 — a current HLTV lineup is NOT used to disambiguate a past fixture",
+  "finding": "The obvious way to resolve a label Valve lists twice is to read the club's current HLTV lineup and apply Valve's >=3 shared-player rule. On a past fixture that selects the wrong row, and Johnny Speeds proves it line by line. Valve's 2026-06-01 standings list Johnny Speeds once, at #75 with HEAP, jocab, Lekr0, nawwk, titulus (1138 points) - the roster that was current for the two June fixtures 1053068 (2026-06-26) and 1053071 (2026-06-27). Valve's 2026-10-05 standings list the same label twice: #99 bsover, draken, hampus, Rack, Svedjehed (1049 points) and #164 HEAP, jocab, Lekr0, nawwk, titulus (802 points). HLTV's team page for the club shows the main lineup draken, hampus, bsover, Rack, Svedjehed today, i.e. #99, after the club benched friberg, nawwk and Lekr0 on 2026-07-07 and re-signed hampus on 2026-07-11. An anchor built from today's lineup would therefore attach the October roster to a June fixture and price it 367 points and 89 standings places away from the team that actually played. So the anchor mechanism stays reserved for open fixtures, the historical ladder prices each row from the file that was current for it, and rows whose label is still ambiguous in that file fall to the roster-invariant test or stay unresolved rather than being guessed.",
+  "sources": [
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/510968f54723dcb698ad3b04d396140fc263c239/live/2026/standings_global_2026_06_01.md",
+    "label": "Valve 2026-06-01 standings: one Johnny Speeds row, #75, HEAP/jocab/Lekr0/nawwk/titulus"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "label": "Valve 2026-10-05 standings: two Johnny Speeds rows, #99 and #164"
+   },
+   {
+    "url": "https://www.hltv.org/team/12604/johnny-speeds",
+    "label": "HLTV Johnny Speeds team page (current main lineup = the #99 roster)"
+   },
+   {
+    "url": "https://www.hltv.org/news/45081/johnny-speeds-bench-friberg-nawwk-and-lekr0",
+    "label": "HLTV news, 2026-07-07: friberg, nawwk and Lekr0 benched"
+   },
+   {
+    "url": "https://www.hltv.org/news/45116/hampus-returns-on-johnny-speeds",
+    "label": "HLTV news, 2026-07-11: hampus returns, rebuild around draken"
+   },
+   {
+    "url": "https://www.hltv.org/news/45210/johnny-speeds-and-heap-part-ways",
+    "label": "HLTV news, 2026-07-31: HEAP departs, club down to two players"
+   }
+  ]
+ },
+ {
+  "id": "session-ec033870-nine-past-rows-unresolved-2026-10-24",
+  "status": "Published as unresolved, 2026-10-24 — no pick and no number invented",
+  "finding": "Nine of the 63 past feed rows publish no pick, and each is named with the reason per team on the executive summary, the unresolved page and the evidence ledger. Six fail because neither club appears in the Valve standings file that was current for the fixture: 1053069 and 1053072 (roamsfiest, train launcher), 1053436 (Aimhaus, Coalesce), 1053442 (6666, BERG), 1053469 and 1053470 (BERG / SINQU REHTI / 6666) - Svenska CS-Ligan and Urban Riga Open #5 are below the ranking's floor. Three fail the roster-invariant test because the favourite flips between the rosters Valve lists under a repeated label: 1051339 Acend vs Infinite (Infinite is #48 with 1269 points and #287 with 586; Acend is #61 with 1200, so the direction depends on which Infinite played), 1052700 GameHunters vs VEXA, and 1052599 Mai Tai vs Megoshort (Mai Tai is absent from the 2026-06-01 file entirely while Megoshort is listed twice). None is filled with 50/50.",
+  "sources": [
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/510968f54723dcb698ad3b04d396140fc263c239/live/2026/standings_global_2026_06_01.md",
+    "label": "Valve 2026-06-01 standings (364 teams; the six absent clubs are not in it)"
+   },
+   {
+    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+    "label": "Hotspawn fixture feed (the nine fixtures and their own start times)"
+   },
+   {
+    "url": "https://play.hotspawn.com/lobby",
+    "label": "Hotspawn lobby"
+   }
+  ]
  }
 ]

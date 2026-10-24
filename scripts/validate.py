@@ -214,6 +214,98 @@ def validate_mirror_row(m, q, now):
                 'Mirror line published although Valve\'s own file resolves both clubs uniquely'
 
 
+def validate_historical(data):
+    """Re-derive every past-fixture research value from Valve's own files.
+
+    The historical tier publishes a pick for feed rows whose sourced lock or
+    start has passed — rows the live fields must stay blank on, because
+    ``audit_9b97d585`` and ``audit_cecfe864`` both fail a not-open row that
+    carries an actionable value. So the value lives in its own block, and this
+    is what stops that block becoming a place a number can be written by hand:
+    every status, pick and probability is recomputed here from the vendored
+    copies of Valve's official standings using the same functions the pipeline
+    used, and the standings file named on the row is checked byte-for-byte
+    against the copy in ``data/vrs/history``.
+
+    Returns a zero report when a snapshot carries no historical block at all
+    (synthetic fixtures in the unit suite), so this never weakens a check that
+    already passes; ``tests/test_session_ec033870.py`` asserts the committed
+    snapshot does carry one.
+    """
+    from scripts import historical as hist_mod
+    from scripts import vrs_history
+    coverage = data.get('historical_coverage')
+    rows = [m for m in data['matches'] if m.get('state') != 'open']
+    if coverage is None and not any(m.get('historical') for m in data['matches']):
+        return {'historical_rows_present': 0}
+    assert coverage, 'Snapshot has non-open rows but no historical coverage block'
+    history = vrs_history.load()
+    assert history, 'No vendored dated Valve standings to re-derive the historical tier from'
+    counts = {'rows': 0, 'model_vrs': 0, 'research_vrs_single': 0, 'research_vrs_invariant': 0, 'unresolved': 0}
+    priced = 0
+    for m in rows:
+        counts['rows'] += 1
+        block = m.get('historical')
+        assert block, 'Non-open row %s carries no historical block' % m['id']
+        # The contract the two audits exist to protect.
+        for field in ('pick', 'probabilities', 'fair_odds', 'method'):
+            assert m.get(field) is None, 'Non-open row %s carries a live %s' % (m['id'], field)
+        assert block.get('not_a_current_pick') is True, 'Historical block must state it is not a current pick'
+        assert block.get('reason'), 'Historical block %s has no limitation' % m['id']
+        standings, meta, _ = vrs_history.select(m.get('start'), history)
+        assert block['standings_file'] == meta['file'], (
+            'Row %s was priced from %s, not from the standings file current for its start (%s)'
+            % (m['id'], block['standings_file'], meta['file']))
+        source = urlsplit(block['source'])
+        assert source.scheme == 'https' and source.netloc == 'github.com', 'Historical source is not the official file'
+        assert meta['commit'] in block['source'], 'Historical source does not name the standings commit'
+        expected = hist_mod.resolve_row(m, standings, meta)
+        assert expected['status'] == block['status'], (
+            'Row %s tier not reproducible: published %s, re-derived %s' % (m['id'], block['status'], expected['status']))
+        assert expected['pick'] == block['pick'], 'Row %s historical pick not reproducible' % m['id']
+        assert block['attempts'], 'Historical block %s records no attempt' % m['id']
+        if block['status'] == 'model_vrs':
+            assert block['probabilities'] is not None, 'Model tier must publish a probability'
+            assert len(block['probabilities']) == 2 and abs(sum(block['probabilities']) - 1) < 1e-9
+            for published, derived in zip(block['probabilities'], expected['probabilities']):
+                assert abs(published - derived) < 1e-12, 'Row %s historical probability not reproducible' % m['id']
+            for published, derived in zip(block['fair_odds'], [1 / p for p in block['probabilities']]):
+                assert abs(published - derived) < 1e-9, 'Row %s historical fair line not reproducible' % m['id']
+            assert block['pick'] in m['teams'], 'Historical pick is not one of the two teams'
+            quote = block['evidence'][0]
+            assert quote['standings_as_of'] == standings['as_of']
+            raw = vrs.expected(*quote['points'])
+            assert all(abs(a - b) < 1e-12 for a, b in
+                       zip(block['probabilities'], [vrs.calibrated(raw), 1 - vrs.calibrated(raw)])), (
+                'Row %s historical line is not Valve\'s formula' % m['id'])
+            priced += 1
+        else:
+            assert block['probabilities'] is None and block['fair_odds'] is None, (
+                'Non-model historical tier must not publish a number')
+            if block['status'] == 'unresolved':
+                assert block['pick'] is None, 'Unresolved historical row publishes a pick'
+                assert len(block['attempts']) >= 3, 'Unresolved historical row must record every tier it tried'
+            else:
+                assert block['pick'] in m['teams'], 'Historical pick is not one of the two teams'
+        counts[block['status']] += 1
+    published_counts = coverage.get('counts') or {}
+    assert published_counts == counts, 'Historical coverage counts differ from the rows: %r vs %r' % (
+        published_counts, counts)
+    assert coverage['resolved'] == counts['model_vrs'] + counts['research_vrs_single'] + counts['research_vrs_invariant']
+    assert [u['id'] for u in coverage.get('unresolved') or []] == sorted(
+        [m['id'] for m in rows if (m.get('historical') or {}).get('status') == 'unresolved'],
+        key=[m['id'] for m in rows].index), 'Unresolved ledger differs from the rows'
+    for m in data['matches']:
+        if m.get('state') == 'open':
+            assert not m.get('historical'), 'Open row %s must not carry a historical block' % m['id']
+    assert coverage.get('limitations'), 'Historical coverage publishes no limitations'
+    return {'historical_rows_present': counts['rows'],
+            'historical_rows_reproduced': counts['rows'],
+            'historical_probabilities_reproduced': priced,
+            'historical_unresolved': counts['unresolved'],
+            'historical_coverage_pct': coverage.get('coverage_pct')}
+
+
 def validate_data(data):
     now = dt(data['generated_at'])
     originals = {m['id']: m for m in normalize_fixtures(data['fixture_evidence'], {}, now)}
@@ -500,6 +592,7 @@ def validate_site(directory):
     pages = {root/name: BeautifulSoup((root/name).read_text(), 'html.parser') for name in manifest['files'] if name.endswith('.html')}
     published = json.loads((root / 'data/latest.json').read_text())
     validate_data(published)
+    historical_report = validate_historical(published)
     lookup = {m['id']: m for m in published['matches']}
     count = 0
     displayed_rows = 0
@@ -573,6 +666,18 @@ def validate_site(directory):
         assert [row['team_1'], row['team_2']] == [t or '' for t in m['teams']]
         assert row['source'] == m['source_url'] and row['price_source'] == (q.get('api_url') or '')
         assert row['pick'] == (m['pick'] or '')
+        hist = m.get('historical') or {}
+        assert row['past_fixture_pick'] == (hist.get('pick') or ''), 'CSV past-fixture pick differs'
+        assert row['past_fixture_tier'] == (hist.get('status') or ''), 'CSV past-fixture tier differs'
+        assert row['past_fixture_standings_as_of'] == (hist.get('standings_as_of') or '')
+        assert row['past_fixture_source'] == (hist.get('source') or '')
+        if not hist.get('probabilities'):
+            assert not row['past_fixture_p_team_1'] and not row['past_fixture_p_team_2'], (
+                'CSV publishes a past-fixture number the row does not support')
+        else:
+            for field, value in zip(('past_fixture_p_team_1', 'past_fixture_p_team_2'), hist['probabilities']):
+                assert math.isclose(float(row[field]), value, rel_tol=1e-10, abs_tol=1e-10), (
+                    'CSV past-fixture calculation differs')
         if m['probabilities'] is None:
             assert not row['p_team_1'] and not row['p_team_2'] and not row['fair_decimal_1'] and not row['fair_decimal_2']
         else:
@@ -585,7 +690,7 @@ def validate_site(directory):
         assert hashlib.sha256(target.read_bytes()).hexdigest()==digest, 'Build manifest checksum mismatch: '+relative
     return {'pages': len(pages), 'internal_links_and_assets_checked': count,
             'artifact_checksums_verified': len(manifest['files']),
-            'displayed_match_rows_verified': displayed_rows}
+            'displayed_match_rows_verified': displayed_rows, **historical_report}
 
 
 def main():
@@ -593,7 +698,8 @@ def main():
     parser.add_argument('--data', default='data/latest.json')
     parser.add_argument('--site', default='public')
     args = parser.parse_args()
-    report = validate_data(json.loads(Path(args.data).read_text())) | validate_site(args.site)
+    snapshot = json.loads(Path(args.data).read_text())
+    report = validate_data(snapshot) | validate_site(args.site) | validate_historical(snapshot)
     Path('runtime').mkdir(exist_ok=True)
     Path('runtime/validation.json').write_text(json.dumps(report, indent=2))
     print(json.dumps(report, indent=2))
