@@ -77,25 +77,39 @@ const chromium = require('@sparticuz/chromium');
     await page.setViewportSize({width: 320, height: 568});
     await page.goto(base + 'picks.html');
     const phone = await page.evaluate(() => {
-      const row = [...document.querySelectorAll('tr[data-match]')].find(item => !item.hidden);
+      const rows = [...document.querySelectorAll('tr[data-match]')].filter(item => !item.hidden);
+      const row = rows[0];
       const box = element => {
+        if (!element) return null;
         const rect = element.getBoundingClientRect();
         return {top: rect.top + scrollY, bottom: rect.bottom + scrollY, height: rect.height};
       };
       return {
         overflow: document.documentElement.scrollWidth > innerWidth,
-        row: box(row), pick: box(row.querySelector('.pick')),
-        probability: box(row.querySelector('.prob-pair, .research-prob')),
+        published: document.querySelectorAll('.pick-cell .pick').length,
+        withheld: /withheld|pick closed|not current|unresolved|no supported pick/i.test(document.body.innerText),
+        row: box(row), pick: box(row && row.querySelector('.pick')),
+        probability: box(row && row.querySelector('.prob-pair, .research-prob')),
         filters: box(document.querySelector('.filters')),
         tabbar: box(document.querySelector('.mobile-tabs')),
       };
     });
     assert.equal(phone.overflow, false, '320px horizontal overflow');
-    assert.ok(phone.pick.bottom <= phone.tabbar.top,
-      `first pick is behind/below the phone tab bar: ${JSON.stringify(phone)}`);
-    assert.ok(phone.probability.bottom <= phone.tabbar.top,
-      `first probabilities are behind/below the phone tab bar: ${JSON.stringify(phone)}`);
-    assert.ok(phone.filters.top > phone.row.top, 'short-phone filters should follow the pick board, not bury it');
+    // A pick only exists in the build when the snapshot's own clock has not
+    // passed the lock; a pull-request run never refreshes, so the committed
+    // snapshot can legitimately publish none. Asserting the geometry
+    // unconditionally crashed here on the runner (row/pick were null) while
+    // passing on a freshly rebuilt working copy. Found 2026-10-24.
+    if (phone.published === 0) {
+      assert.equal(phone.withheld, true,
+        'no pick is published, so the board must say it is withholding them');
+    } else {
+      assert.ok(phone.pick.bottom <= phone.tabbar.top,
+        `first pick is behind/below the phone tab bar: ${JSON.stringify(phone)}`);
+      assert.ok(phone.probability.bottom <= phone.tabbar.top,
+        `first probabilities are behind/below the phone tab bar: ${JSON.stringify(phone)}`);
+      assert.ok(phone.filters.top > phone.row.top, 'short-phone filters should follow the pick board, not bury it');
+    }
     report.phone.push(phone);
     fs.mkdirSync('runtime', {recursive: true});
     await page.screenshot({path: 'runtime/picks-320-9b97d585.png'});
@@ -111,7 +125,13 @@ const chromium = require('@sparticuz/chromium');
     await page.setViewportSize({width: 390, height: 844});
     await page.goto(base + 'picks.html');
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
-    assert.ok(await page.locator('tr[data-match]:visible .pick').first().isVisible());
+    // Same build-vs-runtime distinction as above: assert a visible pick only
+    // when the build published any.
+    if (await page.locator('tr[data-match]:visible .pick').count()) {
+      assert.ok(await page.locator('tr[data-match]:visible .pick').first().isVisible());
+    } else {
+      assert.match(await page.locator('body').innerText(), /withheld|pick closed|not current|unresolved|no supported pick/i);
+    }
     assert.deepEqual(errors, []);
     fs.mkdirSync('runtime', {recursive: true});
     fs.writeFileSync('runtime/browser-9b97d585.json', JSON.stringify(report, null, 2) + '\n');

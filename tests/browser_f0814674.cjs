@@ -106,12 +106,31 @@ const chromium = require('@sparticuz/chromium');
         const pick = first?.querySelector('.pick');
         const probability = first?.querySelector('.prob-pair, .research-prob');
         const top = el => el ? Math.round(el.getBoundingClientRect().top + scrollY) : null;
-        return {rows: rows.length, card: top(first), pick: top(pick), probability: top(probability)};
+        return {rows: rows.length, card: top(first), pick: top(pick), probability: top(probability),
+          published: document.querySelectorAll('.pick-cell .pick').length,
+          // The board's own words for a row it will not publish a pick for,
+          // measured from the built page: "Pick closed" after a lock,
+          // "Withheld" after an expired price, and "Unresolved" when no source
+          // could support one. Any of them is an honest refusal; a blank cell
+          // would not be.
+          withheld: /withheld|pick closed|not current|unresolved|no supported pick/i.test(document.body.innerText)};
       });
       assert.ok(board.rows > 0, 'the board renders open rows at ' + width + 'px');
-      assert.ok(board.pick !== null, 'the first card shows a pick at ' + width + 'px');
-      assert.ok(board.pick < 844, 'the first pick is on the first screen at ' + width + 'px (y=' + board.pick + ')');
-      assert.ok(board.probability < 844, 'the first probability is on the first screen at ' + width + 'px (y=' + board.probability + ')');
+      // Whether the first card carries a pick depends on the *build*, not on the
+      // viewport: `scripts.build` renders a pick only when the snapshot's own
+      // clock has not passed the lock, and a pull-request run deliberately does
+      // not refresh (step 11 is skipped off main). Asserting a pick
+      // unconditionally made this suite pass locally, where the working copy had
+      // just been rebuilt, and fail on the runner, where the committed snapshot
+      // is one refresh old. Found 2026-10-24 by reproducing the runner's build.
+      if (board.published === 0) {
+        assert.equal(board.withheld, true,
+          `no pick is published at ${width}px, so the board must say it is withholding them`);
+      } else {
+        assert.ok(board.pick !== null, 'the first card shows a pick at ' + width + 'px');
+        assert.ok(board.pick < 844, 'the first pick is on the first screen at ' + width + 'px (y=' + board.pick + ')');
+        assert.ok(board.probability < 844, 'the first probability is on the first screen at ' + width + 'px (y=' + board.probability + ')');
+      }
       // Filtering must still work after the visual reordering.
       await page.selectOption('#status', 'open');
       await page.fill('#search', 'flyquest');

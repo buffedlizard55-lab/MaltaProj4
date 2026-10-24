@@ -127,6 +127,21 @@ class ClockPinnedBrowserSuites(unittest.TestCase):
             self.assertIn("require('./pinned-clock.cjs')", source, name)
             self.assertIn('clockScript(', source, name)
 
+    def test_the_pick_layout_suites_tolerate_a_build_that_publishes_no_pick(self):
+        # A pull-request run skips the refresh step, so the committed snapshot can
+        # legitimately build a board with no current pick. The suites must then
+        # assert the page states why, instead of dereferencing a null `.pick` --
+        # that difference is what made them green locally and red on the runner.
+        expectations = {
+            'browser_f0814674.cjs': 'no pick is published',
+            'browser_9b97d585.cjs': 'no pick is published',
+            'browser_138cbedd.cjs': 'a board with no published pick must state why',
+        }
+        for name, marker in expectations.items():
+            source = (ROOT / 'tests' / name).read_text()
+            self.assertIn(marker, source, name)
+            self.assertIn('withheld', source, name)
+
     def test_neither_suite_pins_the_clock_with_a_bare_date_now_override(self):
         # `Date.now = () => t` alone leaves `new Date()` on the wall clock, which
         # is how the first attempt at this repair produced a future-dated
