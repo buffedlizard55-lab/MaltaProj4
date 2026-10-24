@@ -1,0 +1,48 @@
+{
+ "audited_at": "2026-10-24T06:22:28+00:00",
+ "committed_snapshot_generated_at": "2026-10-24T05:59:34.228578Z",
+ "committed_stale_after_hours": 8,
+ "counts": {
+  "flag": 0,
+  "frozen": 1,
+  "ok": 3
+ },
+ "current": false,
+ "findings": [
+  {
+   "code": "receipt_unreadable",
+   "detail": "the live build receipt exposes no readable snapshot_generated_at, so the published board cannot be shown to be current",
+   "severity": "frozen"
+  },
+  {
+   "code": "publish_chain_in_flight",
+   "detail": "a pages.yml run is pending on main (https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40069834693)",
+   "severity": "ok"
+  },
+  {
+   "code": "rows_sourced",
+   "detail": "all 25 open rows carry an official hotspawn.com fixture link, at least one evidence URL inside the official-host allowlist, and a pick or a recorded reason",
+   "open_rows": 25,
+   "severity": "ok",
+   "with_pick": 25,
+   "with_probability": 25
+  },
+  {
+   "code": "picks_reproducible",
+   "detail": "every published open-row pick is the larger of its own two probabilities, and each pair sums to 1.000 within 0.01",
+   "severity": "ok"
+  }
+ ],
+ "mode": "live",
+ "published_built_at": null,
+ "published_revision": null,
+ "published_rows": null,
+ "published_snapshot_generated_at": null,
+ "repo": "buffedlizard55-lab/MaltaProj4",
+ "schema": "publication-continuity/1",
+ "site": "https://buffedlizard55-lab.github.io/MaltaProj4/",
+ "source_problems": [
+  "live build receipt unreadable: <urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:992)>"
+ ],
+ "verdict": "frozen"
+}

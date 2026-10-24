@@ -111,9 +111,20 @@ class DatedVerificationTests(unittest.TestCase):
 
     def test_every_open_row_reproduces_and_keeps_official_links(self):
         report, _ = audit(copy.deepcopy(SNAPSHOT), EXTERNAL)
-        self.assertEqual(report['open_rows'], 31)
-        self.assertEqual(report['reproduced_rows'], 31)
+        # Integration repair (session 019a253a, 2026-10-24): 31 was the open-row
+        # count of the snapshot this session harvested, and pinning it to the
+        # live data/latest.json makes the test fail on every later board - the
+        # failure mode that had already blocked publication twice (see the
+        # 0cc1138a parity repair). The dated receipt keeps the 31; the live run
+        # keeps the invariant that matters: every open row on the current
+        # snapshot reproduces with no failures.
+        archived = json.loads((ROOT / 'research' / 'session-4ed657ce' / 'verification-report.json').read_text())
+        self.assertEqual(archived['open_rows'], 31)
+        self.assertEqual(archived['reproduced_rows'], 31)
+        self.assertEqual(archived['rows_failing'], 0)
+        self.assertEqual(report['open_rows'], report['reproduced_rows'])
         self.assertEqual(report['rows_failing'], 0)
+        self.assertGreater(report['open_rows'], 0)
         for row in report['rows']:
             self.assertTrue(row['fixture_source'].startswith('https://'))
             self.assertIn('hotspawn.com', row['fixture_source'])

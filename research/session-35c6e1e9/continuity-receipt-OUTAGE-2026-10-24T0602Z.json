@@ -1,0 +1,81 @@
+{
+ "audited_at": "2026-10-24T06:02:29+00:00",
+ "committed_snapshot_generated_at": "2026-10-23T11:47:19.504519Z",
+ "committed_stale_after_hours": 8,
+ "counts": {
+  "flag": 0,
+  "frozen": 2,
+  "ok": 2
+ },
+ "current": false,
+ "findings": [
+  {
+   "code": "receipt_unreadable",
+   "detail": "the live build receipt exposes no readable snapshot_generated_at, so the published board cannot be shown to be current",
+   "severity": "frozen"
+  },
+  {
+   "code": "publish_chain_red",
+   "detail": "5 consecutive failed pages.yml runs on main on one unmoved commit 5d56f35e; publication is not advancing; failed step(s): Unit and independent failure-mode tests (verify-build)",
+   "failed_run_ids": [
+    40062143026,
+    40042111432,
+    40025828846,
+    39998307424,
+    39956197341
+   ],
+   "failed_run_urls": [
+    "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40062143026",
+    "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40042111432",
+    "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40025828846",
+    "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39998307424",
+    "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39956197341"
+   ],
+   "failed_steps": {
+    "39956197341": [
+     "Unit and independent failure-mode tests (verify-build)"
+    ],
+    "39998307424": [
+     "Unit and independent failure-mode tests (verify-build)"
+    ],
+    "40025828846": [
+     "Unit and independent failure-mode tests (verify-build)"
+    ],
+    "40042111432": [
+     "Unit and independent failure-mode tests (verify-build)"
+    ],
+    "40062143026": [
+     "Unit and independent failure-mode tests (verify-build)"
+    ]
+   },
+   "head_sha": "5d56f35e7fd8a4e185c7192197c3b8c2b3b4fa70",
+   "severity": "frozen",
+   "streak": 5
+  },
+  {
+   "code": "rows_sourced",
+   "detail": "all 27 open rows carry an official hotspawn.com fixture link, at least one evidence URL inside the official-host allowlist, and a pick or a recorded reason",
+   "open_rows": 27,
+   "severity": "ok",
+   "with_pick": 27,
+   "with_probability": 27
+  },
+  {
+   "code": "picks_reproducible",
+   "detail": "every published open-row pick is the larger of its own two probabilities, and each pair sums to 1.000 within 0.01",
+   "severity": "ok"
+  }
+ ],
+ "mode": "live",
+ "published_built_at": null,
+ "published_revision": null,
+ "published_rows": null,
+ "published_snapshot_generated_at": null,
+ "repo": "buffedlizard55-lab/MaltaProj4",
+ "schema": "publication-continuity/1",
+ "site": "https://buffedlizard55-lab.github.io/MaltaProj4/",
+ "source_problems": [
+  "live build receipt unreadable: <urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:992)>"
+ ],
+ "verdict": "frozen"
+}

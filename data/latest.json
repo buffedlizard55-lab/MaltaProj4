@@ -3368,20 +3368,14 @@
       "start": "2026-10-24T08:00:00Z",
       "lock": "2026-10-24T07:54:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://www.hotspawn.com/matches/fokus-vs-ex-6666-nodwin-clutch-series-13-1079193",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [],
-      "probabilities": [
-        0.78,
-        0.22
-      ],
-      "fair_odds": [
-        1.282051282051282,
-        4.545454545454546
-      ],
-      "pick": "FOKUS",
-      "method": "exchange",
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
       "evidence": [
         {
           "provider": "Polymarket",
@@ -3530,7 +3524,7 @@
           "reason": "Exact pair and UTC start; two-way series winner validated."
         }
       ],
-      "reason": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-24T06:16:00.648005Z",
@@ -3576,20 +3570,14 @@
       "start": "2026-10-24T08:00:00Z",
       "lock": "2026-10-24T07:54:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://www.hotspawn.com/matches/acend-vs-forze-reload-cct-europe-2026-series-11-1079658",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [],
-      "probabilities": [
-        0.325,
-        0.675
-      ],
-      "fair_odds": [
-        3.0769230769230766,
-        1.4814814814814814
-      ],
-      "pick": "FORZE Reload",
-      "method": "exchange",
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
       "evidence": [
         {
           "provider": "Polymarket",
@@ -3731,7 +3719,7 @@
           "reason": "Exact pair and UTC start; two-way series winner validated."
         }
       ],
-      "reason": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-24T06:16:00.648005Z",
@@ -22284,5 +22272,5 @@
       "participants1_score": 0
     }
   ],
-  "built_at": "2026-10-24T07:19:11.677163Z"
+  "built_at": "2026-10-24T07:58:13.229572Z"
 }
