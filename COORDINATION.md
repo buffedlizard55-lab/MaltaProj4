@@ -8043,3 +8043,29 @@ The retained 16:34Z capture reveals a deeper contract mismatch: a strict neutral
 
 ### 6b8b4be0 core contract follow-through
 Claiming `tests/test_core.py` for the equal-line contract only: original numbers remain in `no_edge_lines`, recommendation fields stay blank until sourced fallback resolves. Existing alias test still requires an explicit no-directional-edge reason; core retains that reason while the ladder continues. No candidate is synthesized and no directional coin flip is introduced.
+## Session b0163396 claim — expiry-safe fallback ladder browser assertion (2026-10-24 UTC)
+
+Read the shared board before claiming. No active owner is editing this browser assertion. The product's freshness gate intentionally removes expired percentages; the fallback ladder then puts those open rows under its explicit `none` rung. The existing browser test incorrectly excludes `none` when summing rung counts, so it fails on a valid stale/withheld snapshot (reproduced against the committed snapshot after its 8-hour evidence window). This is a test-contract correction only; do not alter picks, source data, expiry behavior, rendered pages, or shared navigation.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Make the executive-summary fallback ladder browser assertion sum every rung, including `none`, and verify both fully priced and withheld/expired scenarios | done | b0163396 | `tests/browser_019a253a.cjs`, `COORDINATION.md` | 2026-10-24 |
+
+Verification performed before editing: `python -m scripts.validate --data data/latest.json --site .` passed (92 rows, 29 reproduced calculations, 15 pages, 858 links/assets, 20 checksums, 227 displayed rows); Python unit suite passed (1,484 tests, 1 skipped). Building `public/` from the retained snapshot at the actual runner clock correctly withheld old probabilities, after which `npm run test:browser` exposed the bad assumption: 22 open rows were in `none`, but the assertion summed only zero-price-method rows. This does not establish a current live refresh; the retained snapshot is older than its eight-hour evidence window and the site correctly fails closed.
+
+### Session b0163396 follow-up claim — stale-baseline mobile gate handoff (2026-10-24 UTC)
+
+The complete `npm run test:browser` run now passes the corrected ladder test, but exposes a separate post-expiry assumption in the already-delivered `tests/browser_ce45f672.cjs`: it requires two probability nodes on the first card even when the baseline is correctly withheld after eight hours. The owning session's delivery receipt is dated 07:50 UTC, over 60 minutes before this takeover; no active work is recorded on this test. Taking over only this regression test (no styles, builder, data, or other session's product scope). Keep its fresh-snapshot checks strict, and in the expired state require the visible stale/withheld warning and zero fabricated score nodes.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Make the delivered first-fold mobile test cover both a fresh priced baseline and the valid expired/withheld baseline without relaxing either UI contract | done | b0163396 (takeover after >60m) | `tests/browser_ce45f672.cjs`, `COORDINATION.md` | 2026-10-24 |
+
+Evidence: after the ladder fix, `npm run test:browser` reaches the independent ce45f672 suite and fails at 320px with `0 !== 2` score elements. In the same built artifact the stale notice says “Snapshot expired or timestamp unverified. Current picks are withheld.” The correct mobile state is zero percentages, not a stale pick card with fabricated or expired odds.
+
+**b0163396 completion receipt (2026-10-24 UTC).** The executive-summary count assertion now includes all nine rungs, including the zero-probability `none` rung, so fresh priced and correctly expired boards both reconcile exactly to the open-row count. The ce45f672 phone suite now keeps its strict two-score/above-tabbar assertion when current picks exist; when the baseline is expired it instead asserts zero score nodes and a visible `#runtime-stale` notice stating that current picks are withheld. No production file, match data, quote, probability, source timestamp, stylesheet or navigation was changed.
+
+Checks on the resulting tree: full Python unit suite **1,484 passed, 1 skipped**; audit tests **9 passed**; integrity **5 passed**; verification-c6 **12 passed**; `scripts.validate` **92 rows, 29 independently reproduced calculations, 15 pages, 858 links/assets, 20 checksums, 227 displayed rows**; retained-source row audit **0 failures**; full `npm run test:browser` **all 11 suites passed**. Browser run included 320×568 and 390×844 checks and correctly reported the committed snapshot was beyond the eight-hour evidence window; every expired quote was withheld. The live freshness contract therefore reports **22 open, 22 expired, 0 actionable** at 2026-10-24T16:32Z; this is not a current source refresh or live deployment verification. Build output and browser artifacts are ignored under `public/` and `runtime/`.
+
+### 6b8b4be0 concurrent integration receipt
+Merged origin/main 59f65a0 (PR #279) on the fixed session branch. Conflicts in this board and the same two mobile tests were resolved by preserving both logs, the common all-rungs partition, our exact-fixture probability expectation, and upstream stale-warning assertions when fixture evidence is actually expired. No source/data changes were discarded.
