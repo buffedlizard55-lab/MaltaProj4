@@ -1,0 +1,147 @@
+name: Live coverage harvest 771f5e0b (non-publishing)
+
+# A real refresh on a normal GitHub egress (the session sandbox cannot reach
+# Hotspawn, HLTV, Polymarket, Pinnacle or the bookmakers at all), followed by
+# the production build, the independent evidence replay, the validator and the
+# phone/browser gates — and, unlike earlier harvests, an exact replica of the
+# pages.yml "Keep the legacy main:/ root fallback on the verified build" step:
+# stage the verified build to the root with scripts.publish_root_fallback, then
+# run scripts.validate --site . and the full unit suite against the staged root
+# with complete logs. That replica is the diagnosis this session needs: every
+# scheduled/push run on main since the 2026-10-24T10:05Z merge of PR #244 fails
+# at exactly that step (runs 40084520702, 40097410704) while the same gates pass
+# on the committed tree and on pull_request runs, which never execute it.
+# Only dated research receipts are committed here; this workflow never deploys
+# Pages and never pushes a generated board to main.
+on:
+  push:
+    branches: [arena/771f5e0b-maltaproj4]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: coverage-harvest-771f5e0b
+  cancel-in-progress: false
+
+jobs:
+  capture:
+    if: github.ref == 'refs/heads/arena/771f5e0b-maltaproj4' && (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[capture]'))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+          cache: npm
+      - run: pip install -r requirements.txt
+      - run: npm ci --ignore-scripts
+      - name: Verify the committed board before touching any source
+        run: |
+          mkdir -p research/harvest-771f5e0b runtime
+          python -m unittest discover -s tests 2>&1 | tee research/harvest-771f5e0b/pre-refresh-unit.log | tail -5
+          python -m unittest discover -s audits -p 'test_*.py'
+          python verification-95b588c2/test_integrity.py
+          python -m unittest discover -s verification-c6 -p 'test_*.py'
+          python -m scripts.validate --data data/latest.json --site .
+      - uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: runtime/latest.json
+          key: cs2-snapshot-v2-771f5e0b-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: cs2-snapshot-v2-
+      - name: Restore committed baseline if no recent snapshot exists
+        run: |
+          mkdir -p runtime
+          if ! test -s runtime/latest.json; then cp data/latest.json runtime/latest.json; fi
+      - name: Refresh official Hotspawn, HLTV, exchange, bookmaker and Valve sources
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          python -m scripts.refresh --output runtime/latest.json 2>&1 | tee research/harvest-771f5e0b/refresh.log
+      - name: Quarantine any row the independent evidence replay cannot reproduce
+        run: python -m scripts.quarantine runtime/latest.json 2>&1 | tee research/harvest-771f5e0b/quarantine.log
+      - name: Independently audit every refreshed row
+        run: |
+          python verification-c6/audit_snapshot.py runtime/latest.json --output runtime/independent-row-audit.md
+          cp runtime/independent-row-audit.md research/harvest-771f5e0b/independent-row-audit.md
+          cp runtime/latest.json research/harvest-771f5e0b/snapshot.json
+      - name: Coverage receipt for this exact capture
+        run: python -m scripts.audit_e334b970 --snapshot research/harvest-771f5e0b/snapshot.json --output research/harvest-771f5e0b
+      - name: Build and validate the fresh candidate
+        run: |
+          python -m scripts.build --data runtime/latest.json
+          python -m scripts.validate --data runtime/latest.json
+          python verification-c6/audit_snapshot.py public/data/latest.json --output research/harvest-771f5e0b/published-row-audit.md
+          cp public/build-info.json research/harvest-771f5e0b/build-info.json
+      - name: Phone, desktop, accessibility and exact expiry checks on the fresh candidate
+        continue-on-error: true
+        run: npm run test:browser 2>&1 | tee research/harvest-771f5e0b/browser.log | tail -30
+      - name: Replica of the pages.yml root-fallback gate (diagnosis, never pushed)
+        # Exactly what the "Keep the legacy main:/ root fallback on the verified
+        # build" step does before it commits: stage public/ to the root, then
+        # scripts.validate --data data/latest.json --site . and the full unit
+        # suite against the staged root. rc values and complete output are kept;
+        # the root is restored afterwards, so nothing generated is committed.
+        continue-on-error: true
+        run: |
+          OUT=research/harvest-771f5e0b
+          set +e
+          python -m scripts.publish_root_fallback --public public --root . --cooldown-hours 0.2 > "$OUT/stage-root.log" 2>&1
+          echo "stage_rc=$?" >> "$OUT/stage-root.log"
+          git status --porcelain > "$OUT/staged-status.log" 2>&1
+          python -m scripts.validate --data data/latest.json --site . > "$OUT/post-stage-validate.log" 2>&1
+          echo "validate_rc=$?" | tee -a "$OUT/post-stage-validate.log"
+          python -m unittest discover -s tests > "$OUT/post-stage-unit.log" 2>&1
+          echo "unit_rc=$?" | tee -a "$OUT/post-stage-unit.log"
+          python -m unittest discover -s audits -p 'test_*.py' > "$OUT/post-stage-audits.log" 2>&1
+          echo "audits_rc=$?" | tee -a "$OUT/post-stage-audits.log"
+          python verification-95b588c2/test_integrity.py > "$OUT/post-stage-integrity.log" 2>&1
+          echo "integrity_rc=$?" | tee -a "$OUT/post-stage-integrity.log"
+          python -m unittest discover -s verification-c6 -p 'test_*.py' > "$OUT/post-stage-c6.log" 2>&1
+          echo "c6_rc=$?" | tee -a "$OUT/post-stage-c6.log"
+          set -e
+          git checkout -- .
+          git status --porcelain > "$OUT/restored-status.log" 2>&1
+          grep -E "^(FAIL|ERROR):" "$OUT/post-stage-unit.log" > "$OUT/post-stage-failures.txt" || true
+          tail -40 "$OUT/post-stage-unit.log"
+      - name: Record runner identity without changing source timestamps
+        env:
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+          RUN_SHA: ${{ github.sha }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          receipt = {'workflow_run_id': os.environ['RUN_ID'], 'attempt': os.environ['RUN_ATTEMPT'],
+                     'checkout_sha': os.environ['RUN_SHA'], 'run_url': os.environ['RUN_URL'],
+                     'publishes_pages': False, 'snapshot': 'research/harvest-771f5e0b/snapshot.json'}
+          Path('research/harvest-771f5e0b/run.json').write_text(json.dumps(receipt, indent=1) + '\n')
+          PY
+      - name: Commit only the dated research receipts to the fixed session branch
+        run: |
+          git config user.name "cs2-evidence-runner"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A -- research/harvest-771f5e0b
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Retain live coverage harvest from run ${GITHUB_RUN_ID} [skip ci]"
+          git pull --rebase origin arena/771f5e0b-maltaproj4
+          git push origin arena/771f5e0b-maltaproj4
+      - name: Retain candidate and audit artifacts even when a gate fails
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: coverage-harvest-771f5e0b-${{ github.run_id }}
+          path: |
+            research/harvest-771f5e0b
+            runtime/latest.json
+            runtime/independent-row-audit.md
+            public/build-info.json
+          retention-days: 14

@@ -1,3 +1,66 @@
+## Session 771f5e0b claim — 2026-10-24 16:55 UTC (root-staging rc=3 freeze diagnosis, fresh every-match capture, integration)
+
+Arena fixes this session to `arena/771f5e0b-maltaproj4`, branched from `main` `45fc6ba` (the
+2026-10-24T10:05Z merge of PR #244). No other branch is created, checked out or pushed. Read
+before claiming: open PRs #242–#253 belong to earlier sessions and are left untouched; every
+`in progress` row below this block is historical (its session has a dated delivery receipt or has
+not committed in hours), so none of their scopes are reopened here except through the integration
+fixes this claim explicitly lists once measured.
+
+**Measured state at claim time (all read from `origin/main` = this branch's base, and from the
+Actions API — no CI job-log text is reachable from this sandbox, `results-receiver.actions.githubusercontent.com`
+and the artifact blob host are outside its allowed egress, so failures are located by the runs'
+step-level records plus local reproduction):**
+
+1. **The public site is withholding every pick right now.** The committed root board carries the
+   `2026-10-24T08:06:51Z` snapshot (`build-info.json` revision `71eddff`, built 08:26:58Z); the
+   8-hour evidence window closed at 16:06Z.
+2. **Every `pages.yml` run on `main` since the PR #254/#244 merges is red at the same step.**
+   Push run [40084520702](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40084520702)
+   (merge of PR #244, 10:05Z) and schedule run
+   [40097410704](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40097410704)
+   (~13:3xZ) both pass *Unit and independent failure-mode tests*, *Refresh official sources*,
+   *Build and independently verify…* and the browser gates, then fail at
+   **"Keep the legacy main:/ root fallback on the verified build"** with the workflow's own
+   annotation *"The staged root failed its own validator or unit gate, so it was not committed and
+   main stays green"* (rc=3 path of `publish()`). Runs
+   [40082763751](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40082763751) and
+   [40080448344](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40080448344)
+   (09:3xZ) are also red; their failing step is not yet confirmed from here. No artifact deploy
+   has run since, and the legacy `main:/` root republishes the stale committed board on every push.
+3. **Why PR runs never catch it:** the root-fallback step is gated
+   `if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'`, so a branch can be
+   fully green (PR #244's run
+   [40082251497](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40082251497) was)
+   and still fail the moment it merges. The failing gate is `scripts.validate --data
+   data/latest.json --site .` and/or `python -m unittest discover -s tests` run **against the
+   staged root carrying a genuinely fresh snapshot** — a state no committed-tree run reproduces.
+4. **The committed tree itself is green locally** at `45fc6ba` (this sandbox, same commands as
+   `pages.yml`): `python -m unittest discover -s tests` **1,484 tests OK (1 skipped)**;
+   `discover -s audits` 9 OK; `verification-95b588c2/test_integrity.py` 5 OK;
+   `discover -s verification-c6` 12 OK; `scripts.validate --data data/latest.json --site .`
+   passes (15 pages, 858 internal links/assets, 20 artifact checksums, 227 displayed rows).
+5. The last retained full-snapshot harvest on a runner is
+   `research/harvest-e334b970/` (capture clock 05:37Z, run
+   [40066532380](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40066532380)),
+   taken **before** PR #244's fixes; its `post-refresh-unit.log` shows the pre-fix failure set and
+   is not evidence about the current tree.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Diagnose the rc=3 root-staging freeze: reproduce the exact `pages.yml` staging gate on a runner against a genuinely fresh snapshot (stage via `scripts.publish_root_fallback`, then `scripts.validate --site .` + full unit suite), committing complete logs and the snapshot | in progress | 771f5e0b | `.github/workflows/harvest-771f5e0b.yml` (new), `research/harvest-771f5e0b/**` (new) | 2026-10-24 16:55 |
+| Fix what the replica measurably fails, so a fresh snapshot survives the staged-root gate: only the specific tests/scripts named in `research/harvest-771f5e0b/post-stage-failures.txt`, repaired to assert live invariants (dated receipts kept), plus `tests/test_session_771f5e0b.py` (new) pinning the repair | unclaimed until the replica lands | 771f5e0b | named failing tests/scripts only (listed here once measured), `tests/test_session_771f5e0b.py` (new), `research/session-771f5e0b/**` (new) | 2026-10-24 16:55 |
+| Fresh every-match coverage receipt: every open Hotspawn CS2 fixture carries a pick + win probability or an explicit unresolved row with its limitation; per-rung method mix (exchange → wide exchange → bookmaker → VRS model → HLTV mirror → research form) recorded from the capture, never from Hotspawn votes | unclaimed until the replica lands | 771f5e0b | `research/harvest-771f5e0b/**`, `research/session-771f5e0b/**` | 2026-10-24 16:55 |
+| Final integration: merge fresh `origin/main`, run every gate on the combined tree, PR to `main`, merge without waiting for approval, confirm the push run publishes (root fallback committed + Pages deploy + live bytes verified), receipt | unclaimed until the rows above are done | 771f5e0b | `COORDINATION.md`, generated root pages / `data/latest.json` / `data/matches.csv` / `build-info.json` via `scripts.build` + `scripts.publish_root_fallback` / `scripts.stage_legacy` only, `data/review-notes.json` (additive `session-771f5e0b-*` IDs only) | 2026-10-24 16:55 |
+
+Evidence rules unchanged from the standing board contract: Hotspawn supplies fixture inventory and
+lock times only, never a probability; the pick ladder is featured exchange lines first, then wide
+exchange, then bookmaker listings, then the originated Valve-VRS model line, then the HLTV
+Valve-ranking mirror, then HLTV recent-form research (pick without percentage); anything still
+unresolved is published on the Unresolved page **and** in the executive summary's limitations
+section with the exact per-row reason. No crowd votes, placeholder odds, inferred values or 50/50
+filler. HLTV rate limits are paced, never bypassed.
+
 ## Session d2a55add — final receipt: PR #246 merged, live bytes verified (2026-10-24 06:20 UTC)
 
 **PR [#246](https://github.com/buffedlizard55-lab/MaltaProj4/pull/246) merged to `main` at
