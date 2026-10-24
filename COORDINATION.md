@@ -8355,3 +8355,52 @@ Board read before claim. Fixed Arena branch `arena/fbea4413-maltaproj4`, branche
   - `CS2 refresh watchdog` ([run `40114944038`](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40114944038)): `COMPLETED` / `SUCCESS`
   - Live GitHub Pages URLs: `https://buffedlizard55-lab.github.io/MaltaProj4/`, `https://buffedlizard55-lab.github.io/MaltaProj4/picks.html`, `https://buffedlizard55-lab.github.io/MaltaProj4/unresolved.html`, `https://buffedlizard55-lab.github.io/MaltaProj4/review.html`.
 
+
+---
+
+## Session d15e84e5 — merged and Pages deployed (2026-10-24 17:05 UTC)
+
+**PR [#280](https://github.com/buffedlizard55-lab/MaltaProj4/pull/280) merged without waiting for approval at `2026-10-24T16:57:46Z`**, merge commit
+`a5c59b9ff44578a0e5185d5d0b8179a826fc0ba9` (head `661432d`, base `7e32077`). GitHub's own checks on the PR head were green before the merge:
+`audit` pass, `verify-build` pass (2m12s, run `40113676229`), `deploy` correctly skipped on a `pull_request`, `diagnose` run `40113672830`.
+
+**Deployment receipt (observed, not inferred).** The `pages build and deployment` run for the merge commit
+([`40113942351`](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40113942351)) completed **SUCCESS** at `2026-10-24T16:57:48Z`. Reading the public
+`build-info.json` at `17:06Z` shows the deployment advanced from the frozen revision `71eddff` / snapshot `2026-10-24T08:06:51Z` to **snapshot
+`2026-10-24T16:40:40Z`, 83 rows** (live revision `f5eaafb`, built `16:58:49Z`, 20 checksummed assets) — the same verified snapshot this session built, since re-published
+90 seconds later by the concurrently merged PR #284 (`8173f5d`) over the same bytes. Live pages read at `17:06Z`:
+[index](https://buffedlizard55-lab.github.io/MaltaProj4/) (executive summary with in-site links, bottom bar `Home · Picks · Unresolved · Matches · Analysis`),
+[picks](https://buffedlizard55-lab.github.io/MaltaProj4/picks.html), [unresolved](https://buffedlizard55-lab.github.io/MaltaProj4/unresolved.html),
+[matches](https://buffedlizard55-lab.github.io/MaltaProj4/matches.html), [evidence](https://buffedlizard55-lab.github.io/MaltaProj4/evidence.html). Observed on the live board:
+**20 open matches, 20 picks, 20 win probabilities, 0 unresolved** — every open fixture carries a pick, and the source ladder's new tiers are visible in the published rows
+(`1079200` Valve-standings model line, `1081156` HLTV dated Valve-ranking mirror, `1083123` researched bookmaker listing via BO3.gg, `1082858` wide exchange).
+
+**What this session changed (all four defects were measured, not assumed).**
+
+1. `pages.yml` step ordering — `actions/upload-pages-artifact` now runs **before** step 15 (*Keep the legacy main:/ root fallback on the verified build*). The 09:38Z, 10:05Z
+   and 16:06Z `main` runs each died in step 15, so the artifact never existed, `deploy` was skipped and the board froze at 08:06Z.
+2. Step 15 keeps its fatal gates (`|| return 3` on `scripts.validate` and `unittest discover`), but an exhausted push retry after three rebases now exits 0 with a
+   `::warning::`: a push conflict is an infrastructure fault and no longer costs the verified build its deploy. No `continue-on-error` was added.
+3. The artifact receipt runs under `if: always()`, so a red step 15 still yields `manifest_sha` / `built_at` for the deploy job, whose guard remains
+   `always() && main && not pull_request && needs.verify-build.outputs.publish == 'true'` — a withheld board still never publishes.
+4. Browser gates: `tests/browser_019a253a.cjs` now sums every `data-ladder-count` rung (including `none=`) and `tests/browser_ce45f672.cjs` accepts an honest
+   withheld board (0 priced, 0 scores) while refusing to let a percentage survive on an unpriced card. These repaired the step-14 failure on the fresh board.
+
+**New regression file.** `tests/test_session_d15e84e5.py` pins the four workflow properties above (upload precedes step 15, fatal `|| return 3` gates retained, receipt
+`if: always()`, deploy `always()`-guarded plus `publish == 'true'`) and that the deploy job consumes the artifact the verify job uploaded. Text-based, no YAML dependency.
+
+**Verification run locally on the fresh 16:40:40Z board before the merge:** `scripts.build` → 9 primary pages + 6 legacy redirects, 83 rows, 22 picks, 22 probability pairs,
+0 unresolved; `npm run test:browser` → all 12 Chromium suites pass on 320x568 … 1440x900 (first pick at y=336/360 on phones); `unittest discover -s tests` → 1,477 tests OK;
+`audits` OK; `scripts.validate --data data/latest.json --site .` → 83 rows, 22 calculations reproduced, 15 pages, 787 links/assets, 20 checksums, 195 displayed rows.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Publish a verified build even when the legacy `main:/` push fails (ordering, warning-only retry, always-receipt, always-guard) | done | d15e84e5 | `.github/workflows/pages.yml`, `tests/test_session_d15e84e5.py` | 2026-10-24 17:05 |
+| Repair the browser gates for an honest withheld/level-line board | done | d15e84e5 | `tests/browser_019a253a.cjs`, `tests/browser_ce45f672.cjs` | 2026-10-24 17:05 |
+| Evidence and limitation receipts (level line blocked publication; legacy Pages source oscillation; observed lobby size vs board) | done | d15e84e5 | `data/review-notes.json` (append-only, ids `session-d15e84e5-*`), `research/session-d15e84e5/**` | 2026-10-24 17:05 |
+| Merge, confirm Pages, record receipt | done | d15e84e5 | `COORDINATION.md` | 2026-10-24 17:05 |
+
+**Operational limitations, disclosed rather than hidden:** the workflow's run on the merge commit (`40113942729`) was **cancelled** by GitHub's concurrency handling
+(concurrent session pushes landed within seconds), and the run on `3cc4363` (`40114235228`) was still `in_progress` at `17:06Z`; deployment is therefore evidenced by the
+`pages build and deployment` run above plus the direct public-byte read, not by a green refresh run. Pages remains `build_type: legacy` / source `main:/` because the
+`PUT` that would switch it to GitHub Actions answers 403 for this token, which is exactly why the artifact is now uploaded before step 15.
