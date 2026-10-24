@@ -575,7 +575,8 @@ def resolve(fixture, candidates, provider, now, relax=False):
             attempt.update(status='resolved',reason='Exact pair and UTC start; two-way series winner validated.' + (' Low-confidence spread tier used; strict rejection: ' + quote['strict_rejection'] if quote.get('strict_rejection') else ''))
         except (ValueError, TypeError, KeyError) as e:
             attempt['reason'] = str(e)
-            attempt['rejected_quote'] = {k:c.get(k) for k in ('provider','id','teams','start','observed_at','updated_at','raw','api_url','source_receipts')}
+            attempt['rejected_quote'] = {k:c.get(k) for k in ('provider','id','teams','start',
+                'observed_at','updated_at','raw','api_url','url','source_receipts')}
             attempt['rejected_quote']['notice'] = 'Rejected evidence, not a pick or verified probability.'
     elif near:
         attempt.update(reason='Unverified opponent/alias or roster-name mismatch; no fuzzy match used.', candidates=[{'teams': c['teams'],'url':c['api_url']} for c in near])
