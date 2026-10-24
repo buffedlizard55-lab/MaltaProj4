@@ -6923,3 +6923,18 @@ cases and tampered-price tests stay intact. Comment posted to PR #261; no wait
 for approval needed. No fictitious basis, no data edits, no guard weakening.
 This is a narrow combined-main fixture repair, not a takeover of either owner's
 private research, feature work or live-publication receipt.
+
+
+### e3fe9518 fixture repair delivered — 2026-10-24 07:08 UTC
+
+The claimed positive fixture now uses an unchanged, fully reviewed existing
+`data/identities.json` record. All original assertions remain; additional isolated
+negative cases remove the written basis, remove HTTPS source, or downgrade the
+otherwise valid record to HTTP. The 13-test owner module passes. **No production
+verifier, registry, source input, probability or pick changed.** Full integrated
+repeat follows; its result is not inferred from the module pass.
+Main #265 / `5c64973` is retained, including its three review notes; register
+union now preserves all **194** upstream entries plus the three own IDs (197).
+Canonical build renders the full union. Own audit triggers also now cover source
+core/validator changes, actual refreshed snapshot/identities, and all test changes,
+so the read-only six-hour monitor is not its only chance to catch a regression.

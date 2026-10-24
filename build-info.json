@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "revision": "900841555e9e4d873ccba51ed2bc520d2a783875",
-  "built_at": "2026-10-24T06:19:43Z",
+  "revision": "80788aa6e112d6ee5de07fed24e08f2d021e17fa",
+  "built_at": "2026-10-24T07:31:30.407019Z",
   "snapshot_generated_at": "2026-10-24T06:19:43.492019Z",
   "rows": 92,
   "files": {
@@ -10,20 +10,20 @@
     "assets/app.js": "a2d7109e84a637f835a3dfa486302f93bd51f5b12ec3080b8164a4e2908e2c67",
     "assets/favicon.svg": "5b0ba0da9b9bec504dc4695b59291abad789479745d4a18581fb78b0215738ba",
     "assets/style.css": "453ea0c87202ebfab367c657eda77aab645481506d86b53a1a2516750ce8c9ca",
-    "data/latest.json": "a91ef9b695ade5a647f4aa22c5f3aad5237ac3e4dd626c15bcd0e4d934e1624a",
-    "data/matches.csv": "3a14943efe66b2bec259e8c44103db8562e8fa87983312aa8b06534cfc6486e1",
+    "data/latest.json": "7c43adabd793fad6e3fbd91719ad0f65bcbd00b49892dbb0fd6bbc58b003515b",
+    "data/matches.csv": "7fa03cb53c9a328712d7c0e8992325b87ceaba966331ab414050a321141300e1",
     "evidence.html": "554b80a867a419c42972711934a201b20b212ea606d411f1953f426928b6bcc3",
     "index.html": "ec6987da95857225b33c07dedc4820ed37a578e3aa6358b6e12612977ddffa55",
     "matches.html": "0283b3f18549568d963c36081706a37305b8955c6ff60abd6e344b7c4c2fb0cc",
     "methodology.html": "db6dd3e60721627f0629397fd4d76b07f3f9ea5ab15b72348f3bee3b35a094ae",
     "picks.html": "d68185351c4f37b99472ccc5a3c0f5c7eac821d6625da2b80beefc97262aefe8",
-    "review.html": "57cfbdca255e355a592ee98135396b4185e5db71fefa056081aa85408151e744",
+    "review.html": "9145fde322a9f70ae610ce180fad7bd6bc6d39781b8571b7c7ef88f5534f29b6",
     "site/index.html": "7ad39335aef2960a4c7f3a8f9f2322d358e59fd45631acfa19f456575ec491db",
     "site/methodology.html": "130024ea27020261e759b42920f78c42bebcbb44f226ef5216c8bbb1a2684b33",
     "site/picks.html": "de8e71d8a3a1f7b287299108b460956d7c52391255b567fc71cc9974f8dcd76c",
     "site/review.html": "91547a7e0d0e5b1e9bde9a89cad48c38173aefee74ea25afd75c17d9de3937cf",
     "site/unresolved.html": "d8c18e13a798f6d0f0f3cf8ee21bb42ed941d6077c82c8031ae3476d6120bded",
-    "sources.html": "978003a214189b8fa427a7d3ee7f9adb443f88cde803cabb68f7bb043fe09ca7",
+    "sources.html": "8351dcac76cece1995492dcdd89be05c63bce213f1e324cb96b3907cb694d653",
     "unresolved.html": "4a26f3c90d7a42991a0cbdd4d723086d9d193221e4a4b836c91d13db68065952"
   }
 }
