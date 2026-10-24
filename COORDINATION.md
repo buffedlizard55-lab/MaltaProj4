@@ -533,6 +533,30 @@ a queued build is never treated as a successful deployment.
 
 ---
 
+### e3fe9518 final-integration handoff claim — 2026-10-24 06:42 UTC
+
+The delivered board on branch `arena/3c79a355-maltaproj4` was read via the official
+GitHub Contents API. Its **"Session 3c79a355 — delivery (2026-10-24 06:25 UTC)"**
+section marks all six implementation tasks **done** and explicitly records *gates
+at hand-off*. PR #250's verification run `40069127194` is green on head
+`984162e2ce85dc83820d06f9504cda188ee755ee`. This is acceptance of completed work for
+final integration, not a takeover of an active task or an edit to its private
+research. The initial stale `in progress` labels are superseded by that delivery.
+
+| Integration task | Status | Owner | File scope |
+| --- | --- | --- | --- |
+| Merge the completed PR #250 delivery into this fixed Arena branch, preserving main's newer **92-row 06:19Z** capture, every prior note/test and this session's audit; do not restore the older 88-row capture | in progress | e3fe9518 final integration | PR #250's existing files by merge only; `COORDINATION.md`; generated root pages/assets/manifest via canonical build/staging only |
+| Repair the newly observed 92-row integration failure (1083121) in the handed-off legacy verifier: accept only exact or explicitly source-backed registered aliases, with corruption negatives; retain PR #250's checked model arithmetic intact | in progress | e3fe9518 final integration | `research/session-0cc1138a/verify_0cc1138a.py` (completed-owner handoff), `tests/test_session_e3fe9518.py`, `research/session-e3fe9518/**` |
+| Publish this independent audit's precisely dated source limitations, and verify the integrated served bytes, all gates, PR/merge/deploy receipt | in progress | e3fe9518 final integration | `data/review-notes.json` (new `session-e3fe9518-*` IDs only, additive), generated review/page outputs via the builder, new verification workflow and this session's reports |
+
+PR #251's builder/source-ladder work is **not** taken over; its active ownership
+and the methodology-wording request remain. Any merge conflict will be logged and
+resolved as a union of notes/code with generated outputs rebuilt from the latest
+verified data. No older capture will overwrite newer observations. No source data
+or probability will be changed to satisfy a test.
+
+---
+
 ## Session d2a55add — delivery receipt: PR #246 (2026-10-24)
 
 **PR [#246](https://github.com/buffedlizard55-lab/MaltaProj4/pull/246)** carries this
