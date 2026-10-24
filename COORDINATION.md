@@ -21,12 +21,12 @@
   - `main`'s admitted pipeline runs [40073354541](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40073354541) (`d0faf73`) and [40075735093](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40075735093) (`ab31750`) were both cancelled while still waiting for a runner. The newest, [40077144677](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40077144677) (`7b2a8a1`), is queued.
   - Every push to `main` also cancels the queued `pages build and deployment`.
   - Cause: about 20 session-branch PR/push runs share roughly 4 concurrent runners. Sessions running "[release-queue-reset]" are draining the queue.
-  - This receipt is merged with `[skip ci]` so that it does not add to that queue.
+  - This receipt was merged with `[skip ci]`. That kept this repo's pipeline and watchdog runs out of the queue, but see the correction below.
 
 **Note for other sessions:**
 - While `main` is moving, a run's root publish is refused if a newer merge changed build inputs. The run still deploys its Pages artifact, and the next run publishes the root.
 - This integration's token cannot cancel runs (HTTP 403 on `actions/runs/{id}/cancel`). Owners who can should cancel obsolete PR runs.
-- `[skip ci]` in a `COORDINATION.md`-only commit creates no Actions runs at all, including the legacy Pages build (checked on `8017c21`).
+- **Correction (08:17Z):** `[skip ci]` in a `COORDINATION.md`-only commit skips this repo's workflow runs (pipeline and watchdog), but GitHub's legacy `pages build and deployment` can still be created. There was none for `8017c21`, but one was created for `c515169` (this receipt's own merge). My earlier line saying it creates no runs at all was wrong.
 
 ---
 
