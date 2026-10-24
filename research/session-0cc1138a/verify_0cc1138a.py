@@ -47,12 +47,14 @@ def norm(name):
     return ''.join(ch for ch in folded.lower() if ch.isalnum())
 
 
-def same_team(a, b):
-    """Lenient but explicit label match: identical, or one label is a prefix word run.
+def same_team(a, b, identity_sources=()):
+    """Lenient but explicit label match: identical, one label is a prefix word run,
+    or both labels belong to a receipted identity_sources entry on the evidence record.
 
     Exchanges list the same club under a longer label ("BakS eSports" for Hotspawn's
-    "BakS"). We accept only unambiguous prefix matches of at least four characters;
-    anything else is reported, never guessed.
+    "BakS") or under a verified organization alias stored in ``ev['identity_sources']``
+    with a primary https source and written basis (e.g. "Tropa do KinGui" for
+    "Projeto do KinGui" on fixture 1083121). Anything else is reported, never guessed.
     """
     a, b = norm(a), norm(b)
     if not a or not b:
@@ -60,27 +62,65 @@ def same_team(a, b):
     if a == b:
         return True
     short, long = sorted((a, b), key=len)
-    return len(short) >= 3 and long.startswith(short)
+    if len(short) >= 3 and long.startswith(short):
+        return True
+    for entry in identity_sources or ():
+        if not isinstance(entry, dict):
+            continue
+        src = str(entry.get('source') or '')
+        basis = str(entry.get('basis') or '').strip()
+        if not src.startswith('https://') or not basis:
+            continue
+        group = {norm(n) for n in (entry.get('names') or ()) if norm(n)}
+        if a in group and b in group:
+            return True
+    return False
 
 
-def alias_groups(ev):
-    """Reviewed identity groups carried on the evidence record itself.
+IDENTITIES_PATH = Path(__file__).resolve().parents[2] / 'data' / 'identities.json'
 
-    A source may list a club under a reviewed alias that is not a prefix of
-    the Hotspawn label (Projeto do KinGui vs Tropa do KinGui, session
-    174afa4f merge). The mapping is accepted only when the evidence record
-    names both labels under one canonical identity with an https source --
-    the same identification evidence the pipeline stored, re-checked here
-    rather than guessed from string similarity.
-    """
+
+def committed_identity_groups():
+    """Sourced alias groups from the committed data/identities.json file."""
+    try:
+        raw = json.loads(IDENTITIES_PATH.read_text(encoding='utf-8'))
+    except (OSError, ValueError):
+        return []
     groups = []
-    for entry in (ev or {}).get('identity_sources') or []:
+    for entry in (raw.get('aliases') or raw.get('identities') if isinstance(raw, dict) else raw) or []:
         if not isinstance(entry, dict):
             continue
         source = entry.get('source') or ''
+        basis = str(entry.get('basis') or '').strip()
         names = entry.get('names') or []
-        if str(source).startswith('https://') and isinstance(names, list):
+        if str(source).startswith('https://') and basis and isinstance(names, list):
             groups.append({norm(n) for n in names if n})
+    return groups
+
+
+def alias_groups(ev):
+    """Reviewed identity groups carried on the evidence record AND in data/identities.json.
+
+    A source may list a club under a reviewed alias that is not a prefix of
+    the Hotspawn label (Projeto do KinGui vs Tropa do KinGui, sessions
+    174afa4f / a30d31a0 / cecfe864). The mapping is accepted only when BOTH
+    the evidence record and the committed ``data/identities.json`` registry
+    name the labels under one canonical identity with an ``https://`` source
+    and written ``basis``.
+    """
+    entries = ev.get('identity_sources') if isinstance(ev, dict) else ev
+    committed = committed_identity_groups()
+    groups = []
+    for entry in entries or []:
+        if not isinstance(entry, dict):
+            continue
+        source = entry.get('source') or ''
+        basis = str(entry.get('basis') or '').strip()
+        names = entry.get('names') or []
+        if str(source).startswith('https://') and basis and isinstance(names, list):
+            candidate = {norm(n) for n in names if n}
+            if any(candidate <= reg for reg in committed):
+                groups.append(candidate)
     return groups
 
 
