@@ -1,0 +1,575 @@
+{
+ "snapshot_generated_at": "2026-10-24T05:57:43.355890Z",
+ "fixtures_observed_at": "2026-10-24T05:54:04.107648Z",
+ "coverage_counts": {
+  "api": 88,
+  "page": 88,
+  "lobby": 88,
+  "retained": 88
+ },
+ "total_rows": 88,
+ "open_rows": 25,
+ "open_with_pick": 25,
+ "open_with_probability": 25,
+ "open_without_pick": [],
+ "open_without_probability": [],
+ "methods": {
+  "bookmaker_fallback": 2,
+  "exchange": 12,
+  "exchange_wide": 2,
+  "model_vrs": 7,
+  "model_vrs_mirror": 2
+ },
+ "rows": [
+  {
+   "id": "1079193",
+   "teams": [
+    "FOKUS",
+    "ex-6666"
+   ],
+   "competition": "NODWIN Clutch Series #13",
+   "start": "2026-10-24T08:00:00Z",
+   "pick": "FOKUS",
+   "method": "exchange",
+   "probabilities": [
+    0.785,
+    0.215
+   ],
+   "reason": null,
+   "winner_share": 0.785,
+   "winner_share_pct": 78.5,
+   "expires_at": "2026-10-24T07:54:00Z",
+   "evidence_urls": [
+    "https://polymarket.com/event/cs2-fokus-66661-2026-10-24"
+   ]
+  },
+  {
+   "id": "1079658",
+   "teams": [
+    "Acend",
+    "FORZE Reload"
+   ],
+   "competition": "CCT Europe 2026 Series #11",
+   "start": "2026-10-24T08:00:00Z",
+   "pick": "FORZE Reload",
+   "method": "exchange",
+   "probabilities": [
+    0.325,
+    0.675
+   ],
+   "reason": null,
+   "winner_share": 0.675,
+   "winner_share_pct": 67.5,
+   "expires_at": "2026-10-24T07:54:00Z",
+   "evidence_urls": [
+    "https://polymarket.com/event/cs2-ace1-forzer-2026-10-24"
+   ]
+  },
+  {
+   "id": "1079659",
+   "teams": [
+    "Spirit Academy",
+    "Lavked"
+   ],
+   "competition": "CCT Europe 2026 Series #11",
+   "start": "2026-10-24T11:00:00Z",
+   "pick": "Spirit Academy",
+   "method": "exchange",
+   "probabilities": [
+    0.66,
+    0.34
+   ],
+   "reason": null,
+   "winner_share": 0.66,
+   "winner_share_pct": 66.0,
+   "expires_at": "2026-10-24T10:54:00Z",
+   "evidence_urls": [
+    "https://polymarket.com/event/cs2-tsa-lavked-2026-10-24"
+   ]
+  },
+  {
+   "id": "1081152",
+   "teams": [
+    "HAVU",
+    "Azuolas"
+   ],
+   "competition": "CCT Europe 2026 Series #12",
+   "start": "2026-10-24T11:00:00Z",
+   "pick": "HAVU",
+   "method": "model_vrs",
+   "probabilities": [
+    0.5815710671661513,
+    0.41842893283384874
+   ],
+   "reason": null,
+   "winner_share": 0.5815710671661513,
+   "winner_share_pct": 58.2,
+   "expires_at": "2026-10-24T10:54:00Z",
+   "evidence_urls": [
+    "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+   ]
+  },
+  {
+   "id": "1079195",
+   "teams": [
+    "Nuclear TigeRES",
+    "FORZE Reload"
+   ],
+   "competition": "NODWIN Clutch Series #13",
+   "start": "2026-10-24T14:00:00Z",
+   "pick": "Nuclear TigeRES",
+   "method": "exchange",
+   "probabilities": [
+    0.635,
+    0.365
+   ],
+   "reason": null,
+   "winner_share": 0.635,
+   "winner_share_pct": 63.5,
+   "expires_at": "2026-10-24T13:52:37.527974Z",
+   "evidence_urls": [
+    "https://polymarket.com/event/cs2-ntr-forzer-2026-10-24"
+   ]
+  },
+  {
+   "id": "1079660",
+   "teams": [
+    "INOX Division",
+    "BRUTE"
+   ],
+   "competition": "CCT Europe 2026 Series #11",
+   "start": "2026-10-24T14:00:00Z",
+   "pick": "INOX Division",
+   "method": "exchange",
+   "probabilities": [
+    0.565,
+    0.435
+   ],
+   "reason": null,
+   "winner_share": 0.565,
+   "winner_share_pct": 56.5,
+   "expires_at": "2026-10-24T13:52:37.527974Z",
+   "evidence_urls": [
+    "https://polymarket.com/event/cs2-inox-brute-2026-10-24"
+   ]
+  },
+  {
+   "id": "1081153",
+   "teams": [
+    "Saint Sinners",
+    "6yuBoJlbl"
+   ],
+   "competition": "CCT Europe 2026 Series #12",
+   "start": "2026-10-24T14:00:00Z",
+   "pick": "6yuBoJlbl",
+   "method": "model_vrs",
+   "probabilities": [
+    0.2930462353295323,
+    0.7069537646704678
+   ],
+   "reason": null,
+   "winner_share": 0.7069537646704678,
+   "winner_share_pct": 70.7,
+   "expires_at": "2026-10-24T13:54:00Z",
+   "evidence_urls": [
+    "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+   ]
+  },
+  {
+   "id": "1079661",
+   "teams": [
+    "Nuclear TigeRES",
+    "ex-Zero Tenacity"
+   ],
+   "competition": "CCT Europe 2026 Series #11",
+   "start": "2026-10-24T17:00:00Z",
+   "pick": "Nuclear TigeRES",
+   "method": "exchange",
+   "probabilities": [
+    0.64,
+    0.36
+   ],
+   "reason": null,
+   "winner_share": 0.64,
+   "winner_share_pct": 64.0,
+   "expires_at": "2026-10-24T13:52:37.527974Z",
+   "evidence_urls": [
+    "https://polymarket.com/event/cs2-ntr-zerote-2026-10-24"
+   ]
+  },
+  {
+   "id": "1081154",
+   "teams": [
+    "BakS",
+    "ILLYRIANS"
+   ],
+   "competition": "CCT Europe 2026 Series #12",
+   "start": "2026-10-24T17:00:00Z",
+   "pick": "BakS",
+   "method": "model_vrs",
+   "probabilities": [
+    0.6875248688198947,
+    0.3124751311801053
+   ],
+   "reason": null,
+   "winner_share": 0.6875248688198947,
+   "winner_share_pct": 68.8,
+   "expires_at": "2026-10-24T13:54:04.107648Z",
+   "evidence_urls": [
+    "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+   ]
+  },
+  {
+   "id": "1082996",
+   "teams": [
+    "Acend",
+    "UNiTY"
+   ],
+   "competition": "NODWIN Clutch Series #13",
+   "start": "2026-10-25T09:00:00Z",
+   "pick": "Acend",
+   "method": "model_vrs",
+   "probabilities": [
+    0.5334625793926856,
+    0.4665374206073144
+   ],
+   "reason": null,
+   "winner_share": 0.5334625793926856,
+   "winner_share_pct": 53.3,
+   "expires_at": "2026-10-24T13:54:04.107648Z",
+   "evidence_urls": [
+    "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+   ]
+  },
+  {
+   "id": "1079198",
+   "teams": [
+    "Metizport",
+    "BakS"
+   ],
+   "competition": "NODWIN Clutch Series #13",
+   "start": "2026-10-25T12:00:00Z",
+   "pick": "Metizport",
+   "method": "exchange_wide",
+   "probabilities": [
+    0.705,
+    0.295
+   ],
+   "reason": null,
+   "winner_share": 0.705,
+   "winner_share_pct": 70.5,
+   "expires_at": "2026-10-24T13:52:37.527974Z",
+   "evidence_urls": [
+    "https://polymarket.com/event/cs2-mzp-baks-2026-10-25"
+   ]
+  },
+  {
+   "id": "1081156",
+   "teams": [
+    "Spirit Academy",
+    "LFO 10"
+   ],
+   "competition": "CCT Europe 2026 Series #12",
+   "start": "2026-10-25T12:00:00Z",
+   "pick": "Spirit Academy",
+   "method": "model_vrs_mirror",
+   "probabilities": [
+    0.7118171988597648,
+    0.2881828011402352
+   ],
+   "reason": null,
+   "winner_share": 0.7118171988597648,
+   "winner_share_pct": 71.2,
+   "expires_at": "2026-10-24T13:54:04.107648Z",
+   "evidence_urls": [
+    "https://www.hltv.org/valve-ranking/teams/2026/october/24"
+   ]
+  },
+  {
+   "id": "1079199",
+   "teams": [
+    "Infinite",
+    "BRUTE"
+   ],
+   "competition": "NODWIN Clutch Series #13",
+   "start": "2026-10-25T15:00:00Z",
+   "pick": "BRUTE",
+   "method": "exchange",
+   "probabilities": [
+    0.475,
+    0.525
+   ],
+   "reason": null,
+   "winner_share": 0.525,
+   "winner_share_pct": 52.5,
+   "expires_at": "2026-10-24T13:52:37.527974Z",
+   "evidence_urls": [
+    "https://polymarket.com/event/cs2-inf6-brute-2026-10-25"
+   ]
+  },
+  {
+   "id": "1079200",
+   "teams": [
+    "Color",
+    "ex-Zero Tenacity"
+   ],
+   "competition": "NODWIN Clutch Series #13",
+   "start": "2026-10-25T18:00:00Z",
+   "pick": "Color",
+   "method": "exchange",
+   "probabilities": [
+    0.545,
+    0.455
+   ],
+   "reason": null,
+   "winner_share": 0.545,
+   "winner_share_pct": 54.5,
+   "expires_at": "2026-10-24T13:52:37.527974Z",
+   "evidence_urls": [
+    "https://polymarket.com/event/cs2-color-zerote-2026-10-25"
+   ]
+  },
+  {
+   "id": "1081158",
+   "teams": [
+    "FORZE Reload",
+    "ex-RUSTEC"
+   ],
+   "competition": "CCT Europe 2026 Series #12",
+   "start": "2026-10-25T18:00:00Z",
+   "pick": "FORZE Reload",
+   "method": "model_vrs_mirror",
+   "probabilities": [
+    0.5740422049729164,
+    0.42595779502708364
+   ],
+   "reason": null,
+   "winner_share": 0.5740422049729164,
+   "winner_share_pct": 57.4,
+   "expires_at": "2026-10-24T13:54:04.107648Z",
+   "evidence_urls": [
+    "https://www.hltv.org/valve-ranking/teams/2026/october/24"
+   ]
+  },
+  {
+   "id": "1082858",
+   "teams": [
+    "Ground Zero",
+    "Off Chops"
+   ],
+   "competition": "DFRAG Invitational 2026",
+   "start": "2026-10-26T03:00:00Z",
+   "pick": "Off Chops",
+   "method": "exchange_wide",
+   "probabilities": [
+    0.27,
+    0.73
+   ],
+   "reason": null,
+   "winner_share": 0.73,
+   "winner_share_pct": 73.0,
+   "expires_at": "2026-10-24T13:52:37.527974Z",
+   "evidence_urls": [
+    "https://polymarket.com/event/cs2-gz1-offcho-2026-10-25"
+   ]
+  },
+  {
+   "id": "1082859",
+   "teams": [
+    "NEXVOID",
+    "Alter Ego"
+   ],
+   "competition": "DFRAG Invitational 2026",
+   "start": "2026-10-26T03:00:00Z",
+   "pick": "NEXVOID",
+   "method": "bookmaker_fallback",
+   "probabilities": [
+    0.5755968169761273,
+    0.4244031830238727
+   ],
+   "reason": null,
+   "winner_share": 0.5755968169761273,
+   "winner_share_pct": 57.6,
+   "expires_at": "2026-10-24T13:54:04.107648Z",
+   "evidence_urls": [
+    "https://bo3.gg/matches/nexvoid-vs-alter-ego-26-10-2026"
+   ]
+  },
+  {
+   "id": "1082860",
+   "teams": [
+    "FlyQuest",
+    "Staqued"
+   ],
+   "competition": "DFRAG Invitational 2026",
+   "start": "2026-10-27T03:00:00Z",
+   "pick": "FlyQuest",
+   "method": "bookmaker_fallback",
+   "probabilities": [
+    0.9230059226213368,
+    0.07699407737866316
+   ],
+   "reason": null,
+   "winner_share": 0.9230059226213368,
+   "winner_share_pct": 92.3,
+   "expires_at": "2026-10-24T13:54:04.107648Z",
+   "evidence_urls": [
+    "https://bo3.gg/matches/flyquest-vs-staqued-27-10-2026"
+   ]
+  },
+  {
+   "id": "1082861",
+   "teams": [
+    "Rooster",
+    "Abyssal"
+   ],
+   "competition": "DFRAG Invitational 2026",
+   "start": "2026-10-27T03:00:00Z",
+   "pick": "Abyssal",
+   "method": "model_vrs",
+   "probabilities": [
+    0.4821232933348442,
+    0.5178767066651557
+   ],
+   "reason": null,
+   "winner_share": 0.5178767066651557,
+   "winner_share_pct": 51.8,
+   "expires_at": "2026-10-24T13:54:04.107648Z",
+   "evidence_urls": [
+    "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+   ]
+  },
+  {
+   "id": "1082897",
+   "teams": [
+    "B8",
+    "K27"
+   ],
+   "competition": "Tesla Cup 2026",
+   "start": "2026-10-27T08:00:00Z",
+   "pick": "B8",
+   "method": "exchange",
+   "probabilities": [
+    0.615,
+    0.385
+   ],
+   "reason": null,
+   "winner_share": 0.615,
+   "winner_share_pct": 61.5,
+   "expires_at": "2026-10-24T13:52:37.527974Z",
+   "evidence_urls": [
+    "https://polymarket.com/event/cs2-b8-k271-2026-10-27"
+   ]
+  },
+  {
+   "id": "1082898",
+   "teams": [
+    "Alliance",
+    "FaZe"
+   ],
+   "competition": "Tesla Cup 2026",
+   "start": "2026-10-27T11:00:00Z",
+   "pick": "FaZe",
+   "method": "exchange",
+   "probabilities": [
+    0.35,
+    0.65
+   ],
+   "reason": null,
+   "winner_share": 0.65,
+   "winner_share_pct": 65.0,
+   "expires_at": "2026-10-24T13:50:37.590850Z",
+   "evidence_urls": [
+    "https://polymarket.com/event/cs2-all-faze-2026-10-27"
+   ]
+  },
+  {
+   "id": "1082900",
+   "teams": [
+    "Luminosity",
+    "HOTU"
+   ],
+   "competition": "Tesla Cup 2026",
+   "start": "2026-10-27T17:00:00Z",
+   "pick": "Luminosity",
+   "method": "exchange",
+   "probabilities": [
+    0.525,
+    0.475
+   ],
+   "reason": null,
+   "winner_share": 0.525,
+   "winner_share_pct": 52.5,
+   "expires_at": "2026-10-24T13:30:39.279210Z",
+   "evidence_urls": [
+    "https://polymarket.com/event/cs2-lg6-hotu-2026-10-27"
+   ]
+  },
+  {
+   "id": "1082901",
+   "teams": [
+    "Envy",
+    "GamerLegion"
+   ],
+   "competition": "Tesla Cup 2026",
+   "start": "2026-10-27T20:00:00Z",
+   "pick": "GamerLegion",
+   "method": "exchange",
+   "probabilities": [
+    0.455,
+    0.545
+   ],
+   "reason": null,
+   "winner_share": 0.545,
+   "winner_share_pct": 54.5,
+   "expires_at": "2026-10-24T13:48:38.061321Z",
+   "evidence_urls": [
+    "https://polymarket.com/event/cs2-envy-gl1-2026-10-27"
+   ]
+  },
+  {
+   "id": "1082792",
+   "teams": [
+    "HOTU",
+    "The Huns"
+   ],
+   "competition": "Moscow Cyber Games 2026",
+   "start": "2026-10-31T09:00:00Z",
+   "pick": "HOTU",
+   "method": "model_vrs",
+   "probabilities": [
+    0.851799765370461,
+    0.14820023462953902
+   ],
+   "reason": null,
+   "winner_share": 0.851799765370461,
+   "winner_share_pct": 85.2,
+   "expires_at": "2026-10-24T13:54:04.107648Z",
+   "evidence_urls": [
+    "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+   ]
+  },
+  {
+   "id": "1082793",
+   "teams": [
+    "5star",
+    "1WIN"
+   ],
+   "competition": "Moscow Cyber Games 2026",
+   "start": "2026-10-31T13:00:00Z",
+   "pick": "1WIN",
+   "method": "model_vrs",
+   "probabilities": [
+    0.242985776930831,
+    0.757014223069169
+   ],
+   "reason": null,
+   "winner_share": 0.757014223069169,
+   "winner_share_pct": 75.7,
+   "expires_at": "2026-10-24T13:54:04.107648Z",
+   "evidence_urls": [
+    "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+   ]
+  }
+ ]
+}

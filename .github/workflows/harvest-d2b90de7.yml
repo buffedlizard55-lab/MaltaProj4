@@ -1,0 +1,107 @@
+name: Coverage harvest d2b90de7 (non-publishing)
+
+# The authoring sandbox reaches github.com, codeload.github.com, api.github.com,
+# registry.npmjs.org and pypi.org only, so the real Hotspawn/HLTV/exchange/book
+# refresh and the independent audits run on this GitHub-hosted runner and the
+# exact bytes are committed back to the fixed Arena branch for line-by-line
+# re-checking in the session. This workflow never publishes Pages and never
+# pushes generated pages or data to main.
+on:
+  push:
+    branches: [arena/d2b90de7-maltaproj4]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: coverage-harvest-d2b90de7
+  cancel-in-progress: false
+jobs:
+  capture:
+    if: github.ref == 'refs/heads/arena/d2b90de7-maltaproj4' && (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[capture]'))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+          cache: npm
+      - run: pip install -r requirements.txt
+      - run: npm ci --ignore-scripts
+      - name: Verify the committed board and the deadlock repair before touching any source
+        run: |
+          mkdir -p research/harvest-d2b90de7/logs runtime
+          python -m unittest discover -s tests 2>&1 | tail -5 | tee research/harvest-d2b90de7/logs/unit.txt
+          python -m unittest discover -s audits -p 'test_*.py' 2>&1 | tail -3 | tee research/harvest-d2b90de7/logs/audits.txt
+          python verification-95b588c2/test_integrity.py 2>&1 | tail -3 | tee research/harvest-d2b90de7/logs/integrity.txt
+          python -m unittest discover -s verification-c6 -p 'test_*.py' 2>&1 | tail -3 | tee research/harvest-d2b90de7/logs/c6.txt
+          python -m scripts.validate --data data/latest.json --site . 2>&1 | tail -8 | tee research/harvest-d2b90de7/logs/validate-committed.txt
+      - name: Refresh official Hotspawn, HLTV, exchange, book and Valve sources
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python -m scripts.refresh --output runtime/latest.json 2>&1 | tee research/harvest-d2b90de7/logs/refresh.txt
+      - name: Withhold any row the independent evidence replay cannot reproduce
+        continue-on-error: true
+        run: python -m scripts.quarantine runtime/latest.json 2>&1 | tee research/harvest-d2b90de7/logs/quarantine.txt
+      - name: Coverage report of every open row
+        continue-on-error: true
+        run: python -m scripts.report_gaps_f0814674 --snapshot runtime/latest.json --output research/harvest-d2b90de7 2>&1 | tee research/harvest-d2b90de7/logs/coverage.txt
+      - name: Research probe for open rows without a win probability (HLTV first, then esportsbooks/lines)
+        continue-on-error: true
+        run: python -m scripts.probe_4fd13975 --snapshot runtime/latest.json --output research/harvest-d2b90de7/unresolved-probe 2>&1 | tee research/harvest-d2b90de7/logs/unresolved-probe.txt
+      - name: Independent row audit and dated row ledger
+        continue-on-error: true
+        run: |
+          python verification-c6/audit_snapshot.py runtime/latest.json --output research/harvest-d2b90de7/row-audit.md 2>&1 | tee research/harvest-d2b90de7/logs/row-audit.txt
+          python -m scripts.audit_9b97d585 --snapshot runtime/latest.json --previous data/latest.json --output research/harvest-d2b90de7 2>&1 | tee research/harvest-d2b90de7/logs/ledger.txt
+      - name: Build and validate exactly as publication does
+        continue-on-error: true
+        run: |
+          python -m scripts.build --data runtime/latest.json 2>&1 | tee research/harvest-d2b90de7/logs/build.txt
+          python -m scripts.validate --data runtime/latest.json 2>&1 | tee research/harvest-d2b90de7/logs/validate-fresh.txt
+          python verification-c6/audit_snapshot.py public/data/latest.json --output research/harvest-d2b90de7/published-row-audit.md 2>&1 | tee research/harvest-d2b90de7/logs/published-audit.txt
+      - name: Phone, tablet, desktop, accessibility and exact expiry checks
+        continue-on-error: true
+        run: npm run test:browser 2>&1 | tee research/harvest-d2b90de7/logs/browser.txt
+      - name: Retain the refreshed snapshot and runner identity
+        env:
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+          RUN_SHA: ${{ github.sha }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          if test -s runtime/latest.json; then cp runtime/latest.json research/harvest-d2b90de7/refresh-snapshot.json; fi
+          find research/harvest-d2b90de7 -name '*.gz' -size +2M -delete || true
+          du -sh research/harvest-d2b90de7 || true
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          receipt = {'workflow_run_id': os.environ['RUN_ID'], 'attempt': os.environ['RUN_ATTEMPT'],
+                     'checkout_sha': os.environ['RUN_SHA'], 'run_url': os.environ['RUN_URL'],
+                     'publishes_pages': False,
+                     'snapshot': 'research/harvest-d2b90de7/refresh-snapshot.json'}
+          Path('research/harvest-d2b90de7/run.json').write_text(json.dumps(receipt, indent=1) + '\n')
+          PY
+      - name: Commit dated research evidence to the fixed session branch
+        run: |
+          git config user.name "cs2-evidence-runner"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- research/harvest-d2b90de7
+          if git diff --cached --quiet; then echo "No capture change to commit."; exit 0; fi
+          git commit -m "Retain official-source coverage harvest from run ${GITHUB_RUN_ID} [skip ci]"
+          git pull --rebase origin arena/d2b90de7-maltaproj4
+          git push origin arena/d2b90de7-maltaproj4
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: coverage-harvest-d2b90de7-${{ github.run_id }}
+          path: |
+            research/harvest-d2b90de7
+            runtime/latest.json
+            public/build-info.json
+          retention-days: 14
