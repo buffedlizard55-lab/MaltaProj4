@@ -8017,3 +8017,24 @@ asset or rendered artifact changes. Both board additions retained. The full
 1,472-unit/14-browser gate remains bound to unchanged production inputs; repeat
 full units after this dated-fixture update and recheck exact manifest bytes.
 All previous raw facts/29current prices and224 review entries remain unchanged.
+
+---
+
+## Session caca91b8 — claim (2026-10-24 16:31 UTC, branch `arena/caca91b8-maltaproj4`)
+
+**Board read before starting:** `origin/main` at `45fc6ba3244750e2b7fa2118b15b5e7114901e5b` (PR #244); committed `build-info.json` built `2026-10-24T08:26:58.964839Z`, snapshot `2026-10-24T08:06:51.009717Z` (92 feed rows, 29 open at capture, 22 still before lock at `16:28Z`, >8h window expired at `16:06:51Z`).
+
+**Measured root causes already reproduced from official GitHub API check-run annotations and local gate execution (zero guesswork):**
+1. **Scheduled & push publication freeze on `main` (runs `40082763751`, `40084520702`, `40097410704`):** `pages.yml` step 15 (*Keep the legacy main:/ root fallback on the verified build*) fails with `The staged root failed its own validator or unit gate` because `tests/test_session_e9be3e6b.py` (completed session `e9be3e6b`, >8h inactive) indexes `by_id['1081152']['evidence'][0]` unconditionally on rotated live snapshots.
+2. **PR browser-gate deadlock once the committed snapshot passed 8 hours (`16:06:51Z`):** locally running `scripts.build --data data/latest.json && npm run test:browser` at `16:28Z` fails in two completed-session browser suites:
+   - `tests/browser_019a253a.cjs:139` (completed session `019a253a`, >8h inactive): filters out `none=` before checking that ladder rung counts sum to `openRows` (`0 !== 22` when picks are withheld due to expiry, and would also fail whenever `none > 0`).
+   - `tests/browser_ce45f672.cjs:88` (completed session `ce45f672`, >8h inactive): requires `measured.scores.length === 2` and `measured.cards === data.matches.filter(m => m.state === 'open').length` even when the committed baseline is past its 8-hour window and 7 matches have locked since `08:06Z`.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Live Hotspawn/HLTV/exchange/bookmaker/Valve harvest, low-tier match gap probe, and publisher rehearsal on a GitHub runner | in progress | caca91b8 | `.github/workflows/harvest-caca91b8.yml`, `scripts/probe_caca91b8.py`, `research/session-caca91b8/**` | 2026-10-24 16:31 |
+| Line-by-line independent verification of every feed row, probability formula, official source link, and mobile executive-summary layout | in progress | caca91b8 | `scripts/audit_caca91b8.py`, `verification-caca91b8/**`, `tests/test_session_caca91b8.py`, `tests/browser_caca91b8.cjs` | 2026-10-24 16:31 |
+| Completed-owner stale/rotated-snapshot test handoff repairs (logged above; owners inactive >8h) | in progress | caca91b8 | `tests/test_session_e9be3e6b.py`, `tests/browser_019a253a.cjs`, `tests/browser_ce45f672.cjs` (plus any additional completed-owner rotated-ID pins caught by live rehearsal) | 2026-10-24 16:31 |
+| Sourced low-tier CS2 coverage & additive review flags for any newly listed Hotspawn fixtures in the 16:3xZ feed | unclaimed until capture completes | caca91b8 | `data/identities.json`, `data/book-receipts.json`, `data/lineup-receipts.json`, `data/vrs-anchors.json`, `data/review-notes.json` (additive only, merged cleanly with `origin/main`) | 2026-10-24 16:31 |
+| Final integration: pull/merge `origin/main` without discarding peer work, rebuild & validate fresh board, PR to `main`, merge without approval, verify live GitHub Pages deployment, record receipt | unclaimed until tasks above complete | caca91b8 | `COORDINATION.md`, `package.json` (browser suite registration), generated root fallback via `scripts.build` + `scripts.stage_legacy` | 2026-10-24 16:31 |
+
