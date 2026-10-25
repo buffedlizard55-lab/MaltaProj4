@@ -1,0 +1,180 @@
+name: Publication diagnosis 58354934 (non-publishing)
+
+# Session 58354934 (Arena-fixed branch arena/58354934-maltaproj4).
+#
+# Why this exists: the 2026-10-25 publication runs 40170923727 (06:41Z) and
+# 40193317196 (12:29Z) both went red at step 13 *Build and independently verify
+# every row, calculation and internal link*, so `upload-pages-artifact`, the
+# legacy main:/ staging step and the deploy were all skipped and the public
+# board has been withholding every pick since the 01:47Z snapshot aged out.
+# The authoring sandbox cannot reach Hotspawn / HLTV / Polymarket / the books and
+# cannot download Actions logs, so the real refresh plus every step-13 command
+# run here, on a normal GitHub egress, with each exit code recorded separately.
+#
+# This workflow never uploads a Pages artifact and never touches main. It commits
+# the log + snapshot receipts to this session branch so the defect can be read
+# line by line.
+on:
+  push:
+    branches: [arena/58354934-maltaproj4]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: diag-58354934
+  cancel-in-progress: false
+
+jobs:
+  capture:
+    if: github.ref == 'refs/heads/arena/58354934-maltaproj4' && (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[capture]'))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+          cache: npm
+      - run: pip install -r requirements.txt
+      - run: npm ci --ignore-scripts
+
+      - name: Refresh official Hotspawn, HLTV, exchange, bookmaker and Valve sources
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -o pipefail
+          mkdir -p research/harvest-58354934 runtime
+          python -m scripts.refresh --output runtime/latest.json 2>&1 | tee research/harvest-58354934/refresh.log | tail -60
+
+      - name: Withhold any row the independent evidence replay cannot reproduce
+        run: |
+          set -o pipefail
+          python -m scripts.quarantine runtime/latest.json 2>&1 | tee research/harvest-58354934/quarantine.log | tail -30
+          cp runtime/latest.json research/harvest-58354934/snapshot.json
+
+      - name: Step 13a — independent row audit of the refreshed snapshot
+        id: audit
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          set +e
+          python verification-c6/audit_snapshot.py runtime/latest.json --output research/harvest-58354934/row-audit.md 2>&1 | tee research/harvest-58354934/row-audit.log | tail -40
+          rc=${PIPESTATUS[0]}; set -e
+          echo "audit_rc=$rc" >> "$GITHUB_OUTPUT"; echo "audit_rc=$rc" >> research/harvest-58354934/rc.txt
+          test "$rc" = 0
+
+      - name: Step 13b — build exactly as publication does
+        id: build
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          set +e
+          python -m scripts.build --data runtime/latest.json 2>&1 | tee research/harvest-58354934/build.log | tail -40
+          rc=${PIPESTATUS[0]}; set -e
+          echo "build_rc=$rc" >> "$GITHUB_OUTPUT"; echo "build_rc=$rc" >> research/harvest-58354934/rc.txt
+          test "$rc" = 0
+
+      - name: Step 13c — validate exactly as publication does
+        id: validate
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          set +e
+          python -m scripts.validate --data runtime/latest.json 2>&1 | tee research/harvest-58354934/validate.log | tail -60
+          rc=${PIPESTATUS[0]}; set -e
+          echo "validate_rc=$rc" >> "$GITHUB_OUTPUT"; echo "validate_rc=$rc" >> research/harvest-58354934/rc.txt
+          test "$rc" = 0
+
+      - name: Step 13d — independent row audit of the published artifact
+        id: published
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          set +e
+          python verification-c6/audit_snapshot.py public/data/latest.json --output research/harvest-58354934/published-row-audit.md 2>&1 | tee research/harvest-58354934/published-audit.log | tail -40
+          rc=${PIPESTATUS[0]}; set -e
+          echo "published_rc=$rc" >> "$GITHUB_OUTPUT"; echo "published_rc=$rc" >> research/harvest-58354934/rc.txt
+          test "$rc" = 0
+
+      - name: Coverage census of the fresh snapshot (picks, probabilities, unresolved)
+        continue-on-error: true
+        run: |
+          python - <<'PY' 2>&1 | tee research/harvest-58354934/census.txt
+          import json
+          from collections import Counter
+          d = json.load(open('runtime/latest.json'))
+          rows = d.get('matches', [])
+          op = [m for m in rows if m.get('state') == 'open']
+          print('generated_at', d.get('generated_at'))
+          print('feed rows', len(rows), 'open', len(op))
+          print('open with pick', sum(1 for m in op if m.get('pick')))
+          print('open with probabilities', sum(1 for m in op if m.get('probabilities')))
+          print('methods', Counter(m.get('method') for m in op))
+          print('--- open rows without a pick ---')
+          for m in op:
+              if not m.get('pick'):
+                  print(json.dumps({k: m.get(k) for k in ('id','teams','competition','start','probabilities','pick','method','reason','attempts')}, default=str))
+          print('--- priced rows without a pick ---')
+          for m in rows:
+              if m.get('probabilities') and not m.get('pick'):
+                  print(json.dumps({k: m.get(k) for k in ('id','teams','state','probabilities','pick','method','reason')}, default=str))
+          print('--- issues ---')
+          print(json.dumps(d.get('issues'), indent=1)[:4000])
+          PY
+
+      - name: Record runner identity and step-13 exit codes
+        if: always()
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          out = Path('research/harvest-58354934')
+          out.mkdir(parents=True, exist_ok=True)
+          receipt = {
+              'workflow_run_id': os.environ['GITHUB_RUN_ID'],
+              'attempt': os.environ['GITHUB_RUN_ATTEMPT'],
+              'checkout_sha': os.environ['GITHUB_SHA'],
+              'run_url': f"{os.environ['GITHUB_SERVER_URL']}/{os.environ['GITHUB_REPOSITORY']}/actions/runs/{os.environ['GITHUB_RUN_ID']}",
+              'publishes_pages': False,
+              'audit_rc': os.environ.get('AUDIT_RC'),
+              'build_rc': os.environ.get('BUILD_RC'),
+              'validate_rc': os.environ.get('VALIDATE_RC'),
+              'published_rc': os.environ.get('PUBLISHED_RC'),
+          }
+          (out / 'run.json').write_text(json.dumps(receipt, indent=1) + '\n')
+          PY
+        env:
+          AUDIT_RC: ${{ steps.audit.outputs.audit_rc }}
+          BUILD_RC: ${{ steps.build.outputs.build_rc }}
+          VALIDATE_RC: ${{ steps.validate.outputs.validate_rc }}
+          PUBLISHED_RC: ${{ steps.published.outputs.published_rc }}
+
+      - name: Commit the diagnosis receipts to this session branch
+        if: always()
+        run: |
+          git config user.name "cs2-evidence-runner"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A -- research/harvest-58354934
+          if git diff --cached --quiet; then
+            echo "No diagnosis change to commit."
+            exit 0
+          fi
+          git commit -m "Publication diagnosis receipts from run ${GITHUB_RUN_ID} (no publication)"
+          git pull --rebase origin arena/58354934-maltaproj4
+          git push origin arena/58354934-maltaproj4
+
+      - name: Retain the candidate snapshot even when a step fails
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: diag-58354934-${{ github.run_id }}
+          path: |
+            research/harvest-58354934
+            runtime/latest.json
+          retention-days: 14

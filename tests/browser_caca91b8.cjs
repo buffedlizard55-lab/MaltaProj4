@@ -105,14 +105,34 @@ const chromium = require('@sparticuz/chromium');
         const rows = [...document.querySelectorAll('main table tbody tr[data-match-id], main table tbody tr')];
         return rows.map(tr => ({
           text: tr.textContent.replace(/\s+/g, ' ').trim(),
+          expires: tr.getAttribute('data-expires'),
           httpsLinks: [...tr.querySelectorAll('a[href^="https://"]')].map(a => a.getAttribute('href')),
         }));
       });
       if (pricedOpen.length > 0) {
         assert.equal(picksCheck.length, openRows.length, `picks.html (${width}px) row count != open rows`);
+        // Session 58354934 (2026-10-25): the snapshot is a dated observation, so a
+        // row can pass its own sourced lock between the build and this measurement.
+        // Measured at 14:07Z on the 13:46Z board: the first row locks at 13:54Z, the
+        // page correctly closed it and printed "Pick closed", and this suite called
+        // that a missing percentage. A percentage is now required only from a row the
+        // page still publishes; a row past its own deadline must instead say so and
+        // must still carry its official source link. No check is dropped: a live row
+        // with no number still fails, and a board that has aged out entirely must
+        // still display the stale banner below.
+        const now = Date.now();
+        const stillLive = r => r.expires && Date.parse(r.expires) > now;
         for (const r of picksCheck) {
           assert.ok(r.httpsLinks.length >= 1, `picks.html row lacks https:// source link: ${r.text}`);
-          assert.match(r.text, /\d+\.\d%/, `picks.html priced row lacks win percentage: ${r.text}`);
+          if (stillLive(r)) {
+            assert.match(r.text, /\d+\.\d%/, `picks.html priced row lacks win percentage: ${r.text}`);
+          } else {
+            assert.match(r.text, /Pick closed|withheld|Expired/i,
+              `picks.html row past its own deadline must state that, not print a pick: ${r.text}`);
+          }
+        }
+        if (!picksCheck.some(stillLive)) {
+          assert.equal(home.staleHidden, false, 'an aged-out board must display #runtime-stale');
         }
       } else {
         assert.equal(home.staleHidden, false, 'expired baseline must display #runtime-stale');
