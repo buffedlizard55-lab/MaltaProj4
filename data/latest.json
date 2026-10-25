@@ -1,9 +1,9 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-10-25T19:39:12.636744Z",
-  "last_attempt_at": "2026-10-25T19:39:12.636744Z",
-  "refresh_started_at": "2026-10-25T19:37:31.601563Z",
-  "fixtures_observed_at": "2026-10-25T19:35:40.205714Z",
+  "generated_at": "2026-10-25T21:58:52.668757Z",
+  "last_attempt_at": "2026-10-25T21:58:52.668757Z",
+  "refresh_started_at": "2026-10-25T21:57:11.438796Z",
+  "fixtures_observed_at": "2026-10-25T21:55:20.362342Z",
   "coverage": "verified",
   "refresh_hours": 1,
   "stale_after_hours": 8,
@@ -40,24 +40,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -95,24 +95,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -150,24 +150,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -205,24 +205,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -260,24 +260,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -315,24 +315,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -370,24 +370,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -425,24 +425,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -480,24 +480,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -535,24 +535,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -590,24 +590,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -645,24 +645,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -700,24 +700,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -755,24 +755,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -810,24 +810,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -865,24 +865,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -919,24 +919,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -974,24 +974,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -1028,24 +1028,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -1082,24 +1082,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -1137,24 +1137,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -1191,24 +1191,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -1246,24 +1246,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -1301,24 +1301,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -1356,24 +1356,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -1411,24 +1411,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -1466,24 +1466,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -1521,24 +1521,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -1576,24 +1576,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -1631,24 +1631,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -1686,24 +1686,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -1740,24 +1740,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -1795,24 +1795,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -1850,24 +1850,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -1904,24 +1904,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -1959,24 +1959,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -2014,24 +2014,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -2069,24 +2069,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -2124,24 +2124,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -2178,24 +2178,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -2233,24 +2233,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -2288,24 +2288,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -2343,24 +2343,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -2398,24 +2398,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -2452,24 +2452,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -2507,24 +2507,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -2562,24 +2562,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -2617,24 +2617,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -2672,24 +2672,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -2727,24 +2727,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -2782,24 +2782,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -2837,24 +2837,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -2892,24 +2892,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -2947,24 +2947,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -3002,24 +3002,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -3057,24 +3057,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -3112,24 +3112,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -3167,24 +3167,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -3221,24 +3221,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -3275,24 +3275,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -3329,24 +3329,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -3383,24 +3383,24 @@
       "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -3427,12 +3427,12 @@
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [],
       "probabilities": [
-        0.23,
-        0.77
+        0.24,
+        0.76
       ],
       "fair_odds": [
-        4.3478260869565215,
-        1.2987012987012987
+        4.166666666666667,
+        1.3157894736842106
       ],
       "pick": "Off Chops",
       "method": "exchange",
@@ -3442,31 +3442,31 @@
           "id": "6066508",
           "url": "https://polymarket.com/event/cs2-gz1-offcho-2026-10-25",
           "api_url": "https://gamma-api.polymarket.com/markets/6066508",
-          "observed_at": "2026-10-25T19:35:44.608144Z",
-          "updated_at": "2026-10-25T19:34:39.399025Z",
+          "observed_at": "2026-10-25T21:55:25.473008Z",
+          "updated_at": "2026-10-25T21:54:37.746075Z",
           "raw": {
             "id": "6066508",
             "question": "Counter-Strike: Ground Zero vs Off Chops (BO3) - DFRAG Invitational Group A",
             "sportsMarketType": "moneyline",
             "outcomes": "[\"Ground Zero\", \"Off Chops\"]",
-            "outcomePrices": "[\"0.23\", \"0.77\"]",
+            "outcomePrices": "[\"0.24\", \"0.76\"]",
             "gameStartTime": "2026-10-26 03:00:00+00",
             "eventStartTime": "2026-10-26T03:00:00Z",
-            "updatedAt": "2026-10-25T19:34:39.399025Z",
+            "updatedAt": "2026-10-25T21:54:37.746075Z",
             "active": true,
             "closed": false,
             "acceptingOrders": true,
-            "bestBid": 0.2,
+            "bestBid": 0.22,
             "bestAsk": 0.26,
-            "liquidity": "7100.4763",
-            "volume": "2062.169307"
+            "liquidity": "7627.2281",
+            "volume": "2416.8247840000004"
           },
           "probabilities": [
-            0.23,
-            0.77
+            0.24,
+            0.76
           ],
-          "spread": 0.06,
-          "liquidity": 7100.4763,
+          "spread": 0.04000000000000001,
+          "liquidity": 7627.2281,
           "warning": null,
           "tier": "exchange",
           "event": {
@@ -3555,17 +3555,17 @@
             {
               "name": "Polymarket events page 1",
               "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-25T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
-              "checked_at": "2026-10-25T19:35:44.154517Z",
+              "checked_at": "2026-10-25T21:55:25.153509Z",
               "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-25T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
               "cache_bust": null,
               "http_status": 200,
               "status": "ok",
-              "retrieved_at": "2026-10-25T19:35:44.608144Z",
-              "observed_at": "2026-10-25T19:35:44.608144Z",
+              "retrieved_at": "2026-10-25T21:55:25.473008Z",
+              "observed_at": "2026-10-25T21:55:25.473008Z",
               "cache_age_seconds": null,
               "cache_status": "Miss from cloudfront",
-              "sha256": "a8e103f3053327a227b6cb39f773f36160b6b142b4ad308e6afed3679d23e145",
-              "bytes": 3120282
+              "sha256": "82e3dd2d7a957d02375bdc8442ff7a4f8b9f4a40b0b65ecb098cffbdd301bc6b",
+              "bytes": 3084569
             }
           ],
           "team_metadata": [
@@ -3609,24 +3609,24 @@
       "reason": null,
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -3733,7 +3733,7 @@
           "id": "bo3-thunderpick-132601",
           "url": "https://bo3.gg/matches/nexvoid-vs-alter-ego-26-10-2026",
           "api_url": "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
-          "observed_at": "2026-10-25T19:37:29.454050Z",
+          "observed_at": "2026-10-25T21:57:10.515276Z",
           "raw": {
             "provider": "Thunderpick (via BO3.gg API)",
             "id": "bo3-thunderpick-132601",
@@ -3760,7 +3760,7 @@
               1.6,
               2.2
             ],
-            "observed_at": "2026-10-25T19:37:29.454050Z",
+            "observed_at": "2026-10-25T21:57:10.515276Z",
             "url": "https://bo3.gg/matches/nexvoid-vs-alter-ego-26-10-2026",
             "api_url": "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
             "event": "DFRAG Invitational 2026",
@@ -3768,17 +3768,17 @@
               {
                 "name": "BO3.gg CS2 upcoming feed page 1",
                 "url": "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
-                "checked_at": "2026-10-25T19:37:28.325228Z",
+                "checked_at": "2026-10-25T21:57:09.839136Z",
                 "request_url": "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
                 "cache_bust": null,
                 "http_status": 200,
                 "status": "ok",
-                "retrieved_at": "2026-10-25T19:37:29.454050Z",
-                "observed_at": "2026-10-25T19:37:29.454050Z",
+                "retrieved_at": "2026-10-25T21:57:10.515276Z",
+                "observed_at": "2026-10-25T21:57:10.515276Z",
                 "cache_age_seconds": null,
                 "cache_status": "DYNAMIC",
-                "sha256": "24da86e06c739cf96ae8fa033b532183f34f968ef719184f4ab0893760e2bceb",
-                "bytes": 238055
+                "sha256": "2ef06a202f2d4068ffd064531d41cb0b080911a0aa6bd3414c3e7a48a77ea037",
+                "bytes": 236628
               }
             ],
             "identity_evidence": [
@@ -3804,7 +3804,7 @@
             "raw_bo3": {
               "provider": "thunderpick",
               "path": "https://thunderpick.io/match/2870940",
-              "markets_count": 185,
+              "markets_count": 186,
               "team_1": {
                 "team_id": 22560,
                 "name": "NEXVOID",
@@ -3852,17 +3852,17 @@
             {
               "name": "BO3.gg CS2 upcoming feed page 1",
               "url": "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
-              "checked_at": "2026-10-25T19:37:28.325228Z",
+              "checked_at": "2026-10-25T21:57:09.839136Z",
               "request_url": "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
               "cache_bust": null,
               "http_status": 200,
               "status": "ok",
-              "retrieved_at": "2026-10-25T19:37:29.454050Z",
-              "observed_at": "2026-10-25T19:37:29.454050Z",
+              "retrieved_at": "2026-10-25T21:57:10.515276Z",
+              "observed_at": "2026-10-25T21:57:10.515276Z",
               "cache_age_seconds": null,
               "cache_status": "DYNAMIC",
-              "sha256": "24da86e06c739cf96ae8fa033b532183f34f968ef719184f4ab0893760e2bceb",
-              "bytes": 238055
+              "sha256": "2ef06a202f2d4068ffd064531d41cb0b080911a0aa6bd3414c3e7a48a77ea037",
+              "bytes": 236628
             }
           ]
         }
@@ -3920,24 +3920,24 @@
       "reason": null,
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -4403,7 +4403,7 @@
         "numeric_quote_rows": 0,
         "limitation": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. Recent results and head-to-head wins are recorded for the final research tier only; no probability is derived from them.",
         "source": "https://www.hltv.org/matches/2399889/nexvoid-vs-alter-ego-dfrag-invitational-2026",
-        "observed_at": "2026-10-25T19:35:45.330137Z"
+        "observed_at": "2026-10-25T21:55:26.243293Z"
       },
       "model_check": {
         "status": "ok",
@@ -4489,8 +4489,8 @@
           "id": "6066520",
           "url": "https://polymarket.com/event/cs2-fly-staque-2026-10-26",
           "api_url": "https://gamma-api.polymarket.com/markets/6066520",
-          "observed_at": "2026-10-25T19:35:44.608144Z",
-          "updated_at": "2026-10-25T19:32:39.765563Z",
+          "observed_at": "2026-10-25T21:55:25.473008Z",
+          "updated_at": "2026-10-25T21:54:37.746075Z",
           "raw": {
             "id": "6066520",
             "question": "Counter-Strike: FlyQuest vs Staqued (BO3) - DFRAG Invitational Group B",
@@ -4499,13 +4499,13 @@
             "outcomePrices": "[\"0.925\", \"0.075\"]",
             "gameStartTime": "2026-10-27 03:00:00+00",
             "eventStartTime": "2026-10-27T03:00:00Z",
-            "updatedAt": "2026-10-25T19:32:39.765563Z",
+            "updatedAt": "2026-10-25T21:54:37.746075Z",
             "active": true,
             "closed": false,
             "acceptingOrders": true,
             "bestBid": 0.91,
             "bestAsk": 0.94,
-            "liquidity": "3987.9389",
+            "liquidity": "4297.4089",
             "volume": "283.908666"
           },
           "probabilities": [
@@ -4513,7 +4513,7 @@
             0.075
           ],
           "spread": 0.029999999999999916,
-          "liquidity": 3987.9389,
+          "liquidity": 4297.4089,
           "warning": null,
           "tier": "exchange",
           "event": {
@@ -4573,17 +4573,17 @@
             {
               "name": "Polymarket events page 1",
               "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-25T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
-              "checked_at": "2026-10-25T19:35:44.154517Z",
+              "checked_at": "2026-10-25T21:55:25.153509Z",
               "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-25T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
               "cache_bust": null,
               "http_status": 200,
               "status": "ok",
-              "retrieved_at": "2026-10-25T19:35:44.608144Z",
-              "observed_at": "2026-10-25T19:35:44.608144Z",
+              "retrieved_at": "2026-10-25T21:55:25.473008Z",
+              "observed_at": "2026-10-25T21:55:25.473008Z",
               "cache_age_seconds": null,
               "cache_status": "Miss from cloudfront",
-              "sha256": "a8e103f3053327a227b6cb39f773f36160b6b142b4ad308e6afed3679d23e145",
-              "bytes": 3120282
+              "sha256": "82e3dd2d7a957d02375bdc8442ff7a4f8b9f4a40b0b65ecb098cffbdd301bc6b",
+              "bytes": 3084569
             }
           ],
           "team_metadata": [
@@ -4633,24 +4633,24 @@
       "reason": null,
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -4658,7 +4658,7 @@
         "status": "unavailable",
         "reason": "Staqued: not listed in the Valve global standings."
       },
-      "expires_at": "2026-10-26T03:32:39.765563Z"
+      "expires_at": "2026-10-26T05:54:37.746075Z"
     },
     {
       "id": "1082861",
@@ -4698,8 +4698,8 @@
           "id": "6066525",
           "url": "https://polymarket.com/event/cs2-rstr-abyssa-2026-10-26",
           "api_url": "https://gamma-api.polymarket.com/markets/6066525",
-          "observed_at": "2026-10-25T19:35:44.608144Z",
-          "updated_at": "2026-10-25T19:32:39.765563Z",
+          "observed_at": "2026-10-25T21:55:25.473008Z",
+          "updated_at": "2026-10-25T21:52:37.599495Z",
           "raw": {
             "id": "6066525",
             "question": "Counter-Strike: Rooster vs Abyssal (BO3) - DFRAG Invitational Group B",
@@ -4708,13 +4708,13 @@
             "outcomePrices": "[\"0.425\", \"0.575\"]",
             "gameStartTime": "2026-10-27 03:00:00+00",
             "eventStartTime": "2026-10-27T03:00:00Z",
-            "updatedAt": "2026-10-25T19:32:39.765563Z",
+            "updatedAt": "2026-10-25T21:52:37.599495Z",
             "active": true,
             "closed": false,
             "acceptingOrders": true,
             "bestBid": 0.3,
             "bestAsk": 0.55,
-            "liquidity": "4121.5879",
+            "liquidity": "3789.8783",
             "volume": null
           },
           "probabilities": [
@@ -4722,7 +4722,7 @@
             0.575
           ],
           "spread": 0.25000000000000006,
-          "liquidity": 4121.5879,
+          "liquidity": 3789.8783,
           "warning": "Wide exchange spread; low precision.",
           "tier": "exchange",
           "event": {
@@ -4782,17 +4782,17 @@
             {
               "name": "Polymarket events page 1",
               "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-25T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
-              "checked_at": "2026-10-25T19:35:44.154517Z",
+              "checked_at": "2026-10-25T21:55:25.153509Z",
               "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-25T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
               "cache_bust": null,
               "http_status": 200,
               "status": "ok",
-              "retrieved_at": "2026-10-25T19:35:44.608144Z",
-              "observed_at": "2026-10-25T19:35:44.608144Z",
+              "retrieved_at": "2026-10-25T21:55:25.473008Z",
+              "observed_at": "2026-10-25T21:55:25.473008Z",
               "cache_age_seconds": null,
               "cache_status": "Miss from cloudfront",
-              "sha256": "a8e103f3053327a227b6cb39f773f36160b6b142b4ad308e6afed3679d23e145",
-              "bytes": 3120282
+              "sha256": "82e3dd2d7a957d02375bdc8442ff7a4f8b9f4a40b0b65ecb098cffbdd301bc6b",
+              "bytes": 3084569
             }
           ],
           "team_metadata": [
@@ -4836,24 +4836,24 @@
       "reason": null,
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -4891,7 +4891,7 @@
           }
         ]
       },
-      "expires_at": "2026-10-26T03:32:39.765563Z"
+      "expires_at": "2026-10-26T05:52:37.599495Z"
     },
     {
       "id": "1082897",
@@ -4929,8 +4929,8 @@
           "id": "6024944",
           "url": "https://polymarket.com/event/cs2-b8-k271-2026-10-27",
           "api_url": "https://gamma-api.polymarket.com/markets/6024944",
-          "observed_at": "2026-10-25T19:35:44.608144Z",
-          "updated_at": "2026-10-25T19:30:37.533588Z",
+          "observed_at": "2026-10-25T21:55:25.473008Z",
+          "updated_at": "2026-10-25T21:46:38.049416Z",
           "raw": {
             "id": "6024944",
             "question": "Counter-Strike: B8 vs K27 (BO3) - Tesla Cup Group A",
@@ -4939,13 +4939,13 @@
             "outcomePrices": "[\"0.595\", \"0.405\"]",
             "gameStartTime": "2026-10-27 08:00:00+00",
             "eventStartTime": "2026-10-27T08:00:00Z",
-            "updatedAt": "2026-10-25T19:30:37.533588Z",
+            "updatedAt": "2026-10-25T21:46:38.049416Z",
             "active": true,
             "closed": false,
             "acceptingOrders": true,
             "bestBid": 0.59,
             "bestAsk": 0.6,
-            "liquidity": "17212.7834",
+            "liquidity": "17059.2606",
             "volume": "7167.165235"
           },
           "probabilities": [
@@ -4953,7 +4953,7 @@
             0.405
           ],
           "spread": 0.010000000000000009,
-          "liquidity": 17212.7834,
+          "liquidity": 17059.2606,
           "warning": null,
           "tier": "exchange",
           "event": {
@@ -5013,17 +5013,17 @@
             {
               "name": "Polymarket events page 1",
               "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-25T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
-              "checked_at": "2026-10-25T19:35:44.154517Z",
+              "checked_at": "2026-10-25T21:55:25.153509Z",
               "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-25T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
               "cache_bust": null,
               "http_status": 200,
               "status": "ok",
-              "retrieved_at": "2026-10-25T19:35:44.608144Z",
-              "observed_at": "2026-10-25T19:35:44.608144Z",
+              "retrieved_at": "2026-10-25T21:55:25.473008Z",
+              "observed_at": "2026-10-25T21:55:25.473008Z",
               "cache_age_seconds": null,
               "cache_status": "Miss from cloudfront",
-              "sha256": "a8e103f3053327a227b6cb39f773f36160b6b142b4ad308e6afed3679d23e145",
-              "bytes": 3120282
+              "sha256": "82e3dd2d7a957d02375bdc8442ff7a4f8b9f4a40b0b65ecb098cffbdd301bc6b",
+              "bytes": 3084569
             }
           ],
           "team_metadata": [
@@ -5067,24 +5067,24 @@
       "reason": null,
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -5122,7 +5122,7 @@
           }
         ]
       },
-      "expires_at": "2026-10-26T03:30:37.533588Z"
+      "expires_at": "2026-10-26T05:46:38.049416Z"
     },
     {
       "id": "1082898",
@@ -5160,8 +5160,8 @@
           "id": "6024952",
           "url": "https://polymarket.com/event/cs2-all-faze-2026-10-27",
           "api_url": "https://gamma-api.polymarket.com/markets/6024952",
-          "observed_at": "2026-10-25T19:35:44.608144Z",
-          "updated_at": "2026-10-25T19:34:39.399025Z",
+          "observed_at": "2026-10-25T21:55:25.473008Z",
+          "updated_at": "2026-10-25T21:54:37.746075Z",
           "raw": {
             "id": "6024952",
             "question": "Counter-Strike: Alliance vs FaZe (BO3) - Tesla Cup Group A",
@@ -5170,13 +5170,13 @@
             "outcomePrices": "[\"0.375\", \"0.625\"]",
             "gameStartTime": "2026-10-27 11:00:00+00",
             "eventStartTime": "2026-10-27T11:00:00Z",
-            "updatedAt": "2026-10-25T19:34:39.399025Z",
+            "updatedAt": "2026-10-25T21:54:37.746075Z",
             "active": true,
             "closed": false,
             "acceptingOrders": true,
             "bestBid": 0.37,
             "bestAsk": 0.38,
-            "liquidity": "7872.2827",
+            "liquidity": "7799.9766",
             "volume": "185.254501"
           },
           "probabilities": [
@@ -5184,7 +5184,7 @@
             0.625
           ],
           "spread": 0.010000000000000009,
-          "liquidity": 7872.2827,
+          "liquidity": 7799.9766,
           "warning": null,
           "tier": "exchange",
           "event": {
@@ -5244,17 +5244,17 @@
             {
               "name": "Polymarket events page 1",
               "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-25T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
-              "checked_at": "2026-10-25T19:35:44.154517Z",
+              "checked_at": "2026-10-25T21:55:25.153509Z",
               "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-25T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
               "cache_bust": null,
               "http_status": 200,
               "status": "ok",
-              "retrieved_at": "2026-10-25T19:35:44.608144Z",
-              "observed_at": "2026-10-25T19:35:44.608144Z",
+              "retrieved_at": "2026-10-25T21:55:25.473008Z",
+              "observed_at": "2026-10-25T21:55:25.473008Z",
               "cache_age_seconds": null,
               "cache_status": "Miss from cloudfront",
-              "sha256": "a8e103f3053327a227b6cb39f773f36160b6b142b4ad308e6afed3679d23e145",
-              "bytes": 3120282
+              "sha256": "82e3dd2d7a957d02375bdc8442ff7a4f8b9f4a40b0b65ecb098cffbdd301bc6b",
+              "bytes": 3084569
             }
           ],
           "team_metadata": [
@@ -5298,24 +5298,24 @@
       "reason": null,
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -5353,7 +5353,7 @@
           }
         ]
       },
-      "expires_at": "2026-10-26T03:34:39.399025Z"
+      "expires_at": "2026-10-26T05:54:37.746075Z"
     },
     {
       "id": "1082900",
@@ -5391,8 +5391,8 @@
           "id": "6024960",
           "url": "https://polymarket.com/event/cs2-lg6-hotu-2026-10-27",
           "api_url": "https://gamma-api.polymarket.com/markets/6024960",
-          "observed_at": "2026-10-25T19:35:44.608144Z",
-          "updated_at": "2026-10-25T19:26:37.913427Z",
+          "observed_at": "2026-10-25T21:55:25.473008Z",
+          "updated_at": "2026-10-25T21:52:37.599495Z",
           "raw": {
             "id": "6024960",
             "question": "Counter-Strike: Luminosity vs HOTU (BO3) - Tesla Cup Group B",
@@ -5401,13 +5401,13 @@
             "outcomePrices": "[\"0.525\", \"0.475\"]",
             "gameStartTime": "2026-10-27 17:00:00+00",
             "eventStartTime": "2026-10-27T17:00:00Z",
-            "updatedAt": "2026-10-25T19:26:37.913427Z",
+            "updatedAt": "2026-10-25T21:52:37.599495Z",
             "active": true,
             "closed": false,
             "acceptingOrders": true,
             "bestBid": 0.51,
             "bestAsk": 0.54,
-            "liquidity": "14600.55",
+            "liquidity": "14639.2889",
             "volume": "7.25"
           },
           "probabilities": [
@@ -5415,7 +5415,7 @@
             0.475
           ],
           "spread": 0.030000000000000027,
-          "liquidity": 14600.55,
+          "liquidity": 14639.2889,
           "warning": null,
           "tier": "exchange",
           "event": {
@@ -5475,17 +5475,17 @@
             {
               "name": "Polymarket events page 1",
               "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-25T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
-              "checked_at": "2026-10-25T19:35:44.154517Z",
+              "checked_at": "2026-10-25T21:55:25.153509Z",
               "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-25T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
               "cache_bust": null,
               "http_status": 200,
               "status": "ok",
-              "retrieved_at": "2026-10-25T19:35:44.608144Z",
-              "observed_at": "2026-10-25T19:35:44.608144Z",
+              "retrieved_at": "2026-10-25T21:55:25.473008Z",
+              "observed_at": "2026-10-25T21:55:25.473008Z",
               "cache_age_seconds": null,
               "cache_status": "Miss from cloudfront",
-              "sha256": "a8e103f3053327a227b6cb39f773f36160b6b142b4ad308e6afed3679d23e145",
-              "bytes": 3120282
+              "sha256": "82e3dd2d7a957d02375bdc8442ff7a4f8b9f4a40b0b65ecb098cffbdd301bc6b",
+              "bytes": 3084569
             }
           ],
           "team_metadata": [
@@ -5529,24 +5529,24 @@
       "reason": null,
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -5584,7 +5584,7 @@
           }
         ]
       },
-      "expires_at": "2026-10-26T03:26:37.913427Z"
+      "expires_at": "2026-10-26T05:52:37.599495Z"
     },
     {
       "id": "1082901",
@@ -5622,8 +5622,8 @@
           "id": "6037120",
           "url": "https://polymarket.com/event/cs2-envy-gl1-2026-10-27",
           "api_url": "https://gamma-api.polymarket.com/markets/6037120",
-          "observed_at": "2026-10-25T19:35:44.608144Z",
-          "updated_at": "2026-10-25T19:30:37.533588Z",
+          "observed_at": "2026-10-25T21:55:25.473008Z",
+          "updated_at": "2026-10-25T21:46:38.049416Z",
           "raw": {
             "id": "6037120",
             "question": "Counter-Strike: Envy vs GamerLegion (BO3) - Tesla Cup Group B",
@@ -5632,21 +5632,21 @@
             "outcomePrices": "[\"0.455\", \"0.545\"]",
             "gameStartTime": "2026-10-27 20:00:00+00",
             "eventStartTime": "2026-10-27T20:00:00Z",
-            "updatedAt": "2026-10-25T19:30:37.533588Z",
+            "updatedAt": "2026-10-25T21:46:38.049416Z",
             "active": true,
             "closed": false,
             "acceptingOrders": true,
             "bestBid": 0.45,
             "bestAsk": 0.46,
-            "liquidity": "17934.0741",
-            "volume": "9812.934242000003"
+            "liquidity": "19774.1943",
+            "volume": "9822.024242000001"
           },
           "probabilities": [
             0.455,
             0.545
           ],
           "spread": 0.010000000000000009,
-          "liquidity": 17934.0741,
+          "liquidity": 19774.1943,
           "warning": null,
           "tier": "exchange",
           "event": {
@@ -5727,17 +5727,17 @@
             {
               "name": "Polymarket events page 1",
               "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-25T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
-              "checked_at": "2026-10-25T19:35:44.154517Z",
+              "checked_at": "2026-10-25T21:55:25.153509Z",
               "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-25T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
               "cache_bust": null,
               "http_status": 200,
               "status": "ok",
-              "retrieved_at": "2026-10-25T19:35:44.608144Z",
-              "observed_at": "2026-10-25T19:35:44.608144Z",
+              "retrieved_at": "2026-10-25T21:55:25.473008Z",
+              "observed_at": "2026-10-25T21:55:25.473008Z",
               "cache_age_seconds": null,
               "cache_status": "Miss from cloudfront",
-              "sha256": "a8e103f3053327a227b6cb39f773f36160b6b142b4ad308e6afed3679d23e145",
-              "bytes": 3120282
+              "sha256": "82e3dd2d7a957d02375bdc8442ff7a4f8b9f4a40b0b65ecb098cffbdd301bc6b",
+              "bytes": 3084569
             }
           ],
           "team_metadata": [
@@ -5781,24 +5781,24 @@
       "reason": null,
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -5857,7 +5857,7 @@
           }
         ]
       },
-      "expires_at": "2026-10-26T03:30:37.533588Z"
+      "expires_at": "2026-10-26T05:46:38.049416Z"
     },
     {
       "id": "1082792",
@@ -5897,7 +5897,7 @@
           "id": "vrs-2026-10-05-31-122",
           "api_url": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
           "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
-          "observed_at": "2026-10-25T19:39:12.588469Z",
+          "observed_at": "2026-10-25T21:58:52.634838Z",
           "updated_at": null,
           "standings_as_of": "2026-10-05",
           "standings_commit": "eec4853d7bcf0f1f7efe7f0d901234bef7e98b75",
@@ -6060,24 +6060,24 @@
       "reason": null,
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -6289,7 +6289,7 @@
             },
             {
               "opponent": "Nemiga",
-              "when": "7 weeks ago",
+              "when": "8 weeks ago",
               "format": "bo3",
               "score": "2 - 0",
               "won": true
@@ -6648,9 +6648,9 @@
         "numeric_quote_rows": 0,
         "limitation": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. Recent results and head-to-head wins are recorded for the final research tier only; no probability is derived from them.",
         "source": "https://www.hltv.org/matches/2399437/hotu-vs-the-huns-gluck-moscow-cyber-games-2026",
-        "observed_at": "2026-10-25T19:35:45.982967Z"
+        "observed_at": "2026-10-25T21:55:27.377874Z"
       },
-      "expires_at": "2026-10-26T03:35:40.205714Z"
+      "expires_at": "2026-10-26T05:55:20.362342Z"
     },
     {
       "id": "1082793",
@@ -6690,7 +6690,7 @@
           "id": "vrs-2026-10-05-80-38",
           "api_url": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
           "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
-          "observed_at": "2026-10-25T19:39:12.588469Z",
+          "observed_at": "2026-10-25T21:58:52.634838Z",
           "updated_at": null,
           "standings_as_of": "2026-10-05",
           "standings_commit": "eec4853d7bcf0f1f7efe7f0d901234bef7e98b75",
@@ -6790,8 +6790,8 @@
               "5star"
             ],
             "start": "2026-10-31 13:00:00+00",
-            "observed_at": "2026-10-25T19:35:44.608144Z",
-            "updated_at": "2026-10-25T13:22:38.92942Z",
+            "observed_at": "2026-10-25T21:55:25.473008Z",
+            "updated_at": "2026-10-25T20:08:37.889489Z",
             "raw": {
               "id": "6147278",
               "question": "Counter-Strike: 1WIN vs 5star (BO3) - Moscow Cyber Games Playoffs",
@@ -6800,7 +6800,7 @@
               "outcomePrices": "[\"0.5\", \"0.5\"]",
               "gameStartTime": "2026-10-31 13:00:00+00",
               "eventStartTime": "2026-10-31T13:00:00Z",
-              "updatedAt": "2026-10-25T13:22:38.92942Z",
+              "updatedAt": "2026-10-25T20:08:37.889489Z",
               "active": true,
               "closed": false,
               "acceptingOrders": true,
@@ -6814,17 +6814,17 @@
               {
                 "name": "Polymarket events page 1",
                 "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-25T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
-                "checked_at": "2026-10-25T19:35:44.154517Z",
+                "checked_at": "2026-10-25T21:55:25.153509Z",
                 "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-25T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
                 "cache_bust": null,
                 "http_status": 200,
                 "status": "ok",
-                "retrieved_at": "2026-10-25T19:35:44.608144Z",
-                "observed_at": "2026-10-25T19:35:44.608144Z",
+                "retrieved_at": "2026-10-25T21:55:25.473008Z",
+                "observed_at": "2026-10-25T21:55:25.473008Z",
                 "cache_age_seconds": null,
                 "cache_status": "Miss from cloudfront",
-                "sha256": "a8e103f3053327a227b6cb39f773f36160b6b142b4ad308e6afed3679d23e145",
-                "bytes": 3120282
+                "sha256": "82e3dd2d7a957d02375bdc8442ff7a4f8b9f4a40b0b65ecb098cffbdd301bc6b",
+                "bytes": 3084569
               }
             ],
             "notice": "Rejected evidence, not a pick or verified probability."
@@ -6855,8 +6855,8 @@
               "5star"
             ],
             "start": "2026-10-31 13:00:00+00",
-            "observed_at": "2026-10-25T19:35:44.608144Z",
-            "updated_at": "2026-10-25T13:22:38.92942Z",
+            "observed_at": "2026-10-25T21:55:25.473008Z",
+            "updated_at": "2026-10-25T20:08:37.889489Z",
             "raw": {
               "id": "6147278",
               "question": "Counter-Strike: 1WIN vs 5star (BO3) - Moscow Cyber Games Playoffs",
@@ -6865,7 +6865,7 @@
               "outcomePrices": "[\"0.5\", \"0.5\"]",
               "gameStartTime": "2026-10-31 13:00:00+00",
               "eventStartTime": "2026-10-31T13:00:00Z",
-              "updatedAt": "2026-10-25T13:22:38.92942Z",
+              "updatedAt": "2026-10-25T20:08:37.889489Z",
               "active": true,
               "closed": false,
               "acceptingOrders": true,
@@ -6879,17 +6879,17 @@
               {
                 "name": "Polymarket events page 1",
                 "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-25T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
-                "checked_at": "2026-10-25T19:35:44.154517Z",
+                "checked_at": "2026-10-25T21:55:25.153509Z",
                 "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-25T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
                 "cache_bust": null,
                 "http_status": 200,
                 "status": "ok",
-                "retrieved_at": "2026-10-25T19:35:44.608144Z",
-                "observed_at": "2026-10-25T19:35:44.608144Z",
+                "retrieved_at": "2026-10-25T21:55:25.473008Z",
+                "observed_at": "2026-10-25T21:55:25.473008Z",
                 "cache_age_seconds": null,
                 "cache_status": "Miss from cloudfront",
-                "sha256": "a8e103f3053327a227b6cb39f773f36160b6b142b4ad308e6afed3679d23e145",
-                "bytes": 3120282
+                "sha256": "82e3dd2d7a957d02375bdc8442ff7a4f8b9f4a40b0b65ecb098cffbdd301bc6b",
+                "bytes": 3084569
               }
             ],
             "notice": "Rejected evidence, not a pick or verified probability."
@@ -6929,24 +6929,24 @@
       "reason": null,
       "fixture_sources": [
         {
-          "retrieved_at": "2026-10-25T19:35:40.205714Z",
-          "observed_at": "2026-10-25T19:35:40.205714Z",
+          "retrieved_at": "2026-10-25T21:55:20.362342Z",
+          "observed_at": "2026-10-25T21:55:20.362342Z",
           "cache_age_seconds": null,
-          "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
+          "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
           "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.335181Z",
-          "observed_at": "2026-10-25T19:35:41.335181Z",
+          "retrieved_at": "2026-10-25T21:55:21.655062Z",
+          "observed_at": "2026-10-25T21:55:21.655062Z",
           "cache_age_seconds": 0,
-          "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+          "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
           "url": "https://play.hotspawn.com/cs2-pickems"
         },
         {
-          "retrieved_at": "2026-10-25T19:35:41.999535Z",
-          "observed_at": "2026-10-25T19:35:41.999535Z",
+          "retrieved_at": "2026-10-25T21:55:22.401510Z",
+          "observed_at": "2026-10-25T21:55:22.401510Z",
           "cache_age_seconds": 0,
-          "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+          "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
@@ -7081,7 +7081,7 @@
             },
             {
               "opponent": "INFINITE",
-              "when": "6 weeks ago",
+              "when": "7 weeks ago",
               "format": "bo3",
               "score": "2 - 1",
               "won": true
@@ -7482,83 +7482,83 @@
         "numeric_quote_rows": 0,
         "limitation": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. Recent results and head-to-head wins are recorded for the final research tier only; no probability is derived from them.",
         "source": "https://www.hltv.org/matches/2399438/1win-vs-5star-gluck-moscow-cyber-games-2026",
-        "observed_at": "2026-10-25T19:35:47.234631Z"
+        "observed_at": "2026-10-25T21:55:28.794502Z"
       },
-      "expires_at": "2026-10-26T03:35:40.205714Z"
+      "expires_at": "2026-10-26T05:55:20.362342Z"
     }
   ],
   "source_checks": [
     {
       "name": "Hotspawn CS2 fixtures",
       "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
-      "checked_at": "2026-10-25T19:35:39.850190Z",
+      "checked_at": "2026-10-25T21:55:19.835775Z",
       "request_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "cache_bust": null,
       "http_status": 200,
       "status": "ok",
-      "retrieved_at": "2026-10-25T19:35:40.205714Z",
-      "observed_at": "2026-10-25T19:35:40.205714Z",
+      "retrieved_at": "2026-10-25T21:55:20.362342Z",
+      "observed_at": "2026-10-25T21:55:20.362342Z",
       "cache_age_seconds": null,
       "cache_status": null,
-      "sha256": "e9a338f72af175400639a0ecf04fa97848ed0e591916fcca8c604ffd2a90d961",
-      "bytes": 56408
+      "sha256": "b9c2618d5285e9389f3557cf46a0d1b6d37b1aeec41f785c6e362b47381836b2",
+      "bytes": 56409
     },
     {
       "name": "Hotspawn CS2 lobby",
       "url": "https://play.hotspawn.com/cs2-pickems",
-      "checked_at": "2026-10-25T19:35:40.207818Z",
-      "request_url": "https://play.hotspawn.com/cs2-pickems?_cb=1792956940207-0527ac76",
-      "cache_bust": "1792956940207-0527ac76",
+      "checked_at": "2026-10-25T21:55:20.364017Z",
+      "request_url": "https://play.hotspawn.com/cs2-pickems?_cb=1792965320364-17763d5a",
+      "cache_bust": "1792965320364-17763d5a",
       "http_status": 200,
       "status": "ok",
-      "retrieved_at": "2026-10-25T19:35:41.335181Z",
-      "observed_at": "2026-10-25T19:35:41.335181Z",
+      "retrieved_at": "2026-10-25T21:55:21.655062Z",
+      "observed_at": "2026-10-25T21:55:21.655062Z",
       "cache_age_seconds": 0,
       "cache_status": "MISS",
-      "sha256": "3f0610f1b548d0d0f7482e31fcac000abd1d0e8ed3187b692ade8a3d049622ee",
+      "sha256": "2c2fc0d8fb7cfa1b22abcd66eec0daaccfb8a90a4d1026f6e74deb6ce4ef58df",
       "bytes": 236679
     },
     {
       "name": "Hotspawn general lobby",
       "url": "https://play.hotspawn.com/lobby",
-      "checked_at": "2026-10-25T19:35:41.379893Z",
-      "request_url": "https://play.hotspawn.com/lobby?_cb=1792956941379-82a2ad2e",
-      "cache_bust": "1792956941379-82a2ad2e",
+      "checked_at": "2026-10-25T21:55:21.681982Z",
+      "request_url": "https://play.hotspawn.com/lobby?_cb=1792965321682-dd54e4b6",
+      "cache_bust": "1792965321682-dd54e4b6",
       "http_status": 200,
       "status": "ok",
-      "retrieved_at": "2026-10-25T19:35:41.999535Z",
-      "observed_at": "2026-10-25T19:35:41.999535Z",
+      "retrieved_at": "2026-10-25T21:55:22.401510Z",
+      "observed_at": "2026-10-25T21:55:22.401510Z",
       "cache_age_seconds": 0,
       "cache_status": "MISS",
-      "sha256": "a1d530b9ca680256f11e3c194ca0f0d88632a1d1fc49d37a2f56df074cd467ee",
+      "sha256": "f1813396f265f66d8402f559e01ff149e66067f47d26049a0513f32fde25175b",
       "bytes": 237420
     },
     {
       "name": "HLTV Valve ranking mirror (dated view)",
       "url": "https://www.hltv.org/valve-ranking/teams/2026/october/25",
-      "checked_at": "2026-10-25T19:35:42.049128Z",
+      "checked_at": "2026-10-25T21:55:22.429637Z",
       "request_url": "https://www.hltv.org/valve-ranking/teams/2026/october/25",
       "cache_bust": null,
       "http_status": 200,
       "status": "ok",
-      "retrieved_at": "2026-10-25T19:35:42.348463Z",
-      "observed_at": "2026-10-25T19:35:42.348463Z",
+      "retrieved_at": "2026-10-25T21:55:23.975219Z",
+      "observed_at": "2026-10-25T21:55:23.975219Z",
       "cache_age_seconds": null,
       "cache_status": "DYNAMIC",
-      "sha256": "df4fe89ba9ca08d0d4b67b5dec2ccfeecaab0cc7c7dc779726e67cef9496b06b",
-      "bytes": 1615464
+      "sha256": "c69b820aa65abbc002ae32515d4c3d61b3b1721575f618f9c87e3fd334223127",
+      "bytes": 1604850
     },
     {
       "name": "Polymarket sports registry",
       "url": "https://gamma-api.polymarket.com/sports",
-      "checked_at": "2026-10-25T19:35:44.039306Z",
+      "checked_at": "2026-10-25T21:55:25.037220Z",
       "request_url": "https://gamma-api.polymarket.com/sports",
       "cache_bust": null,
       "http_status": 200,
       "status": "ok",
-      "retrieved_at": "2026-10-25T19:35:44.152944Z",
-      "observed_at": "2026-10-25T19:18:06.152944Z",
-      "cache_age_seconds": 1058,
+      "retrieved_at": "2026-10-25T21:55:25.152095Z",
+      "observed_at": "2026-10-25T21:41:17.152095Z",
+      "cache_age_seconds": 848,
       "cache_status": "Hit from cloudfront",
       "sha256": "f6b2d546b1cdd25010f185b821ab492ec72b3759a5b05a277df57ce37153a254",
       "bytes": 155942
@@ -7566,118 +7566,118 @@
     {
       "name": "Polymarket events page 1",
       "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-25T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
-      "checked_at": "2026-10-25T19:35:44.154517Z",
+      "checked_at": "2026-10-25T21:55:25.153509Z",
       "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-25T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
       "cache_bust": null,
       "http_status": 200,
       "status": "ok",
-      "retrieved_at": "2026-10-25T19:35:44.608144Z",
-      "observed_at": "2026-10-25T19:35:44.608144Z",
+      "retrieved_at": "2026-10-25T21:55:25.473008Z",
+      "observed_at": "2026-10-25T21:55:25.473008Z",
       "cache_age_seconds": null,
       "cache_status": "Miss from cloudfront",
-      "sha256": "a8e103f3053327a227b6cb39f773f36160b6b142b4ad308e6afed3679d23e145",
-      "bytes": 3120282
+      "sha256": "82e3dd2d7a957d02375bdc8442ff7a4f8b9f4a40b0b65ecb098cffbdd301bc6b",
+      "bytes": 3084569
     },
     {
       "name": "HLTV fallback discovery",
       "url": "https://www.hltv.org/matches",
-      "checked_at": "2026-10-25T19:35:44.655021Z",
+      "checked_at": "2026-10-25T21:55:25.508868Z",
       "request_url": "https://www.hltv.org/matches",
       "cache_bust": null,
       "http_status": 200,
       "status": "ok",
-      "retrieved_at": "2026-10-25T19:35:44.855828Z",
-      "observed_at": "2026-10-25T19:35:44.855828Z",
+      "retrieved_at": "2026-10-25T21:55:25.765343Z",
+      "observed_at": "2026-10-25T21:55:25.765343Z",
       "cache_age_seconds": null,
       "cache_status": "DYNAMIC",
-      "sha256": "aebc339b57841f26e4636cc4c60842035820cb3d96c4eec503235b65c7ed2a60",
-      "bytes": 485312
+      "sha256": "587127031b79a831f7b5b51a43f68cb7c553cd88fbb3bcd50cfde630f100d0f7",
+      "bytes": 467625
     },
     {
       "name": "HLTV match 1082859",
       "url": "https://www.hltv.org/matches/2399889/nexvoid-vs-alter-ego-dfrag-invitational-2026",
-      "checked_at": "2026-10-25T19:35:45.029364Z",
+      "checked_at": "2026-10-25T21:55:25.863989Z",
       "request_url": "https://www.hltv.org/matches/2399889/nexvoid-vs-alter-ego-dfrag-invitational-2026",
       "cache_bust": null,
       "http_status": 200,
       "status": "ok",
-      "retrieved_at": "2026-10-25T19:35:45.330137Z",
-      "observed_at": "2026-10-25T19:35:45.330137Z",
+      "retrieved_at": "2026-10-25T21:55:26.243293Z",
+      "observed_at": "2026-10-25T21:55:26.243293Z",
       "cache_age_seconds": null,
       "cache_status": "DYNAMIC",
-      "sha256": "8d3639e43235d3fa24e9c38e86dc001d16eba5bf96f5ad38c8d861c55714b38a",
-      "bytes": 347358
+      "sha256": "f45f742ab0c169c553e89021eb555b610adf312c5e4a2427bbd89b31390d55ba",
+      "bytes": 328651
     },
     {
       "name": "HLTV match 1082792",
       "url": "https://www.hltv.org/matches/2399437/hotu-vs-the-huns-gluck-moscow-cyber-games-2026",
-      "checked_at": "2026-10-25T19:35:45.583151Z",
+      "checked_at": "2026-10-25T21:55:26.404001Z",
       "request_url": "https://www.hltv.org/matches/2399437/hotu-vs-the-huns-gluck-moscow-cyber-games-2026",
       "cache_bust": null,
       "http_status": 200,
       "status": "ok",
-      "retrieved_at": "2026-10-25T19:35:45.982967Z",
-      "observed_at": "2026-10-25T19:35:45.982967Z",
+      "retrieved_at": "2026-10-25T21:55:27.377874Z",
+      "observed_at": "2026-10-25T21:55:27.377874Z",
       "cache_age_seconds": null,
       "cache_status": "DYNAMIC",
-      "sha256": "d3786837acf60e0cdfc444ae5bb9a5e52277864aa8de20e58c7ef06c2166b30d",
-      "bytes": 365439
+      "sha256": "d8b44f373ffa867890c8e42e261e3234601f085549b8ebd487e616386ddf46d0",
+      "bytes": 349634
     },
     {
       "name": "HLTV match 1082793",
       "url": "https://www.hltv.org/matches/2399438/1win-vs-5star-gluck-moscow-cyber-games-2026",
-      "checked_at": "2026-10-25T19:35:46.340524Z",
+      "checked_at": "2026-10-25T21:55:27.623724Z",
       "request_url": "https://www.hltv.org/matches/2399438/1win-vs-5star-gluck-moscow-cyber-games-2026",
       "cache_bust": null,
       "http_status": 200,
       "status": "ok",
-      "retrieved_at": "2026-10-25T19:35:47.234631Z",
-      "observed_at": "2026-10-25T19:35:47.234631Z",
+      "retrieved_at": "2026-10-25T21:55:28.794502Z",
+      "observed_at": "2026-10-25T21:55:28.794502Z",
       "cache_age_seconds": null,
       "cache_status": "DYNAMIC",
-      "sha256": "7a30bf71501e4cb9cee8ff72ad5b8709b423e38a1337dc5371734d58eed9e29a",
-      "bytes": 375621
+      "sha256": "30e24965b93c9f873fc7429559f5566ea722c432108544a4e3e7c7a3c4674b2e",
+      "bytes": 359905
     },
     {
       "name": "Pinnacle esports fixtures",
       "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/matchups?withSpecials=false",
-      "checked_at": "2026-10-25T19:35:47.510235Z",
+      "checked_at": "2026-10-25T21:55:28.971840Z",
       "request_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/matchups?withSpecials=false",
       "cache_bust": null,
       "http_status": 200,
       "status": "ok",
-      "retrieved_at": "2026-10-25T19:35:47.601428Z",
-      "observed_at": "2026-10-25T19:33:40.601428Z",
-      "cache_age_seconds": 127,
+      "retrieved_at": "2026-10-25T21:55:29.078025Z",
+      "observed_at": "2026-10-25T21:49:34.078025Z",
+      "cache_age_seconds": 355,
       "cache_status": "HIT",
-      "sha256": "aee114ab0ec1f4275c33cc4ee2e3a67b5f487f91fdb9bc6e1788bbaef6642002",
-      "bytes": 62266
+      "sha256": "06cf99d86510e8b21250b56f1d6b1f9118cacae3acf4e669c5ae40cb34180978",
+      "bytes": 58173
     },
     {
       "name": "Pinnacle esports moneylines",
       "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
-      "checked_at": "2026-10-25T19:35:47.602784Z",
+      "checked_at": "2026-10-25T21:55:29.078558Z",
       "request_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
       "cache_bust": null,
       "http_status": 200,
       "status": "ok",
-      "retrieved_at": "2026-10-25T19:35:47.623624Z",
-      "observed_at": "2026-10-25T19:35:23.623624Z",
-      "cache_age_seconds": 24,
+      "retrieved_at": "2026-10-25T21:55:29.103875Z",
+      "observed_at": "2026-10-25T21:51:14.103875Z",
+      "cache_age_seconds": 255,
       "cache_status": "HIT",
-      "sha256": "78becb21e3fd0b01303313e78cd9ec3f2638e594ea65acfbe7dbad174841ac6c",
-      "bytes": 266186
+      "sha256": "fc9a668acca11653ced363b81f973ef701add4ca145a5fb4447ed50d0a5ae4c9",
+      "bytes": 490129
     },
     {
       "name": "Thunderpick fallback access",
       "url": "https://thunderpick.io/esports/cs2-betting",
-      "checked_at": "2026-10-25T19:35:47.631437Z",
+      "checked_at": "2026-10-25T21:55:29.111532Z",
       "request_url": "https://thunderpick.io/esports/cs2-betting",
       "cache_bust": null,
       "http_status": 200,
       "status": "ok",
-      "retrieved_at": "2026-10-25T19:35:47.907759Z",
-      "observed_at": "2026-10-25T19:35:47.907759Z",
+      "retrieved_at": "2026-10-25T21:55:29.506716Z",
+      "observed_at": "2026-10-25T21:55:29.506716Z",
       "cache_age_seconds": null,
       "cache_status": "DYNAMIC",
       "sha256": "37644d5714f72bd613500ca479d3df1644862878a8de483b97c6621481337cc2",
@@ -7686,7 +7686,7 @@
     {
       "name": "GG.BET fallback access",
       "url": "https://gg.bet/en/esports/counter-strike",
-      "checked_at": "2026-10-25T19:35:47.907995Z",
+      "checked_at": "2026-10-25T21:55:29.506991Z",
       "request_url": "https://gg.bet/en/esports/counter-strike",
       "cache_bust": null,
       "tls_fallback": "refused: HTTP 403",
@@ -7717,52 +7717,52 @@
     {
       "name": "BO3.gg CS2 upcoming feed page 1",
       "url": "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
-      "checked_at": "2026-10-25T19:37:28.325228Z",
+      "checked_at": "2026-10-25T21:57:09.839136Z",
       "request_url": "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
       "cache_bust": null,
       "http_status": 200,
       "status": "ok",
-      "retrieved_at": "2026-10-25T19:37:29.454050Z",
-      "observed_at": "2026-10-25T19:37:29.454050Z",
+      "retrieved_at": "2026-10-25T21:57:10.515276Z",
+      "observed_at": "2026-10-25T21:57:10.515276Z",
       "cache_age_seconds": null,
       "cache_status": "DYNAMIC",
-      "sha256": "24da86e06c739cf96ae8fa033b532183f34f968ef719184f4ab0893760e2bceb",
-      "bytes": 238055
+      "sha256": "2ef06a202f2d4068ffd064531d41cb0b080911a0aa6bd3414c3e7a48a77ea037",
+      "bytes": 236628
     },
     {
       "name": "BO3.gg CS2 upcoming feed page 2",
       "url": "https://api.bo3.gg/api/v1/matches?page[offset]=100&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
-      "checked_at": "2026-10-25T19:37:29.458482Z",
+      "checked_at": "2026-10-25T21:57:10.518569Z",
       "request_url": "https://api.bo3.gg/api/v1/matches?page[offset]=100&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
       "cache_bust": null,
       "http_status": 200,
       "status": "ok",
-      "retrieved_at": "2026-10-25T19:37:31.112279Z",
-      "observed_at": "2026-10-25T19:37:31.112279Z",
+      "retrieved_at": "2026-10-25T21:57:10.913402Z",
+      "observed_at": "2026-10-25T21:57:10.913402Z",
       "cache_age_seconds": null,
       "cache_status": "DYNAMIC",
-      "sha256": "1fae531a5420d5dfc5300e69df00b438adc5287d8ef4c9394b5056420acaae23",
-      "bytes": 206754
+      "sha256": "b1b7622eb4b1c4f48f7b9ce9392aecff82b779d52f22d29e517261ef4668f965",
+      "bytes": 209035
     },
     {
       "name": "BO3.gg CS2 upcoming feed page 3",
       "url": "https://api.bo3.gg/api/v1/matches?page[offset]=200&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
-      "checked_at": "2026-10-25T19:37:31.115671Z",
+      "checked_at": "2026-10-25T21:57:10.916165Z",
       "request_url": "https://api.bo3.gg/api/v1/matches?page[offset]=200&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
       "cache_bust": null,
       "http_status": 200,
       "status": "ok",
-      "retrieved_at": "2026-10-25T19:37:31.598807Z",
-      "observed_at": "2026-10-25T19:37:31.598807Z",
+      "retrieved_at": "2026-10-25T21:57:11.436569Z",
+      "observed_at": "2026-10-25T21:57:11.436569Z",
       "cache_age_seconds": null,
       "cache_status": "DYNAMIC",
-      "sha256": "689e714da37995420ddaa337e41e853aed756a106a63fdc6e70fda16e7208eac",
-      "bytes": 61580
+      "sha256": "7c0ae6aafb40b80d0be4a61ef7098afe8411e84fe91a5dc27d7e3662ab9b6d59",
+      "bytes": 52538
     },
     {
       "name": "Book listing gap recheck 1082792",
       "url": "https://egamersworld.com/counterstrike/match/EkalRNMvVx/hotu-vs-the-huns-esports-SfdtzDhiK",
-      "checked_at": "2026-10-25T19:37:31.602078Z",
+      "checked_at": "2026-10-25T21:57:11.439188Z",
       "request_url": "https://egamersworld.com/counterstrike/match/EkalRNMvVx/hotu-vs-the-huns-esports-SfdtzDhiK",
       "cache_bust": null,
       "tls_fallback": "refused: HTTP 403",
@@ -7793,20 +7793,20 @@
     {
       "name": "Book listing gap recheck 1082793",
       "url": "https://egamersworld.com/counterstrike/match/EkalRNMvVx/1win-vs-5star-esports-4hTvdd1uN",
-      "checked_at": "2026-10-25T19:39:12.093859Z",
+      "checked_at": "2026-10-25T21:58:51.909096Z",
       "status": "error",
       "error": "Skipped after earlier access/rate restriction on this host: 403"
     },
     {
       "name": "Valve VRS standings index 2026",
       "url": "https://api.github.com/repos/ValveSoftware/counter-strike_regional_standings/contents/live/2026",
-      "checked_at": "2026-10-25T19:39:12.094260Z",
+      "checked_at": "2026-10-25T21:58:51.909558Z",
       "request_url": "https://api.github.com/repos/ValveSoftware/counter-strike_regional_standings/contents/live/2026",
       "cache_bust": null,
       "http_status": 200,
       "status": "ok",
-      "retrieved_at": "2026-10-25T19:39:12.283650Z",
-      "observed_at": "2026-10-25T19:39:12.283650Z",
+      "retrieved_at": "2026-10-25T21:58:52.239107Z",
+      "observed_at": "2026-10-25T21:58:52.239107Z",
       "cache_age_seconds": null,
       "cache_status": null,
       "sha256": "a0c70433d2727db5d568fa6267b7000a2c15e92a4aa8820cabf07ae84338ee23",
@@ -7815,13 +7815,13 @@
     {
       "name": "Valve VRS standings commit",
       "url": "https://api.github.com/repos/ValveSoftware/counter-strike_regional_standings/commits?path=live/2026/standings_global_2026_10_05.md&per_page=1",
-      "checked_at": "2026-10-25T19:39:12.284090Z",
+      "checked_at": "2026-10-25T21:58:52.239550Z",
       "request_url": "https://api.github.com/repos/ValveSoftware/counter-strike_regional_standings/commits?path=live/2026/standings_global_2026_10_05.md&per_page=1",
       "cache_bust": null,
       "http_status": 200,
       "status": "ok",
-      "retrieved_at": "2026-10-25T19:39:12.494263Z",
-      "observed_at": "2026-10-25T19:39:12.494263Z",
+      "retrieved_at": "2026-10-25T21:58:52.500005Z",
+      "observed_at": "2026-10-25T21:58:52.500005Z",
       "cache_age_seconds": null,
       "cache_status": null,
       "sha256": "4c4be0dd3026a2d736efaf8d4fd78c09b4dc8763e73612a502f0f537dab22a6e",
@@ -7830,13 +7830,13 @@
     {
       "name": "Valve VRS global standings",
       "url": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
-      "checked_at": "2026-10-25T19:39:12.494470Z",
+      "checked_at": "2026-10-25T21:58:52.500275Z",
       "request_url": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
       "cache_bust": null,
       "http_status": 200,
       "status": "ok",
-      "retrieved_at": "2026-10-25T19:39:12.588469Z",
-      "observed_at": "2026-10-25T19:39:12.588469Z",
+      "retrieved_at": "2026-10-25T21:58:52.634838Z",
+      "observed_at": "2026-10-25T21:58:52.634838Z",
       "cache_age_seconds": null,
       "cache_status": "MISS",
       "sha256": "df96e7fc3cd91a2687ec08cac0128e50cc4e4e55346581679572e881d79ae61b",
@@ -7858,13 +7858,9 @@
   },
   "fixture_conflicts": [],
   "inventory_changes": {
-    "compared_with": "2026-10-25T17:40:22.092033Z",
+    "compared_with": "2026-10-25T19:39:12.636744Z",
     "added_ids": [],
-    "removed_ids": [
-      "1081158",
-      "1082697",
-      "1086697"
-    ]
+    "removed_ids": []
   },
   "fixture_evidence": [
     {
@@ -10172,5 +10168,5 @@
       "participants1_score": 0
     }
   ],
-  "built_at": "2026-10-25T19:39:13.086736Z"
+  "built_at": "2026-10-25T21:58:53.063170Z"
 }
