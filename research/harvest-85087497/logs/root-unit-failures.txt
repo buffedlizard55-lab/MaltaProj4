@@ -1,4 +1,3 @@
-      1 ERROR: test_vrs_rows_replay_from_valve_formula (test_session_0fae12a5.CalculationReplayTest.test_vrs_rows_replay_from_valve_formula)
       1 FAIL: 1082769 K27 vs NEXORA: unresolved fair_odds must be None
       1 FAIL: 1082769 K27 vs NEXORA: unresolved method must be None
       1 FAIL: 1082769 K27 vs NEXORA: unresolved probabilities must be None
