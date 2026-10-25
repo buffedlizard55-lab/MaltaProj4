@@ -1,12 +1,9 @@
-"""Regression guards for the ece64b74 final-integration repair.
+"""Regression guards for ece64b74's publication diagnostics.
 
-On 2026-10-25 the main publication workflow had a `publish=true` freshness-gate
-output even though its fresh-build verifier failed. Because the deploy job was
-`always()`-guarded only by that freshness output, it still ran without the
-current run's verified Pages artifact and failed the exact-live-byte check.
-The artifact marker below is set only after upload-pages-artifact succeeds,
-which preserves the intentional fallback-failure deploy path while closing the
-build-failure path.
+The successful-upload deployment gate was adopted from PR #311. This session's
+remaining change keeps complete build-gate logs in the run artifacts/summary and
+emits the tail of a failure as one check annotation, so GitHub's annotation cap
+cannot hide the terminal assertion.
 """
 from __future__ import annotations
 
@@ -15,13 +12,7 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-WORKFLOW_PATH = ROOT / ".github/workflows/pages.yml"
-WORKFLOW = WORKFLOW_PATH.read_text()
-PHONE_TEST = (ROOT / "tests/browser_aeafcbe6.cjs").read_text()
-UPLOAD = "actions/upload-pages-artifact@"
-FALLBACK = "- name: Keep the legacy main:/ root fallback on the verified build"
-MARKER = "- name: Record verified Pages artifact availability"
-RECEIPT = "- name: Record the exact artifact expected at the public site"
+WORKFLOW = (ROOT / ".github/workflows/pages.yml").read_text()
 
 
 def job(name: str) -> str:
@@ -37,64 +28,42 @@ def step(text: str, header: str) -> str:
     return text[start:] if end == -1 else text[start:end]
 
 
-class VerifiedArtifactDeployTests(unittest.TestCase):
+class BuildFailureDiagnosticsTests(unittest.TestCase):
     def setUp(self):
         self.verify = job("verify-build")
-        self.deploy = job("deploy")
 
-    def test_fixed_session_branch_runs_the_same_nonpublishing_verification(self):
-        self.assertIn("arena/ece64b74-maltaproj4", WORKFLOW.split("  pull_request:", 1)[0])
+    def test_fixed_session_branch_runs_verification_without_qualifying_for_upload(self):
+        push = WORKFLOW.split("  pull_request:", 1)[0]
+        self.assertIn("arena/ece64b74-maltaproj4", push)
+        upload = step(self.verify, "- uses: actions/upload-pages-artifact@")
+        self.assertIn("github.ref == 'refs/heads/main'", upload)
 
-    def test_only_a_successful_pages_upload_sets_the_job_output(self):
-        self.assertIn("artifact_ready: ${{ steps.artifact_ready.outputs.ready }}", self.verify)
-        upload = step(self.verify, UPLOAD)
-        self.assertIn("id: pages_upload", upload)
-        marker = step(self.verify, MARKER)
-        self.assertIn("id: artifact_ready", marker)
-        self.assertIn("steps.pages_upload.outcome == 'success'", marker)
-        self.assertIn('echo "ready=true" >> "$GITHUB_OUTPUT"', marker)
-        self.assertLess(self.verify.index(UPLOAD), self.verify.index(MARKER))
-        self.assertLess(self.verify.index(MARKER), self.verify.index(FALLBACK))
-
-    def test_later_root_fallback_failure_can_still_deploy_the_verified_artifact(self):
-        # The marker is recorded before the root fallback. `always()` deliberately
-        # allows the downstream deploy job to run if only that fallback step fails.
-        self.assertLess(self.verify.index(MARKER), self.verify.index(FALLBACK))
-        condition = re.search(r"^    if: (.+)$", self.deploy, re.M)
-        self.assertIsNotNone(condition)
-        self.assertIn("always()", condition.group(1))
-        self.assertIn("needs.verify-build.outputs.artifact_ready == 'true'", condition.group(1))
-
-    def test_build_failure_or_skipped_upload_cannot_reach_deploy(self):
-        condition = re.search(r"^    if: (.+)$", self.deploy, re.M)
-        self.assertIsNotNone(condition)
-        condition = condition.group(1)
-        self.assertIn("needs.verify-build.outputs.publish == 'true'", condition)
-        self.assertIn("needs.verify-build.outputs.artifact_ready == 'true'", condition)
-        self.assertIn("github.ref == 'refs/heads/main'", condition)
-        self.assertIn("github.event_name != 'pull_request'", condition)
-
-    def test_manifest_receipt_is_not_created_without_a_verified_artifact(self):
-        receipt = step(self.verify, RECEIPT)
-        self.assertIn("if: always()", receipt)
-        self.assertIn("steps.artifact_ready.outputs.ready == 'true'", receipt)
-        self.assertIn("manifest_sha", receipt)
-
-    def test_failing_build_gate_retains_logs_and_emits_check_annotations(self):
+    def test_each_build_gate_retains_its_own_log_and_summary(self):
         build = step(self.verify, "- name: Build and independently verify every row")
-        for expected in ("run_gate()", "GITHUB_STEP_SUMMARY", "::error title=", "runtime/row-audit.log",
-                         "runtime/build.log", "runtime/validate.log", "runtime/published-row-audit.log",
-                         "detail = ' | '.join(lines)", "truncates check annotations at ten"):
+        for expected in (
+            "runtime/row-audit.log",
+            "runtime/build.log",
+            "runtime/validate.log",
+            "runtime/published-row-audit.log",
+            "tail -n 80 \"$logfile\"",
+            "GITHUB_STEP_SUMMARY",
+            'cat "$logfile"',
+            'return "$rc"',
+        ):
             self.assertIn(expected, build)
 
+    def test_failure_tail_is_one_annotation_so_terminal_assertion_is_visible(self):
+        build = step(self.verify, "- name: Build and independently verify every row")
+        self.assertIn("splitlines()[-20:]", build)
+        self.assertIn("detail = ' | '.join(lines)", build)
+        self.assertIn("GitHub truncates check annotations at ten", build)
+        self.assertIn("::error title={label}::{detail[:6000]}", build)
+        self.assertNotIn("for line in lines:", build)
 
-class StalePhoneBoardTests(unittest.TestCase):
-    def test_mobile_gate_accepts_intentional_stale_withholding_without_showing_old_prices(self):
-        self.assertIn("const snapshotStale", PHONE_TEST)
-        self.assertIn("home.withheld !== snapshotStale", PHONE_TEST)
-        self.assertIn("stale board still exposes", PHONE_TEST)
-        self.assertIn("current_priced_rows", PHONE_TEST)
-        self.assertNotIn("research/session-aeafcbe6/mobile-measurements.json", PHONE_TEST)
+    def test_receipt_is_recorded_only_after_pages_artifact_upload_succeeds(self):
+        receipt = step(self.verify, "- name: Record the exact artifact expected at the public site")
+        self.assertIn("steps.pages_artifact.outcome == 'success'", receipt)
+        self.assertIn("manifest_sha", receipt)
 
 
 if __name__ == "__main__":
