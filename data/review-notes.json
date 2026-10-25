@@ -5615,5 +5615,36 @@
     "label": "Phone measurement on a fresh capture (executive summary links, first pick, both win chances)"
    }
   ]
+ },
+ {
+  "id": "session-58354934-freeze-alias-roster-2026-10-25",
+  "status": "Fixed and verified: two code changes plus regression tests; the board was republished from a fresh verified snapshot",
+  "finding": "Measured: the scheduled publisher failed at step 13 'Build and independently verify every row, calculation and internal link' on run 40170923727 (2026-10-25T06:41Z) and again on 40193317196 (12:29Z); upload-pages-artifact, the legacy main:/ staging step and every deploy were skipped, so the live site served the 2026-10-25T01:47Z snapshot and, once that snapshot left its eight-hour window, withheld all 14 open picks ('0 with a pick', '14 unresolved' at 13:2xZ). The sandbox has no egress to Hotspawn/HLTV and cannot read Actions logs, so the same commands were re-run on a GitHub runner (non-publishing run 40197480741, receipts in research/harvest-58354934/). refresh, quarantine, the independent row audit (a and d) and build all exited 0; validate exited 1 with AssertionError 'Model roster has no HLTV source on this row' at scripts/validate.py line 122 (validate_model_row) for fixture 1086697. The row's roster evidence IS sourced: Hotspawn names the club 'Projeto do KinGui' while the HLTV match page it resolves to (matches/2399918) names the same club 'Tropa do KinGui', and data/identities.json registers both labels under one canonical club with primary sources. validate_model_row already accepts that alias for the VRS label (norm(team) == norm(label)), but lineup_source_ok compared raw labels, so the sourced roster was judged unsourced and the whole snapshot was refused. Two changes: (1) scripts/validate.same_club makes the roster lookup identity-aware - exact after case/diacritic folding, or through the verified alias register, with the player list still required to match exactly; (2) scripts/quarantine.validation_violations, a row-scoped backstop that withholds only the row(s) the repository data validator cannot reproduce, and only after proving that withholding exactly those rows makes the whole snapshot pass - otherwise it withholds nothing and the run still fails loudly, so a broken site is never published. On the same fresh capture the fixed tree now builds and validates: 78 rows, 17 open, 17 picks, 17 win probabilities, 0 unresolved. Not fixed and flagged here for manual review: the publisher still fails closed on snapshot-level contract problems (by design), and the deploy job's 'Verify live Pages bytes match this exact build' step also failed on both runs because Pages is legacy main:/ and the committed root was ahead of the artifact - it is a delivery-path signal, not a data failure, and it will report success again once the root fallback is staged from the same verified build.",
+  "sources": [
+   {
+    "label": "Run 40193317196 (12:29Z, step 13 failed)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40193317196"
+   },
+   {
+    "label": "Run 40170923727 (06:41Z, step 13 failed)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40170923727"
+   },
+   {
+    "label": "Run 40197480741 (reproduction on GitHub egress)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40197480741"
+   },
+   {
+    "label": "HLTV match page for fixture 1086697",
+    "url": "https://www.hltv.org/matches/2399918/tropa-do-kingui-vs-yawara-cct-2026-south-america-series-7"
+   },
+   {
+    "label": "Identity register entry (primary sources)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/data/identities.json"
+   },
+   {
+    "label": "Validator fix",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/scripts/validate.py"
+   }
+  ]
  }
 ]
