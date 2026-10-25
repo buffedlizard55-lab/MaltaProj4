@@ -1,12 +1,12 @@
 {
  "snapshot_generated_at": "2026-10-25T14:22:27.352651Z",
  "rows": 78,
- "open": 16,
- "picks": 16,
- "probabilities": 16,
+ "open": 15,
+ "picks": 15,
+ "probabilities": 15,
  "unresolved": 0,
  "method_counts": {
-  "exchange": 11,
+  "exchange": 10,
   "model_vrs": 4,
   "bookmaker_fallback": 1
  },
@@ -41,8 +41,8 @@
    "every_checksum": true,
    "eight_hour_evidence_window": true
   },
-  "revision": "0a5434e8723f98525ad4de924591d8a674aaa72b",
-  "built_at": "2026-10-25T14:52:07.516599Z",
+  "revision": "791cb7838c28a4b54030c86d57e2b9e857fef68d",
+  "built_at": "2026-10-25T15:35:50.729905Z",
   "snapshot_generated_at": "2026-10-25T14:22:27.352651Z",
   "rows": 78,
   "files_checked": 20
