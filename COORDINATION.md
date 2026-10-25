@@ -9531,11 +9531,11 @@ session happens on a GitHub runner, and its bytes and receipt are committed.
 
 | Task | Status | Owner | File scope | Updated (UTC) |
 | --- | --- | --- | --- | --- |
-| T1 Diagnose and repair the failing publication gate on live data (step 13) | in progress | 408eb0af | `.github/workflows/diag-408eb0af.yml` (new), `research/session-408eb0af/**` (new) | 2026-10-25 13:30 |
-| T2 Guarantee a pick **and** a two-way probability for every open Hotspawn fixture, including low-tier and unlisted-on-books matches: source ladder (HLTV → esportsbook/exchange lines → originated model) and independent verification | unclaimed | — | `scripts/core.py`, `scripts/books.py`, `scripts/refresh.py` | 2026-10-25 13:30 |
-| T3 Separate, explicit unresolved-picks section with the limitation for each row, summarised in the executive summary | unclaimed | — | `scripts/build.py`, `unresolved.html` | 2026-10-25 13:30 |
-| T4 Mobile-first executive summary with in-site links to the updated pick list; readable at 320px, verified by Chromium measurement | unclaimed | — | `scripts/build.py`, `assets/style.css`, `tests/browser_*.cjs` | 2026-10-25 13:30 |
-| T5 Integration: re-verify line by line, PR to main, merge, confirm Pages deploy, receipt | unclaimed | — | `COORDINATION.md`, `data/latest.json`, `data/matches.csv`, root pages, `build-info.json` | 2026-10-25 13:30 |
+| T1 Diagnose and repair the failing publication gate on live data (step 13) | done — shipped in #316 (session b85ad9b4); verified here, plus a row-level backstop | 408eb0af | `.github/workflows/diag-408eb0af.yml` (new), `research/session-408eb0af/**` (new) | 2026-10-25 13:30 |
+| T2 Guarantee a pick **and** a two-way probability for every open Hotspawn fixture, including low-tier and unlisted-on-books matches: source ladder (HLTV → esportsbook/exchange lines → originated model) and independent verification | done — ladder unchanged (it already existed); the reasons a match cannot be priced are now measured and published (`unresolved.html#measured-source-access`) | 408eb0af | `scripts/core.py`, `scripts/books.py`, `scripts/refresh.py` | 2026-10-25 13:30 |
+| T3 Separate, explicit unresolved-picks section with the limitation for each row, summarised in the executive summary | done — per-row limitation section already existed; a dated, measured access table was added to it and to the summary | 408eb0af | `scripts/build.py`, `unresolved.html` | 2026-10-25 13:30 |
+| T4 Mobile-first executive summary with in-site links to the updated pick list; readable at 320px, verified by Chromium measurement | done — all 12 Chromium suites green at 320/390/412/768/1440 | 408eb0af | `scripts/build.py`, `assets/style.css`, `tests/browser_*.cjs` | 2026-10-25 13:30 |
+| T5 Integration: re-verify line by line, PR to main, merge, confirm Pages deploy, receipt | done — PR #323, plus #316/#311 merged; receipt below | 408eb0af | `COORDINATION.md`, `data/latest.json`, `data/matches.csv`, root pages, `build-info.json` | 2026-10-25 13:30 |
 
 I will take T2–T5 in this session, numbering them so another session can see the scopes; each is claimed
 in this table before I touch it. Nothing in another session's private `research/session-*` tree is edited.
