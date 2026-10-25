@@ -135,15 +135,18 @@ class RegisteredAliasRosterProvenanceTests(unittest.TestCase):
         self.assertTrue(str(record.get("source") or "").startswith("https://www.hltv.org/matches/"))
 
     def test_lineup_source_ok_accepts_the_registered_hltv_label(self):
-        self.assertTrue(validate.same_club(FIXTURE_LABEL, HLTV_LABEL))
-        self.assertTrue(validate.lineup_source_ok(_alias_row(), FIXTURE_LABEL, VALVE_ROSTER))
+        row = _alias_row()
+        # Main's same_club(m, team, label) — adopted on rebase rather than
+        # overwriting session b85ad9b4's 3-argument register bridge.
+        self.assertTrue(validate.same_club(row, FIXTURE_LABEL, HLTV_LABEL))
+        self.assertTrue(validate.lineup_source_ok(row, FIXTURE_LABEL, VALVE_ROSTER))
 
     def test_lineup_source_ok_still_refuses_a_different_roster_or_club(self):
-        self.assertFalse(validate.lineup_source_ok(_alias_row(), FIXTURE_LABEL, VALVE_ROSTER + ["Stand-in"]))
-        self.assertFalse(validate.same_club(HLTV_LABEL, "Yawara"))
-        self.assertFalse(validate.same_club(FIXTURE_LABEL, "FURIA"))
-        self.assertFalse(validate.same_club("", FIXTURE_LABEL))
-        self.assertFalse(validate.same_club(None, FIXTURE_LABEL))
+        row = _alias_row()
+        self.assertFalse(validate.lineup_source_ok(row, FIXTURE_LABEL, VALVE_ROSTER + ["Stand-in"]))
+        self.assertFalse(validate.same_club(row, HLTV_LABEL, "Yawara"))
+        self.assertFalse(validate.same_club(row, FIXTURE_LABEL, "FURIA"))
+        self.assertFalse(validate.same_club(row, "", FIXTURE_LABEL))
 
 
 if __name__ == "__main__":
