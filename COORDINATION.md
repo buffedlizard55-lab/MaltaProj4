@@ -9448,3 +9448,6 @@ recorded rather than papered over.
 | Reproduce current publication failure; independent validator regression repair if not claimed; verify and integrate | in progress | a7f788c8 | `research/session-a7f788c8/**`, `tests/test_session_a7f788c8.py`, validator only if defect reproduced and unclaimed |
 
 Arena fixes this session to `arena/a7f788c8-maltaproj4`; no alternate branch will be created. Session 58354934 has a non-publishing diagnosis running; this session will not edit its workflow or research. Current scheduled run 40193317196 failed at build/row verification after refresh and quarantine succeeded (GitHub jobs API). Log-download host is blocked in this environment; no fresh source verification is claimed yet.
+
+### a7f788c8 scope extension — verified-artifact deployment gate
+Claim `.github/workflows/pages.yml` only for the deployment eligibility/output guard, and `tests/test_session_a7f788c8.py`. The separate 58354934 scope is its diagnosis workflow and receipts; no duplicate refresh is launched. Reproduced: run 40193317196 failed step 13 and skipped artifact upload, yet deploy ran because `always()` only checks the freshness intention. Preserve deployment after *post-upload* root-staging failures, but require successful verified artifact upload. Claim committed before implementation.
