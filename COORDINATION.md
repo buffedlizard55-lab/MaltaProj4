@@ -90,6 +90,35 @@ of layering a second one on top.
 
 ---
 
+## Session 53284c80 harvest receipt — 2026-10-25 13:45 UTC
+
+Non-publishing run [40197787382](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40197787382)
+on checkout `da83b05` (before the alias fix) refreshed official sources at
+**2026-10-25T13:39:08Z** (fixtures observed 13:35:34Z):
+
+| Step | rc | Notes |
+| --- | --- | --- |
+| refresh | 0 | 78/78/78/78 Hotspawn parity |
+| quarantine | 0 | 0 withheld |
+| c6 row audit | 0 | 0 failures |
+| build | 0 | 17 calculations |
+| **validate** | **1** | `lineup_source_ok` on fixture 1086697 *Projeto do KinGui* vs *Yawara* |
+| published c6 | 0 | |
+| browser | 1 | first `.prob-pair` bottom 519 vs tab 507 at 320x568 |
+
+Coverage of that capture: **78 rows · 17 open · 17 picks · 17 win probabilities · 0 unresolved**
+(11 exchange, 1 wide exchange, 1 bookmaker listing, 4 Valve-VRS model). Every open
+Hotspawn CS2 match had a sourced pick; the publisher still refused the board
+because validate compared literal names.
+
+On this branch after the alias comparison and the short-phone picks compact:
+`scripts.validate` reproduces all 17 calculations on the harvest snapshot;
+`unittest discover -s tests` **1616 OK (12 skipped)**; audits 9 OK; all 13
+Chromium suites pass (first pick y=354 at 320x568, `.prob-pair` bottom 381 < tab 507).
+The verified harvest snapshot is staged as the committed root so Pages has a
+board inside its 8-hour window. Unresolved section is present and currently empty.
+
+
 ## Session 53284c80 progress — 2026-10-25 13:40 UTC (step-13 defect reproduced; alias comparison repaired)
 
 Independent of PR [#314](https://github.com/buffedlizard55-lab/MaltaProj4/pull/314) (session 046b2e46,
