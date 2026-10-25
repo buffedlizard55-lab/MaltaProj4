@@ -6,6 +6,17 @@ A simple, mobile-first pick dashboard for **every CS2 fixture returned by Hotspa
 
 **[Executive summary](https://buffedlizard55-lab.github.io/MaltaProj4/)** · **[Updated picks](https://buffedlizard55-lab.github.io/MaltaProj4/picks.html)** · [Unresolved & research-only picks](https://buffedlizard55-lab.github.io/MaltaProj4/unresolved.html) · [All matches](https://buffedlizard55-lab.github.io/MaltaProj4/matches.html) · [TWC results & Day-5 guide](https://buffedlizard55-lab.github.io/MaltaProj4/analysis.html) · [Flagged for Review](https://buffedlizard55-lab.github.io/MaltaProj4/review.html) · [Sources & methodology](https://buffedlizard55-lab.github.io/MaltaProj4/sources.html) · [Evidence ledger](https://buffedlizard55-lab.github.io/MaltaProj4/evidence.html)
 
+### Resolving low-tier & unlisted matches (non-featured board) — 25 October 2026
+
+The owner asked for picks on **every** Hotspawn CS2 fixture, including low-tier, qualifier and regional matches that Polymarket and other exchanges never list. Every open match already carries a pick (the long tail falls through to our originated Valve-standings / VRS model line, which HLTV ranking and form independently support as a research-only pick). To make that fall-through verifiable and sourced, this session researched the external sources a person (or a future collector) can use when no exchange line exists:
+
+1. **HLTV betting/analytics** — `https://www.hltv.org/betting/analytics`. Shows each CS2 fixture's best bookmaker odds (when a book prices it), HLTV world ranking and recent form. Verified 2026-10-25 on CCT, NODWIN and ViderGG fixtures.
+2. **Esportsbooks** — Thunderpick, GG.BET, BetBoom carry the deepest tier-2 CS2 menu: `https://thunderpick.io/esports/cs2-betting`, `https://gg.bet/en/esports/counter-strike`, `https://betboom.com/`.
+3. **Multi-book aggregators** — EGamersWorld, BO5 and OddsPortal put several books' odds on one card so they can be de-vigged to a fair probability: `https://egamersworld.com/counterstrike/bets`.
+4. **Our originated VRS model line** — where no book prices the match.
+
+The method, the verified source URLs, and the honest limitations (HLTV shows a dash for odds on many low-tier fixtures; books/aggregators are region-shaped and access-controlled; Pinnacle's public API closed in 2025) are in [`research/cs2-non-featured-resolution-2026-10-25.md`](research/cs2-non-featured-resolution-2026-10-25.md) and are surfaced in the executive summary's **"How we resolve low-tier & unlisted matches"** card (`index.html` → `#non-featured-research`) and on [Sources & methodology](https://buffedlizard55-lab.github.io/MaltaProj4/sources.html#method). The limitation that live HLTV/esportsbook scraping is documented but not yet wired into the automated refresh is flagged (non-blocking) on [Flagged for Review](https://buffedlizard55-lab.github.io/MaltaProj4/review.html) as `session-4caf5b86-hltv-nonfeatured-research-2026-10-25`.
+
 ### Live board repair and full-coverage capture — 24 October 2026
 
 **The public board was frozen because a test, not the data, failed.** The scheduled publisher runs the

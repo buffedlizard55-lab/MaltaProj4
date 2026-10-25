@@ -5615,5 +5615,32 @@
     "label": "Phone measurement on a fresh capture (executive summary links, first pick, both win chances)"
    }
   ]
+ },
+ {
+  "id": "session-4caf5b86-hltv-nonfeatured-research-2026-10-25",
+  "status": "Open — documented research method for low-tier matches; live HLTV/esportsbook scraping not yet wired into the auto-refresh (non-blocking)",
+  "finding": "Researched and documented a verifiable method for resolving picks on CS2 matches that no exchange (Polymarket) lists — the long tail of low-tier, qualifier, regional and academy fixtures. In order: (1) HLTV betting/analytics (hltv.org/betting/analytics) for best bookmaker odds where a book prices the match, plus HLTV world ranking and recent form; (2) esportsbooks Thunderpick / GG.BET / BetBoom for the deepest tier-2 CS2 menu; (3) multi-book aggregators EGamersWorld / BO5 / OddsPortal, de-vigged to a fair probability; (4) our own Valve-standings (VRS) model line where no book prices the match. Honest limitation: HLTV shows a dash for odds on many low-tier fixtures (ranking/form only, no percentage); books and aggregators are region-shaped and access-controlled (GG.BET 403 and Thunderpick denial recorded in research/harvest-dedd2e34/book-probe.json); Pinnacle's public API closed 2025-07-23 so its lines survive only inside aggregators. At the 2026-10-25 snapshot all 18 open matches already carry a pick; the two model_vrs / model_vrs_mirror rows (HOTU vs The Huns, 5star vs 1WIN, Spirit Academy vs LFO 10) are the explicit 'no exchange line' cases, resolved by our originated VRS line, which HLTV ranking/form independently supports as a research-only pick. The method is published in the executive summary (#non-featured-research) and on sources.html#method.",
+  "sources": [
+   {
+    "url": "https://www.hltv.org/betting/analytics",
+    "label": "HLTV betting/analytics"
+   },
+   {
+    "url": "https://egamersworld.com/counterstrike/bets",
+    "label": "EGamersWorld CS2 odds"
+   },
+   {
+    "url": "https://thunderpick.io/esports/cs2-betting",
+    "label": "Thunderpick CS2"
+   },
+   {
+    "url": "https://gg.bet/en/esports/counter-strike",
+    "label": "GG.BET CS2"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/cs2-non-featured-resolution-2026-10-25.md",
+    "label": "Research note (repo)"
+   }
+  ]
  }
 ]

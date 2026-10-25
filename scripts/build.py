@@ -16,6 +16,36 @@ from scripts import summary, vrs
 ROOT=Path(__file__).resolve().parents[1]
 REPO='https://github.com/buffedlizard55-lab/MaltaProj4'
 
+# Session arena/4caf5b86-maltaproj4: researched, verifiable method for resolving
+# low-tier / unlisted (non-featured) CS2 matches — HLTV first, then esportsbooks,
+# then aggregators, then our own VRS model line. Sourced from research/
+# cs2-non-featured-resolution-2026-10-25.md (every URL opened 2026-10-25).
+# Appended to the executive summary's unresolved/limitations area so a visitor
+# sees how a pick is found for a match no exchange lists.
+NON_FEATURED_RESEARCH_HTML = (
+'<section class="panel" id="non-featured-research" aria-label="How we resolve low-tier and unlisted matches">'
+'<p class="eyebrow muted">Executive summary &middot; research for low-tier matches</p>'
+'<h2>How we resolve low-tier &amp; unlisted matches</h2>'
+'<p>Every Hotspawn CS2 fixture gets a pick. Featured matches are priced by exchanges and books; the long tail &mdash; '
+'qualifiers, regional and academy fixtures &mdash; often has <strong>no line on any accessible book</strong>. For those we '
+'research HLTV and the esportsbooks, in this order (full sources &amp; limits in the <a href="'
++ REPO + '/blob/main/research/cs2-non-featured-resolution-2026-10-25.md">research note</a>):</p>'
+'<ol class="method-steps">'
+'<li><div><strong>HLTV betting/analytics</strong><p>The owner&rsquo;s first call. <a href="https://www.hltv.org/betting/analytics">hltv.org/betting/analytics</a> '
+'shows each CS2 fixture&rsquo;s best bookmaker odds (when a book prices it), HLTV world ranking and recent form. Verified 2026-10-25 on CCT, NODWIN and ViderGG fixtures.</p></div></li>'
+'<li><div><strong>Esportsbooks</strong><p>Thunderpick, GG.BET and BetBoom carry the deepest tier-2 CS2 menu. '
+'<a href="https://thunderpick.io/esports/cs2-betting">Thunderpick</a> &middot; '
+'<a href="https://gg.bet/en/esports/counter-strike">GG.BET</a> &middot; '
+'<a href="https://betboom.com/">BetBoom</a>.</p></div></li>'
+'<li><div><strong>Esports betting-line aggregators</strong><p>EGamersWorld, BO5 and OddsPortal put several books&rsquo; odds on one card so we can de-vig to a fair probability. '
+'<a href="https://egamersworld.com/counterstrike/bets">EGamersWorld CS2 odds</a>.</p></div></li>'
+'<li><div><strong>Our own Valve-standings (VRS) model line</strong><p>Where no book prices the match, we originate a percentage from Valve&rsquo;s official standings &mdash; labelled, never presented as a market price.</p></div></li>'
+'</ol>'
+'<p class="small">Honest limit: HLTV shows a dash (&ldquo;&ndash;&rdquo;) for odds on many low-tier fixtures (ranks/form only, no percentage); books and aggregators are region-shaped and access-controlled; Pinnacle&rsquo;s public API closed in 2025. '
+'A match with no line anywhere stays blank &mdash; never 50/50. <a href="sources.html#method">Methodology &rarr;</a></p>'
+'</section>'
+)
+
 def e(v): return html.escape(str(v if v is not None else ''),quote=True)
 def link(url,label,cls=''): return f'<a class="{e(cls)}" href="{e(url)}">{e(label)}</a>'
 def date(v,full=False):
@@ -1014,7 +1044,7 @@ def unresolved_limits_card(data):
             '<p class="glance-actions">'
             + link('#unresolved-summary', 'Full unresolved section ↓', 'button secondary')
             + link('unresolved.html', 'Open the unresolved page →', 'button secondary')
-            + link('review.html', 'Flagged for review →', 'button secondary') + '</p></section>')
+            + link('review.html', 'Flagged for review →', 'button secondary') + '</p></section>') + NON_FEATURED_RESEARCH_HTML
 
 
 def overview(data):

@@ -1,3 +1,19 @@
+## Session 4caf5b86 — claim (2026-10-25 13:31 UTC) — non-featured (low-tier/unlisted) match resolution research
+
+Single active session on branch `arena/4caf5b86-maltaproj4`. Reads prior sessions' logs below as history; no other session is claimed against this branch. Per the brief, the new work is: **research verifiable sources to resolve picks for CS2 matches that no exchange (Polymarket) lists**, document the limitations, and surface them in the executive summary; keep the site mobile-first with in-site links to the updated picks.
+
+**Measured starting state (not assumed).** `data/latest.json` generated `2026-10-25T01:47:42Z`, snapshot observed `2026-10-25T01:44:08Z`. 79 feed rows, 18 open, **18 open with a pick and 18 with a win probability, 0 unresolved** (methods: 11 exchange, 2 exchange_wide, 2 bookmaker_fallback, 2 model_vrs / model_vrs_mirror, 1 bookmaker_fallback). The two `model_vrs` rows (HOTU vs The Huns, 5star vs 1WIN, Spirit Academy vs LFO 10) are the explicit "no exchange line" long-tail cases, resolved by our originated VRS line. Local build is byte-reproducible at the snapshot time (`python3 -m scripts.build --now <obs>`); `scripts.validate` rc=0 (79 rows, 18 calcs, 15 pages, 752 links, 186 rows); `tests.test_core` + `tests.test_pipeline_tiers` OK.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Research sources to resolve low-tier / unlisted CS2 matches: HLTV betting/analytics, esportsbooks (Thunderpick/GG.BET/BetBoom), aggregators (EGamersWorld/BO5/OddsPortal); document the resolution ladder + honest limitations, with verified URLs | in progress | 4caf5b86 | `research/cs2-non-featured-resolution-2026-10-25.md`, `README.md` | 2026-10-25 13:31 |
+| Surface the non-featured resolution method + limitations in the executive summary (mobile-first, in-site links to picks), never fabricating a pick | in progress | 4caf5b86 | `scripts/build.py` (`NON_FEATURED_RESEARCH_HTML` + `#non-featured-research` in exec summary) | 2026-10-25 13:31 |
+| Add non-blocking Flagged-for-Review note; final integration: rebuild, validate, unit/integrity gates, PR to main, self-merge, confirm GitHub Pages deploy | in progress | 4caf5b86 | `data/review-notes.json`, `COORDINATION.md`, generated root pages, `build-info.json` | 2026-10-25 13:31 |
+
+**Verification performed.** Every source URL in the research note was opened and read on 2026-10-25: HLTV `betting/analytics` (live CS2 fixtures with Best Odds, HLTV ranks #131/#84 etc., form, stand-ins; covers CCT/NODWIN/ViderGG), EGamersWorld `counterstrike/bets` (multi-book odds Vave/Thunderpick/Rainbet/Underdog/CocoBet on one card), Thunderpick/GG.BET/BetBoom CS2 pages, BO5/OddsPortal aggregators, OddsPapi CS2-depth write-up. No probability was invented; the two model_vrs rows already carry a sourced, labelled line. The new exec-summary section is additive (appended after `#unresolved-limits`, before `#unresolved-summary`) and validated to build cleanly.
+
+**Limitation flagged (non-blocking).** Live HLTV/esportsbook scraping is documented but not yet wired into the automated refresh (the collector's probe was denied by GG.BET/Thunderpick); auto-pipeline still relies on Polymarket + reachable books + VRS model. Recorded as `session-4caf5b86-hltv-nonfeatured-research-2026-10-25`.
+
 ## Session 2b856884 — published-state addendum (2026-10-24 18:05 UTC)
 
 **Measured after the two merges, read from `origin/main`, not from a branch.** PR
