@@ -6,7 +6,7 @@ This ledger is generated from committed bytes by `build_report.py`. It does not 
 | --- | --- |
 | Snapshot generated | `2026-10-25T14:22:27.352651Z` |
 | Fixtures observed | `2026-10-25T14:18:55.242320Z` |
-| Build receipt | `2026-10-25T14:52:07.516599Z` (revision `13088a587335`) |
+| Build receipt | `2026-10-25T14:52:07.516599Z` (revision `83be9356129c`) |
 | Hotspawn inventory | 78 rows, 16 open at snapshot instant |
 | Pick / probability coverage | 16 picks, 16 probability pairs, 0 unresolved |
 | Method mix | bookmaker_fallback 1, exchange 11, model_vrs 4 |
