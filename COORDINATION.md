@@ -1,3 +1,50 @@
+# Shared task board
+
+## Session b85ad9b4 — CLAIM 2026-10-25 13:30 UTC (the publisher is red; the live board withholds every pick)
+
+Board read before claiming, from `origin/main` (**not** from a branch): `main` == `origin/main` == `6ade440`,
+committed snapshot `data/latest.json` generated `2026-10-25T01:47:42Z`, 79 feed rows, 18 open, 18 picks,
+18 win probabilities, 0 unresolved (11 exchange, 2 exchange_wide, 2 bookmaker_fallback, 2 model_vrs,
+1 model_vrs_mirror); `python -m scripts.validate --data data/latest.json --site .` reproduces 79 rows /
+18 calculations / 15 pages / 751 links / 20 checksums, and `python -m unittest discover -s tests` is
+**1,606 tests OK (7 skipped)** on the committed tree.
+
+**Measured, not assumed.** The public site at 13:26Z reads *“Last checked 25 Oct 2026 · 01:47 UTC · 11h 40m
+ago”*, **“14 open CS2 match(es) · 0 with a pick · 0 with a win probability · 14 unresolved”** and
+*“Snapshot expired or timestamp unverified: all current picks are withheld”*. That is the user-visible
+complaint, and it is not a data problem: the schedule is running. It is the publisher.
+
+| Run (UTC) | Conclusion | Failing step |
+| --- | --- | --- |
+| 40151731896 · 01:43Z · schedule | **success** | published `build-info.json` `built_at 01:47:42Z` |
+| 40143667147 · 23:40Z · schedule | failure | `Build and independently verify every row, calculation and internal link` |
+| 40170923727 · 06:56Z · schedule | failure | same step |
+| 40193317196 · 12:29Z · schedule | failure | same step → no artifact → `deploy` fails with *No artifacts named "github-pages"* |
+
+So two scheduled publications in a row died on one step, the legacy `main:/` root (which is what Pages
+actually serves: `build_type: legacy`) has been frozen since 01:47Z, and the eight-hour evidence window has
+now lapsed. Nothing about picks, probabilities or sources is wrong on that snapshot — it is simply too old to
+publish, by the project's own rule, and the step that would have replaced it keeps failing.
+
+Job logs are **not** readable from this sandbox (`api.github.com` returns a 302 to
+`productionresultssa17.blob.core.windows.net`, which is outside the host allowlist), and the failing step's
+error text exists only in a job log. This session therefore uses the repository's existing read-back pattern:
+a dispatch-only replay workflow commits the full output of every publication command to this branch.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Replay the publication pipeline on a runner and capture the exact failing step, then find and fix the defect that fails `scripts.build` / `scripts.validate` on a fresh snapshot | in progress | b85ad9b4 | `scripts/diag_b85ad9b4.py` (new), `.github/workflows/diag-b85ad9b4.yml` (new), `research/session-b85ad9b4/**` (new) | 2026-10-25 13:30 |
+| Fix the defect in exactly one production file, with a regression test | unclaimed until the replay names it | — | `tests/test_session_b85ad9b4.py` (new) + the one named production file | 2026-10-25 13:30 |
+| Re-publish: fresh verified build, full gate set, PR to `main`, merge without approval, live Pages byte check, receipt | unclaimed until the fix lands | — | `COORDINATION.md`, `data/latest.json`, `data/matches.csv`, generated root pages, `build-info.json` | 2026-10-25 13:30 |
+
+Other sessions (`8e4ff8d2`, `6857421f`, `fec4894f`, `58354934`) opened publication diagnostics on
+2026-10-25 between 13:24Z and 13:26Z against the same failing step. This session does not touch their
+workflow files, their `scripts/` helpers or their `research/` directories, and will not re-do their
+diagnosis: it reads the shared board before each push and adopts any fix that reaches `main` first instead
+of layering a second one on top.
+
+---
+
 ## Session 2b856884 — published-state addendum (2026-10-24 18:05 UTC)
 
 **Measured after the two merges, read from `origin/main`, not from a branch.** PR
