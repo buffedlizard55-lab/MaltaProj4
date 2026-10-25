@@ -776,3 +776,20 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
   body[data-page=picks] tbody tr{padding:12px;gap:10px 14px}
   body[data-page=picks] td.team-col{padding-bottom:9px}
 }
+
+/* Session 9fca16ca final integration (2026-10-25): after merging the short-phone
+   picks.html compaction, the home-page glance card's second probability measured
+   y=486..517 at 320x568 while the fixed tab bar began at y=507, so
+   tests/browser_ce45f672.cjs correctly failed the build. Recover the measured
+   10px from duplicate short-phone chrome only: list top margin, card padding,
+   the gap above the pick, pick padding, and score row gap. Both percentages,
+   team labels, pick, time and all links remain rendered on the first screen. */
+@media(max-width:650px) and (max-height:700px){
+  body[data-page="index"] #picks-at-a-glance>.glance-list{margin-top:2px}
+  body[data-page="index"] .glance-card-mobile{padding:8px 11px;margin-bottom:6px}
+  body[data-page="index"] .glance-card-top{margin-bottom:2px}
+  body[data-page="index"] .glance-card-teams{line-height:1.15}
+  body[data-page="index"] .glance-card-pick{padding:5px 10px;gap:3px;margin-bottom:4px}
+  body[data-page="index"] .glance-card-scores{gap:2px}
+  body[data-page="index"] .glance-card-meta{margin-top:4px}
+}

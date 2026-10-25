@@ -1,0 +1,217 @@
+{
+  "session": "9fca16ca",
+  "scope": "Direct reads of the official sources named by the committed 2026-10-25T14:22:27.352651Z snapshot. The reads straddle that capture by a few minutes; every current exchange quote agrees with its retained raw receipt. An older 13:54Z capture had three quotes that moved before these reads; the publisher superseded it with the 14:22Z capture.",
+  "checked_at_window_utc": "2026-10-25T14:18:00Z/2026-10-25T14:23:00Z (straddles the 14:22:27Z snapshot)",
+  "inventory": {
+    "hotspawn_lobby": "https://play.hotspawn.com/lobby",
+    "hotspawn_cs2_pickems": "https://play.hotspawn.com/cs2-pickems",
+    "hotspawn_fixture_api": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+    "observed_open_fixture_ids": [
+      "1079199",
+      "1086696",
+      "1079200",
+      "1081158",
+      "1082697",
+      "1086697",
+      "1082858",
+      "1082859",
+      "1082860",
+      "1082861",
+      "1082897",
+      "1082898",
+      "1082900",
+      "1082901",
+      "1082792",
+      "1082793"
+    ],
+    "note": "The visible lobby listed the same 16 open CS2 fixtures. The endpoint also returns past-dated status=scheduled rows; those are retained on All matches without picks."
+  },
+  "official_sources": [
+    {
+      "name": "HLTV match and identity research",
+      "url": "https://www.hltv.org/matches",
+      "examples": [
+        "https://www.hltv.org/matches/2399115/color-vs-ex-zero-tenacity-nodwin-clutch-series-13",
+        "https://www.hltv.org/matches/2399918/tropa-do-kingui-vs-yawara-cct-2026-south-america-series-7",
+        "https://www.hltv.org/matches/2399437/hotu-vs-the-huns-gluck-moscow-cyber-games-2026",
+        "https://www.hltv.org/matches/2399438/1win-vs-5star-gluck-moscow-cyber-games-2026"
+      ],
+      "observation": "Official fixture pages resolved, with lineups and, where present, crowd-vote percentages. The crowd percentages are not used as probabilities."
+    },
+    {
+      "name": "HLTV dated Valve ranking mirror",
+      "url": "https://www.hltv.org/valve-ranking/teams/2026/october/25",
+      "observation": "Dated global Valve ranking page resolved; used as identity/ranking research, not as the primary input for an originated line when Valve's own file resolves both clubs uniquely."
+    },
+    {
+      "name": "Valve official regional standings",
+      "url": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+      "commit": "eec4853d7bcf0f1f7efe7f0d901234bef7e98b75",
+      "vendored_sha256": "df96e7fc3cd91a2687ec08cac0128e50cc4e4e55346581679572e881d79ae61b",
+      "formula_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/model/fit.js",
+      "calibration_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/modelfit.png",
+      "observation": "The official standings file and its vendored copy agree by SHA-256. fit.js fixes the rating deviation at 75; the repository validator replays the 0.7986 calibration."
+    },
+    {
+      "name": "Pinnacle esports moneylines",
+      "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+      "observation": "Official guest API resolved with moneyline records. No resolvable whole-match price was accepted for the four low-tier model rows in this snapshot."
+    },
+    {
+      "name": "Thunderpick CS2 betting",
+      "url": "https://thunderpick.io/esports/cs2-betting",
+      "observation": "Official CS2 betting landing page resolved; the validated two-sided line for fixture 1082859 was read through the BO3.gg REST match feed."
+    },
+    {
+      "name": "GG.BET CS2",
+      "url": "https://gg.bet/en/esports/counter-strike",
+      "observation": "Direct read returned a regional-access notice; the committed source receipt records HTTP 403 after documented waits. Access controls are not bypassed."
+    },
+    {
+      "name": "EGamersWorld gap recheck",
+      "url": "https://egamersworld.com/counterstrike/match/EkalRNMvVx/hotu-vs-the-huns-esports-SfdtzDhiK",
+      "observation": "The committed source receipt records HTTP 403; no price was inferred from this source."
+    },
+    {
+      "name": "BO3.gg CS2 upcoming feed",
+      "url": "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
+      "observation": "Official API resolved; its two-sided Thunderpick moneyline for NEXVOID vs Alter Ego is checked below."
+    }
+  ],
+  "current_market_checks": [
+    {
+      "fixture_id": "1079199",
+      "source_url": "https://gamma-api.polymarket.com/markets/6072808",
+      "market_id": "6072808",
+      "outcomes": ["Infinite", "Brute"],
+      "outcomePrices": [0.435, 0.565],
+      "stored_order_prices": [0.435, 0.565],
+      "updatedAt": "2026-10-25T14:12:37.482955Z",
+      "provider": "Polymarket Gamma API"
+    },
+    {
+      "fixture_id": "1086696",
+      "source_url": "https://gamma-api.polymarket.com/markets/6158760",
+      "market_id": "6158760",
+      "outcomes": ["BORRACHEIROS", "RED Canids Academy"],
+      "outcomePrices": [0.435, 0.565],
+      "stored_order_prices": [0.435, 0.565],
+      "updatedAt": "2026-10-25T14:18:37.119833Z",
+      "provider": "Polymarket Gamma API"
+    },
+    {
+      "fixture_id": "1081158",
+      "source_url": "https://gamma-api.polymarket.com/markets/6098416",
+      "market_id": "6098416",
+      "outcomes": ["FORZE Reload", "ex-RUSTEC"],
+      "outcomePrices": [0.565, 0.435],
+      "stored_order_prices": [0.565, 0.435],
+      "updatedAt": "2026-10-25T14:16:38.069083Z",
+      "provider": "Polymarket Gamma API"
+    },
+    {
+      "fixture_id": "1082697",
+      "source_url": "https://gamma-api.polymarket.com/markets/6166390",
+      "market_id": "6166390",
+      "outcomes": ["paiN", "BESTIA"],
+      "outcomePrices": [0.585, 0.415],
+      "stored_order_prices": [0.415, 0.585],
+      "updatedAt": "2026-10-25T14:16:38.069083Z",
+      "provider": "Polymarket Gamma API"
+    },
+    {
+      "fixture_id": "1082858",
+      "source_url": "https://gamma-api.polymarket.com/markets/6066508",
+      "market_id": "6066508",
+      "outcomes": ["Ground Zero", "Off Chops"],
+      "outcomePrices": [0.37, 0.63],
+      "stored_order_prices": [0.37, 0.63],
+      "updatedAt": "2026-10-25T14:16:38.069083Z",
+      "bestBid": 0.26,
+      "bestAsk": 0.48,
+      "provider": "Polymarket Gamma API"
+    },
+    {
+      "fixture_id": "1082860",
+      "source_url": "https://gamma-api.polymarket.com/markets/6066520",
+      "market_id": "6066520",
+      "outcomes": ["FlyQuest", "Staqued"],
+      "outcomePrices": [0.925, 0.075],
+      "stored_order_prices": [0.925, 0.075],
+      "updatedAt": "2026-10-25T14:20:38.876414Z",
+      "provider": "Polymarket Gamma API"
+    },
+    {
+      "fixture_id": "1082861",
+      "source_url": "https://gamma-api.polymarket.com/markets/6066525",
+      "market_id": "6066525",
+      "outcomes": ["Rooster", "Abyssal"],
+      "outcomePrices": [0.425, 0.575],
+      "stored_order_prices": [0.425, 0.575],
+      "updatedAt": "2026-10-25T14:16:38.069083Z",
+      "bestBid": 0.3,
+      "bestAsk": 0.55,
+      "provider": "Polymarket Gamma API"
+    },
+    {
+      "fixture_id": "1082897",
+      "source_url": "https://gamma-api.polymarket.com/markets/6024944",
+      "market_id": "6024944",
+      "outcomes": ["B8", "K27"],
+      "outcomePrices": [0.595, 0.405],
+      "stored_order_prices": [0.595, 0.405],
+      "updatedAt": "2026-10-25T14:20:38.876414Z",
+      "provider": "Polymarket Gamma API"
+    },
+    {
+      "fixture_id": "1082898",
+      "source_url": "https://gamma-api.polymarket.com/markets/6024952",
+      "market_id": "6024952",
+      "outcomes": ["Alliance", "FaZe"],
+      "outcomePrices": [0.375, 0.625],
+      "stored_order_prices": [0.375, 0.625],
+      "updatedAt": "2026-10-25T14:14:38.413969Z",
+      "provider": "Polymarket Gamma API"
+    },
+    {
+      "fixture_id": "1082900",
+      "source_url": "https://gamma-api.polymarket.com/markets/6024960",
+      "market_id": "6024960",
+      "outcomes": ["Luminosity", "HOTU"],
+      "outcomePrices": [0.525, 0.475],
+      "stored_order_prices": [0.525, 0.475],
+      "updatedAt": "2026-10-25T14:10:38.476648Z",
+      "provider": "Polymarket Gamma API"
+    },
+    {
+      "fixture_id": "1082901",
+      "source_url": "https://gamma-api.polymarket.com/markets/6037120",
+      "market_id": "6037120",
+      "outcomes": ["Envy", "GamerLegion"],
+      "outcomePrices": [0.455, 0.545],
+      "stored_order_prices": [0.455, 0.545],
+      "updatedAt": "2026-10-25T14:12:37.482955Z",
+      "provider": "Polymarket Gamma API"
+    }
+  ],
+  "current_book_check": {
+    "fixture_id": "1082859",
+    "source_url": "https://bo3.gg/matches/nexvoid-vs-alter-ego-26-10-2026",
+    "api_url": "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
+    "decimal_odds": [1.6, 2.2],
+    "normalized_probabilities": [0.5789473684210527, 0.42105263157894735],
+    "limitation": "Single-operator listing read through BO3.gg; no tick-level operator price-update timestamp is published."
+  },
+  "prior_snapshot_movements": [
+    {
+      "snapshot_generated_at": "2026-10-25T13:54:18.896036Z",
+      "detail": "Three exchange quotes had moved by 0.5–1.0 percentage points at the later direct reads; the 14:22:27Z publisher capture replaced them through the normal gated refresh and all eleven official quotes now agree."
+    }
+  ],
+  "limitations": [
+    "Prices move. Direct official reads are a check on source availability and orientation, not a hand edit to the dated raw receipt on which the published calculation is based.",
+    "The authoring sandbox cannot persist raw HTTP bodies for all sources; the committed snapshot retains hashes, observation times and status codes for each collector read.",
+    "GG.BET and EGamersWorld access restrictions are recorded rather than bypassed or treated as evidence that no market exists.",
+    "Originated VRS lines are labelled model estimates from Valve's official standings, not betting lines."
+  ]
+}
