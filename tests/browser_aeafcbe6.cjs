@@ -77,8 +77,19 @@ const VIEWPORTS = [
       // 2. The updated-picks page: the first row, its pick and both win chances.
       await page.goto(base + 'picks.html', {waitUntil: 'networkidle'});
       const board = await page.evaluate(() => {
-        const firstRow = document.querySelector('tr.row');
-        if (!firstRow) return {found: false};
+        // Session 58354934 (2026-10-25): measure the first row the page still
+        // publishes. A snapshot is a dated observation, so between the build and
+        // this run a row can pass its own sourced lock; the page then correctly
+        // closes it and the old `tr.row` selector measured that closed card
+        // (16 picks on 17 rows, measured at 14:12Z on the 13:46Z board). A row
+        // with no live `data-expires` is a closed card, not a layout defect.
+        const now = Date.now();
+        const rows = [...document.querySelectorAll('tr.row')];
+        const firstRow = rows.find(row => {
+          const expires = row.getAttribute('data-expires');
+          return expires && Date.parse(expires) > now;
+        });
+        if (!firstRow) return {found: false, liveRows: 0, closedRows: rows.length};
         const r = firstRow.getBoundingClientRect();
         // Real markup: `.prob-pair > span` holds "42.5%" / "57.5%", each with an
         // aria-label naming the team, and `.pick` holds the published pick.
@@ -125,9 +136,9 @@ const VIEWPORTS = [
       } else if (!board.found) {
         report.failures.push(`${viewport.name}: fresh picks page shows no rows`);
       } else {
-        if (!board.pick) report.failures.push(`${viewport.name}: first row has no visible pick`);
+        if (!board.pick) report.failures.push(`${viewport.name}: first live row has no visible pick`);
         if (board.percentages.length < 2)
-          report.failures.push(`${viewport.name}: first row does not show both win chances (${JSON.stringify(board.percentages)})`);
+          report.failures.push(`${viewport.name}: first live row does not show both win chances (${JSON.stringify(board.percentages)})`);
         // Both teams' chances must be readable without scrolling past the first screen.
         if (board.top > viewport.height)
           report.failures.push(`${viewport.name}: first pick row starts below the first screen`);
