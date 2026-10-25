@@ -1,3 +1,5 @@
+# Shared task board
+
 ## Session 85087497 claim — 2026-10-25 13:30 UTC (diagnose failed publisher, fresh full-coverage board, mobile executive summary)
 
 **Status: in progress.** Arena-fixed branch `arena/85087497-maltaproj4` (based on `main` `6ade440`);
@@ -48,6 +50,51 @@ fallbacks — with unresolved rows and limitations in the executive summary + `u
 `picks.html`, `#picks-at-a-glance`, `unresolved.html`, `matches.html`, `sources.html#method`,
 `review.html`; (5) PR to `main`, merge without waiting per brief, confirm Pages serves the new
 build, record the receipt here. Unverified values stay blank and flagged, never inferred.
+
+## Session b85ad9b4 — CLAIM 2026-10-25 13:30 UTC (the publisher is red; the live board withholds every pick)
+
+Board read before claiming, from `origin/main` (**not** from a branch): `main` == `origin/main` == `6ade440`,
+committed snapshot `data/latest.json` generated `2026-10-25T01:47:42Z`, 79 feed rows, 18 open, 18 picks,
+18 win probabilities, 0 unresolved (11 exchange, 2 exchange_wide, 2 bookmaker_fallback, 2 model_vrs,
+1 model_vrs_mirror); `python -m scripts.validate --data data/latest.json --site .` reproduces 79 rows /
+18 calculations / 15 pages / 751 links / 20 checksums, and `python -m unittest discover -s tests` is
+**1,606 tests OK (7 skipped)** on the committed tree.
+
+**Measured, not assumed.** The public site at 13:26Z reads *“Last checked 25 Oct 2026 · 01:47 UTC · 11h 40m
+ago”*, **“14 open CS2 match(es) · 0 with a pick · 0 with a win probability · 14 unresolved”** and
+*“Snapshot expired or timestamp unverified: all current picks are withheld”*. That is the user-visible
+complaint, and it is not a data problem: the schedule is running. It is the publisher.
+
+| Run (UTC) | Conclusion | Failing step |
+| --- | --- | --- |
+| 40151731896 · 01:43Z · schedule | **success** | published `build-info.json` `built_at 01:47:42Z` |
+| 40143667147 · 23:40Z · schedule | failure | `Build and independently verify every row, calculation and internal link` |
+| 40170923727 · 06:56Z · schedule | failure | same step |
+| 40193317196 · 12:29Z · schedule | failure | same step → no artifact → `deploy` fails with *No artifacts named "github-pages"* |
+
+So two scheduled publications in a row died on one step, the legacy `main:/` root (which is what Pages
+actually serves: `build_type: legacy`) has been frozen since 01:47Z, and the eight-hour evidence window has
+now lapsed. Nothing about picks, probabilities or sources is wrong on that snapshot — it is simply too old to
+publish, by the project's own rule, and the step that would have replaced it keeps failing.
+
+Job logs are **not** readable from this sandbox (`api.github.com` returns a 302 to
+`productionresultssa17.blob.core.windows.net`, which is outside the host allowlist), and the failing step's
+error text exists only in a job log. This session therefore uses the repository's existing read-back pattern:
+a dispatch-only replay workflow commits the full output of every publication command to this branch.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Replay the publication pipeline on a runner and capture the exact failing step | **done** — run 40197667220, bundle in `research/session-b85ad9b4/`; step `07-validate-fresh` returned 1 with `AssertionError: Model roster has no HLTV source on this row` on Hotspawn fixture 1086697 | b85ad9b4 | `scripts/diag_b85ad9b4.py`, `.github/workflows/diag-b85ad9b4.yml`, `research/session-b85ad9b4/**` | 2026-10-25 13:40 |
+| Fix the defect in exactly one production file, with a regression test | **done** — `scripts/validate.py` (`same_club` / `lineup_source_ok`); 11 regressions in `tests/test_session_b85ad9b4.py`; 1,617 tests OK, audits 9 OK, integrity 5 OK, verification-c6 12 OK, `scripts.validate` green on the captured snapshot (78 rows / 17 calculations / 15 pages / 730 links / 20 checksums) | b85ad9b4 | `scripts/validate.py`, `tests/test_session_b85ad9b4.py`, `data/review-notes.json` (append-only) | 2026-10-25 13:45 |
+| Re-publish: fresh verified build, full gate set, PR to `main`, merge without approval, live Pages byte check, receipt | in progress | b85ad9b4 | `COORDINATION.md`, `data/latest.json`, `data/matches.csv`, generated root pages, `build-info.json` | 2026-10-25 13:45 |
+
+Other sessions (`8e4ff8d2`, `6857421f`, `fec4894f`, `58354934`) opened publication diagnostics on
+2026-10-25 between 13:24Z and 13:26Z against the same failing step. This session does not touch their
+workflow files, their `scripts/` helpers or their `research/` directories, and will not re-do their
+diagnosis: it reads the shared board before each push and adopts any fix that reaches `main` first instead
+of layering a second one on top.
+
+---
 
 ## Session 2b856884 — published-state addendum (2026-10-24 18:05 UTC)
 
@@ -9491,3 +9538,25 @@ Flagged for Review page.
 the stale watchdog, so the 4–8 hour promise is now backed by a publisher that actually completes;
 the eight-hour silence was a contract violation in the data, not a cron problem, and it is
 recorded rather than papered over.
+
+## Session a7f788c8 — 2026-10-25 independent integration claim
+
+| Task | Status | Owner | File scope |
+| --- | --- | --- | --- |
+| Reproduce current publication failure; independent validator regression repair if not claimed; verify and integrate | in progress | a7f788c8 | `research/session-a7f788c8/**`, `tests/test_session_a7f788c8.py`, validator only if defect reproduced and unclaimed |
+
+Arena fixes this session to `arena/a7f788c8-maltaproj4`; no alternate branch will be created. Session 58354934 has a non-publishing diagnosis running; this session will not edit its workflow or research. Current scheduled run 40193317196 failed at build/row verification after refresh and quarantine succeeded (GitHub jobs API). Log-download host is blocked in this environment; no fresh source verification is claimed yet.
+
+### a7f788c8 scope extension — verified-artifact deployment gate
+Claim `.github/workflows/pages.yml` only for the deployment eligibility/output guard, and `tests/test_session_a7f788c8.py`. The separate 58354934 scope is its diagnosis workflow and receipts; no duplicate refresh is launched. Reproduced: run 40193317196 failed step 13 and skipped artifact upload, yet deploy ran because `always()` only checks the freshness intention. Preserve deployment after *post-upload* root-staging failures, but require successful verified artifact upload. Claim committed before implementation.
+
+### a7f788c8 implementation receipt / integration handoff — 2026-10-25 13:36 UTC
+
+| Task | Status | Owner | Scope / receipt |
+| --- | --- | --- | --- |
+| Independent deployment eligibility repair | done | a7f788c8 | `.github/workflows/pages.yml`, `tests/test_session_a7f788c8.py`; PR [#311](https://github.com/buffedlizard55-lab/MaltaProj4/pull/311) |
+| Final fresh-data integration and live publication | unclaimed by this session; owned by 58354934 T3 | 58354934 | Do not duplicate its scripts/data/generated-page scope. Narrow gate is ready to integrate after its checks. |
+
+Full local unit suite **1,608 passed, 7 skipped**; audits 9, integrity 5, independent c6 12 passed. Root validation reproduces 79 rows / 18 calculations / 15 pages / 751 links-assets / 20 checksums / 186 displayed rows. Hosted audit for #311 passed (run 40197939897); `verify-build` remains queued, not green, at receipt time. No merge or successful deploy is claimed. Browser suite on the expired committed snapshot fails the final phone suite's visible-pick assertion; the withheld state is expected, not a fresh-source result. Session 601ce27c's PR #313 owns that test repair; session 046b2e46's PR #314 also targets the roster-alias validation defect. Do not independently layer another version of either fix.
+
+Source/diagnosis references and limitations: `research/session-a7f788c8/REPORT.md`. Diagnosis run [40197480741](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40197480741) reports 78 rows / 17 open / 17 picks but fails validation on fixture 1086697's literal HLTV roster label comparison; these are research observations, **not published or fully verified picks**. This session did not reset evidence clocks, change any probability, fabricate missing values, or promote a stale/invalid snapshot.
