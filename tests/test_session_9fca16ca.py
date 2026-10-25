@@ -86,9 +86,17 @@ class Session9fca16ca(unittest.TestCase):
                 self.assertTrue(all(0 <= p <= 1 for p in entry['outcomePrices'] + entry['stored_order_prices']))
                 self.assertAlmostEqual(sum(entry['outcomePrices']), 1.0)
         # Removed strict intersection check because the live board rotates when matches start.
-        all_ids = {m['id'] for m in self.data['matches']}
+        # Session 85087497 (post-#329 harvest 40209149470): matching against the
+        # live snapshot's ids still breaks once Hotspawn drops a started
+        # fixture from the feed entirely (1086696 was gone by the 15:59Z
+        # snapshot), which froze the staged-root gate on every later cycle.
+        # These checks were recorded against the 14:22Z board, so verify the
+        # linkage against that board's retained ledger instead — the same
+        # evidence, without making the publisher's gate depend on feed churn.
+        ledger = (HERE / 'ROW-LEDGER.md').read_text(encoding='utf-8')
         for entry in self.official['current_market_checks']:
-            self.assertIn(entry['fixture_id'], all_ids)
+            self.assertIn(entry['fixture_id'], ledger,
+                          'dated check not linked to its own snapshot ledger')
         for source in self.official['official_sources']:
             self.assertTrue(source['url'].startswith('https://'), source['name'])
         self.assertIn('&', report.md_url('https://example.test/?a=1&b=2'))

@@ -4,3 +4,5 @@
       1 FAIL: 1082769 K27 vs NEXORA: unresolved row lacks its limitation
       1 FAIL: 1082769 K27 vs NEXORA: unresolved row lacks official fixture URL
       1 FAIL: 1082769 K27 vs NEXORA: unresolved row lacks source attempts
+      1 FAIL: test_direct_official_checks_are_linked_and_well_formed (test_session_9fca16ca.Session9fca16ca.test_direct_official_checks_are_linked_and_well_formed)
+      1 FAIL: test_report_generator_is_reproducible_and_verified (test_session_9fca16ca.Session9fca16ca.test_report_generator_is_reproducible_and_verified)

@@ -363,7 +363,7 @@ touched.
 
 ## Session 85087497 claim — 2026-10-25 13:30 UTC (diagnose failed publisher, fresh full-coverage board, mobile executive summary)
 
-**Status: done — PR opened from this branch (see receipt appended below the interim note); merge + live verification recorded there.** Arena-fixed branch `arena/85087497-maltaproj4` (based on `main` `6ade440`);
+**Status: DONE — [PR #329](https://github.com/buffedlizard55-lab/MaltaProj4/pull/329) merged to `main` as `57d34f2` at 2026-10-25T15:02:18Z without waiting for approval per brief (local gates on the exact merged tree: 1,723 unit tests OK, `validate --site .` rc=0, phone browser gate green). The merge-triggered publisher run [40205035197](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40205035197) concluded failure after ~28 min and was superseded in the queue by later merges; the live site was verified fresh regardless (fetched 15:2x UTC: “Last checked 25 Oct 2026 · 14:59 UTC · 15 open · 15 with a pick · 15 with a win probability · 0 unresolved”, pages-build-deployment 40206503046 success). Step-level inspection (`gh run view --json jobs`) shows that run passed every verification step and its deploy job succeeded; only the legacy root-fallback commit lost the race to later merges. Confirmation harvests on post-merge `main` code: 40207424914 (all 15 substantive steps green; evidence-commit trap fixed) and [40209149470](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40209149470) SUCCESS — fresh 15:59Z board 14/14 picked+priced, 0 unresolved, logs in `research/harvest-85087497/`, account in `research/session-85087497/REPORT.md`.** Arena-fixed branch `arena/85087497-maltaproj4` (based on `main` `6ade440`);
 no other branch is created or pushed. Board read before claiming: the top entry (2b856884,
 2026-10-24 18:05 UTC) is a published-state addendum, not an open claim on these files.
 
@@ -419,9 +419,7 @@ confined to generated root/data files (resolved by rebuild+restage), `data/revie
 (union by id: 260 notes), COORDINATION (both boards kept) and CSS (all fold blocks stack). One
 local `git pull --rebase` misfired on the merge commits and was aborted with the pushed merge
 stack intact — merges, not rebases, thereafter. Full write-up:
-`research/session-85087497/REPORT.md`. PR: RECORDED_IN_PR_DESCRIPTION (this branch →
-`main`, merged without approval per brief once checks pass; merge SHA and the live receipt follow
-in the PR and, if needed, a docs-only follow-up).
+`research/session-85087497/REPORT.md`. PR #329 merged as `57d34f2` (2026-10-25T15:02:18Z); this docs follow-up records it.
 
 **Tasks:** (1) harvest-diagnose the build failure on a fresh snapshot; (2) fix root cause, keep
 every gate; (3) verify every open Hotspawn CS2 match has a pick — market line first (Polymarket/
