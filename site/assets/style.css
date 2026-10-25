@@ -712,27 +712,6 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
   body[data-page="index"] .glance-card-pick{padding:6px 10px;gap:4px}
 }
 
-/* Session 6d111263 (2026-10-25): the same first-screen contract on a short
-   phone, measured with the then-first open fixture BORRACHEIROS vs RED Canids
-   Academy (Hotspawn 1086696) on a 320x568 viewport: the second score row ended
-   at y=517, behind the fixed tab bar at y=507, because this card's team heading
-   wraps to two lines and the pick row carries the 22px probability. Both win
-   chances must stay above the bar with room for the next long-named fixture:
-   the heading drops to a single 14px line where it fits, the pick row keeps its
-   meaning at 16px/19px, and a few pixels of vertical rhythm leave the card.
-   Short viewports only (max-height:700px, same guard as session e3fe9518):
-   taller phones, tablets and desktop keep the roomier typography, and no other
-   page or the pick board is touched. Text, order, tap targets and every test
-   assertion about the numbers themselves are unchanged. */
-@media(max-width:650px) and (max-height:700px){
-  body[data-page="index"] .glance-card-teams{font-size:12.5px;line-height:1.2}
-  body[data-page="index"] .glance-card-pick-label{line-height:1}
-  body[data-page="index"] .glance-card-pick-team{font-size:16px}
-  body[data-page="index"] .glance-card-prob{font-size:19px}
-  body[data-page="index"] .glance-card-top{margin-bottom:2px}
-  body[data-page="index"] .glance-card-scores{gap:2px}
-  body[data-page="index"] .glance-card-mobile{padding:9px 12px}
-  body[data-page="index"] .glance-card-pick{padding:5px 10px;gap:4px}
 }
 
 /* Board-first on tall phones too: optional filters must not bury the pick. */
@@ -798,4 +777,21 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
   body[data-page=picks] caption{padding:8px 11px;margin-bottom:8px}
   body[data-page=picks] tbody tr{padding:12px;gap:10px 14px}
   body[data-page=picks] td.team-col{padding-bottom:9px}
+}
+
+/* Session 9fca16ca final integration (2026-10-25): after merging the short-phone
+   picks.html compaction, the home-page glance card's second probability measured
+   y=486..517 at 320x568 while the fixed tab bar began at y=507, so
+   tests/browser_ce45f672.cjs correctly failed the build. Recover the measured
+   10px from duplicate short-phone chrome only: list top margin, card padding,
+   the gap above the pick, pick padding, and score row gap. Both percentages,
+   team labels, pick, time and all links remain rendered on the first screen. */
+@media(max-width:650px) and (max-height:700px){
+  body[data-page="index"] #picks-at-a-glance>.glance-list{margin-top:2px}
+  body[data-page="index"] .glance-card-mobile{padding:8px 11px;margin-bottom:6px}
+  body[data-page="index"] .glance-card-top{margin-bottom:2px}
+  body[data-page="index"] .glance-card-teams{line-height:1.15}
+  body[data-page="index"] .glance-card-pick{padding:5px 10px;gap:3px;margin-bottom:4px}
+  body[data-page="index"] .glance-card-scores{gap:2px}
+  body[data-page="index"] .glance-card-meta{margin-top:4px}
 }
