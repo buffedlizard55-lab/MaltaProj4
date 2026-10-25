@@ -64,6 +64,40 @@ def contract_violations(match):
     return problems
 
 
+def publication_violations(data, match):
+    """Per-row re-run of the publisher's own model-row checks.
+
+    Session e009964b measured why this exists. Scheduled run 40193317196
+    (2026-10-25 12:29Z) and the reproduction on branch arena/e009964b-maltaproj4
+    (run 40197625563) refreshed a fresh snapshot in which one originated Valve-VRS
+    row carried a roster overlap but no HLTV source for that roster on the row.
+    The independent auditor accepted the row, `scripts.build` rendered it, and
+    `scripts.validate` rejected it with "Model roster has no HLTV source on this
+    row". Because validate runs on the whole snapshot, that single row blocked the
+    publish of all 78 others and the board froze at the last verified snapshot.
+
+    Only the two originated-model methods are re-run here, with the same functions
+    validate uses, so a model row that the publisher cannot stand behind is
+    withheld on its own (the same way the independent auditor withholds rows)
+    instead of freezing the board. Non-model rows keep the full validate gate.
+    """
+    if match.get('state') != 'open' or match.get('method') not in ('model_vrs', 'model_vrs_mirror'):
+        return []
+    evidence = match.get('evidence') or []
+    if len(evidence) != 1:
+        return []
+    from scripts import validate
+    now = validate.dt(data['generated_at'])
+    try:
+        if match['method'] == 'model_vrs':
+            validate.validate_model_row(match, evidence[0], now)
+        else:
+            validate.validate_mirror_row(match, evidence[0], now)
+    except AssertionError as exc:
+        return ['Publication validator: %s' % (exc,)]
+    return []
+
+
 def quarantine(data, audit=None):
     audit = audit or auditor()
     rows, _ = audit.inspect(data)
@@ -74,7 +108,7 @@ def quarantine(data, audit=None):
     rows, errors = audit.inspect(data)
     failing = {m['id']: problems for m, problems in rows if problems}
     for m in data['matches']:
-        extra = contract_violations(m)
+        extra = contract_violations(m) + publication_violations(data, m)
         if extra:
             failing.setdefault(m['id'], []).extend(extra)
     for m in data['matches']:
