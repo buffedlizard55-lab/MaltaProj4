@@ -74,7 +74,13 @@ percentages clear of the fixed phone tab bar). Executive summary carries `#exec-
 at the merge carries revision `fccf2ca`, snapshot `2026-10-25T14:22:27Z`, 78 rows — the board verified above.
 GitHub Pages is `legacy main:/`; its first build after the merge reported `errored` while the host still
 served the previous 14:11Z build, so a receipt push re-triggers the build and the live bytes are re-read
-after it lands (result appended below).
+after it lands. **Live result (re-read 2026-10-25 ~14:56Z): the public site serves `build-info.json`
+built `14:38:14Z` from snapshot `14:38:13Z` (the scheduled publisher's own post-merge build, fresher than
+this session's 14:22Z board), and the executive summary reads *“Last checked 25 Oct 2026 · 14:38 UTC ·
+16 open CS2 match(es) · 16 with a pick · 16 with a win probability · 0 unresolved”* with the in-site routes
+to `picks.html`, `unresolved.html`, `matches.html` and `sources.html#method`. Deployment confirmed live;
+the 4–8 hour requirement is met by the :04/:19/:34/:49 cron plus the 10-minute watchdog now running on the
+merged code.**
 
 **Merge note (PR #331):** `main` moved during the session (PR #324, session bd650209, snapshot
 `2026-10-25T13:54:18Z`). The merge adopted bd650209's code, tests, workflows and research receipts in
