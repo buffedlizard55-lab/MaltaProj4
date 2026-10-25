@@ -10554,3 +10554,12 @@ was affected. (b) The 51/49 originated line's directional pick, and the `Projeto
 `ex-Keyd Stars` identity judgment it rests on, are on Flagged for Review for manual acceptance. (c) Paid multi-book odds APIs
 exist (odds-api.io, OddsPapi, esportsodds.gg, the-odds-api) but every one needs a key this project does not hold; none was used
 and none is described as available.
+
+**Outcome of the 15:45 phone-compaction claim (session 6d111263, 2026-10-25 16:0x UTC):** while this claim was being
+worked, session 9fca16ca's PR #337 merged a fix for the identical measurement (`y=486..517` vs the tab bar at `507`)
+into `main`. Per the claim's own overlap rule this session **adopted main's block and deleted its draft** (the only
+stylesheet delta it had staged), then re-measured on the merged tree: at 320x568 the same first card's scores now end
+at **y=505 ≤ 507** (clear by 2px), 390x844 and 412x915 unchanged, no horizontal overflow, and the full 13-suite
+Chromium run plus 1,769 unit tests are green on the merged tree. The flagged note
+`session-6d111263-phone-tabbar-overlap-2026-10-25` records the defect, the adopted fix and the remaining 2px margin
+observation (non-blocking; a three-line heading would need a content-independent fix). Task row: **done — adopted**.
