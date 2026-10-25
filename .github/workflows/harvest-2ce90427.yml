@@ -1,0 +1,97 @@
+name: Session 2ce90427 source harvest (non-publishing)
+
+on:
+  push:
+    branches: [arena/2ce90427-maltaproj4]
+    paths:
+      - '.github/workflows/harvest-2ce90427.yml'
+      - 'scripts/**'
+      - 'requirements.txt'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+concurrency:
+  group: research-harvest-2ce90427-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  harvest:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[harvest]')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.ref_name }}
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Initialize receipt directory
+        run: mkdir -p runtime research/session-2ce90427/logs
+      - name: Refresh from configured official sources
+        continue-on-error: true
+        run: |
+          set +e
+          python -m scripts.refresh --output runtime/latest.json > research/session-2ce90427/logs/refresh.txt 2>&1
+          rc=$?
+          printf '%s\n' "$rc" > research/session-2ce90427/logs/refresh.exit
+          cat research/session-2ce90427/logs/refresh.txt
+          exit 0
+      - name: Quarantine, independently audit and build the exact refreshed snapshot
+        continue-on-error: true
+        run: |
+          set +e
+          if test -s runtime/latest.json; then
+            python -m scripts.quarantine runtime/latest.json > research/session-2ce90427/logs/quarantine.txt 2>&1
+            echo "$?" > research/session-2ce90427/logs/quarantine.exit
+            python verification-c6/audit_snapshot.py runtime/latest.json --output research/session-2ce90427/row-audit.md > research/session-2ce90427/logs/row-audit.txt 2>&1
+            echo "$?" > research/session-2ce90427/logs/row-audit.exit
+            python -m scripts.build --data runtime/latest.json > research/session-2ce90427/logs/build.txt 2>&1
+            echo "$?" > research/session-2ce90427/logs/build.exit
+            python -m scripts.validate --data runtime/latest.json --site public > research/session-2ce90427/logs/validate.txt 2>&1
+            echo "$?" > research/session-2ce90427/logs/validate.exit
+            python verification-c6/audit_snapshot.py public/data/latest.json --output research/session-2ce90427/published-row-audit.md > research/session-2ce90427/logs/published-row-audit.txt 2>&1
+            echo "$?" > research/session-2ce90427/logs/published-row-audit.exit
+          else
+            echo 'No refreshed snapshot was produced; see refresh log.' > research/session-2ce90427/logs/refresh-followup.txt
+          fi
+          exit 0
+      - name: Summarize counts and source receipt digest
+        if: always()
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          root = Path('research/session-2ce90427')
+          snapshot = Path('runtime/latest.json')
+          summary = {'workflow_run': '${{ github.run_id }}', 'head_sha': '${{ github.sha }}', 'snapshot_sha256': None, 'snapshot': None, 'stage_exit_codes': {p.name.removesuffix('.exit'): p.read_text().strip() for p in sorted((root / 'logs').glob('*.exit'))}, 'logs': sorted(p.name for p in (root / 'logs').glob('*'))}
+          if snapshot.is_file() and snapshot.stat().st_size:
+              data = json.loads(snapshot.read_text())
+              rows = data.get('matches') or []
+              opened = [r for r in rows if r.get('state') == 'open']
+              summary['snapshot_sha256'] = hashlib.sha256(snapshot.read_bytes()).hexdigest()
+              summary['snapshot'] = {'generated_at': data.get('generated_at'), 'fixtures_observed_at': data.get('fixtures_observed_at'), 'coverage': data.get('coverage'), 'rows_total': len(rows), 'open': len(opened), 'open_with_pick': sum(bool(r.get('pick')) for r in opened), 'open_with_probabilities': sum(r.get('probabilities') is not None for r in opened), 'unresolved_ids': [r.get('id') for r in opened if not r.get('pick')], 'methods': {method: sum(r.get('method') == method for r in opened) for method in sorted({str(r.get('method')) for r in opened})}}
+              (root / 'latest.json').write_bytes(snapshot.read_bytes())
+          (root / 'harvest-summary.json').write_text(json.dumps(summary, indent=2) + '\n')
+          print(json.dumps(summary, indent=2))
+          PY
+      - name: Retain runner logs for retrieval
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: session-2ce90427-harvest-${{ github.run_id }}
+          path: research/session-2ce90427/
+          retention-days: 30
+      - name: Commit source receipts on this session branch only
+        if: always()
+        run: |
+          git config user.name "harvest-runner"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/session-2ce90427
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "[harvest] retain session 2ce90427 source audit"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin HEAD:"${GITHUB_REF_NAME}"
