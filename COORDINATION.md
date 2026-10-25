@@ -90,6 +90,22 @@ of layering a second one on top.
 
 ---
 
+## Session 53284c80 progress — 2026-10-25 13:40 UTC (step-13 defect reproduced; alias comparison repaired)
+
+Independent of PR [#314](https://github.com/buffedlizard55-lab/MaltaProj4/pull/314) (session 046b2e46,
+which also claimed `scripts/validate.py`): on this tree, `plain_name("Projeto do KinGui")` ≠
+`plain_name("Tropa do KinGui")` while `core.norm` of both is equal via the sourced register
+entry (HLTV match 2399904, Polymarket market 6033256). `lineup_source_ok` with the Hotspawn
+label and the Valve five-player roster returned **False** before the change and **True** after.
+`verification-c6` already accepts the alias (`same_team`), so quarantine cannot save the run —
+step 13's `scripts.validate` is what froze publication.
+
+This session still does not edit `.github/workflows/pages.yml` (PR #311) or `scripts/build.py`
+(PR #312). Harvest [40197787382](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40197787382)
+is queued for a live capture. If #314 merges first, adopt its `validate.py` bytes; the comparison
+is the same function.
+
+
 ## Session 2b856884 — published-state addendum (2026-10-24 18:05 UTC)
 
 **Measured after the two merges, read from `origin/main`, not from a branch.** PR

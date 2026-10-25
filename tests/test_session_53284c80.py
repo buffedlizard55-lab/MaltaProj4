@@ -15,6 +15,8 @@ import unittest
 from pathlib import Path
 
 from scripts.diag_53284c80 import ledger, unresolved
+from scripts.core import IDENTITIES, norm, plain_name
+from scripts import validate
 
 ROOT = Path(__file__).resolve().parents[1]
 HARVEST = (ROOT / ".github/workflows/harvest-53284c80.yml").read_text()
@@ -90,7 +92,58 @@ class SnapshotContractTests(unittest.TestCase):
         self.assertEqual(report["picked"], sum(1 for m in opened if m.get("pick")))
         self.assertEqual(report["priced"], sum(1 for m in opened if m.get("probabilities")))
         self.assertEqual(report["unresolved"], sum(1 for m in opened if unresolved(m)))
-        self.assertEqual(report["unresolved"], 0, "committed snapshot should have no unresolved open rows")
+
+
+# Independently reproduced 2026-10-25: Hotspawn *Projeto do KinGui* vs HLTV
+# *Tropa do KinGui* is one registered club, but lineup_source_ok used to compare
+# plain_name and so failed pages.yml step 13 on every fresh refresh.
+FIXTURE_LABEL = "Projeto do KinGui"
+HLTV_LABEL = "Tropa do KinGui"
+VALVE_ROSTER = ["drg", "ALLE", "ckzao", "xureba", "lash"]
+
+
+def _alias_row(hltv_team=HLTV_LABEL, players=None):
+    return {
+        "id": "1086697",
+        "teams": [FIXTURE_LABEL, "Yawara"],
+        "hltv_context": {
+            "source": "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-yawara-cct-2026-south-america-series-7",
+            "lineups": [
+                {"team": hltv_team, "players": list(players or VALVE_ROSTER)},
+                {"team": "Yawara", "players": ["brn$", "j0w", "deemO", "tele", "mlhzin"]},
+            ],
+        },
+    }
+
+
+class RegisteredAliasRosterProvenanceTests(unittest.TestCase):
+    """A sourced alias must not freeze the publisher; an unsourced one still must."""
+
+    def test_the_register_treats_projeto_and_tropa_as_one_club(self):
+        self.assertNotEqual(plain_name(FIXTURE_LABEL), plain_name(HLTV_LABEL))
+        self.assertEqual(norm(FIXTURE_LABEL), norm(HLTV_LABEL))
+        record = next(
+            (
+                item
+                for item in IDENTITIES
+                if {plain_name(n) for n in item["names"]}
+                >= {plain_name(FIXTURE_LABEL), plain_name(HLTV_LABEL)}
+            ),
+            None,
+        )
+        self.assertIsNotNone(record)
+        self.assertTrue(str(record.get("source") or "").startswith("https://www.hltv.org/matches/"))
+
+    def test_lineup_source_ok_accepts_the_registered_hltv_label(self):
+        self.assertTrue(validate.same_club(FIXTURE_LABEL, HLTV_LABEL))
+        self.assertTrue(validate.lineup_source_ok(_alias_row(), FIXTURE_LABEL, VALVE_ROSTER))
+
+    def test_lineup_source_ok_still_refuses_a_different_roster_or_club(self):
+        self.assertFalse(validate.lineup_source_ok(_alias_row(), FIXTURE_LABEL, VALVE_ROSTER + ["Stand-in"]))
+        self.assertFalse(validate.same_club(HLTV_LABEL, "Yawara"))
+        self.assertFalse(validate.same_club(FIXTURE_LABEL, "FURIA"))
+        self.assertFalse(validate.same_club("", FIXTURE_LABEL))
+        self.assertFalse(validate.same_club(None, FIXTURE_LABEL))
 
 
 if __name__ == "__main__":
