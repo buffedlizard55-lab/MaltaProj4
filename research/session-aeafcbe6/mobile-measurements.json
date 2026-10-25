@@ -1,5 +1,5 @@
 {
- "measured_at": "2026-10-25T13:54:56.945Z",
+ "measured_at": "2026-10-24T17:52:43.275Z",
  "board": "public/ from research/diagnose-aeafcbe6/snapshot.json",
  "viewports": [
   {
@@ -10,16 +10,16 @@
    },
    "home": {
     "horizontalOverflow": false,
-    "withheld": true,
+    "withheld": false,
     "exec_summary": {
-     "top": 3213,
-     "height": 269
+     "top": 4486,
+     "height": 237
     },
     "exec_quicknav": {
-     "top": 380,
+     "top": 290,
      "height": 57
     },
-    "quicknav_text": "Executive summary · 0/13 picks · 13 unresolved · 65 past feed rows are not open.Updated picks →Unresolved & limits ↓",
+    "quicknav_text": "Executive summary · 20/20 picks · 0 unresolved · 63 past feed rows are not open.Updated picks →Unresolved & limits ↓",
     "exec_links": [
      "picks.html",
      "#picks-at-a-glance",
@@ -39,17 +39,21 @@
    },
    "board": {
     "found": true,
-    "top": 0,
-    "height": 0,
-    "pick": "",
-    "teams": "ex-Zero TenacityvsSpirit Academy",
-    "percentages": [],
-    "percentage_labels": [],
+    "top": 280,
+    "height": 389,
+    "pick": "paiN",
+    "teams": "GalorysvspaiN",
+    "percentages": [
+     "42.0%",
+     "58.0%"
+    ],
+    "percentage_labels": [
+     "Galorys 42.0 percent",
+     "paiN 58.0 percent"
+    ],
     "tabbar_top": 507,
     "horizontalOverflow": false,
-    "rows": 14,
-    "publishedPicks": 0,
-    "pricedRows": 0
+    "rows": 20
    },
    "documentWidth": 0
   },
@@ -61,16 +65,16 @@
    },
    "home": {
     "horizontalOverflow": false,
-    "withheld": true,
+    "withheld": false,
     "exec_summary": {
-     "top": 3543,
-     "height": 236
+     "top": 5089,
+     "height": 219
     },
     "exec_quicknav": {
-     "top": 373,
+     "top": 300,
      "height": 65
     },
-    "quicknav_text": "Executive summary · 0/13 picks · 13 unresolved · 65 past feed rows are not open.Updated picks →Unresolved & limits ↓",
+    "quicknav_text": "Executive summary · 20/20 picks · 0 unresolved · 63 past feed rows are not open.Updated picks →Unresolved & limits ↓",
     "exec_links": [
      "picks.html",
      "#picks-at-a-glance",
@@ -90,17 +94,21 @@
    },
    "board": {
     "found": true,
-    "top": 0,
-    "height": 0,
-    "pick": "",
-    "teams": "ex-Zero TenacityvsSpirit Academy",
-    "percentages": [],
-    "percentage_labels": [],
+    "top": 243,
+    "height": 379,
+    "pick": "paiN",
+    "teams": "GalorysvspaiN",
+    "percentages": [
+     "42.0%",
+     "58.0%"
+    ],
+    "percentage_labels": [
+     "Galorys 42.0 percent",
+     "paiN 58.0 percent"
+    ],
     "tabbar_top": 783,
     "horizontalOverflow": false,
-    "rows": 14,
-    "publishedPicks": 0,
-    "pricedRows": 0
+    "rows": 20
    },
    "documentWidth": 0
   },
@@ -112,16 +120,16 @@
    },
    "home": {
     "horizontalOverflow": false,
-    "withheld": true,
+    "withheld": false,
     "exec_summary": {
-     "top": 3423,
-     "height": 219
+     "top": 5021,
+     "height": 202
     },
     "exec_quicknav": {
-     "top": 354,
+     "top": 300,
      "height": 65
     },
-    "quicknav_text": "Executive summary · 0/13 picks · 13 unresolved · 65 past feed rows are not open.Updated picks →Unresolved & limits ↓",
+    "quicknav_text": "Executive summary · 20/20 picks · 0 unresolved · 63 past feed rows are not open.Updated picks →Unresolved & limits ↓",
     "exec_links": [
      "picks.html",
      "#picks-at-a-glance",
@@ -141,17 +149,21 @@
    },
    "board": {
     "found": true,
-    "top": 0,
-    "height": 0,
-    "pick": "",
-    "teams": "ex-Zero TenacityvsSpirit Academy",
-    "percentages": [],
-    "percentage_labels": [],
+    "top": 243,
+    "height": 379,
+    "pick": "paiN",
+    "teams": "GalorysvspaiN",
+    "percentages": [
+     "42.0%",
+     "58.0%"
+    ],
+    "percentage_labels": [
+     "Galorys 42.0 percent",
+     "paiN 58.0 percent"
+    ],
     "tabbar_top": 854,
     "horizontalOverflow": false,
-    "rows": 14,
-    "publishedPicks": 0,
-    "pricedRows": 0
+    "rows": 20
    },
    "documentWidth": 0
   }
