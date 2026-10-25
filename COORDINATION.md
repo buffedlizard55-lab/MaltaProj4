@@ -135,6 +135,24 @@ is queued for a live capture. If #314 merges first, adopt its `validate.py` byte
 is the same function.
 
 
+## Session 2ce90427 — source capture, mobile regression and integration (2026-10-25)
+
+Claimed from the shared board before changes. This session owns its captured source records and phone regression only; it adopts the merged validator, refreshed main snapshot and mobile CSS from other sessions rather than overwriting them.
+
+| Task | Status | Owner | Files / receipt | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Capture and independently audit Hotspawn inventory, every open pick, external sources and limitations | done | 2ce90427 | `research/session-2ce90427/**`; run 40197778618 | 2026-10-25 |
+| Add a stale-aware browser regression for first-row probability visibility and executive-summary routes | done | 2ce90427 | `tests/browser_2ce90427.cjs`, `package.json` | 2026-10-25 |
+| Integrate onto latest main without downgrading its newer snapshot; run gates and verify PR, publisher and exact live bytes | in progress | 2ce90427 | this entry, report, existing PR #320 | 2026-10-25 |
+
+The session runner captured a 13:33:56Z inventory (78 feed rows, 17 open with two-sided sourced probabilities, no unresolved row at that snapshot clock). Source mix and limitations are itemized in `research/session-2ce90427/REPORT.md`; the 13:33 capture is retained for audit, not treated as a claim that those quotes remain current. PR #316 supplied the alias-aware validator fix; PR #322 supplied the row-scoped publication backstop and short-phone card spacing. This branch adopts those upstream changes, drops its duplicate CSS change and retains the direct browser regression.
+
+PR #319 merged as `a2d3b1f`; this branch was rebased onto current `origin/main` `2909b06` after PR #327. Main's latest root build is revision `1d31c24`, built 14:21:29Z from the 13:54:18Z snapshot: 78 rows, 16 open / 16 picked / 16 priced. On the same application/test tree (the later PR #327 changed only receipts/workflow files), full gates passed: 1,638 unit tests (12 skipped), 9 audit, 5 integrity, 12 C6, browser suite, and root validation (78 rows / 16 calculations / 15 pages / 724 links-assets / 20 checksums / 180 displayed rows); both independent row audits report zero failures. Phone regression: 320×568 probability bottom y=441 vs tab top y=507; 390×844 y=421 vs tab y=783.
+
+**Live recovery verified** by main run [40198626549](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40198626549): terminal success, deploy completed, and artifact `live-verification-40198626549` was produced. Direct live reads showed build revision `06915a8ab057a54d517cec48849bb5e869d8de0d`, built at 13:56:26Z with 78 rows; the executive summary reported 16 open / 16 picks / 16 probabilities / 0 unresolved and a snapshot inside the 8-hour window. Main's later root build is newer, but the last public read still showed that successful 13:56Z artifact, fresh and complete. The post-#327 publisher run #1102 (`40202005031`) was Pending behind #1101 (`40202000938`) when last checked. PR #320 still needs its rebased ref and latest checks; do not call this session fully integrated until its branch checks and final merge/deploy verification are complete.
+
+---
+
 ## Session 2b856884 — published-state addendum (2026-10-24 18:05 UTC)
 
 **Measured after the two merges, read from `origin/main`, not from a branch.** PR
