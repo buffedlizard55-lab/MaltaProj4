@@ -1,0 +1,95 @@
+[
+ {
+  "viewport": "320x568",
+  "index": {
+   "quicknav": {
+    "top": 290,
+    "height": 57
+   },
+   "execBar": {
+    "top": 3715,
+    "height": 237
+   },
+   "firstCard": {
+    "top": 6764,
+    "height": 406
+   },
+   "tabs": 507,
+   "innerText": "Every one of the 16 open matches has a pick, and every pick carries a win probability. Updated picks → Every pick on this page ↓ Unresolved & limitations → Why a pick can be missing ↓ Visible limitations ↓ All matches → "
+  },
+  "picks": {
+   "rows": 16,
+   "firstRowTop": 280,
+   "firstProbPairBottom": 452,
+   "tabsTop": 507,
+   "firstThreePairs": [
+    "43.5% 56.5%",
+    "42.5% 57.5%",
+    "68.8% 31.2%"
+   ],
+   "overflow": false
+  }
+ },
+ {
+  "viewport": "390x844",
+  "index": {
+   "quicknav": {
+    "top": 300,
+    "height": 65
+   },
+   "execBar": {
+    "top": 4187,
+    "height": 219
+   },
+   "firstCard": {
+    "top": 6755,
+    "height": 322
+   },
+   "tabs": 783,
+   "innerText": "Every one of the 16 open matches has a pick, and every pick carries a win probability. Updated picks → Every pick on this page ↓ Unresolved & limitations → Why a pick can be missing ↓ Visible limitations ↓ All matches → "
+  },
+  "picks": {
+   "rows": 16,
+   "firstRowTop": 243,
+   "firstProbPairBottom": 421,
+   "tabsTop": 783,
+   "firstThreePairs": [
+    "43.5% 56.5%",
+    "42.5% 57.5%",
+    "68.8% 31.2%"
+   ],
+   "overflow": false
+  }
+ },
+ {
+  "viewport": "414x896",
+  "index": {
+   "quicknav": {
+    "top": 300,
+    "height": 65
+   },
+   "execBar": {
+    "top": 4119,
+    "height": 202
+   },
+   "firstCard": {
+    "top": 6629,
+    "height": 322
+   },
+   "tabs": 835,
+   "innerText": "Every one of the 16 open matches has a pick, and every pick carries a win probability. Updated picks → Every pick on this page ↓ Unresolved & limitations → Why a pick can be missing ↓ Visible limitations ↓ All matches → "
+  },
+  "picks": {
+   "rows": 16,
+   "firstRowTop": 243,
+   "firstProbPairBottom": 421,
+   "tabsTop": 835,
+   "firstThreePairs": [
+    "43.5% 56.5%",
+    "42.5% 57.5%",
+    "68.8% 31.2%"
+   ],
+   "overflow": false
+  }
+ }
+]

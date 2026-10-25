@@ -717,6 +717,47 @@ def coverage_boundary():
         '</section>')
 
 
+def measured_source_access():
+    """Dated, measured access for every outside line source the ladder tries.
+
+    Session 408eb0af. The reader's real question about a low-tier fixture is
+    "why is there no bookmaker price?" — and the honest answer is a measurement
+    of what each operator's public endpoint returned to this project on a named
+    date, not a guess. Every row comes from
+    ``research/session-408eb0af/probe/report.md`` (GitHub runners,
+    2026-10-25T13:42Z, one GET per endpoint, bodies committed beside the
+    report), so a claim on this page can be re-checked against the exact bytes.
+    A refusal is reported as a refusal; it is never described as "no odds
+    offered", and no alternative endpoint is guessed or probed.
+    """
+    rows = ''.join(
+        '<tr><td data-label="Source"><strong>' + e(source) + '</strong><br>'
+        '<code class="probe-endpoint">' + e(url) + '</code><br>'
+        + link(summary.ACCESS_PROBE_DIR + body, 'Captured response ↗') + '</td>'
+        '<td data-label="Measured">' + e(measured) + '</td>'
+        '<td data-label="Limitation for a low-tier match">' + e(limit) + '</td></tr>'
+        for source, measured, limit, url, body in summary.ACCESS_PROBE)
+    return (
+        '<section class="panel" id="measured-source-access" aria-label="Measured access to outside line sources">'
+        '<p class="eyebrow muted">Executive summary · unresolved picks &amp; limitations</p>'
+        '<h2>Why a low-tier match can have no bookmaker price</h2>'
+        '<p>Before a pick is called unresolved, every outside line source below is tried for that exact '
+        'fixture. This is what each one returned when we measured it on '
+        '<strong>' + e(summary.ACCESS_PROBE_DATE) + '</strong> from the same GitHub runners that refresh this '
+        'site — one request each, no credentials, no retries against a refusal, and the response bytes kept '
+        'beside the report. A "no line" verdict for a specific match still comes from the per-match evidence '
+        'on its own row; this table explains only what is reachable at all.</p>'
+        '<div class="table-wrap"><table class="source-table"><caption>Public line sources, measured '
+        + e(summary.ACCESS_PROBE_DATE) + ' · ' + link(REPO + '/blob/main/research/session-408eb0af/probe/report.md', 'raw probe report & response bodies ↗') + '</caption>'
+        '<thead><tr><th>Source</th><th>Measured</th><th>Limitation for a low-tier match</th></tr></thead>'
+        '<tbody>' + rows + '</tbody></table></div>'
+        '<p class="small">What this means for coverage: an exchange line or a sharp-book line when one exists, '
+        'a researched listing or our own Valve-standings model line when none does, and a labelled blank when '
+        'neither source can support a number. Nothing here is a reason to invent a 50/50 — a blank is the '
+        'honest answer, and it is published on this page with the reason for that row.</p>'
+        '</section>')
+
+
 def unresolved_picks(data):
     """The dedicated unresolved section, carried inside the executive summary.
 
@@ -769,6 +810,8 @@ def unresolved_picks(data):
         '<h2>Picks without a win probability — and exactly why</h2>'
         f'<p>{lead} Each row below states the source that was tried and the gate it failed.</p>'
         + listing
+        + details('Which outside line sources answered, and why a low-tier match can still have none',
+                  measured_source_access(), 'method-details access-details')
         + '<details class="method-details"><summary>Evidence ladder &amp; source rules</summary>'
         + '<h3>What is tried, in order, before a blank is published</h3>'
         + '<p class="small">This is the publication ladder from '
@@ -1677,7 +1720,7 @@ def build(data,out,now=None):
         'picks':('Updated picks',head('The pick board','Updated CS2 picks.','Every open Hotspawn CS2 match: our pick, both supported win probabilities, and direct source links.',data)+'<nav class="section-nav" aria-label="Pick lists">'+link('picks.html','All open matches ('+str(len(opens))+')')+('<a href="unresolved.html?status=needs">No percentage (<span data-count="missing">'+str(len(no_probability))+'</span>)</a>')+link('unresolved.html','No market line ('+str(len(nonmarket))+')')+link('matches.html','All matches')+'</nav><details class="method-details board-method"><summary>How picks, model lines &amp; blanks work</summary><div class="notice info">One complete board: market probabilities first, our labelled VRS model where no accepted market line was collected, and research-only picks with <strong>no percentage</strong> where a number is unsupported. Unresolved entries stay visible, not omitted. Estimates, not promises. '+link('unresolved.html','Read every non-market limitation →')+'</div></details>'+filters(opens,'open')+table(opens,True,label='Every open CS2 match and pick')),
         'matches':('All matches',head('Complete coverage','Every listed fixture.','All CS2 records returned by the official Hotspawn lobby feed, including not-open entries.',data)+feed_scope(data)+filters(matches,'open')+table(matches,past_ids={str(m['id']) for m in past_dated_rows(matches,data)})),
         'analysis':('TWC analysis',analysis_page(data)),
-        'unresolved':('Unresolved picks',head('Research queue','Unresolved & non-market picks.','Every open match without a usable betting line: our model line, a research-only pick, or an honest blank. Each row states its limitation.',data)+unresolved_page_intro(data)+'<nav class="section-nav" aria-label="Pick lists">'+('<a href="unresolved.html?status=needs">No percentage (<span data-count="missing">'+str(len(no_probability))+'</span>)</a>')+link('picks.html','All open matches ('+str(len(opens))+')')+link('matches.html','All matches')+'</nav><div class="notice">Order of evidence: strict exchange gate → HLTV identity research → Pinnacle bookmaker line → labelled wide-exchange tier → <strong>our VRS model line</strong> (Valve standings, Valve formula, HLTV lineups confirm rosters) → HLTV ranking order as a research-only pick with <strong>no probability</strong>. Thunderpick and GG.BET access is recorded, never bypassed. Name mismatches, stale data, ambiguous rosters and access failures are disclosed below. '+link('sources.html#method','Read the limits →')+'</div>'+filters(nonmarket,'all')+table(nonmarket,True,label='Open matches without a market line')),
+        'unresolved':('Unresolved picks',head('Research queue','Unresolved & non-market picks.','Every open match without a usable betting line: our model line, a research-only pick, or an honest blank. Each row states its limitation.',data)+unresolved_page_intro(data)+measured_source_access()+'<nav class="section-nav" aria-label="Pick lists">'+('<a href="unresolved.html?status=needs">No percentage (<span data-count="missing">'+str(len(no_probability))+'</span>)</a>')+link('picks.html','All open matches ('+str(len(opens))+')')+link('matches.html','All matches')+'</nav><div class="notice">Order of evidence: strict exchange gate → HLTV identity research → Pinnacle bookmaker line → labelled wide-exchange tier → <strong>our VRS model line</strong> (Valve standings, Valve formula, HLTV lineups confirm rosters) → HLTV ranking order as a research-only pick with <strong>no probability</strong>. Thunderpick and GG.BET access is recorded, never bypassed. Name mismatches, stale data, ambiguous rosters and access failures are disclosed below. '+link('sources.html#method','Read the limits →')+'</div>'+filters(nonmarket,'all')+table(nonmarket,True,label='Open matches without a market line')),
         'sources':('Sources and methodology',methodology(data)),
         'evidence':('Evidence ledger',evidence_page(data))}
     review=head('Published irregularities','Flagged for Review.','These limitations are visible, not silently filled in. They do not prevent publication.',data)
