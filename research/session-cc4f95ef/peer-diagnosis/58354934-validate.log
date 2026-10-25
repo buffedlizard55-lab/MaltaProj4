@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/runner/work/MaltaProj4/MaltaProj4/scripts/validate.py", line 603, in <module>
+    main()
+  File "/home/runner/work/MaltaProj4/MaltaProj4/scripts/validate.py", line 596, in main
+    report = validate_data(json.loads(Path(args.data).read_text())) | validate_site(args.site)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/MaltaProj4/MaltaProj4/scripts/validate.py", line 376, in validate_data
+    validate_model_row(m, q, now)
+  File "/home/runner/work/MaltaProj4/MaltaProj4/scripts/validate.py", line 122, in validate_model_row
+    assert lineup_source_ok(m, team, check.get('lineup') or []), 'Model roster has no HLTV source on this row'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Model roster has no HLTV source on this row

@@ -5959,5 +5959,141 @@
     "label": "The workflow that stages the verified build at the root because Pages is legacy"
    }
   ]
+ },
+ {
+  "id": "session-cc4f95ef-publication-freeze-and-receipt-2026-10-25",
+  "status": "Needs review — publisher availability incident, repaired and verified on this branch",
+  "finding": "Measured on 2026-10-25 at 13:25 UTC: the public build-info advertised snapshot 2026-10-25T01:47:42Z, 11h40m old, so the site had passed its 8-hour evidence window and withheld every current pick. GitHub Actions runs 40170923727 and 40193317196 both built a fresh board (78 rows, 17 picks, 17 probability pairs, 0 unresolved) and then failed at scripts.validate, which prevented the Pages artifact and the legacy root fallback from advancing. The exact assertion was \"Model roster has no HLTV source on this row\". Non-publishing runner diagnoses 40197480741 and 40197553353 preserved the fresh snapshot, logs and coverage receipts. Upstream PRs #311 and #316 repaired the deploy-eligibility and alias gates; this rebase adopts them, keeps the independent short-phone repair, keeps PR #322's row-scoped quarantine backstop, and rebuilds from the 13:30Z runner capture, and is publishing the verified board through an explicit PR and merge. The four-slots-an-hour schedule remains a best-effort target; a red gate still withholds publication by design, so this incident is disclosed rather than hidden.",
+  "sources": [
+   {
+    "label": "Live public build-info read at 13:25 UTC",
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json"
+   },
+   {
+    "label": "GitHub Actions publisher run 40193317196",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40193317196"
+   },
+   {
+    "label": "Independent runner capture 40197553353",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40197553353"
+   },
+   {
+    "label": "Runner coverage receipt (17 open, 17 picks, 0 unresolved)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/arena/fec4894f-maltaproj4/research/harvest-fec4894f/coverage.json"
+   },
+   {
+    "label": "Refresh and publication workflow",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/.github/workflows/pages.yml"
+   },
+   {
+    "label": "PR #311 — deploy only after verified artifact upload",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/pull/311"
+   },
+   {
+    "label": "PR #322 — row-scoped validation backstop and fresh 13:46Z board",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/pull/322"
+   },
+   {
+    "label": "PR #332 — latest row-scoped backstop and 13:54Z board",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/pull/332"
+   }
+  ]
+ },
+ {
+  "id": "session-cc4f95ef-verified-hltv-alias-lineup-2026-10-25",
+  "status": "Needs review — evidence-matching policy for official team aliases",
+  "finding": "The fresh VRS model row for Hotspawn fixture 1086697 (Projeto do KinGui vs Yawara, 2026-10-25T19:00:00Z) was rejected because HLTV match 2399918 names the same side 'Tropa do KinGui'. The official HLTV page lists drg, ALLE, ckzao, xureba and lash; the stored hltv_context.team_map maps that exact HLTV label back to the Hotspawn fixture label; and data/identities.json records the alias with HLTV, Polymarket, Valve and EGamersWorld receipts. While this session was verifying, PR #316 landed the equivalent same_club identity-register bridge in scripts/validate.py. This rebase adopts that single upstream implementation rather than layering a duplicate; this session's independent row-level regression replays the 13:30Z capture and still refuses an altered roster, an unverified alias and a missing source. No roster, probability, pick or freshness gate is relaxed, and Hotspawn crowd votes are never used.",
+  "sources": [
+   {
+    "label": "Official HLTV match 2399918",
+    "url": "https://www.hltv.org/matches/2399918/tropa-do-kingui-vs-yawara-cct-2026-south-america-series-7"
+   },
+   {
+    "label": "Official HLTV alias fixture 2399904",
+    "url": "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7"
+   },
+   {
+    "label": "Polymarket market 6033256 alias receipt",
+    "url": "https://gamma-api.polymarket.com/markets/6033256"
+   },
+   {
+    "label": "Valve official global standings, 2026-10-05",
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+   },
+   {
+    "label": "Repository identity ledger",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/data/identities.json"
+   },
+   {
+    "label": "PR #316 — the adopted same_club validator repair",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/pull/316"
+   },
+   {
+    "label": "Upstream regression tests for same_club",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/tests/test_session_b85ad9b4.py"
+   }
+  ]
+ },
+ {
+  "id": "session-cc4f95ef-short-phone-board-geometry-2026-10-25",
+  "status": "Fixed — measured phone gate; latest main implementation adopted, retained for manual review",
+  "finding": "Runner 40197553353 and an independent Chromium replay of the 2026-10-25T13:30Z board both measured the first probability block ending at y=519 at 320 by 568 while the fixed tab bar began at y=507, a 12px overlap. Parallel sessions shipped successive measured short-phone compactions; the latest main implementation (session 8e4ff8d2, PR #332) tightens card padding/gap and keeps both team labels above the percentages on one ellipsised line. This integration adopts that single current stylesheet instead of a duplicate. Both shipped copies are byte-identical and all 13 Chromium suites pass at 320/390/412px with no horizontal overflow. No team label, percentage, fair line, source link, pick or tab-bar item is hidden.",
+  "sources": [
+   {
+    "label": "GitHub Actions browser-gate receipt 40197553353",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40197553353"
+   },
+   {
+    "label": "Browser gate source: tests/browser_019a253a.cjs",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/tests/browser_019a253a.cjs"
+   },
+   {
+    "label": "PR #332 — adopted short-phone CSS and latest verification",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/pull/332"
+   },
+   {
+    "label": "Canonical phone stylesheet on main",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/site/assets/style.css"
+   },
+   {
+    "label": "Published phone stylesheet on main",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/assets/style.css"
+   }
+  ]
+ },
+ {
+  "id": "session-cc4f95ef-full-coverage-limitations-2026-10-25",
+  "status": "Needs review — non-market and third-party line limitations remain visible",
+  "finding": "The independent 2026-10-25T13:30Z and 13:46Z captures each resolved every open Hotspawn CS2 fixture at their own clocks: 17 open, 17 picks, 17 two-way win probabilities, 0 unresolved. Main's newer 13:54Z capture has 16 open after one pick lock passed, again 16 picks, 16 probabilities and 0 unresolved. Any fixture whose lock passes after capture is withheld at build time rather than shown as a stale pick. Full coverage does not mean every number is a live bookmaker price. Four rows originate from Valve Regional Standings points through the labelled VRS model; one row is a low-confidence wide exchange quote with its real spread published; one row is a dated third-party listing of a Thunderpick price via BO3.gg; Pinnacle and HLTV must still match the exact pair and UTC start, and GG.BET access can be refused. Hotspawn supplies only fixture inventory and locks, never a probability, and its crowd percentages are never used. The separate Unresolved & limits page and the executive-summary unresolved section list every attempt and limitation; any future row without supportable evidence stays blank rather than receiving a default 50/50.",
+  "sources": [
+   {
+    "label": "Official Hotspawn CS2 lobby",
+    "url": "https://play.hotspawn.com/lobby"
+   },
+   {
+    "label": "Hotspawn official fixtures API",
+    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+   },
+   {
+    "label": "Polymarket Gamma markets API",
+    "url": "https://gamma-api.polymarket.com/events"
+   },
+   {
+    "label": "Pinnacle guest esports moneyline API",
+    "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+   },
+   {
+    "label": "Valve official Regional Standings repository",
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings"
+   },
+   {
+    "label": "Published pick board",
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/picks.html"
+   },
+   {
+    "label": "Unresolved & limitations page",
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/unresolved.html"
+   }
+  ]
  }
 ]

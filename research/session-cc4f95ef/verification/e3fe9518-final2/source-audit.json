@@ -1,0 +1,1980 @@
+{
+  "schema_version": 1,
+  "snapshot_generated_at": "2026-10-25T13:46:54.275795Z",
+  "audit_clock": "2026-10-25T13:46:54.275795Z",
+  "clock_basis": "snapshot_generation_time_not_live",
+  "rows": [
+    {
+      "id": "1052746",
+      "teams": [
+        "Fortress",
+        "Endless Journey"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1052746",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1051339",
+      "teams": [
+        "Acend",
+        "Infinite"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1051339",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1051301",
+      "teams": [
+        "CYBERSHOKE Prospects",
+        "PCIFIC"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1051301",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1053068",
+      "teams": [
+        "Johnny Speeds",
+        "ReThink"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1053068",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1052747",
+      "teams": [
+        "Sashi Academy",
+        "eternal premium"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1052747",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1053146",
+      "teams": [
+        "Atrix",
+        "Clutchain"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1053146",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1051340",
+      "teams": [
+        "Walczaki",
+        "Inner Circle"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1051340",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1053069",
+      "teams": [
+        "roamsfiest",
+        "train launcher"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1053069",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1052686",
+      "teams": [
+        "shimmer",
+        "MIBR fe"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1052686",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1051789",
+      "teams": [
+        "MIBR Academy",
+        "Isurus"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1051789",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1053070",
+      "teams": [
+        "ReThink",
+        "train launcher"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1053070",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1051790",
+      "teams": [
+        "Keyd",
+        "Yawara"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1051790",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1052748",
+      "teams": [
+        "Inner Circle Academy",
+        "sAw"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1052748",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1053071",
+      "teams": [
+        "Johnny Speeds",
+        "roamsfiest"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1053071",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1052749",
+      "teams": [
+        "Misa",
+        "WROTBERRY"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1052749",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1052180",
+      "teams": [
+        "NEW VISION",
+        "Julie&Cie"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1052180",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1052181",
+      "teams": [
+        "Just Players",
+        "OlyBet"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1052181",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1051800",
+      "teams": [
+        "ShindeN",
+        "MIBR Academy"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1051800",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1052699",
+      "teams": [
+        "Vasco",
+        "Red Feet"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1052699",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1052183",
+      "teams": [
+        "Misa",
+        "Wampirki"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1052183",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1051341",
+      "teams": [
+        "Sharks",
+        "Inner Circle"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1051341",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1052599",
+      "teams": [
+        "Mai Tai",
+        "Megoshort"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1052599",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1053072",
+      "teams": [
+        "train launcher",
+        "roamsfiest"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1053072",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1052357",
+      "teams": [
+        "BIG Academy",
+        "BERG"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1052357",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1051801",
+      "teams": [
+        "Bounty Hunters",
+        "UNO MILLE"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1051801",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1052700",
+      "teams": [
+        "GameHunters",
+        "VEXA"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1052700",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1051342",
+      "teams": [
+        "ex-Tricked",
+        "Acend"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1051342",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1053073",
+      "teams": [
+        "roamsfiest",
+        "ReThink"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1053073",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1052701",
+      "teams": [
+        "paiN Academy",
+        "Alka"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1052701",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1053313",
+      "teams": [
+        "Fake do Biru",
+        "LP"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1053313",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1051803",
+      "teams": [
+        "Fluxo",
+        "Keyd"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1051803",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1052702",
+      "teams": [
+        "Procyon",
+        "BESTIA Academy"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1052702",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1052750",
+      "teams": [
+        "Honvéd",
+        "OlyBet"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1052750",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1052751",
+      "teams": [
+        "ex-MANA",
+        "Subtop De France"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1052751",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1052185",
+      "teams": [
+        "sAw",
+        "Entropy"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1052185",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1053431",
+      "teams": [
+        "GAMEHARMONY",
+        "Coalesce"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1053431",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1053432",
+      "teams": [
+        "Leo",
+        "Aimhaus"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1053432",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1053433",
+      "teams": [
+        "GAMEHARMONY",
+        "Aimhaus"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1053433",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1053434",
+      "teams": [
+        "Leo",
+        "Coalesce"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1053434",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1052698",
+      "teams": [
+        "ex-KRÜ",
+        "MAGICOS"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1052698",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1053435",
+      "teams": [
+        "GAMEHARMONY",
+        "Leo"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1053435",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1053436",
+      "teams": [
+        "Aimhaus",
+        "Coalesce"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1053436",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1051343",
+      "teams": [
+        "Sharks",
+        "ex-Tricked"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1051343",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1052186",
+      "teams": [
+        "Lilmix",
+        "Subtop De France"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1052186",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1052187",
+      "teams": [
+        "BIG Academy",
+        "Endless Journey"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1052187",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1052184",
+      "teams": [
+        "Atreides",
+        "Donstu"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1052184",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1052696",
+      "teams": [
+        "Yawara",
+        "Blitzkrieg"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1052696",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1053439",
+      "teams": [
+        "6666",
+        "ASTRAL"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1053439",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1053469",
+      "teams": [
+        "BERG",
+        "SINQU REHTI"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1053469",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1053441",
+      "teams": [
+        "ASTRAL",
+        "BERG"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1053441",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1053470",
+      "teams": [
+        "6666",
+        "SINQU REHTI"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1053470",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1051344",
+      "teams": [
+        "Inner Circle",
+        "Acend"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1051344",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1051804",
+      "teams": [
+        "Fluxo",
+        "UNO MILLE"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1051804",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1053442",
+      "teams": [
+        "6666",
+        "BERG"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1053442",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1053471",
+      "teams": [
+        "ASTRAL",
+        "SINQU REHTI"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1053471",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1052697",
+      "teams": [
+        "METANOIA Wolves",
+        "Guara"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1052697",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1053679",
+      "teams": [
+        "ShindeN",
+        "LP"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1053679",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1052695",
+      "teams": [
+        "MIBR Academy",
+        "Patins de Ferrari"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1052695",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1055478",
+      "teams": [
+        "illwill",
+        "Lavked"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1055478",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1081105",
+      "teams": [
+        "SUKEBAN",
+        "your end"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1081105",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1079621",
+      "teams": [
+        "Gothic",
+        "Lavked"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1079621",
+      "source_url": null,
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1085542",
+      "teams": [
+        "ex-Zero Tenacity",
+        "Spirit Academy"
+      ],
+      "fixture_url": "https://www.hotspawn.com/matches/ex-zero-tenacity-vs-spirit-academy-cct-europe-2026-series-11-1085542",
+      "evidence_url": "evidence.html#match-1085542",
+      "source_url": "https://gamma-api.polymarket.com/markets/6158059",
+      "source_kind": "not_open",
+      "method": null,
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": null,
+      "calculated_probability": null,
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": false,
+      "fallback_attempts": [],
+      "limitations": [],
+      "problems": []
+    },
+    {
+      "id": "1079199",
+      "teams": [
+        "Infinite",
+        "BRUTE"
+      ],
+      "fixture_url": "https://www.hotspawn.com/matches/infinite-vs-brute-nodwin-clutch-series-13-1079199",
+      "evidence_url": "evidence.html#match-1079199",
+      "source_url": "https://gamma-api.polymarket.com/markets/6072808",
+      "source_kind": "operator_market",
+      "method": "exchange",
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": "BRUTE",
+      "calculated_probability": [
+        0.435,
+        0.565
+      ],
+      "primary_only_market_estimate": [
+        0.435,
+        0.565
+      ],
+      "actionable_at_audit_clock": true,
+      "fallback_attempts": [],
+      "limitations": [
+        "Calculated from one operator's captured prices, not a guarantee, bookmaker consensus, or independently calibrated forecast."
+      ],
+      "problems": []
+    },
+    {
+      "id": "1086696",
+      "teams": [
+        "BORRACHEIROS",
+        "RED Canids Academy"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1086696",
+      "source_url": "https://gamma-api.polymarket.com/markets/6158760",
+      "source_kind": "operator_market",
+      "method": "exchange",
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": "RED Canids Academy",
+      "calculated_probability": [
+        0.425,
+        0.575
+      ],
+      "primary_only_market_estimate": [
+        0.425,
+        0.575
+      ],
+      "actionable_at_audit_clock": true,
+      "fallback_attempts": [],
+      "limitations": [
+        "Calculated from one operator's captured prices, not a guarantee, bookmaker consensus, or independently calibrated forecast."
+      ],
+      "problems": []
+    },
+    {
+      "id": "1079200",
+      "teams": [
+        "Color",
+        "ex-Zero Tenacity"
+      ],
+      "fixture_url": "https://www.hotspawn.com/matches/color-vs-ex-zero-tenacity-nodwin-clutch-series-13-1079200",
+      "evidence_url": "evidence.html#match-1079200",
+      "source_url": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+      "source_kind": "official_input_model",
+      "method": "model_vrs",
+      "official_standings_input_crosscheck": true,
+      "pick_at_snapshot": "Color",
+      "calculated_probability": [
+        0.6883951727580038,
+        0.31160482724199623
+      ],
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": true,
+      "fallback_attempts": [
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/sports",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed."
+        },
+        {
+          "provider": "Polymarket",
+          "status": "rejected",
+          "url": "https://gamma-api.polymarket.com/events/1238707",
+          "reason": "Exact exchange opponent pair and UTC start found, but the parent event is ended=true. Market active/acceptingOrders cannot override event status; no probability accepted."
+        },
+        {
+          "provider": "HLTV",
+          "status": "unresolved",
+          "url": "https://www.hltv.org/matches/2399115/color-vs-ex-zero-tenacity-nodwin-clutch-series-13",
+          "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. Recent results and head-to-head wins are recorded for the final research tier only; no probability is derived from them."
+        },
+        {
+          "provider": "Pinnacle",
+          "status": "unresolved",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed."
+        },
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/sports",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed."
+        },
+        {
+          "provider": "Thunderpick",
+          "status": "unresolved",
+          "url": "https://thunderpick.io/esports/cs2-betting",
+          "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds."
+        },
+        {
+          "provider": "GG.BET",
+          "status": "error",
+          "url": "https://gg.bet/en/esports/counter-strike",
+          "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run."
+        },
+        {
+          "provider": "Thunderpick (via BO3.gg API)",
+          "status": "unresolved",
+          "url": "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
+          "reason": "No exact team-pair and UTC-start match in the live BO3.gg CS2 feed."
+        },
+        {
+          "provider": "Valve VRS model",
+          "status": "resolved",
+          "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+          "reason": "Originated line from both teams' Valve standings points (2026-10-05)."
+        }
+      ],
+      "limitations": [
+        "Our originated calculation from dated Valve points, not a quoted or verified win probability; roster continuity and model calibration remain limitations."
+      ],
+      "problems": []
+    },
+    {
+      "id": "1081158",
+      "teams": [
+        "FORZE Reload",
+        "ex-RUSTEC"
+      ],
+      "fixture_url": "https://www.hotspawn.com/matches/forze-reload-vs-ex-rustec-cct-europe-2026-series-12-1081158",
+      "evidence_url": "evidence.html#match-1081158",
+      "source_url": "https://gamma-api.polymarket.com/markets/6098416",
+      "source_kind": "operator_market",
+      "method": "exchange",
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": "FORZE Reload",
+      "calculated_probability": [
+        0.565,
+        0.435
+      ],
+      "primary_only_market_estimate": [
+        0.565,
+        0.435
+      ],
+      "actionable_at_audit_clock": true,
+      "fallback_attempts": [],
+      "limitations": [
+        "Calculated from one operator's captured prices, not a guarantee, bookmaker consensus, or independently calibrated forecast."
+      ],
+      "problems": []
+    },
+    {
+      "id": "1082697",
+      "teams": [
+        "BESTIA",
+        "paiN"
+      ],
+      "fixture_url": "https://www.hotspawn.com/matches/pain-vs-bestia-circuit-x-curitiba-4-1082697",
+      "evidence_url": "evidence.html#match-1082697",
+      "source_url": "https://gamma-api.polymarket.com/markets/6166390",
+      "source_kind": "operator_market",
+      "method": "exchange",
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": "paiN",
+      "calculated_probability": [
+        0.425,
+        0.575
+      ],
+      "primary_only_market_estimate": [
+        0.425,
+        0.575
+      ],
+      "actionable_at_audit_clock": true,
+      "fallback_attempts": [],
+      "limitations": [
+        "Calculated from one operator's captured prices, not a guarantee, bookmaker consensus, or independently calibrated forecast."
+      ],
+      "problems": []
+    },
+    {
+      "id": "1086697",
+      "teams": [
+        "Projeto do KinGui",
+        "Yawara"
+      ],
+      "fixture_url": "https://play.hotspawn.com/cs2-pickems",
+      "evidence_url": "evidence.html#match-1086697",
+      "source_url": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+      "source_kind": "official_input_model",
+      "method": "model_vrs",
+      "official_standings_input_crosscheck": true,
+      "pick_at_snapshot": "Projeto do KinGui",
+      "calculated_probability": [
+        0.5100602445117999,
+        0.4899397554882001
+      ],
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": true,
+      "fallback_attempts": [
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/sports",
+          "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used."
+        },
+        {
+          "provider": "HLTV",
+          "status": "unresolved",
+          "url": "https://www.hltv.org/matches/2399918/tropa-do-kingui-vs-yawara-cct-2026-south-america-series-7",
+          "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. Recent results and head-to-head wins are recorded for the final research tier only; no probability is derived from them."
+        },
+        {
+          "provider": "Pinnacle",
+          "status": "unresolved",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed."
+        },
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/sports",
+          "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used."
+        },
+        {
+          "provider": "Thunderpick",
+          "status": "unresolved",
+          "url": "https://thunderpick.io/esports/cs2-betting",
+          "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds."
+        },
+        {
+          "provider": "GG.BET",
+          "status": "error",
+          "url": "https://gg.bet/en/esports/counter-strike",
+          "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run."
+        },
+        {
+          "provider": "Thunderpick (via BO3.gg API)",
+          "status": "unresolved",
+          "url": "https://bo3.gg/matches/tropa-do-kingui-vs-yawara-esports-25-10-2026",
+          "reason": "Fixture found on BO3.gg with exact UTC start, but no active sportsbook moneyline is posted yet (bet_updates is null)."
+        },
+        {
+          "provider": "Valve VRS model",
+          "status": "resolved",
+          "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+          "reason": "Originated line from both teams' Valve standings points (2026-10-05)."
+        }
+      ],
+      "limitations": [
+        "Our originated calculation from dated Valve points, not a quoted or verified win probability; roster continuity and model calibration remain limitations."
+      ],
+      "problems": []
+    },
+    {
+      "id": "1082858",
+      "teams": [
+        "Ground Zero",
+        "Off Chops"
+      ],
+      "fixture_url": "https://www.hotspawn.com/matches/ground-zero-vs-off-chops-dfrag-invitational-2026-1082858",
+      "evidence_url": "evidence.html#match-1082858",
+      "source_url": "https://gamma-api.polymarket.com/markets/6066508",
+      "source_kind": "operator_market",
+      "method": "exchange",
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": "Off Chops",
+      "calculated_probability": [
+        0.365,
+        0.635
+      ],
+      "primary_only_market_estimate": [
+        0.365,
+        0.635
+      ],
+      "actionable_at_audit_clock": true,
+      "fallback_attempts": [],
+      "limitations": [
+        "Calculated from one operator's captured prices, not a guarantee, bookmaker consensus, or independently calibrated forecast."
+      ],
+      "problems": []
+    },
+    {
+      "id": "1082859",
+      "teams": [
+        "NEXVOID",
+        "Alter Ego"
+      ],
+      "fixture_url": "https://www.hotspawn.com/matches/nexvoid-vs-alter-ego-dfrag-invitational-2026-1082859",
+      "evidence_url": "evidence.html#match-1082859",
+      "source_url": "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
+      "source_kind": "third_party_listing",
+      "method": "bookmaker_fallback",
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": "NEXVOID",
+      "calculated_probability": [
+        0.5789473684210527,
+        0.42105263157894735
+      ],
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": true,
+      "fallback_attempts": [
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/sports",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed."
+        },
+        {
+          "provider": "HLTV",
+          "status": "unresolved",
+          "url": "https://www.hltv.org/matches/2399889/nexvoid-vs-alter-ego-dfrag-invitational-2026",
+          "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. Recent results and head-to-head wins are recorded for the final research tier only; no probability is derived from them."
+        },
+        {
+          "provider": "Pinnacle",
+          "status": "unresolved",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed."
+        },
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/sports",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed."
+        },
+        {
+          "provider": "Thunderpick",
+          "status": "unresolved",
+          "url": "https://thunderpick.io/esports/cs2-betting",
+          "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds."
+        },
+        {
+          "provider": "GG.BET",
+          "status": "error",
+          "url": "https://gg.bet/en/esports/counter-strike",
+          "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run."
+        },
+        {
+          "provider": "Thunderpick (via BO3.gg API)",
+          "status": "resolved",
+          "url": "https://bo3.gg/matches/nexvoid-vs-alter-ego-26-10-2026",
+          "reason": "Exact pair and UTC start verified on BO3.gg CS2 API; live Thunderpick series moneyline (1.6 / 2.2) validated."
+        },
+        {
+          "provider": "Book research",
+          "status": "resolved",
+          "url": "https://bo3.gg/matches/nexvoid-vs-alter-ego-26-10-2026",
+          "reason": "Exact fixture id, opponent pair and UTC start verified against the listed two-way book line; probabilities de-vigged by scripts.core.quote_book and replayed by the validator."
+        }
+      ],
+      "limitations": [
+        "Bookmaker odds are reported by a third-party listing, not directly confirmed on the operator; primary-only market estimate left blank."
+      ],
+      "problems": []
+    },
+    {
+      "id": "1082860",
+      "teams": [
+        "FlyQuest",
+        "Staqued"
+      ],
+      "fixture_url": "https://www.hotspawn.com/matches/flyquest-vs-staqued-dfrag-invitational-2026-1082860",
+      "evidence_url": "evidence.html#match-1082860",
+      "source_url": "https://gamma-api.polymarket.com/markets/6066520",
+      "source_kind": "operator_market",
+      "method": "exchange",
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": "FlyQuest",
+      "calculated_probability": [
+        0.925,
+        0.075
+      ],
+      "primary_only_market_estimate": [
+        0.925,
+        0.075
+      ],
+      "actionable_at_audit_clock": true,
+      "fallback_attempts": [],
+      "limitations": [
+        "Calculated from one operator's captured prices, not a guarantee, bookmaker consensus, or independently calibrated forecast."
+      ],
+      "problems": []
+    },
+    {
+      "id": "1082861",
+      "teams": [
+        "Rooster",
+        "Abyssal"
+      ],
+      "fixture_url": "https://www.hotspawn.com/matches/rooster-vs-abyssal-dfrag-invitational-2026-1082861",
+      "evidence_url": "evidence.html#match-1082861",
+      "source_url": "https://gamma-api.polymarket.com/markets/6066525",
+      "source_kind": "operator_market",
+      "method": "exchange_wide",
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": "Abyssal",
+      "calculated_probability": [
+        0.43,
+        0.57
+      ],
+      "primary_only_market_estimate": [
+        0.43,
+        0.57
+      ],
+      "actionable_at_audit_clock": true,
+      "fallback_attempts": [
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/markets/6066525",
+          "reason": "Exchange spread exceeds 25 points or liquidity is below $100."
+        },
+        {
+          "provider": "HLTV",
+          "status": "unresolved",
+          "url": "https://www.hltv.org/matches/2399891/rooster-vs-abyssal-dfrag-invitational-2026",
+          "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. Recent results and head-to-head wins are recorded for the final research tier only; no probability is derived from them."
+        },
+        {
+          "provider": "Pinnacle",
+          "status": "unresolved",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed."
+        },
+        {
+          "provider": "Polymarket",
+          "status": "resolved",
+          "url": "https://gamma-api.polymarket.com/markets/6066525",
+          "reason": "Exact pair and UTC start; two-way series winner validated. Low-confidence spread tier used; strict rejection: Exchange spread exceeds 25 points or liquidity is below $100."
+        }
+      ],
+      "limitations": [
+        "Calculated from one operator's captured prices, not a guarantee, bookmaker consensus, or independently calibrated forecast.",
+        "Wide exchange spread: low-confidence fallback, not a featured strict quote."
+      ],
+      "problems": []
+    },
+    {
+      "id": "1082897",
+      "teams": [
+        "B8",
+        "K27"
+      ],
+      "fixture_url": "https://www.hotspawn.com/matches/b8-vs-k27-tesla-cup-2026-1082897",
+      "evidence_url": "evidence.html#match-1082897",
+      "source_url": "https://gamma-api.polymarket.com/markets/6024944",
+      "source_kind": "operator_market",
+      "method": "exchange",
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": "B8",
+      "calculated_probability": [
+        0.595,
+        0.405
+      ],
+      "primary_only_market_estimate": [
+        0.595,
+        0.405
+      ],
+      "actionable_at_audit_clock": true,
+      "fallback_attempts": [],
+      "limitations": [
+        "Calculated from one operator's captured prices, not a guarantee, bookmaker consensus, or independently calibrated forecast."
+      ],
+      "problems": []
+    },
+    {
+      "id": "1082898",
+      "teams": [
+        "Alliance",
+        "FaZe"
+      ],
+      "fixture_url": "https://www.hotspawn.com/matches/alliance-vs-faze-tesla-cup-2026-1082898",
+      "evidence_url": "evidence.html#match-1082898",
+      "source_url": "https://gamma-api.polymarket.com/markets/6024952",
+      "source_kind": "operator_market",
+      "method": "exchange",
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": "FaZe",
+      "calculated_probability": [
+        0.375,
+        0.625
+      ],
+      "primary_only_market_estimate": [
+        0.375,
+        0.625
+      ],
+      "actionable_at_audit_clock": true,
+      "fallback_attempts": [],
+      "limitations": [
+        "Calculated from one operator's captured prices, not a guarantee, bookmaker consensus, or independently calibrated forecast."
+      ],
+      "problems": []
+    },
+    {
+      "id": "1082900",
+      "teams": [
+        "Luminosity",
+        "HOTU"
+      ],
+      "fixture_url": "https://www.hotspawn.com/matches/luminosity-vs-hotu-tesla-cup-2026-1082900",
+      "evidence_url": "evidence.html#match-1082900",
+      "source_url": "https://gamma-api.polymarket.com/markets/6024960",
+      "source_kind": "operator_market",
+      "method": "exchange",
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": "Luminosity",
+      "calculated_probability": [
+        0.525,
+        0.475
+      ],
+      "primary_only_market_estimate": [
+        0.525,
+        0.475
+      ],
+      "actionable_at_audit_clock": true,
+      "fallback_attempts": [],
+      "limitations": [
+        "Calculated from one operator's captured prices, not a guarantee, bookmaker consensus, or independently calibrated forecast."
+      ],
+      "problems": []
+    },
+    {
+      "id": "1082901",
+      "teams": [
+        "Envy",
+        "GamerLegion"
+      ],
+      "fixture_url": "https://www.hotspawn.com/matches/envy-vs-gamerlegion-tesla-cup-2026-1082901",
+      "evidence_url": "evidence.html#match-1082901",
+      "source_url": "https://gamma-api.polymarket.com/markets/6037120",
+      "source_kind": "operator_market",
+      "method": "exchange",
+      "official_standings_input_crosscheck": null,
+      "pick_at_snapshot": "GamerLegion",
+      "calculated_probability": [
+        0.455,
+        0.545
+      ],
+      "primary_only_market_estimate": [
+        0.455,
+        0.545
+      ],
+      "actionable_at_audit_clock": true,
+      "fallback_attempts": [],
+      "limitations": [
+        "Calculated from one operator's captured prices, not a guarantee, bookmaker consensus, or independently calibrated forecast."
+      ],
+      "problems": []
+    },
+    {
+      "id": "1082792",
+      "teams": [
+        "HOTU",
+        "The Huns"
+      ],
+      "fixture_url": "https://www.hotspawn.com/matches/hotu-vs-the-huns-moscow-cyber-games-2026-1082792",
+      "evidence_url": "evidence.html#match-1082792",
+      "source_url": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+      "source_kind": "official_input_model",
+      "method": "model_vrs",
+      "official_standings_input_crosscheck": true,
+      "pick_at_snapshot": "HOTU",
+      "calculated_probability": [
+        0.851799765370461,
+        0.14820023462953902
+      ],
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": true,
+      "fallback_attempts": [
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/sports",
+          "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used."
+        },
+        {
+          "provider": "HLTV",
+          "status": "unresolved",
+          "url": "https://www.hltv.org/matches/2399437/hotu-vs-the-huns-gluck-moscow-cyber-games-2026",
+          "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. Recent results and head-to-head wins are recorded for the final research tier only; no probability is derived from them."
+        },
+        {
+          "provider": "Pinnacle",
+          "status": "unresolved",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed."
+        },
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/sports",
+          "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used."
+        },
+        {
+          "provider": "Thunderpick",
+          "status": "unresolved",
+          "url": "https://thunderpick.io/esports/cs2-betting",
+          "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds."
+        },
+        {
+          "provider": "GG.BET",
+          "status": "error",
+          "url": "https://gg.bet/en/esports/counter-strike",
+          "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run."
+        },
+        {
+          "provider": "Thunderpick (via BO3.gg API)",
+          "status": "unresolved",
+          "url": "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
+          "reason": "No exact team-pair and UTC-start match in the live BO3.gg CS2 feed."
+        },
+        {
+          "provider": "Book listing gap recheck",
+          "status": "unresolved",
+          "url": "https://egamersworld.com/counterstrike/match/EkalRNMvVx/hotu-vs-the-huns-esports-SfdtzDhiK",
+          "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run."
+        },
+        {
+          "provider": "Valve VRS model",
+          "status": "resolved",
+          "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+          "reason": "Originated line from both teams' Valve standings points (2026-10-05)."
+        }
+      ],
+      "limitations": [
+        "Our originated calculation from dated Valve points, not a quoted or verified win probability; roster continuity and model calibration remain limitations."
+      ],
+      "problems": []
+    },
+    {
+      "id": "1082793",
+      "teams": [
+        "5star",
+        "1WIN"
+      ],
+      "fixture_url": "https://www.hotspawn.com/matches/5star-vs-1win-moscow-cyber-games-2026-1082793",
+      "evidence_url": "evidence.html#match-1082793",
+      "source_url": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+      "source_kind": "official_input_model",
+      "method": "model_vrs",
+      "official_standings_input_crosscheck": true,
+      "pick_at_snapshot": "1WIN",
+      "calculated_probability": [
+        0.242985776930831,
+        0.757014223069169
+      ],
+      "primary_only_market_estimate": null,
+      "actionable_at_audit_clock": true,
+      "fallback_attempts": [
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/markets/6147278",
+          "reason": "Exchange spread exceeds 25 points or liquidity is below $100."
+        },
+        {
+          "provider": "HLTV",
+          "status": "unresolved",
+          "url": "https://www.hltv.org/matches/2399438/1win-vs-5star-gluck-moscow-cyber-games-2026",
+          "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. Recent results and head-to-head wins are recorded for the final research tier only; no probability is derived from them."
+        },
+        {
+          "provider": "Pinnacle",
+          "status": "unresolved",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed."
+        },
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/markets/6147278",
+          "reason": "Exchange spread exceeds the 60-point ceiling for the low-confidence tier."
+        },
+        {
+          "provider": "Thunderpick",
+          "status": "unresolved",
+          "url": "https://thunderpick.io/esports/cs2-betting",
+          "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds."
+        },
+        {
+          "provider": "GG.BET",
+          "status": "error",
+          "url": "https://gg.bet/en/esports/counter-strike",
+          "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run."
+        },
+        {
+          "provider": "Thunderpick (via BO3.gg API)",
+          "status": "unresolved",
+          "url": "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
+          "reason": "No exact team-pair and UTC-start match in the live BO3.gg CS2 feed."
+        },
+        {
+          "provider": "Book listing gap recheck",
+          "status": "unresolved",
+          "url": "https://egamersworld.com/counterstrike/match/EkalRNMvVx/1win-vs-5star-esports-4hTvdd1uN",
+          "reason": "Skipped after earlier access/rate restriction on this host: 403"
+        },
+        {
+          "provider": "Valve VRS model",
+          "status": "resolved",
+          "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+          "reason": "Originated line from both teams' Valve standings points (2026-10-05)."
+        }
+      ],
+      "limitations": [
+        "Our originated calculation from dated Valve points, not a quoted or verified win probability; roster continuity and model calibration remain limitations."
+      ],
+      "problems": []
+    }
+  ],
+  "counts": {
+    "not_open": 62,
+    "official_input_model": 4,
+    "operator_market": 11,
+    "third_party_listing": 1
+  },
+  "actionable_at_audit_clock": 16,
+  "errors": [],
+  "scope": "Retained-evidence provenance and independent arithmetic replay, not live upstream confirmation or forecast accuracy.",
+  "snapshot_sha256": "bdbffe64d42d1502cebaecb755b852c747d251310e5d107491b9a7265cf1e841"
+}

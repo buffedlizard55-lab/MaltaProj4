@@ -1,0 +1,30 @@
+{
+ "schema_version": 1,
+ "snapshot_generated_at": "2026-10-25T14:22:27.352651Z",
+ "snapshot_sha256": "f4c388796539f79f74cd0b408ba58f38ec17af6f35c90b3c11987d52b889dcf7",
+ "rows": 78,
+ "open": 16,
+ "open_with_pick": 16,
+ "open_with_probability": 16,
+ "unresolved": 0,
+ "row_errors": {},
+ "site_rows": {
+  "picks.html": {
+   "rows": 16,
+   "rows_without_official_link": []
+  },
+  "matches.html": {
+   "rows": 78,
+   "rows_without_official_link": []
+  },
+  "unresolved.html": {
+   "rows": 4,
+   "rows_without_official_link": []
+  },
+  "review.html": {
+   "rows": 69,
+   "rows_without_official_link": []
+  }
+ },
+ "verified_at": "2026-10-25T14:40:46.007162Z"
+}
