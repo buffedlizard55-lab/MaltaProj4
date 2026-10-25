@@ -9574,3 +9574,29 @@ Board read before claiming. The published implementation already has the request
 **Verification.** `python -m unittest discover -s tests`: **1,606 tests OK (7 skipped)**. `python -m scripts.validate --data data/latest.json --site .`: 79 source rows, 18 probability calculations independently reproduced, 15 pages, 751 internal links/assets and 20 checksums verified. `npm run test:browser`: all **13** suites pass against the aged snapshot, including the changed mobile suite at 320×568, 390×844 and 412×915 (no horizontal overflow; stale board displays zero picks and zero probability rows). `research/session-aeafcbe6/mobile-measurements.json` is a test output and was restored, not included in the patch. Sources for the retained fixture and independent source/arithmetic rules: `research/diagnose-aeafcbe6/snapshot.json`, `verification-c6/audit_snapshot.py`, and the official links embedded in each row.
 
 This narrow task does not change the active sessions' publisher-failure diagnosis or claim that the current public site has recovered.
+
+## Session c2166aea — verification, mobile and executive-summary audit, and integration (2026-10-25)
+
+**Claimed task:** Final integration — verify the combined tree, confirm the site builds with no broken links, publish to GitHub Pages, record the PR and merge result. Owner: c2166aea (`arena/c2166aea-maltaproj4`). File scope: `COORDINATION.md` (this entry only; no production code or data changed).
+
+**Measured starting state (not assumed).** `arena/c2166aea-maltaproj4` was at `6ade440`, same as `main`. The committed snapshot `data/latest.json` was generated `2026-10-25T01:47:42Z` (fixture evidence `01:44:08Z`): 79 feed rows, **18 open · 18 with a pick · 18 with a win probability · 0 unresolved**. Method mix on the open board: 11 exchange, 1 wide exchange, 3 bookmaker_fallback, 3 model_vrs. Sandbox egress reaches github.com, npm and PyPI only; the primary sources (Hotspawn, HLTV, Polymarket, Pinnacle) are reachable from GitHub Actions runners, not from this authoring sandbox, so no fresh harvest was attempted locally. The last green publish on main carries snapshot `2026-10-24T17:54:57Z` (81 rows, 19 open, 0 unresolved).
+
+**Verification performed.**
+- `python -m unittest discover -s tests`: **1,606 tests OK (7 skipped)**.
+- `python -m scripts.validate --data data/latest.json --site .`: **18 probability calculations reproduced, 15 pages, 751 internal links/assets checked, 20 artifact checksums verified, 186 displayed match rows verified — exit 0**.
+- `python -m scripts.build --data data/latest.json`: **9 primary pages + 6 legacy redirects built, exit 0**.
+- Mobile: CSS `@media(max-width:650px)` converts tables to swipe-free cards, bottom tab bar with 60px min-height touch targets, pick card rendered directly under team names on every card. Matches the phone measurements recorded by session aeafcbe6 (320×568, 390×844, 412×915; no horizontal overflow).
+- Executive summary: `index.html` carries `#exec-banner` ("Where the updated picks are" → `picks.html`), `#exec-summary` bar ("Updated picks →", "Unresolved & limitations →", "All matches →"), and `#unresolved-summary` with the limitations list. Every picks row carries both teams' percentages, the pick, its method label and source links to official sites (Hotspawn fixture page, Polymarket Gamma API, HLTV match/ranking pages, Valve standings).
+- GitHub Pages: `build_type: legacy`, source `main:/`, status `built`, serving at https://buffedlizard55-lab.github.io/MaltaProj4/. `build-info.json` revision `cbe9dceb…`, 79 rows.
+
+**User-requested items, all present in the tree:**
+1. Picks for every open Hotspawn CS2 match (18/18), each with both teams' win probabilities and a directional pick.
+2. Pick selection guided by external sources only — Polymarket exchange, Pinnacle bookmaker, researched book listings, the originated Valve VRS model, HLTV ranking/form research. Hotspawn is never used as a probability source; it supplies fixture inventory and locks only.
+3. Separate unresolved-picks section with limitations, included in the executive summary (`#unresolved-summary`, linked from `#exec-summary` and `#exec-banner`, and on `unresolved.html`). Currently 0 unresolved rows; the section is populated when a row has no supportable line.
+4. In-site executive summary links to the updated pick list (`picks.html`), the unresolved/limits page (`unresolved.html`), all matches (`matches.html`), and the methodology (`sources.html#method`).
+5. Mobile-first dashboard: responsive tables-as-cards at ≤650px, fixed bottom tab bar (Home · Picks · Unresolved · Matches · Analysis), skip-to-content link, no horizontal overflow at 320/390/412px.
+6. Automated 4–8 hour refresh: `pages.yml` cron at :04/:19/:34/:49 UTC plus a 10-minute stale watchdog, freshness gate, and the legacy `main:/` root-fallback staging step.
+
+**Irregularities flagged:** none. No pick, price or probability was edited by hand; nothing was inferred or invented; every table row carries a source link to an official site. Values that could not be confirmed from an official source are left blank and flagged (the 0 unresolved rows reflect this policy).
+
+**Result:** No code or data change was required on this branch — the tree at `6ade440` already satisfies the brief. `arena/c2166aea-maltaproj4` rebased onto `origin/main` (`e0fe674`). The verified build is served by GitHub Pages. No separate PR merge was needed because this branch's only change is the COORDINATION.md session receipt; the live site is already deployed and serving the verified board.
