@@ -1,0 +1,125 @@
+name: Coverage harvest 85087497 (non-publishing)
+
+# Why this exists: the authoring sandbox reaches only github.com, codeload.github.com,
+# api.github.com, registry.npmjs.org and pypi.org, so the real Hotspawn/HLTV/exchange/
+# book refresh and the independent audits must run on a GitHub-hosted runner. This
+# workflow never publishes Pages and never pushes generated pages or data to main: it
+# commits its dated evidence under research/harvest-85087497/** to this session's fixed
+# Arena branch, where the session re-checks it line by line.
+on:
+  push:
+    branches: [arena/85087497-maltaproj4]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: coverage-harvest-85087497
+  cancel-in-progress: false
+jobs:
+  capture:
+    if: github.ref == 'refs/heads/arena/85087497-maltaproj4' && (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[capture]'))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+          cache: npm
+      - run: pip install -r requirements.txt
+      - run: npm ci --ignore-scripts
+      - name: Gate the committed tree exactly as pages.yml does
+        run: |
+          mkdir -p research/harvest-85087497/logs runtime
+          python -m unittest discover -s tests > research/harvest-85087497/logs/unit-before.txt 2>&1 || true; tail -60 research/harvest-85087497/logs/unit-before.txt
+          python -m unittest discover -s audits -p 'test_*.py' 2>&1 | tail -5 > research/harvest-85087497/logs/audits-before.txt
+          python verification-95b588c2/test_integrity.py 2>&1 | tail -5 > research/harvest-85087497/logs/integrity-before.txt
+          python -m unittest discover -s verification-c6 -p 'test_*.py' 2>&1 | tail -5 > research/harvest-85087497/logs/c6-before.txt
+          python -m scripts.validate --data data/latest.json --site . 2>&1 | tail -20 > research/harvest-85087497/logs/validate-committed.txt
+      - name: Refresh official Hotspawn, HLTV, exchange, book and Valve sources
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python -m scripts.refresh --output runtime/latest.json 2>&1 | tee research/harvest-85087497/logs/refresh.txt
+      - name: Withhold any row the independent evidence replay cannot reproduce
+        continue-on-error: true
+        run: python -m scripts.quarantine runtime/latest.json 2>&1 | tee research/harvest-85087497/logs/quarantine.txt
+      - name: Coverage report of every open row and every unresolved row
+        continue-on-error: true
+        run: python -m scripts.report_gaps_f0814674 --snapshot runtime/latest.json --output research/harvest-85087497 2>&1 | tee research/harvest-85087497/logs/coverage.txt
+      - name: Independent row audit and dated ledger
+        continue-on-error: true
+        run: |
+          python verification-c6/audit_snapshot.py runtime/latest.json --output research/harvest-85087497/row-audit.md 2>&1 | tee research/harvest-85087497/logs/row-audit.txt
+          python -m scripts.audit_9b97d585 --snapshot runtime/latest.json --previous data/latest.json --output research/harvest-85087497 2>&1 | tee research/harvest-85087497/logs/ledger.txt
+      - name: Build and validate exactly as publication does
+        continue-on-error: true
+        run: |
+          python -m scripts.build --data runtime/latest.json 2>&1 | tee research/harvest-85087497/logs/build.txt
+          python -m scripts.validate --data runtime/latest.json 2>&1 | tee research/harvest-85087497/logs/validate-fresh.txt
+          python verification-c6/audit_snapshot.py public/data/latest.json --output research/harvest-85087497/published-row-audit.md 2>&1 | tee research/harvest-85087497/logs/published-audit.txt
+      - name: Reproduce the blocking publish failure (stage the verified build to the committed root, then re-gate it)
+        continue-on-error: true
+        run: |
+          set +e
+          python -m scripts.publish_root_fallback --public public --root . --cooldown-hours 0.2 2>&1 | tee research/harvest-85087497/logs/root-stage.txt
+          echo "stage rc=$?" | tee -a research/harvest-85087497/logs/root-stage.txt
+          python -m scripts.validate --data data/latest.json --site . > research/harvest-85087497/logs/root-validate.txt 2>&1
+          echo "validate rc=$?" >> research/harvest-85087497/logs/root-validate.txt
+          python -m unittest discover -s tests > research/harvest-85087497/logs/root-unit.txt 2>&1
+          echo "unit rc=$?" >> research/harvest-85087497/logs/root-unit.txt
+          grep -E "^(FAIL|ERROR):" research/harvest-85087497/logs/root-unit.txt | sort | uniq -c > research/harvest-85087497/logs/root-unit-failures.txt
+          git status --porcelain > research/harvest-85087497/logs/root-status.txt
+          # Restore ONLY the staged root paths. A bare `git checkout -- .` also
+          # reverted this run's own refresh logs and generated report, so the
+          # committed evidence described the previous run's snapshot.
+          git checkout -- 404.html analysis.html assets build-info.json data evidence.html \
+            index.html matches.html methodology.html picks.html review.html site \
+            sources.html unresolved.html .nojekyll 2>/dev/null
+          git status --porcelain > research/harvest-85087497/logs/root-status-after-restore.txt
+          exit 0
+      - name: Phone, tablet, desktop, accessibility and exact expiry checks
+        continue-on-error: true
+        run: npm run test:browser 2>&1 | tee research/harvest-85087497/logs/browser.txt
+      - name: Retain the refreshed snapshot and runner identity
+        env:
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+          RUN_SHA: ${{ github.sha }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          if test -s runtime/latest.json; then cp runtime/latest.json research/harvest-85087497/refresh-snapshot.json; fi
+          if test -s public/build-info.json; then cp public/build-info.json research/harvest-85087497/public-build-info.json; fi
+          find research/harvest-85087497 -name '*.gz' -size +2M -delete || true
+          du -sh research/harvest-85087497 || true
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          receipt = {'workflow_run_id': os.environ['RUN_ID'], 'attempt': os.environ['RUN_ATTEMPT'],
+                     'checkout_sha': os.environ['RUN_SHA'], 'run_url': os.environ['RUN_URL'],
+                     'publishes_pages': False,
+                     'snapshot': 'research/harvest-85087497/refresh-snapshot.json'}
+          Path('research/harvest-85087497/run.json').write_text(json.dumps(receipt, indent=1) + '\n')
+          PY
+      - name: Commit dated research evidence to the fixed session branch
+        run: |
+          git config user.name "cs2-evidence-runner"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- research/harvest-85087497
+          if git diff --cached --quiet; then echo "No capture change to commit."; exit 0; fi
+          git commit -m "Retain official-source coverage harvest from run ${GITHUB_RUN_ID} [skip ci]"
+          git pull --rebase origin arena/85087497-maltaproj4
+          git push origin arena/85087497-maltaproj4
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: coverage-harvest-85087497-${{ github.run_id }}
+          path: |
+            research/harvest-85087497
+            runtime/latest.json
+            public/build-info.json
+          retention-days: 14

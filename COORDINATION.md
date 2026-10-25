@@ -1,3 +1,38 @@
+## Session 85087497 claim — 2026-10-25 13:30 UTC (diagnose failed publisher, fresh full-coverage board, mobile executive summary)
+
+**Status: in progress.** Arena-fixed branch `arena/85087497-maltaproj4` (based on `main` `6ade440`);
+no other branch is created or pushed. Board read before claiming: the top entry (2b856884,
+2026-10-24 18:05 UTC) is a published-state addendum, not an open claim on these files.
+
+**Measured problem this session exists to fix.** The live site at 13:27 UTC serves the
+2026-10-25T01:47:42Z snapshot (79 feed rows, 18 open at observation, all 18 picked+priced:
+11 exchange · 2 exchange_wide · 2 bookmaker_fallback · 2 model_vrs · 1 model_vrs_mirror) and
+withholds every pick as past its 8-hour window ("14 open · 0 with a pick"). Scheduled
+`pages.yml` runs 40170923727 (06:56Z) and 40193317196 (12:29Z) both failed at
+*Build and independently verify every row, calculation and internal link* after refresh and
+quarantine succeeded; the last success was 01:43Z (40151731896). Job logs are unreachable from
+this sandbox (blob host EOF, as earlier sessions recorded), so root cause is diagnosed by a
+non-publishing harvest that commits its logs to this branch.
+
+**Claimed scope (files this session may edit):** `COORDINATION.md`,
+`.github/workflows/pages.yml` (add this branch to push triggers only),
+`.github/workflows/harvest-85087497.yml` (new), `research/harvest-85087497/**` (runner evidence),
+`research/session-85087497/**` (new), the minimal `scripts/*.py` / `tests/*.py` fix for the
+measured build failure, `data/book-receipts.json` / `data/identities.json` / `data/review-notes.json`
+only for sourced fallback receipts for fixtures the fresh board cannot price, `scripts/build.py` +
+`assets/*` only for the mobile executive-summary navigation, and generated root/site HTML +
+`data/latest.json` + `data/matches.csv` + `build-info.json` only through the verified build.
+No other session's claimed files are edited; conflicts are resolved by adopting `main`.
+
+**Tasks:** (1) harvest-diagnose the build failure on a fresh snapshot; (2) fix root cause, keep
+every gate; (3) verify every open Hotspawn CS2 match has a pick — market line first (Polymarket/
+Pinnacle/books), then HLTV/Valve VRS originated model, then researched book/HLTV-rank/form
+fallbacks — with unresolved rows and limitations in the executive summary + `unresolved.html`;
+(4) make the executive summary the obvious first screen on a phone with in-site links to
+`picks.html`, `#picks-at-a-glance`, `unresolved.html`, `matches.html`, `sources.html#method`,
+`review.html`; (5) PR to `main`, merge without waiting per brief, confirm Pages serves the new
+build, record the receipt here. Unverified values stay blank and flagged, never inferred.
+
 ## Session 2b856884 — published-state addendum (2026-10-24 18:05 UTC)
 
 **Measured after the two merges, read from `origin/main`, not from a branch.** PR
