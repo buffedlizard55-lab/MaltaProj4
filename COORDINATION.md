@@ -9786,3 +9786,40 @@ https://play.hotspawn.com/cs2-pickems ;
 https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md ;
 `research/session-bd650209/**`.
 
+
+## Session bd650209 — delivery receipt: PR #324 merged, board fresh with a pick on every open match (2026-10-25 14:45 UTC)
+
+**PR [#324](https://github.com/buffedlizard55-lab/MaltaProj4/pull/324) merged to `main` at 2026-10-25T14:26:20Z
+as `7b0555e`**, without waiting for approval, after the rebased head `b26abca` passed this session's own
+gates on the merged tree: **1,665 unit tests OK** (12 skipped), `scripts.validate` rc 0
+(78 rows / 16 calculations / 15 pages / 724 links / 20 checksums / 180 displayed rows), and the full
+13-suite Chromium run rc 0. The merge carried only research receipts, one test file, one
+Flagged-for-Review note and the coordination entries — no picks, prices, collector or validator code.
+
+**The publisher is green and the board is fresh.** Read from `main`, not from a branch:
+`data/latest.json` snapshot `2026-10-25T13:54:18.896036Z` — **78 feed rows, 16 open, 16 picks,
+16 win probabilities, 0 unresolved**; root `build-info.json` built `2026-10-25T14:21:29.507670Z`,
+78 rows. Pages is `build_type: legacy`, source `main:/`, and its build for `7b0555e` was reported
+`building` at 14:26:21Z, so the served bytes are the committed root, which is inside its eight-hour
+evidence window. At 14:30Z that is a ~36-minute-old board with a pick and a probability on all 16 open
+matches, instead of the 12-hour-old board that withheld every pick at the start of this session.
+
+**What this session contributed, and what it did not.** It reproduced the failing gate on its own capture
+(78 rows, 16 open, `validate` rc 1, fixture 1086697 named), verified the landed alias repair against that
+capture (rc 1 → rc 0, audit 0 failures, build 16/16, 16/16 rows passing every re-derived check), published
+the phone measurements (320×568 executive summary at y=290, first pick and both percentages above the
+507 px tab bar), added a falsifiable verifier plus nine regressions, and published one new
+Flagged-for-Review note. It did not re-fix `scripts/validate.py`, did not edit `pages.yml`, and did not
+hand-build the root.
+
+**Flagged for review (non-blocking).** `session-bd650209-fixture-page-link-missing-2026-10-25`: two open
+rows in that capture (1086696, 1086697) link to `https://play.hotspawn.com/cs2-pickems` because the
+inventory linked no per-fixture page for them; no slug was invented. The other five irregularities listed
+in this session's earlier receipt (blank `best_of`, the 23-point spread row, the listing without an
+operator update time, the 20-day-old Valve standings behind the four originated lines, and the GG.BET
+403 / Thunderpick adapter limitations) stand as published.
+
+**Sources for this receipt.** PR #324; `main` `7b0555e`; `data/latest.json` and `build-info.json` read from
+`main`; https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40202234380 (the push run for
+`7b0555e`); https://api.github.com/repos/buffedlizard55-lab/MaltaProj4/pages/builds/latest (Pages build for
+`7b0555e`, created 2026-10-25T14:26:21Z).
