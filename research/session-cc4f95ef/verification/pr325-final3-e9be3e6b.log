@@ -1,0 +1,4 @@
+snapshot: 2026-10-25T14:22:27.352651Z | fixture evidence: 2026-10-25T14:18:55.242320Z
+rows 78 | open 16 | picks 16 | probabilities 16 | research-only 0 | unresolved 0
+non-featured methods: {"bookmaker_fallback": 1, "exchange": 11, "model_vrs": 4}
+checks: 294 | failures: 0
