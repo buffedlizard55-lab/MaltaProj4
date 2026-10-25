@@ -9440,3 +9440,11 @@ Flagged for Review page.
 the stale watchdog, so the 4–8 hour promise is now backed by a publisher that actually completes;
 the eight-hour silence was a contract violation in the data, not a cron problem, and it is
 recorded rather than papered over.
+
+## Session a7f788c8 — 2026-10-25 independent integration claim
+
+| Task | Status | Owner | File scope |
+| --- | --- | --- | --- |
+| Reproduce current publication failure; independent validator regression repair if not claimed; verify and integrate | in progress | a7f788c8 | `research/session-a7f788c8/**`, `tests/test_session_a7f788c8.py`, validator only if defect reproduced and unclaimed |
+
+Arena fixes this session to `arena/a7f788c8-maltaproj4`; no alternate branch will be created. Session 58354934 has a non-publishing diagnosis running; this session will not edit its workflow or research. Current scheduled run 40193317196 failed at build/row verification after refresh and quarantine succeeded (GitHub jobs API). Log-download host is blocked in this environment; no fresh source verification is claimed yet.
