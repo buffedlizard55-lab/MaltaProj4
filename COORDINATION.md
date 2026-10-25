@@ -24,6 +24,18 @@ follows the higher probability, `fair_odds == 1/p`, the row links an official so
 matches the quote's own labels — 0 failures. Command:
 `python -m scripts.session_046b2e46 --data data/latest.json`.
 
+**A layout regression that turned step 14 red, found and repaired here.** On the 15:12Z pull-request run the
+browser chain failed at `tests/browser_ce45f672.cjs`: at 320x568 the first pick card started at y=383 and was
+207px tall, so both win percentages sat partly behind the fixed tab bar (y=507). The cause was growth of the
+freshness strip above the board — 187px, carrying a "next pick" shortcut and a second copy of the coverage
+counters that `#exec-quicknav` immediately below already states. A `@media(max-width:360px)` block now folds
+those two duplicate blocks and tightens the tab bar at that width only: the first card moves to y=289 and ends
+at 496, **19px clear of the bar**, and every other suite still passes. Nothing is removed from the page — the
+counters and the next pick remain in `#exec-quicknav` and in the card immediately below — and the stale/withheld
+warning is untouched. `assets/style.css` and `site/assets/style.css` are byte-identical and balanced
+(`validate_stylesheet` → True), the root manifest's checksum for the served stylesheet was regenerated, and the
+full suite is **1,738 tests OK (13 skipped)** with the complete browser chain green.
+
 **Non-blocking observations for the next session.** (a) Two legacy Pages builds errored earlier today
 (`701c55e` 14:46Z, `fa453cc` 14:49Z, `Page build failed.`) and the following builds succeeded; another session
 has already flagged this. (b) The scheduled `pages.yml` queue is saturated — several runs were superseded

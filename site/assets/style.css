@@ -776,3 +776,22 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
   body[data-page=picks] tbody tr{padding:12px;gap:10px 14px}
   body[data-page=picks] td.team-col{padding-bottom:9px}
 }
+
+/* ≤360px phones (iPhone SE 1st gen, 320x568): the freshness strip carries two
+   blocks whose information the executive-summary bar immediately below already
+   states — the coverage counters ("15 open · 15 with a pick · 0 unresolved")
+   and the "next pick" shortcut, which is the same card the board starts with.
+   Together they push the first pick card's two win percentages behind the fixed
+   tab bar, which tests/browser_ce45f672.cjs measures and the brief forbids ("it
+   should be obvious what the pick is ... easily readable on a phone"). Folding
+   them at this width moves the card back above the bar with ~20px of headroom;
+   nothing is removed from the page — the counters live in #exec-quicknav and the
+   whole board follows immediately — and the stale/withheld warning is untouched.
+   Session 046b2e46, measured 2026-10-25 15:20Z (card 207px tall, starting at
+   y=383, tab bar at y=507 on a 568px viewport). */
+@media(max-width:360px){
+  .fresh-strip .fresh-next{display:none}
+  .fresh-strip .fresh-counts{display:none}
+  .fresh-strip{padding:9px 11px;gap:4px 12px}
+  .mobile-tabs a{min-height:52px;padding:6px 1px 5px}
+}
