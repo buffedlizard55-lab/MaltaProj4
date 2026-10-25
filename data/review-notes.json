@@ -6324,5 +6324,29 @@
     "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/data/identities.json"
    }
   ]
+ },
+ {
+  "id": "session-b06ee902-pages-build-rate-2026-10-25",
+  "status": "Measured — the live site lagged the publish by ~26 minutes while every publish run was green; legacy Pages builds are soft-limited to 10 per hour",
+  "finding": "While checking that its own merge reached visitors, session b06ee902 found the live deployment frozen at build-info built_at 2026-10-25T14:59:26Z while main's committed root already carried 15:00:47Z and later. The Pages build list explains it: 15:04:50 errored fd4ba08, 15:13:19 errored e379ee6, 15:20:18 errored 9cef2fb ('Page build failed.'), then 15:20:53 built f07cfc6, after which the live build-info advanced to 15:25:24Z with 75 rows. The site content was not the cause and was ruled out by diff: the last successful build before the burst (57d34f2, committed 15:02:17Z) and the first failing one (fd4ba08, 15:04:49Z) differ in exactly one file, COORDINATION.md, and the tree is 120 MB across 2,561 files with no symlinks, so neither the 1 GB site limit nor the 100 MB per-file limit is in play. GitHub documents the actual constraint: 'GitHub Pages sites have a soft limit of 10 builds per hour. This limit does not apply if you build and publish your site with a custom GitHub Actions workflow.' This repository is published with build_type legacy and main receives commits every few minutes from many concurrent sessions, so builds exceed that soft limit and the served site stays on the last successful deployment until a slot frees. Nothing is broken and no pick is wrong: the board is simply older than the repository during a burst, and a visitor reads an older snapshot than the run that just succeeded. The remedy (switching Pages to a GitHub Actions deployment) is a repository-settings change outside this session's file scope, so it is recorded here for the owner rather than applied unilaterally while other sessions publish through the legacy main:/ root fallback.",
+  "impact": "Presentation and freshness only: no pick, price or probability changes, and the site recovers on its own once a build slot frees (observed 14:59Z to 15:25Z). It does mean that 'the publish run was green' is not by itself evidence that the served page is current; the deployed build-info.json must be compared with the committed root, with a cache-busting query because the CDN otherwise serves the previous build-info.json.",
+  "sources": [
+   {
+    "label": "GitHub Pages limits — 10 builds per hour soft limit, exempt for custom Actions workflows",
+    "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits"
+   },
+   {
+    "label": "Pages build list showing the errored/built sequence",
+    "url": "https://api.github.com/repos/buffedlizard55-lab/MaltaProj4/pages/builds"
+   },
+   {
+    "label": "Live build that the deployment advanced to",
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json"
+   },
+   {
+    "label": "Session receipt with the same measurement",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/COORDINATION.md"
+   }
+  ]
  }
 ]
