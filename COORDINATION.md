@@ -88,6 +88,20 @@ workflow files, their `scripts/` helpers or their `research/` directories, and w
 diagnosis: it reads the shared board before each push and adopts any fix that reaches `main` first instead
 of layering a second one on top.
 
+
+## Session ece64b74 — final-integration claim: stale publication and failed refresh/build gates (2026-10-25 13:25 UTC)
+
+Read the coordination board before claiming. No current `in progress` item owns the publication workflow or integration scope; the latest published-state receipt is Session 2b856884's 2026-10-24 addendum. This is the Arena-fixed branch `arena/ece64b74-maltaproj4` (no separate branch/worktree will be created).
+
+**Measured claim-time state (GitHub API + committed files):** `main` / `origin/main` is `6ade440`; `data/latest.json` has 79 feed rows and was generated at `2026-10-25T01:47:42Z`. It records 18 open matches, 18 picks, 18 probability pairs, 0 unresolved at capture time; the earliest evidence expires `2026-10-25T09:44:08Z`. GitHub Actions run [40193317196](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40193317196) at 12:29Z failed at *Build and independently verify every row, calculation and internal link*; run [40170923727](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40170923727) at 06:56Z failed at the same gate. Both deploy jobs then failed *Verify live Pages bytes match this exact build*. The job-step conclusions are confirmed through the GitHub Actions API; runner log download is blocked by the sandbox's host allowlist, so the precise assertion is not yet known. The snapshot is therefore outside its eight-hour evidence window at claim time, and live picks must not be described as current.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Final integration: diagnose why the fresh-refresh build gate is failing, repair its regression and prevent deploy unless a verified artifact was uploaded | in progress | ece64b74 | `.github/workflows/pages.yml`, `tests/test_session_ece64b74.py`, `COORDINATION.md` | 2026-10-25 13:25 |
+| Re-run source refresh, all relevant verification, publish, and record measured current coverage and limitations (no hand-filled odds) | in progress | ece64b74 | `data/latest.json`, generated root/site pages and receipt files only after the verified workflow succeeds; `research/session-ece64b74/**` | 2026-10-25 13:25 |
+
+Scope is restricted to this final-integration task. Existing public prices/probabilities will not be extended past expiry or substituted with Hotspawn/crowd picks. The first diagnosis step is to make the failing gate's exact verifier output legible through GitHub check annotations/summary, because action log downloads are not reachable from this workspace; then fix only the reproduced cause and retain the official-source receipts.
+
 ---
 
 ## Session 53284c80 harvest receipt — 2026-10-25 13:45 UTC
