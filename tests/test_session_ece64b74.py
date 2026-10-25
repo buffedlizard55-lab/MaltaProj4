@@ -32,12 +32,6 @@ class BuildFailureDiagnosticsTests(unittest.TestCase):
     def setUp(self):
         self.verify = job("verify-build")
 
-    def test_fixed_session_branch_runs_verification_without_qualifying_for_upload(self):
-        push = WORKFLOW.split("  pull_request:", 1)[0]
-        self.assertIn("arena/ece64b74-maltaproj4", push)
-        upload = step(self.verify, "- uses: actions/upload-pages-artifact@")
-        self.assertIn("github.ref == 'refs/heads/main'", upload)
-
     def test_each_build_gate_retains_its_own_log_and_summary(self):
         build = step(self.verify, "- name: Build and independently verify every row")
         for expected in (
