@@ -177,6 +177,21 @@ was edited by hand; nothing inferred; Hotspawn used for fixture inventory/locks 
 probability source. Ongoing freshness is the publisher's job: `pages.yml` cron `4,19,34,49 * * * *` plus the
 10-minute watchdog, with picks withheld automatically once evidence leaves its 8-hour window.
 
+## Session 9fca16ca — CLAIM 2026-10-25 14:16 UTC: independent post-merge verification, delivery consistency, final integration
+
+Board read before claiming at `origin/main` / this fixed Arena branch `d5b0739` (PR #322 merged at 14:06:30Z). Arena fixes this session to `arena/9fca16ca-maltaproj4`; no other branch is created, checked out, or pushed. The b85ad9b4 publication task at 13:45Z is treated as **completed by PR #322 and the 14:05Z receipt**, not reopened here. Older `in progress` rows are historical (>60 minutes or explicitly superseded by their own delivery receipts).
+
+**Measured starting inconsistency (not assumed).** At 14:15Z the public `index.html` renders a 13:56Z snapshot with **16 open / 16 picks / 16 probabilities / 0 unresolved**, but also renders the stale warning “Snapshot expired or timestamp unverified. Current picks are withheld.” Live `build-info.json` still serves `built_at 2026-10-25T01:47:42Z` (79 rows), while the branch-root receipt is `13:46:54Z` (78 rows). Pages API reports `build_type: legacy`, source `main:/`, status `errored`. This session will establish whether the warning is a client-side false positive and whether the receipt/deployment path can be made byte-consistent without weakening any evidence rule.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Independent line-by-line audit of all open rows, source links, fallback attempts, unresolved/limitations section, executive summary and mobile navigation; links for manual review | in progress | 9fca16ca | `research/session-9fca16ca/**` (new), `tests/test_session_9fca16ca.py` (new), `data/review-notes.json` (additive only) | 2026-10-25 14:16 |
+| Repair only measured delivery/UI defects (stale receipt vs fresh board), with regression tests | in progress | 9fca16ca | `site/assets/app.js`, `scripts/build.py`, `scripts/stage_legacy.py`, `scripts/publish_root_fallback.py`, `.github/workflows/pages.yml` (only if a defect is proven), associated generated assets/pages via canonical builder | 2026-10-25 14:16 |
+| Final integration: full unit/audit/integrity/validator/browser gates, freshness and link checks, PR from this fixed branch to `main`, merge without approval, live Pages byte verification, receipt | unclaimed until the two rows above are done | 9fca16ca | `COORDINATION.md`, `build-info.json`, generated root pages, `data/latest.json`, `data/matches.csv` only via canonical build/refresh | 2026-10-25 14:16 |
+
+Evidence rules unchanged: Hotspawn supplies fixture inventory and locks only, never a probability; no crowd votes, placeholder odds, inferred values, or 50/50 filler. Any value that cannot be confirmed from a linked official source is blank and flagged. Shared outputs are rebuilt only at final integration; other sessions’ research/workflows are not edited.
+
+
 ---
 
 ## Session b06ee902 — CLAIM 2026-10-25 14:38 UTC (independent audit of the 25 Oct board, and the publish that proves it)
