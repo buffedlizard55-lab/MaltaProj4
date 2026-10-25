@@ -1,0 +1,12 @@
+{
+ "counts": {
+  "rows": 78,
+  "open": 17,
+  "picked": 17,
+  "priced": 17,
+  "unpriced_open": 0,
+  "unresolved_open": 0
+ },
+ "checks": 748,
+ "failures": []
+}

@@ -1,0 +1,1 @@
+{"snapshot_generated_at": "2026-10-25T13:30:13.933101Z", "counts": {"total": 78, "open": 17, "not_open": 61, "open_with_pick": 17, "open_with_probabilities": 17, "open_research_only": 0, "open_unresolved": 0, "by_method": {"exchange": 11, "model_vrs": 4, "bookmaker_fallback": 1, "exchange_wide": 1}}, "site_checks": 12, "problems": 0}

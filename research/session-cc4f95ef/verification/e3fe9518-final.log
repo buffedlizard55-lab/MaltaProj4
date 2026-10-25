@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "snapshot_generated_at": "2026-10-25T13:30:13.933101Z",
+  "audit_clock": "2026-10-25T13:30:13.933101Z",
+  "clock_basis": "snapshot_generation_time_not_live",
+  "counts": {
+    "not_open": 62,
+    "official_input_model": 4,
+    "operator_market": 11,
+    "third_party_listing": 1
+  },
+  "actionable_at_audit_clock": 16,
+  "errors": [],
+  "scope": "Retained-evidence provenance and independent arithmetic replay, not live upstream confirmation or forecast accuracy.",
+  "snapshot_sha256": "277c0c02b93d45ca4d2c4d3f16465f488801f553df2b4b4849cddbc000eb3cc9"
+}

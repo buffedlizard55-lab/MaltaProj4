@@ -1,0 +1,677 @@
+{
+ "id": "1086697",
+ "teams": [
+  "Projeto do KinGui",
+  "Yawara"
+ ],
+ "team_ids": [
+  "205414",
+  "69097"
+ ],
+ "competition": "CCT South America 2026 Series #7",
+ "tier": "c",
+ "best_of": null,
+ "start": "2026-10-25T19:00:00Z",
+ "lock": "2026-10-25T18:54:00Z",
+ "source_url": "https://play.hotspawn.com/cs2-pickems",
+ "source_status": "scheduled",
+ "state": "open",
+ "flags": [
+  "Originated line: Valve VRS model estimate, not a market price."
+ ],
+ "probabilities": [
+  0.5100602445117999,
+  0.4899397554882001
+ ],
+ "fair_odds": [
+  1.9605527205068531,
+  2.041067271635368
+ ],
+ "pick": "Projeto do KinGui",
+ "method": "model_vrs",
+ "evidence": [
+  {
+   "provider": "Valve VRS model",
+   "id": "vrs-2026-10-05-144-147",
+   "api_url": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+   "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+   "observed_at": "2026-10-25T13:28:50.647267Z",
+   "updated_at": null,
+   "standings_as_of": "2026-10-05",
+   "standings_commit": "eec4853d7bcf0f1f7efe7f0d901234bef7e98b75",
+   "standings_file": "standings_global_2026_10_05.md",
+   "standings_origin": "live official repository",
+   "fixture_teams": [
+    "Projeto do KinGui",
+    "Yawara"
+   ],
+   "vrs_teams": [
+    "ex-Keyd Stars",
+    "Yawara"
+   ],
+   "points": [
+    854,
+    845
+   ],
+   "standings": [
+    144,
+    147
+   ],
+   "rosters": [
+    [
+     "ckzao",
+     "drg",
+     "lash",
+     "xureba",
+     "zede"
+    ],
+    [
+     "brn$",
+     "deemO",
+     "j0w",
+     "pancc",
+     "tele"
+    ]
+   ],
+   "details_urls": [
+    "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/details/2026_10_05/0144--ex-keyd_stars--ckzao-drg-lash-xureba-zede.md",
+    "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/details/2026_10_05/0147--yawara--brn_-deemo-j0w-pancc-tele.md"
+   ],
+   "roster_checks": [
+    {
+     "lineup": [
+      "drg",
+      "ALLE",
+      "ckzao",
+      "xureba",
+      "lash"
+     ],
+     "overlap": 4,
+     "note": "roster verified against the HLTV lineup"
+    },
+    {
+     "lineup": [
+      "brn$",
+      "j0w",
+      "deemO",
+      "tele",
+      "mlhzin"
+     ],
+     "overlap": 4,
+     "note": "roster verified against the HLTV lineup"
+    }
+   ],
+   "label_counts": [
+    1,
+    1
+   ],
+   "raw_expected": [
+    0.5125973510040068,
+    0.48740264899599317
+   ],
+   "calibration_slope": 0.7986,
+   "rating_deviation": 75.0,
+   "formula_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/model/fit.js",
+   "calibration_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/modelfit.png",
+   "probabilities": [
+    0.5100602445117999,
+    0.4899397554882001
+   ],
+   "identity_sources": [
+    {
+     "canonical": "Tropa do KinGui",
+     "names": [
+      "Tropa do KinGui",
+      "Projeto do KinGui",
+      "ex-Keyd Stars"
+     ],
+     "source": "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7",
+     "additional_source": "https://gamma-api.polymarket.com/markets/6033256",
+     "basis": "Fixture parity and Valve four-player roster-continuity rule (model/team.js TEAM_OVERLAP_TO_SHARE_ROSTER = 3), checked 22 Oct 2026 by session 9f3e77d2. Hotspawn fixture 1082919 lists Projeto do KinGui vs Martians in CCT South America 2026 Series #7 at 2026-10-22T13:00:00Z (lock 12:54Z), and EGamersWorld match 3j3hkufF0 lists Projeto do KinGui vs Martians ESports at the same 2026-10-22T13:00:00Z UTC start with the five starters ALLE, ckzao, drg, xureba, lash. Official HLTV match 2399904 (HLTV team 13151 Tropa do KinGui vs team 13230 Martians, CCT 2026 South America Series 7 Round of 16) and Polymarket market 6033256 ('Counter-Strike: Tropa do KinGui vs Martians (BO3) - CCT South America Series 7 Playoffs', gameStartTime 2026-10-22 13:00:00+00, eventStartTime 2026-10-22T13:00:00Z) list the identical Round of 16 slot against the exact opponent Martians at the same 2026-10-22T13:00:00Z UTC start under Tropa do KinGui, with the same five starters drg, ALLE, ckzao, xureba, lash. Valve's official 2026-10-05 global standings (standings_global_2026_10_05.md) list this Brazilian core at #144 ex-Keyd Stars (854 points: ckzao, drg, lash, xureba, zede) following Keyd Stars' 2026-09-30 release of players ckzao, drg, lash, xureba, zede and coach KinGui (Liquipedia Keyd_Stars), sharing 4 of 5 players (ckzao, drg, lash, xureba) with the current HLTV lineup. Exact opponent pair and UTC start are still required for every fixture; main CS2 team label only. Completed 92e3275c corroboration: Fixture parity plus a five-for-five roster agreement, not fuzzy matching. Hotspawn fixture 1082919 lists 'Projeto do KinGui vs Martians' in CCT South America 2026 Series #7 at 2026-10-22T13:00:00Z; HLTV match 2399904 lists 'Tropa do KinGui vs Martians' in CCT 2026 South America Series 7 at the same 13:00Z start, and its world ranking column reads 'HLTV: Unranked / VRS: #149' for that side. EGamersWorld labels the same 13:00Z fixture 'Projeto do KinGui vs Martians ESports' in CCT South America 2026 Series #7 and publishes the same five players for that side (ALLE, ckzao, drg, xureba, lash) that HLTV's match page lists under 'Tropa do KinGui'. Polymarket market 6033256 uses HLTV's label with gameStartTime 13:00Z and resolutionSource hltv.org. The two labels therefore name one team in one fixture, corroborated by the lineup rather than by name shape. Recorded limitation, not used to map anything: HLTV's team-overview page for id 13151 still prints an older roster (KinGui, cLd, brokeN, Ltz, remix) than the match page's lineup, so the mapping rests on the fixture lineups. Exact opponent and UTC start are still required by every tier.",
+     "corroboration": [
+      {
+       "label": "EGamersWorld match 3j3hkufF0 (Projeto do KinGui vs Martians ESports, 2026-10-22T13:00:00Z, lineup ALLE, ckzao, drg, xureba, lash)",
+       "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/projeto-do-kingui-vs-martians-esports-3j3hkufF0"
+      },
+      {
+       "label": "Valve official VRS #144 ex-Keyd Stars detail sheet (854 pts: ckzao, drg, lash, xureba, zede — 4/5 core continuity)",
+       "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/details/2026_10_05/0144--ex-keyd_stars--ckzao-drg-lash-xureba-zede.md"
+      },
+      {
+       "label": "Liquipedia Keyd Stars organization page (2026-09-30 release of lash, xureba, zede, ckzao, drg and coach KinGui)",
+       "url": "https://liquipedia.net/counterstrike/Keyd_Stars"
+      },
+      {
+       "label": "СТАВКА ТВ match preview (Tropa do KinGui vs Martians, 22 Oct 2026, Winline 1.06 / 7.26)",
+       "url": "https://stavka.tv/matches/csgo/22-10-2026-tropa-do-kingui-martians"
+      }
+     ]
+    }
+   ],
+   "warning": "Originated line: Valve VRS model estimate, not a market price. Inputs: Valve standings of 2026-10-05; calibrated with Valve's published fit slope."
+  }
+ ],
+ "hltv_context": {
+  "teams": [
+   "Tropa do KinGui",
+   "Yawara"
+  ],
+  "start": "2026-10-25T19:00:00Z",
+  "ranks": [
+   {
+    "team": "Tropa do KinGui",
+    "hltv_rank": null,
+    "source": null,
+    "hltv_unranked": true,
+    "vrs_rank_on_hltv": 143,
+    "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=13151"
+   },
+   {
+    "team": "Yawara",
+    "hltv_rank": 157,
+    "source": "https://www.hltv.org/ranking/teams/2026/october/19/11933",
+    "hltv_unranked": false,
+    "vrs_rank_on_hltv": 148,
+    "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=11933"
+   }
+  ],
+  "lineups": [
+   {
+    "team": "Tropa do KinGui",
+    "players": [
+     "drg",
+     "ALLE",
+     "ckzao",
+     "xureba",
+     "lash"
+    ]
+   },
+   {
+    "team": "Yawara",
+    "players": [
+     "brn$",
+     "j0w",
+     "deemO",
+     "tele",
+     "mlhzin"
+    ]
+   }
+  ],
+  "team_map": {
+   "Tropa do KinGui": "Projeto do KinGui",
+   "Yawara": "Yawara"
+  },
+  "form": {
+   "Tropa do KinGui": [
+    {
+     "opponent": "MEIA NOITE",
+     "when": "",
+     "format": "bo3",
+     "score": "2 - 0",
+     "won": true
+    },
+    {
+     "opponent": "Martians",
+     "when": "",
+     "format": "bo3",
+     "score": "2 - 0",
+     "won": true
+    },
+    {
+     "opponent": "Galorys",
+     "when": "2 weeks ago",
+     "format": "bo3",
+     "score": "0 - 2",
+     "won": false
+    },
+    {
+     "opponent": "LP",
+     "when": "2 weeks ago",
+     "format": "bo3",
+     "score": "0 - 2",
+     "won": false
+    },
+    {
+     "opponent": "Yawara",
+     "when": "2 weeks ago",
+     "format": "bo3",
+     "score": "2 - 1",
+     "won": true
+    },
+    {
+     "opponent": "Isurus",
+     "when": "2 weeks ago",
+     "format": "bo3",
+     "score": "2 - 0",
+     "won": true
+    },
+    {
+     "opponent": "QUINTESSÊNCIA",
+     "when": "2 weeks ago",
+     "format": "bo3",
+     "score": "2 - 0",
+     "won": true
+    },
+    {
+     "opponent": "Procyon",
+     "when": "3 weeks ago",
+     "format": "bo3",
+     "score": "1 - 2",
+     "won": false
+    },
+    {
+     "opponent": "ALKA",
+     "when": "3 weeks ago",
+     "format": "bo3",
+     "score": "2 - 1",
+     "won": true
+    },
+    {
+     "opponent": "Galorys",
+     "when": "4 weeks ago",
+     "format": "bo3",
+     "score": "0 - 2",
+     "won": false
+    },
+    {
+     "opponent": "ALKA",
+     "when": "4 weeks ago",
+     "format": "bo3",
+     "score": "0 - 2",
+     "won": false
+    },
+    {
+     "opponent": "Turma do Pagode",
+     "when": "4 weeks ago",
+     "format": "bo3",
+     "score": "2 - 1",
+     "won": true
+    },
+    {
+     "opponent": "METANOIA Wolves",
+     "when": "4 weeks ago",
+     "format": "bo3",
+     "score": "1 - 2",
+     "won": false
+    },
+    {
+     "opponent": "Bounty Hunters",
+     "when": "4 weeks ago",
+     "format": "bo3",
+     "score": "0 - 2",
+     "won": false
+    },
+    {
+     "opponent": "Grêmio",
+     "when": "5 weeks ago",
+     "format": "bo3",
+     "score": "2 - 0",
+     "won": true
+    },
+    {
+     "opponent": "Procyon",
+     "when": "7 weeks ago",
+     "format": "bo3",
+     "score": "0 - 2",
+     "won": false
+    },
+    {
+     "opponent": "Isurus",
+     "when": "8 weeks ago",
+     "format": "bo3",
+     "score": "1 - 2",
+     "won": false
+    },
+    {
+     "opponent": "Fluxo",
+     "when": "8 weeks ago",
+     "format": "bo3",
+     "score": "0 - 2",
+     "won": false
+    },
+    {
+     "opponent": "Yawara",
+     "when": "9 weeks ago",
+     "format": "bo3",
+     "score": "2 - 1",
+     "won": true
+    },
+    {
+     "opponent": "Imperial",
+     "when": "10 weeks ago",
+     "format": "bo3",
+     "score": "0 - 2",
+     "won": false
+    },
+    {
+     "opponent": "Galorys",
+     "when": "10 weeks ago",
+     "format": "bo3",
+     "score": "2 - 1",
+     "won": true
+    },
+    {
+     "opponent": "Yawara",
+     "when": "10 weeks ago",
+     "format": "bo3",
+     "score": "2 - 1",
+     "won": true
+    },
+    {
+     "opponent": "paiN Academy",
+     "when": "11 weeks ago",
+     "format": "bo3",
+     "score": "2 - 1",
+     "won": true
+    },
+    {
+     "opponent": "Galorys",
+     "when": "11 weeks ago",
+     "format": "bo3",
+     "score": "0 - 2",
+     "won": false
+    },
+    {
+     "opponent": "Grêmio",
+     "when": "11 weeks ago",
+     "format": "bo3",
+     "score": "2 - 0",
+     "won": true
+    },
+    {
+     "opponent": "BORRACHEIROS",
+     "when": "12 weeks ago",
+     "format": "bo3",
+     "score": "1 - 2",
+     "won": false
+    },
+    {
+     "opponent": "Fluxo",
+     "when": "13 weeks ago",
+     "format": "bo3",
+     "score": "0 - 2",
+     "won": false
+    }
+   ],
+   "Yawara": [
+    {
+     "opponent": "Grêmio",
+     "when": "",
+     "format": "bo3",
+     "score": "2 - 0",
+     "won": true
+    },
+    {
+     "opponent": "your end",
+     "when": "",
+     "format": "bo3",
+     "score": "2 - 0",
+     "won": true
+    },
+    {
+     "opponent": "Galorys",
+     "when": "2 weeks ago",
+     "format": "bo3",
+     "score": "0 - 2",
+     "won": false
+    },
+    {
+     "opponent": "ex-Keyd Stars",
+     "when": "2 weeks ago",
+     "format": "bo3",
+     "score": "1 - 2",
+     "won": false
+    },
+    {
+     "opponent": "Grêmio",
+     "when": "2 weeks ago",
+     "format": "bo3",
+     "score": "2 - 0",
+     "won": true
+    },
+    {
+     "opponent": "Turma do Pagode",
+     "when": "3 weeks ago",
+     "format": "bo3",
+     "score": "0 - 2",
+     "won": false
+    },
+    {
+     "opponent": "BORRACHEIROS",
+     "when": "3 weeks ago",
+     "format": "bo3",
+     "score": "2 - 0",
+     "won": true
+    },
+    {
+     "opponent": "Turma do Pagode",
+     "when": "4 weeks ago",
+     "format": "bo3",
+     "score": "0 - 2",
+     "won": false
+    },
+    {
+     "opponent": "METANOIA Wolves",
+     "when": "4 weeks ago",
+     "format": "bo3",
+     "score": "2 - 1",
+     "won": true
+    },
+    {
+     "opponent": "Grêmio",
+     "when": "4 weeks ago",
+     "format": "bo3",
+     "score": "2 - 1",
+     "won": true
+    },
+    {
+     "opponent": "Bounty Hunters",
+     "when": "4 weeks ago",
+     "format": "bo3",
+     "score": "0 - 2",
+     "won": false
+    },
+    {
+     "opponent": "Bounty Hunters",
+     "when": "4 weeks ago",
+     "format": "bo3",
+     "score": "2 - 1",
+     "won": true
+    },
+    {
+     "opponent": "Juventus",
+     "when": "4 weeks ago",
+     "format": "bo3",
+     "score": "2 - 0",
+     "won": true
+    },
+    {
+     "opponent": "EXODIA",
+     "when": "4 weeks ago",
+     "format": "bo3",
+     "score": "1 - 0",
+     "won": true
+    },
+    {
+     "opponent": "Galorys",
+     "when": "4 weeks ago",
+     "format": "bo3",
+     "score": "1 - 2",
+     "won": false
+    },
+    {
+     "opponent": "Low Cortisol BR",
+     "when": "5 weeks ago",
+     "format": "bo3",
+     "score": "0 - 2",
+     "won": false
+    },
+    {
+     "opponent": "Bounty Hunters",
+     "when": "5 weeks ago",
+     "format": "bo3",
+     "score": "1 - 2",
+     "won": false
+    },
+    {
+     "opponent": "Bounty Hunters",
+     "when": "5 weeks ago",
+     "format": "bo3",
+     "score": "0 - 2",
+     "won": false
+    },
+    {
+     "opponent": "Turma do Pagode",
+     "when": "7 weeks ago",
+     "format": "bo3",
+     "score": "1 - 2",
+     "won": false
+    },
+    {
+     "opponent": "Bounty Hunters",
+     "when": "7 weeks ago",
+     "format": "bo3",
+     "score": "0 - 2",
+     "won": false
+    },
+    {
+     "opponent": "paiN Academy",
+     "when": "7 weeks ago",
+     "format": "bo3",
+     "score": "2 - 1",
+     "won": true
+    },
+    {
+     "opponent": "ODDIK",
+     "when": "8 weeks ago",
+     "format": "bo3",
+     "score": "0 - 2",
+     "won": false
+    },
+    {
+     "opponent": "PEAK",
+     "when": "8 weeks ago",
+     "format": "bo3",
+     "score": "2 - 0",
+     "won": true
+    },
+    {
+     "opponent": "Keyd Stars",
+     "when": "9 weeks ago",
+     "format": "bo3",
+     "score": "1 - 2",
+     "won": false
+    },
+    {
+     "opponent": "Keyd Stars",
+     "when": "10 weeks ago",
+     "format": "bo3",
+     "score": "1 - 2",
+     "won": false
+    },
+    {
+     "opponent": "BESTIA",
+     "when": "11 weeks ago",
+     "format": "bo3",
+     "score": "2 - 0",
+     "won": true
+    },
+    {
+     "opponent": "Isurus",
+     "when": "11 weeks ago",
+     "format": "bo3",
+     "score": "2 - 1",
+     "won": true
+    }
+   ]
+  },
+  "head_to_head": {
+   "teams": [
+    "Tropa do KinGui",
+    "Yawara"
+   ],
+   "wins": [
+    12,
+    4
+   ],
+   "overtimes": 1
+  },
+  "numeric_quote_rows": 0,
+  "limitation": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. Recent results and head-to-head wins are recorded for the final research tier only; no probability is derived from them.",
+  "source": "https://www.hltv.org/matches/2399918/tropa-do-kingui-vs-yawara-cct-2026-south-america-series-7",
+  "observed_at": "2026-10-25T13:25:24.725480Z"
+ },
+ "hltv_team_pages": null,
+ "attempts": [
+  {
+   "provider": "Polymarket",
+   "status": "unresolved",
+   "url": "https://gamma-api.polymarket.com/sports",
+   "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.",
+   "candidates": [
+    {
+     "teams": [
+      "Tropa do KinGui",
+      "Yawara Esports"
+     ],
+     "url": "https://gamma-api.polymarket.com/markets/6169151"
+    }
+   ]
+  },
+  {
+   "provider": "HLTV",
+   "status": "unresolved",
+   "url": "https://www.hltv.org/matches/2399918/tropa-do-kingui-vs-yawara-cct-2026-south-america-series-7",
+   "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. Recent results and head-to-head wins are recorded for the final research tier only; no probability is derived from them."
+  },
+  {
+   "provider": "Pinnacle",
+   "status": "unresolved",
+   "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+   "reason": "No exact team-pair and UTC-start match in retrieved feed."
+  },
+  {
+   "provider": "Polymarket",
+   "status": "unresolved",
+   "url": "https://gamma-api.polymarket.com/sports",
+   "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.",
+   "candidates": [
+    {
+     "teams": [
+      "Tropa do KinGui",
+      "Yawara Esports"
+     ],
+     "url": "https://gamma-api.polymarket.com/markets/6169151"
+    }
+   ]
+  },
+  {
+   "provider": "Thunderpick",
+   "status": "unresolved",
+   "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+   "url": "https://thunderpick.io/esports/cs2-betting"
+  },
+  {
+   "provider": "GG.BET",
+   "status": "error",
+   "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+   "url": "https://gg.bet/en/esports/counter-strike"
+  },
+  {
+   "provider": "Thunderpick (via BO3.gg API)",
+   "status": "unresolved",
+   "url": "https://bo3.gg/matches/tropa-do-kingui-vs-yawara-esports-25-10-2026",
+   "reason": "Fixture found on BO3.gg with exact UTC start, but no active sportsbook moneyline is posted yet (bet_updates is null)."
+  },
+  {
+   "provider": "Valve VRS model",
+   "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+   "status": "resolved",
+   "reason": "Originated line from both teams' Valve standings points (2026-10-05)."
+  }
+ ],
+ "reason": null,
+ "snapshot_generated_at": "2026-10-25T13:28:50.705174Z",
+ "source_capture_run": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40197480741",
+ "source_capture_note": "Runner capture by session 58354934; row retained unchanged for offline validator replay."
+}

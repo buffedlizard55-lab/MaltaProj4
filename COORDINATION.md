@@ -1,3 +1,45 @@
+# Shared task board — final additive integration, session cc4f95ef (2026-10-25 14:43 UTC)
+
+Board read before this integration. Arena fixes this session to
+`arena/cc4f95ef-maltaproj4`; no separate branch or worktree was created. `main`
+advanced through PRs #311, #313, #315, #316, #322, #324, #331, #332 and #333
+during this work. All upstream repairs are **adopted, not duplicated**. Because
+main is already publishing fresh boards, this final PR #325 is additive: it
+does **not** overwrite any generated root page or `data/latest.json`. It adds
+the independent audit, four flagged notes, one row-level regression and the
+verification receipts. The post-merge publisher will regenerate the legacy
+`main:/` root with the new notes.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Independent line-by-line audit: official source links, pick/probability arithmetic, coverage, expiry, mobile readability, unresolved/limitations, executive-summary links; sources and irregularities recorded | done | cc4f95ef | `research/session-cc4f95ef/**`, `tests/test_session_cc4f95ef.py` | 2026-10-25 14:43 |
+| Adopt all upstream repairs; union the Flagged-for-Review register; add four dated notes and a row-level alias regression; re-verify the combined tree | done | cc4f95ef | `data/review-notes.json` (append-only), `COORDINATION.md` | 2026-10-25 14:43 |
+| Final integration: PR [#325](https://github.com/buffedlizard55-lab/MaltaProj4/pull/325) from this fixed Arena branch to `main`, merge without approval, confirm Pages deployment and record merge result | in progress | cc4f95ef | `COORDINATION.md`, `research/session-cc4f95ef/PR_BODY.md` | 2026-10-25 14:43 |
+
+**Final tree measured.** Main snapshot `2026-10-25T14:22:27Z`, root build
+`2026-10-25T14:34:24Z`, 78 rows / 16 open / 16 picks / 16 win probabilities /
+0 unresolved; review register 265 notes. Local gates on the exact PR head:
+1,701 unit tests OK (12 skipped), 9 audits, 5 integrity, 12 verification-c6,
+`scripts.validate` (726 links/assets, 20 checksums, 181 displayed rows),
+`verification-c6` 0 failures, `verification-93f6951a` 3,260 checks / 0
+failures, `verification-e9be3e6b` 294 / 0, coverage contract 16 actionable /
+0 problems, and all 13 Chromium suites. Receipts:
+`research/session-cc4f95ef/verification/pr325-final3-*`.
+
+**Sources and flagged irregularities.** Official Hotspawn lobby/fixtures API,
+HLTV match 2399918 and rankings, Polymarket Gamma, Pinnacle guest API, BO3.gg
+researched listing and Valve's Regional Standings repository are linked
+row-by-row in `research/session-cc4f95ef/LINE_BY_LINE_AUDIT.md`. Runner
+receipts: [40193317196](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40193317196),
+[40197480741](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40197480741),
+[40197553353](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40197553353).
+Non-blocking flags: four labelled VRS model estimates, one third-party
+Thunderpick/BO3.gg listing, two warnings in `verification-4901f43e` about
+another session's archived prose and older alias citations, and the legacy
+`main:/` Pages source. All are on the Flagged for Review page with source links.
+
+---
+
 ## Session 046b2e46 — independent pick ledger and alias-bridge tests (14:30 UTC)
 
 **Both overlapping repairs landed on `main` first; both of mine were withdrawn, not stacked.** Session
