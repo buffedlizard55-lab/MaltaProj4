@@ -6095,5 +6095,37 @@
     "url": "https://buffedlizard55-lab.github.io/MaltaProj4/unresolved.html"
    }
   ]
+ },
+ {
+  "id": "session-b06ee902-board-audit-2026-10-25",
+  "status": "Needs review — one fixture carries two different start times across sources; every other audited row reproduced",
+  "finding": "Session b06ee902 re-opened the primary sources for 11 of the 17 open picks on the 2026-10-25T13:46:54Z snapshot instead of trusting the stored evidence, and states which 6 it did not re-read. All four originated Valve-VRS lines (Color 68.84%, Projeto do KinGui 51.01%, HOTU 85.18%, 5star 24.30%) were recomputed from Valve's raw standings file at pinned commit eec4853d7bcf0f1f7efe7f0d901234bef7e98b75 and reproduce to 12 decimal places; the pinned commit is Valve's current HEAD and 2026-10-05 is its newest published global standings file, so the 20-day age is Valve's publication cadence, not a stale input. Seven market rows were re-read at the exchange or the book itself: Polymarket 6072808 (Infinite vs Brute 0.435/0.565), 6098416 (FORZE Reload 0.565/0.435), 6024952 (Alliance vs FaZe 0.375/0.625) reproduce exactly; 6158059 (ex-Zero Tenacity 0.59 -> 0.61), 6166390 (paiN 0.575 -> 0.585) and 6066525 (Rooster/Abyssal 0.43/0.57 -> 0.425/0.575) drifted by at most 2 points with no change of favourite; the BO3.gg/Thunderpick listing for NEXVOID vs Alter Ego prints 1.60/2.20 verbatim, which de-vigs to the published 57.89/42.11 by hand. THE IRREGULARITY: Hotspawn fixture 1085542 starts 14:00Z on Hotspawn's own match page and locks at 13:54Z, but Polymarket 6158059 publishes gameStartTime and eventStartTime 2026-10-25T14:30:00Z while its own description says 'initially scheduled for October 25, 2026 at 10:00 AM ET' (14:00Z). The board therefore expires this pick 36 minutes before the exchange's listed start — conservative, but a real disagreement about the fixture, and the kind of thing that must be visible rather than silent. A second, already-logged limitation was re-confirmed rather than rediscovered: the 0.7986 calibration slope is read off Valve's modelfit.png chart, because Valve's readme prints the correlation (rho 0.98) and only says the slope is 'shallower than we'd like'. Both are documented line by line, with links, in research/session-b06ee902/VERIFICATION.md.",
+  "impact": "No pick or published percentage changes on this snapshot: 0 of the 11 re-verified rows contradicted its source, and all 17 rows keep a pick, a probability and an external source link (0 rows on picks.html, matches.html or unresolved.html lack either an external link or an evidence link). The flag is about fixture timing and about how the model calibration is sourced, so a later session or the user can decide whether to prefer the exchange's start time over Hotspawn's when computing the lock.",
+  "sources": [
+   {
+    "label": "Hotspawn fixture 1085542 (prints 14:00, 25 OCT)",
+    "url": "https://www.hotspawn.com/matches/ex-zero-tenacity-vs-spirit-academy-cct-europe-2026-series-11-1085542"
+   },
+   {
+    "label": "Polymarket 6158059 (gameStartTime 14:30Z)",
+    "url": "https://gamma-api.polymarket.com/markets/6158059"
+   },
+   {
+    "label": "Valve standings, pinned commit eec4853d",
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+   },
+   {
+    "label": "Valve readme — slope stated only as a chart",
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/readme.md"
+   },
+   {
+    "label": "BO3.gg / Thunderpick listing 1.60 / 2.20",
+    "url": "https://bo3.gg/matches/nexvoid-vs-alter-ego-26-10-2026"
+   },
+   {
+    "label": "Full audit, row by row",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-b06ee902/VERIFICATION.md"
+   }
+  ]
  }
 ]
