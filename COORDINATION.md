@@ -492,7 +492,20 @@ takes a strictly **additive, independent-verification** scope and touches no sha
 | --- | --- | --- | --- | --- |
 | Independent auditor that imports no `scripts.*` code: re-derive every open row's probability (exchange raw-price orientation, book de-vig, Valve Glicko+calibration from the vendored official standings), verify complement/favourite/fair-odds, evidence freshness ≤8h, source-link completeness, no Hotspawn-probability leakage, not-open rows never priced, unresolved contract (reason + attempts) | **done** — `scripts/audit_5717f7d9.py`, exit 0, **0 fail / 0 flag / 3 info**; 17/17 open rows picked and priced, 0 unresolved, all arithmetic re-derived | 5717f7d9 | `scripts/audit_5717f7d9.py` (new), `research/session-5717f7d9/**` (new) | 2026-10-25 14:42 |
 | Verify the user-facing brief on the rendered bytes: executive-summary in-site links to the updated-pick board and the unresolved/limitations section, every displayed pick row has an official source link and both teams' percentages, phone bottom nav, no broken internal links, unresolved section rendered at zero | **done** — headless Chromium at 320/390/412 px: no horizontal overflow, no page errors, quicknav "Updated picks" above the fold, mobile tab bar on every real page, 17/17 pick rows sourced with both %; receipt `research/session-5717f7d9/mobile-probe.json` | 5717f7d9 | `research/session-5717f7d9/**`, `tests/test_session_5717f7d9.py` (new) | 2026-10-25 14:42 |
-| Pin the audit's contracts and current findings as offline regressions; add a Flagged-for-Review note only for a genuinely new, source-linked irregularity (no duplicates); PR to `main`, merge without approval, record receipt | in progress — 18 regressions in `tests/test_session_5717f7d9.py` (incl. 6 fail-closed synthetic tests); no NEW irregularity found so no duplicate review note added (the 3 info findings map to existing notes `session-0cc1138a-1081606-no-match-page-2026-10-23`, `book-access`, `esportsbook-access-probe-2026-10-16`); PR/merge next | 5717f7d9 | `tests/test_session_5717f7d9.py` (new), `COORDINATION.md` (this section only) | 2026-10-25 14:42 |
+| Pin the audit's contracts and current findings as offline regressions; add a Flagged-for-Review note only for a genuinely new, source-linked irregularity (no duplicates); PR to `main`, merge without approval, record receipt | **done** — PR [#338](https://github.com/buffedlizard55-lab/MaltaProj4/pull/338) merged 2026-10-25T15:13:18Z as merge commit `e379ee6`; 18 regressions in `tests/test_session_5717f7d9.py` (incl. 6 fail-closed synthetic tests); no NEW irregularity so no duplicate review note (the 3 info findings map to existing notes `session-0cc1138a-1081606-no-match-page-2026-10-23`, `book-access`, `esportsbook-access-probe-2026-10-16`) | 5717f7d9 | `tests/test_session_5717f7d9.py` (new), `COORDINATION.md` (this section only) | 2026-10-25 15:25 |
+
+**Delivery receipt (session 5717f7d9).** PR #338 merged without approval per protocol; the merge is
+strictly additive (new `scripts/audit_5717f7d9.py`, `tests/test_session_5717f7d9.py`,
+`research/session-5717f7d9/**`, this section) and edits no shared production file. The merge's own
+publisher/native-Pages runs were **cancelled by the workflow concurrency group** as newer sessions
+merged (runs #1146 / native build on `e379ee6`), not failed on content; the latest native Pages build
+on tip `f07cfc6` — which contains these files — reports **`built ok`** and `GET /pages` status is
+**`built`** (`legacy main:/`, https://buffedlizard55-lab.github.io/MaltaProj4/). Re-verified on the fully
+integrated `main` after fast-forward: auditor exit 0 (0 fail / 0 flag / 3 info, snapshot
+`2026-10-25T14:22:27Z`, 16 open · 16 picks · 16 probabilities · 0 unresolved), `tests.test_session_5717f7d9`
+18 OK, full suite **1,728 OK (12 skipped)**, `scripts.validate` exit 0, headless-Chromium mobile probe
+clean at 320/390/412 px. Ongoing refresh stays with the scheduled `pages.yml` publisher and watchdog;
+this session changed nothing in that path.
 
 **Verification performed and sources (all in `research/session-5717f7d9/REPORT.md`).** Independent of
 the pipeline: 12 Polymarket rows re-derived from named raw `outcomePrices` (including reverse-order
