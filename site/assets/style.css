@@ -712,8 +712,6 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
   body[data-page="index"] .glance-card-pick{padding:6px 10px;gap:4px}
 }
 
-}
-
 /* Board-first on tall phones too: optional filters must not bury the pick. */
 @media(max-width:650px){
   body[data-page=picks] main>.table-wrap{order:3}
