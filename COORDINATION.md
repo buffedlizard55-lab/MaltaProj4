@@ -44,11 +44,13 @@ links / 20 checksums / 182 displayed rows; `unittest discover -s tests` **1,617 
 **Flagged for review, non-blocking.**
 (a) The repair widens what the validator accepts as an HLTV roster source; it is gated on the sourced identity
 register, but it is a widening, and it is published on the Flagged for Review page for manual confirmation.
-(b) At 14:25Z the served `build-info.json` still returned the superseded `2026-10-25T01:47:42Z` manifest (79 rows)
-while `index.html` and `picks.html` served the current 13:56 board. The **committed** tree is internally
-consistent (all 20 manifest hashes match), so this is a per-file CDN/propagation artefact of the legacy
-`build_type: legacy` deployment, not a bad commit; it makes the freshness gate fail open (it publishes rather
-than skips), so it cannot withhold picks. Watch it across the next slots.
+(b) Withdrawn after measurement. A plain request for `build-info.json` at 14:25Z and 14:36Z returned the
+superseded `2026-10-25T01:47:42Z` manifest (79 rows) while `index.html` and `picks.html` served the current
+13:56 board, which looked like a mixed deployment. It was not: the **same URL with a cache-busting query**
+(`build-info.json?cachebust=14352`) returns `revision 06915a8` — this PR's merge commit — `built_at
+2026-10-25T13:56:26Z`, snapshot `13:56:26Z`, 78 rows, i.e. the receipt of the exact build whose pages the site is
+serving. The stale read was a cache in the reading path, not in the deployment, and nothing about the board is
+affected. Recorded as withdrawn rather than left standing as an irregularity.
 (c) This session's own intermediate commit `2e1c710` (a 13:32Z staged board) was superseded by the pipeline's
 newer 13:46Z build and is **not** merged; the branch was reconciled to `origin/main` taking main's generated
 artefacts, so nothing stale can regress if the branch is ever merged.
