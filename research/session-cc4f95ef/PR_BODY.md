@@ -37,7 +37,7 @@ publisher regenerates the legacy `main:/` root with the new review notes.
 
 - `research/session-cc4f95ef/LINE_BY_LINE_AUDIT.md`: all 78 rows with official
   source links, picks, probabilities, arithmetic checks and limitations.
-- Four additive Flagged-for-Review notes (265 total) covering the publication
+- Four additive Flagged-for-Review notes (266 total) covering the publication
   freeze, the verified HLTV alias, the phone geometry and non-market /
   third-party line limitations, each with official links.
 - `tests/test_session_cc4f95ef.py`: exact runner-row alias regression, identity

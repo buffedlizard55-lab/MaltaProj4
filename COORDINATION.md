@@ -18,7 +18,7 @@ verification receipts. The post-merge publisher will regenerate the legacy
 
 **Final tree measured.** Main snapshot `2026-10-25T14:22:27Z`, root build
 `2026-10-25T14:34:24Z`, 78 rows / 16 open / 16 picks / 16 win probabilities /
-0 unresolved; review register 265 notes. Local gates on the exact PR head:
+0 unresolved; review register 266 notes. Local gates on the exact PR head:
 1,701 unit tests OK (12 skipped), 9 audits, 5 integrity, 12 verification-c6,
 `scripts.validate` (726 links/assets, 20 checksums, 181 displayed rows),
 `verification-c6` 0 failures, `verification-93f6951a` 3,260 checks / 0
