@@ -63,33 +63,44 @@ jobs:
         continue-on-error: true
         run: |
           set -o pipefail
+          set +e
           python verification-c6/audit_snapshot.py runtime/latest.json --output research/harvest-58354934/row-audit.md 2>&1 | tee research/harvest-58354934/row-audit.log | tail -40
-          echo "audit_rc=${PIPESTATUS[0]}" >> "$GITHUB_OUTPUT"
-          echo "audit_rc=${PIPESTATUS[0]}" >> research/harvest-58354934/rc.txt
+          rc=${PIPESTATUS[0]}; set -e
+          echo "audit_rc=$rc" >> "$GITHUB_OUTPUT"; echo "audit_rc=$rc" >> research/harvest-58354934/rc.txt
+          test "$rc" = 0
 
       - name: Step 13b — build exactly as publication does
         id: build
         continue-on-error: true
         run: |
           set -o pipefail
+          set +e
           python -m scripts.build --data runtime/latest.json 2>&1 | tee research/harvest-58354934/build.log | tail -40
-          rc=${PIPESTATUS[0]}; echo "build_rc=$rc" >> "$GITHUB_OUTPUT"; echo "build_rc=$rc" >> research/harvest-58354934/rc.txt
+          rc=${PIPESTATUS[0]}; set -e
+          echo "build_rc=$rc" >> "$GITHUB_OUTPUT"; echo "build_rc=$rc" >> research/harvest-58354934/rc.txt
+          test "$rc" = 0
 
       - name: Step 13c — validate exactly as publication does
         id: validate
         continue-on-error: true
         run: |
           set -o pipefail
+          set +e
           python -m scripts.validate --data runtime/latest.json 2>&1 | tee research/harvest-58354934/validate.log | tail -60
-          rc=${PIPESTATUS[0]}; echo "validate_rc=$rc" >> "$GITHUB_OUTPUT"; echo "validate_rc=$rc" >> research/harvest-58354934/rc.txt
+          rc=${PIPESTATUS[0]}; set -e
+          echo "validate_rc=$rc" >> "$GITHUB_OUTPUT"; echo "validate_rc=$rc" >> research/harvest-58354934/rc.txt
+          test "$rc" = 0
 
       - name: Step 13d — independent row audit of the published artifact
         id: published
         continue-on-error: true
         run: |
           set -o pipefail
+          set +e
           python verification-c6/audit_snapshot.py public/data/latest.json --output research/harvest-58354934/published-row-audit.md 2>&1 | tee research/harvest-58354934/published-audit.log | tail -40
-          rc=${PIPESTATUS[0]}; echo "published_rc=$rc" >> "$GITHUB_OUTPUT"; echo "published_rc=$rc" >> research/harvest-58354934/rc.txt
+          rc=${PIPESTATUS[0]}; set -e
+          echo "published_rc=$rc" >> "$GITHUB_OUTPUT"; echo "published_rc=$rc" >> research/harvest-58354934/rc.txt
+          test "$rc" = 0
 
       - name: Coverage census of the fresh snapshot (picks, probabilities, unresolved)
         continue-on-error: true
