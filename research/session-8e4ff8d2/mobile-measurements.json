@@ -1,7 +1,7 @@
 {
- "measured_at": "2026-10-25T14:14:07.195Z",
- "snapshot_generated_at": "2026-10-25T13:54:18.896036Z",
- "snapshot_fixtures_observed_at": "2026-10-25T13:50:44.261459Z",
+ "measured_at": "2026-10-25T14:49:12.022Z",
+ "snapshot_generated_at": "2026-10-25T14:22:27.352651Z",
+ "snapshot_fixtures_observed_at": "2026-10-25T14:18:55.242320Z",
  "open_rows": 16,
  "board": "public/ built from data/latest.json",
  "viewports": [
@@ -42,7 +42,7 @@
     "picks_link_reachable": true,
     "unresolved_link": true,
     "quicknav_top": 300,
-    "first_glance_card_top": 4103.90625
+    "first_glance_card_top": 4086.859375
    },
    "board": {
     "horizontalOverflow": false,
@@ -72,7 +72,7 @@
     "picks_link_reachable": true,
     "unresolved_link": true,
     "quicknav_top": 300,
-    "first_glance_card_top": 4035.71875
+    "first_glance_card_top": 4018.671875
    },
    "board": {
     "horizontalOverflow": false,
