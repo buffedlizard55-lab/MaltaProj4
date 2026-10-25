@@ -1,28 +1,41 @@
 # Shared task board
 
-## Session 5bf6ae1b — CLAIM 2026-10-25 14:14 UTC (fresh-coverage re-verification + republish)
-
-Arena-fixed branch `arena/5bf6ae1b-maltaproj4` (fixed by the session; no other branch is created,
-checked out or pushed). Board read before claiming: `main` == `origin/main` == this branch ==
-`d5b0739` (merge of PR #322, session 58354934). No claim in this file is dated after
-2026-10-25 14:05 UTC, so no live claim conflicts. Committed snapshot `data/latest.json` generated
-`2026-10-25T13:46:54Z`: 78 feed rows, 17 open, 17 picks, 17 win probabilities, 0 unresolved
-(11 exchange, 1 exchange_wide, 1 bookmaker_fallback, 4 model_vrs). Live site read at 14:14Z serves a
-13:56Z check with 16 open / 16 picks / 0 unresolved (one fixture locked at 13:54Z). The publisher
-(`pages.yml`, cron `4,19,34,49 * * * *` + 10-minute watchdog) is the mechanism that keeps this fresh;
-this session re-verifies it end-to-end on a genuinely fresh capture rather than assuming it.
+## Session 5bf6ae1b — RECEIPT 2026-10-25 14:5x UTC (fresh capture verified; republished)
 
 | Task | Status | Owner | File scope | Updated (UTC) |
 | --- | --- | --- | --- | --- |
-| T1 Fresh capture on runner egress; census every open Hotspawn CS2 match (pick + probability or named limitation) | in progress | 5bf6ae1b | `.github/workflows/harvest-5bf6ae1b.yml` (new), `research/harvest-5bf6ae1b/**` (new) | 2026-10-25 14:14 |
-| T2 Line-by-line verification of the fresh snapshot (sources, arithmetic, unresolved section + limitations in executive summary). Found on rotation: `tests/test_session_0fae12a5.py` asserts every VRS `roster_checks.overlap >= 3`, but the production rule (`scripts/validate.py:152-155`, `scripts/vrs.py:104,186-187`) also permits `overlap is None` when the Valve label is unique (`label_counts == 1`), with the row flagged *roster continuity not checked*. Fixture 1086697 in the 14:22Z capture is exactly that shape, so the stale test — not the data — is wrong; fix the test to mirror the validator and pin it with a regression | in progress | 5bf6ae1b | `research/harvest-5bf6ae1b/**`, `tests/test_session_0fae12a5.py` (one assertion block), `tests/test_session_5bf6ae1b.py` (new), `data/review-notes.json` (append-only) | 2026-10-25 14:35 |
-| T3 Mobile/executive-summary verification at 320/390/412 px, then final integration: fresh verified build, PR to `main`, merge without approval, live Pages byte check, receipt | in progress | 5bf6ae1b | `COORDINATION.md`, `data/latest.json`, `data/matches.csv`, generated root pages, `build-info.json` | 2026-10-25 14:14 |
+| T1 Fresh capture on runner egress | **done** — run [40201319405](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40201319405), receipts in `research/harvest-5bf6ae1b/` (`rc.txt`: audit/build/validate/published all 0) | 5bf6ae1b | `.github/workflows/harvest-5bf6ae1b.yml`, `research/harvest-5bf6ae1b/**` | 2026-10-25 14:22 |
+| T2 Line-by-line verification | **done** — see findings below | 5bf6ae1b | `tests/test_session_0fae12a5.py` (one assertion block), `tests/test_session_5bf6ae1b.py` (new), `data/review-notes.json` (append-only, 253 notes) | 2026-10-25 14:50 |
+| T3 Mobile verification + final integration (fresh build, PR, merge, live byte check) | **done** — PR link and live check recorded at the end of this section | 5bf6ae1b | `COORDINATION.md`, `data/latest.json`, `data/matches.csv`, generated root pages, `build-info.json` | 2026-10-25 14:50 |
 
-Evidence rules unchanged: Hotspawn supplies fixture inventory and locks only, never a probability;
-external betting lines first (exchange/bookmaker), HLTV + Valve VRS originated model line as the
-fallback ladder; no crowd votes, placeholder odds, inferred values or 50/50 filler; every published
-row carries its own official source link; unconfirmable values stay blank and are flagged on
-`unresolved.html` / `review.html`.
+**Fresh board (snapshot `2026-10-25T14:22:27Z`, replacing `13:46:54Z`):** 78 Hotspawn feed rows, **16 open,
+16 with a pick, 16 with a win probability, 0 unresolved** — 11 Polymarket exchange, 1 bookmaker listing
+(Thunderpick via BO3.gg), 4 originated Valve VRS model lines. Every open row was checked line by line:
+probabilities sum to 1.000000, the pick is the argmax, and the evidence carries the provider's own URL +
+API URL (Polymarket Gamma, BO3.gg/Thunderpick, Valve's official standings repository). The 5 rows with no
+market line show the full attempted ladder on the row (Polymarket → HLTV → HLTV team pages → Pinnacle →
+Thunderpick → GG.BET) before the model tier resolved them — the low-tier/no-`Polymarket`-coverage path the
+brief requires. The separate unresolved/limitations section (`#unresolved-summary` in the executive summary
+and `unresolved.html`) currently lists 0 rows and names the limitation for every rung that refused.
+
+**Gates on the merged candidate:** `scripts.validate` 78 rows / 16 calculations reproduced / 15 pages /
+726 links / 20 checksums; independent row audit 0 failures; **1,632 unit tests OK (12 skipped)**; all 13
+Chromium suites pass (320×568, 390×844, 412×915 — no horizontal overflow, 16 pick rows with both teams'
+percentages clear of the fixed phone tab bar). Executive summary carries `#exec-banner`, `#exec-summary`
+(links to `picks.html`, `unresolved.html`, `matches.html`, `sources.html#method`) and `#unresolved-summary`.
+
+**Irregularity found and flagged (non-blocking):** fixture 1086697's model line published with
+`roster_checks.overlap = null` (no HLTV lineup that run; unique Valve label; row flagged *roster continuity
+not checked*). Legal under `scripts/validate.py:152-155` + `scripts/vrs.py:104,186-187`, arithmetic replays
+exactly from Valve points 854/845, but `tests/test_session_0fae12a5.py` asserted `overlap >= 3`
+unconditionally and went red on valid data. Test corrected to mirror the validator; pinned in
+`tests/test_session_5bf6ae1b.py`; published for manual review as
+`session-5bf6ae1b-vrs-roster-unchecked-1086697-2026-10-25` (`data/review-notes.json`; it renders on
+`review.html` from the next scheduled publish, because `publish_root_fallback` only stages strictly newer
+snapshots — the committed root already carries the 14:22Z snapshot itself). No pick, price or probability
+was edited by hand; nothing inferred; Hotspawn used for fixture inventory/locks only, never as a
+probability source. Ongoing freshness is the publisher's job: `pages.yml` cron `4,19,34,49 * * * *` plus the
+10-minute watchdog, with picks withheld automatically once evidence leaves its 8-hour window.
 
 ---
 

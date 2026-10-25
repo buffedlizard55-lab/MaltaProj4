@@ -165,9 +165,23 @@ class CalculationReplayTest(unittest.TestCase):
                                    msg='VRS calibrated: %s' % m['id'])
             self.assertAlmostEqual(calibrated(raw), m['probabilities'][0], places=12,
                                    msg='VRS published: %s' % m['id'])
-            for check in ev['roster_checks']:
-                self.assertGreaterEqual(check['overlap'], 3,
-                                        'Valve 3-player roster rule: %s' % m['id'])
+            # Mirror scripts/validate.py validate_model_row: a checked roster
+            # must satisfy Valve's 3-player continuity rule; an unchecked one
+            # (no HLTV lineup available) is legitimate only when the Valve
+            # label is unique, and the row must carry that limitation flag.
+            # (Session 5bf6ae1b, 2026-10-25: fixture 1086697 rotated into the
+            # unchecked shape and the old unconditional assertion went red on
+            # valid, validator-passing data.)
+            for check, count in zip(ev['roster_checks'], ev['label_counts']):
+                if check['overlap'] is None:
+                    self.assertEqual(count, 1,
+                                     'unchecked VRS roster with duplicated label: %s' % m['id'])
+                    self.assertIn('roster continuity not checked',
+                                  ' '.join(m.get('flags') or []),
+                                  'unchecked VRS roster not flagged: %s' % m['id'])
+                else:
+                    self.assertGreaterEqual(check['overlap'], 3,
+                                            'Valve 3-player roster rule: %s' % m['id'])
 
 
 class DiscoverabilityTest(unittest.TestCase):
