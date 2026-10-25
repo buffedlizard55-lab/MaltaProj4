@@ -9509,3 +9509,33 @@ Claim `.github/workflows/pages.yml` only for the deployment eligibility/output g
 Full local unit suite **1,608 passed, 7 skipped**; audits 9, integrity 5, independent c6 12 passed. Root validation reproduces 79 rows / 18 calculations / 15 pages / 751 links-assets / 20 checksums / 186 displayed rows. Hosted audit for #311 passed (run 40197939897); `verify-build` remains queued, not green, at receipt time. No merge or successful deploy is claimed. Browser suite on the expired committed snapshot fails the final phone suite's visible-pick assertion; the withheld state is expected, not a fresh-source result. Session 601ce27c's PR #313 owns that test repair; session 046b2e46's PR #314 also targets the roster-alias validation defect. Do not independently layer another version of either fix.
 
 Source/diagnosis references and limitations: `research/session-a7f788c8/REPORT.md`. Diagnosis run [40197480741](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40197480741) reports 78 rows / 17 open / 17 picks but fails validation on fixture 1086697's literal HLTV roster label comparison; these are research observations, **not published or fully verified picks**. This session did not reset evidence clocks, change any probability, fabricate missing values, or promote a stale/invalid snapshot.
+
+## Session 408eb0af — claim (2026-10-25 13:30 UTC): restore publication, then close the pick-coverage and mobile gaps
+
+**Board read before claiming.** `origin/main` == `6ade440`, committed snapshot
+`2026-10-25T01:47:42.430039Z` (79 feed rows, 18 open, 18 picks, 18 win probabilities, 0 unresolved).
+At claim time that snapshot is **11h42m old**, i.e. outside its 8-hour evidence window, so the live
+site withholds every pick. `gh run list --branch main` shows the scheduled publisher red at
+2026-10-24T23:40Z (40143667147), 2026-10-25T06:56Z (40170923727) and 2026-10-25T12:29Z (40193317196);
+the 12:29Z run failed at **step 13 "Build and independently verify every row, calculation and internal
+link"** with steps 8 (unit/audit/validate on the committed tree), 11 (refresh) and 12 (quarantine) green,
+so the defect is in data produced by the *live* refresh, not in the committed tree. Workflow logs and
+artifact blobs are unreachable from this sandbox (results-receiver and blob.core.windows.net are not on
+its allowlist), so the measurement has to be committed by a runner — the established pattern here
+(`.github/workflows/diag-f2e04d1a.yml`).
+
+**This sandbox's egress allowlist is `github.com`, `codeload.github.com`, `api.github.com`,
+`registry.npmjs.org`, `pypi.org`, `files.pythonhosted.org`.** Hotspawn, HLTV, Polymarket, Pinnacle and
+every bookmaker are therefore *not* reachable from the authoring environment. Every source read this
+session happens on a GitHub runner, and its bytes and receipt are committed.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| T1 Diagnose and repair the failing publication gate on live data (step 13) | in progress | 408eb0af | `.github/workflows/diag-408eb0af.yml` (new), `research/session-408eb0af/**` (new) | 2026-10-25 13:30 |
+| T2 Guarantee a pick **and** a two-way probability for every open Hotspawn fixture, including low-tier and unlisted-on-books matches: source ladder (HLTV → esportsbook/exchange lines → originated model) and independent verification | unclaimed | — | `scripts/core.py`, `scripts/books.py`, `scripts/refresh.py` | 2026-10-25 13:30 |
+| T3 Separate, explicit unresolved-picks section with the limitation for each row, summarised in the executive summary | unclaimed | — | `scripts/build.py`, `unresolved.html` | 2026-10-25 13:30 |
+| T4 Mobile-first executive summary with in-site links to the updated pick list; readable at 320px, verified by Chromium measurement | unclaimed | — | `scripts/build.py`, `assets/style.css`, `tests/browser_*.cjs` | 2026-10-25 13:30 |
+| T5 Integration: re-verify line by line, PR to main, merge, confirm Pages deploy, receipt | unclaimed | — | `COORDINATION.md`, `data/latest.json`, `data/matches.csv`, root pages, `build-info.json` | 2026-10-25 13:30 |
+
+I will take T2–T5 in this session, numbering them so another session can see the scopes; each is claimed
+in this table before I touch it. Nothing in another session's private `research/session-*` tree is edited.
