@@ -1,3 +1,35 @@
+## Session 046b2e46 — delivery receipt: PR #314 merged, live board verified (15:10 UTC)
+
+**Merged.** PR [#314](https://github.com/buffedlizard55-lab/MaltaProj4/pull/314) merged to `main` at
+**2026-10-25T14:36Z** as **`5ceea5e`** with both checks green on the head it was gated on (`verify-build`
+`success`, `audit` `success`; `deploy` correctly `skipping` on a pull-request run). Merged without waiting for
+approval, per protocol. Two earlier merge attempts were rejected as `CONFLICTING` because `main` moved while
+checks ran; each time the branch was rebuilt on the newest `main` and the overlapping work was adopted rather
+than stacked.
+
+**Live bytes verified after the merge, read from `main`'s committed root** (Pages is `build_type: legacy`,
+source `main:/`, so those bytes are what the public site serves):
+
+| Fact | Value |
+| --- | --- |
+| Served `build-info.json` | revision `a5fbaff`, built **2026-10-25T15:00:47Z**, 78 rows |
+| That revision relative to this merge | descendant of `5ceea5e` — the site was rebuilt after this PR |
+| Executive summary | **15 / 15 picks · 0 unresolved**, with *Updated picks →* and *Unresolved & limits ↓* on the first screen |
+| Unresolved section | present and explicit: every open match is picked, and the section states what would apply otherwise; no default 50/50 is ever used |
+| Flagged for Review | both session notes present in the served `review.html` (`session-046b2e46-thin-model-edge-2026-10-25`, `session-046b2e46-lobby-level-source-link-2026-10-25`) |
+
+**Independent ledger, re-run on the served snapshot**: every open row's published pair re-derives from its own
+retained evidence (Polymarket midpoint, de-vigged decimal odds, Valve Glicko + published fit slope), the pick
+follows the higher probability, `fair_odds == 1/p`, the row links an official source, and the orientation
+matches the quote's own labels — 0 failures. Command:
+`python -m scripts.session_046b2e46 --data data/latest.json`.
+
+**Non-blocking observations for the next session.** (a) Two legacy Pages builds errored earlier today
+(`701c55e` 14:46Z, `fa453cc` 14:49Z, `Page build failed.`) and the following builds succeeded; another session
+has already flagged this. (b) The scheduled `pages.yml` queue is saturated — several runs were superseded
+within the 15-minute cron window today — so a fresh snapshot can take longer than one slot to reach the site
+even when every gate passes. Neither affected the picks published here.
+
 ## Session 6857421f — receipt: the 2026-10-25 publisher failure independently reproduced, canonical repairs adopted, coverage verified (2026-10-25 14:20 UTC)
 
 **Result, stated exactly.** This session diagnosed the same failure that sessions b85ad9b4 and 58354934 were
