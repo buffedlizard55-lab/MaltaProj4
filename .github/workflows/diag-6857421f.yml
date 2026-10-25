@@ -1,0 +1,159 @@
+name: Diagnose 6857421f (non-publishing)
+
+# Why this workflow exists
+# ------------------------
+# The public board has been withholding every pick since 2026-10-25T09:47Z, because the
+# newest published snapshot is 2026-10-25T01:47:42Z and the board's own stale_after_hours
+# is 8. Both publisher runs on `6ade440` (40170923727 at 06:56Z, 40193317196 at 12:29Z)
+# died at the step *Build and independently verify every row, calculation and internal
+# link*, which runs after the unit gate, after the live refresh and after the quarantine
+# have already succeeded — so the cause is data-dependent on the fresh capture, not a
+# broken source and not the committed tree (the pre-refresh unit suite and validator both
+# passed in those same runs).
+#
+# This sandbox cannot reach Hotspawn, HLTV, Polymarket or the books, and Actions log/artifact
+# blobs (results-receiver.actions.githubusercontent.com, productionresultssa*.blob.core.
+# windows.net) are outside its egress allow list, so the failing sub-command cannot be read
+# from here. This workflow replays the exact step on GitHub's egress, records the exit code
+# of every sub-command, keeps the fresh snapshot and the failing logs, and commits them to
+# this session branch — the only copy this sandbox can read.
+#
+# It never deploys Pages, never pushes to main and never edits the committed board.
+on:
+  push:
+    branches: [arena/6857421f-maltaproj4]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: diag-6857421f
+  cancel-in-progress: false
+
+jobs:
+  diagnose:
+    if: github.ref == 'refs/heads/arena/6857421f-maltaproj4' && (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[diag-6857421f]'))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+          cache: npm
+      - run: pip install -r requirements.txt
+      - run: npm ci --ignore-scripts
+
+      - name: Pre-refresh gate, exactly as pages.yml step 8
+        run: |
+          mkdir -p research/diag-6857421f runtime
+          set +e
+          python -m unittest discover -s tests 2>&1 | tee research/diag-6857421f/01-pre-refresh-unit.log | tail -5
+          echo "pre_unit_rc=${PIPESTATUS[0]}" | tee -a research/diag-6857421f/00-return-codes.txt
+          python -m scripts.validate --data data/latest.json --site . 2>&1 | tee research/diag-6857421f/02-pre-refresh-validate.log | tail -8
+          echo "pre_validate_rc=${PIPESTATUS[0]}" | tee -a research/diag-6857421f/00-return-codes.txt
+          exit 0
+
+      - name: Refresh every official source, exactly as pages.yml step 11
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          cp data/latest.json runtime/latest.json
+          set +e
+          python -m scripts.refresh --output runtime/latest.json > research/diag-6857421f/03-refresh.log 2>&1
+          echo "refresh_rc=$?" | tee -a research/diag-6857421f/00-return-codes.txt
+          cp runtime/latest.json research/diag-6857421f/snapshot.json 2>/dev/null || true
+          exit 0
+
+      - name: Quarantine, exactly as pages.yml step 12
+        run: |
+          set +e
+          python -m scripts.quarantine runtime/latest.json > research/diag-6857421f/04-quarantine.log 2>&1
+          echo "quarantine_rc=$?" | tee -a research/diag-6857421f/00-return-codes.txt
+          cp runtime/latest.json research/diag-6857421f/snapshot-quarantined.json 2>/dev/null || true
+          exit 0
+
+      - name: Replay the failing step sub-command by sub-command
+        # This is the exact sequence of the red step, with the exit code of each part kept
+        # separately so the failing command is named by the receipt rather than guessed.
+        run: |
+          set +e
+          echo '--- 1. independent row audit on the fresh snapshot ---'
+          python verification-c6/audit_snapshot.py runtime/latest.json --output research/diag-6857421f/05-row-audit.md > research/diag-6857421f/05-row-audit.log 2>&1
+          echo "row_audit_rc=$?" | tee -a research/diag-6857421f/00-return-codes.txt
+          echo '--- 2. scripts.build ---'
+          python -m scripts.build --data runtime/latest.json > research/diag-6857421f/06-build.log 2>&1
+          echo "build_rc=$?" | tee -a research/diag-6857421f/00-return-codes.txt
+          echo '--- 3. scripts.validate on the fresh build ---'
+          python -m scripts.validate --data runtime/latest.json > research/diag-6857421f/07-published-validate.log 2>&1
+          echo "published_validate_rc=$?" | tee -a research/diag-6857421f/00-return-codes.txt
+          echo '--- 4. independent row audit on the published copy ---'
+          python verification-c6/audit_snapshot.py public/data/latest.json --output research/diag-6857421f/08-published-row-audit.md > research/diag-6857421f/08-published-row-audit.log 2>&1
+          echo "published_row_audit_rc=$?" | tee -a research/diag-6857421f/00-return-codes.txt
+          cp public/build-info.json research/diag-6857421f/build-info-fresh.json 2>/dev/null || true
+          exit 0
+
+      - name: Browser suites, exactly as pages.yml step 14
+        run: |
+          set +e
+          npm run test:browser > research/diag-6857421f/09-browser.log 2>&1
+          echo "browser_rc=$?" | tee -a research/diag-6857421f/00-return-codes.txt
+          grep -E '^(FAIL|Error|AssertionError|.*Error:)' research/diag-6857421f/09-browser.log | head -40 > research/diag-6857421f/09-browser-failures.txt 2>/dev/null
+          exit 0
+
+      - name: Coverage and shape measurements on this capture
+        run: |
+          set +e
+          python - <<'PY' 2>&1 | tee research/diag-6857421f/10-coverage.md
+          import json, collections
+          d = json.load(open('research/diag-6857421f/snapshot-quarantined.json'))
+          rows = d['matches']
+          open_rows = [m for m in rows if m.get('state') == 'open']
+          print('snapshot generated_at:', d.get('generated_at'))
+          print('fixtures_observed_at:', d.get('fixtures_observed_at'))
+          print('rows:', len(rows), 'open:', len(open_rows))
+          print('open with pick:', sum(1 for m in open_rows if m.get('pick')))
+          print('open with probabilities:', sum(1 for m in open_rows if m.get('probabilities') is not None))
+          print('open unpriced:', [m['id'] for m in open_rows if m.get('probabilities') is None])
+          print('open without pick:', [m['id'] for m in open_rows if not m.get('pick')])
+          print('methods:', dict(collections.Counter(str(m.get('method')) for m in open_rows)))
+          print('coverage:', d.get('coverage'), 'coverage_counts:', d.get('coverage_counts'))
+          print('issues:', json.dumps(d.get('issues'))[:3000])
+          print('source_checks:', json.dumps(d.get('source_checks'))[:3000])
+          for m in open_rows:
+              print(' ROW', m['id'], '|', ' vs '.join(m['teams']), '|', m.get('start'), '|',
+                    m.get('method'), '|', m.get('pick'), '|', m.get('probabilities'),
+                    '| flags:', m.get('flags'))
+          PY
+          exit 0
+
+      - name: Commit the dated diagnostic receipt to the session branch
+        if: always()
+        run: |
+          git config user.name "cs2-diagnostic-runner"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Only the receipt is committed: `public/` and `runtime/` are generated and are
+          # never staged, and no tracked file is modified by the replay above.
+          git add -A -- research/diag-6857421f
+          git commit -m "Retain post-refresh gate diagnosis from run ${GITHUB_RUN_ID} [skip ci]" || echo "nothing to commit"
+          for attempt in 1 2 3; do
+            if git push origin HEAD:arena/6857421f-maltaproj4; then echo "receipt pushed"; exit 0; fi
+            git pull --rebase --autostash origin arena/6857421f-maltaproj4 || true
+          done
+          echo "::warning::Could not push the diagnostic receipt."
+
+      - name: Keep the receipt even if a gate above failed
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: diag-6857421f-${{ github.run_id }}
+          path: |
+            research/diag-6857421f
+          retention-days: 14

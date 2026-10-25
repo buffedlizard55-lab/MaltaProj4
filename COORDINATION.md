@@ -1,3 +1,42 @@
+## Session 6857421f claim — 2026-10-25 13:25 UTC (P0: the live board is again withholding every pick; publisher red at the post-refresh gate)
+
+Board read before claiming: `COORDINATION.md` (top 400 lines + `grep 2026-10-25` = no hits, so no
+session has claimed since the 2026-10-24 18:25Z receipts), `gh run list`, the Actions API and the
+committed snapshot. Arena fixes this session to `arena/6857421f-maltaproj4`, branched from `main`
+`6ade440`; no other branch is created, switched to or pushed.
+
+**Measured starting state (not assumed).**
+
+| Fact | Value | Source |
+| --- | --- | --- |
+| Published snapshot | `2026-10-25T01:47:42Z`, 79 feed rows, 18 open / 18 picks / 18 win probabilities / 0 unresolved | committed `data/latest.json` + `build-info.json` |
+| Snapshot age at claim | **11h 38m**, `stale_after_hours: 8` → every pick withheld on the public board | clock read |
+| Last full-green publisher | [40151731896](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40151731896) (01:43Z, `cbe9dce`). It published `build-info.json` built `01:47:42Z` — every publisher run after it is red | Actions API |
+| Red publishers on `6ade440` | [40170923727](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40170923727) (06:56Z) and [40193317196](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40193317196) (12:29Z), both at the same step | Actions API `/runs/{id}/jobs` |
+| Earlier red publisher | [40143667147](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40143667147) (2026-10-24 23:40Z, `cbe9dce`) failed one step later, at *Keep the legacy main:/ root fallback*, while its `deploy` succeeded | Actions API |
+| Failing step | *Build and independently verify every row, calculation and internal link* — i.e. after the unit gate, the refresh and the quarantine all passed | `actions/runs/40193317196/jobs` |
+| Second failure | `deploy` → *Verify live Pages bytes match this exact build* (no artifact was uploaded, so the served bytes are the 01:47Z build) | same job list |
+| Independent checker | `Independent CS2 source and mobile verification` [40190478424](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40190478424) also red at 11:49Z | `gh run list` |
+
+So the user-visible "we have no picks" report is the publisher, not the sources: the data-dependent
+failure happens *after* a successful live refresh, exactly as on 2026-10-24. The sandbox has no egress
+to Hotspawn/HLTV/Polymarket/books, and Actions log blobs are not downloadable here, so the failing
+sub-command is identified from a runner replay that commits its own receipt (see the workflow below).
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Diagnose the post-refresh gate failure on GitHub's egress and repair it with a regression test | in progress | 6857421f | `.github/workflows/diag-6857421f.yml` (new, removed before the final PR), `research/diag-6857421f/**`, `research/session-6857421f/**`, `tests/test_session_6857421f.py` (new), and only the production file the receipt names | 2026-10-25 13:25 |
+| Fresh full-coverage board: a pick and a win probability for every open Hotspawn CS2 match, HLTV first then esportsbook/exchange lines, with the separate unresolved section and its limitations carried into the executive summary | in progress | 6857421f | `research/session-6857421f/**`; `scripts/build.py` / `site/assets/**` only for a measured defect | 2026-10-25 13:25 |
+| Phone check of the executive-summary in-site links and the pick board at 320×568, 390×844, 412×915, 768×1024, 1440×900 on the published bytes | in progress | 6857421f | `research/session-6857421f/**`, existing browser suites read-only unless a defect is measured | 2026-10-25 13:25 |
+| Line-by-line verification with an official source link on every row; irregularities published on Flagged for Review | in progress | 6857421f | `data/review-notes.json` (additive IDs only), `verification-6857421f/**` (new) | 2026-10-25 13:25 |
+| Final integration: all gates on the combined tree, PR to `main`, merge without waiting, live Pages byte verification, receipt | in progress | 6857421f | `COORDINATION.md`, regenerated root via `scripts.build` / `scripts.stage_legacy` only | 2026-10-25 13:25 |
+
+Evidence rules unchanged: Hotspawn supplies fixture inventory and locks only, never a probability. A
+pick for a low-tier or unlisted match comes only from the sourced ladder (HLTV identity/rank/form, a
+verified esportsbook or exchange two-way line, or the labelled Valve-standings model), and anything
+left stays in the separate unresolved section with the provider it tried and the limitation that
+stopped it — never a placeholder, an inferred value or a 50/50 filler.
+
 ## Session 2b856884 — published-state addendum (2026-10-24 18:05 UTC)
 
 **Measured after the two merges, read from `origin/main`, not from a branch.** PR
