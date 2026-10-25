@@ -741,3 +741,19 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
   tbody td.review-reason{grid-area:4/1/5/3}
   tbody td.review-reason~td.source-links{grid-area:5/1/6/3}
 }
+
+/* Session 6857421f (2026-10-25): a phone card printed the two team labels
+   twice. `.prob-team-labels` repeats the same names the card already shows in
+   its heading (grid row 1, `.teams`) and again in the pick row. Measured on the
+   2026-10-25T13:34:30Z board at 320x568: "ex-Zero Tenacity" wraps to two lines
+   inside the 48%-wide label slot, so the duplicated block is 31px tall and
+   pushes the percentages' bottom edge to y=519 -- twelve pixels behind the
+   fixed tab bar at y=507. That is the phone contract in
+   tests/browser_019a253a.cjs:105 and tests/browser_9b97d585.cjs, and it is why
+   the 12:29Z publisher went red. Only the duplicate inside the phone card is
+   removed: each percentage keeps its own aria-label naming its team, and both
+   team names stay in the card heading. No percentage, fair line, model
+   comparison, flag, warning or source link is hidden. */
+@media(max-width:650px){
+  tbody .prob-team-labels{display:none}
+}

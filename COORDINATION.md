@@ -1,3 +1,63 @@
+## Session 6857421f — receipt: publisher failure named and repaired, every open row has a pick (2026-10-25 14:05 UTC)
+
+**Claimed:** [claim block below](#session-6857421f-claim--2026-10-25-1325-utc-p0-the-live-board-is-again-withholding-every-pick-publisher-red-at-the-post-refresh-gate).
+Claims 1–4 are **done**; claim 5 (PR, merge, live verification) is in progress at the time of writing and is
+finished in the delivery receipt appended under this block.
+
+**The failure, measured from a runner and named by exit code.** Both scheduled publishers on `6ade440`
+([40170923727](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40170923727) 06:56Z,
+[40193317196](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40193317196) 12:29Z) failed at
+*Build and independently verify every row, calculation and internal link* after the unit gate, the refresh and
+the quarantine had all passed, so the public site kept the `2026-10-25T01:47:42Z` snapshot and withheld every
+pick once its 8-hour window closed at 09:47Z. Log blobs are outside this sandbox's egress allow list, so a
+non-publishing replay committed its own receipt
+([`research/diag-6857421f/`](research/diag-6857421f/00-return-codes.txt)):
+`refresh_rc=0 quarantine_rc=0 row_audit_rc=0 build_rc=0 **published_validate_rc=1** published_row_audit_rc=0
+browser_rc=1`, with `scripts/validate.py:122 AssertionError: Model roster has no HLTV source on this row` on the
+`2026-10-25T13:34:30Z` capture.
+
+**Defect A, repaired (`scripts/validate.py`).** The row was fixture **1086697** (*Projeto do KinGui* vs
+*Yawara*). Polymarket market `6169151` names the pair *Tropa do KinGui vs Yawara Esports* and was refused for
+an unregistered opponent label, so the ladder reached our own Valve-standings model line; its roster identity
+comes from HLTV's fixture page
+[2399918](https://www.hltv.org/matches/2399918/tropa-do-kingui-vs-yawara-cct-2026-south-america-series-7),
+which prints the registered alias *Tropa do KinGui* for the same five players. `lineup_source_ok` compared
+labels with `plain_name`, so a sourced roster looked unsourced. It now compares with `norm()` — the reviewed
+alias register — in all three of its paths, exactly as the label assertions 60 lines above already do.
+Players, the HLTV URL prefixes and the receipt's fixture binding stay exact; an unregistered label is still
+refused. 14 regressions in `tests/test_session_6857421f.py`.
+
+**Defect B, repaired (`site/assets/style.css` + byte-identical `assets/style.css`).** The same replay recorded
+`browser_rc=1` (`tests/browser_019a253a.cjs:105`). Measured in Chromium on the captured board at 320x568: the
+first card put its probability pair at y=493–519 against a tab bar at y=507. The card printed both team names
+twice and "ex-Zero Tenacity" wraps in the duplicate. The duplicate inside the phone card is hidden now
+(`@media(max-width:650px){tbody .prob-team-labels{display:none}}`); each percentage keeps its `aria-label`
+naming its team and the heading still names both teams. Re-measured: pair bottom **483** at 320x568 and 401 at
+390x844, no horizontal overflow.
+
+**Coverage on the committed capture** (`2026-10-25T13:34:30.593464Z`, fixtures observed 13:30:57Z): 78 feed
+rows, **17 open · 17 picks · 17 win-probability pairs · 0 unresolved**; 11 strict exchange, 1 wide exchange,
+1 researched bookmaker listing (Thunderpick via BO3.gg), 4 originated Valve-standings model lines. Every row's
+pick and both percentages, with the official source that produced them, are tabulated in
+[`research/session-6857421f/REPORT.md`](research/session-6857421f/REPORT.md).
+
+**Gates on this tree:** 1,606 unit tests OK (12 skipped); audits 9; integrity 5; verification-c6 12; independent
+row audit 0 failures on 78 rows; `scripts.validate --site .` 78 rows / 17 calculations / 15 pages / 730 links /
+20 checksums / 182 displayed rows; **all 13 Chromium suites pass**, including the two that measure the phone
+board and the 9-rung ladder.
+
+**Flagged for review (non-blocking, published on Flagged for Review):**
+`session-6857421f-publisher-validate-alias-blindness-2026-10-25`,
+`session-6857421f-phone-duplicate-labels-2026-10-25`,
+`session-6857421f-unregistered-opponent-labels-2026-10-25` (an open limitation: a verified Polymarket price
+existed for `1086697` and could not be used because *Yawara Esports* has no sourced alias).
+
+**Coordination note.** Nine other sessions were diagnosing the same red publisher at the same time (their
+non-publishing workflows were queued alongside this one). This session touched only `scripts/validate.py`, the
+two stylesheet copies, its own test module, its own receipts and the reviewed-findings register, and regenerated
+the shared outputs with the canonical `scripts.build` / `scripts.stage_legacy` only. No other session's claim,
+research folder, test or implementation was edited, and no source value, probability or pick was typed by hand.
+
 ## Session 6857421f claim — 2026-10-25 13:25 UTC (P0: the live board is again withholding every pick; publisher red at the post-refresh gate)
 
 Board read before claiming: `COORDINATION.md` (top 400 lines + `grep 2026-10-25` = no hits, so no

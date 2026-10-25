@@ -71,12 +71,26 @@ def lineup_source_ok(m, team, lineup):
     team page and the row must carry its URL. Rows with neither source cannot
     be re-checked offline, so they are left to the other identity assertions
     (``label_count``) rather than being silently treated as sourced.
+
+    Team labels are compared with ``norm`` — the reviewed, primary-source-linked
+    alias register in ``data/identities.json`` — never with a fuzzy match. This
+    is the same rule the VRS/mirror label assertions already apply two functions
+    below, and it is required because HLTV prints the *other* label for some
+    registered pairs: fixture ``1086697`` is Hotspawn's *Projeto do KinGui*, and
+    HLTV's fixture page (``/matches/2399918/tropa-do-kingui-vs-yawara-…``) prints
+    *Tropa do KinGui* for the same five players. Session 6857421f measured that
+    exact-string comparison here failed ``scripts.validate`` with "Model roster
+    has no HLTV source on this row" on the 2026-10-25T13:34:30Z capture, which is
+    the data-dependent step that stopped every scheduled publish that day. The
+    players, the URL prefix and the receipt's own fixture/team binding remain
+    exact: only the label comparison is alias-aware, and only for aliases that
+    carry a written basis and an https source.
     """
     want = sorted(plain_name(x) for x in (lineup or []))
     if not want:
         return False
     for item in (m.get('hltv_context') or {}).get('lineups') or []:
-        if plain_name(item.get('team') or '') == plain_name(team):
+        if norm(item.get('team') or '') == norm(team):
             if sorted(plain_name(x) for x in item.get('players') or []) == want:
                 return True
     # A retained lineup receipt (data/lineup-receipts.json) is another HLTV
@@ -84,17 +98,17 @@ def lineup_source_ok(m, team, lineup):
     for receipt in hltv.lineup_receipts():
         if str(receipt.get('fixture_id') or '') != str(m.get('id') or ''):
             continue
-        if receipt.get('teams') != list(m.get('teams') or []):
+        if [norm(t) for t in (receipt.get('teams') or [])] != [norm(t) for t in (m.get('teams') or [])]:
             continue
         for item in receipt.get('lineups') or []:
-            if plain_name(item.get('team') or '') != plain_name(team):
+            if norm(item.get('team') or '') != norm(team):
                 continue
             if not str(item.get('source') or '').startswith('https://www.hltv.org/matches/'):
                 continue
             if sorted(plain_name(x) for x in item.get('players') or []) == want:
                 return True
     for item in (m.get('hltv_team_pages') or {}).get('teams') or []:
-        if plain_name(item.get('team') or '') != plain_name(team):
+        if norm(item.get('team') or '') != norm(team):
             continue
         if not str(item.get('url') or '').startswith('https://www.hltv.org/team/'):
             continue

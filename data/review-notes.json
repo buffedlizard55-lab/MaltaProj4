@@ -5615,5 +5615,78 @@
     "label": "Phone measurement on a fresh capture (executive summary links, first pick, both win chances)"
    }
   ]
+ },
+ {
+  "id": "session-6857421f-publisher-validate-alias-blindness-2026-10-25",
+  "status": "Repaired and verified on a real runner capture; the pick, its probability and its sources never changed",
+  "finding": "Measured: both scheduled publisher runs on 6ade440 failed at 'Build and independently verify every row, calculation and internal link' -- 40170923727 (06:56Z) and 40193317196 (12:29Z) -- after the unit gate, the live refresh and the quarantine had all succeeded, so the public site kept serving the 2026-10-25T01:47:42Z snapshot and began withholding every pick when its eight-hour window closed at 09:47Z. A non-publishing runner replay committed its own receipt (research/diag-6857421f/00-return-codes.txt): refresh, quarantine, independent row audit and build all returned 0, and published_validate_rc=1 with 'AssertionError: Model roster has no HLTV source on this row' at scripts/validate.py:122. The row was fixture 1086697 (Hotspawn Projeto do KinGui vs Yawara). No exchange or bookmaker line covered it -- Polymarket's market 6169151 is named 'Tropa do KinGui vs Yawara Esports' and was refused for an unregistered opponent label, Pinnacle had no pair, Thunderpick posted no moneyline and GG.BET returned HTTP 403 -- so the ladder reached our own Valve-standings model line, whose roster identity comes from HLTV's fixture page https://www.hltv.org/matches/2399918/tropa-do-kingui-vs-yawara-cct-2026-south-america-series-7 where the same five players are printed as Tropa do KinGui. scripts.validate.lineup_source_ok compared team labels with plain_name, so the correctly sourced roster was treated as unsourced. It now compares with norm(), the reviewed alias register in data/identities.json, exactly as the VRS and mirror label assertions 60 lines above already did. Players, the https://www.hltv.org/matches/ prefix and the receipt's own fixture binding remain exact; an unregistered label is still refused (tests/test_session_6857421f.py, 14 regressions).",
+  "sources": [
+   {
+    "label": "Failing run 40193317196",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40193317196"
+   },
+   {
+    "label": "Failing run 40170923727",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40170923727"
+   },
+   {
+    "label": "HLTV fixture page for the row (Tropa do KinGui vs Yawara)",
+    "url": "https://www.hltv.org/matches/2399918/tropa-do-kingui-vs-yawara-cct-2026-south-america-series-7"
+   },
+   {
+    "label": "Hotspawn fixture 1086697",
+    "url": "https://play.hotspawn.com/cs2-pickems"
+   },
+   {
+    "label": "Polymarket market 6169151 (refused: opponent label not registered)",
+    "url": "https://gamma-api.polymarket.com/markets/6169151"
+   },
+   {
+    "label": "Valve regional standings used by the model tier",
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+   },
+   {
+    "label": "Runner receipt",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/arena/6857421f-maltaproj4/research/diag-6857421f/00-return-codes.txt"
+   }
+  ]
+ },
+ {
+  "id": "session-6857421f-phone-duplicate-labels-2026-10-25",
+  "status": "Repaired; both percentages and every source link remain on the phone card",
+  "finding": "Measured on the same runner capture: browser_rc=1 from tests/browser_019a253a.cjs:105, 'the first probabilities must clear the tab bar at 320x568'. On the built board the first card (fixture 1085542, ex-Zero Tenacity vs Spirit Academy) put its probability pair at y=493-519 while the fixed tab bar starts at y=507 -- twelve pixels behind it. The cause is duplication, not a missing number: the phone card printed the two team names in its heading, again inside the probability block, and 'ex-Zero Tenacity' wraps to two lines in the 48%-wide duplicate slot. The duplicate block is now hidden inside phone cards only; each percentage keeps its own aria-label naming its team, and the heading still names both teams. Re-measured after the change: pair bottom y=483 at 320x568 and y=401 at 390x844, no horizontal overflow, and all 13 Chromium suites pass. No percentage, fair-odds line, model comparison, flag, warning or source link is hidden.",
+  "sources": [
+   {
+    "label": "Phone measurement receipt",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/arena/6857421f-maltaproj4/research/diag-6857421f/09-browser-failures.txt"
+   },
+   {
+    "label": "Live pick board",
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/picks.html"
+   },
+   {
+    "label": "Polymarket exchange market behind the first card (observed 2026-10-25T13:31:02Z)",
+    "url": "https://gamma-api.polymarket.com/markets/6158059"
+   }
+  ]
+ },
+ {
+  "id": "session-6857421f-unregistered-opponent-labels-2026-10-25",
+  "status": "Open limitation, non-blocking; a sourced alias is what would close it",
+  "finding": "One row on the 2026-10-25T13:34:30Z capture lost its market line to an unregistered opponent label rather than to a missing price: Polymarket market 6169151 prices 'Tropa do KinGui vs Yawara Esports' at the fixture's exact UTC start, and the fixture side of that pair (Projeto do KinGui = Tropa do KinGui) is a registered alias, but 'Yawara Esports' has no entry in data/identities.json, so the collector refused the pair and fell through to our own model line (Projeto do KinGui 51.0%). Registering that second label needs a primary source that ties 'Yawara' to 'Yawara Esports' -- HLTV prints only 'Yawara' on the fixture page used above -- and this session's sandbox has no egress to HLTV or Polymarket, so no alias is invented here. The row still carries a pick, both probabilities, and the model label, so nothing is missing from the board; the limitation is that a verified market price existed and was not used.",
+  "sources": [
+   {
+    "label": "Polymarket market 6169151",
+    "url": "https://gamma-api.polymarket.com/markets/6169151"
+   },
+   {
+    "label": "HLTV fixture page (prints 'Yawara')",
+    "url": "https://www.hltv.org/matches/2399918/tropa-do-kingui-vs-yawara-cct-2026-south-america-series-7"
+   },
+   {
+    "label": "Alias register requiring an https source and a written basis",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/data/identities.json"
+   }
+  ]
  }
 ]
