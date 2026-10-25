@@ -1,0 +1,43 @@
+{
+  "workflow_run": "40197778618",
+  "head_sha": "de2517f5eec0880b1908858c14af47150d100d0a",
+  "snapshot_sha256": "96493b83a8ea4c4e005f7166d242cae859523a865811c5c09364df6670872e1d",
+  "snapshot": {
+    "generated_at": "2026-10-25T13:33:56.360498Z",
+    "fixtures_observed_at": "2026-10-25T13:30:23.083956Z",
+    "coverage": "verified",
+    "rows_total": 78,
+    "open": 17,
+    "open_with_pick": 17,
+    "open_with_probabilities": 17,
+    "unresolved_ids": [],
+    "methods": {
+      "bookmaker_fallback": 1,
+      "exchange": 11,
+      "exchange_wide": 1,
+      "model_vrs": 4
+    }
+  },
+  "stage_exit_codes": {
+    "build": "0",
+    "published-row-audit": "0",
+    "quarantine": "0",
+    "refresh": "0",
+    "row-audit": "0",
+    "validate": "1"
+  },
+  "logs": [
+    "build.exit",
+    "build.txt",
+    "published-row-audit.exit",
+    "published-row-audit.txt",
+    "quarantine.exit",
+    "quarantine.txt",
+    "refresh.exit",
+    "refresh.txt",
+    "row-audit.exit",
+    "row-audit.txt",
+    "validate.exit",
+    "validate.txt"
+  ]
+}
