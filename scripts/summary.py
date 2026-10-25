@@ -50,8 +50,11 @@ LADDER = (
      'Polymarket Gamma API', GAMMA + '/events'),
     ('hltv', 'HLTV fixture identity, rankings and lineups',
      'Confirms the exact opponent pair and UTC start, the world ranking and the current five. '
-     'HLTV’s own betting table exposes no numeric two-way price to this collector, and its '
-     'community vote is never used as a probability.',
+     'HLTV’s own betting table exposes no numeric two-way price to this collector — re-checked '
+     'on 25 Oct 2026 against hltv.org/matches/2399918 and its betting/analytics/2399918 odds '
+     'overview, where the Betting panel rendered one partner promo row with no price and the '
+     'overview rendered no numeric price for either side — and its community vote is never used '
+     'as a probability.',
      'HLTV match pages', 'https://www.hltv.org/matches'),
     ('pinnacle', 'Pinnacle esports moneyline',
      'A sharp bookmaker’s two-way price for the exact fixture, de-vigged with the same formula. '
