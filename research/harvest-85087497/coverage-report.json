@@ -1,6 +1,6 @@
 {
- "snapshot_generated_at": "2026-10-25T13:31:28.323316Z",
- "fixtures_observed_at": "2026-10-25T13:27:54.551556Z",
+ "snapshot_generated_at": "2026-10-25T14:01:00.631995Z",
+ "fixtures_observed_at": "2026-10-25T13:57:23.228930Z",
  "coverage_counts": {
   "api": 78,
   "page": 78,
@@ -8,40 +8,18 @@
   "retained": 78
  },
  "total_rows": 78,
- "open_rows": 17,
- "open_with_pick": 17,
- "open_with_probability": 17,
+ "open_rows": 16,
+ "open_with_pick": 16,
+ "open_with_probability": 16,
  "open_without_pick": [],
  "open_without_probability": [],
  "methods": {
   "bookmaker_fallback": 1,
-  "exchange": 11,
+  "exchange": 10,
   "exchange_wide": 1,
   "model_vrs": 4
  },
  "rows": [
-  {
-   "id": "1085542",
-   "teams": [
-    "ex-Zero Tenacity",
-    "Spirit Academy"
-   ],
-   "competition": "CCT Europe 2026 Series #11",
-   "start": "2026-10-25T14:00:00Z",
-   "pick": "ex-Zero Tenacity",
-   "method": "exchange",
-   "probabilities": [
-    0.595,
-    0.405
-   ],
-   "reason": null,
-   "winner_share": 0.595,
-   "winner_share_pct": 59.5,
-   "expires_at": "2026-10-25T13:54:00Z",
-   "evidence_urls": [
-    "https://polymarket.com/event/cs2-zerote-tsa-2026-10-25"
-   ]
-  },
   {
    "id": "1079199",
    "teams": [
@@ -141,12 +119,12 @@
    "pick": "paiN",
    "method": "exchange",
    "probabilities": [
-    0.425,
-    0.575
+    0.415,
+    0.585
    ],
    "reason": null,
-   "winner_share": 0.575,
-   "winner_share_pct": 57.5,
+   "winner_share": 0.585,
+   "winner_share_pct": 58.5,
    "expires_at": "2026-10-25T17:54:00Z",
    "evidence_urls": [
     "https://polymarket.com/event/cs2-pain-bst-2026-10-25"
@@ -185,13 +163,13 @@
    "pick": "Off Chops",
    "method": "exchange",
    "probabilities": [
-    0.355,
-    0.645
+    0.365,
+    0.635
    ],
    "reason": null,
-   "winner_share": 0.645,
-   "winner_share_pct": 64.5,
-   "expires_at": "2026-10-25T21:22:38.929420Z",
+   "winner_share": 0.635,
+   "winner_share_pct": 63.5,
+   "expires_at": "2026-10-25T21:56:39.709296Z",
    "evidence_urls": [
     "https://polymarket.com/event/cs2-gz1-offcho-2026-10-25"
    ]
@@ -213,7 +191,7 @@
    "reason": null,
    "winner_share": 0.5789473684210527,
    "winner_share_pct": 57.9,
-   "expires_at": "2026-10-25T21:27:54.551556Z",
+   "expires_at": "2026-10-25T21:57:23.228930Z",
    "evidence_urls": [
     "https://bo3.gg/matches/nexvoid-vs-alter-ego-26-10-2026"
    ]
@@ -235,7 +213,7 @@
    "reason": null,
    "winner_share": 0.925,
    "winner_share_pct": 92.5,
-   "expires_at": "2026-10-25T21:22:38.929420Z",
+   "expires_at": "2026-10-25T21:50:39.239431Z",
    "evidence_urls": [
     "https://polymarket.com/event/cs2-fly-staque-2026-10-26"
    ]
@@ -251,13 +229,13 @@
    "pick": "Abyssal",
    "method": "exchange_wide",
    "probabilities": [
-    0.42,
-    0.58
+    0.43,
+    0.57
    ],
    "reason": null,
-   "winner_share": 0.58,
-   "winner_share_pct": 58.0,
-   "expires_at": "2026-10-25T21:24:38.546830Z",
+   "winner_share": 0.57,
+   "winner_share_pct": 57.0,
+   "expires_at": "2026-10-25T21:56:39.709296Z",
    "evidence_urls": [
     "https://polymarket.com/event/cs2-rstr-abyssa-2026-10-26"
    ]
@@ -279,7 +257,7 @@
    "reason": null,
    "winner_share": 0.595,
    "winner_share_pct": 59.5,
-   "expires_at": "2026-10-25T21:22:38.929420Z",
+   "expires_at": "2026-10-25T21:56:39.709296Z",
    "evidence_urls": [
     "https://polymarket.com/event/cs2-b8-k271-2026-10-27"
    ]
@@ -301,7 +279,7 @@
    "reason": null,
    "winner_share": 0.625,
    "winner_share_pct": 62.5,
-   "expires_at": "2026-10-25T21:24:38.546830Z",
+   "expires_at": "2026-10-25T21:56:39.709296Z",
    "evidence_urls": [
     "https://polymarket.com/event/cs2-all-faze-2026-10-27"
    ]
@@ -323,7 +301,7 @@
    "reason": null,
    "winner_share": 0.525,
    "winner_share_pct": 52.5,
-   "expires_at": "2026-10-25T21:22:38.929420Z",
+   "expires_at": "2026-10-25T21:46:39.017085Z",
    "evidence_urls": [
     "https://polymarket.com/event/cs2-lg6-hotu-2026-10-27"
    ]
@@ -345,7 +323,7 @@
    "reason": null,
    "winner_share": 0.545,
    "winner_share_pct": 54.5,
-   "expires_at": "2026-10-25T21:22:38.929420Z",
+   "expires_at": "2026-10-25T21:52:38.961550Z",
    "evidence_urls": [
     "https://polymarket.com/event/cs2-envy-gl1-2026-10-27"
    ]
@@ -367,7 +345,7 @@
    "reason": null,
    "winner_share": 0.851799765370461,
    "winner_share_pct": 85.2,
-   "expires_at": "2026-10-25T21:27:54.551556Z",
+   "expires_at": "2026-10-25T21:57:23.228930Z",
    "evidence_urls": [
     "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
    ]
@@ -389,7 +367,7 @@
    "reason": null,
    "winner_share": 0.757014223069169,
    "winner_share_pct": 75.7,
-   "expires_at": "2026-10-25T21:27:54.551556Z",
+   "expires_at": "2026-10-25T21:57:23.228930Z",
    "evidence_urls": [
     "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
    ]

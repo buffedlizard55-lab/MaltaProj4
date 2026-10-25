@@ -1,7 +1,7 @@
-.............................................................................................................................................................................................................................................................No refreshed snapshot at /tmp/tmppxtk3e9z/nope.json; nothing to harvest.
-......FFFFFFFFF......................................................................................................................FFF...................................s.........F.....................................................................................................................................F...............................................................................................................................................................................................ss.................................................................................................................Built 9 primary pages + 6 legacy redirects; 78 sourced rows, 17 with percentages, 0 without percentages, 0 unresolved.
-F........................Built 9 primary pages + 6 legacy redirects; 78 sourced rows, 17 with percentages, 0 without percentages, 0 unresolved.
-..............................................................................................s...............................................................................................................................................F..............................................................................................................................................ss................................................................s............................s....s..............................sss.........................................................Built 9 primary pages + 6 legacy redirects; 78 sourced rows, 17 with percentages, 0 without percentages, 0 unresolved.
+.............................................................................................................................................................................................................................................................No refreshed snapshot at /tmp/tmp3afho2lr/nope.json; nothing to harvest.
+...........................................................................................................................................................................s.........................................................E.....................................................................................................................................................................................................................................................................................ss.................................................................................................................Built 9 primary pages + 6 legacy redirects; 78 sourced rows, 16 with percentages, 0 without percentages, 0 unresolved.
+.........................Built 9 primary pages + 6 legacy redirects; 78 sourced rows, 16 with percentages, 0 without percentages, 0 unresolved.
+.........................................................................................................s...........................................................................................................................................................................................................................................................................................................ss................................................................s............................s....s..............................sss.........................................................Built 9 primary pages + 6 legacy redirects; 78 sourced rows, 16 with percentages, 0 without percentages, 0 unresolved.
 {
  "coverage": "verified",
  "coverage_counts": {
@@ -23,7 +23,7 @@ F........................Built 9 primary pages + 6 legacy redirects; 78 sourced 
   "1"
  ]
 }
-Built 9 primary pages + 6 legacy redirects; 78 sourced rows, 17 with percentages, 0 without percentages, 0 unresolved.
+Built 9 primary pages + 6 legacy redirects; 78 sourced rows, 16 with percentages, 0 without percentages, 0 unresolved.
 receipt = egw-NTRtiger-l6k0vg5-nemesis-nuclear -> already on file for fixture 1081552
 receipt = egw-V1JAWhPomg-astral-leo -> already on file for fixture 1081532
 receipt = egw-Nk9F-Ov54e-fireflux-ex6666 -> already on file for fixture 1079181
@@ -35,13 +35,13 @@ receipt = egw-41yaj8BdVx-sangal-aurorayoungblud -> already on file for fixture 1
  "aliases_added": 0,
  "notes_added": 0
 }
-Built 9 primary pages + 6 legacy redirects; 78 sourced rows, 17 with percentages, 0 without percentages, 0 unresolved.
+Built 9 primary pages + 6 legacy redirects; 78 sourced rows, 16 with percentages, 0 without percentages, 0 unresolved.
 Built 9 primary pages + 6 legacy redirects; 4 sourced rows, 2 with percentages, 2 without percentages, 1 unresolved.
 Built 9 primary pages + 6 legacy redirects; 4 sourced rows, 2 with percentages, 2 without percentages, 1 unresolved.
 Built 9 primary pages + 6 legacy redirects; 4 sourced rows, 2 with percentages, 2 without percentages, 1 unresolved.
 Built 9 primary pages + 6 legacy redirects; 4 sourced rows, 2 with percentages, 2 without percentages, 1 unresolved.
 Built 9 primary pages + 6 legacy redirects; 2 sourced rows, 1 with percentages, 1 without percentages, 0 unresolved.
-Built 9 primary pages + 6 legacy redirects; 78 sourced rows, 17 with percentages, 0 without percentages, 0 unresolved.
+Built 9 primary pages + 6 legacy redirects; 78 sourced rows, 16 with percentages, 0 without percentages, 0 unresolved.
 Built 9 primary pages + 6 legacy redirects; 2 sourced rows, 2 with percentages, 0 without percentages, 0 unresolved.
 Built 9 primary pages + 6 legacy redirects; 75 sourced rows, 10 with percentages, 3 without percentages, 1 unresolved.
 Built 9 primary pages + 6 legacy redirects; 1 sourced rows, 0 with percentages, 1 without percentages, 0 unresolved.
@@ -73,19 +73,19 @@ receipt = egw-41yaj8BdVx-sangal-aurorayoungblud -> already on file for fixture 1
 Built 9 primary pages + 6 legacy redirects; 3 sourced rows, 2 with percentages, 1 without percentages, 0 unresolved.
 {
   "schema_version": 1,
-  "snapshot_generated_at": "2026-10-25T13:31:28.323316Z",
-  "audit_clock": "2026-10-25T13:31:28.323316Z",
+  "snapshot_generated_at": "2026-10-25T14:01:00.631995Z",
+  "audit_clock": "2026-10-25T14:01:00.631995Z",
   "clock_basis": "snapshot_generation_time_not_live",
   "counts": {
-    "not_open": 61,
+    "not_open": 62,
     "official_input_model": 4,
-    "operator_market": 12,
+    "operator_market": 11,
     "third_party_listing": 1
   },
-  "actionable_at_audit_clock": 17,
+  "actionable_at_audit_clock": 16,
   "errors": [],
   "scope": "Retained-evidence provenance and independent arithmetic replay, not live upstream confirmation or forecast accuracy.",
-  "snapshot_sha256": "fa632521b79f934aa8eefe6279e77ebb51d06ea2c2c6ab9ad8914b2531609d21"
+  "snapshot_sha256": "256c7ac55fb040388face9b89ea90d33b19d6a2e3bc1ae45d2ba36e0b6a166b2"
 }
 Built 9 primary pages + 6 legacy redirects; 1 sourced rows, 0 with percentages, 1 without percentages, 1 unresolved.
 {
@@ -95,7 +95,7 @@ Built 9 primary pages + 6 legacy redirects; 1 sourced rows, 0 with percentages, 
   "files_checked": 20,
   "snapshot_generated_at": "2026-10-22T07:49:59.960210Z",
   "fixtures_observed_at": "2026-10-22T07:44:36.467004Z",
-  "live_manifest_sha256": "c588469356a905496cb2357691dbf5ffe03f468e8491c3dcd66af6fff4570302",
+  "live_manifest_sha256": "18a0ab92d471d1f44bdf45bebccc6c9faa56335fdd54e6a6540e912774d855bd",
   "snapshot_sha256": "9c6f1c7e1944447d6618d767299418f4f2a6a5d904cbfa49e5d8aebc009ebb67",
   "snapshot_counts": {
     "feed_rows": 107,
@@ -109,11 +109,11 @@ Built 9 primary pages + 6 legacy redirects; 1 sourced rows, 0 with percentages, 
     "research_only": 6,
     "unresolved": 1
   },
-  "run_id": "40197633940",
+  "run_id": "40199883762",
   "note": "Exact public bytes; no source/quote timestamp was renewed."
 }
 Built 9 primary pages + 6 legacy redirects; 107 sourced rows, 0 with percentages, 25 without percentages, 25 unresolved.
-receipt: /tmp/tmprswimat0/audit-receipt.json
+receipt: /tmp/tmp5z9v64_q/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -125,7 +125,7 @@ receipt: /tmp/tmprswimat0/audit-receipt.json
  "unresolved_listed_on_both_pages": 25
 }
 checks: 282  failures: 0
-receipt: /tmp/tmprswimat0/audit-receipt.json
+receipt: /tmp/tmp5z9v64_q/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -138,7 +138,7 @@ receipt: /tmp/tmprswimat0/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved probabilities must be None
-receipt: /tmp/tmprswimat0/audit-receipt.json
+receipt: /tmp/tmp5z9v64_q/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -151,7 +151,7 @@ receipt: /tmp/tmprswimat0/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved fair_odds must be None
-receipt: /tmp/tmprswimat0/audit-receipt.json
+receipt: /tmp/tmp5z9v64_q/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -164,7 +164,7 @@ receipt: /tmp/tmprswimat0/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved method must be None
-receipt: /tmp/tmprswimat0/audit-receipt.json
+receipt: /tmp/tmp5z9v64_q/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -177,7 +177,7 @@ receipt: /tmp/tmprswimat0/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved row lacks its limitation
-receipt: /tmp/tmprswimat0/audit-receipt.json
+receipt: /tmp/tmp5z9v64_q/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -190,7 +190,7 @@ receipt: /tmp/tmprswimat0/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved row lacks source attempts
-receipt: /tmp/tmprswimat0/audit-receipt.json
+receipt: /tmp/tmp5z9v64_q/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -207,226 +207,20 @@ Built 9 primary pages + 6 legacy redirects; 107 sourced rows, 0 with percentages
 Built 9 primary pages + 6 legacy redirects; 107 sourced rows, 36 with percentages, 7 without percentages, 1 unresolved.
 Built 9 primary pages + 6 legacy redirects; 107 sourced rows, 0 with percentages, 25 without percentages, 25 unresolved.......................................................................................................................................
 ======================================================================
-FAIL: test_bookmaker_scope_cutoff_and_identity_replayed (test_integrity.EvidenceIntegrityTests.test_bookmaker_scope_cutoff_and_identity_replayed)
+ERROR: test_vrs_rows_replay_from_valve_formula (test_session_0fae12a5.CalculationReplayTest.test_vrs_rows_replay_from_valve_formula)
 ----------------------------------------------------------------------
 Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_integrity.py", line 63, in setUp
-    validate_data(self.data)  # the synthetic baseline itself must replay
-    ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/MaltaProj4/MaltaProj4/scripts/validate.py", line 376, in validate_data
-    validate_model_row(m, q, now)
-  File "/home/runner/work/MaltaProj4/MaltaProj4/scripts/validate.py", line 122, in validate_model_row
-    assert lineup_source_ok(m, team, check.get('lineup') or []), 'Model roster has no HLTV source on this row'
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-AssertionError: Model roster has no HLTV source on this row
-
-======================================================================
-FAIL: test_known_series_format_must_match (test_integrity.EvidenceIntegrityTests.test_known_series_format_must_match)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_integrity.py", line 63, in setUp
-    validate_data(self.data)  # the synthetic baseline itself must replay
-    ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/MaltaProj4/MaltaProj4/scripts/validate.py", line 376, in validate_data
-    validate_model_row(m, q, now)
-  File "/home/runner/work/MaltaProj4/MaltaProj4/scripts/validate.py", line 122, in validate_model_row
-    assert lineup_source_ok(m, team, check.get('lineup') or []), 'Model roster has no HLTV source on this row'
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-AssertionError: Model roster has no HLTV source on this row
-
-======================================================================
-FAIL: test_missing_required_expiry_fact_fails_closed (test_integrity.EvidenceIntegrityTests.test_missing_required_expiry_fact_fails_closed)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_integrity.py", line 63, in setUp
-    validate_data(self.data)  # the synthetic baseline itself must replay
-    ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/MaltaProj4/MaltaProj4/scripts/validate.py", line 376, in validate_data
-    validate_model_row(m, q, now)
-  File "/home/runner/work/MaltaProj4/MaltaProj4/scripts/validate.py", line 122, in validate_model_row
-    assert lineup_source_ok(m, team, check.get('lineup') or []), 'Model roster has no HLTV source on this row'
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-AssertionError: Model roster has no HLTV source on this row
-
-======================================================================
-FAIL: test_nonfinite_liquidity_never_valid (test_integrity.EvidenceIntegrityTests.test_nonfinite_liquidity_never_valid)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_integrity.py", line 63, in setUp
-    validate_data(self.data)  # the synthetic baseline itself must replay
-    ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/MaltaProj4/MaltaProj4/scripts/validate.py", line 376, in validate_data
-    validate_model_row(m, q, now)
-  File "/home/runner/work/MaltaProj4/MaltaProj4/scripts/validate.py", line 122, in validate_model_row
-    assert lineup_source_ok(m, team, check.get('lineup') or []), 'Model roster has no HLTV source on this row'
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-AssertionError: Model roster has no HLTV source on this row
-
-======================================================================
-FAIL: test_raw_identity_cannot_be_replaced_by_derived_labels (test_integrity.EvidenceIntegrityTests.test_raw_identity_cannot_be_replaced_by_derived_labels)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_integrity.py", line 63, in setUp
-    validate_data(self.data)  # the synthetic baseline itself must replay
-    ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/MaltaProj4/MaltaProj4/scripts/validate.py", line 376, in validate_data
-    validate_model_row(m, q, now)
-  File "/home/runner/work/MaltaProj4/MaltaProj4/scripts/validate.py", line 122, in validate_model_row
-    assert lineup_source_ok(m, team, check.get('lineup') or []), 'Model roster has no HLTV source on this row'
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-AssertionError: Model roster has no HLTV source on this row
-
-======================================================================
-FAIL: test_raw_quality_gates_replayed (test_integrity.EvidenceIntegrityTests.test_raw_quality_gates_replayed)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_integrity.py", line 63, in setUp
-    validate_data(self.data)  # the synthetic baseline itself must replay
-    ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/MaltaProj4/MaltaProj4/scripts/validate.py", line 376, in validate_data
-    validate_model_row(m, q, now)
-  File "/home/runner/work/MaltaProj4/MaltaProj4/scripts/validate.py", line 122, in validate_model_row
-    assert lineup_source_ok(m, team, check.get('lineup') or []), 'Model roster has no HLTV source on this row'
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-AssertionError: Model roster has no HLTV source on this row
-
-======================================================================
-FAIL: test_source_deadline_includes_book_cutoff (test_integrity.EvidenceIntegrityTests.test_source_deadline_includes_book_cutoff)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_integrity.py", line 63, in setUp
-    validate_data(self.data)  # the synthetic baseline itself must replay
-    ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/MaltaProj4/MaltaProj4/scripts/validate.py", line 376, in validate_data
-    validate_model_row(m, q, now)
-  File "/home/runner/work/MaltaProj4/MaltaProj4/scripts/validate.py", line 122, in validate_model_row
-    assert lineup_source_ok(m, team, check.get('lineup') or []), 'Model roster has no HLTV source on this row'
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-AssertionError: Model roster has no HLTV source on this row
-
-======================================================================
-FAIL: test_source_deadline_includes_update_time (test_integrity.EvidenceIntegrityTests.test_source_deadline_includes_update_time)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_integrity.py", line 63, in setUp
-    validate_data(self.data)  # the synthetic baseline itself must replay
-    ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/MaltaProj4/MaltaProj4/scripts/validate.py", line 376, in validate_data
-    validate_model_row(m, q, now)
-  File "/home/runner/work/MaltaProj4/MaltaProj4/scripts/validate.py", line 122, in validate_model_row
-    assert lineup_source_ok(m, team, check.get('lineup') or []), 'Model roster has no HLTV source on this row'
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-AssertionError: Model roster has no HLTV source on this row
-
-======================================================================
-FAIL: test_start_bound_to_raw_quote (test_integrity.EvidenceIntegrityTests.test_start_bound_to_raw_quote)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_integrity.py", line 63, in setUp
-    validate_data(self.data)  # the synthetic baseline itself must replay
-    ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/MaltaProj4/MaltaProj4/scripts/validate.py", line 376, in validate_data
-    validate_model_row(m, q, now)
-  File "/home/runner/work/MaltaProj4/MaltaProj4/scripts/validate.py", line 122, in validate_model_row
-    assert lineup_source_ok(m, team, check.get('lineup') or []), 'Model roster has no HLTV source on this row'
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-AssertionError: Model roster has no HLTV source on this row
-
-======================================================================
-FAIL: test_csv_expiry_is_not_optional_or_mutable (test_rendered_evidence.RenderedEvidenceTests.test_csv_expiry_is_not_optional_or_mutable)
-----------------------------------------------------------------------
-AssertionError: Model roster has no HLTV source on this row
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_rendered_evidence.py", line 42, in test_csv_expiry_is_not_optional_or_mutable
-    with self.assertRaisesRegex(AssertionError, 'CSV expiry differs'):
-AssertionError: "CSV expiry differs" does not match "Model roster has no HLTV source on this row"
-
-======================================================================
-FAIL: test_missing_visible_inventory_row_fails_before_checksum_check (test_rendered_evidence.RenderedEvidenceTests.test_missing_visible_inventory_row_fails_before_checksum_check)
-----------------------------------------------------------------------
-AssertionError: Model roster has no HLTV source on this row
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_rendered_evidence.py", line 50, in test_missing_visible_inventory_row_fails_before_checksum_check
-    with self.assertRaisesRegex(AssertionError, 'full retained inventory'):
-AssertionError: "full retained inventory" does not match "Model roster has no HLTV source on this row"
-
-======================================================================
-FAIL: test_wrong_rendered_probability_fails_before_checksum_check (test_rendered_evidence.RenderedEvidenceTests.test_wrong_rendered_probability_fails_before_checksum_check)
-----------------------------------------------------------------------
-AssertionError: Model roster has no HLTV source on this row
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_rendered_evidence.py", line 29, in test_wrong_rendered_probability_fails_before_checksum_check
-    with self.assertRaisesRegex(AssertionError, 'Rendered probability differs'):
-AssertionError: "Rendered probability differs" does not match "Model roster has no HLTV source on this row"
-
-======================================================================
-FAIL: test_executive_summary_links_and_picks_board_dual_probabilities (test_session_0247223d.IdentityIsolationAndMobileClarityTests.test_executive_summary_links_and_picks_board_dual_probabilities)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_0247223d.py", line 302, in test_executive_summary_links_and_picks_board_dual_probabilities
-    validate.validate_site(out)
-  File "/home/runner/work/MaltaProj4/MaltaProj4/scripts/validate.py", line 502, in validate_site
-    validate_data(published)
-  File "/home/runner/work/MaltaProj4/MaltaProj4/scripts/validate.py", line 376, in validate_data
-    validate_model_row(m, q, now)
-  File "/home/runner/work/MaltaProj4/MaltaProj4/scripts/validate.py", line 122, in validate_model_row
-    assert lineup_source_ok(m, team, check.get('lineup') or []), 'Model roster has no HLTV source on this row'
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-AssertionError: Model roster has no HLTV source on this row
-
-======================================================================
-FAIL: test_reproducible_probabilities_for_priced_rows (test_session_13e99ca6.TestLineByLineVerification.test_reproducible_probabilities_for_priced_rows)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_13e99ca6.py", line 158, in test_reproducible_probabilities_for_priced_rows
-    result = validate.validate_data(data)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/MaltaProj4/MaltaProj4/scripts/validate.py", line 376, in validate_data
-    validate_model_row(m, q, now)
-  File "/home/runner/work/MaltaProj4/MaltaProj4/scripts/validate.py", line 122, in validate_model_row
-    assert lineup_source_ok(m, team, check.get('lineup') or []), 'Model roster has no HLTV source on this row'
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-AssertionError: Model roster has no HLTV source on this row
-
-======================================================================
-FAIL: test_full_board_and_fresh_build_pass_independent_auditor (test_session_7271c5d5.Session7271c5d5Tests.test_full_board_and_fresh_build_pass_independent_auditor)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_7271c5d5.py", line 139, in test_full_board_and_fresh_build_pass_independent_auditor
-    validate.validate_data(json.loads((ROOT / "data" / "latest.json").read_text()))
-  File "/home/runner/work/MaltaProj4/MaltaProj4/scripts/validate.py", line 376, in validate_data
-    validate_model_row(m, q, now)
-  File "/home/runner/work/MaltaProj4/MaltaProj4/scripts/validate.py", line 122, in validate_model_row
-    assert lineup_source_ok(m, team, check.get('lineup') or []), 'Model roster has no HLTV source on this row'
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-AssertionError: Model roster has no HLTV source on this row
-
-======================================================================
-FAIL: test_validator_accepts_the_converted_row (test_session_b6e37c61.GatesTest.test_validator_accepts_the_converted_row)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_b6e37c61.py", line 195, in test_validator_accepts_the_converted_row
-    validate_data(converted_snapshot())
-  File "/home/runner/work/MaltaProj4/MaltaProj4/scripts/validate.py", line 376, in validate_data
-    validate_model_row(m, q, now)
-  File "/home/runner/work/MaltaProj4/MaltaProj4/scripts/validate.py", line 122, in validate_model_row
-    assert lineup_source_ok(m, team, check.get('lineup') or []), 'Model roster has no HLTV source on this row'
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-AssertionError: Model roster has no HLTV source on this row
+  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_0fae12a5.py", line 169, in test_vrs_rows_replay_from_valve_formula
+    self.assertGreaterEqual(check['overlap'], 3,
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/unittest/case.py", line 1275, in assertGreaterEqual
+    if not a >= b:
+           ^^^^^^
+TypeError: '>=' not supported between instances of 'NoneType' and 'int'
 
 ----------------------------------------------------------------------
-Ran 1606 tests in 29.171s
+Ran 1630 tests in 31.917s
 
-FAILED (failures=16, skipped=12)
+FAILED (errors=1, skipped=12)
 
-coverage: 17 open · 17 with a pick · 17 with a win probability
+coverage: 16 open · 16 with a pick · 16 with a win probability
 unit rc=1

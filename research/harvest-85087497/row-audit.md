@@ -1,7 +1,7 @@
 # Independent retained-evidence audit
 
 This audits the archived evidence and arithmetic, not the present live lobby or current prices.
-Snapshot: `2026-10-25T13:31:28.323316Z` · SHA-256: `8188ac7752994b12f5c473cadce8304bbe026313845cc41b4c4c11212f86e5f2`
+Snapshot: `2026-10-25T14:01:00.631995Z` · SHA-256: `c176aa351f679520d1c25d928cb375f5608dfcc820e1eddcbbdb0b7e60921c0d`
 
 Rows checked: **78** · Arithmetic/field failures: **0**
 
@@ -68,7 +68,7 @@ Rows checked: **78** · Arithmetic/field failures: **0**
 | [1055478](https://play.hotspawn.com/cs2-pickems) | illwill / Lavked | Not priced; blank values checked | Consistent with stored evidence |
 | [1081105](https://play.hotspawn.com/cs2-pickems) | SUKEBAN / your end | Not priced; blank values checked | Consistent with stored evidence |
 | [1079621](https://play.hotspawn.com/cs2-pickems) | Gothic / Lavked | Not priced; blank values checked | Consistent with stored evidence |
-| [1085542](https://www.hotspawn.com/matches/ex-zero-tenacity-vs-spirit-academy-cct-europe-2026-series-11-1085542) | ex-Zero Tenacity / Spirit Academy | [Polymarket](https://gamma-api.polymarket.com/markets/6158059) | Consistent with stored evidence |
+| [1085542](https://www.hotspawn.com/matches/ex-zero-tenacity-vs-spirit-academy-cct-europe-2026-series-11-1085542) | ex-Zero Tenacity / Spirit Academy | Not priced; blank values checked | Consistent with stored evidence |
 | [1079199](https://www.hotspawn.com/matches/infinite-vs-brute-nodwin-clutch-series-13-1079199) | Infinite / BRUTE | [Polymarket](https://gamma-api.polymarket.com/markets/6072808) | Consistent with stored evidence |
 | [1086696](https://play.hotspawn.com/cs2-pickems) | BORRACHEIROS / RED Canids Academy | [Polymarket](https://gamma-api.polymarket.com/markets/6158760) | Consistent with stored evidence |
 | [1079200](https://www.hotspawn.com/matches/color-vs-ex-zero-tenacity-nodwin-clutch-series-13-1079200) | Color / ex-Zero Tenacity | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |

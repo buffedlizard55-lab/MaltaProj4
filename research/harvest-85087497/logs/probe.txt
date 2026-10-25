@@ -1,0 +1,1 @@
+{"open": 16, "unpriced": 0, "kalshi_series_total": 15393, "kalshi_cs_series": 54, "kalshi_open_markets": 171, "exact_pair_leads": 0, "hltv_ranking_status": 403}
