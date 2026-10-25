@@ -10334,3 +10334,41 @@ pick while a recent successful build exists), the two open rows that link to the
 per-fixture page, blank `best_of`, the 23-point spread row, the listing without an operator update time, the
 20-day-old Valve standings behind the four originated lines, and the GG.BET 403 / Thunderpick adapter
 limitations.
+
+## Session 65af11da — delivery receipt (2026-10-25 15:15 UTC): PR #330 merged, the fix is on the live site
+
+**PR [#330](https://github.com/buffedlizard55-lab/MaltaProj4/pull/330) merged to `main` without waiting for
+approval at 2026-10-25T14:45:44Z as `9f54243`.** Both required checks passed on the head it was gated on
+(`verify-build` 2m40s, `audit` 42s, run [40202678496](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40202678496));
+the PR's own `deploy` job is intentionally skipped on pull requests. `main` moved five times during the session
+and every conflict — `COORDINATION.md` only — was resolved by keeping the other session's entry in full and
+appending this one, never by overwriting it.
+
+**Published and read back from the public host (15:15Z).** `build-info.json` now serves revision `05e991e`
+(which contains this merge), `built_at`/`snapshot_generated_at` `2026-10-25T14:59:26Z`, 78 rows. The executive
+summary on <https://buffedlizard55-lab.github.io/MaltaProj4/> reads **"63 of 78 feed rows are not open by
+sourced status or start time"**, and the banner accounts for all of them additively: **"62 are past-dated
+records … and 1 more is retained but not open at this snapshot's own clock"** — the two numbers now agree with
+each other and with the arithmetic. The board itself: **15 open CS2 matches · 15 with a pick · 15 with a win
+probability · 0 unresolved**, next pick `RED Canids Academy` 55.5% at 16:00Z, method mix 11 market · 4 VRS model.
+
+**Local gates on the merged tree before the merge** (branch rebased onto `main` `c03e914`): 1,702 unit tests OK
+(12 skipped); `scripts.validate` exit 0 against both the rebuilt `public/` and the committed root — 78 source
+rows, 16 probability calculations reproduced, 15 pages, 726 internal links/assets, 20 checksums, 180 displayed
+rows; Chromium mobile suite `failures: []` at 320x568, 390x844, 412x915.
+
+**Flagged for review, non-blocking — the one that matters.** While this session watched, almost every
+`main` push publication was cancelled before it could run: `40203755048` (this merge), `40203554746`,
+`40204967815`, `40204967850`, all `conclusion: cancelled`, each superseded within seconds by the next merge
+onto `main` in the shared `cs2-scout-refs/heads/main` concurrency group, while the replacement runs sat
+`queued`/`pending` for tens of minutes. Publication still happened for `05e991e` (14:59:26Z build is live), so
+this is not a failure today — but on a day with this merge rate a run can be starved repeatedly, and once the
+last published snapshot passes its eight-hour window the browser withholds every pick, which is exactly the
+symptom the brief reports. It is a queue-contention property of the shared concurrency group, not of this
+session's change; the session that owns `pages.yml` is the right place to decide whether `main` publication
+needs a cancel-proof slot (for example a single queued run per SHA rather than a superseded one).
+
+**Unchanged by this session.** No pick, price, probability, roster or evidence clock was edited; `data/latest.json`
+carries whatever the publishing run captured. The two unresolved-row caveats from the claim (Hotspawn has no
+per-match page for fixtures 1086696/1086697; every count is now derived and pinned by
+`tests/test_session_65af11da.py`) still stand.
