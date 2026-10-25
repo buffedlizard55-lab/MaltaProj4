@@ -1,3 +1,18 @@
+## Session e009964b claim — 2026-10-25 13:30 UTC (publisher failure on main; picks withheld; every-match coverage check)
+
+Board read before claiming. Branch `arena/e009964b-maltaproj4`, based on `main` `6ade440`. No other branch is created or pushed.
+No active claims from 2026-10-25 were found on the board.
+
+**Measured starting state.** Live `build-info.json` is revision `cbe9dce`, snapshot `2026-10-25T01:47:42Z`, 79 rows. At 13:24Z that
+snapshot is outside its 8-hour window, so the committed board withholds picks (`build` run locally: 0 with percentages, 14 unresolved).
+Scheduled publish run [40193317196](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40193317196) (2026-10-25 12:29Z) failed at
+*Build and independently verify every row, calculation and internal link*; its job logs and artifact blobs return EOF from this sandbox,
+so the failing command cannot be read directly. Locally the committed snapshot passes `audit_snapshot`, `build`, and `validate`.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Reproduce the failing publish step on a fresh snapshot (dispatch-only, non-publishing), identify the failing check, repair it, republish | in progress | e009964b | `.github/workflows/diag-e009964b.yml` (new), `research/session-e009964b/**` (new) | 2026-10-25 13:30 |
+
 ## Session 2b856884 — published-state addendum (2026-10-24 18:05 UTC)
 
 **Measured after the two merges, read from `origin/main`, not from a branch.** PR
