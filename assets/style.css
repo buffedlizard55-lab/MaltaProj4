@@ -761,3 +761,18 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
     max-width:50%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis
   }
 }
+
+/* Session 85087497 (2026-10-25): on the fresh 13:31Z board the first
+   picks.html row (ex-Zero Tenacity vs Spirit Academy, with a VRS comparison
+   line) put its probabilities at y=519 on a 320x568 phone — 12px below the
+   fixed tab bar (top y=507) — so the browser gate blocked publication.
+   Session 58354934 measured the same deficit independently on the 13:28Z
+   board and compacted the card above; this block returns the remaining
+   chrome (page-head margin, caption padding, card padding/gaps) so long
+   low-tier team names keep headroom. Fonts and every line of content stay. */
+@media(max-width:650px) and (max-height:700px){
+  body[data-page=picks] .page-head{margin-bottom:10px}
+  body[data-page=picks] caption{padding:8px 11px;margin-bottom:8px}
+  body[data-page=picks] tbody tr{padding:12px;gap:10px 14px}
+  body[data-page=picks] td.team-col{padding-bottom:9px}
+}

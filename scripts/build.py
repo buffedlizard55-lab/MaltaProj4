@@ -451,6 +451,9 @@ def exec_summary_bar(data):
         + link('#unresolved-summary', 'Why a pick can be missing ↓', 'exec-bar-link')
         + link('#unresolved-limits', 'Visible limitations ↓', 'exec-bar-link')
         + link('matches.html', 'All matches →', 'exec-bar-link')
+        # Session 85087497: the summary also answers "how is a pick priced when
+        # no book lists it" in one tap, not only where the picks are.
+        + link('sources.html#method', 'How we price →', 'exec-bar-link')
         + link('review.html', 'Flagged for review →', 'exec-bar-link')
         + '</nav>'
         '<p class="exec-bar-note">Probabilities come from external betting lines or our own labelled '
@@ -490,7 +493,11 @@ def exec_summary_quicknav(data):
         '<p class="exec-quicknav-line"><strong>Executive summary</strong> · '
         + count_span('picked', c['with_pick']) + '/' + count_span('open', c['open'])
         + ' picks · ' + count_span('missing', c['without_percentage'])
-        + ' unresolved<span class="exec-quicknav-past"> · <span data-past-rows="'
+        # Session 85087497: this count is "no percentage" (research-only picks
+        # included), while other strips use "unresolved" for "no pick at all".
+        # Say both on the first phone screen so the same word never carries two
+        # different numbers. Session 65af11da: the trailing count is every not-open feed row, not only past-dated ones.
+        + ' unresolved (no %)<span class="exec-quicknav-past"> · <span data-past-rows="'
         + str(past) + '">' + str(past) + '</span> feed rows are not open</span>.</p>'
         '<span class="exec-quicknav-actions">'
         + link('picks.html', 'Updated picks →', 'exec-quicknav-primary')
@@ -1236,7 +1243,7 @@ def overview(data):
              # no price, and the analytics overview for the same fixture showed
              # no numeric price for either side. Dated and linked, so the claim
              # can be re-checked instead of taken on trust.
-             '<li><strong>HLTV has no usable line.</strong> HLTV fixture pages confirm identity, lineups and rankings; their betting tables expose no independently confirmed numeric two-way line to this collector. Re-checked 25 Oct 2026 on '+link('https://www.hltv.org/matches/2399918/tropa-do-kingui-vs-yawara-cct-2026-south-america-series-7','Tropa do KinGui vs Yawara')+': the match page’s Betting panel rendered one partner promo row with no price, and the fixture’s '+link('https://www.hltv.org/betting/analytics/2399918/tropa-do-kingui-vs-yawara-cct-2026-south-america-series-7','odds &amp; prediction overview')+' rendered no numeric price for either side. HLTV fan votes are never used as a probability.</li>'
+             '<li><strong>HLTV has no usable line.</strong> HLTV fixture pages confirm identity, lineups and rankings; their betting tables expose no independently confirmed numeric two-way line to this collector. Re-checked 25 Oct 2026 on '+link('https://www.hltv.org/matches/2399918/tropa-do-kingui-vs-yawara-cct-2026-south-america-series-7','Tropa do KinGui vs Yawara')+': the match page’s Betting panel rendered one partner promo row with no price, and the fixture’s '+link('https://www.hltv.org/betting/analytics/2399918/tropa-do-kingui-vs-yawara-cct-2026-south-america-series-7','odds & prediction overview')+' rendered no numeric price for either side. HLTV fan votes are never used as a probability.</li>'
              '<li><strong>HLTV has a bracket slot but no team names.</strong> When HLTV publishes a TBA slot (as it did for benched gods vs TitanFlow on 22 October), the fixture page cannot confirm a roster. The two clubs\' own HLTV team pages are then read by exact label and used only to tell repeated Valve standings labels apart; the row is labelled research-only and carries <strong>no percentage</strong> if one side is missing from Valve\'s published standings.</li>'
              '<li><strong>Our model needs both teams.</strong> The '+link('sources.html#model','VRS model')+' prices a match only when both teams resolve in Valve’s official standings with their current rosters. With one side missing it degrades to a pick-only research tier, and with neither side resolvable the row stays unresolved with the attempts listed below.</li>'
              '<li><strong>Timing.</strong> Every percentage expires at the earliest of its 8-hour evidence window, the Hotspawn lock, match start or bookmaker cutoff, so a pick can disappear before a match begins if its evidence ages out and no refresh lands.</li>'

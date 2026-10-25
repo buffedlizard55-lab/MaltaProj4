@@ -1,0 +1,811 @@
+[
+ {
+  "viewport": "320x568",
+  "slug": "index",
+  "overflow": false,
+  "scrollHeight": 6798,
+  "sections": {
+   "freshStrip": {
+    "top": 113,
+    "height": 170,
+    "visible": true
+   },
+   "execBar": {
+    "top": 3945,
+    "height": 237,
+    "visible": true
+   },
+   "execQuicknav": {
+    "top": 290,
+    "height": 69,
+    "visible": true
+   },
+   "glance": {
+    "top": 361,
+    "height": 3578,
+    "visible": true
+   },
+   "firstGlanceCard": {
+    "top": 3845,
+    "height": 15,
+    "visible": true
+   },
+   "unresolvedSummary": {
+    "top": 7121,
+    "height": 2581,
+    "visible": true
+   },
+   "unresolvedLimits": {
+    "top": 5020,
+    "height": 1482,
+    "visible": true
+   },
+   "tabbar": {
+    "top": 6931,
+    "height": 3389,
+    "visible": true
+   }
+  },
+  "execQuicknavText": "Executive summary · 17/17 picks · 0 unresolved (no %) · 61 past feed rows are not open.Updated picks →Unresolved & limits ↓",
+  "firstScreenLinks": [
+   {
+    "label": "hotspawnCS2 SCOUT",
+    "href": "index.html",
+    "h": 34
+   },
+   {
+    "label": "ex-Zero Tenacity59.5%",
+    "href": "evidence.html#match-1085542",
+    "h": 32
+   },
+   {
+    "label": "View updated picks →",
+    "href": "picks.html",
+    "h": 46
+   },
+   {
+    "label": "Unresolved →",
+    "href": "unresolved.html",
+    "h": 46
+   },
+   {
+    "label": "Updated picks →",
+    "href": "picks.html",
+    "h": 36
+   },
+   {
+    "label": "Unresolved & limits ↓",
+    "href": "#unresolved-limits",
+    "h": 36
+   },
+   {
+    "label": "ex-Zero TenacityvsSpirit AcademyOUR PICK",
+    "href": "evidence.html#match-1085542",
+    "h": 207
+   },
+   {
+    "label": "Home",
+    "href": "index.html",
+    "h": 60
+   },
+   {
+    "label": "Picks",
+    "href": "picks.html",
+    "h": 60
+   },
+   {
+    "label": "Unresolved",
+    "href": "unresolved.html",
+    "h": 60
+   },
+   {
+    "label": "Matches",
+    "href": "matches.html",
+    "h": 60
+   },
+   {
+    "label": "Analysis",
+    "href": "analysis.html",
+    "h": 60
+   }
+  ],
+  "smallTargetsOnFirstScreen": 0,
+  "bodyFont": "14px"
+ },
+ {
+  "viewport": "320x568",
+  "slug": "picks",
+  "overflow": false,
+  "scrollHeight": 8004,
+  "sections": {
+   "freshStrip": null,
+   "execBar": null,
+   "execQuicknav": null,
+   "glance": null,
+   "firstGlanceCard": null,
+   "unresolvedSummary": null,
+   "unresolvedLimits": null,
+   "tabbar": {
+    "top": 217,
+    "height": 7073,
+    "visible": true
+   }
+  },
+  "execQuicknavText": null,
+  "firstScreenLinks": [
+   {
+    "label": "hotspawnCS2 SCOUT",
+    "href": "index.html",
+    "h": 34
+   },
+   {
+    "label": "View each attempted source →",
+    "href": "evidence.html#match-1085542",
+    "h": 17
+   },
+   {
+    "label": "Hotspawn ↗",
+    "href": "https://www.hotspawn.com/matches/ex-zero-tenacity-vs-spirit-academy-cct-europe-2026-series-11-1085542",
+    "h": 44
+   },
+   {
+    "label": "Evidence & lines",
+    "href": "evidence.html#match-1085542",
+    "h": 44
+   },
+   {
+    "label": "Polymarket ↗",
+    "href": "https://gamma-api.polymarket.com/markets/6158059",
+    "h": 44
+   },
+   {
+    "label": "Home",
+    "href": "index.html",
+    "h": 60
+   },
+   {
+    "label": "Picks",
+    "href": "picks.html",
+    "h": 60
+   },
+   {
+    "label": "Unresolved",
+    "href": "unresolved.html",
+    "h": 60
+   },
+   {
+    "label": "Matches",
+    "href": "matches.html",
+    "h": 60
+   },
+   {
+    "label": "Analysis",
+    "href": "analysis.html",
+    "h": 60
+   }
+  ],
+  "smallTargetsOnFirstScreen": 1,
+  "bodyFont": "14px"
+ },
+ {
+  "viewport": "320x568",
+  "slug": "unresolved",
+  "overflow": false,
+  "scrollHeight": 5371,
+  "sections": {
+   "freshStrip": null,
+   "execBar": null,
+   "execQuicknav": null,
+   "glance": null,
+   "firstGlanceCard": null,
+   "unresolvedSummary": null,
+   "unresolvedLimits": null,
+   "tabbar": {
+    "top": 1044,
+    "height": 1156,
+    "visible": true
+   }
+  },
+  "execQuicknavText": null,
+  "firstScreenLinks": [
+   {
+    "label": "hotspawnCS2 SCOUT",
+    "href": "index.html",
+    "h": 34
+   },
+   {
+    "label": "Home",
+    "href": "index.html",
+    "h": 60
+   },
+   {
+    "label": "Picks",
+    "href": "picks.html",
+    "h": 60
+   },
+   {
+    "label": "Unresolved",
+    "href": "unresolved.html",
+    "h": 60
+   },
+   {
+    "label": "Matches",
+    "href": "matches.html",
+    "h": 60
+   },
+   {
+    "label": "Analysis",
+    "href": "analysis.html",
+    "h": 60
+   }
+  ],
+  "smallTargetsOnFirstScreen": 0,
+  "bodyFont": "14px"
+ },
+ {
+  "viewport": "390x844",
+  "slug": "index",
+  "overflow": false,
+  "scrollHeight": 6791,
+  "sections": {
+   "freshStrip": {
+    "top": 117,
+    "height": 170,
+    "visible": true
+   },
+   "execBar": {
+    "top": 4404,
+    "height": 219,
+    "visible": true
+   },
+   "execQuicknav": {
+    "top": 300,
+    "height": 65,
+    "visible": true
+   },
+   "glance": {
+    "top": 368,
+    "height": 4030,
+    "visible": true
+   },
+   "firstGlanceCard": {
+    "top": 4321,
+    "height": 15,
+    "visible": true
+   },
+   "unresolvedSummary": {
+    "top": 7063,
+    "height": 2121,
+    "visible": true
+   },
+   "unresolvedLimits": {
+    "top": 5335,
+    "height": 1190,
+    "visible": true
+   },
+   "tabbar": {
+    "top": 6909,
+    "height": 2632,
+    "visible": true
+   }
+  },
+  "execQuicknavText": "Executive summary · 17/17 picks · 0 unresolved (no %) · 61 past feed rows are not open.Updated picks →Unresolved & limits ↓",
+  "firstScreenLinks": [
+   {
+    "label": "hotspawnCS2 SCOUT",
+    "href": "index.html",
+    "h": 34
+   },
+   {
+    "label": "ex-Zero Tenacity59.5%",
+    "href": "evidence.html#match-1085542",
+    "h": 32
+   },
+   {
+    "label": "View updated picks →",
+    "href": "picks.html",
+    "h": 46
+   },
+   {
+    "label": "Unresolved →",
+    "href": "unresolved.html",
+    "h": 46
+   },
+   {
+    "label": "Updated picks →",
+    "href": "picks.html",
+    "h": 40
+   },
+   {
+    "label": "Unresolved & limits ↓",
+    "href": "#unresolved-limits",
+    "h": 40
+   },
+   {
+    "label": "ex-Zero TenacityvsSpirit AcademyOUR PICK",
+    "href": "evidence.html#match-1085542",
+    "h": 207
+   },
+   {
+    "label": "InfinitevsBRUTEOUR PICKInfinite43.5%BRUT",
+    "href": "evidence.html#match-1079199",
+    "h": 207
+   },
+   {
+    "label": "BORRACHEIROSvsRED Canids AcademyOUR PICK",
+    "href": "evidence.html#match-1086696",
+    "h": 224
+   },
+   {
+    "label": "Home",
+    "href": "index.html",
+    "h": 60
+   },
+   {
+    "label": "Picks",
+    "href": "picks.html",
+    "h": 60
+   },
+   {
+    "label": "Unresolved",
+    "href": "unresolved.html",
+    "h": 60
+   },
+   {
+    "label": "Matches",
+    "href": "matches.html",
+    "h": 60
+   },
+   {
+    "label": "Analysis",
+    "href": "analysis.html",
+    "h": 60
+   }
+  ],
+  "smallTargetsOnFirstScreen": 0,
+  "bodyFont": "14px"
+ },
+ {
+  "viewport": "390x844",
+  "slug": "picks",
+  "overflow": false,
+  "scrollHeight": 8231,
+  "sections": {
+   "freshStrip": null,
+   "execBar": null,
+   "execQuicknav": null,
+   "glance": null,
+   "firstGlanceCard": null,
+   "unresolvedSummary": null,
+   "unresolvedLimits": null,
+   "tabbar": {
+    "top": 180,
+    "height": 7425,
+    "visible": true
+   }
+  },
+  "execQuicknavText": null,
+  "firstScreenLinks": [
+   {
+    "label": "hotspawnCS2 SCOUT",
+    "href": "index.html",
+    "h": 34
+   },
+   {
+    "label": "View each attempted source →",
+    "href": "evidence.html#match-1085542",
+    "h": 17
+   },
+   {
+    "label": "Hotspawn ↗",
+    "href": "https://www.hotspawn.com/matches/ex-zero-tenacity-vs-spirit-academy-cct-europe-2026-series-11-1085542",
+    "h": 44
+   },
+   {
+    "label": "Evidence & lines",
+    "href": "evidence.html#match-1085542",
+    "h": 44
+   },
+   {
+    "label": "Polymarket ↗",
+    "href": "https://gamma-api.polymarket.com/markets/6158059",
+    "h": 44
+   },
+   {
+    "label": "Home",
+    "href": "index.html",
+    "h": 60
+   },
+   {
+    "label": "Picks",
+    "href": "picks.html",
+    "h": 60
+   },
+   {
+    "label": "Unresolved",
+    "href": "unresolved.html",
+    "h": 60
+   },
+   {
+    "label": "Matches",
+    "href": "matches.html",
+    "h": 60
+   },
+   {
+    "label": "Analysis",
+    "href": "analysis.html",
+    "h": 60
+   }
+  ],
+  "smallTargetsOnFirstScreen": 1,
+  "bodyFont": "14px"
+ },
+ {
+  "viewport": "390x844",
+  "slug": "unresolved",
+  "overflow": false,
+  "scrollHeight": 4786,
+  "sections": {
+   "freshStrip": null,
+   "execBar": null,
+   "execQuicknav": null,
+   "glance": null,
+   "firstGlanceCard": null,
+   "unresolvedSummary": null,
+   "unresolvedLimits": null,
+   "tabbar": {
+    "top": 892,
+    "height": 1011,
+    "visible": true
+   }
+  },
+  "execQuicknavText": null,
+  "firstScreenLinks": [
+   {
+    "label": "hotspawnCS2 SCOUT",
+    "href": "index.html",
+    "h": 34
+   },
+   {
+    "label": "Polymarket Gamma API ↗",
+    "href": "https://gamma-api.polymarket.com/events",
+    "h": 17
+   },
+   {
+    "label": "the executive summary",
+    "href": "index.html",
+    "h": 17
+   },
+   {
+    "label": "the summary's unresolved section",
+    "href": "index.html#unresolved-picks",
+    "h": 36
+   },
+   {
+    "label": "the method and gates",
+    "href": "sources.html#method",
+    "h": 17
+   },
+   {
+    "label": "Home",
+    "href": "index.html",
+    "h": 60
+   },
+   {
+    "label": "Picks",
+    "href": "picks.html",
+    "h": 60
+   },
+   {
+    "label": "Unresolved",
+    "href": "unresolved.html",
+    "h": 60
+   },
+   {
+    "label": "Matches",
+    "href": "matches.html",
+    "h": 60
+   },
+   {
+    "label": "Analysis",
+    "href": "analysis.html",
+    "h": 60
+   }
+  ],
+  "smallTargetsOnFirstScreen": 3,
+  "bodyFont": "14px"
+ },
+ {
+  "viewport": "412x915",
+  "slug": "index",
+  "overflow": false,
+  "scrollHeight": 6649,
+  "sections": {
+   "freshStrip": {
+    "top": 117,
+    "height": 170,
+    "visible": true
+   },
+   "execBar": {
+    "top": 4336,
+    "height": 202,
+    "visible": true
+   },
+   "execQuicknav": {
+    "top": 300,
+    "height": 65,
+    "visible": true
+   },
+   "glance": {
+    "top": 368,
+    "height": 3962,
+    "visible": true
+   },
+   "firstGlanceCard": {
+    "top": 4253,
+    "height": 15,
+    "visible": true
+   },
+   "unresolvedSummary": {
+    "top": 6938,
+    "height": 2040,
+    "visible": true
+   },
+   "unresolvedLimits": {
+    "top": 5250,
+    "height": 1133,
+    "visible": true
+   },
+   "tabbar": {
+    "top": 6783,
+    "height": 2632,
+    "visible": true
+   }
+  },
+  "execQuicknavText": "Executive summary · 17/17 picks · 0 unresolved (no %) · 61 past feed rows are not open.Updated picks →Unresolved & limits ↓",
+  "firstScreenLinks": [
+   {
+    "label": "hotspawnCS2 SCOUT",
+    "href": "index.html",
+    "h": 34
+   },
+   {
+    "label": "ex-Zero Tenacity59.5%",
+    "href": "evidence.html#match-1085542",
+    "h": 32
+   },
+   {
+    "label": "View updated picks →",
+    "href": "picks.html",
+    "h": 46
+   },
+   {
+    "label": "Unresolved →",
+    "href": "unresolved.html",
+    "h": 46
+   },
+   {
+    "label": "Updated picks →",
+    "href": "picks.html",
+    "h": 40
+   },
+   {
+    "label": "Unresolved & limits ↓",
+    "href": "#unresolved-limits",
+    "h": 40
+   },
+   {
+    "label": "ex-Zero TenacityvsSpirit AcademyOUR PICK",
+    "href": "evidence.html#match-1085542",
+    "h": 207
+   },
+   {
+    "label": "InfinitevsBRUTEOUR PICKInfinite43.5%BRUT",
+    "href": "evidence.html#match-1079199",
+    "h": 207
+   },
+   {
+    "label": "BORRACHEIROSvsRED Canids AcademyOUR PICK",
+    "href": "evidence.html#match-1086696",
+    "h": 207
+   },
+   {
+    "label": "Home",
+    "href": "index.html",
+    "h": 60
+   },
+   {
+    "label": "Picks",
+    "href": "picks.html",
+    "h": 60
+   },
+   {
+    "label": "Unresolved",
+    "href": "unresolved.html",
+    "h": 60
+   },
+   {
+    "label": "Matches",
+    "href": "matches.html",
+    "h": 60
+   },
+   {
+    "label": "Analysis",
+    "href": "analysis.html",
+    "h": 60
+   }
+  ],
+  "smallTargetsOnFirstScreen": 0,
+  "bodyFont": "14px"
+ },
+ {
+  "viewport": "412x915",
+  "slug": "picks",
+  "overflow": false,
+  "scrollHeight": 8124,
+  "sections": {
+   "freshStrip": null,
+   "execBar": null,
+   "execQuicknav": null,
+   "glance": null,
+   "firstGlanceCard": null,
+   "unresolvedSummary": null,
+   "unresolvedLimits": null,
+   "tabbar": {
+    "top": 180,
+    "height": 7319,
+    "visible": true
+   }
+  },
+  "execQuicknavText": null,
+  "firstScreenLinks": [
+   {
+    "label": "hotspawnCS2 SCOUT",
+    "href": "index.html",
+    "h": 34
+   },
+   {
+    "label": "View each attempted source →",
+    "href": "evidence.html#match-1085542",
+    "h": 17
+   },
+   {
+    "label": "Hotspawn ↗",
+    "href": "https://www.hotspawn.com/matches/ex-zero-tenacity-vs-spirit-academy-cct-europe-2026-series-11-1085542",
+    "h": 44
+   },
+   {
+    "label": "Evidence & lines",
+    "href": "evidence.html#match-1085542",
+    "h": 44
+   },
+   {
+    "label": "Polymarket ↗",
+    "href": "https://gamma-api.polymarket.com/markets/6158059",
+    "h": 44
+   },
+   {
+    "label": "View each attempted source →",
+    "href": "evidence.html#match-1079199",
+    "h": 17
+   },
+   {
+    "label": "Hotspawn ↗",
+    "href": "https://www.hotspawn.com/matches/infinite-vs-brute-nodwin-clutch-series-13-1079199",
+    "h": 44
+   },
+   {
+    "label": "Evidence & lines",
+    "href": "evidence.html#match-1079199",
+    "h": 44
+   },
+   {
+    "label": "Polymarket ↗",
+    "href": "https://gamma-api.polymarket.com/markets/6072808",
+    "h": 44
+   },
+   {
+    "label": "Home",
+    "href": "index.html",
+    "h": 60
+   },
+   {
+    "label": "Picks",
+    "href": "picks.html",
+    "h": 60
+   },
+   {
+    "label": "Unresolved",
+    "href": "unresolved.html",
+    "h": 60
+   },
+   {
+    "label": "Matches",
+    "href": "matches.html",
+    "h": 60
+   },
+   {
+    "label": "Analysis",
+    "href": "analysis.html",
+    "h": 60
+   }
+  ],
+  "smallTargetsOnFirstScreen": 2,
+  "bodyFont": "14px"
+ },
+ {
+  "viewport": "412x915",
+  "slug": "unresolved",
+  "overflow": false,
+  "scrollHeight": 4731,
+  "sections": {
+   "freshStrip": null,
+   "execBar": null,
+   "execQuicknav": null,
+   "glance": null,
+   "firstGlanceCard": null,
+   "unresolvedSummary": null,
+   "unresolvedLimits": null,
+   "tabbar": {
+    "top": 892,
+    "height": 991,
+    "visible": true
+   }
+  },
+  "execQuicknavText": null,
+  "firstScreenLinks": [
+   {
+    "label": "hotspawnCS2 SCOUT",
+    "href": "index.html",
+    "h": 34
+   },
+   {
+    "label": "Polymarket Gamma API ↗",
+    "href": "https://gamma-api.polymarket.com/events",
+    "h": 17
+   },
+   {
+    "label": "the executive summary",
+    "href": "index.html",
+    "h": 17
+   },
+   {
+    "label": "the summary's unresolved section",
+    "href": "index.html#unresolved-picks",
+    "h": 36
+   },
+   {
+    "label": "the method and gates",
+    "href": "sources.html#method",
+    "h": 17
+   },
+   {
+    "label": "Home",
+    "href": "index.html",
+    "h": 60
+   },
+   {
+    "label": "Picks",
+    "href": "picks.html",
+    "h": 60
+   },
+   {
+    "label": "Unresolved",
+    "href": "unresolved.html",
+    "h": 60
+   },
+   {
+    "label": "Matches",
+    "href": "matches.html",
+    "h": 60
+   },
+   {
+    "label": "Analysis",
+    "href": "analysis.html",
+    "h": 60
+   }
+  ],
+  "smallTargetsOnFirstScreen": 3,
+  "bodyFont": "14px"
+ }
+]
