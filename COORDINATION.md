@@ -82,6 +82,54 @@ touched.
 
 # Shared task board
 
+## Session 5bf6ae1b — RECEIPT 2026-10-25 14:5x UTC (fresh capture verified; republished)
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| T1 Fresh capture on runner egress | **done** — run [40201319405](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40201319405), receipts in `research/harvest-5bf6ae1b/` (`rc.txt`: audit/build/validate/published all 0) | 5bf6ae1b | `.github/workflows/harvest-5bf6ae1b.yml`, `research/harvest-5bf6ae1b/**` | 2026-10-25 14:22 |
+| T2 Line-by-line verification | **done** — see findings below | 5bf6ae1b | `tests/test_session_0fae12a5.py` (one assertion block), `tests/test_session_5bf6ae1b.py` (new), `data/review-notes.json` (append-only, 253 notes) | 2026-10-25 14:50 |
+| T3 Mobile verification + final integration (fresh build, PR, merge, live byte check) | **done** — PR link and live check recorded at the end of this section | 5bf6ae1b | `COORDINATION.md`, `data/latest.json`, `data/matches.csv`, generated root pages, `build-info.json` | 2026-10-25 14:50 |
+
+**Fresh board (snapshot `2026-10-25T14:22:27Z`, replacing `13:46:54Z`):** 78 Hotspawn feed rows, **16 open,
+16 with a pick, 16 with a win probability, 0 unresolved** — 11 Polymarket exchange, 1 bookmaker listing
+(Thunderpick via BO3.gg), 4 originated Valve VRS model lines. Every open row was checked line by line:
+probabilities sum to 1.000000, the pick is the argmax, and the evidence carries the provider's own URL +
+API URL (Polymarket Gamma, BO3.gg/Thunderpick, Valve's official standings repository). The 5 rows with no
+market line show the full attempted ladder on the row (Polymarket → HLTV → HLTV team pages → Pinnacle →
+Thunderpick → GG.BET) before the model tier resolved them — the low-tier/no-`Polymarket`-coverage path the
+brief requires. The separate unresolved/limitations section (`#unresolved-summary` in the executive summary
+and `unresolved.html`) currently lists 0 rows and names the limitation for every rung that refused.
+
+**Gates on the merged candidate:** `scripts.validate` 78 rows / 16 calculations reproduced / 15 pages /
+726 links / 20 checksums; independent row audit 0 failures; **1,632 unit tests OK (12 skipped)**; all 13
+Chromium suites pass (320×568, 390×844, 412×915 — no horizontal overflow, 16 pick rows with both teams'
+percentages clear of the fixed phone tab bar). Executive summary carries `#exec-banner`, `#exec-summary`
+(links to `picks.html`, `unresolved.html`, `matches.html`, `sources.html#method`) and `#unresolved-summary`.
+
+**Merge note (PR #331):** `main` moved during the session (PR #324, session bd650209, snapshot
+`2026-10-25T13:54:18Z`). The merge adopted bd650209's code, tests, workflows and research receipts in
+full; generated pages/data initially conflicted because both sides staged builds. Resolution kept this
+session's strictly newer snapshot (`14:22:27Z` > `13:54:18Z`) for the board, union-merged
+`data/review-notes.json` (259 notes, both sessions' findings retained), then rebuilt and re-staged the
+root from the merged tree (`scripts.build` → `scripts.validate --site public` → `scripts.stage_legacy` →
+`scripts.validate --site .`, all green). Post-merge gates: **1,669 unit tests OK (12 skipped)**, validator
+78 rows / 16 calculations / 726 links / 20 checksums, browser suites re-run before merge.
+
+**Irregularity found and flagged (non-blocking):** fixture 1086697's model line published with
+`roster_checks.overlap = null` (no HLTV lineup that run; unique Valve label; row flagged *roster continuity
+not checked*). Legal under `scripts/validate.py:152-155` + `scripts/vrs.py:104,186-187`, arithmetic replays
+exactly from Valve points 854/845, but `tests/test_session_0fae12a5.py` asserted `overlap >= 3`
+unconditionally and went red on valid data. Test corrected to mirror the validator; pinned in
+`tests/test_session_5bf6ae1b.py`; published for manual review as
+`session-5bf6ae1b-vrs-roster-unchecked-1086697-2026-10-25` (`data/review-notes.json`; it renders on
+`review.html` from the next scheduled publish, because `publish_root_fallback` only stages strictly newer
+snapshots — the committed root already carries the 14:22Z snapshot itself). No pick, price or probability
+was edited by hand; nothing inferred; Hotspawn used for fixture inventory/locks only, never as a
+probability source. Ongoing freshness is the publisher's job: `pages.yml` cron `4,19,34,49 * * * *` plus the
+10-minute watchdog, with picks withheld automatically once evidence leaves its 8-hour window.
+
+---
+
 ## Session b85ad9b4 — CLAIM 2026-10-25 13:30 UTC (the publisher is red; the live board withholds every pick)
 
 Board read before claiming, from `origin/main` (**not** from a branch): `main` == `origin/main` == `6ade440`,
