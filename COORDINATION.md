@@ -106,6 +106,8 @@ Read the coordination board before claiming. No current `in progress` item owns 
 
 **Local gates before integration push:** 1,613 unit tests OK (7 skipped), 9 audit tests OK, 5 integrity checks OK, 12 verification-c6 tests OK; `scripts.validate` reproduced 79 rows / 18 calculations / 15 pages / 751 links-assets / 20 checksums / 186 displayed rows. The local build correctly shows **0 current percentages and 14 unresolved** because the committed snapshot's eight-hour evidence window expired. This is a measured, fail-closed state, not a fresh-source result. Scope remains restricted to the final-integration task. No expired market line is being carried forward or replaced with Hotspawn/crowd picks.
 
+**Fresh-source branch run 40198532697 (2026-10-25 13:38–13:44 UTC).** On GitHub-hosted egress, the unit/audit/integrity/C6 baseline gates, official-source refresh, row quarantine and independent row audit all passed. The fresh static build also passed; `scripts.validate` then failed while replaying a `model_vrs` row in `validate_model_row`. The newly added artifact gate did what it should: `upload-pages-artifact` was skipped, `artifact_ready` remained unset, and the dependent deploy job was skipped (no stale or unverified artifact was published). The first annotation implementation emitted ten stack-frame annotations and GitHub capped the check output before the terminal assertion text; the diagnostic now combines the complete final traceback into one annotation. Exact failing assertion is still unverified and no board/data file is being updated until that row is identified and its source evidence is rechecked.
+
 ---
 
 ## Session 53284c80 harvest receipt — 2026-10-25 13:45 UTC

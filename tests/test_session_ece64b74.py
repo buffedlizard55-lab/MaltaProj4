@@ -83,7 +83,8 @@ class VerifiedArtifactDeployTests(unittest.TestCase):
     def test_failing_build_gate_retains_logs_and_emits_check_annotations(self):
         build = step(self.verify, "- name: Build and independently verify every row")
         for expected in ("run_gate()", "GITHUB_STEP_SUMMARY", "::error title=", "runtime/row-audit.log",
-                         "runtime/build.log", "runtime/validate.log", "runtime/published-row-audit.log"):
+                         "runtime/build.log", "runtime/validate.log", "runtime/published-row-audit.log",
+                         "detail = ' | '.join(lines)", "truncates check annotations at ten"):
             self.assertIn(expected, build)
 
 

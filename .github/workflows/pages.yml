@@ -119,9 +119,11 @@ jobs:
           lines = Path(path).read_text(encoding='utf-8', errors='replace').splitlines()[-20:]
           if not lines:
               lines = [f'Command failed with exit code {code} and wrote no output.']
-          for line in lines:
-              escaped = line.replace('%', '%25').replace('\\r', '%0D').replace('\\n', '%0A')
-              print(f'::error title={label}::{escaped[:3000]}')
+          # GitHub truncates check annotations at ten per check run. Keep the
+          # whole tail in one annotation so a traceback's final assertion is not
+          # the line that disappears after its stack frames.
+          detail = ' | '.join(lines).replace('%', '%25').replace('\\r', '%0D').replace('\\n', '%0A')
+          print(f'::error title={label}::{detail[:6000]}')
           PY
             return "$rc"
           }
