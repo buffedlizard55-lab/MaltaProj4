@@ -33,9 +33,9 @@ a dispatch-only replay workflow commits the full output of every publication com
 
 | Task | Status | Owner | File scope | Updated (UTC) |
 | --- | --- | --- | --- | --- |
-| Replay the publication pipeline on a runner and capture the exact failing step, then find and fix the defect that fails `scripts.build` / `scripts.validate` on a fresh snapshot | in progress | b85ad9b4 | `scripts/diag_b85ad9b4.py` (new), `.github/workflows/diag-b85ad9b4.yml` (new), `research/session-b85ad9b4/**` (new) | 2026-10-25 13:30 |
-| Fix the defect in exactly one production file, with a regression test | unclaimed until the replay names it | — | `tests/test_session_b85ad9b4.py` (new) + the one named production file | 2026-10-25 13:30 |
-| Re-publish: fresh verified build, full gate set, PR to `main`, merge without approval, live Pages byte check, receipt | unclaimed until the fix lands | — | `COORDINATION.md`, `data/latest.json`, `data/matches.csv`, generated root pages, `build-info.json` | 2026-10-25 13:30 |
+| Replay the publication pipeline on a runner and capture the exact failing step | **done** — run 40197667220, bundle in `research/session-b85ad9b4/`; step `07-validate-fresh` returned 1 with `AssertionError: Model roster has no HLTV source on this row` on Hotspawn fixture 1086697 | b85ad9b4 | `scripts/diag_b85ad9b4.py`, `.github/workflows/diag-b85ad9b4.yml`, `research/session-b85ad9b4/**` | 2026-10-25 13:40 |
+| Fix the defect in exactly one production file, with a regression test | **done** — `scripts/validate.py` (`same_club` / `lineup_source_ok`); 11 regressions in `tests/test_session_b85ad9b4.py`; 1,617 tests OK, audits 9 OK, integrity 5 OK, verification-c6 12 OK, `scripts.validate` green on the captured snapshot (78 rows / 17 calculations / 15 pages / 730 links / 20 checksums) | b85ad9b4 | `scripts/validate.py`, `tests/test_session_b85ad9b4.py`, `data/review-notes.json` (append-only) | 2026-10-25 13:45 |
+| Re-publish: fresh verified build, full gate set, PR to `main`, merge without approval, live Pages byte check, receipt | in progress | b85ad9b4 | `COORDINATION.md`, `data/latest.json`, `data/matches.csv`, generated root pages, `build-info.json` | 2026-10-25 13:45 |
 
 Other sessions (`8e4ff8d2`, `6857421f`, `fec4894f`, `58354934`) opened publication diagnostics on
 2026-10-25 between 13:24Z and 13:26Z against the same failing step. This session does not touch their
