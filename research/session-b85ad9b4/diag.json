@@ -1,0 +1,123 @@
+{
+  "session": "b85ad9b4",
+  "captured_at": "2026-10-25T13:33:12.774451Z",
+  "head_sha": "d0a83bd844e578433b4d862b9fc39505de17eb76",
+  "run_id": "40197667220",
+  "run_url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40197667220",
+  "first_red_step": "07-validate-fresh",
+  "first_red_return_code": 1,
+  "committed_snapshot": {
+    "generated_at": "2026-10-25T01:47:42.430039Z",
+    "rows_total": 79,
+    "rows_open": 18,
+    "open_with_probability": 18,
+    "open_with_pick": 18,
+    "open_without_pick": 0,
+    "methods": {
+      "bookmaker_fallback": 2,
+      "exchange": 11,
+      "exchange_wide": 2,
+      "model_vrs": 2,
+      "model_vrs_mirror": 1
+    },
+    "coverage": "verified"
+  },
+  "fresh_snapshot": {
+    "generated_at": "2026-10-25T13:32:27.459546Z",
+    "rows_total": 78,
+    "rows_open": 17,
+    "open_with_probability": 17,
+    "open_with_pick": 17,
+    "open_without_pick": 0,
+    "methods": {
+      "bookmaker_fallback": 1,
+      "exchange": 11,
+      "exchange_wide": 1,
+      "model_vrs": 4
+    },
+    "coverage": "verified"
+  },
+  "steps": [
+    {
+      "step": "01-committed-validate",
+      "command": "/opt/hostedtoolcache/Python/3.11.17/x64/bin/python -m scripts.validate --data data/latest.json --site .",
+      "return_code": 0,
+      "stdout_tail": "{\n  \"rows_verified_against_primary_snapshot\": 79,\n  \"probability_calculations_reproduced\": 18,\n  \"pages\": 15,\n  \"internal_links_and_assets_checked\": 751,\n  \"artifact_checksums_verified\": 20,\n  \"displayed_match_rows_verified\": 186\n}\n",
+      "stderr_tail": "",
+      "log": "01-committed-validate.log",
+      "why": "Validate the committed board exactly as the publisher does before refreshing."
+    },
+    {
+      "step": "02-committed-unit",
+      "command": "/opt/hostedtoolcache/Python/3.11.17/x64/bin/python -m unittest discover -s tests",
+      "return_code": 0,
+      "stdout_tail": "cdda95e3e5a4ace8f90f5931\"\n}\nBuilt 9 primary pages + 6 legacy redirects; 1 sourced rows, 0 with percentages, 1 without percentages, 1 unresolved.\n{\n  \"verified\": true,\n  \"revision\": \"TEST_ONLY\",\n  \"built_at\": \"2026-10-22T08:30:00Z\",\n  \"files_checked\": 20,\n  \"snapshot_generated_at\": \"2026-10-22T07:49:59.960210Z\",\n  \"fixtures_observed_at\": \"2026-10-22T07:44:36.467004Z\",\n  \"live_manifest_sha256\": \"4a723bbe09dc63d45df9cbd4be3f8a65b0155c4a8bc00aa1f67588e88595cc5c\",\n  \"snapshot_sha256\": \"9c6f1c7e1944447d6618d767299418f4f2a6a5d904cbfa49e5d8aebc009ebb67\",\n  \"snapshot_counts\": {\n    \"feed_rows\": 107,\n    \"open\": 46,\n    \"with_pick\": 45,\n    \"with_probability\": 39,\n    \"market\": 27,\n    \"model\": 12,\n    \"official_file_models\": 12,\n    \"hltv_mirror_models\": 0,\n    \"research_only\": 6,\n    \"unresolved\": 1\n  },\n  \"run_id\": \"40197667220\",\n  \"note\": \"Exact public bytes; no source/quote timestamp was renewed.\"\n}\nBuilt 9 primary pages + 6 legacy redirects; 107 sourced rows, 0 with percentages, 25 without percentages, 25 unresolved.\nreceipt: /tmp/tmp60n7fbc5/audit-receipt.json\n{\n \"rows_with_official_source\": 107,\n \"open_with_pick\": 0,\n \"open_with_probability\": 0,\n \"probabilities_reproduced\": 0,\n \"research_only\": 0,\n \"research_listed_on_both_pages\": 0,\n \"unresolved\": 25,\n \"unresolved_listed_on_both_pages\": 25\n}\nchecks: 282  failures: 0\nreceipt: /tmp/tmp60n7fbc5/audit-receipt.json\n{\n \"rows_with_official_source\": 107,\n \"open_with_pick\": 0,\n \"open_with_probability\": 0,\n \"probabilities_reproduced\": 0,\n \"research_only\": 0,\n \"research_listed_on_both_pages\": 0,\n \"unresolved\": 25,\n \"unresolved_listed_on_both_pages\": 25\n}\nchecks: 282  failures: 1\nFAIL: 1082769 K27 vs NEXORA: unresolved probabilities must be None\nreceipt: /tmp/tmp60n7fbc5/audit-receipt.json\n{\n \"rows_with_official_source\": 107,\n \"open_with_pick\": 0,\n \"open_with_probability\": 0,\n \"probabilities_reproduced\": 0,\n \"research_only\": 0,\n \"research_listed_on_both_pages\": 0,\n \"unresolved\": 25,\n \"unresolved_listed_on_both_pages\": 25\n}\nchecks: 282  failures: 1\nFAIL: 1082769 K27 vs NEXORA: unresolved fair_odds must be None\nreceipt: /tmp/tmp60n7fbc5/audit-receipt.json\n{\n \"rows_with_official_source\": 107,\n \"open_with_pick\": 0,\n \"open_with_probability\": 0,\n \"probabilities_reproduced\": 0,\n \"research_only\": 0,\n \"research_listed_on_both_pages\": 0,\n \"unresolved\": 25,\n \"unresolved_listed_on_both_pages\": 25\n}\nchecks: 282  failures: 1\nFAIL: 1082769 K27 vs NEXORA: unresolved method must be None\nreceipt: /tmp/tmp60n7fbc5/audit-receipt.json\n{\n \"rows_with_official_source\": 107,\n \"open_with_pick\": 0,\n \"open_with_probability\": 0,\n \"probabilities_reproduced\": 0,\n \"research_only\": 0,\n \"research_listed_on_both_pages\": 0,\n \"unresolved\": 25,\n \"unresolved_listed_on_both_pages\": 25\n}\nchecks: 282  failures: 1\nFAIL: 1082769 K27 vs NEXORA: unresolved row lacks its limitation\nreceipt: /tmp/tmp60n7fbc5/audit-receipt.json\n{\n \"rows_with_official_source\": 107,\n \"open_with_pick\": 0,\n \"open_with_probability\": 0,\n \"probabilities_reproduced\": 0,\n \"research_only\": 0,\n \"research_listed_on_both_pages\": 0,\n \"unresolved\": 25,\n \"unresolved_listed_on_both_pages\": 25\n}\nchecks: 282  failures: 1\nFAIL: 1082769 K27 vs NEXORA: unresolved row lacks source attempts\nreceipt: /tmp/tmp60n7fbc5/audit-receipt.json\n{\n \"rows_with_official_source\": 107,\n \"open_with_pick\": 0,\n \"open_with_probability\": 0,\n \"probabilities_reproduced\": 0,\n \"research_only\": 0,\n \"research_listed_on_both_pages\": 0,\n \"unresolved\": 25,\n \"unresolved_listed_on_both_pages\": 25\n}\nchecks: 282  failures: 1\nFAIL: 1082769 K27 vs NEXORA: unresolved row lacks official fixture URL\nBuilt 9 primary pages + 6 legacy redirects; 107 sourced rows, 0 with percentages, 0 without percentages, 0 unresolved.\nBuilt 9 primary pages + 6 legacy redirects; 107 sourced rows, 36 with percentages, 7 without percentages, 1 unresolved.\nBuilt 9 primary pages + 6 legacy redirects; 107 sourced rows, 0 with percentages, 25 without percentages, 25 unresolved.\ncoverage: 18 open \u00b7 18 with a pick \u00b7 18 with a win probability\n",
+      "stderr_tail": ".............................................................................................................................................................................................................................................................No refreshed snapshot at /tmp/tmplrjwqfnc/nope.json; nothing to harvest.\n...........................................................................................................................................................................s.........................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................s..............................................................................................................................................................................................................................................................................................ss.................................................................................................................................sss...............................................................................................................................................................................................\n----------------------------------------------------------------------\nRan 1606 tests in 43.899s\n\nOK (skipped=7)\n",
+      "log": "02-committed-unit.log",
+      "why": "The unit suite the publisher runs before it refreshes."
+    },
+    {
+      "step": "03-refresh",
+      "command": "/opt/hostedtoolcache/Python/3.11.17/x64/bin/python -m scripts.refresh --output runtime/latest.json",
+      "return_code": 0,
+      "stdout_tail": "{\"coverage\": \"verified\", \"matches\": 78, \"priced\": 17, \"research_only\": 0, \"unresolved_without_any_pick\": 0}\n",
+      "stderr_tail": "",
+      "log": "03-refresh.log",
+      "why": "Refresh every official source (Hotspawn feed and lobby, Polymarket, books, HLTV, Valve VRS)."
+    },
+    {
+      "step": "04-quarantine",
+      "command": "/opt/hostedtoolcache/Python/3.11.17/x64/bin/python -m scripts.quarantine runtime/latest.json",
+      "return_code": 0,
+      "stdout_tail": "{\"withheld_rows\": 0, \"snapshot_level_failures\": []}\n",
+      "stderr_tail": "",
+      "log": "04-quarantine.log",
+      "why": "Withhold any row the independent audit cannot reproduce."
+    },
+    {
+      "step": "05-row-audit",
+      "command": "/opt/hostedtoolcache/Python/3.11.17/x64/bin/python verification-c6/audit_snapshot.py runtime/latest.json --output runtime/independent-row-audit.md",
+      "return_code": 0,
+      "stdout_tail": "runtime/independent-row-audit.md: 0 failures\n",
+      "stderr_tail": "",
+      "log": "05-row-audit.log",
+      "why": "Independent row audit of the refreshed snapshot."
+    },
+    {
+      "step": "06-build",
+      "command": "/opt/hostedtoolcache/Python/3.11.17/x64/bin/python -m scripts.build --data runtime/latest.json",
+      "return_code": 0,
+      "stdout_tail": "Built 9 primary pages + 6 legacy redirects; 78 sourced rows, 17 with percentages, 0 without percentages, 0 unresolved.\n",
+      "stderr_tail": "",
+      "log": "06-build.log",
+      "why": "Build the static site from the refreshed snapshot."
+    },
+    {
+      "step": "07-validate-fresh",
+      "command": "/opt/hostedtoolcache/Python/3.11.17/x64/bin/python -m scripts.validate --data runtime/latest.json",
+      "return_code": 1,
+      "stdout_tail": "",
+      "stderr_tail": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/home/runner/work/MaltaProj4/MaltaProj4/scripts/validate.py\", line 603, in <module>\n    main()\n  File \"/home/runner/work/MaltaProj4/MaltaProj4/scripts/validate.py\", line 596, in main\n    report = validate_data(json.loads(Path(args.data).read_text())) | validate_site(args.site)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/MaltaProj4/MaltaProj4/scripts/validate.py\", line 376, in validate_data\n    validate_model_row(m, q, now)\n  File \"/home/runner/work/MaltaProj4/MaltaProj4/scripts/validate.py\", line 122, in validate_model_row\n    assert lineup_source_ok(m, team, check.get('lineup') or []), 'Model roster has no HLTV source on this row'\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Model roster has no HLTV source on this row\n",
+      "log": "07-validate-fresh.log",
+      "why": "Validate the freshly built site (this is the step that fails on main)."
+    },
+    {
+      "step": "08-published-audit",
+      "command": "/opt/hostedtoolcache/Python/3.11.17/x64/bin/python verification-c6/audit_snapshot.py public/data/latest.json --output runtime/published-row-audit.md",
+      "return_code": 0,
+      "stdout_tail": "runtime/published-row-audit.md: 0 failures\n",
+      "stderr_tail": "",
+      "log": "08-published-audit.log",
+      "why": "Independent row audit of the built artifact."
+    },
+    {
+      "step": "09-fresh-unit",
+      "command": "/opt/hostedtoolcache/Python/3.11.17/x64/bin/python -m unittest discover -s tests",
+      "return_code": 0,
+      "stdout_tail": "cdda95e3e5a4ace8f90f5931\"\n}\nBuilt 9 primary pages + 6 legacy redirects; 1 sourced rows, 0 with percentages, 1 without percentages, 1 unresolved.\n{\n  \"verified\": true,\n  \"revision\": \"TEST_ONLY\",\n  \"built_at\": \"2026-10-22T08:30:00Z\",\n  \"files_checked\": 20,\n  \"snapshot_generated_at\": \"2026-10-22T07:49:59.960210Z\",\n  \"fixtures_observed_at\": \"2026-10-22T07:44:36.467004Z\",\n  \"live_manifest_sha256\": \"244a362877d07ddac2acc230f9b32c92f3173a2f15949973030fba13681375d7\",\n  \"snapshot_sha256\": \"9c6f1c7e1944447d6618d767299418f4f2a6a5d904cbfa49e5d8aebc009ebb67\",\n  \"snapshot_counts\": {\n    \"feed_rows\": 107,\n    \"open\": 46,\n    \"with_pick\": 45,\n    \"with_probability\": 39,\n    \"market\": 27,\n    \"model\": 12,\n    \"official_file_models\": 12,\n    \"hltv_mirror_models\": 0,\n    \"research_only\": 6,\n    \"unresolved\": 1\n  },\n  \"run_id\": \"40197667220\",\n  \"note\": \"Exact public bytes; no source/quote timestamp was renewed.\"\n}\nBuilt 9 primary pages + 6 legacy redirects; 107 sourced rows, 0 with percentages, 25 without percentages, 25 unresolved.\nreceipt: /tmp/tmp84f3hk0f/audit-receipt.json\n{\n \"rows_with_official_source\": 107,\n \"open_with_pick\": 0,\n \"open_with_probability\": 0,\n \"probabilities_reproduced\": 0,\n \"research_only\": 0,\n \"research_listed_on_both_pages\": 0,\n \"unresolved\": 25,\n \"unresolved_listed_on_both_pages\": 25\n}\nchecks: 282  failures: 0\nreceipt: /tmp/tmp84f3hk0f/audit-receipt.json\n{\n \"rows_with_official_source\": 107,\n \"open_with_pick\": 0,\n \"open_with_probability\": 0,\n \"probabilities_reproduced\": 0,\n \"research_only\": 0,\n \"research_listed_on_both_pages\": 0,\n \"unresolved\": 25,\n \"unresolved_listed_on_both_pages\": 25\n}\nchecks: 282  failures: 1\nFAIL: 1082769 K27 vs NEXORA: unresolved probabilities must be None\nreceipt: /tmp/tmp84f3hk0f/audit-receipt.json\n{\n \"rows_with_official_source\": 107,\n \"open_with_pick\": 0,\n \"open_with_probability\": 0,\n \"probabilities_reproduced\": 0,\n \"research_only\": 0,\n \"research_listed_on_both_pages\": 0,\n \"unresolved\": 25,\n \"unresolved_listed_on_both_pages\": 25\n}\nchecks: 282  failures: 1\nFAIL: 1082769 K27 vs NEXORA: unresolved fair_odds must be None\nreceipt: /tmp/tmp84f3hk0f/audit-receipt.json\n{\n \"rows_with_official_source\": 107,\n \"open_with_pick\": 0,\n \"open_with_probability\": 0,\n \"probabilities_reproduced\": 0,\n \"research_only\": 0,\n \"research_listed_on_both_pages\": 0,\n \"unresolved\": 25,\n \"unresolved_listed_on_both_pages\": 25\n}\nchecks: 282  failures: 1\nFAIL: 1082769 K27 vs NEXORA: unresolved method must be None\nreceipt: /tmp/tmp84f3hk0f/audit-receipt.json\n{\n \"rows_with_official_source\": 107,\n \"open_with_pick\": 0,\n \"open_with_probability\": 0,\n \"probabilities_reproduced\": 0,\n \"research_only\": 0,\n \"research_listed_on_both_pages\": 0,\n \"unresolved\": 25,\n \"unresolved_listed_on_both_pages\": 25\n}\nchecks: 282  failures: 1\nFAIL: 1082769 K27 vs NEXORA: unresolved row lacks its limitation\nreceipt: /tmp/tmp84f3hk0f/audit-receipt.json\n{\n \"rows_with_official_source\": 107,\n \"open_with_pick\": 0,\n \"open_with_probability\": 0,\n \"probabilities_reproduced\": 0,\n \"research_only\": 0,\n \"research_listed_on_both_pages\": 0,\n \"unresolved\": 25,\n \"unresolved_listed_on_both_pages\": 25\n}\nchecks: 282  failures: 1\nFAIL: 1082769 K27 vs NEXORA: unresolved row lacks source attempts\nreceipt: /tmp/tmp84f3hk0f/audit-receipt.json\n{\n \"rows_with_official_source\": 107,\n \"open_with_pick\": 0,\n \"open_with_probability\": 0,\n \"probabilities_reproduced\": 0,\n \"research_only\": 0,\n \"research_listed_on_both_pages\": 0,\n \"unresolved\": 25,\n \"unresolved_listed_on_both_pages\": 25\n}\nchecks: 282  failures: 1\nFAIL: 1082769 K27 vs NEXORA: unresolved row lacks official fixture URL\nBuilt 9 primary pages + 6 legacy redirects; 107 sourced rows, 0 with percentages, 0 without percentages, 0 unresolved.\nBuilt 9 primary pages + 6 legacy redirects; 107 sourced rows, 36 with percentages, 7 without percentages, 1 unresolved.\nBuilt 9 primary pages + 6 legacy redirects; 107 sourced rows, 0 with percentages, 25 without percentages, 25 unresolved.\ncoverage: 18 open \u00b7 18 with a pick \u00b7 18 with a win probability\n",
+      "stderr_tail": ".............................................................................................................................................................................................................................................................No refreshed snapshot at /tmp/tmp1f_pbu3v/nope.json; nothing to harvest.\n...........................................................................................................................................................................s.........................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................s..............................................................................................................................................................................................................................................................................................ss.................................................................................................................................sss...............................................................................................................................................................................................\n----------------------------------------------------------------------\nRan 1606 tests in 43.733s\n\nOK (skipped=7)\n",
+      "log": "09-fresh-unit.log",
+      "why": "The unit suite against the freshly refreshed board."
+    }
+  ]
+}
