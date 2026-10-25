@@ -3368,20 +3368,14 @@
       "start": "2026-10-25T14:00:00Z",
       "lock": "2026-10-25T13:54:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://www.hotspawn.com/matches/ex-zero-tenacity-vs-spirit-academy-cct-europe-2026-series-11-1085542",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [],
-      "probabilities": [
-        0.595,
-        0.405
-      ],
-      "fair_odds": [
-        1.680672268907563,
-        2.4691358024691357
-      ],
-      "pick": "ex-Zero Tenacity",
-      "method": "exchange",
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
       "evidence": [
         {
           "provider": "Polymarket",
@@ -3523,7 +3517,7 @@
           "reason": "Exact pair and UTC start; two-way series winner validated."
         }
       ],
-      "reason": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-25T13:27:54.551556Z",
@@ -13515,5 +13509,5 @@
       "participants1_score": 0
     }
   ],
-  "built_at": "2026-10-25T13:43:30.833920Z"
+  "built_at": "2026-10-25T13:55:00.917282Z"
 }

@@ -115,6 +115,12 @@ jobs:
           git add -- research/harvest-85087497
           if git diff --cached --quiet; then echo "No capture change to commit."; exit 0; fi
           git commit -m "Retain official-source coverage harvest from run ${GITHUB_RUN_ID} [skip ci]"
+          # Session 85087497: harvest run 40199003352 passed every gate and then
+          # failed here — the browser suite's own measurement receipt
+          # (research/session-aeafcbe6/mobile-measurements.json) is rewritten on
+          # a successful run, and `git pull --rebase` refuses a dirty tree.
+          # That receipt belongs to its owning session, so restore it.
+          git checkout -- research/session-aeafcbe6/mobile-measurements.json 2>/dev/null || true
           git pull --rebase origin arena/85087497-maltaproj4
           git push origin arena/85087497-maltaproj4
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
