@@ -184,6 +184,7 @@
    so a static page cannot keep implying it was checked just now. */
 .fresh-strip .fresh-age{font-variant-numeric:tabular-nums}
 .fresh-strip .fresh-age[data-overdue="1"]{color:#945615;font-weight:650}
+.fresh-strip .fresh-age:not(:empty)::before{content:" · "}
 .fresh-strip .fresh-counts{color:var(--muted)}
 .fresh-strip .fresh-links{display:flex;gap:14px;flex-wrap:wrap;margin-left:auto}
 .fresh-strip .fresh-links a{font-weight:650;white-space:nowrap;min-height:32px;display:inline-flex;align-items:center}
@@ -620,6 +621,7 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
   body[data-page="index"] .fresh-strip .fresh-main>strong,
   body[data-page="index"] .fresh-strip .fresh-evidence{display:none}
   body[data-page="index"] .fresh-strip .fresh-age{font-size:11px;font-weight:650;color:#255d3b}
+  body[data-page="index"] .fresh-strip .fresh-age:not(:empty)::before{content:"Checked "}
   /* The kickoff time is on the first card immediately below; folding it here
      keeps the strip to one line for the pick and leaves ~36px of headroom above
      the 320x568 tab bar for the first card's probability. */
