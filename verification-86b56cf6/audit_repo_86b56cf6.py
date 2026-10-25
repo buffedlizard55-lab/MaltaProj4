@@ -64,6 +64,11 @@ TRUSTED_HOSTS = (
     "https://picklebet.com/",
     "https://kalshi.com/",
     "https://api.elections.kalshi.com/",
+    # Session 85087497: Kalshi's current official hosts per docs.kalshi.com
+    # (production Trade API + documentation), same operator as the two above;
+    # cited by the 2026-10-25 fallback-probe review note.
+    "https://external-api.kalshi.com/",
+    "https://docs.kalshi.com/",
     "https://liquipedia.net/counterstrike/",
     "https://draft5.gg/",
     "https://dfrag.gg/",

@@ -1,0 +1,1 @@
+AssertionError [ERR_ASSERTION]: the first probabilities must clear the tab bar at 320x568

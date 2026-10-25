@@ -1,0 +1,388 @@
+=== picks ===
+{
+ "blocks": [
+  {
+   "tag": "SCRIPT",
+   "cls": "",
+   "id": "coverage-data",
+   "top": 0,
+   "bottom": 0,
+   "h": 0,
+   "text": "[{\"id\":\"1052746\",\"state\":\"not_open\",\"start\":\"2026-06-26T10:30:00Z\",\"lock\":\"2026-06-26T10:2"
+  },
+  {
+   "tag": "A",
+   "cls": "skip",
+   "id": "",
+   "top": -80,
+   "bottom": -34,
+   "h": 46,
+   "text": "Skip to content"
+  },
+  {
+   "tag": "ASIDE",
+   "cls": "sidebar",
+   "id": "",
+   "top": 0,
+   "bottom": 0,
+   "h": 0,
+   "text": "hotspawnCS2 SCOUTRESEARCH DESKHomePicksUnresolvedMatchesAnalysisReviewSourcesAutomatic che"
+  },
+  {
+   "tag": "DIV",
+   "cls": "shell",
+   "id": "",
+   "top": 0,
+   "bottom": 7578,
+   "h": 7578,
+   "text": "hotspawnCS2 SCOUTCS2Counter-Strike 2 / Research dashboardLast check: 25 Oct · 14:01 UTC Sn"
+  },
+  {
+   "tag": "DIV",
+   "cls": "notice error",
+   "id": "runtime-stale",
+   "top": 0,
+   "bottom": 0,
+   "h": 0,
+   "text": "Snapshot expired or timestamp unverified. Current picks are withheld. The schedule is a ta"
+  },
+  {
+   "tag": "NOSCRIPT",
+   "cls": "",
+   "id": "",
+   "top": 0,
+   "bottom": 0,
+   "h": 0,
+   "text": "<div class=\"notice error\"><strong>Live expiry checks require JavaScript.</strong> Treat al"
+  },
+  {
+   "tag": "DIV",
+   "cls": "page-head",
+   "id": "",
+   "top": 91,
+   "bottom": 205,
+   "h": 114,
+   "text": "The pick boardUpdated CS2 picks.Every open Hotspawn CS2 match: our pick, both supported wi"
+  },
+  {
+   "tag": "NAV",
+   "cls": "section-nav",
+   "id": "",
+   "top": 7095,
+   "bottom": 7210,
+   "h": 114,
+   "text": "All open matches (16)No percentage (0)No market line (4)All matches"
+  },
+  {
+   "tag": "DETAILS",
+   "cls": "method-details board-method",
+   "id": "",
+   "top": 7226,
+   "bottom": 7294,
+   "h": 68,
+   "text": "How picks, model lines & blanks workOne complete board: market probabilities first, our la"
+  },
+  {
+   "tag": "DIV",
+   "cls": "filters",
+   "id": "",
+   "top": 6885,
+   "bottom": 7079,
+   "h": 194,
+   "text": "Search team, tournament or match IDShowNo percentageAll entriesOpen matchesWith probabilit"
+  },
+  {
+   "tag": "DIV",
+   "cls": "table-wrap",
+   "id": "",
+   "top": 217,
+   "bottom": 6863,
+   "h": 6646,
+   "text": "Whole-match winner only. Blank percentages = unverified; never a default 50/50. Times UTC."
+  },
+  {
+   "tag": "DIV",
+   "cls": "panel empty",
+   "id": "filter-empty",
+   "top": 0,
+   "bottom": 0,
+   "h": 0,
+   "text": "No matches fit these filters. Try another team, event or status."
+  },
+  {
+   "tag": "NOSCRIPT",
+   "cls": "",
+   "id": "",
+   "top": 0,
+   "bottom": 0,
+   "h": 0,
+   "text": "<p class=\"notice info\">JavaScript is off. All rows below are available; filters and live e"
+  }
+ ],
+ "firstRow": {
+  "box": {
+   "top": 272,
+   "bottom": 594,
+   "h": 323
+  },
+  "match": "1079199",
+  "text": "InfinitevsBRUTENODWIN Clutch Series #13 · B25 Oct · 15:00UTC · locks 14:54InfiniteBRUTE43.5%56.5%OUR FAIR LINE · 2.30 / 1.77BRUTEExchange lineView each attempted source →Hotspawn ↗Evidence & linesPolymarket ↗Observed 25 Oct · 13:57 UTCExpir",
+  "pick": {
+   "top": 347,
+   "bottom": 370,
+   "h": 23
+  },
+  "prob": {
+   "top": 400,
+   "bottom": 427,
+   "h": 26
+  },
+  "cells": [
+   {
+    "cls": "team-col",
+    "top": 285,
+    "bottom": 337,
+    "h": 52,
+    "text": "InfinitevsBRUTENODWIN Clutch Series #13 · B"
+   },
+   {
+    "cls": "time-cell",
+    "top": 380,
+    "bottom": 456,
+    "h": 76,
+    "text": "25 Oct · 15:00UTC · locks 14:54"
+   },
+   {
+    "cls": "",
+    "top": 380,
+    "bottom": 456,
+    "h": 76,
+    "text": "InfiniteBRUTE43.5%56.5%OUR FAIR LINE · 2.30 / 1.77"
+   },
+   {
+    "cls": "pick-cell",
+    "top": 347,
+    "bottom": 370,
+    "h": 23,
+    "text": "BRUTEExchange line"
+   },
+   {
+    "cls": "review-reason",
+    "top": 466,
+    "bottom": 489,
+    "h": 24,
+    "text": "View each attempted source →"
+   },
+   {
+    "cls": "source-links",
+    "top": 499,
+    "bottom": 581,
+    "h": 82,
+    "text": "Hotspawn ↗Evidence & linesPolymarket ↗Observed 25 Oct · 13:57 UTCExpir"
+   }
+  ]
+ },
+ "tab": {
+  "top": 507,
+  "bottom": 568,
+  "h": 61
+ },
+ "card": null
+}
+=== index ===
+{
+ "blocks": [
+  {
+   "tag": "SCRIPT",
+   "cls": "",
+   "id": "coverage-data",
+   "top": 0,
+   "bottom": 0,
+   "h": 0,
+   "text": "[{\"id\":\"1052746\",\"state\":\"not_open\",\"start\":\"2026-06-26T10:30:00Z\",\"lock\":\"2026-06-26T10:2"
+  },
+  {
+   "tag": "A",
+   "cls": "skip",
+   "id": "",
+   "top": -80,
+   "bottom": -34,
+   "h": 46,
+   "text": "Skip to content"
+  },
+  {
+   "tag": "ASIDE",
+   "cls": "sidebar",
+   "id": "",
+   "top": 0,
+   "bottom": 0,
+   "h": 0,
+   "text": "hotspawnCS2 SCOUTRESEARCH DESKHomePicksUnresolvedMatchesAnalysisReviewSourcesAutomatic che"
+  },
+  {
+   "tag": "DIV",
+   "cls": "shell",
+   "id": "",
+   "top": 0,
+   "bottom": 6582,
+   "h": 6582,
+   "text": "hotspawnCS2 SCOUTCS2Counter-Strike 2 / Research dashboardLast check: 25 Oct · 14:01 UTC Sn"
+  },
+  {
+   "tag": "DIV",
+   "cls": "notice error",
+   "id": "runtime-stale",
+   "top": 0,
+   "bottom": 0,
+   "h": 0,
+   "text": "Snapshot expired or timestamp unverified. Current picks are withheld. The schedule is a ta"
+  },
+  {
+   "tag": "NOSCRIPT",
+   "cls": "",
+   "id": "",
+   "top": 0,
+   "bottom": 0,
+   "h": 0,
+   "text": "<div class=\"notice error\"><strong>Live expiry checks require JavaScript.</strong> Treat al"
+  },
+  {
+   "tag": "DIV",
+   "cls": "page-head",
+   "id": "",
+   "top": 80,
+   "bottom": 105,
+   "h": 25,
+   "text": "Executive summaryCS2 picks & probabilities.Every open Hotspawn CS2 match, with our pick fi"
+  },
+  {
+   "tag": "DIV",
+   "cls": "fresh-strip live",
+   "id": "freshness-strip",
+   "top": 113,
+   "bottom": 284,
+   "h": 170,
+   "text": "Last checked 25 Oct 2026 · 14:01 UTC16m ago · fixture evidence 25 Oct 2026 · 13:57 UTC · a"
+  },
+  {
+   "tag": "SECTION",
+   "cls": "exec-bar",
+   "id": "exec-summary",
+   "top": 3728,
+   "bottom": 3965,
+   "h": 237,
+   "text": "Executive summaryEvery one of the 16 open matches has a pick, and every pick carries a win"
+  },
+  {
+   "tag": "NAV",
+   "cls": "exec-quicknav",
+   "id": "exec-quicknav",
+   "top": 290,
+   "bottom": 359,
+   "h": 69,
+   "text": "Executive summary · 16/16 picks · 0 unresolved (no %) · 62 past feed rows are not open.Upd"
+  },
+  {
+   "tag": "DETAILS",
+   "cls": "briefing-more",
+   "id": "",
+   "top": 4620,
+   "bottom": 4688,
+   "h": 68,
+   "text": "Site guide, navigation & full briefingExecutive summaryWhere the updated picks areThis sit"
+  },
+  {
+   "tag": "SECTION",
+   "cls": "panel glance",
+   "id": "picks-at-a-glance",
+   "top": 361,
+   "bottom": 3722,
+   "h": 3361,
+   "text": "Every open matchPicks at a glanceStart-time order; each card shows both teams' win chances"
+  },
+  {
+   "tag": "SECTION",
+   "cls": "panel",
+   "id": "unresolved-limits",
+   "top": 4804,
+   "bottom": 6285,
+   "h": 1482,
+   "text": "Executive summary · unresolved picks & limitationsUnresolved picks, and why a pick can be "
+  },
+  {
+   "tag": "SECTION",
+   "cls": "panel",
+   "id": "unresolved-picks",
+   "top": 3977,
+   "bottom": 4588,
+   "h": 611,
+   "text": "Executive summary · unresolved picks & limitationsPicks without a win probability — and ex"
+  }
+ ],
+ "firstRow": {
+  "box": {
+   "top": 6777,
+   "bottom": 7183,
+   "h": 406
+  },
+  "match": "1079199",
+  "text": "InfinitevsBRUTENODWIN Clutch Series #13 · B25 Oct · 15:00UTC · locks 14:54InfiniteBRUTE43.5%56.5%OUR FAIR LINE · 2.30 / 1.77BRUTEExchange lineHotspawn ↗Evidence & linesPolymarket ↗Observed 25 Oct · 13:57 UTCExpires 25 Oct · 14:54 UTC",
+  "pick": {
+   "top": 6865,
+   "bottom": 6888,
+   "h": 23
+  },
+  "prob": {
+   "top": 6923,
+   "bottom": 6981,
+   "h": 59
+  },
+  "cells": [
+   {
+    "cls": "team-col",
+    "top": 6794,
+    "bottom": 6851,
+    "h": 57,
+    "text": "InfinitevsBRUTENODWIN Clutch Series #13 · B"
+   },
+   {
+    "cls": "time-cell",
+    "top": 6902,
+    "bottom": 7026,
+    "h": 124,
+    "text": "25 Oct · 15:00UTC · locks 14:54"
+   },
+   {
+    "cls": "",
+    "top": 6902,
+    "bottom": 7026,
+    "h": 124,
+    "text": "InfiniteBRUTE43.5%56.5%OUR FAIR LINE · 2.30 / 1.77"
+   },
+   {
+    "cls": "pick-cell",
+    "top": 6865,
+    "bottom": 6888,
+    "h": 23,
+    "text": "BRUTEExchange line"
+   },
+   {
+    "cls": "source-links",
+    "top": 7040,
+    "bottom": 7166,
+    "h": 126,
+    "text": "Hotspawn ↗Evidence & linesPolymarket ↗Observed 25 Oct · 13:57 UTCExpir"
+   }
+  ]
+ },
+ "tab": {
+  "top": 507,
+  "bottom": 568,
+  "h": 61
+ },
+ "card": {
+  "top": 367,
+  "bottom": 554,
+  "h": 187
+ }
+}
