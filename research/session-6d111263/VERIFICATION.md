@@ -82,3 +82,54 @@ publication time, and rendered counts equal the data. A value that cannot be con
 official source stays blank and the row is withheld or moved to the unresolved section with its
 limitation — nothing is inferred. Hotspawn supplies fixture inventory and locks only, never a
 probability.
+
+## Completion — 2026-10-25 16:34–17:05 UTC
+
+**Delivery:** PR [#335](https://github.com/buffedlizard55-lab/MaltaProj4/pull/335) **merged to `main` at
+2026-10-25T16:34:10Z**, merge commit `7e48c86be28cf35721c7892109c8b22b88963d63`, without waiting for approval.
+Head at merge: `b2945d94`. PR checks on that head: `verify-build` **pass 3m59s** (run 40211524304),
+`audit` **pass 31s** (run 40211524287), `deploy`/`capture` skipped by design for PRs.
+
+**Post-merge gates, run locally on `main`'s exact tree (`36fa6d17`):**
+
+| Gate | Result |
+| --- | --- |
+| `unittest discover -s tests` | **1,778 OK** (14 skipped) |
+| `unittest discover -s audits` / `verification-95b588c2` / `verification-c6` | OK / OK / OK |
+| `scripts.validate --data data/latest.json --site .` | 75 rows · 14 calculations · 15 pages · 711 links · 20 checksums · 172 displayed rows |
+| `npm run test:browser` (all 13 Chromium suites) | **rc=0** (11 suites print `Passed:` receipts; board totals 14 open rows) |
+
+**Publisher runs after the merge (all green):**
+- `40212306911` — push run of my merge `7e48c86b`: **success 21m18s**, including the staging step, which
+  committed root `36fa6d17` "Publish the verified build to the legacy main:/ root fallback" (root data
+  `2026-10-25T16:50:26Z`, 14 open / 14 with a pick / 14 with a probability / 0 unresolved).
+- `40213100898` — next scheduled slot: **success 11m55s**.
+- The three failures immediately before the merge (`40208959787`, `40210487483`, `40210749388`, all at the
+  staging step "The staged root failed its own validator or unit gate") ran trees that predate session
+  85087497's `b1465df6` re-anchoring of `tests/test_session_9fca16ca.py` to its retained ledger; the fix is on
+  `main`, and the two runs after it are green.
+
+**Live-site verification (`fetch_page`, ~16:52 UTC):** `build-info.json` revision `a6d7bb4a`, built
+`2026-10-25T16:39:32Z` from snapshot `16:39:31Z`, 75 rows; index shows "Last checked 25 Oct 2026 · 16:39 UTC ·
+13m ago", "Snapshot inside its 8-hour evidence window", **14 open · 14 with a pick · 14 with a win
+probability · 0 unresolved**, all executive-summary in-site links (`picks.html`, `#picks-at-a-glance`,
+`unresolved.html`, `review.html`, `matches.html`, `sources.html#method`, per-pick `evidence.html#match-…`
+anchors), the method split "10 from betting markets · 4 from our own VRS model line", and the standing
+"Hotspawn's crowd percentages are never used". The committed root (what the legacy Pages source serves)
+advanced again at 16:53Z to `36fa6d17`.
+
+**Adopted (never layered):** upstream `same_club()` (PR #316) for the publisher freeze; session 9fca16ca's
+short-phone compaction (PR #337) for the 320x568 tab-bar overlap — this session's measured equivalent was
+deleted after main merged first, and both stylesheet copies are byte-identical to `main` again (residue-free).
+The flagged notes `session-6d111263-publisher-alias-freeze-2026-10-25` and
+`session-6d111263-phone-tabbar-overlap-2026-10-25` carry the full disclosures on the Flagged for Review page.
+
+**Irregularities carried forward (non-blocking):** PR `pull_request` check runs silently stopped being
+created while the PR was `dirty` (close/reopen re-fired them); `gh run cancel` 403s for this token and gh
+REST rate limits fluctuate; harvest captures never landed (40199443431 failed with unreachable logs; queued
+runs 40200829452/40202743862 were uncancellable and may still fire); hand-staging must never copy
+`scripts.build`'s clock-withheld `public/data/latest.json` over the committed snapshot on a branch (build
+deep-copies and withholds per reader clock at `build.py:1733` — the pipeline stages it deliberately, a
+diagnostic session must not); the adopted phone fix leaves a measured 2px margin at 320x568 for the current
+long-named first card (a three-line heading would need a content-independent fix); GitHub Pages legacy
+`main:/` builds are soft-limited to 10/hour, so the served site can lag a green run by several minutes.
