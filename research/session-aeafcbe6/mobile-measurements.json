@@ -1,5 +1,5 @@
 {
- "measured_at": "2026-10-24T17:52:43.275Z",
+ "measured_at": "2026-10-25T14:21:52.294Z",
  "board": "public/ from research/diagnose-aeafcbe6/snapshot.json",
  "viewports": [
   {
@@ -12,14 +12,14 @@
     "horizontalOverflow": false,
     "withheld": false,
     "exec_summary": {
-     "top": 4486,
+     "top": 3715,
      "height": 237
     },
     "exec_quicknav": {
      "top": 290,
      "height": 57
     },
-    "quicknav_text": "Executive summary · 20/20 picks · 0 unresolved · 63 past feed rows are not open.Updated picks →Unresolved & limits ↓",
+    "quicknav_text": "Executive summary · 16/16 picks · 0 unresolved · 62 past feed rows are not open.Updated picks →Unresolved & limits ↓",
     "exec_links": [
      "picks.html",
      "#picks-at-a-glance",
@@ -40,20 +40,22 @@
    "board": {
     "found": true,
     "top": 280,
-    "height": 389,
-    "pick": "paiN",
-    "teams": "GalorysvspaiN",
+    "height": 334,
+    "pick": "BRUTE",
+    "teams": "InfinitevsBRUTE",
     "percentages": [
-     "42.0%",
-     "58.0%"
+     "43.5%",
+     "56.5%"
     ],
     "percentage_labels": [
-     "Galorys 42.0 percent",
-     "paiN 58.0 percent"
+     "Infinite 43.5 percent",
+     "BRUTE 56.5 percent"
     ],
     "tabbar_top": 507,
     "horizontalOverflow": false,
-    "rows": 20
+    "rows": 16,
+    "publishedPicks": 16,
+    "pricedRows": 16
    },
    "documentWidth": 0
   },
@@ -67,14 +69,14 @@
     "horizontalOverflow": false,
     "withheld": false,
     "exec_summary": {
-     "top": 5089,
+     "top": 4187,
      "height": 219
     },
     "exec_quicknav": {
      "top": 300,
      "height": 65
     },
-    "quicknav_text": "Executive summary · 20/20 picks · 0 unresolved · 63 past feed rows are not open.Updated picks →Unresolved & limits ↓",
+    "quicknav_text": "Executive summary · 16/16 picks · 0 unresolved · 62 past feed rows are not open.Updated picks →Unresolved & limits ↓",
     "exec_links": [
      "picks.html",
      "#picks-at-a-glance",
@@ -95,20 +97,22 @@
    "board": {
     "found": true,
     "top": 243,
-    "height": 379,
-    "pick": "paiN",
-    "teams": "GalorysvspaiN",
+    "height": 360,
+    "pick": "BRUTE",
+    "teams": "InfinitevsBRUTE",
     "percentages": [
-     "42.0%",
-     "58.0%"
+     "43.5%",
+     "56.5%"
     ],
     "percentage_labels": [
-     "Galorys 42.0 percent",
-     "paiN 58.0 percent"
+     "Infinite 43.5 percent",
+     "BRUTE 56.5 percent"
     ],
     "tabbar_top": 783,
     "horizontalOverflow": false,
-    "rows": 20
+    "rows": 16,
+    "publishedPicks": 16,
+    "pricedRows": 16
    },
    "documentWidth": 0
   },
@@ -122,14 +126,14 @@
     "horizontalOverflow": false,
     "withheld": false,
     "exec_summary": {
-     "top": 5021,
+     "top": 4119,
      "height": 202
     },
     "exec_quicknav": {
      "top": 300,
      "height": 65
     },
-    "quicknav_text": "Executive summary · 20/20 picks · 0 unresolved · 63 past feed rows are not open.Updated picks →Unresolved & limits ↓",
+    "quicknav_text": "Executive summary · 16/16 picks · 0 unresolved · 62 past feed rows are not open.Updated picks →Unresolved & limits ↓",
     "exec_links": [
      "picks.html",
      "#picks-at-a-glance",
@@ -150,20 +154,22 @@
    "board": {
     "found": true,
     "top": 243,
-    "height": 379,
-    "pick": "paiN",
-    "teams": "GalorysvspaiN",
+    "height": 360,
+    "pick": "BRUTE",
+    "teams": "InfinitevsBRUTE",
     "percentages": [
-     "42.0%",
-     "58.0%"
+     "43.5%",
+     "56.5%"
     ],
     "percentage_labels": [
-     "Galorys 42.0 percent",
-     "paiN 58.0 percent"
+     "Infinite 43.5 percent",
+     "BRUTE 56.5 percent"
     ],
     "tabbar_top": 854,
     "horizontalOverflow": false,
-    "rows": 20
+    "rows": 16,
+    "publishedPicks": 16,
+    "pricedRows": 16
    },
    "documentWidth": 0
   }
