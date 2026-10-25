@@ -5840,5 +5840,32 @@
     "label": "Valve official global standings 2026-10-05 (ex-Keyd Stars, 854 points)"
    }
   ]
+ },
+ {
+  "id": "session-bd650209-fixture-page-link-missing-2026-10-25",
+  "status": "Needs review — two open rows link to the Hotspawn CS2 pick'em lobby instead of a per-fixture page",
+  "finding": "On the 2026-10-25T13:56:28Z independent capture (run 40198565605, 78 Hotspawn CS2 feed rows, 16 open, 16 picks, 16 win probabilities, 0 unresolved) every row carries an official Hotspawn link, but two of the sixteen open rows - fixture 1086696 (BORRACHEIROS vs RED Canids Academy) and fixture 1086697 (Projeto do KinGui vs Yawara) - cite 'https://play.hotspawn.com/cs2-pickems', the CS2 pick'em lobby, as their source_url, because no per-fixture 'www.hotspawn.com/matches/...' page was linked in the inventory this run read. The other fourteen open rows cite their own per-fixture pages. The identity of those two rows is therefore confirmed by Hotspawn's own fixture feed and lobby, not by a fixture page a reviewer can open; no slug was guessed or constructed, which is why no per-fixture link was invented. Both rows are otherwise fully sourced: 1086696 is priced from Polymarket market 6158760, and 1086697 from Valve's official standings through the labelled VRS model line. Recorded for manual review rather than repaired, because inventing a per-fixture URL from team labels would be exactly the inference this project forbids. Impact is presentation only: no pick or probability depends on that link.",
+  "sources": [
+   {
+    "url": "https://play.hotspawn.com/cs2-pickems",
+    "label": "Hotspawn CS2 pick'em lobby - the official link those two rows carry"
+   },
+   {
+    "url": "https://play.hotspawn.com/lobby",
+    "label": "Hotspawn lobby read in the same capture"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/markets/6158760",
+    "label": "Polymarket market that prices fixture 1086696"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "label": "Valve's official standings, the only inputs of fixture 1086697's originated line"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-bd650209/VERIFICATION.md",
+    "label": "This session's line-by-line verification of that capture"
+   }
+  ]
  }
 ]

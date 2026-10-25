@@ -9714,3 +9714,75 @@ readable from the run page without runner access. Logged for the session that ow
 sandbox: outbound access is limited to github.com, codeload.github.com, api.github.com,
 registry.npmjs.org and pypi.org. Row-level source replay was done by the refresh runner and by
 `verification-c6/audit_snapshot.py`, whose output is in `research/harvest-fec4894f/`.
+## Session bd650209 — receipt: reproduced the red gate on its own capture, verified the landed repair independently, published the phone evidence (2026-10-25 14:20 UTC)
+
+**What was measured.** The public board had withheld every pick since the `01:47:42Z` snapshot left its
+eight-hour window: scheduled publishes [40193317196](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40193317196)
+(12:29Z) and [40170923727](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40170923727)
+(06:56Z) both failed at *Build and independently verify every row, calculation and internal link*, and
+[40143667147](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40143667147) failed at the
+legacy `main:/` staging step. Action logs are not downloadable from the authoring sandbox, so the real,
+unmodified pipeline was re-run on a GitHub runner and its receipts committed.
+
+**Independent reproduction** (run [40198565605](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40198565605),
+non-publishing, snapshot `2026-10-25T13:56:28.969391Z`). Per-step exit codes in
+`research/session-bd650209/receipt.json`: `refresh=0 quarantine=0 row_audit=0 build=0 published_audit=0
+unit=0 validate=1 row_diagnosis=1`. The capture is 78 feed rows, 16 open, 16 picks, 16 win probabilities,
+0 unresolved, coverage `verified` (api/lobby/page/retained 78). The per-row replay named the single
+failing row: fixture **1086697** *Projeto do KinGui vs Yawara*, method `model_vrs`, assertion *Model roster
+has no HLTV source on this row*. Hotspawn labels the club *Projeto do KinGui*; HLTV's page for the same
+fixture says *Tropa do KinGui*, and `data/identities.json` already registers the pair as one club with
+primary sources — so the evidence was right and the literal name comparison could never match it.
+
+**The repair was not made here.** Session b85ad9b4 landed `same_club()` on `main` as `06915a8` (PR
+[#316](https://github.com/buffedlizard55-lab/MaltaProj4/pull/316)). This session verified it on **its own**
+capture, which that author never saw, and checked that it stays narrow:
+
+| Gate on the same committed snapshot | pre-fix tree | `main` after `06915a8` |
+| --- | --- | --- |
+| `scripts.validate --data captured-snapshot.json` | **rc 1**, row 1086697 | **rc 0** — 78 rows, 16 calculations, 15 pages, 751 links, 20 checksums |
+| `verification-c6/audit_snapshot.py` | 0 failures | 0 failures (78 rows) |
+| `scripts.build` | 16/16 priced | 16 priced, 0 without, **0 unresolved** |
+| `verify_board.py` (new here) | — | **16/16 rows pass every re-derived check** |
+| `unittest discover -s tests` | — | **1,619 tests OK** (7 skipped) |
+| `npm run test:browser` | — | **all 13 Chromium suites pass** |
+
+Alias-register check run here: none of the 31 registered clubs collapse together under the new
+comparison, `Acend` vs `Acend Academy` stays distinct, and `LOS NINOS`/`Los Niños` folds as before.
+
+**Coverage at that capture — the brief's "low-tier, no market" case.** 10 exchange · 1 wide exchange ·
+1 researched book listing · 4 originated Valve-VRS lines. The four matches with no usable market line:
+1079200 Color vs ex-Zero Tenacity (68.8/31.2; Polymarket parent event `ended=true`), 1086697 (51.0/49.0;
+no market found), 1082792 HOTU vs The Huns (85.2/14.8) and 1082793 5star vs 1WIN (24.3/75.7), the last two
+outside the exchange spread gates. Hotspawn is never a probability input. `VERIFICATION.md` lists every
+row with both percentages, the pick, the method, the fair odds and the source a reviewer can open.
+
+**Phone evidence, measured in Chromium against this build**
+(`research/session-bd650209/phone-measurements.json`): at 320×568 the executive-summary quick nav sits at
+y=290 (*16/16 picks · 0 unresolved*, *Updated picks →*, *Unresolved & limits ↓*), the tab bar at 507, and
+`picks.html`'s first row at y=280 with both percentages ending at 452 < 507. At 390×844: quick nav 300,
+first row 243, pair bottom 421 < 783. No horizontal overflow.
+
+**Flagged for review, non-blocking.** (a) Published note
+`session-bd650209-fixture-page-link-missing-2026-10-25`: fixtures 1086696 and 1086697 link to
+`https://play.hotspawn.com/cs2-pickems` because this capture's inventory linked no per-fixture page for
+them; no slug was invented. (b) All 16 open rows carry `best_of: null` — the feed does not state the
+series format, so it stays blank. (c) 1082858 is priced at a 23-point Polymarket spread, inside the
+25-point strict gate, and keeps its low-precision warning. (d) 1082859's Thunderpick listing carries no
+operator update time, only an observation time. (e) The four originated lines rest on Valve's
+`2026-10-05` standings (20 days old, inside the published 62-day rule) and are labelled model estimates.
+(f) GG.BET answered HTTP 403 after three rate-limit waits and Thunderpick yielded no validated two-sided
+series quote on these rows; both are collection limitations, never evidence that no line exists.
+
+**Not done here.** `pages.yml` itself, `scripts/validate.py`, and the root pages. The publication is
+runner- and queue-bound at this hour: several sessions push to `main` within minutes of each other and
+supersede each other's runs. A hand-built root was deliberately not produced, because it would carry an
+expired snapshot and re-create the withholding this repair removes.
+
+**Sources.** Run ids above; PR #316; `data/identities.json`; `data/review-notes.json`;
+https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7 ;
+https://gamma-api.polymarket.com/markets/6033256 ; https://play.hotspawn.com/lobby ;
+https://play.hotspawn.com/cs2-pickems ;
+https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md ;
+`research/session-bd650209/**`.
+
