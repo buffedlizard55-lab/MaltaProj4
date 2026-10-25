@@ -93,6 +93,14 @@ jobs:
             --output research/session-bd650209/published-row-audit.md 2>&1 | tee research/session-bd650209/logs/published-row-audit.txt
           echo "rc=${PIPESTATUS[0]}" | tee research/session-bd650209/logs/published-row-audit.rc
 
+      - name: Which row fails the validator, and why (per-row replay)
+        id: row_diagnosis
+        continue-on-error: true
+        run: |
+          set +e
+          python research/session-bd650209/diagnose.py runtime/latest.json 2>&1 | tee research/session-bd650209/logs/row-diagnosis.txt
+          echo "rc=${PIPESTATUS[0]}" | tee research/session-bd650209/logs/row-diagnosis.rc
+
       - name: Facts of the built copy
         id: built_facts
         continue-on-error: true
@@ -139,6 +147,9 @@ jobs:
         run: |
           git config user.name "harvest-bd650209"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # The refreshed snapshot itself is the evidence every number in the receipt
+          # is re-derived from, so it is committed with the logs (a few hundred KB).
+          cp runtime/latest.json research/session-bd650209/captured-snapshot.json
           git add -A research/session-bd650209
           if git diff --cached --quiet; then
             echo "No receipt change to commit."
