@@ -6127,5 +6127,79 @@
     "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-b06ee902/VERIFICATION.md"
    }
   ]
+ },
+ {
+  "id": "session-9fca16ca-dated-market-drift-2026-10-25",
+  "status": "For review — later official quotes moved; the published snapshot remains a dated observation",
+  "finding": "Direct official reads of eleven Polymarket Gamma market endpoints at 14:18–14:21 UTC on 25 Oct 2026 found that three quotes had moved relative to the retained 13:50 UTC receipts: market 6158760 (BORRACHEIROS vs RED Canids Academy) from 42.5/57.5% to 43.5/56.5%, market 6066508 (Ground Zero vs Off Chops) from 36.5/63.5% to 37/63%, and market 6066525 (Rooster vs Abyssal) from 43/57% to 42.5/57.5%. The other eight exchange markets still matched their stored quotes. The board does not silently overwrite a dated raw receipt with a later unvalidated observation; the 15-minute publisher and 10-minute watchdog recapture all source receipts under the same gates. Market-implied values are estimates, not guarantees. This is flagged so a reviewer does not mistake a deliberately dated snapshot for a live tick.",
+  "sources": [
+   {
+    "url": "https://gamma-api.polymarket.com/markets/6158760",
+    "label": "Polymarket Gamma API: later official quote for BORRACHEIROS vs RED Canids Academy"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/markets/6066508",
+    "label": "Polymarket Gamma API: later official quote for Ground Zero vs Off Chops"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/markets/6066525",
+    "label": "Polymarket Gamma API: later official quote for Rooster vs Abyssal"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-9fca16ca/official-checks.json",
+    "label": "Dated direct-source check receipt for all eleven exchange markets"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/.github/workflows/pages.yml",
+    "label": "Publisher cadence and validation gates"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/.github/workflows/refresh-watchdog.yml",
+    "label": "Ten-minute freshness watchdog"
+   }
+  ]
+ },
+ {
+  "id": "session-9fca16ca-fallback-access-limitations-2026-10-25",
+  "status": "For review — low-tier source access limitations; no unsupported value was filled in",
+  "finding": "For this snapshot all 16 open Hotspawn CS2 fixtures have a directional pick and both win probabilities, with 0 unresolved. Four low-tier fixtures had no accepted exchange or bookmaker whole-match line, so the site publishes a clearly labelled originated VRS model line from Valve’s official 2026-10-05 standings, checked against HLTV fixture identity and lineups. A fifth low-tier fixture is priced from a researched Thunderpick series moneyline read through BO3.gg’s official API; that listing has no operator tick-level update timestamp, so only its observation time is published. GG.BET returned a regional-access notice / HTTP 403 and EGamersWorld returned HTTP 403 for gap rechecks; those restrictions are recorded, never bypassed and never treated as proof that a market is absent. Pinnacle’s official guest API resolved, but no resolvable whole-match price was accepted for the four model rows. Hotspawn supplies fixture inventory and locks only; its crowd percentages and HLTV crowd votes are never used as probability inputs. Every row’s attempted source ladder, limitation and official link is retained on the evidence page.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-9fca16ca/ROW-LEDGER.md",
+    "label": "Line-by-line ledger: all 16 open rows, source ladder and later official checks"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "label": "Valve official global standings, the originated model-line inputs"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399115/color-vs-ex-zero-tenacity-nodwin-clutch-series-13",
+    "label": "HLTV fixture and lineups for one originated model row"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399918/tropa-do-kingui-vs-yawara-cct-2026-south-america-series-7",
+    "label": "HLTV identity and lineups for the sourced club alias"
+   },
+   {
+    "url": "https://bo3.gg/matches/nexvoid-vs-alter-ego-26-10-2026",
+    "label": "BO3.gg match page with the researched Thunderpick 1.60 / 2.20 listing"
+   },
+   {
+    "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+    "label": "Pinnacle official esports moneyline API"
+   },
+   {
+    "url": "https://thunderpick.io/esports/cs2-betting",
+    "label": "Thunderpick official CS2 betting page"
+   },
+   {
+    "url": "https://gg.bet/en/esports/counter-strike",
+    "label": "GG.BET official CS2 page, regional access restriction observed"
+   },
+   {
+    "url": "https://egamersworld.com/counterstrike/match/EkalRNMvVx/hotu-vs-the-huns-esports-SfdtzDhiK",
+    "label": "EGamersWorld gap-recheck page, access restriction recorded"
+   }
+  ]
  }
 ]
