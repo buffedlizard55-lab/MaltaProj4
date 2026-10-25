@@ -1,0 +1,9 @@
+priced rows replayed one at a time: 17
+rows failing the repository validator: 1
+FAIL 1086697 | Projeto do KinGui vs Yawara | model_vrs | Model roster has no HLTV source on this row
+     vrs_teams       : ['ex-Keyd Stars', 'Yawara']
+     label_counts    : [1, 1]
+     roster_checks   : [{"lineup": ["drg", "ALLE", "ckzao", "xureba", "lash"], "overlap": 4, "note": "roster verified against the HLTV lineup"}, {"lineup": ["brn$", "j0w", "deemO", "tele", "mlhzin"], "overlap": 4, "note": "roster verified against the HLTV lineup"}]
+     hltv lineups    : [('Tropa do KinGui', 5), ('Yawara', 5)]
+     hltv team pages : []
+     qualifications  : {"state": "open", "flags": ["Originated line: Valve VRS model estimate, not a market price."], "pick": "Projeto do KinGui", "method": "model_vrs", "reason": null}
