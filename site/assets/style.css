@@ -725,12 +725,14 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
    page or the pick board is touched. Text, order, tap targets and every test
    assertion about the numbers themselves are unchanged. */
 @media(max-width:650px) and (max-height:700px){
-  body[data-page="index"] .glance-card-teams{font-size:14px;line-height:1.2}
+  body[data-page="index"] .glance-card-teams{font-size:12.5px;line-height:1.2}
   body[data-page="index"] .glance-card-pick-label{line-height:1}
   body[data-page="index"] .glance-card-pick-team{font-size:16px}
   body[data-page="index"] .glance-card-prob{font-size:19px}
   body[data-page="index"] .glance-card-top{margin-bottom:2px}
   body[data-page="index"] .glance-card-scores{gap:2px}
+  body[data-page="index"] .glance-card-mobile{padding:9px 12px}
+  body[data-page="index"] .glance-card-pick{padding:5px 10px;gap:4px}
 }
 
 /* Board-first on tall phones too: optional filters must not bury the pick. */
