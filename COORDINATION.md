@@ -10916,3 +10916,56 @@ published row carries its own source link; unverifiable values stay blank and fl
 - **Pages deploy confirmed:** run `40208959787` (head `9fd82fa4`, main including #345) — build, validate, c6 and the phone/expiry suite all passed with the post-15:54Z refresh (row 1086696 correctly retired → 75-row consistent board), deploy job **success**; live `build-info.json` serves **revision `9fd82fa4`, built_at 2026-10-25T15:59:43Z** (verified via cache-busting fetch; a plain fetch initially returned the previous cached 6720c68b receipt).
 - **Known irregularity, unchanged by this merge:** verify-build's guarded step "Keep the legacy main:/ root fallback on the verified build" failed post-deploy ("staged root failed its own validator or unit gate, so it was not committed and main stays green"), leaving the run red while the verified artifact still deployed — same pre-existing step already recorded under "Measured irregularities"; cron `schedule` slots remain undelivered since 12:29Z.
 - Protocol: claim honoured throughout (`session-df43411c`, scopes V1/V2/I3); COORDINATION header union maintained across five rebases (main's new sections + this session's five restored sections + claim/receipt, no conflict markers); `data/review-notes.json` unioned by id after each rebase (276 unique).
+
+## Session 6d111263 — delivery receipt: PR #335 merged, publisher freeze diagnosed and repaired, phone gate verified (2026-10-25 17:05 UTC)
+
+**PR [#335](https://github.com/buffedlizard55-lab/MaltaProj4/pull/335) merged to `main` at 2026-10-25T16:34:10Z**,
+merge commit `7e48c86be28cf35721c7892109c8b22b88963d63`, without waiting for approval per protocol, head
+`b2945d94`. PR checks on the final head: `verify-build` pass 3m59s (run 40211524304), `audit` pass 31s (run
+40211524287). Nothing from another session was discarded: every conflict was resolved keep-both (this file and
+`data/review-notes.json`), generated files adopted `main`'s side, and both competitive fixes were adopted
+upstream — `same_club()` (PR #316) for the roster-alias freeze and 9fca16ca's short-phone block (PR #337) for
+the 320x568 tab-bar overlap, with this session's measured equivalents deleted rather than layered.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Diagnose the 12h publisher freeze on GitHub egress and preserve receipts | **done** | 6d111263 | `research/harvest-6d111263/**` | 2026-10-25 14:05 |
+| Line-by-line verification receipt incl. executive-summary in-site links and 320–412px layout | **done** | 6d111263 | `research/session-6d111263/**`, `data/review-notes.json` | 2026-10-25 17:05 |
+| ≤360px glance-card phone compaction (live tab-bar overlap) | **done — adopted main's PR #337 fix; this session's draft deleted** | 6d111263 | `site/assets/style.css` (net zero after adoption) | 2026-10-25 16:24 |
+| Final integration gates, PR, merge, live verification | **done** | 6d111263 | receipts + `COORDINATION.md` (this section) | 2026-10-25 17:05 |
+
+**Verification (all measured, none assumed).** Post-merge local gates on `main`'s exact tree `36fa6d17`:
+**1,778 unit tests OK** (14 skipped) · audits OK · `verification-95b588c2` OK · `verification-c6` OK ·
+`scripts.validate --data data/latest.json --site .` → 75 rows / 14 calculations / 15 pages / 711 links /
+20 checksums / 172 displayed · full 13-suite `npm run test:browser` **rc=0**. Post-merge `main` runs:
+`40212306911` (my merge) **success 21m18s** including the staging step, which committed root `36fa6d17`
+(root data `2026-10-25T16:50:26Z`, 14 open / 14 picks / 14 probabilities / 0 unresolved), then scheduled run
+`40213100898` **success 11m55s**. Live, read via `fetch_page` at ~16:52Z: `build-info.json` revision
+`a6d7bb4a` built `16:39:32Z`, 75 rows; index "Last checked 25 Oct 2026 · 16:39 UTC · 13m ago · Snapshot
+inside its 8-hour evidence window", **14 open · 14 with a pick · 14 with a win probability · 0 unresolved**,
+every executive-summary in-site link present (picks, glance, unresolved, flagged, all-matches, method,
+per-pick evidence anchors), "10 from betting markets · 4 from our own VRS model line", "Hotspawn's crowd
+percentages are never used", phone bottom-bar documented. Full line-by-line trail:
+`research/session-6d111263/VERIFICATION.md`.
+
+**Flagged for review (non-blocking, on the Flagged for Review page).** Note
+`session-6d111263-publisher-alias-freeze-2026-10-25`: the 12h freeze, its exact assertion and fixture, the
+adopted repair, and the standing limits (a validator stricter than the identity register delays the whole
+board; no red-publisher signal beyond the expiry banner). Note
+`session-6d111263-phone-tabbar-overlap-2026-10-25`: the measured y=486..517 vs y=507 overlap on 320x568,
+the adopted PR #337 fix, re-measured clear by 2px, and the observation that a three-line team heading would
+need a content-independent fix.
+
+**Irregularities measured during delivery (all disclosed, none blocking).** (a) Harvest captures never
+landed: run 40199443431 failed with logs unreachable from this sandbox (egress allowlist), queued runs
+40200829452/40202743862 were uncancellable (`gh run cancel` → 403) and may still fire onto this branch —
+any root staging they push is replaceable by `main`'s own staging. (b) `pull_request` checks silently stopped
+being created for #335 while it was `mergeable=dirty`; close/reopen re-fired them — sync `main` first whenever
+a PR stops collecting checks. (c) gh REST rate limits fluctuated (user 309443653, interleaved 403s).
+(d) The three `main` staging failures right before my merge (`40208959787`, `40210487483`, `40210749388`) ran
+trees predating 85087497's `b1465df6` ledger re-anchor of `tests/test_session_9fca16ca.py`; both later runs are
+green, so no action is requested. (e) Hand-staging lesson for future diagnosis sessions: `scripts.build`
+withholds past-lock rows in its `public/` copy by reader clock (`build.py:1733`) — staging that over a branch's
+committed snapshot breaks snapshot-keyed tests; the production pipeline does this on purpose at publish time,
+diagnostic sessions must not. (f) GitHub Pages legacy `main:/` builds are soft-limited to 10/hour, so the live
+site can lag a green run by minutes (session b06ee902's measurement).
