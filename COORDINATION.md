@@ -1,3 +1,41 @@
+# Shared task board — final delivery receipt, session cc4f95ef (2026-10-25 15:05 UTC)
+
+**PR [#325](https://github.com/buffedlizard55-lab/MaltaProj4/pull/325) merged to `main` at
+2026-10-25T14:46:14Z as `05e991e4cd998ac132e7fc725ac2d7d9f605c3ca`**, without waiting for approval,
+using `gh pr merge 325 --merge`. All three final-integration tasks are **done**: the independent
+line-by-line audit, adoption/union of upstream repairs and additive notes/regressions, and the
+PR/merge/live-Pages verification.
+
+**Deploy result.** The merge triggered several legacy `pages build and deployment` runs. Runs
+[40203794707](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40203794707),
+[40204061222](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40204061222) and
+[40204321329](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40204321329) had their
+`deploy` jobs cancelled with the GitHub annotation “Canceling since a higher priority waiting
+request for pages build and deployment @ main exists”; their `build` jobs succeeded. This was
+parallel-session queue churn, not a broken artifact. The GitHub Pages API subsequently reported
+**`status: built`, `error.message: null` for commit `57a86c9` at 2026-10-25T15:01:42Z**.
+
+**Live bytes measured after that deployment.** Public `build-info.json` served revision `a2d3b1f`,
+built `2026-10-25T14:38:14Z`, snapshot `2026-10-25T14:38:13Z`, 78 rows. The public executive
+summary reported “Snapshot inside its 8-hour evidence window”, **16 open CS2 matches · 16 with a
+pick · 16 with a win probability · 0 unresolved**, with first-screen links to `picks.html`,
+`#picks-at-a-glance`, `unresolved.html`, `review.html`, `matches.html` and `sources.html#method`.
+The public pick board showed both teams' percentages, the pick, its method/limitation and official
+source links; the separate unresolved/limitations section remained present. Main's `review.html`
+contains all four `session-cc4f95ef-*` Flagged-for-Review notes. The hidden `#runtime-stale`
+notice visible to text readers is the documented JS fallback; the same page reports the snapshot
+inside its evidence window and publishes the picks.
+
+**Sources and irregularities.** Official Hotspawn, HLTV, Polymarket, Pinnacle, BO3.gg and Valve
+links are preserved per row in
+[`research/session-cc4f95ef/LINE_BY_LINE_AUDIT.md`](research/session-cc4f95ef/LINE_BY_LINE_AUDIT.md)
+and on the public evidence/picks pages. Non-blocking flags remain on the Flagged for Review page:
+labelled VRS model lines, a third-party book listing, two warnings about another session's archived
+prose/older alias citations, and the legacy `main:/` Pages source. No unverified value was filled
+in; no Hotspawn crowd percentage was used as a probability.
+
+---
+
 ## Session 6857421f — receipt: the 2026-10-25 publisher failure independently reproduced, canonical repairs adopted, coverage verified (2026-10-25 14:20 UTC)
 
 **Result, stated exactly.** This session diagnosed the same failure that sessions b85ad9b4 and 58354934 were
