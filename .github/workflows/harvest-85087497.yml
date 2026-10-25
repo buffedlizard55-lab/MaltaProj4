@@ -51,6 +51,9 @@ jobs:
       - name: Coverage report of every open row and every unresolved row
         continue-on-error: true
         run: python -m scripts.report_gaps_f0814674 --snapshot runtime/latest.json --output research/harvest-85087497 2>&1 | tee research/harvest-85087497/logs/coverage.txt
+      - name: Probe keyless fallback sources for rows no market prices (Kalshi public API, HLTV dated ranking)
+        continue-on-error: true
+        run: python -m scripts.probe_85087497 --snapshot runtime/latest.json --output research/harvest-85087497/probe.json 2>&1 | tee research/harvest-85087497/logs/probe.txt
       - name: Independent row audit and dated ledger
         continue-on-error: true
         run: |

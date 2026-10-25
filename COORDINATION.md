@@ -24,6 +24,22 @@ only for sourced fallback receipts for fixtures the fresh board cannot price, `s
 `data/latest.json` + `data/matches.csv` + `build-info.json` only through the verified build.
 No other session's claimed files are edited; conflicts are resolved by adopting `main`.
 
+**Interim (13:45 UTC).** Harvest run 40197633940 reproduced the publisher failure on a fresh
+2026-10-25T13:31:28Z snapshot (78 feed rows, 17 open, 17 picked+priced — 11 exchange · 1 exchange_wide ·
+1 bookmaker_fallback · 4 model_vrs, 0 research-only, 0 unresolved): refresh rc=0, quarantine withheld 0,
+independent row audit 0 failures, then `scripts.validate` failed "Model roster has no HLTV source on this
+row" for fixture 1086697 Projeto do KinGui vs Yawara (HLTV label Tropa do KinGui, identical five, a
+sourced `data/identities.json` alias the collector accepts via `norm` but the validator compared raw).
+The 16 root-unit failures were the same assertion cascading. Second blocker on the same board:
+`browser_019a253a` at 320x568 put picks.html's first probabilities at y=519 vs tab bar y=507. Fixes are
+in `scripts/validate.py` (register-alias label + exact players, fail-closed), `site/assets/style.css`
++`assets/style.css` (short-phone picks chrome, probabilities now end y=443), and `scripts/build.py`
+(quick-nav says "unresolved (no %)", exec bar gains `sources.html#method`). Two Flagged-for-Review notes
+added (`session-85087497-validator-alias-freeze-2026-10-25`, `session-85087497-short-phone-picks-fold-2026-10-25`).
+Root restaged from the verified fresh build; local gates: 1,617 unit tests OK (12 skipped), audits 9 OK,
+integrity 5 OK, verification-c6 12 OK, validate rc=0, row audit 0 failures, all 13 browser suites pass.
+Next: harvest #2 with the Kalshi/HLTV-ranking probe (`scripts/probe_85087497.py`) for rows no market prices.
+
 **Tasks:** (1) harvest-diagnose the build failure on a fresh snapshot; (2) fix root cause, keep
 every gate; (3) verify every open Hotspawn CS2 match has a pick — market line first (Polymarket/
 Pinnacle/books), then HLTV/Valve VRS originated model, then researched book/HLTV-rank/form

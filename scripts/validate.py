@@ -63,6 +63,26 @@ def reconstruct_quote(q, schema_version=1):
 
 
 
+def _same_team_label(source_label, team):
+    """Exact label, or the same verified identity-register team.
+
+    Session 85087497 (measured 2026-10-25): Hotspawn fixture 1086697 lists
+    "Projeto do KinGui" while HLTV's exact-pair/exact-start fixture page lists
+    the same club, with the identical starting five, as "Tropa do KinGui".
+    That pair is a sourced entry in ``data/identities.json``, so the collector
+    (``orientation``/``norm``) and the independent auditor accept the HLTV
+    lineup, but this check compared raw labels only and rejected every fresh
+    board that priced the fixture from the VRS model — the whole publisher
+    stopped. ``norm`` applies *only* register aliases (never fuzzy matching),
+    and the player-set comparison below stays exact, so an unregistered
+    relabel still fails here.
+    """
+    try:
+        return norm(source_label or '') == norm(team or '')
+    except (TypeError, ValueError):
+        return False
+
+
 def lineup_source_ok(m, team, lineup):
     """Whether a stored lineup is reproducible from an HLTV page on the same row.
 
@@ -71,12 +91,16 @@ def lineup_source_ok(m, team, lineup):
     team page and the row must carry its URL. Rows with neither source cannot
     be re-checked offline, so they are left to the other identity assertions
     (``label_count``) rather than being silently treated as sourced.
+
+    The source page's team label may be the fixture label or its verified
+    identity-register alias (see :func:`_same_team_label`); the five players
+    must still match exactly.
     """
     want = sorted(plain_name(x) for x in (lineup or []))
     if not want:
         return False
     for item in (m.get('hltv_context') or {}).get('lineups') or []:
-        if plain_name(item.get('team') or '') == plain_name(team):
+        if _same_team_label(item.get('team') or '', team):
             if sorted(plain_name(x) for x in item.get('players') or []) == want:
                 return True
     # A retained lineup receipt (data/lineup-receipts.json) is another HLTV
@@ -87,14 +111,14 @@ def lineup_source_ok(m, team, lineup):
         if receipt.get('teams') != list(m.get('teams') or []):
             continue
         for item in receipt.get('lineups') or []:
-            if plain_name(item.get('team') or '') != plain_name(team):
+            if not _same_team_label(item.get('team') or '', team):
                 continue
             if not str(item.get('source') or '').startswith('https://www.hltv.org/matches/'):
                 continue
             if sorted(plain_name(x) for x in item.get('players') or []) == want:
                 return True
     for item in (m.get('hltv_team_pages') or {}).get('teams') or []:
-        if plain_name(item.get('team') or '') != plain_name(team):
+        if not _same_team_label(item.get('team') or '', team):
             continue
         if not str(item.get('url') or '').startswith('https://www.hltv.org/team/'):
             continue

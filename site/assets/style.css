@@ -741,3 +741,17 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
   tbody td.review-reason{grid-area:4/1/5/3}
   tbody td.review-reason~td.source-links{grid-area:5/1/6/3}
 }
+
+/* Session 85087497 (2026-10-25): on the fresh 13:31Z board the first
+   picks.html row (ex-Zero Tenacity vs Spirit Academy, with a VRS comparison
+   line) put its probabilities at y=519 on a 320x568 phone — 12px below the
+   fixed tab bar (top y=507) — so the browser gate blocked publication.
+   Long team names are normal low-tier content, not an error. On short
+   phones, picks cards give back ~34px of vertical chrome (page-head margin,
+   caption padding, card padding/gaps); fonts and every line of content stay. */
+@media(max-width:650px) and (max-height:700px){
+  body[data-page=picks] .page-head{margin-bottom:10px}
+  body[data-page=picks] caption{padding:8px 11px;margin-bottom:8px}
+  body[data-page=picks] tbody tr{padding:12px;gap:10px 14px}
+  body[data-page=picks] td.team-col{padding-bottom:9px}
+}
