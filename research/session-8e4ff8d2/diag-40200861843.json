@@ -1,0 +1,57 @@
+{
+ "all_green": true,
+ "branch": "arena/8e4ff8d2-maltaproj4",
+ "commit": "8fd41e833cb3d30a3a9c15933f608c762739061e",
+ "failing": [],
+ "generated_at": null,
+ "run_id": "40200861843",
+ "snapshot": {
+  "coverage": "verified",
+  "fixtures_observed_at": "2026-10-25T14:10:37.578276Z",
+  "generated_at": "2026-10-25T14:14:09.378616Z",
+  "open": 16,
+  "picks": 16,
+  "priced": 16,
+  "rows": 78,
+  "unpicked_priced": [],
+  "unresolved": 0
+ },
+ "steps": [
+  {
+   "command": "verification-c6/audit_snapshot.py runtime/latest.json",
+   "failed": false,
+   "key": "row_audit",
+   "label": "independent-row-audit",
+   "markers": [],
+   "return_code": 0,
+   "tail": []
+  },
+  {
+   "command": "scripts.build --data runtime/latest.json",
+   "failed": false,
+   "key": "build",
+   "label": "build",
+   "markers": [],
+   "return_code": 0,
+   "tail": []
+  },
+  {
+   "command": "scripts.validate --data runtime/latest.json",
+   "failed": false,
+   "key": "validate",
+   "label": "validate (public/)",
+   "markers": [],
+   "return_code": 0,
+   "tail": []
+  },
+  {
+   "command": "verification-c6/audit_snapshot.py public/data/latest.json",
+   "failed": false,
+   "key": "published_audit",
+   "label": "published-row-audit",
+   "markers": [],
+   "return_code": 0,
+   "tail": []
+  }
+ ]
+}
