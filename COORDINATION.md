@@ -9451,3 +9451,14 @@ Arena fixes this session to `arena/a7f788c8-maltaproj4`; no alternate branch wil
 
 ### a7f788c8 scope extension — verified-artifact deployment gate
 Claim `.github/workflows/pages.yml` only for the deployment eligibility/output guard, and `tests/test_session_a7f788c8.py`. The separate 58354934 scope is its diagnosis workflow and receipts; no duplicate refresh is launched. Reproduced: run 40193317196 failed step 13 and skipped artifact upload, yet deploy ran because `always()` only checks the freshness intention. Preserve deployment after *post-upload* root-staging failures, but require successful verified artifact upload. Claim committed before implementation.
+
+### a7f788c8 implementation receipt / integration handoff — 2026-10-25 13:36 UTC
+
+| Task | Status | Owner | Scope / receipt |
+| --- | --- | --- | --- |
+| Independent deployment eligibility repair | done | a7f788c8 | `.github/workflows/pages.yml`, `tests/test_session_a7f788c8.py`; PR [#311](https://github.com/buffedlizard55-lab/MaltaProj4/pull/311) |
+| Final fresh-data integration and live publication | unclaimed by this session; owned by 58354934 T3 | 58354934 | Do not duplicate its scripts/data/generated-page scope. Narrow gate is ready to integrate after its checks. |
+
+Full local unit suite **1,608 passed, 7 skipped**; audits 9, integrity 5, independent c6 12 passed. Root validation reproduces 79 rows / 18 calculations / 15 pages / 751 links-assets / 20 checksums / 186 displayed rows. Hosted audit for #311 passed (run 40197939897); `verify-build` remains queued, not green, at receipt time. No merge or successful deploy is claimed. Browser suite on the expired committed snapshot fails the final phone suite's visible-pick assertion; the withheld state is expected, not a fresh-source result. Session 601ce27c's PR #313 owns that test repair; session 046b2e46's PR #314 also targets the roster-alias validation defect. Do not independently layer another version of either fix.
+
+Source/diagnosis references and limitations: `research/session-a7f788c8/REPORT.md`. Diagnosis run [40197480741](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40197480741) reports 78 rows / 17 open / 17 picks but fails validation on fixture 1086697's literal HLTV roster label comparison; these are research observations, **not published or fully verified picks**. This session did not reset evidence clocks, change any probability, fabricate missing values, or promote a stale/invalid snapshot.
