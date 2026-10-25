@@ -8,6 +8,9 @@ name: Diag e009964b (non-publishing)
 # exit code and log to this session branch, where they can be read through git.
 # It never deploys, never touches main, never changes a pick.
 on:
+  push:
+    branches: [arena/e009964b-maltaproj4]
+    paths-ignore: ['research/**']
   workflow_dispatch:
 
 permissions:
