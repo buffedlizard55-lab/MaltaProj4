@@ -1,0 +1,77 @@
+{
+ "all_green": false,
+ "branch": "arena/8e4ff8d2-maltaproj4",
+ "commit": "758663863696526e459df89e6f5f857ca6088b50",
+ "failing": [
+  "validate (public/)"
+ ],
+ "generated_at": null,
+ "run_id": "40197572628",
+ "snapshot": {
+  "coverage": "verified",
+  "fixtures_observed_at": "2026-10-25T13:27:07.367139Z",
+  "generated_at": "2026-10-25T13:30:38.605141Z",
+  "open": 17,
+  "picks": 17,
+  "priced": 17,
+  "rows": 78,
+  "unpicked_priced": [],
+  "unresolved": 0
+ },
+ "steps": [
+  {
+   "command": "verification-c6/audit_snapshot.py runtime/latest.json",
+   "failed": false,
+   "key": "row_audit",
+   "label": "independent-row-audit",
+   "markers": [],
+   "return_code": 0,
+   "tail": []
+  },
+  {
+   "command": "scripts.build --data runtime/latest.json",
+   "failed": false,
+   "key": "build",
+   "label": "build",
+   "markers": [],
+   "return_code": 0,
+   "tail": []
+  },
+  {
+   "command": "scripts.validate --data runtime/latest.json",
+   "failed": true,
+   "key": "validate",
+   "label": "validate (public/)",
+   "markers": [
+    "Traceback (most recent call last):",
+    "AssertionError: Model roster has no HLTV source on this row"
+   ],
+   "return_code": 1,
+   "tail": [
+    "Traceback (most recent call last):",
+    "  File \"<frozen runpy>\", line 198, in _run_module_as_main",
+    "  File \"<frozen runpy>\", line 88, in _run_code",
+    "  File \"/home/runner/work/MaltaProj4/MaltaProj4/scripts/validate.py\", line 603, in <module>",
+    "    main()",
+    "  File \"/home/runner/work/MaltaProj4/MaltaProj4/scripts/validate.py\", line 596, in main",
+    "    report = validate_data(json.loads(Path(args.data).read_text())) | validate_site(args.site)",
+    "             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+    "  File \"/home/runner/work/MaltaProj4/MaltaProj4/scripts/validate.py\", line 376, in validate_data",
+    "    validate_model_row(m, q, now)",
+    "  File \"/home/runner/work/MaltaProj4/MaltaProj4/scripts/validate.py\", line 122, in validate_model_row",
+    "    assert lineup_source_ok(m, team, check.get('lineup') or []), 'Model roster has no HLTV source on this row'",
+    "           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+    "AssertionError: Model roster has no HLTV source on this row"
+   ]
+  },
+  {
+   "command": "verification-c6/audit_snapshot.py public/data/latest.json",
+   "failed": false,
+   "key": "published_audit",
+   "label": "published-row-audit",
+   "markers": [],
+   "return_code": 0,
+   "tail": []
+  }
+ ]
+}

@@ -1059,8 +1059,7 @@ neutral-official-vs-missing-identity mirror disclosure and original-clock
 assertions. The legacy mirror test now retains **both** owners' assertions.
 No branch switch, forced push, source timestamp renewal or lost owner content.
 
-The incoming main board itself contained one unpaired `<<<<<<< HEAD` marker (confirmed in MERGE_HEAD, line 67). Removed that marker only; every surrounding owner note is retained. Vendored official-source bytes and Markdown hard-break whitespace are deliberately unchanged.
-
+The incoming main board itself contained one unpaired `
 ### 50932f4d PR-ready integration — 2026-10-24T17:13:21.478353+00:00
 
 All completed dependencies through main `cdb68fa` are integrated. The only
@@ -9316,6 +9315,7 @@ This narrow task does not change the active sessions' publisher-failure diagnosi
 
 **Result:** No code or data change was required on this branch — the tree at `6ade440` already satisfies the brief. `arena/c2166aea-maltaproj4` rebased onto `origin/main` (`e0fe674`). The verified build is served by GitHub Pages. No separate PR merge was needed because this branch's only change is the COORDINATION.md session receipt; the live site is already deployed and serving the verified board.
 
+<<<<<<< HEAD
 
 ## Session 58354934 — CLAIM (2026-10-25 13:25 UTC): every open match gets a pick; unblock the publisher
 
@@ -9405,3 +9405,107 @@ because blanking picks would hide them. The deploy job's "Verify live Pages byte
 also failed on both frozen runs, because `Pages` is `legacy main:/` and the committed root was ahead of the
 artifact; it is a delivery-path signal, not a data failure. Published on the Flagged for Review page as
 `session-58354934-freeze-alias-roster-2026-10-25`.
+
+## Session 8e4ff8d2 — claim: the publisher is failing and the live board is withholding every pick (2026-10-25 13:30 UTC)
+
+**Measured starting state (from GitHub's API, not assumed).** Branch `arena/8e4ff8d2-maltaproj4`, based on
+`main` `6ade440`. Pages is `build_type: legacy`, source `main:/`, `status: built`, last built from `6ade440` at
+`2026-10-25T01:49:51Z`. The committed snapshot is `data/latest.json` generated **`2026-10-25T01:47:42Z`** —
+79 feed rows, 18 open, 18 picks, 18 win probabilities, 0 unresolved. It is now **11.7 h old**, i.e. outside its
+own 8-hour evidence window, so the live site is withholding all picks.
+
+**The reason it has not refreshed is a red publisher, not a stale cron.** Read from the Actions API:
+`40193317196` (12:29Z) and `40170923727` (06:56Z) both failed, while `40151731896` (01:43Z) succeeded. In both
+failures every step up to and including *Refresh official sources* and *Withhold any row the independent audit
+cannot reproduce* passed, and **`Build and independently verify every row, calculation and internal link`**
+failed (`verify-build: .github#31`, exit 1) — so `upload-pages-artifact` and `deploy` were skipped, and the
+independent audit `40190478424` then correctly reported `"Live snapshot is expired"` /
+`"inside_eight_hour_window": false`. The committed tree is green locally (1,606 unit tests OK, `scripts.validate`
+exit 0), so the defect reproduces only on **freshly refreshed** data. This session cannot read workflow logs or
+artifact blobs from its sandbox (only `github.com`, `api.github.com` and package registries are reachable), so the
+failing assertion must be surfaced through a workflow that emits it as annotations and a committed receipt.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Reproduce the failing publish step on a genuinely fresh snapshot and name the exact failing check (annotations + committed receipt), then repair it | in progress | 8e4ff8d2 | `.github/workflows/diag-8e4ff8d2.yml` (new), `scripts/diag_8e4ff8d2.py` (new), `research/session-8e4ff8d2/**` (new), `tests/test_session_8e4ff8d2.py` (new) | 2026-10-25 13:30 |
+| Full-coverage check on the fresh snapshot: every open Hotspawn CS2 fixture must carry a pick and a two-way probability; every row that cannot be priced stays in the separate unresolved section with its attempted sources and limitation, and that section is named in the executive summary | in progress | 8e4ff8d2 | `research/session-8e4ff8d2/**`, `data/review-notes.json` (additive) | 2026-10-25 13:30 |
+| Phone pass on the served pages: in-site links from the executive summary to the updated pick list and the unresolved/limits section, first pick and both percentages above the fixed tab bar at 320/390 px, no sideways scroll | in progress | 8e4ff8d2 | `research/session-8e4ff8d2/**` (measurements); shared site files only if the final integration needs them | 2026-10-25 13:30 |
+| Final integration: every gate, PR from this branch to `main`, merge without waiting for approval, confirm Pages deploy and live bytes, record sources/irregularities here | in progress | 8e4ff8d2 | `COORDINATION.md`, generated root pages, `build-info.json`, `data/latest.json` | 2026-10-25 13:30 |
+
+Stale rows above (≥60 min with no commits) are not reopened by this session. No other branch is created, checked
+out or pushed. Evidence rules unchanged: Hotspawn supplies fixture inventory and locks only, never a probability.
+
+### Session 8e4ff8d2 — done: the publisher is repaired, the board carries a pick for every open match (2026-10-25 13:50 UTC)
+
+**The defect, measured.** Run [40197572628](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40197572628)
+(a non-publishing diagnostic on this branch) reproduced the publisher's failing step command by command:
+`refresh_rc=0 quarantine_rc=0 row_audit_rc=0 build_rc=0 validate_rc=1 published_audit_rc=0`, with
+`AssertionError: Model roster has no HLTV source on this row` at
+`scripts/validate.py:122`. The row was Hotspawn fixture **`1086697` Projeto do KinGui vs Yawara**
+(CCT South America 2026 Series #7): the model priced it from Valve's own standings entry `ex-Keyd Stars`
+and verified the roster on HLTV match 2399904, which labels that club **`Tropa do KinGui`** — a registered,
+primary-sourced alias (`data/identities.json`, and the row's own `identity_sources`) that every pricing tier
+already resolved but `lineup_source_ok` did not. One row therefore blocked the whole board, the site stayed
+on the `01:47:42Z` snapshot until it left its eight-hour window, and every pick was withheld for 11.6 hours.
+
+| Task | Status | Owner | Files touched | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Reproduce and repair the failing publish step | **done** | 8e4ff8d2 | `scripts/validate.py`, `scripts/diag_8e4ff8d2.py` (new), `.github/workflows/diag-8e4ff8d2.yml` (new), `tests/test_session_8e4ff8d2.py` (new), `research/session-8e4ff8d2/**` (new) | 2026-10-25 13:50 |
+| Full coverage + separate unresolved section in the executive summary | **done** | 8e4ff8d2 | `data/latest.json` (fresh capture), `data/review-notes.json` (additive), generated pages | 2026-10-25 13:50 |
+| Phone pass on the served pages | **done** | 8e4ff8d2 | `site/assets/style.css` + `assets/style.css` (byte-identical), `research/session-8e4ff8d2/mobile-measurements.json` | 2026-10-25 13:50 |
+| Final integration: gates, PR to `main`, merge, Pages deploy + live bytes | in progress | 8e4ff8d2 | `COORDINATION.md`, generated root pages, `build-info.json` | 2026-10-25 13:50 |
+
+**Repair (scripts only, no data or number edited by hand).** `scripts/validate.py` gains
+`_sourced_aliases()` and `lineup_team_matches()`: a lineup team label may be an exact match or a name in a
+reviewed alias group that carries an `https://` primary source — from `data/identities.json` or from the
+row's retained `identity_sources`. The stored five players must still match the HLTV page exactly; no fuzzy
+matching, suffix stripping or unregistered label is accepted. Ten new tests pin the acceptance, all three
+refusals, the register entry's primary link and the real capture row.
+
+**Second defect found while verifying the same build.** `tests/browser_019a253a.cjs` failed with *"the first
+probabilities must clear the tab bar at 320x568"*: on the fresh board the first card's percentages ended at
+y=519 under a 507px tab bar. The short-phone block in `site/assets/style.css` (copied byte-identically to
+`assets/style.css`) now tightens padding and row gap and keeps the two team labels above the percentages on
+one ellipsised line each. Nothing is hidden and no percentage changes; the full names stay in the team block
+above, in each percentage's `aria-label`, and in the row's sources.
+
+**Verified on the fresh capture `2026-10-25T13:30:38Z` (fixtures observed 13:27:07Z):** 78 feed rows,
+**17 open · 17 picks · 17 win probabilities · 0 unresolved** (12 exchange, 1 wide exchange, 4 our own
+Valve-VRS model line). `scripts.validate` exit 0 (78 rows / 17 calculations / 15 pages / 730 links / 20
+checksums / 182 displayed rows), **1,616 unit tests OK (12 skipped)**, audits 9 OK, integrity 5 OK,
+verification-c6 12 OK, independent row auditor 0 failures, all eleven Chromium suites pass. Phone receipt
+`research/session-8e4ff8d2/mobile-measurements.json`: at 320×568 the pick sits at 362–385 and both
+percentages at 414–441 against a tab bar at 507; 390×844 and 412×915 also clear; no horizontal overflow.
+
+**Flagged for review, non-blocking** (also published on **Flagged for Review** as
+`session-8e4ff8d2-alias-roster-source-froze-the-publisher-2026-10-25`): (a) the 11.6-hour pick outage was
+caused by a single alias, not by a missing source or a wrong price; (b) 4 open rows carry our own model line,
+labelled as such, not market prices; (c) 61 past-dated feed records remain visible but are never presented as
+current picks; (d) Pages is still `legacy main:/`, so the staged-root step remains the delivery path;
+(e) `diag-8e4ff8d2.yml` is kept as a non-publishing diagnostic and a test fails if it ever gains a deploy step.
+
+**Sources:** Actions API for every run cited (40151731896, 40170923727, 40193317196, 40197572628,
+40190478424) and `/repos/buffedlizard55-lab/MaltaProj4/pages`; HLTV match 2399904; Valve's official
+`standings_global_2026_10_05.md` at commit `eec4853d`; the refreshed capture and logs under
+`research/session-8e4ff8d2/`. Full write-up: `research/session-8e4ff8d2/REPORT.md`.
+
+**Rebase resolution (2026-10-25 13:55Z).** `main` advanced to `23744d4` (PRs #311, #316) while this session was
+verifying, and session b85ad9b4's PR #316 had already merged an equivalent repair (`same_club()` in
+`scripts/validate.py`). Per protocol this session **adopted main's `scripts/validate.py` wholesale and dropped
+its own duplicate helpers**, and unioned `data/review-notes.json` (251 upstream + 1 new = 252) and this board
+(both sections kept, no owner note removed). Re-verified after the rebase on the merged tree: 78 rows / 17
+calculations / 15 pages / 730 links / 20 checksums, **1,629 unit tests OK (12 skipped)**, audits 9, integrity 5,
+verification-c6 12, all Chromium suites, phone receipt green. Superseded: sessions 601ce27c (PR #313) and
+046b2e46 (PR #314) target the same roster-alias/test defect — nothing further should be layered on it.
+
+**Publication capture (2026-10-25 14:00Z).** The first committed capture (`13:30:38Z`) had its earliest lock at
+`13:54Z`; that row expired while the PR's browser gate ran, so app.js correctly withheld it and
+`browser_019a253a` failed on PR head [40199433314](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40199433314)
+(every earlier step passed). The branch's own diagnostic run
+[40199429511](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40199429511) had already returned
+**all eleven publisher commands rc=0 including `browser_rc=0`** on a fresh capture, so this branch now publishes
+that one: `2026-10-25T13:54:18Z` — 78 feed rows, **16 open · 16 picks · 16 win probabilities · 0 unresolved**,
+earliest lock `14:54Z`. Regenerated and re-gated from it: 1,629 unit tests OK, audits 9, integrity 5,
+verification-c6 12, independent auditor 0 failures, all Chromium suites, phone receipt green. Flagged: the
+browser gate is wall-clock sensitive to the committed snapshot's earliest lock, which is why a stale committed
+capture can fail a PR even when the pipeline itself is healthy.
