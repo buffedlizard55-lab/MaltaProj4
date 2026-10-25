@@ -1,0 +1,45 @@
+{
+ "run_id": "40197677823",
+ "sha": "795955a0503950676dd6619aa7d0559e2599b9a5",
+ "snapshot": {
+  "coverage": "verified",
+  "coverage_counts": {
+   "api": 78,
+   "lobby": 78,
+   "page": 78,
+   "retained": 78
+  },
+  "fixtures_observed_at": "2026-10-25T13:32:47.557893Z",
+  "generated_at": "2026-10-25T13:36:18.573529Z",
+  "method_mix": {
+   "bookmaker_fallback": 1,
+   "exchange": 11,
+   "exchange_wide": 1,
+   "model_vrs": 4
+  },
+  "open": 17,
+  "open_with_pick": 17,
+  "open_with_probability": 17,
+  "pick_without_probability": [],
+  "priced_without_pick": [],
+  "rows": 78,
+  "states": {
+   "not_open": 61,
+   "open": 17
+  },
+  "unresolved_without_attempts": [],
+  "unresolved_without_fixture_url": []
+ },
+ "started": null,
+ "step_rc": {
+  "build": "0",
+  "built-facts": "0",
+  "facts": "0",
+  "published-row-audit": "0",
+  "quarantine": "0",
+  "refresh": "0",
+  "row-audit": "0",
+  "unit": "0",
+  "validate": "1"
+ }
+}
