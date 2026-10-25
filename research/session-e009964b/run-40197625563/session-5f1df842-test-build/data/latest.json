@@ -1,0 +1,264 @@
+{
+  "schema_version": 2,
+  "generated_at": "2026-10-22T00:55:00Z",
+  "last_attempt_at": "2026-10-22T00:55:00Z",
+  "fixtures_observed_at": "2026-10-22T00:54:00Z",
+  "coverage": "verified",
+  "refresh_hours": 1,
+  "stale_after_hours": 8,
+  "coverage_counts": {
+    "api": 4,
+    "page": 4,
+    "lobby": 4,
+    "retained": 4
+  },
+  "issues": [],
+  "fixture_conflicts": [],
+  "inventory_changes": [],
+  "fixture_evidence": [],
+  "source_checks": [],
+  "matches": [
+    {
+      "id": "1",
+      "teams": [
+        "Alpha",
+        "Bravo"
+      ],
+      "team_ids": [
+        "a",
+        "b"
+      ],
+      "competition": "Test Cup",
+      "tier": "b",
+      "best_of": 3,
+      "start": "2026-10-23T10:00:00Z",
+      "lock": "2026-10-23T09:54:00Z",
+      "source_status": "scheduled",
+      "state": "open",
+      "source_url": "https://www.hotspawn.com/matches/alpha-vs-bravo-test-cup-1",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "flags": [],
+      "probabilities": [
+        0.62,
+        0.38
+      ],
+      "fair_odds": [
+        1.6129,
+        2.6316
+      ],
+      "pick": "Alpha",
+      "method": "exchange",
+      "evidence": [
+        {
+          "provider": "Polymarket",
+          "id": "m1",
+          "api_url": "https://gamma-api.polymarket.com/markets/m1",
+          "url": "https://polymarket.com/event/alpha-bravo",
+          "observed_at": "2026-10-22T00:50:00Z",
+          "updated_at": "2026-10-22T00:49:00Z"
+        }
+      ],
+      "attempts": [
+        {
+          "provider": "Polymarket",
+          "status": "resolved",
+          "url": "https://gamma-api.polymarket.com/events"
+        }
+      ],
+      "reason": null,
+      "expires_at": "2026-10-22T08:49:00Z"
+    },
+    {
+      "id": "2",
+      "teams": [
+        "Charlie",
+        "Delta"
+      ],
+      "team_ids": [
+        "c",
+        "d"
+      ],
+      "competition": "Test Cup",
+      "tier": "c",
+      "best_of": 3,
+      "start": "2026-10-24T10:00:00Z",
+      "lock": "2026-10-24T09:54:00Z",
+      "source_status": "scheduled",
+      "state": "open",
+      "source_url": "https://www.hotspawn.com/matches/charlie-vs-delta-test-cup-2",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "flags": [],
+      "probabilities": [
+        0.55,
+        0.45
+      ],
+      "fair_odds": [
+        1.8182,
+        2.2222
+      ],
+      "pick": "Charlie",
+      "method": "model_vrs",
+      "evidence": [
+        {
+          "provider": "Valve VRS model",
+          "id": "vrs-1",
+          "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/abc/live/2026/standings_global_2026_10_05.md",
+          "api_url": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/abc/live/2026/standings_global_2026_10_05.md",
+          "observed_at": "2026-10-22T00:50:00Z",
+          "updated_at": null,
+          "standings_as_of": "2026-10-05",
+          "standings_origin": "test fixture, not a live read",
+          "standings_commit": "abc",
+          "standings_file": "standings_global_2026_10_05.md",
+          "fixture_teams": [
+            "Charlie",
+            "Delta"
+          ],
+          "vrs_teams": [
+            "Charlie",
+            "Delta"
+          ],
+          "standings": [
+            10,
+            20
+          ],
+          "points": [
+            1500,
+            1400
+          ],
+          "rosters": [
+            [
+              "p1",
+              "p2",
+              "p3",
+              "p4",
+              "p5"
+            ],
+            [
+              "p6",
+              "p7",
+              "p8",
+              "p9",
+              "p10"
+            ]
+          ],
+          "roster_checks": [
+            {
+              "note": "unique label",
+              "overlap": null
+            },
+            {
+              "note": "unique label",
+              "overlap": null
+            }
+          ],
+          "details_urls": [
+            "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/abc/live/2026/details/charlie.md",
+            "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/abc/live/2026/details/delta.md"
+          ],
+          "raw_expected": [
+            0.5597,
+            0.4403
+          ],
+          "calibration_slope": 0.7986,
+          "probabilities": [
+            0.55,
+            0.45
+          ],
+          "formula_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/main/model/fit.js",
+          "calibration_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/main/modelfit.png"
+        }
+      ],
+      "attempts": [
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/events"
+        },
+        {
+          "provider": "Valve VRS model",
+          "status": "resolved",
+          "url": "https://github.com/ValveSoftware/counter-strike_regional_standings"
+        }
+      ],
+      "reason": "Originated line: Valve VRS model estimate, not a market price.",
+      "expires_at": "2026-10-22T08:50:00Z"
+    },
+    {
+      "id": "3",
+      "teams": [
+        "Echo",
+        "Foxtrot"
+      ],
+      "team_ids": [
+        "e",
+        "f"
+      ],
+      "competition": "Test Cup",
+      "tier": "c",
+      "best_of": null,
+      "start": "2026-10-25T10:00:00Z",
+      "lock": "2026-10-25T09:54:00Z",
+      "source_status": "scheduled",
+      "state": "open",
+      "source_url": "https://www.hotspawn.com/matches/echo-vs-foxtrot-test-cup-3",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "flags": [
+        "Research pick on one-sided Valve standings evidence."
+      ],
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": "Echo",
+      "vrs_research": {
+        "observed_at": "2026-10-22T00:50:00Z"
+      },
+      "method": "research_vrs_single",
+      "evidence": [],
+      "attempts": [
+        {
+          "provider": "HLTV",
+          "status": "unresolved",
+          "url": "https://www.hltv.org/matches"
+        }
+      ],
+      "reason": "No verified market line. Research pick only: Echo is listed in the official standings while Foxtrot is absent.",
+      "expires_at": "2026-10-22T08:50:00Z"
+    },
+    {
+      "id": "4",
+      "teams": [
+        "Golf",
+        "Hotel"
+      ],
+      "team_ids": [
+        "g",
+        "h"
+      ],
+      "competition": "Test Cup",
+      "tier": "c",
+      "best_of": null,
+      "start": "2026-10-26T10:00:00Z",
+      "lock": "2026-10-26T09:54:00Z",
+      "source_status": "scheduled",
+      "state": "open",
+      "source_url": "https://www.hotspawn.com/matches/golf-vs-hotel-test-cup-4",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "flags": [],
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
+      "evidence": [],
+      "attempts": [
+        {
+          "provider": "GG.BET",
+          "status": "error",
+          "url": "https://gg.bet/en/esports/counter-strike"
+        }
+      ],
+      "reason": "No verified market line; the bookmaker refused access.",
+      "expires_at": null
+    }
+  ],
+  "built_at": "2026-10-22T01:00:00Z"
+}
