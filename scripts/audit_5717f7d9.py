@@ -311,16 +311,19 @@ def _audit_exchange(m, generated, amap, findings, rec):
                                     f"Published {published} != raw outcome price {raw_price} for {team!r}.",
                                     [e.get("api_url")]))
     rec["checks"].append("probability re-derived from named raw outcome prices")
-    # gate geometry
+    # gate geometry. The documented rule is "spread <= 25 points"; use the same
+    # float-safe epsilon the primary gate uses (a computed 0.25000000000000006
+    # is 25 points, not a violation).
     spread = e.get("spread")
     liquidity = e.get("liquidity") or 0.0
+    eps = 1e-9
     if m["method"] == "exchange":
-        if spread is None or spread > STRICT_SPREAD:
+        if spread is None or spread > STRICT_SPREAD + eps:
             findings.append(Finding("fail", "spread_gate", m["id"],
                                     f"Strict exchange spread {spread} exceeds {STRICT_SPREAD}.",
                                     [e.get("api_url")]))
     else:
-        if spread is None or not (STRICT_SPREAD < spread <= WIDE_SPREAD_CEILING):
+        if spread is None or not (STRICT_SPREAD + eps < spread <= WIDE_SPREAD_CEILING + eps):
             findings.append(Finding("fail", "spread_gate", m["id"],
                                     f"Wide-exchange spread {spread} outside "
                                     f"({STRICT_SPREAD}, {WIDE_SPREAD_CEILING}].", [e.get("api_url")]))
@@ -437,8 +440,8 @@ def _audit_vrs(m, generated, standings, findings, rec):
             # duplicated label: prove the disambiguation, do not guess
             if len(same_label) > 1:
                 chk = overlap_by_team.get(key)
-                overlap = chk.get("overlap", 0) if chk else 0
-                if overlap < 3:
+                overlap = chk.get("overlap") if chk else None
+                if not isinstance(overlap, int) or overlap < 3:
                     findings.append(Finding("fail", "vrs_duplicate_label", m["id"],
                                             f"Duplicated Valve label {team!r} (standings "
                                             f"{[r['standing'] for r in same_label]}) selected without the "
@@ -447,11 +450,17 @@ def _audit_vrs(m, generated, standings, findings, rec):
                     rec["checks"].append(
                         f"duplicate label disambiguated by {overlap}/5 roster overlap -> standing {standing}")
         rec["checks"].append("points/standings/roster cross-checked against vendored Valve file")
-    # roster overlap: Valve treats >=3 shared players as the same club
+    # roster overlap: Valve treats >=3 shared players as the same club. A null
+    # overlap means roster continuity was not checked on this run (legal for a
+    # unique Valve label); it is neither a pass nor a failure here.
     for chk in e.get("roster_checks", []):
-        if chk.get("overlap", 0) < 3:
+        overlap = chk.get("overlap")
+        if overlap is None:
+            rec["checks"].append("roster continuity not checked this run (unique label)")
+            continue
+        if overlap < 3:
             findings.append(Finding("flag", "vrs_roster", m["id"],
-                                    f"Roster overlap {chk.get('overlap')} < 3 for {chk.get('lineup')}; "
+                                    f"Roster overlap {overlap} < 3 for {chk.get('lineup')}; "
                                     "identity rests on the alias/anchor register.", [e.get("url")]))
 
 

@@ -611,24 +611,13 @@
   },
   {
     "id": "1085542",
+    "state": "not_open",
     "teams": [
       "ex-Zero Tenacity",
       "Spirit Academy"
     ],
-    "method": "exchange",
-    "probabilities": [
-      0.59,
-      0.41
-    ],
-    "pick": "ex-Zero Tenacity",
-    "checks": [
-      "hotspawn source url",
-      "probabilities sum to 1",
-      "fair odds = 1/probability",
-      "pick = favourite",
-      "probability re-derived from named raw outcome prices",
-      "spread 0.020000000000000018, liquidity 1231.3608"
-    ]
+    "priced": false,
+    "result": "not-open row correctly unpriced"
   },
   {
     "id": "1079199",
@@ -648,7 +637,7 @@
       "fair odds = 1/probability",
       "pick = favourite",
       "probability re-derived from named raw outcome prices",
-      "spread 0.010000000000000009, liquidity 56383.9354"
+      "spread 0.010000000000000009, liquidity 50216.9431"
     ]
   },
   {
@@ -659,8 +648,8 @@
     ],
     "method": "exchange",
     "probabilities": [
-      0.425,
-      0.575
+      0.435,
+      0.565
     ],
     "pick": "RED Canids Academy",
     "checks": [
@@ -669,7 +658,7 @@
       "fair odds = 1/probability",
       "pick = favourite",
       "probability re-derived from named raw outcome prices",
-      "spread 0.010000000000000009, liquidity 3606.7518"
+      "spread 0.010000000000000009, liquidity 4405.6402"
     ]
   },
   {
@@ -711,7 +700,7 @@
       "fair odds = 1/probability",
       "pick = favourite",
       "probability re-derived from named raw outcome prices",
-      "spread 0.009999999999999898, liquidity 11259.7922"
+      "spread 0.009999999999999898, liquidity 12734.1153"
     ]
   },
   {
@@ -722,8 +711,8 @@
     ],
     "method": "exchange",
     "probabilities": [
-      0.425,
-      0.575
+      0.415,
+      0.585
     ],
     "pick": "paiN",
     "checks": [
@@ -732,7 +721,7 @@
       "fair odds = 1/probability",
       "pick = favourite",
       "probability re-derived from named raw outcome prices",
-      "spread 0.010000000000000009, liquidity 97121.4852"
+      "spread 0.010000000000000009, liquidity 95628.9358"
     ]
   },
   {
@@ -753,7 +742,9 @@
       "fair odds = 1/probability",
       "pick = favourite",
       "Glicko + Valve calibration re-derived from retained points",
-      "points/standings/roster cross-checked against vendored Valve file"
+      "points/standings/roster cross-checked against vendored Valve file",
+      "roster continuity not checked this run (unique label)",
+      "roster continuity not checked this run (unique label)"
     ]
   },
   {
@@ -764,8 +755,8 @@
     ],
     "method": "exchange",
     "probabilities": [
-      0.365,
-      0.635
+      0.37,
+      0.63
     ],
     "pick": "Off Chops",
     "checks": [
@@ -774,7 +765,7 @@
       "fair odds = 1/probability",
       "pick = favourite",
       "probability re-derived from named raw outcome prices",
-      "spread 0.22999999999999998, liquidity 7482.2646"
+      "spread 0.21999999999999997, liquidity 7542.8706"
     ]
   },
   {
@@ -815,7 +806,7 @@
       "fair odds = 1/probability",
       "pick = favourite",
       "probability re-derived from named raw outcome prices",
-      "spread 0.029999999999999916, liquidity 4257.4246"
+      "spread 0.029999999999999916, liquidity 4368.9746"
     ]
   },
   {
@@ -824,10 +815,10 @@
       "Rooster",
       "Abyssal"
     ],
-    "method": "exchange_wide",
+    "method": "exchange",
     "probabilities": [
-      0.43,
-      0.57
+      0.425,
+      0.575
     ],
     "pick": "Abyssal",
     "checks": [
@@ -836,7 +827,7 @@
       "fair odds = 1/probability",
       "pick = favourite",
       "probability re-derived from named raw outcome prices",
-      "spread 0.26000000000000006, liquidity 3287.697"
+      "spread 0.25000000000000006, liquidity 3344.207"
     ]
   },
   {
@@ -857,7 +848,7 @@
       "fair odds = 1/probability",
       "pick = favourite",
       "probability re-derived from named raw outcome prices",
-      "spread 0.010000000000000009, liquidity 17802.1168"
+      "spread 0.010000000000000009, liquidity 17552.1885"
     ]
   },
   {
@@ -878,7 +869,7 @@
       "fair odds = 1/probability",
       "pick = favourite",
       "probability re-derived from named raw outcome prices",
-      "spread 0.010000000000000009, liquidity 8750.6296"
+      "spread 0.010000000000000009, liquidity 8672.4318"
     ]
   },
   {
@@ -899,7 +890,7 @@
       "fair odds = 1/probability",
       "pick = favourite",
       "probability re-derived from named raw outcome prices",
-      "spread 0.030000000000000027, liquidity 14280.6291"
+      "spread 0.030000000000000027, liquidity 14340.9108"
     ]
   },
   {
@@ -920,7 +911,7 @@
       "fair odds = 1/probability",
       "pick = favourite",
       "probability re-derived from named raw outcome prices",
-      "spread 0.010000000000000009, liquidity 18967.9593"
+      "spread 0.010000000000000009, liquidity 19654.624"
     ]
   },
   {

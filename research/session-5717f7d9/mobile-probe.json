@@ -1,5 +1,5 @@
 {
-  "run_at": "2026-10-25T14:38:23.620Z",
+  "run_at": "2026-10-25T14:53:47.142Z",
   "viewports": [
     {
       "width": 320,
@@ -11,7 +11,7 @@
         {
           "page": "index",
           "horizontal_overflow": false,
-          "quicknav_top": 316,
+          "quicknav_top": 300,
           "updated_picks_link_above_fold": true,
           "mobile_tabs_present": true
         },

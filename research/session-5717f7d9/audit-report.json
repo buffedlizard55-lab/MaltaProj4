@@ -1,19 +1,18 @@
 {
   "auditor": "scripts/audit_5717f7d9.py",
-  "snapshot_generated_at": "2026-10-25T13:46:54.275795Z",
+  "snapshot_generated_at": "2026-10-25T14:22:27.352651Z",
   "independent_of_pipeline": true,
   "coverage_measured": {
-    "open": 17,
-    "with_pick": 17,
-    "with_prob": 17,
+    "open": 16,
+    "with_pick": 16,
+    "with_prob": 16,
     "unresolved": 0,
-    "not_open_feed_rows": 61
+    "not_open_feed_rows": 62
   },
   "method_mix": {
     "exchange": 11,
     "model_vrs": 4,
-    "bookmaker_fallback": 1,
-    "exchange_wide": 1
+    "bookmaker_fallback": 1
   },
   "site_checks": {
     "pages_checked": 10,
@@ -24,7 +23,7 @@
       "picks.html",
       "#unresolved-limits"
     ],
-    "pick_rows": 17
+    "pick_rows": 16
   },
   "finding_counts": {
     "info": 3

@@ -236,6 +236,21 @@ session is working in: no `scripts/`, no `tests/`, no workflow, no root page, no
 =======
 ## Session 5717f7d9 — CLAIM 2026-10-25 14:18 UTC (independent line-by-line audit of every-match pick coverage, the HLTV→esportsbook→model ladder, the unresolved/limitations section and mobile discoverability)
 
+> **Post-rebase addendum 2026-10-25 14:55 UTC — re-verified on the newer integrated snapshot.** After
+> rebasing onto current `main` (PRs #322–#333), the committed snapshot is `2026-10-25T14:22:27Z`:
+> **78 feed rows, 16 open · 16 picks · 16 win probabilities · 0 unresolved** (11 `exchange`,
+> 1 `bookmaker_fallback`, 4 `model_vrs`; 62 past rows unpriced). The auditor was hardened in two
+> measured ways while re-verifying: (a) float-safe spread epsilon `> 0.25 + 1e-9` so fixture 1082861's
+> exact 25-point boundary (`0.25000000000000006`, bid .30/ask .55) is correctly strict, matching
+> `scripts/core.py`; (b) `roster_checks.overlap = null` (fixture 1086697, unique Valve label, no HLTV
+> lineup that run) is treated as "continuity not checked", not a failure, while a *duplicated* label
+> still requires ≥3/5 overlap (The Huns → standing 122, 4/5). Re-run on this tree: auditor exit 0
+> (0 fail / 0 flag / 3 info), `tests.test_session_5717f7d9` 18 OK, full suite **1,728 OK (12
+> skipped)**, `scripts.validate` exit 0 (78 rows / 16 calc / 15 pages / 726 links / 20 checksums /
+> 181 displayed rows), mobile probe clean at 320/390/412. No new irregularity → no duplicate review
+> note; the 3 info findings map to existing notes `session-0cc1138a-1081606-no-match-page-2026-10-23`,
+> `book-access`, `esportsbook-access-probe-2026-10-16`.
+
 Board read before claiming from `origin/main` (== local `arena/5717f7d9-maltaproj4` base) at
 `d5b0739` (merge of PR #322). Measured, not assumed: committed `data/latest.json` generated
 `2026-10-25T13:46:54Z`, 78 feed rows, **17 open · 17 picks · 17 win probabilities · 0 unresolved**
