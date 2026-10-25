@@ -1,3 +1,60 @@
+## Session b85ad9b4 — DELIVERY RECEIPT: PR #316 merged, publisher green, live board verified (2026-10-25 14:30 UTC)
+
+**PR [#316](https://github.com/buffedlizard55-lab/MaltaProj4/pull/316) merged to `main` at 2026-10-25T13:39:41Z as
+`06915a8`**, without waiting for approval per protocol. It carried the root-cause repair for the outage this file
+opened with, and nothing else that belongs to another session.
+
+**What shipped.** `scripts/validate.py`: `lineup_source_ok` now resolves an HLTV heading through `same_club()`,
+which keeps the exact `plain_name` match as the primary rule and permits `data/identities.json` as the only
+bridge — both spellings in one entry, that entry linking an `https://` source, and the register keeping the
+fixture's two teams apart so one team's lineup can never satisfy the other. Exact case: fixture **1086697**
+`Projeto do KinGui vs Yawara` (model_vrs), whose roster was verified on HLTV match 2399918, where the club's
+heading is `Tropa do KinGui`. Also shipped: `tests/test_session_b85ad9b4.py` (11 regressions, including the four
+ways the bridge must refuse and a re-validation of every row of the captured snapshot), the non-publishing replay
+(`scripts/diag_b85ad9b4.py`, `.github/workflows/diag-b85ad9b4.yml`), `research/session-b85ad9b4/**` (return codes,
+logs, captured snapshot, `FIX.md`), and one appended, sourced Flagged-for-Review note
+(`session-b85ad9b4-alias-bridge-publication-failure-2026-10-25`).
+
+**The publisher is green again.** `main` advanced past the frozen root: the committed board is now
+`2026-10-25T13:46:54Z` (78 rows, 17 open, 17 picks, 17 probabilities, 0 unresolved) with `build-info.json`
+internally consistent — every one of the 20 manifest hashes matches the committed file beside it (checked with
+`git show origin/main:`), and the root pages were republished by the pipeline's own staging step
+(`6ca323d` "adopt the upstream same_club fix and republish the 13:46Z board"). Sessions 58354934 and c2166aea
+independently reached the same diagnosis; mine merged first, theirs then adopted `same_club` as upstream rather
+than stacking a second repair, which is the outcome the protocol asks for.
+
+**Live bytes, read from the public site at 14:2x UTC** (`fetch_page`, not a run annotation):
+`index.html` → *"Last checked 25 Oct 2026 · 13:56 UTC"*, *"Snapshot inside its 8-hour evidence window"*,
+**"16 open CS2 match(es) · 16 with a pick · 16 with a win probability · 0 unresolved"**, "12 from betting markets ·
+4 from our own VRS model line", in-site routes *Updated picks →*, *Unresolved & limits →*, *All matches →*, and the
+phone bottom bar **Home · Picks · Unresolved · Matches · Analysis**. Next pick: `Infinite vs BRUTE`, **BRUTE
+56.5%**, Polymarket, with a link to its evidence.
+`picks.html` → 16 rows, each with **both** teams' percentages, the pick, the method (Exchange line / Our model
+line / Listing estimate), the limitation text, and per-row source links (Hotspawn, Polymarket, Valve standings,
+HLTV, Thunderpick via BO3.gg). The exact row that froze publication — **1086697 Projeto do KinGui vs Yawara** —
+now publishes as `OUR MODEL LINE (VRS) 1.96 / 2.04`, pick *Projeto do KinGui*, with its Valve standings and HLTV
+fixture links.
+
+**Gates run in this session on the merged tree:** `scripts.validate` 78 rows / 17 calculations / 15 pages / 730
+links / 20 checksums / 182 displayed rows; `unittest discover -s tests` **1,617 tests OK (12 skipped)**; audits
+9 OK; `verification-95b588c2` 5 OK; `verification-c6` 12 OK; `verification-c6/audit_snapshot.py` 0 failures; and
+**all twelve Chromium suites pass** with `"failures": []` (phone board at 320/390/412 showing `Infinite vs BRUTE`,
+43.5% / 56.5%, pick `BRUTE`, above the fixed tab bar).
+
+**Flagged for review, non-blocking.**
+(a) The repair widens what the validator accepts as an HLTV roster source; it is gated on the sourced identity
+register, but it is a widening, and it is published on the Flagged for Review page for manual confirmation.
+(b) At 14:25Z the served `build-info.json` still returned the superseded `2026-10-25T01:47:42Z` manifest (79 rows)
+while `index.html` and `picks.html` served the current 13:56 board. The **committed** tree is internally
+consistent (all 20 manifest hashes match), so this is a per-file CDN/propagation artefact of the legacy
+`build_type: legacy` deployment, not a bad commit; it makes the freshness gate fail open (it publishes rather
+than skips), so it cannot withhold picks. Watch it across the next slots.
+(c) This session's own intermediate commit `2e1c710` (a 13:32Z staged board) was superseded by the pipeline's
+newer 13:46Z build and is **not** merged; the branch was reconciled to `origin/main` taking main's generated
+artefacts, so nothing stale can regress if the branch is ever merged.
+
+---
+
 # Shared task board
 
 ## Session b85ad9b4 — CLAIM 2026-10-25 13:30 UTC (the publisher is red; the live board withholds every pick)
