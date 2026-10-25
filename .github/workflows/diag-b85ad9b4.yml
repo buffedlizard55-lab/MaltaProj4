@@ -1,0 +1,57 @@
+name: Publication replay (non-publishing) — session b85ad9b4
+
+# Diagnostic only. It never publishes to Pages and never deploys: it replays the
+# exact commands that pages.yml runs, records the return code and full output of
+# each, and commits the bundle to the session branch. The job log of this
+# repository's runs is not readable from the authoring sandbox (it redirects to
+# blob storage, outside the allowlist), so the committed bundle is the read-back
+# channel. See scripts/diag_b85ad9b4.py for why each command is there.
+on:
+  workflow_dispatch:
+  push:
+    branches: [arena/b85ad9b4-maltaproj4]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: diag-b85ad9b4-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  replay:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[diag]')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Replay every publication step and record its return code
+        env:
+          # Read-only token for Valve's public standings index only.
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python -m scripts.diag_b85ad9b4 --out research/session-b85ad9b4
+      - name: Commit the replay bundle (no publication)
+        if: always()
+        run: |
+          git config user.name "cs2-scout-diag"
+          git config user.email "cs2-scout-diag@users.noreply.github.com"
+          git add -A research/session-b85ad9b4
+          if git diff --cached --quiet; then
+            echo "No replay bundle to commit."
+            exit 0
+          fi
+          git commit -m "Publication replay bundle from run ${GITHUB_RUN_ID} [diag]"
+          for attempt in 1 2 3; do
+            if git pull --rebase --autostash origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}"; then
+              exit 0
+            fi
+            git rebase --abort >/dev/null 2>&1 || true
+            sleep $((attempt * 5))
+          done
+          echo "::error::Could not push the replay bundle after three attempts."
+          exit 1

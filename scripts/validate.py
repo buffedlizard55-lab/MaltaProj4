@@ -63,27 +63,35 @@ def reconstruct_quote(q, schema_version=1):
 
 
 
-def same_club(label, team):
-    """Whether an HLTV page label names the same club as the fixture label.
+def same_club(m, team, label):
+    """Whether an HLTV heading names the same club as the fixture's team label.
 
-    HLTV's page heading and the Hotspawn fixture label do not always match:
-    fixture 1086697 is listed by Hotspawn as ``Projeto do KinGui`` while the
-    HLTV match page it resolves to calls the same club ``Tropa do KinGui``.
-    That mapping is a source-backed entry in ``data/identities.json`` and the
-    rest of ``validate_model_row`` already accepts it (``norm(team) ==
-    norm(label)``, "exact or verified alias"). The roster check must accept the
-    same aliases, otherwise a perfectly sourced lineup is called unsourced and
-    the whole publication is refused -- which is exactly what happened at
-    2026-10-25T06:41Z and 12:29Z, leaving every pick on the live board
-    withheld. Nothing is loosened here: ``norm`` only folds case/diacritics and
-    applies aliases that carry their own primary source in the register.
+    An exact folded match (``plain_name``) is the primary rule and is unchanged.
+    When Hotspawn and HLTV spell one club differently — e.g. Hotspawn
+    ``Projeto do KinGui`` and HLTV ``Tropa do KinGui`` on fixture 1086697 — the
+    identity register (``data/identities.json``) is the only bridge this project
+    accepts, because every entry there names its primary source and its basis.
+    The register is used here under the same rules as elsewhere in this module
+    (see the alias assertions in ``validate_data``): both spellings must sit
+    inside one entry, that entry must link an https source, and the register must
+    keep this fixture's two teams apart, so a lineup published for one team can
+    never satisfy the other. No fuzzy or substring matching is used.
+
+    Session b85ad9b4: without this bridge the offline re-check of the roster
+    continuity behind an originated VRS line failed on a correct row, which
+    failed ``scripts.validate``, which failed the publisher's build step, which
+    froze the published board and left the site withholding every pick
+    (run 40193317196, 2026-10-25 12:29Z).
     """
-    if not isinstance(label, str) or not isinstance(team, str):
+    if plain_name(label) == plain_name(team):
+        return True
+    keys = [norm(t) for t in (m.get('teams') or []) if isinstance(t, str)]
+    if len(set(keys)) != len(keys):
         return False
-    try:
-        return norm(label) == norm(team)
-    except ValueError:
-        return False
+    pair = {plain_name(team), plain_name(label)}
+    return any(pair <= {plain_name(n) for n in item.get('names') or []}
+               and str(item.get('source') or '').startswith('https://')
+               for item in IDENTITIES)
 
 
 def lineup_source_ok(m, team, lineup):
@@ -95,16 +103,15 @@ def lineup_source_ok(m, team, lineup):
     be re-checked offline, so they are left to the other identity assertions
     (``label_count``) rather than being silently treated as sourced.
 
-    Team labels are compared with :func:`same_club`, i.e. exact after
-    case/diacritic folding *and* through the verified identity register, because
-    HLTV and Hotspawn publish different (registered) names for the same club.
-    The player list itself must always match exactly.
+    The team name is matched with ``same_club`` so a club whose HLTV heading
+    differs from the Hotspawn label can still be re-checked, but only through the
+    sourced identity register.
     """
     want = sorted(plain_name(x) for x in (lineup or []))
     if not want:
         return False
     for item in (m.get('hltv_context') or {}).get('lineups') or []:
-        if same_club(item.get('team'), team):
+        if same_club(m, team, item.get('team') or ''):
             if sorted(plain_name(x) for x in item.get('players') or []) == want:
                 return True
     # A retained lineup receipt (data/lineup-receipts.json) is another HLTV
@@ -115,14 +122,14 @@ def lineup_source_ok(m, team, lineup):
         if receipt.get('teams') != list(m.get('teams') or []):
             continue
         for item in receipt.get('lineups') or []:
-            if not same_club(item.get('team'), team):
+            if not same_club(m, team, item.get('team') or ''):
                 continue
             if not str(item.get('source') or '').startswith('https://www.hltv.org/matches/'):
                 continue
             if sorted(plain_name(x) for x in item.get('players') or []) == want:
                 return True
     for item in (m.get('hltv_team_pages') or {}).get('teams') or []:
-        if not same_club(item.get('team'), team):
+        if not same_club(m, team, item.get('team') or ''):
             continue
         if not str(item.get('url') or '').startswith('https://www.hltv.org/team/'):
             continue

@@ -1,5 +1,12 @@
 """Session 58354934 — the 2026-10-25 publication freeze and its two fixes.
 
+``scripts.validate.same_club`` was landed independently by session b85ad9b4 on
+main (same root cause, same register-only bridge). This branch adopts that
+upstream implementation rather than keeping a second copy; the tests below pin
+its behaviour against the real freeze labels. The second fix — the row-scoped
+validator backstop in ``scripts.quarantine`` — is this session's and is not on
+main.
+
 Measured failure: publication runs 40170923727 (06:41Z) and 40193317196
 (12:29Z) both died at *Build and independently verify every row, calculation
 and internal link* with
@@ -103,16 +110,19 @@ def open_snapshot(rows=1):
 
 
 class VerifiedAliasRosterTests(unittest.TestCase):
+    ROW = {'teams': ['Projeto do KinGui', 'Yawara']}
+
     def test_registered_alias_is_the_same_club(self):
         # The exact pair from the freeze: one canonical club, two published labels.
-        self.assertTrue(same_club('Tropa do KinGui', 'Projeto do KinGui'))
-        self.assertTrue(same_club('Projeto do KinGui', 'Tropa do KinGui'))
-        self.assertTrue(same_club('ex-Keyd Stars', 'Projeto do KinGui'))
+        self.assertTrue(same_club(self.ROW, 'Projeto do KinGui', 'Tropa do KinGui'))
+        self.assertTrue(same_club(self.ROW, 'Projeto do KinGui', 'ex-Keyd Stars'))
+        self.assertTrue(same_club(self.ROW, 'Yawara', 'Yawara'))
 
     def test_a_different_club_is_never_accepted(self):
-        self.assertFalse(same_club('Yawara', 'Projeto do KinGui'))
-        self.assertFalse(same_club('', 'Projeto do KinGui'))
-        self.assertFalse(same_club(None, 'Projeto do KinGui'))
+        self.assertFalse(same_club(self.ROW, 'Projeto do KinGui', 'Yawara'))
+        self.assertFalse(same_club(self.ROW, 'Projeto do KinGui', ''))
+        # A row whose two labels fold together cannot tell its own lineups apart.
+        self.assertFalse(same_club({'teams': ['Yawara', 'yawara']}, 'Projeto do KinGui', 'Tropa do KinGui'))
 
     def test_alias_mapped_hltv_lineup_sources_the_roster(self):
         lineup = ['drg', 'ALLE', 'ckzao', 'xureba', 'lash']
