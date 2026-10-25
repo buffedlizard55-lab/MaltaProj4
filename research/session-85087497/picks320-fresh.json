@@ -1,0 +1,388 @@
+=== picks ===
+{
+ "blocks": [
+  {
+   "tag": "SCRIPT",
+   "cls": "",
+   "id": "coverage-data",
+   "top": 0,
+   "bottom": 0,
+   "h": 0,
+   "text": "[{\"id\":\"1052746\",\"state\":\"not_open\",\"start\":\"2026-06-26T10:30:00Z\",\"lock\":\"2026-06-26T10:2"
+  },
+  {
+   "tag": "A",
+   "cls": "skip",
+   "id": "",
+   "top": -80,
+   "bottom": -34,
+   "h": 46,
+   "text": "Skip to content"
+  },
+  {
+   "tag": "ASIDE",
+   "cls": "sidebar",
+   "id": "",
+   "top": 0,
+   "bottom": 0,
+   "h": 0,
+   "text": "hotspawnCS2 SCOUTRESEARCH DESKHomePicksUnresolvedMatchesAnalysisReviewSourcesAutomatic che"
+  },
+  {
+   "tag": "DIV",
+   "cls": "shell",
+   "id": "",
+   "top": 0,
+   "bottom": 8703,
+   "h": 8703,
+   "text": "hotspawnCS2 SCOUTCS2Counter-Strike 2 / Research dashboardLast check: 25 Oct · 13:31 UTC Sn"
+  },
+  {
+   "tag": "DIV",
+   "cls": "notice error",
+   "id": "runtime-stale",
+   "top": 0,
+   "bottom": 0,
+   "h": 0,
+   "text": "Snapshot expired or timestamp unverified. Current picks are withheld. The schedule is a ta"
+  },
+  {
+   "tag": "NOSCRIPT",
+   "cls": "",
+   "id": "",
+   "top": 0,
+   "bottom": 0,
+   "h": 0,
+   "text": "<div class=\"notice error\"><strong>Live expiry checks require JavaScript.</strong> Treat al"
+  },
+  {
+   "tag": "DIV",
+   "cls": "page-head",
+   "id": "",
+   "top": 91,
+   "bottom": 205,
+   "h": 114,
+   "text": "The pick boardUpdated CS2 picks.Every open Hotspawn CS2 match: our pick, both supported wi"
+  },
+  {
+   "tag": "NAV",
+   "cls": "section-nav",
+   "id": "",
+   "top": 8220,
+   "bottom": 8334,
+   "h": 114,
+   "text": "All open matches (17)No percentage (0)No market line (4)All matches"
+  },
+  {
+   "tag": "DETAILS",
+   "cls": "method-details board-method",
+   "id": "",
+   "top": 8350,
+   "bottom": 8418,
+   "h": 68,
+   "text": "How picks, model lines & blanks workOne complete board: market probabilities first, our la"
+  },
+  {
+   "tag": "DIV",
+   "cls": "filters",
+   "id": "",
+   "top": 8010,
+   "bottom": 8204,
+   "h": 194,
+   "text": "Search team, tournament or match IDShowNo percentageAll entriesOpen matchesWith probabilit"
+  },
+  {
+   "tag": "DIV",
+   "cls": "table-wrap",
+   "id": "",
+   "top": 217,
+   "bottom": 7988,
+   "h": 7771,
+   "text": "Whole-match winner only. Blank percentages = unverified; never a default 50/50. Times UTC."
+  },
+  {
+   "tag": "DIV",
+   "cls": "panel empty",
+   "id": "filter-empty",
+   "top": 0,
+   "bottom": 0,
+   "h": 0,
+   "text": "No matches fit these filters. Try another team, event or status."
+  },
+  {
+   "tag": "NOSCRIPT",
+   "cls": "",
+   "id": "",
+   "top": 0,
+   "bottom": 0,
+   "h": 0,
+   "text": "<p class=\"notice info\">JavaScript is off. All rows below are available; filters and live e"
+  }
+ ],
+ "firstRow": {
+  "box": {
+   "top": 280,
+   "bottom": 736,
+   "h": 456
+  },
+  "match": "1085542",
+  "text": "ex-Zero TenacityvsSpirit AcademyCCT Europe 2026 Series #11 · B25 Oct · 14:00UTC · locks 13:54ex-Zero TenacitySpirit Academy59.5%40.5%OUR FAIR LINE · 1.68 / 2.47VRS model: 59.3% / 40.7%ex-Zero TenacityExchange lineView each attempted source ",
+  "pick": {
+   "top": 396,
+   "bottom": 443,
+   "h": 47
+  },
+  "prob": {
+   "top": 493,
+   "bottom": 519,
+   "h": 26
+  },
+  "cells": [
+   {
+    "cls": "team-col",
+    "top": 297,
+    "bottom": 382,
+    "h": 85,
+    "text": "ex-Zero TenacityvsSpirit AcademyCCT Europe 2026 Series #11 · B"
+   },
+   {
+    "cls": "time-cell",
+    "top": 457,
+    "bottom": 585,
+    "h": 128,
+    "text": "25 Oct · 14:00UTC · locks 13:54"
+   },
+   {
+    "cls": "",
+    "top": 457,
+    "bottom": 585,
+    "h": 128,
+    "text": "ex-Zero TenacitySpirit Academy59.5%40.5%OUR FAIR LINE · 1.68 / 2.47VRS"
+   },
+   {
+    "cls": "pick-cell",
+    "top": 396,
+    "bottom": 443,
+    "h": 47,
+    "text": "ex-Zero TenacityExchange line"
+   },
+   {
+    "cls": "review-reason",
+    "top": 599,
+    "bottom": 623,
+    "h": 24,
+    "text": "View each attempted source →"
+   },
+   {
+    "cls": "source-links",
+    "top": 637,
+    "bottom": 719,
+    "h": 82,
+    "text": "Hotspawn ↗Evidence & linesPolymarket ↗Observed 25 Oct · 13:25 UTCExpir"
+   }
+  ]
+ },
+ "tab": {
+  "top": 507,
+  "bottom": 568,
+  "h": 61
+ },
+ "card": null
+}
+=== index ===
+{
+ "blocks": [
+  {
+   "tag": "SCRIPT",
+   "cls": "",
+   "id": "coverage-data",
+   "top": 0,
+   "bottom": 0,
+   "h": 0,
+   "text": "[{\"id\":\"1052746\",\"state\":\"not_open\",\"start\":\"2026-06-26T10:30:00Z\",\"lock\":\"2026-06-26T10:2"
+  },
+  {
+   "tag": "A",
+   "cls": "skip",
+   "id": "",
+   "top": -80,
+   "bottom": -34,
+   "h": 46,
+   "text": "Skip to content"
+  },
+  {
+   "tag": "ASIDE",
+   "cls": "sidebar",
+   "id": "",
+   "top": 0,
+   "bottom": 0,
+   "h": 0,
+   "text": "hotspawnCS2 SCOUTRESEARCH DESKHomePicksUnresolvedMatchesAnalysisReviewSourcesAutomatic che"
+  },
+  {
+   "tag": "DIV",
+   "cls": "shell",
+   "id": "",
+   "top": 0,
+   "bottom": 6786,
+   "h": 6786,
+   "text": "hotspawnCS2 SCOUTCS2Counter-Strike 2 / Research dashboardLast check: 25 Oct · 13:31 UTC Sn"
+  },
+  {
+   "tag": "DIV",
+   "cls": "notice error",
+   "id": "runtime-stale",
+   "top": 0,
+   "bottom": 0,
+   "h": 0,
+   "text": "Snapshot expired or timestamp unverified. Current picks are withheld. The schedule is a ta"
+  },
+  {
+   "tag": "NOSCRIPT",
+   "cls": "",
+   "id": "",
+   "top": 0,
+   "bottom": 0,
+   "h": 0,
+   "text": "<div class=\"notice error\"><strong>Live expiry checks require JavaScript.</strong> Treat al"
+  },
+  {
+   "tag": "DIV",
+   "cls": "page-head",
+   "id": "",
+   "top": 80,
+   "bottom": 105,
+   "h": 25,
+   "text": "Executive summaryCS2 picks & probabilities.Every open Hotspawn CS2 match, with our pick fi"
+  },
+  {
+   "tag": "DIV",
+   "cls": "fresh-strip live",
+   "id": "freshness-strip",
+   "top": 113,
+   "bottom": 284,
+   "h": 170,
+   "text": "Last checked 25 Oct 2026 · 13:31 UTC · 9m ago · fixture evidence 25 Oct 2026 · 13:27 UTC ·"
+  },
+  {
+   "tag": "SECTION",
+   "cls": "exec-bar",
+   "id": "exec-summary",
+   "top": 3932,
+   "bottom": 4169,
+   "h": 237,
+   "text": "Executive summaryEvery one of the 17 open matches has a pick, and every pick carries a win"
+  },
+  {
+   "tag": "NAV",
+   "cls": "exec-quicknav",
+   "id": "exec-quicknav",
+   "top": 290,
+   "bottom": 346,
+   "h": 57,
+   "text": "Executive summary · 17/17 picks · 0 unresolved · 61 past feed rows are not open.Updated pi"
+  },
+  {
+   "tag": "DETAILS",
+   "cls": "briefing-more",
+   "id": "",
+   "top": 4824,
+   "bottom": 4892,
+   "h": 68,
+   "text": "Site guide, navigation & full briefingExecutive summaryWhere the updated picks areThis sit"
+  },
+  {
+   "tag": "SECTION",
+   "cls": "panel glance",
+   "id": "picks-at-a-glance",
+   "top": 348,
+   "bottom": 3926,
+   "h": 3578,
+   "text": "Every open matchPicks at a glanceStart-time order; each card shows both teams' win chances"
+  },
+  {
+   "tag": "SECTION",
+   "cls": "panel",
+   "id": "unresolved-limits",
+   "top": 5008,
+   "bottom": 6489,
+   "h": 1482,
+   "text": "Executive summary · unresolved picks & limitationsUnresolved picks, and why a pick can be "
+  },
+  {
+   "tag": "SECTION",
+   "cls": "panel",
+   "id": "unresolved-picks",
+   "top": 4181,
+   "bottom": 4792,
+   "h": 611,
+   "text": "Executive summary · unresolved picks & limitationsPicks without a win probability — and ex"
+  }
+ ],
+ "firstRow": {
+  "box": {
+   "top": 6981,
+   "bottom": 7505,
+   "h": 524
+  },
+  "match": "1085542",
+  "text": "ex-Zero TenacityvsSpirit AcademyCCT Europe 2026 Series #11 · B25 Oct · 14:00UTC · locks 13:54ex-Zero TenacitySpirit Academy59.5%40.5%OUR FAIR LINE · 1.68 / 2.47VRS model: 59.3% / 40.7%ex-Zero TenacityExchange lineHotspawn ↗Evidence & linesP",
+  "pick": {
+   "top": 7097,
+   "bottom": 7144,
+   "h": 47
+  },
+  "prob": {
+   "top": 7209,
+   "bottom": 7268,
+   "h": 59
+  },
+  "cells": [
+   {
+    "cls": "team-col",
+    "top": 6998,
+    "bottom": 7083,
+    "h": 85,
+    "text": "ex-Zero TenacityvsSpirit AcademyCCT Europe 2026 Series #11 · B"
+   },
+   {
+    "cls": "time-cell",
+    "top": 7158,
+    "bottom": 7348,
+    "h": 190,
+    "text": "25 Oct · 14:00UTC · locks 13:54"
+   },
+   {
+    "cls": "",
+    "top": 7158,
+    "bottom": 7348,
+    "h": 190,
+    "text": "ex-Zero TenacitySpirit Academy59.5%40.5%OUR FAIR LINE · 1.68 / 2.47VRS"
+   },
+   {
+    "cls": "pick-cell",
+    "top": 7097,
+    "bottom": 7144,
+    "h": 47,
+    "text": "ex-Zero TenacityExchange line"
+   },
+   {
+    "cls": "source-links",
+    "top": 7362,
+    "bottom": 7488,
+    "h": 126,
+    "text": "Hotspawn ↗Evidence & linesPolymarket ↗Observed 25 Oct · 13:25 UTCExpir"
+   }
+  ]
+ },
+ "tab": {
+  "top": 507,
+  "bottom": 568,
+  "h": 61
+ },
+ "card": {
+  "top": 354,
+  "bottom": 561,
+  "h": 207
+ }
+}

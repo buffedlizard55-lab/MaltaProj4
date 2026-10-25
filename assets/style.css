@@ -761,3 +761,35 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
     max-width:50%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis
   }
 }
+
+/* Session 85087497 (2026-10-25): on the fresh 13:31Z board the first
+   picks.html row (ex-Zero Tenacity vs Spirit Academy, with a VRS comparison
+   line) put its probabilities at y=519 on a 320x568 phone — 12px below the
+   fixed tab bar (top y=507) — so the browser gate blocked publication.
+   Session 58354934 measured the same deficit independently on the 13:28Z
+   board and compacted the card above; this block returns the remaining
+   chrome (page-head margin, caption padding, card padding/gaps) so long
+   low-tier team names keep headroom. Fonts and every line of content stay. */
+@media(max-width:650px) and (max-height:700px){
+  body[data-page=picks] .page-head{margin-bottom:10px}
+  body[data-page=picks] caption{padding:8px 11px;margin-bottom:8px}
+  body[data-page=picks] tbody tr{padding:12px;gap:10px 14px}
+  body[data-page=picks] td.team-col{padding-bottom:9px}
+}
+
+/* Session 9fca16ca final integration (2026-10-25): after merging the short-phone
+   picks.html compaction, the home-page glance card's second probability measured
+   y=486..517 at 320x568 while the fixed tab bar began at y=507, so
+   tests/browser_ce45f672.cjs correctly failed the build. Recover the measured
+   10px from duplicate short-phone chrome only: list top margin, card padding,
+   the gap above the pick, pick padding, and score row gap. Both percentages,
+   team labels, pick, time and all links remain rendered on the first screen. */
+@media(max-width:650px) and (max-height:700px){
+  body[data-page="index"] #picks-at-a-glance>.glance-list{margin-top:2px}
+  body[data-page="index"] .glance-card-mobile{padding:8px 11px;margin-bottom:6px}
+  body[data-page="index"] .glance-card-top{margin-bottom:2px}
+  body[data-page="index"] .glance-card-teams{line-height:1.15}
+  body[data-page="index"] .glance-card-pick{padding:5px 10px;gap:3px;margin-bottom:4px}
+  body[data-page="index"] .glance-card-scores{gap:2px}
+  body[data-page="index"] .glance-card-meta{margin-top:4px}
+}

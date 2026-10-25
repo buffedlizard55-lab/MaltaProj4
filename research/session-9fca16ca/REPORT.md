@@ -28,15 +28,15 @@ All eleven current exchange quotes and the researched BO3/Thunderpick line repro
 
 | Gate | Result |
 | --- | --- |
-| `python -m unittest discover -s tests` | **1,719 tests OK**, 12 skipped |
+| `python -m unittest discover -s tests` | **1,747 tests OK**, 13 skipped |
 | `python -m unittest discover -s audits` | 9 OK |
 | `verification-95b588c2/test_integrity.py` | 5 OK |
 | `python -m unittest discover -s verification-c6` | 12 OK |
-| `scripts.validate --site .` and `--site public` | 78 rows, 16 reproduced calculations, 15 pages, 726 links/assets, 20 checksums, 181 displayed rows |
+| `scripts.validate --site .` and `--site public` | 78 rows, 16 reproduced calculations, 15 pages, 727 links/assets, 20 checksums, 181 displayed rows |
 | `verification-c6/audit_snapshot.py public/data/latest.json` | 0 failures |
 | `research/session-bd650209/verify_board.py` | 16/16 open rows PASS |
 | `scripts.coverage_contract` | 16 open, 12 market, 4 model, 0 unresolved, 0 expired, 0 problems |
-| `npm run test:browser` | all 13 Chromium suites pass; no horizontal overflow at 320/390/412px; both percentages and the pick clear the fixed phone tab bar |
+| `npm run test:browser` | all 13 Chromium suites pass; no horizontal overflow at 320/390/412px; both percentages and the pick clear the fixed phone tab bar. At the later wall-clock time of the final run the browser correctly withheld the first fixture after its 14:54Z lock, so the live counters read 15 current picks while the dated snapshot has 16 open at its own 14:22Z instant. |
 | `research/session-9fca16ca/build_report.py` | 16/16 open rows, 0 row/HTML/receipt failures, 20/20 manifest checksums, 0 concurrent quote differences |
 
 Logs are in [`logs/`](logs/) and the generated receipt is [`build-info.json`](../../build-info.json) (`2026-10-25T14:52:07.516599Z`). A final rebase caught and fixed a double-escaped ampersand in a newly added HLTV analytics link label; the regression is pinned in `tests/test_session_9fca16ca.py` and published on Flagged for Review. The publisher uses a 15-minute cron (`:04`, `:19`, `:34`, `:49`) plus a 10-minute freshness watchdog, with an eight-hour evidence window and browser-side expiry; this exceeds the requested 4–8-hour refresh target without weakening expiry rules.
@@ -51,5 +51,7 @@ Logs are in [`logs/`](logs/) and the generated receipt is [`build-info.json`](..
 - All four originated lines use Valve's 2026-10-05 standings, which are inside the published model age limit but are a model input, not a live bookmaker price.
 - [Final-integration double-escaped summary link](https://buffedlizard55-lab.github.io/MaltaProj4/review.html#session-9fca16ca-double-escaped-summary-link-2026-10-25): fixed and regression-tested.
 - The legacy `main:/` Pages build and the Actions artifact can show different receipt timestamps while a deployment is building; the site itself remains inside its evidence window and `scripts.verify_live.py` is the final byte-consistency gate. See the final integration receipt in `COORDINATION.md`.
+
+A final merge with `main` advanced through PRs #329, #336 and #340. Conflicts in `COORDINATION.md` and `data/review-notes.json` were union-merged (274 review notes); the newer 14:22Z snapshot, all other sessions’ code/CSS/workflow changes and every review note were preserved. A short-phone CSS regression from that merge was measured at 320×568 (second probability bottom y=517 versus tab bar y=507) and repaired with a scoped home-card compaction; all browser suites then passed.
 
 No flagged irregularity is hidden, and none blocks publication. Values that could not be confirmed from a linked official source remain blank and marked unverified; no 50/50 filler, crowd vote, guessed slug or invented price is used.

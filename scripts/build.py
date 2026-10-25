@@ -451,6 +451,9 @@ def exec_summary_bar(data):
         + link('#unresolved-summary', 'Why a pick can be missing ↓', 'exec-bar-link')
         + link('#unresolved-limits', 'Visible limitations ↓', 'exec-bar-link')
         + link('matches.html', 'All matches →', 'exec-bar-link')
+        # Session 85087497: the summary also answers "how is a pick priced when
+        # no book lists it" in one tap, not only where the picks are.
+        + link('sources.html#method', 'How we price →', 'exec-bar-link')
         + link('review.html', 'Flagged for review →', 'exec-bar-link')
         + '</nav>'
         '<p class="exec-bar-note">Probabilities come from external betting lines or our own labelled '
@@ -490,7 +493,11 @@ def exec_summary_quicknav(data):
         '<p class="exec-quicknav-line"><strong>Executive summary</strong> · '
         + count_span('picked', c['with_pick']) + '/' + count_span('open', c['open'])
         + ' picks · ' + count_span('missing', c['without_percentage'])
-        + ' unresolved<span class="exec-quicknav-past"> · <span data-past-rows="'
+        # Session 85087497: this count is "no percentage" (research-only picks
+        # included), while other strips use "unresolved" for "no pick at all".
+        # Say both on the first phone screen so the same word never carries two
+        # different numbers. Session 65af11da: the trailing count is every not-open feed row, not only past-dated ones.
+        + ' unresolved (no %)<span class="exec-quicknav-past"> · <span data-past-rows="'
         + str(past) + '">' + str(past) + '</span> feed rows are not open</span>.</p>'
         '<span class="exec-quicknav-actions">'
         + link('picks.html', 'Updated picks →', 'exec-quicknav-primary')

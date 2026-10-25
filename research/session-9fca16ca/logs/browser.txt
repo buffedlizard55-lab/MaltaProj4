@@ -4,7 +4,7 @@
 
 Passed: 32 page/viewport accessibility and no-overflow scans, 320/390/768/1440px layout, subpath URLs, navigation, filters, six legacy redirects, evidence anchors and expiry.
 Passed: seven board expiry scenarios (including live No percentage filter/count updates) plus four research-quote boundary/future-clock scenarios.
-Passed: phone-first summary on 3 viewports (320x568 y=354, 390x844 y=378, 412x915 y=378), pick board clear of the tab bar, and the 9-rung fallback ladder with counts totalling 16.
+Passed: phone-first summary on 3 viewports (320x568 y=379, 390x844 y=378, 412x915 y=378), pick board clear of the tab bar, and the 9-rung fallback ladder with counts totalling 16.
 Passed: freshness clock on 2 viewports x 3 snapshot ages (6 reads) and the phone pick board's per-row observation/expiry times — the advertised slot is always ahead of the reader and the snapshot age is always stated.
 Passed: count-aware runtime summary copy; first pick and both probabilities above the 320x568 phone tab bar; post-board filters and 390px layout.
 Passed: eight phone/desktop/queue/unresolved-summary/research expiry and live-count scenarios.
@@ -15,7 +15,7 @@ Passed: completeness prose matches the runtime counters (fresh and 8-hour-stale)
 Passed: 320/390px pick placement, all open rows, both team probabilities, official row links, blank safeguards, guide deep links and stale-prose/counter agreement.
 {"suite":"browser_caca91b8","open_rows":16,"priced_open_rows":16,"session_review_notes":3,"pages_checked":8,"status":"ok"}
 {
- "measured_at": "2026-10-25T14:54:07.688Z",
+ "measured_at": "2026-10-25T15:14:11.304Z",
  "board": "public/ from research/diagnose-aeafcbe6/snapshot.json",
  "viewports": [
   {
@@ -28,14 +28,14 @@ Passed: 320/390px pick placement, all open rows, both team probabilities, offici
     "horizontalOverflow": false,
     "withheld": false,
     "exec_summary": {
-     "top": 3716,
+     "top": 3456,
      "height": 254
     },
     "exec_quicknav": {
      "top": 306,
-     "height": 57
+     "height": 69
     },
-    "quicknav_text": "Executive summary · 15/15 picks · 0 unresolved · 62 feed rows are not open.Updated picks →Unresolved & limits ↓",
+    "quicknav_text": "Executive summary · 15/15 picks · 0 unresolved (no %) · 62 feed rows are not open.Updated picks →Unresolved & limits ↓",
     "exec_links": [
      "picks.html",
      "#picks-at-a-glance",
@@ -43,6 +43,7 @@ Passed: 320/390px pick placement, all open rows, both team probabilities, offici
      "#unresolved-summary",
      "#unresolved-limits",
      "matches.html",
+     "sources.html#method",
      "review.html",
      "#unresolved-summary",
      "unresolved.html",
@@ -55,8 +56,8 @@ Passed: 320/390px pick placement, all open rows, both team probabilities, offici
    },
    "board": {
     "found": true,
-    "top": 280,
-    "height": 385,
+    "top": 272,
+    "height": 375,
     "pick": "RED Canids Academy",
     "teams": "BORRACHEIROSvsRED Canids Academy",
     "percentages": [
@@ -92,7 +93,7 @@ Passed: 320/390px pick placement, all open rows, both team probabilities, offici
      "top": 300,
      "height": 65
     },
-    "quicknav_text": "Executive summary · 15/15 picks · 0 unresolved · 62 feed rows are not open.Updated picks →Unresolved & limits ↓",
+    "quicknav_text": "Executive summary · 15/15 picks · 0 unresolved (no %) · 62 feed rows are not open.Updated picks →Unresolved & limits ↓",
     "exec_links": [
      "picks.html",
      "#picks-at-a-glance",
@@ -100,6 +101,7 @@ Passed: 320/390px pick placement, all open rows, both team probabilities, offici
      "#unresolved-summary",
      "#unresolved-limits",
      "matches.html",
+     "sources.html#method",
      "review.html",
      "#unresolved-summary",
      "unresolved.html",
@@ -149,7 +151,7 @@ Passed: 320/390px pick placement, all open rows, both team probabilities, offici
      "top": 300,
      "height": 65
     },
-    "quicknav_text": "Executive summary · 15/15 picks · 0 unresolved · 62 feed rows are not open.Updated picks →Unresolved & limits ↓",
+    "quicknav_text": "Executive summary · 15/15 picks · 0 unresolved (no %) · 62 feed rows are not open.Updated picks →Unresolved & limits ↓",
     "exec_links": [
      "picks.html",
      "#picks-at-a-glance",
@@ -157,6 +159,7 @@ Passed: 320/390px pick placement, all open rows, both team probabilities, offici
      "#unresolved-summary",
      "#unresolved-limits",
      "matches.html",
+     "sources.html#method",
      "review.html",
      "#unresolved-summary",
      "unresolved.html",

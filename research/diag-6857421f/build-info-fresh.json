@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "revision": "77379603f248ab26c45b0cd9eaa70685fd0e6091",
+  "built_at": "2026-10-25T13:34:30.820524Z",
+  "snapshot_generated_at": "2026-10-25T13:34:30.593464Z",
+  "rows": 78,
+  "files": {
+    "404.html": "308e0d64199b7b3a3fdc454abbc0068dba55ed86ae0154c38dbddcae2216463e",
+    "analysis.html": "8b70800f367d366f7f144b283deea7fa1a85fcb91fc8ac6b09632a9b289926b7",
+    "assets/app.js": "6c4e60a6aa0d83a41314a6a3253bf9112569936d0e34ddc81bbc033ecae269c6",
+    "assets/favicon.svg": "5b0ba0da9b9bec504dc4695b59291abad789479745d4a18581fb78b0215738ba",
+    "assets/style.css": "e24600991ec4319cadd762211663d403da8ed7d56ce0264ca6015ddc1a1e366b",
+    "data/latest.json": "5039e7dbe1fdb66f1dcc27cf325ed8270ba2a75b102f89134860c617f1feedb8",
+    "data/matches.csv": "41b07398a58c7468cfbc5d397f6dcea13a373b777a80e93894878a1b767d2197",
+    "evidence.html": "b0c692512d75cd4f1606e22b94739cdd0f3d82abfb9f6ea6cb82ed000ee9f34d",
+    "index.html": "1dc40cd3398648b6d69a2185f3f0528a34e296f48e5425d77164931e324e1f4d",
+    "matches.html": "9140615a3bd1d5d8f8510a4a9d2c8db74e51577b5f85bf6209948b428ef3567f",
+    "methodology.html": "db6dd3e60721627f0629397fd4d76b07f3f9ea5ab15b72348f3bee3b35a094ae",
+    "picks.html": "1959163f5817370ebf25099dd4d6d052ef2b52045ce4432b7be6c9d34338bdaa",
+    "review.html": "8788c3b85ec7b67854d1b84a4d8ee88a4eb0e82c6dce0c030cdb36d38dfd100c",
+    "site/index.html": "7ad39335aef2960a4c7f3a8f9f2322d358e59fd45631acfa19f456575ec491db",
+    "site/methodology.html": "130024ea27020261e759b42920f78c42bebcbb44f226ef5216c8bbb1a2684b33",
+    "site/picks.html": "de8e71d8a3a1f7b287299108b460956d7c52391255b567fc71cc9974f8dcd76c",
+    "site/review.html": "91547a7e0d0e5b1e9bde9a89cad48c38173aefee74ea25afd75c17d9de3937cf",
+    "site/unresolved.html": "d8c18e13a798f6d0f0f3cf8ee21bb42ed941d6077c82c8031ae3476d6120bded",
+    "sources.html": "efcb2bc8ffcb1c9dd2d7c8eb8dd47fa5147aac1689f34b04c464d73a5945a06a",
+    "unresolved.html": "c5dbc2a389ebee0ddac90adb47394ccd69e37163691deeef039438a8da207494"
+  }
+}

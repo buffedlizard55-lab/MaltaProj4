@@ -1,0 +1,831 @@
+[
+ {
+  "viewport": "320x568",
+  "slug": "index",
+  "overflow": false,
+  "scrollHeight": 10875,
+  "sections": {
+   "freshStrip": {
+    "top": 224,
+    "height": 151,
+    "visible": true
+   },
+   "execBar": {
+    "top": 3213,
+    "height": 269,
+    "visible": true
+   },
+   "execQuicknav": {
+    "top": 380,
+    "height": 57,
+    "visible": true
+   },
+   "glance": {
+    "top": 439,
+    "height": 2768,
+    "visible": true
+   },
+   "firstGlanceCard": {
+    "top": 3114,
+    "height": 15,
+    "visible": true
+   },
+   "unresolvedSummary": {
+    "top": 10554,
+    "height": 2938,
+    "visible": true
+   },
+   "unresolvedLimits": {
+    "top": 8747,
+    "height": 1832,
+    "visible": true
+   },
+   "tabbar": {
+    "top": 13402,
+    "height": 7017,
+    "visible": true
+   }
+  },
+  "execQuicknavText": "Executive summary · 0/14 picks · 14 unresolved · 65 past feed rows are not open.Updated picks →Unresolved & limits ↓",
+  "firstScreenLinks": [
+   {
+    "label": "hotspawnCS2 SCOUT",
+    "href": "index.html",
+    "h": 34
+   },
+   {
+    "label": "refresh workflow",
+    "href": "https://github.com/buffedlizard55-lab/MaltaProj4/actions",
+    "h": 36
+   },
+   {
+    "label": "source status",
+    "href": "sources.html",
+    "h": 17
+   },
+   {
+    "label": "View updated picks →",
+    "href": "picks.html",
+    "h": 46
+   },
+   {
+    "label": "Unresolved →",
+    "href": "unresolved.html",
+    "h": 46
+   },
+   {
+    "label": "Updated picks →",
+    "href": "picks.html",
+    "h": 36
+   },
+   {
+    "label": "Unresolved & limits ↓",
+    "href": "#unresolved-limits",
+    "h": 36
+   },
+   {
+    "label": "ex-Zero TenacityvsSpirit AcademyUNRESOLV",
+    "href": "evidence.html#match-1085542",
+    "h": 188
+   },
+   {
+    "label": "Home",
+    "href": "index.html",
+    "h": 60
+   },
+   {
+    "label": "Picks",
+    "href": "picks.html",
+    "h": 60
+   },
+   {
+    "label": "Unresolved",
+    "href": "unresolved.html",
+    "h": 60
+   },
+   {
+    "label": "Matches",
+    "href": "matches.html",
+    "h": 60
+   },
+   {
+    "label": "Analysis",
+    "href": "analysis.html",
+    "h": 60
+   }
+  ],
+  "smallTargetsOnFirstScreen": 1,
+  "bodyFont": "14px"
+ },
+ {
+  "viewport": "320x568",
+  "slug": "picks",
+  "overflow": false,
+  "scrollHeight": 7538,
+  "sections": {
+   "freshStrip": null,
+   "execBar": null,
+   "execQuicknav": null,
+   "glance": null,
+   "firstGlanceCard": null,
+   "unresolvedSummary": null,
+   "unresolvedLimits": null,
+   "tabbar": {
+    "top": 327,
+    "height": 6495,
+    "visible": true
+   }
+  },
+  "execQuicknavText": null,
+  "firstScreenLinks": [
+   {
+    "label": "hotspawnCS2 SCOUT",
+    "href": "index.html",
+    "h": 34
+   },
+   {
+    "label": "refresh workflow",
+    "href": "https://github.com/buffedlizard55-lab/MaltaProj4/actions",
+    "h": 36
+   },
+   {
+    "label": "source status",
+    "href": "sources.html",
+    "h": 17
+   },
+   {
+    "label": "Home",
+    "href": "index.html",
+    "h": 60
+   },
+   {
+    "label": "Picks",
+    "href": "picks.html",
+    "h": 60
+   },
+   {
+    "label": "Unresolved",
+    "href": "unresolved.html",
+    "h": 60
+   },
+   {
+    "label": "Matches",
+    "href": "matches.html",
+    "h": 60
+   },
+   {
+    "label": "Analysis",
+    "href": "analysis.html",
+    "h": 60
+   }
+  ],
+  "smallTargetsOnFirstScreen": 1,
+  "bodyFont": "14px"
+ },
+ {
+  "viewport": "320x568",
+  "slug": "unresolved",
+  "overflow": false,
+  "scrollHeight": 9822,
+  "sections": {
+   "freshStrip": null,
+   "execBar": null,
+   "execQuicknav": null,
+   "glance": null,
+   "firstGlanceCard": null,
+   "unresolvedSummary": null,
+   "unresolvedLimits": null,
+   "tabbar": {
+    "top": 1197,
+    "height": 1156,
+    "visible": true
+   }
+  },
+  "execQuicknavText": null,
+  "firstScreenLinks": [
+   {
+    "label": "hotspawnCS2 SCOUT",
+    "href": "index.html",
+    "h": 34
+   },
+   {
+    "label": "refresh workflow",
+    "href": "https://github.com/buffedlizard55-lab/MaltaProj4/actions",
+    "h": 36
+   },
+   {
+    "label": "source status",
+    "href": "sources.html",
+    "h": 17
+   },
+   {
+    "label": "Home",
+    "href": "index.html",
+    "h": 60
+   },
+   {
+    "label": "Picks",
+    "href": "picks.html",
+    "h": 60
+   },
+   {
+    "label": "Unresolved",
+    "href": "unresolved.html",
+    "h": 60
+   },
+   {
+    "label": "Matches",
+    "href": "matches.html",
+    "h": 60
+   },
+   {
+    "label": "Analysis",
+    "href": "analysis.html",
+    "h": 60
+   }
+  ],
+  "smallTargetsOnFirstScreen": 1,
+  "bodyFont": "14px"
+ },
+ {
+  "viewport": "390x844",
+  "slug": "index",
+  "overflow": false,
+  "scrollHeight": 10188,
+  "sections": {
+   "freshStrip": {
+    "top": 228,
+    "height": 133,
+    "visible": true
+   },
+   "execBar": {
+    "top": 3543,
+    "height": 236,
+    "visible": true
+   },
+   "execQuicknav": {
+    "top": 373,
+    "height": 65,
+    "visible": true
+   },
+   "glance": {
+    "top": 442,
+    "height": 3096,
+    "visible": true
+   },
+   "firstGlanceCard": {
+    "top": 3460,
+    "height": 15,
+    "visible": true
+   },
+   "unresolvedSummary": {
+    "top": 9960,
+    "height": 2373,
+    "visible": true
+   },
+   "unresolvedLimits": {
+    "top": 8419,
+    "height": 1503,
+    "visible": true
+   },
+   "tabbar": {
+    "top": 12261,
+    "height": 6078,
+    "visible": true
+   }
+  },
+  "execQuicknavText": "Executive summary · 0/14 picks · 14 unresolved · 65 past feed rows are not open.Updated picks →Unresolved & limits ↓",
+  "firstScreenLinks": [
+   {
+    "label": "hotspawnCS2 SCOUT",
+    "href": "index.html",
+    "h": 34
+   },
+   {
+    "label": "refresh workflow",
+    "href": "https://github.com/buffedlizard55-lab/MaltaProj4/actions",
+    "h": 17
+   },
+   {
+    "label": "source status",
+    "href": "sources.html",
+    "h": 36
+   },
+   {
+    "label": "View updated picks →",
+    "href": "picks.html",
+    "h": 46
+   },
+   {
+    "label": "Unresolved →",
+    "href": "unresolved.html",
+    "h": 46
+   },
+   {
+    "label": "Updated picks →",
+    "href": "picks.html",
+    "h": 40
+   },
+   {
+    "label": "Unresolved & limits ↓",
+    "href": "#unresolved-limits",
+    "h": 40
+   },
+   {
+    "label": "ex-Zero TenacityvsSpirit AcademyUNRESOLV",
+    "href": "evidence.html#match-1085542",
+    "h": 205
+   },
+   {
+    "label": "InfinitevsBRUTEUNRESOLVED—No percentage2",
+    "href": "evidence.html#match-1079199",
+    "h": 205
+   },
+   {
+    "label": "Home",
+    "href": "index.html",
+    "h": 60
+   },
+   {
+    "label": "Picks",
+    "href": "picks.html",
+    "h": 60
+   },
+   {
+    "label": "Unresolved",
+    "href": "unresolved.html",
+    "h": 60
+   },
+   {
+    "label": "Matches",
+    "href": "matches.html",
+    "h": 60
+   },
+   {
+    "label": "Analysis",
+    "href": "analysis.html",
+    "h": 60
+   }
+  ],
+  "smallTargetsOnFirstScreen": 1,
+  "bodyFont": "14px"
+ },
+ {
+  "viewport": "390x844",
+  "slug": "picks",
+  "overflow": false,
+  "scrollHeight": 6931,
+  "sections": {
+   "freshStrip": null,
+   "execBar": null,
+   "execQuicknav": null,
+   "glance": null,
+   "firstGlanceCard": null,
+   "unresolvedSummary": null,
+   "unresolvedLimits": null,
+   "tabbar": {
+    "top": 290,
+    "height": 6015,
+    "visible": true
+   }
+  },
+  "execQuicknavText": null,
+  "firstScreenLinks": [
+   {
+    "label": "hotspawnCS2 SCOUT",
+    "href": "index.html",
+    "h": 34
+   },
+   {
+    "label": "refresh workflow",
+    "href": "https://github.com/buffedlizard55-lab/MaltaProj4/actions",
+    "h": 17
+   },
+   {
+    "label": "source status",
+    "href": "sources.html",
+    "h": 36
+   },
+   {
+    "label": "View each attempted source →",
+    "href": "evidence.html#match-1085542",
+    "h": 17
+   },
+   {
+    "label": "Hotspawn ↗",
+    "href": "https://www.hotspawn.com/matches/ex-zero-tenacity-vs-spirit-academy-cct-europe-2026-series-11-1085542",
+    "h": 44
+   },
+   {
+    "label": "Evidence & lines",
+    "href": "evidence.html#match-1085542",
+    "h": 44
+   },
+   {
+    "label": "Polymarket ↗",
+    "href": "https://gamma-api.polymarket.com/markets/6158059",
+    "h": 44
+   },
+   {
+    "label": "Home",
+    "href": "index.html",
+    "h": 60
+   },
+   {
+    "label": "Picks",
+    "href": "picks.html",
+    "h": 60
+   },
+   {
+    "label": "Unresolved",
+    "href": "unresolved.html",
+    "h": 60
+   },
+   {
+    "label": "Matches",
+    "href": "matches.html",
+    "h": 60
+   },
+   {
+    "label": "Analysis",
+    "href": "analysis.html",
+    "h": 60
+   }
+  ],
+  "smallTargetsOnFirstScreen": 2,
+  "bodyFont": "14px"
+ },
+ {
+  "viewport": "390x844",
+  "slug": "unresolved",
+  "overflow": false,
+  "scrollHeight": 8959,
+  "sections": {
+   "freshStrip": null,
+   "execBar": null,
+   "execQuicknav": null,
+   "glance": null,
+   "firstGlanceCard": null,
+   "unresolvedSummary": null,
+   "unresolvedLimits": null,
+   "tabbar": {
+    "top": 1046,
+    "height": 1011,
+    "visible": true
+   }
+  },
+  "execQuicknavText": null,
+  "firstScreenLinks": [
+   {
+    "label": "hotspawnCS2 SCOUT",
+    "href": "index.html",
+    "h": 34
+   },
+   {
+    "label": "refresh workflow",
+    "href": "https://github.com/buffedlizard55-lab/MaltaProj4/actions",
+    "h": 17
+   },
+   {
+    "label": "source status",
+    "href": "sources.html",
+    "h": 36
+   },
+   {
+    "label": "the executive summary",
+    "href": "index.html",
+    "h": 17
+   },
+   {
+    "label": "the summary's unresolved section",
+    "href": "index.html#unresolved-picks",
+    "h": 36
+   },
+   {
+    "label": "the method and gates",
+    "href": "sources.html#method",
+    "h": 17
+   },
+   {
+    "label": "Home",
+    "href": "index.html",
+    "h": 60
+   },
+   {
+    "label": "Picks",
+    "href": "picks.html",
+    "h": 60
+   },
+   {
+    "label": "Unresolved",
+    "href": "unresolved.html",
+    "h": 60
+   },
+   {
+    "label": "Matches",
+    "href": "matches.html",
+    "h": 60
+   },
+   {
+    "label": "Analysis",
+    "href": "analysis.html",
+    "h": 60
+   }
+  ],
+  "smallTargetsOnFirstScreen": 3,
+  "bodyFont": "14px"
+ },
+ {
+  "viewport": "412x915",
+  "slug": "index",
+  "overflow": false,
+  "scrollHeight": 9915,
+  "sections": {
+   "freshStrip": {
+    "top": 209,
+    "height": 133,
+    "visible": true
+   },
+   "execBar": {
+    "top": 3423,
+    "height": 219,
+    "visible": true
+   },
+   "execQuicknav": {
+    "top": 354,
+    "height": 65,
+    "visible": true
+   },
+   "glance": {
+    "top": 423,
+    "height": 2994,
+    "visible": true
+   },
+   "firstGlanceCard": {
+    "top": 3339,
+    "height": 15,
+    "visible": true
+   },
+   "unresolvedSummary": {
+    "top": 9729,
+    "height": 2292,
+    "visible": true
+   },
+   "unresolvedLimits": {
+    "top": 8245,
+    "height": 1404,
+    "visible": true
+   },
+   "tabbar": {
+    "top": 11948,
+    "height": 6004,
+    "visible": true
+   }
+  },
+  "execQuicknavText": "Executive summary · 0/14 picks · 14 unresolved · 65 past feed rows are not open.Updated picks →Unresolved & limits ↓",
+  "firstScreenLinks": [
+   {
+    "label": "hotspawnCS2 SCOUT",
+    "href": "index.html",
+    "h": 34
+   },
+   {
+    "label": "refresh workflow",
+    "href": "https://github.com/buffedlizard55-lab/MaltaProj4/actions",
+    "h": 17
+   },
+   {
+    "label": "source status",
+    "href": "sources.html",
+    "h": 17
+   },
+   {
+    "label": "View updated picks →",
+    "href": "picks.html",
+    "h": 46
+   },
+   {
+    "label": "Unresolved →",
+    "href": "unresolved.html",
+    "h": 46
+   },
+   {
+    "label": "Updated picks →",
+    "href": "picks.html",
+    "h": 40
+   },
+   {
+    "label": "Unresolved & limits ↓",
+    "href": "#unresolved-limits",
+    "h": 40
+   },
+   {
+    "label": "ex-Zero TenacityvsSpirit AcademyUNRESOLV",
+    "href": "evidence.html#match-1085542",
+    "h": 188
+   },
+   {
+    "label": "InfinitevsBRUTEUNRESOLVED—No percentage2",
+    "href": "evidence.html#match-1079199",
+    "h": 188
+   },
+   {
+    "label": "Colorvsex-Zero TenacityUNRESOLVED—No per",
+    "href": "evidence.html#match-1079200",
+    "h": 188
+   },
+   {
+    "label": "Home",
+    "href": "index.html",
+    "h": 60
+   },
+   {
+    "label": "Picks",
+    "href": "picks.html",
+    "h": 60
+   },
+   {
+    "label": "Unresolved",
+    "href": "unresolved.html",
+    "h": 60
+   },
+   {
+    "label": "Matches",
+    "href": "matches.html",
+    "h": 60
+   }
+  ],
+  "smallTargetsOnFirstScreen": 2,
+  "bodyFont": "14px"
+ },
+ {
+  "viewport": "412x915",
+  "slug": "picks",
+  "overflow": false,
+  "scrollHeight": 6824,
+  "sections": {
+   "freshStrip": null,
+   "execBar": null,
+   "execQuicknav": null,
+   "glance": null,
+   "firstGlanceCard": null,
+   "unresolvedSummary": null,
+   "unresolvedLimits": null,
+   "tabbar": {
+    "top": 272,
+    "height": 5927,
+    "visible": true
+   }
+  },
+  "execQuicknavText": null,
+  "firstScreenLinks": [
+   {
+    "label": "hotspawnCS2 SCOUT",
+    "href": "index.html",
+    "h": 34
+   },
+   {
+    "label": "refresh workflow",
+    "href": "https://github.com/buffedlizard55-lab/MaltaProj4/actions",
+    "h": 17
+   },
+   {
+    "label": "source status",
+    "href": "sources.html",
+    "h": 17
+   },
+   {
+    "label": "View each attempted source →",
+    "href": "evidence.html#match-1085542",
+    "h": 17
+   },
+   {
+    "label": "Hotspawn ↗",
+    "href": "https://www.hotspawn.com/matches/ex-zero-tenacity-vs-spirit-academy-cct-europe-2026-series-11-1085542",
+    "h": 44
+   },
+   {
+    "label": "Evidence & lines",
+    "href": "evidence.html#match-1085542",
+    "h": 44
+   },
+   {
+    "label": "Polymarket ↗",
+    "href": "https://gamma-api.polymarket.com/markets/6158059",
+    "h": 44
+   },
+   {
+    "label": "Home",
+    "href": "index.html",
+    "h": 60
+   },
+   {
+    "label": "Picks",
+    "href": "picks.html",
+    "h": 60
+   },
+   {
+    "label": "Unresolved",
+    "href": "unresolved.html",
+    "h": 60
+   },
+   {
+    "label": "Matches",
+    "href": "matches.html",
+    "h": 60
+   },
+   {
+    "label": "Analysis",
+    "href": "analysis.html",
+    "h": 60
+   }
+  ],
+  "smallTargetsOnFirstScreen": 3,
+  "bodyFont": "14px"
+ },
+ {
+  "viewport": "412x915",
+  "slug": "unresolved",
+  "overflow": false,
+  "scrollHeight": 8813,
+  "sections": {
+   "freshStrip": null,
+   "execBar": null,
+   "execQuicknav": null,
+   "glance": null,
+   "firstGlanceCard": null,
+   "unresolvedSummary": null,
+   "unresolvedLimits": null,
+   "tabbar": {
+    "top": 1027,
+    "height": 991,
+    "visible": true
+   }
+  },
+  "execQuicknavText": null,
+  "firstScreenLinks": [
+   {
+    "label": "hotspawnCS2 SCOUT",
+    "href": "index.html",
+    "h": 34
+   },
+   {
+    "label": "refresh workflow",
+    "href": "https://github.com/buffedlizard55-lab/MaltaProj4/actions",
+    "h": 17
+   },
+   {
+    "label": "source status",
+    "href": "sources.html",
+    "h": 17
+   },
+   {
+    "label": "Polymarket Gamma API ↗",
+    "href": "https://gamma-api.polymarket.com/events",
+    "h": 17
+   },
+   {
+    "label": "the executive summary",
+    "href": "index.html",
+    "h": 17
+   },
+   {
+    "label": "the summary's unresolved section",
+    "href": "index.html#unresolved-picks",
+    "h": 36
+   },
+   {
+    "label": "the method and gates",
+    "href": "sources.html#method",
+    "h": 17
+   },
+   {
+    "label": "Home",
+    "href": "index.html",
+    "h": 60
+   },
+   {
+    "label": "Picks",
+    "href": "picks.html",
+    "h": 60
+   },
+   {
+    "label": "Unresolved",
+    "href": "unresolved.html",
+    "h": 60
+   },
+   {
+    "label": "Matches",
+    "href": "matches.html",
+    "h": 60
+   },
+   {
+    "label": "Analysis",
+    "href": "analysis.html",
+    "h": 60
+   }
+  ],
+  "smallTargetsOnFirstScreen": 5,
+  "bodyFont": "14px"
+ }
+]
