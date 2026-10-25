@@ -114,9 +114,9 @@ class NotOpenIsNotPastTests(unittest.TestCase):
         retained = not_open - past
         self.assertGreaterEqual(retained, 1)
         if retained == 1:
-            self.assertIn('and 1 more is retained but not open by its sourced status', text)
+            self.assertIn('and 1 more is retained but not open at this snapshot’s own clock', text)
         else:
-            self.assertIn(f'and {retained} more are retained but not open by their sourced status', text)
+            self.assertIn(f'and {retained} more are retained but not open at this snapshot’s own clock', text)
         # The three published numbers must add up to the feed size.
         self.assertIn(f'Of those {len(data["matches"])} feed rows, {past} are past-dated records', text)
 

@@ -386,9 +386,9 @@ def executive_banner(data):
     # up, so a reader can account for every feed row.
     retained = c['feed_rows'] - c['open'] - len(past)
     if retained == 1:
-        extra = ', and 1 more is retained but not open by its sourced status'
+        extra = ', and 1 more is retained but not open at this snapshot’s own clock'
     elif retained > 1:
-        extra = f', and {retained} more are retained but not open by their sourced status'
+        extra = f', and {retained} more are retained but not open at this snapshot’s own clock'
     else:
         extra = ''
     past_note = (f'<p class="small">Of those {c["feed_rows"]} feed rows, {len(past)} are past-dated records the '
