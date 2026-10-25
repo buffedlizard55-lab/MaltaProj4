@@ -793,3 +793,15 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
   body[data-page="index"] .glance-card-scores{gap:2px}
   body[data-page="index"] .glance-card-meta{margin-top:4px}
 }
+
+/* Session 65af11da (2026-10-25): the 9fca16ca compaction above buys a fixed 10px;
+   a longer club name spends more than that. On the same short phones, put the two
+   score rows before the "OUR PICK" caption inside the glance card instead of after
+   it, so the percentages are never the thing pushed under the fixed tab bar. Same
+   names, same two percentages, same caption, same links — only their order. Taller
+   phones and desktop keep the caption-first order. */
+@media(max-width:650px) and (max-height:700px){
+  body[data-page="index"] .glance-card-pick>.glance-card-scores{order:1}
+  body[data-page="index"] .glance-card-pick>.glance-card-pick-label{order:2;margin-top:2px}
+  body[data-page="index"] .glance-card-pick>.glance-card-prob-bar{order:3}
+}

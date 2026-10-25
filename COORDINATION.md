@@ -10502,3 +10502,54 @@ was affected. (b) The 51/49 originated line's directional pick, and the `Projeto
 `ex-Keyd Stars` identity judgment it rests on, are on Flagged for Review for manual acceptance. (c) Paid multi-book odds APIs
 exist (odds-api.io, OddsPapi, esportsodds.gg, the-odds-api) but every one needs a key this project does not hold; none was used
 and none is described as available.
+
+## Session 65af11da — the 320x568 first screen, after 9fca16ca (2026-10-25 15:55 UTC)
+
+Claimed by this session: paired `site/assets/style.css` / `assets/style.css`,
+`tests/test_session_65af11da.py`, plus the root manifest restage. Yesterday's `6b8b4be0` scope
+(tall-phone filter order) and today's `58354934` row are both closed; `9fca16ca` later merged a
+short-phone **compaction** for this same card, so this is an addition to that fix, not a duplicate of it.
+
+**Reproduced, not inferred.** On the board built from `main`'s own snapshot, the `browser_ce45f672` gate
+failed with
+
+```
+AssertionError: 320px a win probability is hidden behind the tab bar:
+  [{"y":461,"bottom":483},{"y":486,"bottom":517}]
+```
+
+First glance card `BORRACHEIROS vs RED Canids Academy`; the second score row wraps, and the second
+probability ended at y=517 behind the fixed tab bar at y=507 on the 320x568 phone the brief is about.
+Three other sessions' pull requests failed the same step in the same window (`40205161021`, `40205219482`,
+and this session's docs-only `#341`), so this was a live blocker on a shared gate.
+
+**Why 9fca16ca's fix is not enough on its own.** It reclaims a fixed 10px from padding, which put the second
+probability at roughly y=507 — exactly the bar's edge. That budget is spent by one wrapped name; the next
+longer club name spends more. This change reorders instead of squeezing: on short phones the two score rows
+come before the "OUR PICK" caption inside the card, so the percentages are never the thing pushed under the
+bar. Nothing is truncated, hidden or re-worded — same two club names, same two percentages, same caption,
+same links, only their order, and only at `(max-width:650px) and (max-height:700px)`. Taller phones and
+desktop keep the caption-first order. `9fca16ca`'s compaction is kept as-is; the two rules do not conflict
+(this block wins only the two `margin-top` declarations it shares, and re-declares none of the padding).
+
+**Measured after the merge** (Chromium, `public/` built from the 14:22Z snapshot, 16 priced matches):
+
+| Viewport | Card | Win chances (y) | Caption | Tab bar top | Verdict |
+| --- | --- | --- | --- | --- | --- |
+| 320x568 | y=379 h=195 | 432–454, 456–487 | 492–507 | 507 | both chances 20px clear of the bar |
+| 390x844 | y=378 | 473–494, 497–528 | 453–469 | 783 | caption-first order unchanged |
+| 412x915 | y=378 | 473–494, 497–528 | 453–469 | 854 | caption-first order unchanged |
+
+**Verification on the merged tree** (`origin/main` at `f07cfc6`): `npm run test:browser` **exit 0**, all
+suites pass with `"failures": []`, including `ce45f672` (the gradient that reproduced the failure) and the
+12-suite phone sweep; `python -m unittest discover -s tests` **1,768 tests OK (13 skipped)**; 9 audits OK;
+`scripts.validate` against the restaged root: 16 probability calculations reproduced, 15 pages, 727
+links/assets, 20 checksums. The same suite on a clean `origin/main` worktree is 1,765 tests OK, so the three
+added tests are the only new ones. The new regression class in `tests/test_session_65af11da.py` pins the
+rule, its short-phone and index-page scoping, the byte identity of the two stylesheet copies and the sibling
+markup the order depends on; the geometry itself is measured by that browser suite, not asserted in a unit
+test.
+
+The root manifest (`build-info.json`) is restaged at the merged build so `sha256(assets/style.css)` and the
+revision stamp describe what ships; `data/latest.json`, `data/matches.csv` and `review.html` are the merged
+14:22Z snapshot, byte-identical to `main`'s — this session refreshes no price and invents no pick.
