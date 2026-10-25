@@ -10390,3 +10390,36 @@ pick while a recent successful build exists), the two open rows that link to the
 per-fixture page, blank `best_of`, the 23-point spread row, the listing without an operator update time, the
 20-day-old Valve standings behind the four originated lines, and the GG.BET 403 / Thunderpick adapter
 limitations.
+
+## Session 408eb0af — delivery receipt: #323 merged, publisher green, live board verified (2026-10-25 15:20 UTC)
+
+**PR [#323](https://github.com/buffedlizard55-lab/MaltaProj4/pull/323) merged to `main` at 2026-10-25T14:22:05Z**, merge commit
+`c216e17`, without waiting for approval per protocol. It was not mergeable on first attempt (another session had moved `main`);
+the conflict was resolved by **taking `main`'s `tests/browser_aeafcbe6.cjs`** — main had already adopted the same stale-board
+patch from #313 with different wording — and by appending my two review notes to `main`'s `data/review-notes.json` instead of
+overwriting it. Nothing from another session was discarded.
+
+**The outage is over, measured on the public site, not asserted.** `https://buffedlizard55-lab.github.io/MaltaProj4/` served, at
+14:59Z, *"Snapshot inside its 8-hour evidence window · 15 open CS2 match(es) · 15 with a pick · 15 with a win probability ·
+0 unresolved"*, `Next pick RED Canids Academy 55.5% · 25 Oct 16:00 UTC`, with 11 market lines and 4 originated VRS model lines.
+At 13:47Z it had been serving *"0 with a pick · 14 unresolved"*. Fixture **1086697 `Projeto do KinGui` vs `Yawara`** — the exact
+row whose roster assertion froze every scheduled publish — now publishes as a model line (51.0% / 49.0%), i.e. the row is priced
+through the register bridge rather than stopping the board.
+
+**The new section is live.** `unresolved.html` and the executive summary's unresolved-and-limitations section both render
+`#measured-source-access`: nine outside line sources with the measured HTTP result, the endpoint, and a link to that source's
+own committed response bytes (`research/session-408eb0af/probe/bodies/`). Verified by reading the published page, not the build
+output: EGamersWorld 403, GG.BET 403, Bovada JSON 404, Oddspedia JSON 400, Thunderpick's page a 14.6 kB shell, Polymarket 200
+(491 entries), Pinnacle 200 (36 CS2 matchups), BO3.gg 200, HLTV 200 (identity only).
+
+**Gates on the merged tree, run locally this session:** 1,646 unit tests OK (skipped=12) · audits 9 OK ·
+`verification-95b588c2` 5 OK · `verification-c6` 12 OK · `scripts.build` + `scripts.validate` green (78 rows, 16 calculations,
+15 pages, 724 links, 20 checksums) · `npm run test:browser` **exit 0**. `data/latest.json` was never hand-edited on this branch.
+
+**Flagged, non-blocking.** (a) Runner contention was measurable all afternoon: about six sessions shared the pool, main's
+`pages.yml` runs were cancelled in sequence while newer pushes arrived (40204062257, 40204321562, 40204967850, 40205236116), and
+the committed root that the live site serves was staged at 15:00:47Z by whichever run completed first. No pick, price or source
+was affected. (b) The 51/49 originated line's directional pick, and the `Projeto do KinGui` / `Tropa do KinGui` /
+`ex-Keyd Stars` identity judgment it rests on, are on Flagged for Review for manual acceptance. (c) Paid multi-book odds APIs
+exist (odds-api.io, OddsPapi, esportsodds.gg, the-odds-api) but every one needs a key this project does not hold; none was used
+and none is described as available.
