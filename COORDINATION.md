@@ -10422,3 +10422,24 @@ pick while a recent successful build exists), the two open rows that link to the
 per-fixture page, blank `best_of`, the 23-point spread row, the listing without an operator update time, the
 20-day-old Valve standings behind the four originated lines, and the GG.BET 403 / Thunderpick adapter
 limitations.
+
+### Session 6d111263 — scope extension claim (2026-10-25 15:45 UTC): phone glance-card compaction
+
+Measured on the built index at 320x568 (Chromium, this session): with the first open fixture
+BORRACHEIROS vs RED Canids Academy (fixture 1086696), the first `#picks-at-a-glance` card's two
+`.glance-card-score` elements end at y=461..517 while the fixed tab bar starts at y=507, so the
+second win probability sits **behind** the tab bar on a 320px phone. This is exactly what
+`tests/browser_ce45f672.cjs:108` fails on, and it started failing for every session once the
+15:00Z fixture left the board (~15:00Z); runs 40206447470 (this branch), 40205770553 and 40205395251
+failed the same window. The live site carries the same bytes, so it is a user-visible phone defect
+against the brief's "probabilities visible on the phone" requirement.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Compact the glance card at ≤360px so both win chances clear the tab bar; re-run every browser suite and re-measure 320/390/412 | in progress | 6d111263 | `site/assets/style.css` (≤360px glance-card block only), regenerated `assets/style.css` + root pages/`build-info.json` via the normal build/stage path, `research/session-6d111263/**`, `data/review-notes.json` (append-only) | 2026-10-25 15:45 |
+
+Overlap note (logged, not edited): open PRs #318 (6857421f), #319 (8e4ff8d2) and #321 (53284c80)
+announce phone-card fixes and touch the same stylesheet. None is merged into `main`; `main`'s
+`site/assets/style.css` still carries the failing layout. This session takes the claim because the
+defect is live and its PR #335 is otherwise green — any later conflict must be resolved in favour
+of whichever fix is already on `main`, never by layering two compactions.
