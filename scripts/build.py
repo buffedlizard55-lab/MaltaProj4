@@ -378,12 +378,25 @@ def executive_banner(data):
     """
     c = summary.counts(data['matches'])
     past = past_dated_rows(data['matches'], data)
+    # Session 65af11da: not every retained row that is not open is a past-dated
+    # one. The endpoint can return a row whose sourced status is not scheduled
+    # while its start is still ahead, and the earlier wording silently folded
+    # that row into "past-dated records" (the live 2026-10-25T13:56Z build said
+    # 61 past-dated and 62 not open). Both numbers are published, and they add
+    # up, so a reader can account for every feed row.
+    retained = c['feed_rows'] - c['open'] - len(past)
+    if retained == 1:
+        extra = ', and 1 more is retained but not open at this snapshot’s own clock'
+    elif retained > 1:
+        extra = f', and {retained} more are retained but not open at this snapshot’s own clock'
+    else:
+        extra = ''
+    past_note = (f'<p class="small">Of those {c["feed_rows"]} feed rows, {len(past)} are past-dated records the '
+                 'endpoint still returns with <em>status: scheduled</em>' + extra
+                 + '. They stay on ' + link('matches.html', 'All matches') + ', labelled, and are never priced. '
+                 + link('matches.html#feed-scope', 'What the feed returns →') + '</p>') if past else ''
     # 92 feed rows must never read as 92 matches: name the stale records the
     # endpoint still returns, in the same block that publishes the counts.
-    past_note = (f'<p class="small">Of those {c["feed_rows"]} feed rows, {len(past)} are past-dated records the '
-                 'endpoint still returns with <em>status: scheduled</em>. They are listed on '
-                 + link('matches.html', 'All matches') + ', labelled as past fixtures, and never priced. '
-                 + link('matches.html#feed-scope', 'What the feed returns →') + '</p>') if past else ''
     return (
         '<section class="panel exec-banner" id="exec-banner" aria-label="Executive summary — start here">'
         '<p class="eyebrow muted">Executive summary</p>'
@@ -445,9 +458,16 @@ def exec_summary_bar(data):
         + ' open match(es) publish no percentage; every one is named with its reason in the '
         + link('#unresolved-summary', 'unresolved section below') + ' and on the '
         + link('unresolved.html', 'unresolved page') + '. '
-        + str(sum(1 for m in data['matches'] if m.get('state') != 'open'))
-        + ' of ' + str(c['feed_rows']) + ' feed rows are past their lock or start and stay '
-        'unpriced on ' + link('matches.html', 'All matches') + '.</p>'
+        # Session 65af11da: this sentence used to describe the not-open count as
+        # "past their lock or start". Those are two different sets: a retained
+        # feed row can be not open because its status is not scheduled while its
+        # start is still in the future. On the published 2026-10-25 13:56Z build
+        # the page therefore said "61 are past-dated records" in one paragraph
+        # and "62 ... are past their lock or start" in another. The count stays
+        # the not-open count; the wording now states exactly that.
+        + str(c['feed_rows'] - c['open'])
+        + ' of ' + str(c['feed_rows']) + ' feed rows are not open by sourced status or start '
+        'time and stay unpriced on ' + link('matches.html', 'All matches') + '.</p>'
         '</section>'
     )
 
@@ -471,7 +491,7 @@ def exec_summary_quicknav(data):
         + count_span('picked', c['with_pick']) + '/' + count_span('open', c['open'])
         + ' picks · ' + count_span('missing', c['without_percentage'])
         + ' unresolved<span class="exec-quicknav-past"> · <span data-past-rows="'
-        + str(past) + '">' + str(past) + '</span> past feed rows are not open</span>.</p>'
+        + str(past) + '">' + str(past) + '</span> feed rows are not open</span>.</p>'
         '<span class="exec-quicknav-actions">'
         + link('picks.html', 'Updated picks →', 'exec-quicknav-primary')
         + link('#unresolved-limits', 'Unresolved & limits ↓', 'exec-quicknav-link')
@@ -1210,7 +1230,13 @@ def overview(data):
              '<li><strong>No book lists the match.</strong> Low-tier and qualifier fixtures are often absent from Polymarket and Pinnacle, the two accessible line sources; Thunderpick and GG.BET gave this collector no validated automated quote, and access controls are not bypassed. '+link('sources.html','Source status →')+'</li>'
              '<li><strong>A market exists but fails a gate.</strong> Stale updates, spreads wider than 25 points (60 in the labelled wide tier) or under $100 of liquidity are shown as rejected observations below, never published as a percentage.</li>'
              '<li><strong>Names differ between sites.</strong> Odds move between sources only for an exact team pair and UTC start, or a label in the '+link('sources.html#method','verified alias register')+'; a renamed or academy label that no primary source links stays unresolved rather than guessed.</li>'
-             '<li><strong>HLTV has no usable line.</strong> HLTV fixture pages confirm identity, lineups and rankings; their betting tables expose no independently confirmed numeric two-way line to this collector, and HLTV fan votes are never used.</li>'
+             # Session 65af11da re-checked HLTV directly on 2026-10-25 for a
+             # low-tier fixture the ladder could not price from a book: the
+             # match page's Betting panel rendered only a partner promo row with
+             # no price, and the analytics overview for the same fixture showed
+             # no numeric price for either side. Dated and linked, so the claim
+             # can be re-checked instead of taken on trust.
+             '<li><strong>HLTV has no usable line.</strong> HLTV fixture pages confirm identity, lineups and rankings; their betting tables expose no independently confirmed numeric two-way line to this collector. Re-checked 25 Oct 2026 on '+link('https://www.hltv.org/matches/2399918/tropa-do-kingui-vs-yawara-cct-2026-south-america-series-7','Tropa do KinGui vs Yawara')+': the match page’s Betting panel rendered one partner promo row with no price, and the fixture’s '+link('https://www.hltv.org/betting/analytics/2399918/tropa-do-kingui-vs-yawara-cct-2026-south-america-series-7','odds &amp; prediction overview')+' rendered no numeric price for either side. HLTV fan votes are never used as a probability.</li>'
              '<li><strong>HLTV has a bracket slot but no team names.</strong> When HLTV publishes a TBA slot (as it did for benched gods vs TitanFlow on 22 October), the fixture page cannot confirm a roster. The two clubs\' own HLTV team pages are then read by exact label and used only to tell repeated Valve standings labels apart; the row is labelled research-only and carries <strong>no percentage</strong> if one side is missing from Valve\'s published standings.</li>'
              '<li><strong>Our model needs both teams.</strong> The '+link('sources.html#model','VRS model')+' prices a match only when both teams resolve in Valve’s official standings with their current rosters. With one side missing it degrades to a pick-only research tier, and with neither side resolvable the row stays unresolved with the attempts listed below.</li>'
              '<li><strong>Timing.</strong> Every percentage expires at the earliest of its 8-hour evidence window, the Hotspawn lock, match start or bookmaker cutoff, so a pick can disappear before a match begins if its evidence ages out and no refresh lands.</li>'

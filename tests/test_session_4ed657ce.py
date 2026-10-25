@@ -60,14 +60,18 @@ class PhoneExecutiveSummaryTests(unittest.TestCase):
         text = re.sub(r'\s*/\s*', '/', self.quick.get_text(' ', strip=True))
         self.assertIn('%d/%d picks' % (c['with_pick'], c['open']), text)
         self.assertIn('%d unresolved' % c['without_percentage'], text)
-        self.assertIn('past feed rows', self.quick.get_text(' ', strip=True))
+        # Session 65af11da: the count is the not-open count, so the label says so.
+        self.assertIn('feed rows are not open', self.quick.get_text(' ', strip=True))
 
     def test_full_bar_keeps_its_contract_and_adds_visible_limitations(self):
         hrefs = {a['href'] for a in self.bar.select('a')}
         self.assertTrue({'picks.html', '#picks-at-a-glance', 'unresolved.html',
                          '#unresolved-summary', '#unresolved-limits', 'matches.html',
                          'review.html'} <= hrefs)
-        self.assertIn('past their lock or start', self.bar.get_text(' ', strip=True))
+        # Session 65af11da: this sentence counts rows that are not open (a retained
+        # row can be not open while its start is still ahead), so it must not call
+        # them past. See tests/test_session_65af11da.py for the arithmetic pin.
+        self.assertIn('feed rows are not open by sourced status or start time', self.bar.get_text(' ', strip=True))
 
     def test_stylesheets_are_identical_balanced_and_keep_pinned_orders(self):
         self.assertEqual(CSS_ROOT, CSS_SITE)
