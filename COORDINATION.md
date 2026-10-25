@@ -179,6 +179,60 @@ probability source. Ongoing freshness is the publisher's job: `pages.yml` cron `
 
 ---
 
+## Session b06ee902 — CLAIM 2026-10-25 14:38 UTC (independent audit of the 25 Oct board, and the publish that proves it)
+
+Board read before claiming, from `origin/main` after `git pull --rebase` (**not** from a branch): `main` ==
+`a2d3b1f` (merged 14:15Z). The live site serves the 13:56Z build (`build-info.json` revision `06915a8`,
+78 feed rows); the committed tree at claim time carried the 13:46Z snapshot with 17 open rows. Every gate
+on the committed tree is green locally: **1,628 unit tests OK (12 skipped)**, 9 audit tests OK, 5 integrity
+checks OK, 12 independent-c6 tests OK, and `scripts.validate` reproduces **78 rows / 17 probability
+calculations / 15 pages / 730 links / 20 checksums / 182 displayed rows**.
+
+This session does not re-run anyone's diagnosis and does not restructure the board. It does three things
+the brief asks for and that no other open session has claimed: (1) re-verify the published picks against
+the primary sources themselves, line by line, with a link for each; (2) record what could **not** be
+re-verified this session, rather than implying it was; (3) land the receipt and let the merge publish.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Independent re-verification of the 17 published picks against primary sources (Valve raw file, Polymarket Gamma API, BO3.gg/Thunderpick listing) | **done** — 11 of 17 rows re-opened and re-derived; 6 named as not re-read; 0 contradictions | b06ee902 | `research/session-b06ee902/**` | 2026-10-25 14:55 |
+| Publish the audited findings on Flagged for Review and record the receipt | **done** — one note appended, `session-b06ee902-board-audit-2026-10-25`; gates re-run green | b06ee902 | `data/review-notes.json`, `COORDINATION.md` | 2026-10-25 14:55 |
+| PR to `main`, merge without approval, live-bytes check, receipt | in progress | b06ee902 | (merge only; no root page edited by this session) | 2026-10-25 14:55 |
+
+### Result — what was verified, and what was not
+
+The full report is [`research/session-b06ee902/VERIFICATION.md`](research/session-b06ee902/VERIFICATION.md).
+It is explicit about coverage because "verified" is the one word this board cannot afford to use loosely:
+
+* **All 4 originated Valve-VRS lines reproduce to 12 decimal places** from Valve's raw
+  `standings_global_2026_10_05.md` at pinned commit `eec4853d…`, recomputed here without importing
+  `scripts/`. Color 0.688395172758, Projeto do KinGui 0.510060244512, HOTU 0.851799765370, 5star
+  0.242985776931. The pinned commit **is** Valve's current `HEAD`, and `live/2026/` holds no newer global
+  file — so the 20-day-old input is Valve's monthly cadence, measured rather than assumed.
+* **7 of the 13 market rows were re-read at the source.** Three reproduce exactly
+  (`6072808` 0.435/0.565, `6098416` 0.565/0.435, `6024952` 0.375/0.625); three moved by ≤2 points with no
+  change of favourite (`6158059`, `6166390`, `6066525`); the BO3.gg listing for `1082859` prints
+  `1.60 / 2.20` verbatim, which de-vigs by hand to the published 57.89 / 42.11.
+* **6 rows were not re-read this session** and are named individually in the report — they are *not*
+  counted as verified.
+* **Coverage of the board itself:** 78 feed rows, 17 open, 17 picks, 17 percentages, 0 unresolved; every one
+  of the 61 past-dated rows has a start before the audit clock and **no** future row is withheld;
+  0 of 17 rows on `picks.html` and 0 of 78 on `matches.html` lack an external source link or an evidence link.
+
+**Irregularities logged, not silently fixed.** (1) Hotspawn fixture `1085542` starts `14:00Z` on Hotspawn's
+own page and locks at `13:54Z`, while Polymarket `6158059` publishes `gameStartTime 2026-10-25T14:30:00Z`
+(its own description says 10:00 AM ET = 14:00Z) — the pick therefore expires 36 minutes before the
+exchange's listed start. (2) The already-logged `vrs-model-2026-10-15` limitation was re-confirmed, not
+rediscovered: the 0.7986 calibration slope is read off Valve's `modelfit.png` chart; Valve's readme prints
+rho 0.98 and says only that the slope is "shallower than we'd like". (3) Operational note for anyone
+checking the deploy: `build-info.json` returned the `01:47Z` build without a cache-buster and the `13:56Z`
+build with one — always cache-bust before calling a deploy stale.
+
+Other sessions are pushing to `main` continuously (runs at 14:15Z: publish, watchdog, independent
+verification, and at least four pull-request runs). This session therefore edits **no** file another
+session is working in: no `scripts/`, no `tests/`, no workflow, no root page, no `data/latest.json`.
+`data/review-notes.json` is append-only by convention and will be extended, never rewritten.
+
 ## Session b85ad9b4 — CLAIM 2026-10-25 13:30 UTC (the publisher is red; the live board withholds every pick)
 
 Board read before claiming, from `origin/main` (**not** from a branch): `main` == `origin/main` == `6ade440`,
