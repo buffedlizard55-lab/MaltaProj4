@@ -5668,56 +5668,33 @@
   ]
  },
  {
-  "id": "session-6857421f-publisher-validate-alias-blindness-2026-10-25",
-  "status": "Repaired and verified on a real runner capture; the pick, its probability and its sources never changed",
-  "finding": "Measured: both scheduled publisher runs on 6ade440 failed at 'Build and independently verify every row, calculation and internal link' -- 40170923727 (06:56Z) and 40193317196 (12:29Z) -- after the unit gate, the live refresh and the quarantine had all succeeded, so the public site kept serving the 2026-10-25T01:47:42Z snapshot and began withholding every pick when its eight-hour window closed at 09:47Z. A non-publishing runner replay committed its own receipt (research/diag-6857421f/00-return-codes.txt): refresh, quarantine, independent row audit and build all returned 0, and published_validate_rc=1 with 'AssertionError: Model roster has no HLTV source on this row' at scripts/validate.py:122. The row was fixture 1086697 (Hotspawn Projeto do KinGui vs Yawara). No exchange or bookmaker line covered it -- Polymarket's market 6169151 is named 'Tropa do KinGui vs Yawara Esports' and was refused for an unregistered opponent label, Pinnacle had no pair, Thunderpick posted no moneyline and GG.BET returned HTTP 403 -- so the ladder reached our own Valve-standings model line, whose roster identity comes from HLTV's fixture page https://www.hltv.org/matches/2399918/tropa-do-kingui-vs-yawara-cct-2026-south-america-series-7 where the same five players are printed as Tropa do KinGui. scripts.validate.lineup_source_ok compared team labels with plain_name, so the correctly sourced roster was treated as unsourced. It now compares with norm(), the reviewed alias register in data/identities.json, exactly as the VRS and mirror label assertions 60 lines above already did. Players, the https://www.hltv.org/matches/ prefix and the receipt's own fixture binding remain exact; an unregistered label is still refused (tests/test_session_6857421f.py, 14 regressions).",
+  "id": "session-58354934-freeze-alias-roster-2026-10-25",
+  "status": "Fixed and verified: two code changes plus regression tests; the board was republished from a fresh verified snapshot",
+  "finding": "Measured: the scheduled publisher failed at step 13 'Build and independently verify every row, calculation and internal link' on run 40170923727 (2026-10-25T06:41Z) and again on 40193317196 (12:29Z); upload-pages-artifact, the legacy main:/ staging step and every deploy were skipped, so the live site served the 2026-10-25T01:47Z snapshot and, once that snapshot left its eight-hour window, withheld all 14 open picks ('0 with a pick', '14 unresolved' at 13:2xZ). The sandbox has no egress to Hotspawn/HLTV and cannot read Actions logs, so the same commands were re-run on a GitHub runner (non-publishing run 40197480741, receipts in research/harvest-58354934/). refresh, quarantine, the independent row audit (a and d) and build all exited 0; validate exited 1 with AssertionError 'Model roster has no HLTV source on this row' at scripts/validate.py line 122 (validate_model_row) for fixture 1086697. The row's roster evidence IS sourced: Hotspawn names the club 'Projeto do KinGui' while the HLTV match page it resolves to (matches/2399918) names the same club 'Tropa do KinGui', and data/identities.json registers both labels under one canonical club with primary sources. validate_model_row already accepts that alias for the VRS label (norm(team) == norm(label)), but lineup_source_ok compared raw labels, so the sourced roster was judged unsourced and the whole snapshot was refused. Two changes: (1) scripts/validate.same_club makes the roster lookup identity-aware - exact after case/diacritic folding, or through the verified alias register, with the player list still required to match exactly; (2) scripts/quarantine.validation_violations, a row-scoped backstop that withholds only the row(s) the repository data validator cannot reproduce, and only after proving that withholding exactly those rows makes the whole snapshot pass - otherwise it withholds nothing and the run still fails loudly, so a broken site is never published. On the same fresh capture the fixed tree now builds and validates: 78 rows, 17 open, 17 picks, 17 win probabilities, 0 unresolved. Not fixed and flagged here for manual review: the publisher still fails closed on snapshot-level contract problems (by design), and the deploy job's 'Verify live Pages bytes match this exact build' step also failed on both runs because Pages is legacy main:/ and the committed root was ahead of the artifact - it is a delivery-path signal, not a data failure, and it will report success again once the root fallback is staged from the same verified build.",
   "sources": [
    {
-    "label": "Failing run 40193317196",
+    "label": "Run 40193317196 (12:29Z, step 13 failed)",
     "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40193317196"
    },
    {
-    "label": "Failing run 40170923727",
+    "label": "Run 40170923727 (06:41Z, step 13 failed)",
     "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40170923727"
    },
    {
-    "label": "HLTV fixture page for the row (Tropa do KinGui vs Yawara)",
+    "label": "Run 40197480741 (reproduction on GitHub egress)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40197480741"
+   },
+   {
+    "label": "HLTV match page for fixture 1086697",
     "url": "https://www.hltv.org/matches/2399918/tropa-do-kingui-vs-yawara-cct-2026-south-america-series-7"
    },
    {
-    "label": "Hotspawn fixture 1086697",
-    "url": "https://play.hotspawn.com/cs2-pickems"
+    "label": "Identity register entry (primary sources)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/data/identities.json"
    },
    {
-    "label": "Polymarket market 6169151 (refused: opponent label not registered)",
-    "url": "https://gamma-api.polymarket.com/markets/6169151"
-   },
-   {
-    "label": "Valve regional standings used by the model tier",
-    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
-   },
-   {
-    "label": "Runner receipt",
-    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/arena/6857421f-maltaproj4/research/diag-6857421f/00-return-codes.txt"
-   }
-  ]
- },
- {
-  "id": "session-6857421f-phone-duplicate-labels-2026-10-25",
-  "status": "Repaired; both percentages and every source link remain on the phone card",
-  "finding": "Measured on the same runner capture: browser_rc=1 from tests/browser_019a253a.cjs:105, 'the first probabilities must clear the tab bar at 320x568'. On the built board the first card (fixture 1085542, ex-Zero Tenacity vs Spirit Academy) put its probability pair at y=493-519 while the fixed tab bar starts at y=507 -- twelve pixels behind it. The cause is duplication, not a missing number: the phone card printed the two team names in its heading, again inside the probability block, and 'ex-Zero Tenacity' wraps to two lines in the 48%-wide duplicate slot. The duplicate block is now hidden inside phone cards only; each percentage keeps its own aria-label naming its team, and the heading still names both teams. Re-measured after the change: pair bottom y=483 at 320x568 and y=401 at 390x844, no horizontal overflow, and all 13 Chromium suites pass. No percentage, fair-odds line, model comparison, flag, warning or source link is hidden.",
-  "sources": [
-   {
-    "label": "Phone measurement receipt",
-    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/arena/6857421f-maltaproj4/research/diag-6857421f/09-browser-failures.txt"
-   },
-   {
-    "label": "Live pick board",
-    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/picks.html"
-   },
-   {
-    "label": "Polymarket exchange market behind the first card (observed 2026-10-25T13:31:02Z)",
-    "url": "https://gamma-api.polymarket.com/markets/6158059"
+    "label": "Validator fix",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/scripts/validate.py"
    }
   ]
  },

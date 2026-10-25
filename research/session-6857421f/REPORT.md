@@ -37,7 +37,7 @@ published_row_audit_rc=0       browser_rc=1
 scripts/validate.py:122 AssertionError: Model roster has no HLTV source on this row
 ```
 
-## 2. Defect A — the validator compared team labels as raw text
+## 2. Defect A — the validator compared team labels as raw text (canonical repair: session b85ad9b4)
 
 The capture in that receipt is `2026-10-25T13:34:30Z` (78 feed rows, 17 open, 17 picks, 17
 probability pairs, 0 unresolved). The failing row was fixture **1086697**, Hotspawn's
@@ -61,32 +61,37 @@ reported as unsourced — the same class of defect the repo has already fixed fo
 identity assertion, which use `norm()` and the reviewed register in `data/identities.json`
 (31 entries, each with an https source and a written basis).
 
-**Repair.** `lineup_source_ok` now compares team labels with `norm()` in all three of its paths
-(fixture lineups, retained lineup receipts, HLTV team pages). Everything that carries evidence
-stays exact: the player names, the `https://www.hltv.org/matches/` and
+**Repair, and who landed it.** This session reproduced the defect and wrote the same class of fix,
+then found that `main` had already merged session b85ad9b4's stricter `same_club` bridge in
+`scripts/validate.py` (exact folded match first; otherwise both spellings must sit inside one register
+entry that links an https source, and the register must keep the fixture's two teams apart). That
+implementation is **adopted verbatim** and this session's duplicate edit was dropped. Everything that
+carries evidence stays exact: the player names, the `https://www.hltv.org/matches/` and
 `https://www.hltv.org/team/` prefixes, and the receipt's own fixture/team binding. An
 **unregistered** label is still refused, and a registered alias does not license a different
-roster — both are regressions in `tests/test_session_6857421f.py`.
+roster — both are regressions in `tests/test_session_6857421f.py`, which pin main's implementation.
 
-## 3. Defect B — the phone card printed the team names twice
+## 3. Defect B — the phone board put the numbers behind the tab bar (canonical repair: session 58354934)
 
 The same replay recorded `browser_rc=1` from `tests/browser_019a253a.cjs:105`, *"the first
 probabilities must clear the tab bar at 320x568"*. Reproduced locally on the captured board and
 measured in Chromium:
 
-| Viewport | First card | pick bottom | probability-pair bottom | fixed tab bar top | verdict |
-| --- | --- | --- | --- | --- | --- |
-| 320x568, before | `1085542` ex-Zero Tenacity vs Spirit Academy | 443 | **519** | 507 | 12 px behind the bar |
-| 320x568, after | same | 443 | **483** | 507 | clear |
-| 390x844, after | same | 357 | 401 | 783 | clear |
+| Build | Viewport | First card | pick bottom | probability-pair bottom | fixed tab bar top | verdict |
+| --- | --- | --- | --- | --- | --- | --- |
+| the failed 13:34Z replay | 320x568 | `1085542` ex-Zero Tenacity vs Spirit Academy | 443 | **519** | 507 | 12 px behind the bar |
+| this session's withdrawn variant | 320x568 | same | 443 | 483 | 507 | clear by 24 px |
+| **adopted `main` build (shipped)** | 320x568 | `1085542` (13:46Z capture) | **378** | **433** | 507 | clear by 74 px |
+| **adopted `main` build (shipped)** | 390x844 | same | 357 | 421 | 783 | clear by 362 px |
 
-The cause is duplication, not a missing number: the phone card printed both team names in its
-heading *and* again inside the probability block, where "ex-Zero Tenacity" wraps to two lines in
-a 48%-wide slot. The duplicate is now hidden inside phone cards only
-(`@media(max-width:650px){tbody .prob-team-labels{display:none}}`); each percentage keeps its own
-`aria-label` naming its team, and the heading still names both teams. No percentage, fair-odds
-line, model comparison, flag, warning or source link is hidden. Both stylesheet copies are
-byte-identical and balanced (a standing repository contract).
+Two repairs were written for this on 2026-10-25. This session hid the duplicated team labels inside
+the phone card (measured pair bottom 519 -> 483). Session 58354934 instead moved the numbers directly
+under the pick on short phones and tightened the card, which removes nothing at all. `main` carries
+58354934's block, so **that** is what is adopted here and this session's stylesheet edit was dropped
+in the merge. Measured on the adopted build, the first card's percentages sit above the tab bar at
+320x568 and 390x844 and all 13 Chromium suites pass. What this session keeps is the contract test:
+both stylesheet copies byte-identical and balanced, and no phone rule may hide a percentage, fair
+line, model comparison, flag or source link.
 
 ## 4. Full-coverage ledger for this capture — every open row, its pick and its source
 
@@ -147,15 +152,15 @@ count. Two honest limitations are carried with this capture anyway:
 
 | Gate | Result | Command |
 | --- | --- | --- |
-| Unit suite on this exact tree | **1,606 tests OK (12 skipped)** | `python -m unittest discover -s tests` |
+| Unit suite on this exact tree | **1,633 tests OK (12 skipped)** | `python -m unittest discover -s tests` |
 | Audit suite | 9 OK | `python -m unittest discover -s audits -p 'test_*.py'` |
 | Integrity | 5 OK | `python verification-95b588c2/test_integrity.py` |
 | Independent C6 auditors | 12 OK | `python -m unittest discover -s verification-c6 -p 'test_*.py'` |
 | Independent row audit on the capture | 0 failures across 78 rows | `python verification-c6/audit_snapshot.py …` |
-| Validator (root, staged) | 78 rows / 17 calculations reproduced / 15 pages / 730 links / 20 checksums / 182 displayed rows | `python -m scripts.validate --data data/latest.json --site .` |
+| Validator (root, staged) | 78 rows / 16 calculations reproduced / 15 pages / 724 links / 20 checksums / 180 displayed rows | `python -m scripts.validate --data data/latest.json --site .` |
 | Chromium suites | **13 suites pass** (32 page/viewport scans at 320/390/768/1440, expiry, ladder, phone placement) | `npm run test:browser` |
-| Phone geometry | first pick at y=336/354 and both percentages above the tab bar at 320x568 / 390x844 | `tests/browser_019a253a.cjs`, `tests/browser_aeafcbe6.cjs` |
-| Flagged for Review | 3 new source-linked notes rendered in `review.html` | `data/review-notes.json` |
+| Phone geometry | first pick and both percentages above the tab bar at 320x568 / 390x844, no horizontal overflow | `tests/browser_019a253a.cjs`, `tests/browser_9b97d585.cjs`, `tests/browser_aeafcbe6.cjs` |
+| Flagged for Review | 1 new source-linked note rendered in `review.html` (the other two were withdrawn as duplicates of main's notes) | `data/review-notes.json` |
 
 ## 7. Sources used in this session
 

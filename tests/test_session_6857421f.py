@@ -31,10 +31,14 @@ What this suite proves, and why
    `browser_rc=1` from `tests/browser_019a253a.cjs:105` ("the first
    probabilities must clear the tab bar"). Measured on that build, the first
    card's percentages sat at y=493-519 against a tab bar at y=507: twelve
-   pixels behind the bar, because the card printed the two team names twice and
-   "ex-Zero Tenacity" wraps to two lines in the duplicate. The fix removes only
-   the duplicate *inside* the phone card; both percentages keep their
-   `aria-label` naming their team, and the card heading still names both teams.
+   pixels behind the bar. Two sessions repaired this; `main` carries session
+   58354934's implementation (on short phones the numbers move directly under
+   the pick and the start/lock line follows them), so this session adopted that
+   code and dropped its own duplicate stylesheet edit. The tests below pin the
+   contract instead: both published stylesheet copies byte-identical and
+   balanced, no phone rule hiding a percentage, a fair line, a model comparison,
+   a flag or a source link, and the four suites that measure the geometry
+   registered as browser gates.
 
 3. **Neither repair may hide evidence.** The tests assert that the phone block
    hides nothing but the duplicated labels, that both published stylesheet
@@ -146,8 +150,19 @@ class CapturedSnapshotStillValidatesTest(unittest.TestCase):
                 ('https://www.hotspawn.com/', 'https://play.hotspawn.com/')), match['id'])
 
 
-class PhoneCardTest(unittest.TestCase):
-    """The phone card may lose its duplicated labels, never a number or a source."""
+class PhoneBoardContractTest(unittest.TestCase):
+    """The phone board is measured by the browser suites; nothing here hides a number.
+
+    Two sessions repaired the same 320x568 defect on 2026-10-25. `main` carries
+    session 58354934's implementation (on short phones the percentages move
+    directly under the pick and the start/lock line follows them, plus a
+    tighter card), so this session adopted that code and dropped its own
+    duplicate stylesheet edit. What is pinned here is the contract the repair
+    must keep, not one implementation of it: the two published stylesheet copies
+    stay byte-identical and balanced, no phone rule hides a percentage, a fair
+    line, a model comparison, a flag or a source link, and the two browser
+    suites that measure the geometry are registered in `npm run test:browser`.
+    """
 
     def stylesheets(self):
         return [(ROOT / 'site/assets/style.css'), (ROOT / 'assets/style.css')]
@@ -161,35 +176,33 @@ class PhoneCardTest(unittest.TestCase):
             text = path.read_text()
             self.assertEqual(text.count('{') - text.count('}'), 0, path)
 
-    def test_duplicate_probability_labels_are_hidden_only_on_phones(self):
+    def test_no_phone_rule_hides_evidence(self):
         text = (ROOT / 'site/assets/style.css').read_text()
-        rule = 'tbody .prob-team-labels{display:none}'
-        self.assertIn(rule, text)
-        # It must sit inside a max-width:650px block, not apply to desktop.
-        index = text.index(rule)
-        opening = text.rfind('@media', 0, index)
-        self.assertNotEqual(opening, -1)
-        self.assertIn('max-width:650px', text[opening:index])
-        self.assertNotIn('body[data-page', text[opening:index])
-        # Nothing that carries evidence may be hidden in the phone stylesheet.
-        for selector in ('.prob-pair', '.prob-label', '.model-line', '.source-links',
-                         '.badge', '.pick', '.flags'):
-            for block in re.findall(r'@media\(max-width:650px\)\{(.*?)\n\}', text, re.S):
-                self.assertNotRegex(block, re.escape(selector) + r'[^{]*\{display:none')
-        for path in self.stylesheets():
-            body = path.read_text()
-            for required in ('.prob-pair', '.prob-label', '.model-line'):
-                self.assertIn(required, body)
+        blocks = re.findall(r'@media\(max-width:650px\)[^{]*\{(.*?)\n\}', text, re.S)
+        self.assertTrue(blocks, 'the phone stylesheet must exist')
+        forbidden = ('.prob-pair', '.prob-label', '.model-line', '.source-links',
+                     '.badge', '.pick', '.time-cell', '.evidence', '.flags')
+        for block in blocks:
+            for selector in forbidden:
+                self.assertNotRegex(
+                    block, re.escape(selector) + r'[^{}]*\{[^{}]*display:\s*none',
+                    f'{selector} may not be hidden on a phone')
 
-    def test_the_captured_board_still_renders_both_percentages(self):
-        # A percentage span keeps its own accessible name, so removing the
-        # duplicated visual label removes no information from a screen reader.
+    def test_the_phone_measurements_are_registered_browser_gates(self):
+        package = json.loads((ROOT / 'package.json').read_text())
+        command = package['scripts']['test:browser']
+        for suite in ('tests/browser_019a253a.cjs', 'tests/browser_9b97d585.cjs',
+                      'tests/browser_ce45f672.cjs', 'tests/browser_aeafcbe6.cjs'):
+            self.assertIn(suite, command)
+            self.assertTrue((ROOT / suite).exists())
+
+    def test_the_measured_board_still_renders_both_percentages(self):
         capture = json.loads((ROOT / 'research' / 'diag-6857421f' /
                               'snapshot-quarantined.json').read_text())
         from scripts import build
         html = build.table([m for m in capture['matches'] if m['state'] == 'open'], True)
-        self.assertIn('aria-label="', html)
         self.assertGreaterEqual(html.count('percent"'), 2)
+        self.assertIn('aria-label="', html)
 
 
 if __name__ == '__main__':
