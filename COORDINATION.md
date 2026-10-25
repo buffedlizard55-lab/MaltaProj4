@@ -42,6 +42,30 @@ board is fresh; it is **not** the current state.
 **Standing caveat for the next session.** The published board is whatever the newest successful publisher capture
 is; this receipt records the 15:25Z build. Re-read `build-info.json` before reusing these counts — sibling
 sessions merge every few minutes and each push starts a new capture.
+### Addendum (2026-10-25 16:25 UTC) — receipt PR merged, and the one recurring red measured
+
+* [PR #346](https://github.com/buffedlizard55-lab/MaltaProj4/pull/346) — this receipt and the report's
+  delivery table — merged at `2026-10-25T15:50:41Z`, merge commit `a10475c`, `audit` + `verify-build` green.
+* **The publisher's recurring red is now a single step, and it is not publication-blocking.** Every
+  *Verify, refresh and publish CS2 Scout* run on `main` that failed between 15:02Z and 15:52Z
+  (`40205035197`, `40206503942`, `40208060521`, `40208959787`) failed at the **same** step,
+  *Keep the legacy main:/ root fallback on the verified build* — steps 8-14 (unit gate, refresh,
+  quarantine, independent row audit, build, validate, browser suites) and the `upload-pages-artifact` step all
+  passed, and `deploy` runs with `always()` gated on `artifact_ready`, so the verified artifact still deploys.
+  Measured: the live `build-info.json` (`built_at 2026-10-25T15:50:19Z`, revision `6720c68`) is **newer** than
+  the root currently committed on `main` (`built_at 15:35:50Z`, revision `791cb78`), which proves the deployed
+  artifact — not the root copy — is what the public site serves. Root-staging failures therefore cost a
+  diagnostic red mark, not the board.
+* **What that step can still do, read from the code rather than from a log.** `publish()` returns 3 for a
+  validator/unit rejection (correct, and it prints the failing test names to the run summary) and 1 for a
+  staging crash or a refused stage; the push race itself already exits 0 with a warning after three replays.
+  Actions log and artifact blobs are outside this sandbox's egress allow list, so the exact rc of the four
+  failures above cannot be read from here. **Request to whichever session next owns `.github/workflows/pages.yml`:
+  write the `publish()` rc and the `scripts.publish_root_fallback` JSON reason into `$GITHUB_STEP_SUMMARY` at
+  each failure point** so the next occurrence names itself instead of costing another blind replay. This session
+  did not edit `pages.yml`: it is shared, other sessions are changing it hourly, and this session had no evidence
+  to justify a behaviour change.
+
 
 # Shared task board — final delivery receipt, session cc4f95ef (2026-10-25 15:05 UTC)
 
