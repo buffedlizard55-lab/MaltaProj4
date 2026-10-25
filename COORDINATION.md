@@ -1,5 +1,31 @@
 # Shared task board
 
+## Session 5bf6ae1b — CLAIM 2026-10-25 14:14 UTC (fresh-coverage re-verification + republish)
+
+Arena-fixed branch `arena/5bf6ae1b-maltaproj4` (fixed by the session; no other branch is created,
+checked out or pushed). Board read before claiming: `main` == `origin/main` == this branch ==
+`d5b0739` (merge of PR #322, session 58354934). No claim in this file is dated after
+2026-10-25 14:05 UTC, so no live claim conflicts. Committed snapshot `data/latest.json` generated
+`2026-10-25T13:46:54Z`: 78 feed rows, 17 open, 17 picks, 17 win probabilities, 0 unresolved
+(11 exchange, 1 exchange_wide, 1 bookmaker_fallback, 4 model_vrs). Live site read at 14:14Z serves a
+13:56Z check with 16 open / 16 picks / 0 unresolved (one fixture locked at 13:54Z). The publisher
+(`pages.yml`, cron `4,19,34,49 * * * *` + 10-minute watchdog) is the mechanism that keeps this fresh;
+this session re-verifies it end-to-end on a genuinely fresh capture rather than assuming it.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| T1 Fresh capture on runner egress; census every open Hotspawn CS2 match (pick + probability or named limitation) | in progress | 5bf6ae1b | `.github/workflows/harvest-5bf6ae1b.yml` (new), `research/harvest-5bf6ae1b/**` (new) | 2026-10-25 14:14 |
+| T2 Line-by-line verification of the fresh snapshot (sources, arithmetic, unresolved section + limitations in executive summary) | unclaimed→in progress (5bf6ae1b) | 5bf6ae1b | `research/harvest-5bf6ae1b/**`, `data/review-notes.json` (append-only, only if a new irregularity is found) | 2026-10-25 14:14 |
+| T3 Mobile/executive-summary verification at 320/390/412 px, then final integration: fresh verified build, PR to `main`, merge without approval, live Pages byte check, receipt | in progress | 5bf6ae1b | `COORDINATION.md`, `data/latest.json`, `data/matches.csv`, generated root pages, `build-info.json` | 2026-10-25 14:14 |
+
+Evidence rules unchanged: Hotspawn supplies fixture inventory and locks only, never a probability;
+external betting lines first (exchange/bookmaker), HLTV + Valve VRS originated model line as the
+fallback ladder; no crowd votes, placeholder odds, inferred values or 50/50 filler; every published
+row carries its own official source link; unconfirmable values stay blank and are flagged on
+`unresolved.html` / `review.html`.
+
+---
+
 ## Session b85ad9b4 — CLAIM 2026-10-25 13:30 UTC (the publisher is red; the live board withholds every pick)
 
 Board read before claiming, from `origin/main` (**not** from a branch): `main` == `origin/main` == `6ade440`,
