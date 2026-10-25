@@ -94,10 +94,47 @@ jobs:
       - name: Build and independently verify every row, calculation and internal link
         if: steps.gate.outputs.publish == 'true'
         run: |
-          python verification-c6/audit_snapshot.py runtime/latest.json --output runtime/independent-row-audit.md
-          python -m scripts.build --data runtime/latest.json
-          python -m scripts.validate --data runtime/latest.json
-          python verification-c6/audit_snapshot.py public/data/latest.json --output runtime/published-row-audit.md
+          set -euo pipefail
+          mkdir -p runtime
+          run_gate() {
+            label="$1"
+            logfile="$2"
+            shift 2
+            set +e
+            "$@" > "$logfile" 2>&1
+            rc=$?
+            set -e
+            cat "$logfile"
+            if [ "$rc" -eq 0 ]; then return 0; fi
+            {
+              printf '### Build gate failed: %s (exit %s)\n\n' "$label" "$rc"
+              printf '```text\n'
+              tail -n 80 "$logfile"
+              printf '```\n'
+            } >> "$GITHUB_STEP_SUMMARY"
+            python3 - "$label" "$logfile" "$rc" <<'PY'
+          from pathlib import Path
+          import sys
+          label, path, code = sys.argv[1:]
+          lines = Path(path).read_text(encoding='utf-8', errors='replace').splitlines()[-20:]
+          if not lines:
+              lines = [f'Command failed with exit code {code} and wrote no output.']
+          # GitHub truncates check annotations at ten per check run. Keep the
+          # whole tail in one annotation so a traceback's final assertion is not
+          # the line that disappears after its stack frames.
+          detail = ' | '.join(lines).replace('%', '%25').replace('\\r', '%0D').replace('\\n', '%0A')
+          print(f'::error title={label}::{detail[:6000]}')
+          PY
+            return "$rc"
+          }
+          run_gate 'Independent row audit (runtime)' runtime/row-audit.log \
+            python verification-c6/audit_snapshot.py runtime/latest.json --output runtime/independent-row-audit.md
+          run_gate 'Static site build' runtime/build.log \
+            python -m scripts.build --data runtime/latest.json
+          run_gate 'Published-data and link validator' runtime/validate.log \
+            python -m scripts.validate --data runtime/latest.json
+          run_gate 'Independent audit of built JSON' runtime/published-row-audit.log \
+            python verification-c6/audit_snapshot.py public/data/latest.json --output runtime/published-row-audit.md
       - name: Phone, tablet, desktop, accessibility and exact-boundary expiry checks
         if: steps.gate.outputs.publish == 'true'
         run: npm run test:browser
@@ -221,7 +258,7 @@ jobs:
           exit 0
       - name: Record the exact artifact expected at the public site
         id: receipt
-        if: always() && steps.gate.outputs.publish == 'true'
+        if: always() && steps.gate.outputs.publish == 'true' && steps.pages_artifact.outcome == 'success'
         run: |
           echo "manifest_sha=$(sha256sum public/build-info.json | cut -d ' ' -f1)" >> "$GITHUB_OUTPUT"
           echo "built_at=$(python -c 'import json;print(json.load(open("public/build-info.json"))["built_at"])')" >> "$GITHUB_OUTPUT"
