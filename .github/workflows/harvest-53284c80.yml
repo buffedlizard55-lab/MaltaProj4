@@ -1,0 +1,149 @@
+name: Coverage harvest 53284c80 (non-publishing)
+
+# Why this exists: the authoring sandbox reaches only github.com, pypi.org and
+# npm, so the real Hotspawn / HLTV / exchange / book refresh must run on a
+# GitHub-hosted runner. pages.yml on main has failed at step 13 (c6 audit →
+# build → validate → published c6 audit) on the last two scheduled runs
+# (40170923727, 40193317196), so the public board is frozen on the 01:47Z
+# snapshot. This workflow never deploys Pages and never pushes to main: it
+# commits dated evidence under research/harvest-53284c80/** to this session's
+# fixed Arena branch and emits check annotations the sandbox can read.
+on:
+  push:
+    branches: [arena/53284c80-maltaproj4]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: coverage-harvest-53284c80
+  cancel-in-progress: false
+jobs:
+  capture:
+    if: github.ref == 'refs/heads/arena/53284c80-maltaproj4' && (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[capture]'))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+          cache: npm
+      - run: pip install -r requirements.txt
+      - run: npm ci --ignore-scripts
+
+      - name: Refresh official Hotspawn, HLTV, exchange, book and Valve sources
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p research/harvest-53284c80/logs runtime
+          set +e
+          python -m scripts.refresh --output runtime/latest.json > research/harvest-53284c80/logs/refresh.txt 2>&1
+          echo "refresh_rc=$?" | tee research/harvest-53284c80/logs/return-codes.txt
+          if test -s runtime/latest.json; then cp runtime/latest.json research/harvest-53284c80/snapshot.json; fi
+          tail -40 research/harvest-53284c80/logs/refresh.txt
+          exit 0
+
+      - name: Quarantine, then replay pages.yml step 13 command by command
+        run: |
+          set +e
+          python -m scripts.quarantine runtime/latest.json > research/harvest-53284c80/logs/quarantine.txt 2>&1
+          echo "quarantine_rc=$?" | tee -a research/harvest-53284c80/logs/return-codes.txt
+          python verification-c6/audit_snapshot.py runtime/latest.json --output research/harvest-53284c80/row-audit.md > research/harvest-53284c80/logs/row-audit.txt 2>&1
+          echo "row_audit_rc=$?" | tee -a research/harvest-53284c80/logs/return-codes.txt
+          python -m scripts.build --data runtime/latest.json > research/harvest-53284c80/logs/build.txt 2>&1
+          echo "build_rc=$?" | tee -a research/harvest-53284c80/logs/return-codes.txt
+          python -m scripts.validate --data runtime/latest.json > research/harvest-53284c80/logs/validate-fresh.txt 2>&1
+          echo "validate_rc=$?" | tee -a research/harvest-53284c80/logs/return-codes.txt
+          python verification-c6/audit_snapshot.py public/data/latest.json --output research/harvest-53284c80/published-row-audit.md > research/harvest-53284c80/logs/published-audit.txt 2>&1
+          echo "published_audit_rc=$?" | tee -a research/harvest-53284c80/logs/return-codes.txt
+          if test -s runtime/latest.json; then cp runtime/latest.json research/harvest-53284c80/snapshot.json; fi
+          python -m scripts.diag_53284c80 --snapshot research/harvest-53284c80/snapshot.json --output research/harvest-53284c80 > research/harvest-53284c80/logs/coverage.txt 2>&1
+          echo "coverage_rc=$?" | tee -a research/harvest-53284c80/logs/return-codes.txt
+          echo '### Step-13 return codes' >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          cat research/harvest-53284c80/logs/return-codes.txt >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          for f in row-audit.txt build.txt validate-fresh.txt published-audit.txt; do
+            echo "----- $f (tail) -----"
+            tail -80 "research/harvest-53284c80/logs/$f" || true
+          done
+          # Surface the first assertion / auditor failure as a check annotation.
+          python - <<'PY'
+          from pathlib import Path
+          codes = Path('research/harvest-53284c80/logs/return-codes.txt').read_text()
+          print('::notice title=53284c80-step13-rcs::' + ' '.join(codes.split()))
+          mapping = {
+              'row_audit_rc': 'research/harvest-53284c80/logs/row-audit.txt',
+              'build_rc': 'research/harvest-53284c80/logs/build.txt',
+              'validate_rc': 'research/harvest-53284c80/logs/validate-fresh.txt',
+              'published_audit_rc': 'research/harvest-53284c80/logs/published-audit.txt',
+          }
+          parsed = dict(line.split('=', 1) for line in codes.splitlines() if '=' in line)
+          for key, path in mapping.items():
+              rc = parsed.get(key, '')
+              if rc not in ('0', ''):
+                  tail = Path(path).read_text(errors='replace')[-1500:].replace('\n', ' | ')
+                  print(f'::error title=53284c80-{key}::{key}={rc} {tail[-900:]}')
+          PY
+          exit 0
+
+      - name: Phone / tablet / desktop gates on the fresh build (non-blocking)
+        run: |
+          set +e
+          npm run test:browser > research/harvest-53284c80/logs/browser.txt 2>&1
+          echo "browser_rc=$?" | tee -a research/harvest-53284c80/logs/return-codes.txt
+          tail -40 research/harvest-53284c80/logs/browser.txt
+          exit 0
+
+      - name: Retain runner identity
+        env:
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+          RUN_SHA: ${{ github.sha }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          receipt = {
+              'workflow_run_id': os.environ['RUN_ID'],
+              'attempt': os.environ['RUN_ATTEMPT'],
+              'checkout_sha': os.environ['RUN_SHA'],
+              'run_url': os.environ['RUN_URL'],
+              'publishes_pages': False,
+              'pushes_main': False,
+          }
+          Path('research/harvest-53284c80/run.json').write_text(json.dumps(receipt, indent=1) + '\n')
+          PY
+          find research/harvest-53284c80 -name '*.gz' -size +2M -delete || true
+          du -sh research/harvest-53284c80 || true
+
+      - name: Commit dated research evidence to the fixed session branch
+        if: always()
+        run: |
+          git config user.name "cs2-evidence-runner"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A -- research/harvest-53284c80
+          git checkout -- . || true
+          git clean -fd -- public runtime || true
+          git commit -m "Retain official-source coverage harvest from run ${GITHUB_RUN_ID} [skip ci]" || echo "nothing to commit"
+          for attempt in 1 2 3; do
+            if git push origin HEAD:arena/53284c80-maltaproj4; then echo "receipt pushed"; exit 0; fi
+            git pull --rebase --autostash origin arena/53284c80-maltaproj4 || true
+          done
+          echo "::warning::Could not push the harvest receipt."
+
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: harvest-53284c80-${{ github.run_id }}
+          path: |
+            research/harvest-53284c80
+            runtime/latest.json
+          retention-days: 14

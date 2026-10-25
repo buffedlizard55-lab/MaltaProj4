@@ -1,5 +1,28 @@
 [
  {
+  "id": "session-53284c80-alias-roster-provenance-2026-10-25",
+  "status": "Repaired on this branch — needs review of the alias policy; live coverage unverified until a fresh publish",
+  "finding": "On 2026-10-25 the scheduled publisher failed at pages.yml step 13 (runs 40170923727 and 40193317196), so the 01:47Z snapshot aged out and the live board withheld every pick. Independently reproduced: Hotspawn labels the club Projeto do KinGui while HLTV’s match page for the same slot labels it Tropa do KinGui. data/identities.json already registers those names as one club (HLTV match 2399904, Polymarket market 6033256). scripts.validate.lineup_source_ok compared plain_name, so a verified Valve roster on that HLTV page was rejected and one model row froze publication. verification-c6 already accepts the alias, which is why quarantine could not save the run. lineup_source_ok now uses core.norm (registered aliases only). An unregistered pair is still refused. No probability was invented.",
+  "sources": [
+   {
+    "url": "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7",
+    "label": "HLTV match page that names Tropa do KinGui (identity primary source)"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/markets/6033256",
+    "label": "Polymarket market 6033256 (identity corroboration)"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40193317196",
+    "label": "Scheduled publish that failed at step 13 (~12:29Z)"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/data/identities.json",
+    "label": "Committed identity register"
+   }
+  ]
+ },
+ {
   "id": "session-50932f4d-listing-event-binding",
   "status": "Repaired — ambiguous listing evidence fails closed; live coverage impact unverified",
   "finding": "Synthetic regressions showed that bookmaker-listing parsing could join a name to a different JSON object’s start, miss a valid later widget, or choose the first of conflicting labelled price pairs. The adapter now requires one explicit structured event and a unique label-bound pair across all widgets. Duplicate event declarations, conflicting prices, absent timezones, placeholders and invalid observation clocks cannot renew evidence. The 17 parser regressions are synthetic tests, not real bookmaker prices; no extra live coverage is attributed to this repair without a new source observation.",

@@ -1,3 +1,48 @@
+## Session 53284c80 claim — 2026-10-25 13:30 UTC (fresh every-match picks; publisher red at step 13; phone executive summary)
+
+Board read before claiming. Arena-fixed branch `arena/53284c80-maltaproj4`, based on
+`main` `6ade440`. No other branch is created, checked out or pushed. Open PRs from
+other sessions are left untouched; this session does not merge them as a substitute
+for verifying the current tree.
+
+**Measured starting state (GitHub API + committed bytes, not assumed).**
+
+* Now is 2026-10-25T13:25Z. Committed snapshot `data/latest.json` generated
+  `2026-10-25T01:47:42Z` (fixture evidence `01:44:08Z`): 79 feed rows, 18 open,
+  18 picks, 18 win probabilities, 0 unresolved. `stale_after_hours` is 8, so at
+  13:25Z the board is **11.6 hours old** and the live site must withhold every pick.
+* Pages is `build_type: legacy`, source `main:/`. `pages.yml` scheduled runs
+  [40170923727](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40170923727)
+  (~07:25Z) and [40193317196](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40193317196)
+  (~12:30Z) both **failed** at *Build and independently verify every row, calculation
+  and internal link* (step 13: c6 audit → `scripts.build` → `scripts.validate` →
+  published c6 audit). Refresh and quarantine succeeded; the artifact was never
+  uploaded; `deploy` then failed with "No artifacts named github-pages". The last
+  successful scheduled publish is [40151731896](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40151731896)
+  (~02:25Z), which staged the 01:47Z root.
+* This sandbox reaches only github.com / pypi.org / npm, so live Hotspawn / HLTV /
+  Polymarket / book reads happen on a GitHub runner. Job logs cannot be downloaded
+  here (results-receiver EOF), so the harvest commits receipts and emits check
+  annotations.
+
+Evidence rules unchanged: Hotspawn supplies fixture inventory and locks only, never
+a probability. A pick for a low-tier or unlisted match comes only from the sourced
+ladder (HLTV identity/rank/form, a verified esportsbook or exchange line, or the
+labelled VRS model). Anything left is published in the separate unresolved section
+with its attempted sources and the limitation that stopped it. No 50/50 filler,
+no crowd votes, no invented values.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Fresh official-source capture on a GitHub runner; name the exact step-13 failure; a pick or an explicit unresolved row for every open Hotspawn CS2 match | in progress | 53284c80 | `.github/workflows/harvest-53284c80.yml` (new), `scripts/diag_53284c80.py` (new), `research/harvest-53284c80/**` (new) | 2026-10-25 13:30 |
+| Line-by-line re-verification of the refreshed board; unresolved/limitations section named in the executive summary; phone-readable in-site links to the pick list | in progress | 53284c80 | `research/session-53284c80/**` (new), `tests/test_session_53284c80.py` (new); `scripts/build.py` / stylesheets only if a measured defect requires it | 2026-10-25 13:30 |
+| Final integration: all gates, PR to `main`, merge without waiting, live Pages verification, receipt | unclaimed until the rows above are done | 53284c80 | `COORDINATION.md`, generated root via `scripts.build` / `scripts.stage_legacy` only | 2026-10-25 13:30 |
+
+Shared files (`scripts/core.py`, `scripts/refresh.py`, `scripts/build.py`,
+`.github/workflows/pages.yml`, generated root) are **not** edited until the harvest
+names a defect in them. Concurrent owners' research folders and open PRs are not
+touched.
+
 # Shared task board
 
 ## Session b85ad9b4 — CLAIM 2026-10-25 13:30 UTC (the publisher is red; the live board withholds every pick)
@@ -44,6 +89,51 @@ diagnosis: it reads the shared board before each push and adopts any fix that re
 of layering a second one on top.
 
 ---
+
+## Session 53284c80 harvest receipt — 2026-10-25 13:45 UTC
+
+Non-publishing run [40197787382](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40197787382)
+on checkout `da83b05` (before the alias fix) refreshed official sources at
+**2026-10-25T13:39:08Z** (fixtures observed 13:35:34Z):
+
+| Step | rc | Notes |
+| --- | --- | --- |
+| refresh | 0 | 78/78/78/78 Hotspawn parity |
+| quarantine | 0 | 0 withheld |
+| c6 row audit | 0 | 0 failures |
+| build | 0 | 17 calculations |
+| **validate** | **1** | `lineup_source_ok` on fixture 1086697 *Projeto do KinGui* vs *Yawara* |
+| published c6 | 0 | |
+| browser | 1 | first `.prob-pair` bottom 519 vs tab 507 at 320x568 |
+
+Coverage of that capture: **78 rows · 17 open · 17 picks · 17 win probabilities · 0 unresolved**
+(11 exchange, 1 wide exchange, 1 bookmaker listing, 4 Valve-VRS model). Every open
+Hotspawn CS2 match had a sourced pick; the publisher still refused the board
+because validate compared literal names.
+
+On this branch after the alias comparison and the short-phone picks compact:
+`scripts.validate` reproduces all 17 calculations on the harvest snapshot;
+`unittest discover -s tests` **1616 OK (12 skipped)**; audits 9 OK; all 13
+Chromium suites pass (first pick y=354 at 320x568, `.prob-pair` bottom 381 < tab 507).
+The verified harvest snapshot is staged as the committed root so Pages has a
+board inside its 8-hour window. Unresolved section is present and currently empty.
+
+
+## Session 53284c80 progress — 2026-10-25 13:40 UTC (step-13 defect reproduced; alias comparison repaired)
+
+Independent of PR [#314](https://github.com/buffedlizard55-lab/MaltaProj4/pull/314) (session 046b2e46,
+which also claimed `scripts/validate.py`): on this tree, `plain_name("Projeto do KinGui")` ≠
+`plain_name("Tropa do KinGui")` while `core.norm` of both is equal via the sourced register
+entry (HLTV match 2399904, Polymarket market 6033256). `lineup_source_ok` with the Hotspawn
+label and the Valve five-player roster returned **False** before the change and **True** after.
+`verification-c6` already accepts the alias (`same_team`), so quarantine cannot save the run —
+step 13's `scripts.validate` is what froze publication.
+
+This session still does not edit `.github/workflows/pages.yml` (PR #311) or `scripts/build.py`
+(PR #312). Harvest [40197787382](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40197787382)
+is queued for a live capture. If #314 merges first, adopt its `validate.py` bytes; the comparison
+is the same function.
+
 
 ## Session 2b856884 — published-state addendum (2026-10-24 18:05 UTC)
 
