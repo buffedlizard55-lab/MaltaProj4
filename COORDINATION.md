@@ -9440,3 +9440,36 @@ Flagged for Review page.
 the stale watchdog, so the 4–8 hour promise is now backed by a publisher that actually completes;
 the eight-hour silence was a contract violation in the data, not a cron problem, and it is
 recorded rather than papered over.
+
+## Session 6d111263 claim — 2026-10-25 13:30 UTC (fresh diagnosis, coverage, integration)
+
+Board read before claiming. Arena-fixed branch `arena/6d111263-maltaproj4`, based on `main` `6ade440`.
+No other branch is created, checked out or pushed. All `in progress` rows in this file dated 2026-10-18
+through 2026-10-24 are stale by the 60-minute rule and their owners' branches are not touched here.
+
+**Measured starting state (not assumed).** `main` == `origin/main` == `6ade440`. The committed snapshot
+`data/latest.json` is `2026-10-25T01:47:42Z` (79 feed rows, 18 open / 18 picks / 18 win probabilities /
+0 unresolved), i.e. **11.6 h old at claim time — outside the 8-hour evidence window**. The scheduled
+publisher is red: `Verify, refresh and publish CS2 Scout` runs
+[40143667147](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40143667147) (00:24Z, head
+`cbe9dce`), [40170923727](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40170923727)
+(07:24Z, head `6ade440`) and
+[40193317196](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40193317196) (12:30Z, head
+`6ade440`) all failed at step *Build and independently verify every row, calculation and internal link*,
+so `upload-pages-artifact` never ran and the live board has been serving the 01:47Z snapshot since.
+The independent audit workflow fails with `Live snapshot is expired` — a symptom of the same freeze.
+Local reproduction of that exact step against the **committed** snapshot passes (row audit 0 failures,
+build OK, validate 802 links OK, published audit 0 failures), so the defect is in the snapshot the
+runner produces from live sources. Job logs cannot be read from this sandbox (artifact/blob hosts are
+outside the egress allowlist), so the diagnosis runs on a GitHub runner via a session harvest.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Diagnose the failing publish step on a fresh runner refresh (refresh → quarantine → audit/build/validate on the refreshed snapshot), commit dated logs | in progress | 6d111263 | `.github/workflows/harvest-6d111263.yml` (new), `research/harvest-6d111263/**` (new) | 2026-10-25 13:30 |
+| Fix the defect that blocks publication; keep a sourced pick or a documented unresolved limitation for every open Hotspawn CS2 match | in progress | 6d111263 | `scripts/**` only as the diagnosis names the file(s), `tests/test_session_6d111263.py` (new) | 2026-10-25 13:30 |
+| Line-by-line verification of the refreshed board (rows, arithmetic, source links, expiry); executive-summary links, unresolved section and 320–412 px layout re-check | in progress | 6d111263 | `research/session-6d111263/**` (new), `data/review-notes.json` (append-only) | 2026-10-25 13:30 |
+| Final integration: all gates, PR to `main`, merge without approval, confirm Pages deploy and live bytes, receipt | in progress | 6d111263 | `COORDINATION.md`, generated root pages/data, `build-info.json` | 2026-10-25 13:30 |
+
+Evidence rules unchanged: Hotspawn supplies fixture inventory and locks only, never a probability; no
+crowd votes, placeholder odds, inferred values or 50/50 filler; any match that cannot be priced by the
+sourced ladder stays in the separate unresolved section with its attempted sources and limitation.
