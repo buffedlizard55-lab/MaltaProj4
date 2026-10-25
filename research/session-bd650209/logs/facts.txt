@@ -1,35 +1,33 @@
 == snapshot
 schema_version         2
-generated_at           2026-10-25T13:36:18.573529Z
-last_attempt_at        2026-10-25T13:36:18.573529Z
-refresh_started_at     2026-10-25T13:34:37.719720Z
-fixtures_observed_at   2026-10-25T13:32:47.557893Z
+generated_at           2026-10-25T13:56:28.969391Z
+last_attempt_at        2026-10-25T13:56:28.969391Z
+refresh_started_at     2026-10-25T13:54:47.896899Z
+fixtures_observed_at   2026-10-25T13:52:54.776829Z
 coverage               verified
 refresh_hours          1
 stale_after_hours      8
 built_at               None
 rows                   78
-states                 {'not_open': 61, 'open': 17}
-open                   17
-open_with_pick         17
-open_with_probability  17
+states                 {'not_open': 62, 'open': 16}
+open                   16
+open_with_pick         16
+open_with_probability  16
 priced_without_pick    0
 pick_without_probability 0
 no_pick                0
-method_mix             {'exchange': 11, 'model_vrs': 4, 'bookmaker_fallback': 1, 'exchange_wide': 1}
+method_mix             {'exchange': 10, 'model_vrs': 4, 'bookmaker_fallback': 1, 'exchange_wide': 1}
 coverage_counts        {'api': 78, 'page': 78, 'lobby': 78, 'retained': 78}
-issues                 [{'code': 'feed_status', 'message': '61 feed entries are not open by sourced timestamps/status. They remain in All matches and are not treated as future picks.', 'source': 'https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1'}]
+issues                 [{'code': 'feed_status', 'message': '62 feed entries are not open by sourced timestamps/status. They remain in All matches and are not treated as future picks.', 'source': 'https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1'}]
 
 == every open row
-1085542 2026-10-25T14:00:00Z | ex-Zero Tenacity vs Spirit Academy | 56.5% | 43.5% | b | pick=ex-Zero Tenacity | method=exchange | expires=2026-10-25T13:54:00Z
-    attempt: {"provider": "Polymarket", "reason": "Exact pair and UTC start; two-way series winner validated.", "status": "resolved", "url": "https://gamma-api.polymarket.com/markets/6158059"}
 1079199 2026-10-25T15:00:00Z | Infinite vs BRUTE | 43.5% | 56.5% | b | pick=BRUTE | method=exchange | expires=2026-10-25T14:54:00Z
     attempt: {"provider": "Polymarket", "reason": "Exact pair and UTC start; two-way series winner validated.", "status": "resolved", "url": "https://gamma-api.polymarket.com/markets/6072808"}
 1086696 2026-10-25T16:00:00Z | BORRACHEIROS vs RED Canids Academy | 42.5% | 57.5% | c | pick=RED Canids Academy | method=exchange | expires=2026-10-25T15:54:00Z
     attempt: {"provider": "Polymarket", "reason": "Exact pair and UTC start; two-way series winner validated.", "status": "resolved", "url": "https://gamma-api.polymarket.com/markets/6158760"}
 1079200 2026-10-25T18:00:00Z | Color vs ex-Zero Tenacity | 68.8% | 31.2% | b | pick=Color | method=model_vrs | expires=2026-10-25T17:54:00Z
     attempt: {"provider": "Polymarket", "reason": "No exact team-pair and UTC-start match in retrieved feed.", "status": "unresolved", "url": "https://gamma-api.polymarket.com/sports"}
-    attempt: {"event_status": {"closed": false, "ended": true, "id": "1238707", "live": false, "slug": "cs2-color-zerote-2026-10-25"}, "market_status": {"acceptingOrders": true, "active": true, "closed": false, "gameStartTime": "2026-10-25 18:00:00+00", "id": "6072812"}, "observed_at": "2026-10-25T13:31:02.16604
+    attempt: {"event_status": {"closed": false, "ended": true, "id": "1238707", "live": false, "slug": "cs2-color-zerote-2026-10-25"}, "market_status": {"acceptingOrders": true, "active": true, "closed": false, "gameStartTime": "2026-10-25 18:00:00+00", "id": "6072812"}, "observed_at": "2026-10-25T13:52:59.98714
     attempt: {"provider": "HLTV", "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. Recent results and head-to-head wins are recorded for the final resea
     attempt: {"provider": "Pinnacle", "reason": "No exact team-pair and UTC-start match in retrieved feed.", "status": "unresolved", "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"}
     attempt: {"provider": "Polymarket", "reason": "No exact team-pair and UTC-start match in retrieved feed.", "status": "unresolved", "url": "https://gamma-api.polymarket.com/sports"}
@@ -38,7 +36,7 @@ issues                 [{'code': 'feed_status', 'message': '61 feed entries are 
     attempt: {"provider": "Thunderpick (via BO3.gg API)", "reason": "No exact team-pair and UTC-start match in the live BO3.gg CS2 feed.", "status": "unresolved", "url": "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=
 1081158 2026-10-25T18:00:00Z | FORZE Reload vs ex-RUSTEC | 56.5% | 43.5% | b | pick=FORZE Reload | method=exchange | expires=2026-10-25T17:54:00Z
     attempt: {"provider": "Polymarket", "reason": "Exact pair and UTC start; two-way series winner validated.", "status": "resolved", "url": "https://gamma-api.polymarket.com/markets/6098416"}
-1082697 2026-10-25T18:00:00Z | BESTIA vs paiN | 42.5% | 57.5% | c | pick=paiN | method=exchange | expires=2026-10-25T17:54:00Z
+1082697 2026-10-25T18:00:00Z | BESTIA vs paiN | 41.5% | 58.5% | c | pick=paiN | method=exchange | expires=2026-10-25T17:54:00Z
     attempt: {"provider": "Polymarket", "reason": "Exact pair and UTC start; two-way series winner validated.", "status": "resolved", "url": "https://gamma-api.polymarket.com/markets/6166390"}
 1086697 2026-10-25T19:00:00Z | Projeto do KinGui vs Yawara | 51.0% | 49.0% | c | pick=Projeto do KinGui | method=model_vrs | expires=2026-10-25T18:54:00Z
     attempt: {"candidates": [{"teams": ["Tropa do KinGui", "Yawara Esports"], "url": "https://gamma-api.polymarket.com/markets/6169151"}], "provider": "Polymarket", "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.", "status": "unresolved", "url": "https://gamma-api.polymarket.co
@@ -49,9 +47,9 @@ issues                 [{'code': 'feed_status', 'message': '61 feed entries are 
     attempt: {"provider": "GG.BET", "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.", "status": "error", "url": "https://gg.bet/en/esports/counter-strike"}
     attempt: {"provider": "Thunderpick (via BO3.gg API)", "reason": "Fixture found on BO3.gg with exact UTC start, but no active sportsbook moneyline is posted yet (bet_updates is null).", "status": "unresolved", "url": "https://bo3.gg/matches/tropa-do-kingui-vs-yawara-esports-25-10-2026"}
     attempt: {"provider": "Valve VRS model", "reason": "Originated line from both teams' Valve standings points (2026-10-05).", "status": "resolved", "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"}
-1082858 2026-10-26T03:00:00Z | Ground Zero vs Off Chops | 36.5% | 63.5% | b | pick=Off Chops | method=exchange | expires=2026-10-25T21:30:38.210986Z
+1082858 2026-10-26T03:00:00Z | Ground Zero vs Off Chops | 36.5% | 63.5% | b | pick=Off Chops | method=exchange | expires=2026-10-25T21:52:38.961550Z
     attempt: {"provider": "Polymarket", "reason": "Exact pair and UTC start; two-way series winner validated.", "status": "resolved", "url": "https://gamma-api.polymarket.com/markets/6066508"}
-1082859 2026-10-26T03:00:00Z | NEXVOID vs Alter Ego | 57.9% | 42.1% | b | pick=NEXVOID | method=bookmaker_fallback | expires=2026-10-25T21:32:47.557893Z
+1082859 2026-10-26T03:00:00Z | NEXVOID vs Alter Ego | 57.9% | 42.1% | b | pick=NEXVOID | method=bookmaker_fallback | expires=2026-10-25T21:52:54.776829Z
     attempt: {"provider": "Polymarket", "reason": "No exact team-pair and UTC-start match in retrieved feed.", "status": "unresolved", "url": "https://gamma-api.polymarket.com/sports"}
     attempt: {"provider": "HLTV", "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. Recent results and head-to-head wins are recorded for the final resea
     attempt: {"provider": "Pinnacle", "reason": "No exact team-pair and UTC-start match in retrieved feed.", "status": "unresolved", "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"}
@@ -60,23 +58,23 @@ issues                 [{'code': 'feed_status', 'message': '61 feed entries are 
     attempt: {"provider": "GG.BET", "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.", "status": "error", "url": "https://gg.bet/en/esports/counter-strike"}
     attempt: {"provider": "Thunderpick (via BO3.gg API)", "reason": "Exact pair and UTC start verified on BO3.gg CS2 API; live Thunderpick series moneyline (1.6 / 2.2) validated.", "status": "resolved", "url": "https://bo3.gg/matches/nexvoid-vs-alter-ego-26-10-2026"}
     attempt: {"provider": "Book research", "reason": "Exact fixture id, opponent pair and UTC start verified against the listed two-way book line; probabilities de-vigged by scripts.core.quote_book and replayed by the validator.", "status": "resolved", "url": "https://bo3.gg/matches/nexvoid-vs-alter-ego-26-10-20
-1082860 2026-10-27T03:00:00Z | FlyQuest vs Staqued | 92.0% | 8.0% | b | pick=FlyQuest | method=exchange | expires=2026-10-25T21:30:38.210986Z
+1082860 2026-10-27T03:00:00Z | FlyQuest vs Staqued | 92.5% | 7.5% | b | pick=FlyQuest | method=exchange | expires=2026-10-25T21:50:39.239431Z
     attempt: {"provider": "Polymarket", "reason": "Exact pair and UTC start; two-way series winner validated.", "status": "resolved", "url": "https://gamma-api.polymarket.com/markets/6066520"}
     attempt: {"provider": "HLTV lineup receipt", "reason": "Official HLTV match page 2399890 lists all 5 FlyQuest starters and all 5 Staqued starters directly ahead of DFRAG Invitational 2026 Group B opening match (LAN Bo3).", "status": "resolved", "url": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued
-1082861 2026-10-27T03:00:00Z | Rooster vs Abyssal | 42.0% | 58.0% | b | pick=Abyssal | method=exchange_wide | expires=2026-10-25T21:28:38.826104Z
-    attempt: {"provider": "Polymarket", "reason": "Exchange spread exceeds 25 points or liquidity is below $100.", "rejected_quote": {"api_url": "https://gamma-api.polymarket.com/markets/6066525", "id": "6066525", "notice": "Rejected evidence, not a pick or verified probability.", "observed_at": "2026-10-25T13:3
+1082861 2026-10-27T03:00:00Z | Rooster vs Abyssal | 43.0% | 57.0% | b | pick=Abyssal | method=exchange_wide | expires=2026-10-25T21:50:39.239431Z
+    attempt: {"provider": "Polymarket", "reason": "Exchange spread exceeds 25 points or liquidity is below $100.", "rejected_quote": {"api_url": "https://gamma-api.polymarket.com/markets/6066525", "id": "6066525", "notice": "Rejected evidence, not a pick or verified probability.", "observed_at": "2026-10-25T13:5
     attempt: {"provider": "HLTV", "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. Recent results and head-to-head wins are recorded for the final resea
     attempt: {"provider": "Pinnacle", "reason": "No exact team-pair and UTC-start match in retrieved feed.", "status": "unresolved", "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"}
     attempt: {"provider": "Polymarket", "reason": "Exact pair and UTC start; two-way series winner validated. Low-confidence spread tier used; strict rejection: Exchange spread exceeds 25 points or liquidity is below $100.", "status": "resolved", "url": "https://gamma-api.polymarket.com/markets/6066525"}
-1082897 2026-10-27T08:00:00Z | B8 vs K27 | 59.5% | 40.5% | b | pick=B8 | method=exchange | expires=2026-10-25T21:30:38.210986Z
+1082897 2026-10-27T08:00:00Z | B8 vs K27 | 59.5% | 40.5% | b | pick=B8 | method=exchange | expires=2026-10-25T21:52:38.961550Z
     attempt: {"provider": "Polymarket", "reason": "Exact pair and UTC start; two-way series winner validated.", "status": "resolved", "url": "https://gamma-api.polymarket.com/markets/6024944"}
-1082898 2026-10-27T11:00:00Z | Alliance vs FaZe | 37.5% | 62.5% | b | pick=FaZe | method=exchange | expires=2026-10-25T21:30:38.210986Z
+1082898 2026-10-27T11:00:00Z | Alliance vs FaZe | 37.5% | 62.5% | b | pick=FaZe | method=exchange | expires=2026-10-25T21:48:38.264580Z
     attempt: {"provider": "Polymarket", "reason": "Exact pair and UTC start; two-way series winner validated.", "status": "resolved", "url": "https://gamma-api.polymarket.com/markets/6024952"}
-1082900 2026-10-27T17:00:00Z | Luminosity vs HOTU | 52.5% | 47.5% | b | pick=Luminosity | method=exchange | expires=2026-10-25T21:30:38.210986Z
+1082900 2026-10-27T17:00:00Z | Luminosity vs HOTU | 52.5% | 47.5% | b | pick=Luminosity | method=exchange | expires=2026-10-25T21:46:39.017085Z
     attempt: {"provider": "Polymarket", "reason": "Exact pair and UTC start; two-way series winner validated.", "status": "resolved", "url": "https://gamma-api.polymarket.com/markets/6024960"}
-1082901 2026-10-27T20:00:00Z | Envy vs GamerLegion | 45.5% | 54.5% | b | pick=GamerLegion | method=exchange | expires=2026-10-25T21:30:38.210986Z
+1082901 2026-10-27T20:00:00Z | Envy vs GamerLegion | 45.5% | 54.5% | b | pick=GamerLegion | method=exchange | expires=2026-10-25T21:52:38.961550Z
     attempt: {"provider": "Polymarket", "reason": "Exact pair and UTC start; two-way series winner validated.", "status": "resolved", "url": "https://gamma-api.polymarket.com/markets/6037120"}
-1082792 2026-10-31T09:00:00Z | HOTU vs The Huns | 85.2% | 14.8% | b | pick=HOTU | method=model_vrs | expires=2026-10-25T21:32:47.557893Z
+1082792 2026-10-31T09:00:00Z | HOTU vs The Huns | 85.2% | 14.8% | b | pick=HOTU | method=model_vrs | expires=2026-10-25T21:52:54.776829Z
     attempt: {"candidates": [{"teams": ["HOTU", "The Huns Esports"], "url": "https://gamma-api.polymarket.com/markets/6085308"}], "provider": "Polymarket", "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.", "status": "unresolved", "url": "https://gamma-api.polymarket.com/sports"
     attempt: {"provider": "HLTV", "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. Recent results and head-to-head wins are recorded for the final resea
     attempt: {"provider": "Pinnacle", "reason": "No exact team-pair and UTC-start match in retrieved feed.", "status": "unresolved", "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"}
@@ -85,8 +83,8 @@ issues                 [{'code': 'feed_status', 'message': '61 feed entries are 
     attempt: {"provider": "GG.BET", "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.", "status": "error", "url": "https://gg.bet/en/esports/counter-strike"}
     attempt: {"provider": "Thunderpick (via BO3.gg API)", "reason": "No exact team-pair and UTC-start match in the live BO3.gg CS2 feed.", "status": "unresolved", "url": "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=
     attempt: {"provider": "Book listing gap recheck", "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.", "status": "unresolved", "url": "https://egamersworld.com/counterstrike/match/EkalRNMvVx/hotu-vs-the-huns-esports-SfdtzDhiK"}
-1082793 2026-10-31T13:00:00Z | 5star vs 1WIN | 24.3% | 75.7% | b | pick=1WIN | method=model_vrs | expires=2026-10-25T21:32:47.557893Z
-    attempt: {"provider": "Polymarket", "reason": "Exchange spread exceeds 25 points or liquidity is below $100.", "rejected_quote": {"api_url": "https://gamma-api.polymarket.com/markets/6147278", "id": "6147278", "notice": "Rejected evidence, not a pick or verified probability.", "observed_at": "2026-10-25T13:3
+1082793 2026-10-31T13:00:00Z | 5star vs 1WIN | 24.3% | 75.7% | b | pick=1WIN | method=model_vrs | expires=2026-10-25T21:52:54.776829Z
+    attempt: {"provider": "Polymarket", "reason": "Exchange spread exceeds 25 points or liquidity is below $100.", "rejected_quote": {"api_url": "https://gamma-api.polymarket.com/markets/6147278", "id": "6147278", "notice": "Rejected evidence, not a pick or verified probability.", "observed_at": "2026-10-25T13:5
     attempt: {"provider": "HLTV", "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. Recent results and head-to-head wins are recorded for the final resea
     attempt: {"provider": "Pinnacle", "reason": "No exact team-pair and UTC-start match in retrieved feed.", "status": "unresolved", "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"}
     attempt: {"provider": "Polymarket", "reason": "Exchange spread exceeds the 60-point ceiling for the low-confidence tier.", "rejected_quote": {"api_url": "https://gamma-api.polymarket.com/markets/6147278", "id": "6147278", "notice": "Rejected evidence, not a pick or verified probability.", "observed_at": "202

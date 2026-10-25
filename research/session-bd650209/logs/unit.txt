@@ -3,7 +3,7 @@
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved row lacks its limitation
-receipt: /tmp/tmpqbegu8mr/audit-receipt.json
+receipt: /tmp/tmpztj49s1g/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -16,7 +16,7 @@ receipt: /tmp/tmpqbegu8mr/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved row lacks source attempts
-receipt: /tmp/tmpqbegu8mr/audit-receipt.json
+receipt: /tmp/tmpztj49s1g/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -33,7 +33,7 @@ Built 9 primary pages + 6 legacy redirects; 107 sourced rows, 0 with percentages
 Built 9 primary pages + 6 legacy redirects; 107 sourced rows, 36 with percentages, 7 without percentages, 1 unresolved.
 Built 9 primary pages + 6 legacy redirects; 107 sourced rows, 0 with percentages, 25 without percentages, 25 unresolved.......................................................................................................................................
 ----------------------------------------------------------------------
-Ran 1606 tests in 31.671s
+Ran 1606 tests in 45.781s
 
 OK (skipped=7)
 

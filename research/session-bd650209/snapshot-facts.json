@@ -6,32 +6,32 @@
   "page": 78,
   "retained": 78
  },
- "fixtures_observed_at": "2026-10-25T13:32:47.557893Z",
- "generated_at": "2026-10-25T13:36:18.573529Z",
+ "fixtures_observed_at": "2026-10-25T13:52:54.776829Z",
+ "generated_at": "2026-10-25T13:56:28.969391Z",
  "issues": [
   {
    "code": "feed_status",
-   "message": "61 feed entries are not open by sourced timestamps/status. They remain in All matches and are not treated as future picks.",
+   "message": "62 feed entries are not open by sourced timestamps/status. They remain in All matches and are not treated as future picks.",
    "source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
   }
  ],
  "method_mix": {
   "bookmaker_fallback": 1,
-  "exchange": 11,
+  "exchange": 10,
   "exchange_wide": 1,
   "model_vrs": 4
  },
  "no_pick": [],
- "open": 17,
- "open_with_pick": 17,
- "open_with_probability": 17,
+ "open": 16,
+ "open_with_pick": 16,
+ "open_with_probability": 16,
  "pick_without_probability": [],
  "priced_without_pick": [],
  "rows": 78,
  "snapshot": "runtime/latest.json",
  "states": {
-  "not_open": 61,
-  "open": 17
+  "not_open": 62,
+  "open": 16
  },
  "unresolved_without_attempts": [],
  "unresolved_without_fixture_url": []
