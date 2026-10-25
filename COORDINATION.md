@@ -179,7 +179,6 @@ probability source. Ongoing freshness is the publisher's job: `pages.yml` cron `
 
 ---
 
-<<<<<<< HEAD
 ## Session b06ee902 — CLAIM 2026-10-25 14:38 UTC (independent audit of the 25 Oct board, and the publish that proves it)
 
 Board read before claiming, from `origin/main` after `git pull --rebase` (**not** from a branch): `main` ==
@@ -233,7 +232,6 @@ Other sessions are pushing to `main` continuously (runs at 14:15Z: publish, watc
 verification, and at least four pull-request runs). This session therefore edits **no** file another
 session is working in: no `scripts/`, no `tests/`, no workflow, no root page, no `data/latest.json`.
 `data/review-notes.json` is append-only by convention and will be extended, never rewritten.
-=======
 ## Session 5717f7d9 — CLAIM 2026-10-25 14:18 UTC (independent line-by-line audit of every-match pick coverage, the HLTV→esportsbook→model ladder, the unresolved/limitations section and mobile discoverability)
 
 > **Post-rebase addendum 2026-10-25 14:55 UTC — re-verified on the newer integrated snapshot.** After
@@ -290,7 +288,6 @@ the generated root pages/assets, `data/latest.json`, `data/matches.csv`, `build-
 workflow. If the audit finds a production defect it is logged here and on Flagged for Review with the
 source, not patched inside another session's scope.
 
->>>>>>> 4c0c5df (session 5717f7d9: claim independent line-by-line pick-coverage audit (additive scope))
 
 ## Session b85ad9b4 — CLAIM 2026-10-25 13:30 UTC (the publisher is red; the live board withholds every pick)
 
