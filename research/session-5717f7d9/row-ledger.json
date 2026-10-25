@@ -1,0 +1,969 @@
+[
+  {
+    "id": "1052746",
+    "state": "not_open",
+    "teams": [
+      "Fortress",
+      "Endless Journey"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1051339",
+    "state": "not_open",
+    "teams": [
+      "Acend",
+      "Infinite"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1051301",
+    "state": "not_open",
+    "teams": [
+      "CYBERSHOKE Prospects",
+      "PCIFIC"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1053068",
+    "state": "not_open",
+    "teams": [
+      "Johnny Speeds",
+      "ReThink"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1052747",
+    "state": "not_open",
+    "teams": [
+      "Sashi Academy",
+      "eternal premium"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1053146",
+    "state": "not_open",
+    "teams": [
+      "Atrix",
+      "Clutchain"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1051340",
+    "state": "not_open",
+    "teams": [
+      "Walczaki",
+      "Inner Circle"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1053069",
+    "state": "not_open",
+    "teams": [
+      "roamsfiest",
+      "train launcher"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1052686",
+    "state": "not_open",
+    "teams": [
+      "shimmer",
+      "MIBR fe"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1051789",
+    "state": "not_open",
+    "teams": [
+      "MIBR Academy",
+      "Isurus"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1053070",
+    "state": "not_open",
+    "teams": [
+      "ReThink",
+      "train launcher"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1051790",
+    "state": "not_open",
+    "teams": [
+      "Keyd",
+      "Yawara"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1052748",
+    "state": "not_open",
+    "teams": [
+      "Inner Circle Academy",
+      "sAw"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1053071",
+    "state": "not_open",
+    "teams": [
+      "Johnny Speeds",
+      "roamsfiest"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1052749",
+    "state": "not_open",
+    "teams": [
+      "Misa",
+      "WROTBERRY"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1052180",
+    "state": "not_open",
+    "teams": [
+      "NEW VISION",
+      "Julie&Cie"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1052181",
+    "state": "not_open",
+    "teams": [
+      "Just Players",
+      "OlyBet"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1051800",
+    "state": "not_open",
+    "teams": [
+      "ShindeN",
+      "MIBR Academy"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1052699",
+    "state": "not_open",
+    "teams": [
+      "Vasco",
+      "Red Feet"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1052183",
+    "state": "not_open",
+    "teams": [
+      "Misa",
+      "Wampirki"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1051341",
+    "state": "not_open",
+    "teams": [
+      "Sharks",
+      "Inner Circle"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1052599",
+    "state": "not_open",
+    "teams": [
+      "Mai Tai",
+      "Megoshort"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1053072",
+    "state": "not_open",
+    "teams": [
+      "train launcher",
+      "roamsfiest"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1052357",
+    "state": "not_open",
+    "teams": [
+      "BIG Academy",
+      "BERG"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1051801",
+    "state": "not_open",
+    "teams": [
+      "Bounty Hunters",
+      "UNO MILLE"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1052700",
+    "state": "not_open",
+    "teams": [
+      "GameHunters",
+      "VEXA"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1051342",
+    "state": "not_open",
+    "teams": [
+      "ex-Tricked",
+      "Acend"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1053073",
+    "state": "not_open",
+    "teams": [
+      "roamsfiest",
+      "ReThink"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1052701",
+    "state": "not_open",
+    "teams": [
+      "paiN Academy",
+      "Alka"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1053313",
+    "state": "not_open",
+    "teams": [
+      "Fake do Biru",
+      "LP"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1051803",
+    "state": "not_open",
+    "teams": [
+      "Fluxo",
+      "Keyd"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1052702",
+    "state": "not_open",
+    "teams": [
+      "Procyon",
+      "BESTIA Academy"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1052750",
+    "state": "not_open",
+    "teams": [
+      "Honv\u00e9d",
+      "OlyBet"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1052751",
+    "state": "not_open",
+    "teams": [
+      "ex-MANA",
+      "Subtop De France"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1052185",
+    "state": "not_open",
+    "teams": [
+      "sAw",
+      "Entropy"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1053431",
+    "state": "not_open",
+    "teams": [
+      "GAMEHARMONY",
+      "Coalesce"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1053432",
+    "state": "not_open",
+    "teams": [
+      "Leo",
+      "Aimhaus"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1053433",
+    "state": "not_open",
+    "teams": [
+      "GAMEHARMONY",
+      "Aimhaus"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1053434",
+    "state": "not_open",
+    "teams": [
+      "Leo",
+      "Coalesce"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1052698",
+    "state": "not_open",
+    "teams": [
+      "ex-KR\u00dc",
+      "MAGICOS"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1053435",
+    "state": "not_open",
+    "teams": [
+      "GAMEHARMONY",
+      "Leo"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1053436",
+    "state": "not_open",
+    "teams": [
+      "Aimhaus",
+      "Coalesce"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1051343",
+    "state": "not_open",
+    "teams": [
+      "Sharks",
+      "ex-Tricked"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1052186",
+    "state": "not_open",
+    "teams": [
+      "Lilmix",
+      "Subtop De France"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1052187",
+    "state": "not_open",
+    "teams": [
+      "BIG Academy",
+      "Endless Journey"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1052184",
+    "state": "not_open",
+    "teams": [
+      "Atreides",
+      "Donstu"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1052696",
+    "state": "not_open",
+    "teams": [
+      "Yawara",
+      "Blitzkrieg"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1053439",
+    "state": "not_open",
+    "teams": [
+      "6666",
+      "ASTRAL"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1053469",
+    "state": "not_open",
+    "teams": [
+      "BERG",
+      "SINQU REHTI"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1053441",
+    "state": "not_open",
+    "teams": [
+      "ASTRAL",
+      "BERG"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1053470",
+    "state": "not_open",
+    "teams": [
+      "6666",
+      "SINQU REHTI"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1051344",
+    "state": "not_open",
+    "teams": [
+      "Inner Circle",
+      "Acend"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1051804",
+    "state": "not_open",
+    "teams": [
+      "Fluxo",
+      "UNO MILLE"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1053442",
+    "state": "not_open",
+    "teams": [
+      "6666",
+      "BERG"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1053471",
+    "state": "not_open",
+    "teams": [
+      "ASTRAL",
+      "SINQU REHTI"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1052697",
+    "state": "not_open",
+    "teams": [
+      "METANOIA Wolves",
+      "Guara"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1053679",
+    "state": "not_open",
+    "teams": [
+      "ShindeN",
+      "LP"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1052695",
+    "state": "not_open",
+    "teams": [
+      "MIBR Academy",
+      "Patins de Ferrari"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1055478",
+    "state": "not_open",
+    "teams": [
+      "illwill",
+      "Lavked"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1081105",
+    "state": "not_open",
+    "teams": [
+      "SUKEBAN",
+      "your end"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1079621",
+    "state": "not_open",
+    "teams": [
+      "Gothic",
+      "Lavked"
+    ],
+    "priced": false,
+    "result": "not-open row correctly unpriced"
+  },
+  {
+    "id": "1085542",
+    "teams": [
+      "ex-Zero Tenacity",
+      "Spirit Academy"
+    ],
+    "method": "exchange",
+    "probabilities": [
+      0.59,
+      0.41
+    ],
+    "pick": "ex-Zero Tenacity",
+    "checks": [
+      "hotspawn source url",
+      "probabilities sum to 1",
+      "fair odds = 1/probability",
+      "pick = favourite",
+      "probability re-derived from named raw outcome prices",
+      "spread 0.020000000000000018, liquidity 1231.3608"
+    ]
+  },
+  {
+    "id": "1079199",
+    "teams": [
+      "Infinite",
+      "BRUTE"
+    ],
+    "method": "exchange",
+    "probabilities": [
+      0.435,
+      0.565
+    ],
+    "pick": "BRUTE",
+    "checks": [
+      "hotspawn source url",
+      "probabilities sum to 1",
+      "fair odds = 1/probability",
+      "pick = favourite",
+      "probability re-derived from named raw outcome prices",
+      "spread 0.010000000000000009, liquidity 56383.9354"
+    ]
+  },
+  {
+    "id": "1086696",
+    "teams": [
+      "BORRACHEIROS",
+      "RED Canids Academy"
+    ],
+    "method": "exchange",
+    "probabilities": [
+      0.425,
+      0.575
+    ],
+    "pick": "RED Canids Academy",
+    "checks": [
+      "hotspawn source url",
+      "probabilities sum to 1",
+      "fair odds = 1/probability",
+      "pick = favourite",
+      "probability re-derived from named raw outcome prices",
+      "spread 0.010000000000000009, liquidity 3606.7518"
+    ]
+  },
+  {
+    "id": "1079200",
+    "teams": [
+      "Color",
+      "ex-Zero Tenacity"
+    ],
+    "method": "model_vrs",
+    "probabilities": [
+      0.6883951727580038,
+      0.31160482724199623
+    ],
+    "pick": "Color",
+    "checks": [
+      "hotspawn source url",
+      "probabilities sum to 1",
+      "fair odds = 1/probability",
+      "pick = favourite",
+      "Glicko + Valve calibration re-derived from retained points",
+      "points/standings/roster cross-checked against vendored Valve file"
+    ]
+  },
+  {
+    "id": "1081158",
+    "teams": [
+      "FORZE Reload",
+      "ex-RUSTEC"
+    ],
+    "method": "exchange",
+    "probabilities": [
+      0.565,
+      0.435
+    ],
+    "pick": "FORZE Reload",
+    "checks": [
+      "hotspawn source url",
+      "probabilities sum to 1",
+      "fair odds = 1/probability",
+      "pick = favourite",
+      "probability re-derived from named raw outcome prices",
+      "spread 0.009999999999999898, liquidity 11259.7922"
+    ]
+  },
+  {
+    "id": "1082697",
+    "teams": [
+      "BESTIA",
+      "paiN"
+    ],
+    "method": "exchange",
+    "probabilities": [
+      0.425,
+      0.575
+    ],
+    "pick": "paiN",
+    "checks": [
+      "hotspawn source url",
+      "probabilities sum to 1",
+      "fair odds = 1/probability",
+      "pick = favourite",
+      "probability re-derived from named raw outcome prices",
+      "spread 0.010000000000000009, liquidity 97121.4852"
+    ]
+  },
+  {
+    "id": "1086697",
+    "teams": [
+      "Projeto do KinGui",
+      "Yawara"
+    ],
+    "method": "model_vrs",
+    "probabilities": [
+      0.5100602445117999,
+      0.4899397554882001
+    ],
+    "pick": "Projeto do KinGui",
+    "checks": [
+      "hotspawn source url",
+      "probabilities sum to 1",
+      "fair odds = 1/probability",
+      "pick = favourite",
+      "Glicko + Valve calibration re-derived from retained points",
+      "points/standings/roster cross-checked against vendored Valve file"
+    ]
+  },
+  {
+    "id": "1082858",
+    "teams": [
+      "Ground Zero",
+      "Off Chops"
+    ],
+    "method": "exchange",
+    "probabilities": [
+      0.365,
+      0.635
+    ],
+    "pick": "Off Chops",
+    "checks": [
+      "hotspawn source url",
+      "probabilities sum to 1",
+      "fair odds = 1/probability",
+      "pick = favourite",
+      "probability re-derived from named raw outcome prices",
+      "spread 0.22999999999999998, liquidity 7482.2646"
+    ]
+  },
+  {
+    "id": "1082859",
+    "teams": [
+      "NEXVOID",
+      "Alter Ego"
+    ],
+    "method": "bookmaker_fallback",
+    "probabilities": [
+      0.5789473684210527,
+      0.42105263157894735
+    ],
+    "pick": "NEXVOID",
+    "checks": [
+      "hotspawn source url",
+      "probabilities sum to 1",
+      "fair odds = 1/probability",
+      "pick = favourite",
+      "de-vig re-derived from retained decimal odds"
+    ]
+  },
+  {
+    "id": "1082860",
+    "teams": [
+      "FlyQuest",
+      "Staqued"
+    ],
+    "method": "exchange",
+    "probabilities": [
+      0.925,
+      0.075
+    ],
+    "pick": "FlyQuest",
+    "checks": [
+      "hotspawn source url",
+      "probabilities sum to 1",
+      "fair odds = 1/probability",
+      "pick = favourite",
+      "probability re-derived from named raw outcome prices",
+      "spread 0.029999999999999916, liquidity 4257.4246"
+    ]
+  },
+  {
+    "id": "1082861",
+    "teams": [
+      "Rooster",
+      "Abyssal"
+    ],
+    "method": "exchange_wide",
+    "probabilities": [
+      0.43,
+      0.57
+    ],
+    "pick": "Abyssal",
+    "checks": [
+      "hotspawn source url",
+      "probabilities sum to 1",
+      "fair odds = 1/probability",
+      "pick = favourite",
+      "probability re-derived from named raw outcome prices",
+      "spread 0.26000000000000006, liquidity 3287.697"
+    ]
+  },
+  {
+    "id": "1082897",
+    "teams": [
+      "B8",
+      "K27"
+    ],
+    "method": "exchange",
+    "probabilities": [
+      0.595,
+      0.405
+    ],
+    "pick": "B8",
+    "checks": [
+      "hotspawn source url",
+      "probabilities sum to 1",
+      "fair odds = 1/probability",
+      "pick = favourite",
+      "probability re-derived from named raw outcome prices",
+      "spread 0.010000000000000009, liquidity 17802.1168"
+    ]
+  },
+  {
+    "id": "1082898",
+    "teams": [
+      "Alliance",
+      "FaZe"
+    ],
+    "method": "exchange",
+    "probabilities": [
+      0.375,
+      0.625
+    ],
+    "pick": "FaZe",
+    "checks": [
+      "hotspawn source url",
+      "probabilities sum to 1",
+      "fair odds = 1/probability",
+      "pick = favourite",
+      "probability re-derived from named raw outcome prices",
+      "spread 0.010000000000000009, liquidity 8750.6296"
+    ]
+  },
+  {
+    "id": "1082900",
+    "teams": [
+      "Luminosity",
+      "HOTU"
+    ],
+    "method": "exchange",
+    "probabilities": [
+      0.525,
+      0.475
+    ],
+    "pick": "Luminosity",
+    "checks": [
+      "hotspawn source url",
+      "probabilities sum to 1",
+      "fair odds = 1/probability",
+      "pick = favourite",
+      "probability re-derived from named raw outcome prices",
+      "spread 0.030000000000000027, liquidity 14280.6291"
+    ]
+  },
+  {
+    "id": "1082901",
+    "teams": [
+      "Envy",
+      "GamerLegion"
+    ],
+    "method": "exchange",
+    "probabilities": [
+      0.455,
+      0.545
+    ],
+    "pick": "GamerLegion",
+    "checks": [
+      "hotspawn source url",
+      "probabilities sum to 1",
+      "fair odds = 1/probability",
+      "pick = favourite",
+      "probability re-derived from named raw outcome prices",
+      "spread 0.010000000000000009, liquidity 18967.9593"
+    ]
+  },
+  {
+    "id": "1082792",
+    "teams": [
+      "HOTU",
+      "The Huns"
+    ],
+    "method": "model_vrs",
+    "probabilities": [
+      0.851799765370461,
+      0.14820023462953902
+    ],
+    "pick": "HOTU",
+    "checks": [
+      "hotspawn source url",
+      "probabilities sum to 1",
+      "fair odds = 1/probability",
+      "pick = favourite",
+      "Glicko + Valve calibration re-derived from retained points",
+      "duplicate label disambiguated by 4/5 roster overlap -> standing 122",
+      "points/standings/roster cross-checked against vendored Valve file"
+    ]
+  },
+  {
+    "id": "1082793",
+    "teams": [
+      "5star",
+      "1WIN"
+    ],
+    "method": "model_vrs",
+    "probabilities": [
+      0.242985776930831,
+      0.757014223069169
+    ],
+    "pick": "1WIN",
+    "checks": [
+      "hotspawn source url",
+      "probabilities sum to 1",
+      "fair odds = 1/probability",
+      "pick = favourite",
+      "Glicko + Valve calibration re-derived from retained points",
+      "points/standings/roster cross-checked against vendored Valve file"
+    ]
+  }
+]

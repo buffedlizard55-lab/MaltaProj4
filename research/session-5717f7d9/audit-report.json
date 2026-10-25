@@ -1,0 +1,63 @@
+{
+  "auditor": "scripts/audit_5717f7d9.py",
+  "snapshot_generated_at": "2026-10-25T13:46:54.275795Z",
+  "independent_of_pipeline": true,
+  "coverage_measured": {
+    "open": 17,
+    "with_pick": 17,
+    "with_prob": 17,
+    "unresolved": 0,
+    "not_open_feed_rows": 61
+  },
+  "method_mix": {
+    "exchange": 11,
+    "model_vrs": 4,
+    "bookmaker_fallback": 1,
+    "exchange_wide": 1
+  },
+  "site_checks": {
+    "pages_checked": 10,
+    "redirect_stubs": [
+      "methodology.html"
+    ],
+    "quicknav_hrefs": [
+      "picks.html",
+      "#unresolved-limits"
+    ],
+    "pick_rows": 17
+  },
+  "finding_counts": {
+    "info": 3
+  },
+  "findings": [
+    {
+      "severity": "info",
+      "area": "inventory_source",
+      "fixture": "1086696",
+      "message": "No dedicated Hotspawn match page exists for this fixture; its official link is the pick'em lobby. The fixtures-feed API receipt (with sha256 in fixture_sources) remains the per-row primary source.",
+      "sources": [
+        "https://play.hotspawn.com/cs2-pickems",
+        "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+      ]
+    },
+    {
+      "severity": "info",
+      "area": "inventory_source",
+      "fixture": "1086697",
+      "message": "No dedicated Hotspawn match page exists for this fixture; its official link is the pick'em lobby. The fixtures-feed API receipt (with sha256 in fixture_sources) remains the per-row primary source.",
+      "sources": [
+        "https://play.hotspawn.com/cs2-pickems",
+        "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+      ]
+    },
+    {
+      "severity": "info",
+      "area": "source_access_limit",
+      "fixture": null,
+      "message": "GG.BET was unreachable on the runner for this snapshot: HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+      "sources": [
+        "https://buffedlizard55-lab.github.io/MaltaProj4/unresolved.html"
+      ]
+    }
+  ]
+}

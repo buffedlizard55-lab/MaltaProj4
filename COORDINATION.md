@@ -249,9 +249,26 @@ takes a strictly **additive, independent-verification** scope and touches no sha
 
 | Task | Status | Owner | File scope | Updated (UTC) |
 | --- | --- | --- | --- | --- |
-| Independent auditor that imports no `scripts.*` code: re-derive every open row's probability (exchange raw-price orientation, book de-vig, Valve Glicko+calibration from the vendored official standings), verify complement/favourite/fair-odds, evidence freshness ≤8h, source-link completeness, no Hotspawn-probability leakage, not-open rows never priced, unresolved contract (reason + attempts) | in progress | 5717f7d9 | `scripts/audit_5717f7d9.py` (new), `research/session-5717f7d9/**` (new) | 2026-10-25 14:18 |
-| Verify the user-facing brief on the rendered bytes: executive-summary in-site links to the updated-pick board and the unresolved/limitations section, every displayed pick row has an official source link and both teams' percentages, phone bottom nav, no broken internal links, unresolved section rendered at zero | in progress | 5717f7d9 | `research/session-5717f7d9/**`, `tests/test_session_5717f7d9.py` (new) | 2026-10-25 14:18 |
-| Pin the audit's contracts and current findings as offline regressions; add a Flagged-for-Review note only for a genuinely new, source-linked irregularity (no duplicates); PR to `main`, merge without approval, record receipt | in progress | 5717f7d9 | `tests/test_session_5717f7d9.py` (new), `data/review-notes.json` (additive unique IDs only), `COORDINATION.md` (this section only) | 2026-10-25 14:18 |
+| Independent auditor that imports no `scripts.*` code: re-derive every open row's probability (exchange raw-price orientation, book de-vig, Valve Glicko+calibration from the vendored official standings), verify complement/favourite/fair-odds, evidence freshness ≤8h, source-link completeness, no Hotspawn-probability leakage, not-open rows never priced, unresolved contract (reason + attempts) | **done** — `scripts/audit_5717f7d9.py`, exit 0, **0 fail / 0 flag / 3 info**; 17/17 open rows picked and priced, 0 unresolved, all arithmetic re-derived | 5717f7d9 | `scripts/audit_5717f7d9.py` (new), `research/session-5717f7d9/**` (new) | 2026-10-25 14:42 |
+| Verify the user-facing brief on the rendered bytes: executive-summary in-site links to the updated-pick board and the unresolved/limitations section, every displayed pick row has an official source link and both teams' percentages, phone bottom nav, no broken internal links, unresolved section rendered at zero | **done** — headless Chromium at 320/390/412 px: no horizontal overflow, no page errors, quicknav "Updated picks" above the fold, mobile tab bar on every real page, 17/17 pick rows sourced with both %; receipt `research/session-5717f7d9/mobile-probe.json` | 5717f7d9 | `research/session-5717f7d9/**`, `tests/test_session_5717f7d9.py` (new) | 2026-10-25 14:42 |
+| Pin the audit's contracts and current findings as offline regressions; add a Flagged-for-Review note only for a genuinely new, source-linked irregularity (no duplicates); PR to `main`, merge without approval, record receipt | in progress — 18 regressions in `tests/test_session_5717f7d9.py` (incl. 6 fail-closed synthetic tests); no NEW irregularity found so no duplicate review note added (the 3 info findings map to existing notes `session-0cc1138a-1081606-no-match-page-2026-10-23`, `book-access`, `esportsbook-access-probe-2026-10-16`); PR/merge next | 5717f7d9 | `tests/test_session_5717f7d9.py` (new), `COORDINATION.md` (this section only) | 2026-10-25 14:42 |
+
+**Verification performed and sources (all in `research/session-5717f7d9/REPORT.md`).** Independent of
+the pipeline: 12 Polymarket rows re-derived from named raw `outcomePrices` (including reverse-order
+fixture 1082697 and case-fold BRUTE/Brute 1079199); the Thunderpick/BO3.gg book row de-vigged from
+1.60/2.20 to 0.5789/0.4211; all 4 VRS rows re-derived with Valve Glicko RD 75 + fit slope 0.7986 and
+cross-checked point/standing/roster against the vendored Valve file (commit `eec4853d…`), including the
+duplicated "The Huns" label disambiguated to standing 122 by 4/5 HLTV roster overlap. Per-fixture
+`attempts` ledgers confirm the brief's ordering (Polymarket → HLTV → Pinnacle → wide exchange →
+Thunderpick/GG.BET → BO3.gg/EGW books → Valve VRS → HLTV mirror → rank/form) before any row is left
+without a pick. Gates: auditor exit 0; `tests.test_session_5717f7d9` 18 OK; full suite **1,646 OK (12
+skipped)**; canonical `scripts.validate` exit 0 (78 rows / 17 calc / 15 pages / 730 links / 20
+checksums / 182 displayed rows).
+
+**Irregularities (non-blocking, source-linked, no new note because each is a disclosed recurring
+limit):** (1) fixtures 1086696/1086697 have no dedicated Hotspawn match page → lobby link, feed receipt
+with sha256 remains the primary source; (2) GG.BET and two EGamersWorld gap rechecks returned HTTP 403
+this run; (3) 61/78 feed rows are past-dated and are correctly never priced.
 
 Non-overlap: this session never edits `scripts/{validate,core,build,refresh,vrs,vrs_mirror,hltv,books}.py`,
 the generated root pages/assets, `data/latest.json`, `data/matches.csv`, `build-info.json` or any

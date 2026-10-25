@@ -1,0 +1,96 @@
+{
+  "run_at": "2026-10-25T14:38:23.620Z",
+  "viewports": [
+    {
+      "width": 320,
+      "checks": [
+        {
+          "page": "index",
+          "status": 200
+        },
+        {
+          "page": "index",
+          "horizontal_overflow": false,
+          "quicknav_top": 316,
+          "updated_picks_link_above_fold": true,
+          "mobile_tabs_present": true
+        },
+        {
+          "page": "picks",
+          "status": 200,
+          "horizontal_overflow": false,
+          "first_priced_row_percentages": 2,
+          "first_row_top": 280,
+          "first_row_names_pick": "Infinite vs BRUTE NODWIN Clutch Series #13 · B 25 Oct · 15:00 UTC · locks 14:54 Infinite BRUTE 43.5% 56.5% OUR FAIR LINE · 2.30 / 1.77 BRUTE EXCHANGE LINE View "
+        },
+        {
+          "page": "unresolved",
+          "status": 200,
+          "horizontal_overflow": false,
+          "tab_links": 5
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "checks": [
+        {
+          "page": "index",
+          "status": 200
+        },
+        {
+          "page": "index",
+          "horizontal_overflow": false,
+          "quicknav_top": 300,
+          "updated_picks_link_above_fold": true,
+          "mobile_tabs_present": true
+        },
+        {
+          "page": "picks",
+          "status": 200,
+          "horizontal_overflow": false,
+          "first_priced_row_percentages": 2,
+          "first_row_top": 243,
+          "first_row_names_pick": "Infinite vs BRUTE NODWIN Clutch Series #13 · B 25 Oct · 15:00 UTC · locks 14:54 Infinite BRUTE 43.5% 56.5% OUR FAIR LINE · 2.30 / 1.77 BRUTE EXCHANGE LINE View "
+        },
+        {
+          "page": "unresolved",
+          "status": 200,
+          "horizontal_overflow": false,
+          "tab_links": 5
+        }
+      ]
+    },
+    {
+      "width": 412,
+      "checks": [
+        {
+          "page": "index",
+          "status": 200
+        },
+        {
+          "page": "index",
+          "horizontal_overflow": false,
+          "quicknav_top": 300,
+          "updated_picks_link_above_fold": true,
+          "mobile_tabs_present": true
+        },
+        {
+          "page": "picks",
+          "status": 200,
+          "horizontal_overflow": false,
+          "first_priced_row_percentages": 2,
+          "first_row_top": 243,
+          "first_row_names_pick": "Infinite vs BRUTE NODWIN Clutch Series #13 · B 25 Oct · 15:00 UTC · locks 14:54 Infinite BRUTE 43.5% 56.5% OUR FAIR LINE · 2.30 / 1.77 BRUTE EXCHANGE LINE View "
+        },
+        {
+          "page": "unresolved",
+          "status": 200,
+          "horizontal_overflow": false,
+          "tab_links": 5
+        }
+      ]
+    }
+  ],
+  "errors": []
+}
