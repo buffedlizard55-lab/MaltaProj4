@@ -741,3 +741,23 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
   tbody td.review-reason{grid-area:4/1/5/3}
   tbody td.review-reason~td.source-links{grid-area:5/1/6/3}
 }
+
+/* Session 8e4ff8d2 (2026-10-25): on a short phone the first card's win
+   probabilities fell 12px below the fixed tab bar. Measured with Chromium on
+   the 2026-10-25T13:30Z build at 320x568: the first card began at y=280, its
+   team block wrapped to two lines (85px) and its pick to two lines (47px), so
+   the probability cell started at y=457 and its percentages ended at y=519
+   against a tab bar top of 507 -- the exact check tests/browser_019a253a.cjs
+   makes ("the first probabilities must clear the tab bar"). Nothing is
+   removed and no number changes: on phones 700px tall or shorter the card
+   tightens its padding and row gap, and the two team labels above the
+   percentages stay on one line each (ellipsised) instead of wrapping to two.
+   The full names remain in the team block directly above the percentages, in
+   each percentage's aria-label, and in the row's source links. */
+@media(max-width:650px) and (max-height:700px){
+  body[data-page=picks] tbody tr{padding:13px;gap:11px 14px}
+  body[data-page=picks] .prob-team-labels{gap:8px;margin-bottom:3px}
+  body[data-page=picks] .prob-team-labels span{
+    max-width:50%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis
+  }
+}

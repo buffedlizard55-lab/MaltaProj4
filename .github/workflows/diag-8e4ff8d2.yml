@@ -1,0 +1,130 @@
+name: Diag 8e4ff8d2 (non-publishing)
+
+# Reproduces, on a genuinely fresh snapshot, the step that has been failing every
+# scheduled publish since 2026-10-25T06:56Z:
+#
+#   Build and independently verify every row, calculation and internal link .. exit 1
+#
+# Measured from the Actions API before writing this: on runs 40170923727 (06:56Z) and
+# 40193317196 (12:29Z) the unit gate, the source refresh and the quarantine all passed and
+# only that step failed, so `upload-pages-artifact` and `deploy` were skipped and the live
+# board (snapshot 2026-10-25T01:47Z) went past its eight-hour window and withheld every
+# pick. The committed tree is green locally, so the defect exists only on freshly
+# refreshed data.
+#
+# This session's sandbox can reach github.com / api.github.com only: it cannot read
+# workflow logs or artifact blobs. The measurement is therefore emitted two ways —
+# `::error title=diag 8e4ff8d2::` annotations (readable through the check-run API) and a
+# receipt committed to this branch under research/session-8e4ff8d2/.
+#
+# It never deploys, never writes a root fallback commit, and never changes a pick or a
+# probability. Dispatch-only is impossible here (GitHub only dispatches a workflow that
+# exists on the default branch), so it is triggered by a push that touches this file or
+# the diagnostic script, and it is deleted from the tree once the repair has shipped.
+on:
+  push:
+    branches: [arena/8e4ff8d2-maltaproj4]
+    paths:
+      - 'scripts/diag_8e4ff8d2.py'
+      - '.github/workflows/diag-8e4ff8d2.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: diag-8e4ff8d2-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+
+      - name: Refresh the official sources to a fresh snapshot
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p runtime
+          cp data/latest.json runtime/committed-latest.json
+          set +e
+          python -m scripts.refresh --output runtime/latest.json > runtime/refresh.log 2>&1
+          echo "refresh_rc=$?" >> runtime/diag.env
+          python -m scripts.quarantine runtime/latest.json > runtime/quarantine.log 2>&1
+          echo "quarantine_rc=$?" >> runtime/diag.env
+          set -e
+
+      - name: Run the four checks of the failing publisher step, one at a time
+        run: |
+          set +e
+          python verification-c6/audit_snapshot.py runtime/latest.json --output runtime/independent-row-audit.md > runtime/row_audit.log 2>&1
+          echo "row_audit_rc=$?" >> runtime/diag.env
+          python -m scripts.build --data runtime/latest.json > runtime/build.log 2>&1
+          echo "build_rc=$?" >> runtime/diag.env
+          python -m scripts.validate --data runtime/latest.json > runtime/validate.log 2>&1
+          echo "validate_rc=$?" >> runtime/diag.env
+          python verification-c6/audit_snapshot.py public/data/latest.json --output runtime/published-row-audit.md > runtime/published_audit.log 2>&1
+          echo "published_audit_rc=$?" >> runtime/diag.env
+          set -e
+
+      - name: Stage the root exactly as the publisher does, then run its own gates
+        run: |
+          set +e
+          python -m scripts.publish_root_fallback --public public --root . --cooldown-hours 0.2 > runtime/publish.log 2>&1
+          echo "publish_rc=$?" >> runtime/diag.env
+          git status --porcelain -- 404.html analysis.html assets build-info.json data/latest.json data/matches.csv evidence.html index.html matches.html methodology.html picks.html review.html site sources.html unresolved.html .nojekyll > runtime/staged-files.txt
+          python -m scripts.validate --data data/latest.json --site . > runtime/staged_validate.log 2>&1
+          echo "staged_validate_rc=$?" >> runtime/diag.env
+          python -m unittest discover -s tests > runtime/staged_unit.log 2>&1
+          echo "staged_unit_rc=$?" >> runtime/diag.env
+          npm ci --ignore-scripts > runtime/npm.log 2>&1
+          echo "npm_rc=$?" >> runtime/diag.env
+          npm run test:browser > runtime/browser.log 2>&1
+          echo "browser_rc=$?" >> runtime/diag.env
+          set -e
+
+      - name: Emit the measurement as annotations
+        if: always()
+        run: |
+          python -m scripts.diag_8e4ff8d2 --runtime runtime --annotate > runtime/annotations.txt 2>&1 || true
+          grep -c '^::error' runtime/annotations.txt || true
+
+      - name: Commit the receipt and the fresh snapshot to this branch
+        if: always()
+        continue-on-error: true
+        run: |
+          DEST="research/session-8e4ff8d2"
+          mkdir -p "$DEST/logs"
+          cp runtime/diag-report.md "$DEST/diag-${{ github.run_id }}.md" || true
+          cp runtime/diag-report.json "$DEST/diag-${{ github.run_id }}.json" || true
+          cp runtime/diag.env "$DEST/logs/diag-${{ github.run_id }}.env" || true
+          cp runtime/staged-files.txt "$DEST/logs/staged-files-${{ github.run_id }}.txt" 2>/dev/null || true
+          for f in refresh quarantine row_audit build validate published_audit publish staged_validate staged_unit browser; do
+            [ -f "runtime/$f.log" ] && tail -n 400 "runtime/$f.log" > "$DEST/logs/$f-${{ github.run_id }}.log"
+          done
+          cp runtime/latest.json "$DEST/snapshot-${{ github.run_id }}.json" 2>/dev/null || true
+          git config user.name "cs2-scout-publisher"
+          git config user.email "cs2-scout-publisher@users.noreply.github.com"
+          git add -f "$DEST" || true
+          git -c commit.gpgsign=false commit -q -m "Record the 8e4ff8d2 publisher diagnostic (${{ github.run_id }})" || true
+          for attempt in 1 2 3; do
+            if git pull --rebase --autostash origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}"; then
+              exit 0
+            fi
+            git rebase --abort >/dev/null 2>&1 || true
+            sleep $((attempt * 5))
+          done
+          echo "::warning::could not push the diagnostic receipt; the annotations carry the result"
+
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: diag-8e4ff8d2-${{ github.run_id }}
+          path: runtime/
+          retention-days: 7

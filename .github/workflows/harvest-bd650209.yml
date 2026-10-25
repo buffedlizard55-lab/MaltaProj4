@@ -1,0 +1,160 @@
+name: Session bd650209 reproduction (non-publishing)
+
+# The authoring sandbox reaches only github.com, api.github.com, npm and PyPI, so no
+# source in this project can be read from here. This workflow runs the *real*
+# pipeline on GitHub's egress, records every step's exit code and log as a
+# committed receipt, and never publishes and never deploys. The receipts are what
+# session bd650209 reads to fix the red "Build and independently verify every row,
+# calculation and internal link" gate on main.
+
+on:
+  push:
+    branches: [arena/bd650209-maltaproj4]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: harvest-bd650209-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  reproduce:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[harvest]')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Prepare receipt directory
+        run: mkdir -p research/session-bd650209/logs runtime
+
+      - name: Refresh the official sources (real, unmodified)
+        id: refresh
+        continue-on-error: true
+        run: |
+          set +e
+          python -m scripts.refresh --output runtime/latest.json 2>&1 | tee research/session-bd650209/logs/refresh.txt
+          echo "rc=${PIPESTATUS[0]}" | tee research/session-bd650209/logs/refresh.rc
+
+      - name: Withhold rows the independent audit cannot reproduce
+        id: quarantine
+        continue-on-error: true
+        run: |
+          set +e
+          python -m scripts.quarantine runtime/latest.json 2>&1 | tee research/session-bd650209/logs/quarantine.txt
+          echo "rc=${PIPESTATUS[0]}" | tee research/session-bd650209/logs/quarantine.rc
+
+      - name: Fact sheet for the refreshed snapshot (every open row, pick, method, percentage)
+        id: facts
+        continue-on-error: true
+        run: |
+          set +e
+          python research/session-bd650209/report.py runtime/latest.json \
+            --json research/session-bd650209/snapshot-facts.json 2>&1 | tee research/session-bd650209/logs/facts.txt
+          echo "rc=${PIPESTATUS[0]}" | tee research/session-bd650209/logs/facts.rc
+
+      - name: Independent row audit of the refreshed snapshot (the gate that is red on main)
+        id: row_audit
+        continue-on-error: true
+        run: |
+          set +e
+          python verification-c6/audit_snapshot.py runtime/latest.json \
+            --output research/session-bd650209/independent-row-audit.md 2>&1 | tee research/session-bd650209/logs/row-audit.txt
+          echo "rc=${PIPESTATUS[0]}" | tee research/session-bd650209/logs/row-audit.rc
+
+      - name: Build exactly as publication does
+        id: build
+        continue-on-error: true
+        run: |
+          set +e
+          python -m scripts.build --data runtime/latest.json 2>&1 | tee research/session-bd650209/logs/build.txt
+          echo "rc=${PIPESTATUS[0]}" | tee research/session-bd650209/logs/build.rc
+
+      - name: Validate exactly as publication does
+        id: validate
+        continue-on-error: true
+        run: |
+          set +e
+          python -m scripts.validate --data runtime/latest.json 2>&1 | tee research/session-bd650209/logs/validate.txt
+          echo "rc=${PIPESTATUS[0]}" | tee research/session-bd650209/logs/validate.rc
+
+      - name: Independent row audit of the built artifact
+        id: published_audit
+        continue-on-error: true
+        run: |
+          set +e
+          python verification-c6/audit_snapshot.py public/data/latest.json \
+            --output research/session-bd650209/published-row-audit.md 2>&1 | tee research/session-bd650209/logs/published-row-audit.txt
+          echo "rc=${PIPESTATUS[0]}" | tee research/session-bd650209/logs/published-row-audit.rc
+
+      - name: Which row fails the validator, and why (per-row replay)
+        id: row_diagnosis
+        continue-on-error: true
+        run: |
+          set +e
+          python research/session-bd650209/diagnose.py runtime/latest.json 2>&1 | tee research/session-bd650209/logs/row-diagnosis.txt
+          echo "rc=${PIPESTATUS[0]}" | tee research/session-bd650209/logs/row-diagnosis.rc
+
+      - name: Facts of the built copy
+        id: built_facts
+        continue-on-error: true
+        run: |
+          set +e
+          python research/session-bd650209/report.py runtime/latest.json --built public/data/latest.json \
+            --json research/session-bd650209/built-facts.json 2>&1 | tee research/session-bd650209/logs/built-facts.txt
+          echo "rc=${PIPESTATUS[0]}" | tee research/session-bd650209/logs/built-facts.rc
+
+      - name: Repository unit suite on this tree
+        id: unit
+        continue-on-error: true
+        run: |
+          set +e
+          python -m unittest discover -s tests 2>&1 | tail -40 | tee research/session-bd650209/logs/unit.txt
+          echo "rc=${PIPESTATUS[0]}" | tee research/session-bd650209/logs/unit.rc
+
+      - name: Assemble the receipt
+        if: always()
+        run: |
+          python - <<'PY'
+          import json, os, pathlib
+          base = pathlib.Path('research/session-bd650209')
+          rc = {}
+          for f in sorted((base / 'logs').glob('*.rc')):
+              rc[f.stem] = f.read_text().strip().split('=')[-1]
+          receipt = {'run_id': os.environ.get('GITHUB_RUN_ID'), 'sha': os.environ.get('GITHUB_SHA'),
+                     'started': os.environ.get('GITHUB_RUN_STARTED_AT'), 'step_rc': rc}
+          facts = base / 'snapshot-facts.json'
+          if facts.exists():
+              d = json.loads(facts.read_text())
+              receipt['snapshot'] = {k: d.get(k) for k in ('generated_at', 'fixtures_observed_at', 'rows', 'states',
+                                                           'open', 'open_with_pick', 'open_with_probability',
+                                                           'method_mix', 'coverage', 'coverage_counts',
+                                                           'unresolved_without_fixture_url',
+                                                           'unresolved_without_attempts',
+                                                           'priced_without_pick', 'pick_without_probability')}
+          (base / 'receipt.json').write_text(json.dumps(receipt, indent=1, sort_keys=True))
+          print(json.dumps(receipt, indent=1, sort_keys=True))
+          PY
+
+      - name: Commit the receipt (no publication, no deployment)
+        if: always()
+        run: |
+          git config user.name "harvest-bd650209"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # The refreshed snapshot itself is the evidence every number in the receipt
+          # is re-derived from, so it is committed with the logs (a few hundred KB).
+          cp runtime/latest.json research/session-bd650209/captured-snapshot.json
+          git add -A research/session-bd650209
+          if git diff --cached --quiet; then
+            echo "No receipt change to commit."
+            exit 0
+          fi
+          git commit -m "Receipt: session bd650209 reproduction run ${GITHUB_RUN_ID} (no publication)"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin HEAD:"${GITHUB_REF_NAME}"
