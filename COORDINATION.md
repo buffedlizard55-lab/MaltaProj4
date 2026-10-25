@@ -9539,3 +9539,44 @@ session happens on a GitHub runner, and its bytes and receipt are committed.
 
 I will take T2–T5 in this session, numbering them so another session can see the scopes; each is claimed
 in this table before I touch it. Nothing in another session's private `research/session-*` tree is edited.
+
+## Session 408eb0af — integration receipt (2026-10-25 14:00 UTC)
+
+**The outage is fixed on `main`, and this section records by whom, so nobody repeats it.** Three
+sessions independently reproduced the same single failing assertion on GitHub's egress
+(`Model roster has no HLTV source on this row`, fixture 1086697 `Projeto do KinGui` vs HLTV's
+`Tropa do KinGui`), and the rule had to land once:
+
+| PR | What it changed | Outcome |
+| --- | --- | --- |
+| [#316](https://github.com/buffedlizard55-lab/MaltaProj4/pull/316) (session b85ad9b4) | `scripts.validate.same_club`: the register bridge, requiring an `https` source **and** that the register keeps the fixture's two teams apart | **merged** `06915a8` — this is the shipped rule |
+| [#311](https://github.com/buffedlizard55-lab/MaltaProj4/pull/311) (session a7f788c8) | `deploy` now requires a successful `upload-pages-artifact` outcome | **merged** `23744d4` |
+| [#314](https://github.com/buffedlizard55-lab/MaltaProj4/pull/314) (session 046b2e46) | an alternative `same_club` via `core.norm`/`ALIAS_MAP` | **superseded** — its bridge does not enforce the source link its own docstring claims; noted on the PR |
+| [#313](https://github.com/buffedlizard55-lab/MaltaProj4/pull/313) (session 601ce27c) | the stale-board phone gate in `tests/browser_aeafcbe6.cjs` | **adopted, not duplicated** — the branch was stuck on a `COORDINATION.md` conflict, so its exact patch was taken onto this branch and credited here |
+| [#323](https://github.com/buffedlizard55-lab/MaltaProj4/pull/323) (this session) | publication backstop, the measured source-access section, the probe and the diagnostic | see the PR |
+
+**What this session added, and why each item exists.**
+
+1. `scripts/quarantine.roster_lineage_violations` — the validator's roster assertion now has a row-level
+   path. It re-uses `scripts.validate.lineup_source_ok` (so the two cannot disagree) and withholds one row
+   instead of failing publication. `tests/test_session_408eb0af.py` (8 tests) runs it against the captured
+   board the publisher refused.
+2. **Measured access, not asserted.** `.github/workflows/probe-408eb0af.yml` + `scripts/probe_sources_408eb0af.py`
+   read 15 public endpoints once each from the runner and commit the response bodies:
+   `research/session-408eb0af/probe/` (run 40198727513, 2026-10-25T13:42Z). Polymarket 200, Pinnacle 200,
+   BO3.gg/Thunderpick 200 where a line is posted, Thunderpick's web page a 14.6 kB shell with no server-rendered
+   price, EGamersWorld **403**, GG.BET **403**, Bovada JSON **404**, Oddspedia JSON **400**, HLTV 200 for
+   identity only. That table is published as `unresolved.html#measured-source-access` and inside the
+   executive summary, each row linking to its own captured bytes — no operator refusal is described as "no
+   odds offered", and no alternative endpoint was guessed.
+3. A readable diagnostic (`.github/workflows/diag-408eb0af.yml`, run 40197625638) so the next red gate is
+   readable from a branch instead of an unreadable log.
+
+**Verification on this branch (all run locally, this session):** `unittest discover -s tests` **1,627 tests
+OK (skipped=7)**; `audits` 9 OK; `verification-95b588c2` 5 OK; `verification-c6` 12 OK; `scripts.build` +
+`scripts.validate` green (79 rows, 18 calculations, 15 pages, 802 links, 20 checksums); `npm run test:browser`
+**exit 0**. `data/latest.json` untouched — no pick, price or probability was edited by hand.
+
+**Left for review, non-blocking:** the 51.0/49.0 originated model line on fixture 1086697 is a two-point edge
+in our own model, so its pick is directional by the project's existing `> 0.0001` rule; if that rule should
+change for model lines, it is a product decision. Recorded in `data/review-notes.json`.
