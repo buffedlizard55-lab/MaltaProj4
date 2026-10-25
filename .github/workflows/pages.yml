@@ -1,7 +1,7 @@
 name: Verify, refresh and publish CS2 Scout
 on:
   push:
-    branches: [main, arena/e9be3e6b-maltaproj4, arena/cecfe864-maltaproj4, arena/dddcb90d-maltaproj4, arena/071642e7-maltaproj4, arena/4fd13975-maltaproj4, arena/8fdf1f99-maltaproj4, arena/cf12d97f-maltaproj4, arena/035cbb63-maltaproj4, arena/1395f539-maltaproj4, arena/29549098-maltaproj4, arena/40c14278-maltaproj4, arena/50f79045-maltaproj4, arena/7ec4608a-maltaproj4, arena/84295759-maltaproj4, arena/8c8e3c5f-maltaproj4, arena/96ea1af8-maltaproj4, arena/9787ce4b-maltaproj4, arena/9a81b26f-maltaproj4, arena/a56d155f-maltaproj4, arena/ab18fe2a-maltaproj4, arena/afce4281-maltaproj4, arena/bf09aa40-maltaproj4, arena/c4d25599-maltaproj4, arena/ce21a932-maltaproj4, arena/db1f35c5-maltaproj4, arena/e54807b3-maltaproj4, arena/ef0969b9-maltaproj4, arena/174afa4f-maltaproj4, arena/4ed657ce-maltaproj4, arena/233b8a0e-maltaproj4]
+    branches: [main, arena/e9be3e6b-maltaproj4, arena/cecfe864-maltaproj4, arena/dddcb90d-maltaproj4, arena/071642e7-maltaproj4, arena/4fd13975-maltaproj4, arena/8fdf1f99-maltaproj4, arena/cf12d97f-maltaproj4, arena/035cbb63-maltaproj4, arena/1395f539-maltaproj4, arena/29549098-maltaproj4, arena/40c14278-maltaproj4, arena/50f79045-maltaproj4, arena/7ec4608a-maltaproj4, arena/84295759-maltaproj4, arena/8c8e3c5f-maltaproj4, arena/96ea1af8-maltaproj4, arena/9787ce4b-maltaproj4, arena/9a81b26f-maltaproj4, arena/a56d155f-maltaproj4, arena/ab18fe2a-maltaproj4, arena/afce4281-maltaproj4, arena/bf09aa40-maltaproj4, arena/c4d25599-maltaproj4, arena/ce21a932-maltaproj4, arena/db1f35c5-maltaproj4, arena/e54807b3-maltaproj4, arena/ef0969b9-maltaproj4, arena/174afa4f-maltaproj4, arena/4ed657ce-maltaproj4, arena/233b8a0e-maltaproj4, arena/ece64b74-maltaproj4]
   pull_request:
     branches: [main]
   schedule:
@@ -94,10 +94,45 @@ jobs:
       - name: Build and independently verify every row, calculation and internal link
         if: steps.gate.outputs.publish == 'true'
         run: |
-          python verification-c6/audit_snapshot.py runtime/latest.json --output runtime/independent-row-audit.md
-          python -m scripts.build --data runtime/latest.json
-          python -m scripts.validate --data runtime/latest.json
-          python verification-c6/audit_snapshot.py public/data/latest.json --output runtime/published-row-audit.md
+          set -euo pipefail
+          mkdir -p runtime
+          run_gate() {
+            label="$1"
+            logfile="$2"
+            shift 2
+            set +e
+            "$@" > "$logfile" 2>&1
+            rc=$?
+            set -e
+            cat "$logfile"
+            if [ "$rc" -eq 0 ]; then return 0; fi
+            {
+              printf '### Build gate failed: %s (exit %s)\n\n' "$label" "$rc"
+              printf '```text\n'
+              tail -n 80 "$logfile"
+              printf '```\n'
+            } >> "$GITHUB_STEP_SUMMARY"
+            python3 - "$label" "$logfile" "$rc" <<'PY'
+          from pathlib import Path
+          import sys
+          label, path, code = sys.argv[1:]
+          lines = Path(path).read_text(encoding='utf-8', errors='replace').splitlines()[-20:]
+          if not lines:
+              lines = [f'Command failed with exit code {code} and wrote no output.']
+          for line in lines:
+              escaped = line.replace('%', '%25').replace('\\r', '%0D').replace('\\n', '%0A')
+              print(f'::error title={label}::{escaped[:3000]}')
+          PY
+            return "$rc"
+          }
+          run_gate 'Independent row audit (runtime)' runtime/row-audit.log \
+            python verification-c6/audit_snapshot.py runtime/latest.json --output runtime/independent-row-audit.md
+          run_gate 'Static site build' runtime/build.log \
+            python -m scripts.build --data runtime/latest.json
+          run_gate 'Published-data and link validator' runtime/validate.log \
+            python -m scripts.validate --data runtime/latest.json
+          run_gate 'Independent audit of built JSON' runtime/published-row-audit.log \
+            python verification-c6/audit_snapshot.py public/data/latest.json --output runtime/published-row-audit.md
       - name: Phone, tablet, desktop, accessibility and exact-boundary expiry checks
         if: steps.gate.outputs.publish == 'true'
         run: npm run test:browser
@@ -221,7 +256,7 @@ jobs:
           exit 0
       - name: Record the exact artifact expected at the public site
         id: receipt
-        if: always() && steps.gate.outputs.publish == 'true'
+        if: always() && steps.gate.outputs.publish == 'true' && steps.pages_artifact.outcome == 'success'
         run: |
           echo "manifest_sha=$(sha256sum public/build-info.json | cut -d ' ' -f1)" >> "$GITHUB_OUTPUT"
           echo "built_at=$(python -c 'import json;print(json.load(open("public/build-info.json"))["built_at"])')" >> "$GITHUB_OUTPUT"
