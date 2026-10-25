@@ -1,0 +1,8 @@
+refresh_rc=0
+quarantine_rc=0
+row_audit_rc=0
+build_rc=0
+validate_rc=1
+published_audit_rc=0
+coverage_rc=0
+browser_rc=1

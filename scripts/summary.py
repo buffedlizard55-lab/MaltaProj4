@@ -86,6 +86,45 @@ LADDER = (
      'HLTV rankings and Valve standings', 'https://www.hltv.org/ranking/teams'),
 )
 
+# Measured access, not assumed. Read from `research/session-408eb0af/probe/report.md`
+# (GitHub runners, 2026-10-25T13:42Z, one GET per endpoint, bodies committed beside
+# the report). Each row is (source, measured result, what it returned, the
+# limitation it creates for a low-tier fixture, the official endpoint that was
+# read, the committed response-body filename). Nothing here is a price, and a
+# refusal is a fact about access, never evidence that a book offers no odds.
+#
+# Every row links to its own committed response bytes on this project's own
+# GitHub tree rather than to the operator: (a) this repository's own validators
+# require a trusted external source link on every rendered table row, and two of
+# these sources (Bovada, Oddspedia) are probed candidates rather than official
+# evidence, so they must not be cited as one; (b) the committed bytes are the
+# actual evidence for the "Measured" column and can be re-read forever, while a
+# live operator page can change under the reader.
+ACCESS_PROBE_DIR = 'https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-408eb0af/probe/bodies/'
+ACCESS_PROBE_DATE = '2026-10-25'
+ACCESS_PROBE = (
+    ('Polymarket exchange', 'HTTP 200 · 491 sport entries', 'Lists many CS2 series, but low-tier and academy '
+     'fixtures are often absent — that is what sends a row down the ladder.', GAMMA + '/sports', 'polymarket-sports.body'),
+    ('Pinnacle guest API', 'HTTP 200 · 36 CS2 matchups', 'Covers a fraction of the Hotspawn board; a fixture it '
+     'does not list gets no sharp-book price.', PIN + '/sports/12/matchups?withSpecials=false', 'pinnacle-matchups.body'),
+    ('Thunderpick via BO3.gg API', 'HTTP 200 · structured odds where posted', 'Only some fixtures carry an active '
+     'series moneyline; the API returns an explicit "no line yet" for the rest.', 'https://api.bo3.gg/api/v1/matches',
+     'bo3-matches.body'),
+    ('Thunderpick web page', 'HTTP 200 · 14.6 kB shell', 'No server-rendered price to read: the odds are assembled '
+     'client-side, so a plain GET cannot supply one.', 'https://thunderpick.io/esports/cs2-betting', 'thunderpick-cs2.body'),
+    ('EGamersWorld listing', 'HTTP 403 from the runner', 'A dated receipt can still be published from a manual read, '
+     'but it cannot be re-observed automatically, so it expires out of the eight-hour window.',
+     'https://egamersworld.com/counterstrike/matches', 'egamersworld-cs2.body'),
+    ('GG.BET', 'HTTP 403 after rate-limit waits', 'Access refused, not bypassed. No GG.BET price is ever published.',
+     'https://gg.bet/en/esports/counter-strike', 'ggbet-cs2.body'),
+    ('Bovada public JSON', 'HTTP 404', 'The documented public endpoint no longer answers; no alternative was guessed.',
+     'https://www.bovada.lv/services/sports/event/coupon/events/A/description/esports/counter-strike', 'bovada-cs2.body'),
+    ('Oddspedia public JSON', 'HTTP 400', 'The documented public endpoint refuses the query shape; no alternative '
+     'was guessed.', 'https://oddspedia.com/api/v1/getMatchList?sport=counter-strike', 'oddspedia-cs2.body'),
+    ('HLTV', 'HTTP 200 · matches, world ranking, Valve mirror', 'Supplies identity, rankings, lineups and recent '
+     'results — never a numeric two-way price to this collector.', 'https://www.hltv.org/matches', 'hltv-matches.body'),
+)
+
 # Which ladder step answers for which published method.
 METHOD_STEP = {
     'exchange': 'exchange', 'exchange_wide': 'exchange_wide', 'bookmaker': 'pinnacle',

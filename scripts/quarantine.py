@@ -62,6 +62,48 @@ def contract_violations(match):
         expected = match['teams'][0 if probabilities[0] > probabilities[1] else 1]
         if pick != expected:
             problems.append('Pick does not follow the larger published probability')
+    problems.extend(roster_lineage_violations(match))
+    return problems
+
+
+MODEL_PROVIDERS = ('Valve VRS model', 'HLTV Valve ranking (Valve points)')
+
+
+def roster_lineage_violations(match):
+    """A model row must be able to prove its roster from an HLTV page on the row.
+
+    Session 408eb0af. ``scripts.validate`` already asserts this for every
+    originated line, and on 2026-10-25T13:30Z that assertion was the single
+    reason the scheduled publisher had failed at step 13 since
+    2026-10-24T23:40Z: fixture 1086697 (Hotspawn "Projeto do KinGui" vs
+    "Yawara") was priced from Valve's "ex-Keyd Stars" row, and the HLTV lineup
+    on the row is labelled "Tropa do KinGui". Both labels are one team in the
+    verified identity register, so the assertion itself was too strict and is
+    fixed at its source (``scripts.validate.lineup_source_ok`` now accepts a
+    registered alias). This is the backstop: if a future row still cannot prove
+    its roster, one row is withheld and visibly flagged instead of the whole
+    board refusing to publish. It re-uses the validator's own function so the
+    two can never disagree, and it checks nothing when the row carries no HLTV
+    roster evidence at all, which is the validator's ``label_count`` case.
+    """
+    if match.get('state') != 'open' or not match.get('probabilities'):
+        return []
+    evidence = match.get('evidence') or []
+    quote = evidence[0] if evidence and isinstance(evidence[0], dict) else {}
+    if quote.get('provider') not in MODEL_PROVIDERS:
+        return []
+    if not (match.get('hltv_team_pages') or (match.get('hltv_context') or {}).get('lineups')):
+        return []
+    try:
+        from scripts.validate import lineup_source_ok
+    except Exception:  # a broken import must never invent a violation
+        return []
+    problems = []
+    for team, check in zip(match.get('teams') or [], quote.get('roster_checks') or []):
+        if not isinstance(check, dict) or check.get('overlap') is None:
+            continue
+        if not lineup_source_ok(match, team, check.get('lineup') or []):
+            problems.append('Model roster for %s has no HLTV source on this row' % team)
     return problems
 
 

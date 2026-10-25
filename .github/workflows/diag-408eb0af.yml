@@ -1,0 +1,129 @@
+name: Diag 408eb0af (non-publishing)
+
+# The scheduled publisher has failed at step 13 ("Build and independently verify
+# every row, calculation and internal link") on 2026-10-24T23:40Z,
+# 2026-10-25T06:56Z and 2026-10-25T12:29Z while the committed tree's unit,
+# audit and validator gates were green in the same runs. That means the failure
+# is a property of the snapshot a *live* refresh produces, and the only way to
+# see it is to reproduce the exact sequence on GitHub's egress and commit the
+# measurement, because this project's authoring sandbox can read neither job
+# logs nor artifact blobs.
+#
+# This workflow never deploys, never stages a root, never rewrites a pick and
+# never touches data/latest.json. It writes only under research/session-408eb0af/
+# on the branch that triggered it.
+on:
+  push:
+    branches: [arena/408eb0af-maltaproj4]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: diag-408eb0af-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  reproduce:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[diag408]')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Prepare runtime
+        run: mkdir -p runtime research/session-408eb0af && cp data/latest.json runtime/committed-latest.json
+
+      - name: 1 Refresh official sources to a fresh snapshot
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set +e
+          python -m scripts.refresh --output runtime/latest.json > runtime/refresh.log 2>&1
+          echo "refresh_rc=$?" >> runtime/diag.env
+          set -e
+
+      - name: 2 Quarantine exactly as the publisher does
+        run: |
+          set +e
+          python -m scripts.quarantine runtime/latest.json > runtime/quarantine.log 2>&1
+          echo "quarantine_rc=$?" >> runtime/diag.env
+          set -e
+
+      - name: 3 Independent row audit of the fresh snapshot
+        run: |
+          set +e
+          python verification-c6/audit_snapshot.py runtime/latest.json --output runtime/row-audit.md > runtime/row-audit.log 2>&1
+          echo "row_audit_rc=$?" >> runtime/diag.env
+          set -e
+
+      - name: 4 Build exactly as the publisher does
+        run: |
+          set +e
+          python -m scripts.build --data runtime/latest.json > runtime/build.log 2>&1
+          echo "build_rc=$?" >> runtime/diag.env
+          set -e
+
+      - name: 5 Validate the build
+        run: |
+          set +e
+          python -m scripts.validate --data runtime/latest.json > runtime/validate.log 2>&1
+          echo "validate_rc=$?" >> runtime/diag.env
+          set -e
+
+      - name: 6 Independent row audit of the built artifact
+        run: |
+          set +e
+          python verification-c6/audit_snapshot.py public/data/latest.json --output runtime/published-row-audit.md > runtime/published-row-audit.log 2>&1
+          echo "published_row_audit_rc=$?" >> runtime/diag.env
+          set -e
+
+      - name: 7 Unit and independent failure-mode suites
+        run: |
+          set +e
+          python -m unittest discover -s tests > runtime/unittest.log 2>&1
+          echo "unittest_rc=$?" >> runtime/diag.env
+          python -m unittest discover -s audits -p 'test_*.py' > runtime/audits.log 2>&1
+          echo "audits_rc=$?" >> runtime/diag.env
+          python verification-95b588c2/test_integrity.py > runtime/integrity.log 2>&1
+          echo "integrity_rc=$?" >> runtime/diag.env
+          python -m unittest discover -s verification-c6 -p 'test_*.py' > runtime/verification-c6.log 2>&1
+          echo "verification_c6_rc=$?" >> runtime/diag.env
+          set -e
+
+      - name: 8 Distil a single readable report
+        if: always()
+        run: python -m scripts.diag_408eb0af --runtime runtime --output research/session-408eb0af/report-${{ github.run_id }}.md
+
+      - name: 9 Keep rows the report should explain
+        if: always()
+        run: |
+          set +e
+          mkdir -p research/session-408eb0af
+          cp runtime/latest.json "research/session-408eb0af/snapshot-${{ github.run_id }}.json"
+          set -e
+
+      - name: 10 Commit the measurement (never data/latest.json)
+        if: always()
+        run: |
+          git config user.name "cs2-scout-publisher"
+          git config user.email "cs2-scout-publisher@users.noreply.github.com"
+          git add research/session-408eb0af
+          if git diff --cached --quiet; then
+            echo "Nothing to record."
+            exit 0
+          fi
+          git -c commit.gpgsign=false commit -q -m "Record the 408eb0af publication diagnostic (run ${{ github.run_id }})"
+          for attempt in 1 2 3; do
+            if git pull --rebase --autostash origin "${{ github.ref_name }}" && git push origin "HEAD:${{ github.ref_name }}"; then
+              exit 0
+            fi
+            sleep 5
+          done
+          echo "::error::diagnostic commit could not be pushed"
+          exit 1

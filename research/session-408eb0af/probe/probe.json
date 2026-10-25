@@ -1,0 +1,243 @@
+{
+ "generated_at": "2026-10-25T13:42:55.229281Z",
+ "user_agent": "MaltaProj4-cs2-scout/1.0 (+https://github.com/buffedlizard55-lab/MaltaProj4; read-only research probe)",
+ "targets": [
+  {
+   "label": "hotspawn-fixtures-api",
+   "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "why": "Hotspawn feed: does it still return the fixture inventory the board is built from?",
+   "requested_at": "2026-10-25T13:42:19.464926Z",
+   "status": 200,
+   "final_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "content_type": "application/json; charset=utf-8",
+   "bytes": 61044,
+   "sha256": "b163711d75a647e05aa27963b80174d58e6a0b88691297980f43a590ed42c010",
+   "elapsed_ms": 345,
+   "note": [
+    "JSON array, 78 entries",
+    "first entry keys: base_points, best_of, competition_id, competition_name, end_time, id, lock_offset_sec, lock_time, offered_points, participants0_id, participants0_name, participants0_picked_percent, participants0_score, participants1_id",
+    "markers: Thunderpick x8"
+   ]
+  },
+  {
+   "label": "hotspawn-lobby",
+   "url": "https://play.hotspawn.com/lobby",
+   "why": "Hotspawn lobby page: inventory cross-check.",
+   "requested_at": "2026-10-25T13:42:21.811950Z",
+   "status": 200,
+   "final_url": "https://play.hotspawn.com/lobby",
+   "content_type": "text/html;charset=UTF-8",
+   "bytes": 301776,
+   "sha256": "aef16f9d24695ca51c4331abe3b97649d1dc9f000eaa34a8ec9ab57d8eaf3f1d",
+   "elapsed_ms": 381,
+   "note": [
+    "decoded 199942 characters",
+    "markers: Thunderpick x2"
+   ]
+  },
+  {
+   "label": "polymarket-sports",
+   "url": "https://gamma-api.polymarket.com/sports",
+   "why": "Polymarket exchange registry: the strict market tier.",
+   "requested_at": "2026-10-25T13:42:24.195876Z",
+   "status": 200,
+   "final_url": "https://gamma-api.polymarket.com/sports",
+   "content_type": "application/json",
+   "bytes": 155942,
+   "sha256": "f6b2d546b1cdd25010f185b821ab492ec72b3759a5b05a277df57ce37153a254",
+   "elapsed_ms": 119,
+   "note": [
+    "JSON array, 491 entries",
+    "first entry keys: createdAt, id, image, name, ordering, primaryTagId, resolution, series, sport, tags"
+   ]
+  },
+  {
+   "label": "pinnacle-moneylines",
+   "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+   "why": "Pinnacle guest esports moneylines: the sharp-book tier.",
+   "requested_at": "2026-10-25T13:42:26.318968Z",
+   "status": 200,
+   "final_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+   "content_type": "application/json",
+   "bytes": 578359,
+   "sha256": "92dcbba468ec596b08dfd300d65cad076f2eb661e4bbad3db18397eddabd2c05",
+   "elapsed_ms": 76,
+   "note": [
+    "declared JSON but did not parse"
+   ]
+  },
+  {
+   "label": "pinnacle-matchups",
+   "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/matchups?withSpecials=false",
+   "why": "Pinnacle fixture feed that binds the moneylines to teams and starts.",
+   "requested_at": "2026-10-25T13:42:28.397380Z",
+   "status": 200,
+   "final_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/matchups?withSpecials=false",
+   "content_type": "application/json",
+   "bytes": 103002,
+   "sha256": "f9cccb15f35a90740928f1a65d1a6bafe1547b36ac6986d7fc939dd94f300781",
+   "elapsed_ms": 18,
+   "note": [
+    "JSON array, 36 entries",
+    "first entry keys: ageLimit, altTeaser, featureOrder, hasAltSpread, hasAltTotal, hasBetshare, hasLive, hasMarkets, id, isBetshareEnabled, isFeatured, isHighlighted, isLive, isPromoted",
+    "markers: moneyline x36, Moneyline x110"
+   ]
+  },
+  {
+   "label": "bo3-matches",
+   "url": "https://api.bo3.gg/api/v1/matches?page[limit]=100&filter[matches.status][eq]=upcoming",
+   "why": "BO3.gg public API: documented route to a Thunderpick series moneyline.",
+   "requested_at": "2026-10-25T13:42:30.417392Z",
+   "status": 200,
+   "final_url": "https://api.bo3.gg/api/v1/matches?page%5Blimit%5D=100&filter%5Bmatches.status%5D%5Beq%5D=upcoming",
+   "content_type": "application/json; charset=utf-8",
+   "bytes": 103555,
+   "sha256": "23c6ec3d43cca76438011401afeed94ca4d3a18fc08e1233ce57fe75b2dcaefe",
+   "elapsed_ms": 1194,
+   "note": [
+    "JSON object, keys: links, results, total",
+    "markers: team_1 x38"
+   ]
+  },
+  {
+   "label": "hltv-matches",
+   "url": "https://www.hltv.org/matches",
+   "why": "HLTV fixture list: identity, rankings and lineups (never a probability).",
+   "requested_at": "2026-10-25T13:42:33.613766Z",
+   "status": 200,
+   "final_url": "https://www.hltv.org/matches",
+   "content_type": "text/html; charset=UTF-8",
+   "bytes": 643491,
+   "sha256": "f2d1da916b8e2788a48f369bdcbde41d67e0fde1b14dcb30cb0e2c4d286cc98f",
+   "elapsed_ms": 189,
+   "note": [
+    "decoded 199992 characters",
+    "markers: odds x1"
+   ]
+  },
+  {
+   "label": "hltv-ranking",
+   "url": "https://www.hltv.org/ranking/teams",
+   "why": "HLTV world ranking: the dated ranking-order research tier.",
+   "requested_at": "2026-10-25T13:42:35.805553Z",
+   "status": 200,
+   "final_url": "https://www.hltv.org/ranking/teams/2026/october/19",
+   "content_type": "text/html; charset=UTF-8",
+   "bytes": 1154783,
+   "sha256": "a37e33e0a3d3b008d551a183968226599cebe969de5b0fa0bbf513218f799848",
+   "elapsed_ms": 309,
+   "note": [
+    "decoded 199903 characters",
+    "markers: odds x1"
+   ]
+  },
+  {
+   "label": "hltv-valve-ranking",
+   "url": "https://www.hltv.org/valve-ranking/teams",
+   "why": "HLTV dated view of Valve points: the model mirror tier.",
+   "requested_at": "2026-10-25T13:42:38.117503Z",
+   "status": 200,
+   "final_url": "https://www.hltv.org/valve-ranking/teams/2026/october/25",
+   "content_type": "text/html; charset=UTF-8",
+   "bytes": 1674384,
+   "sha256": "087780ec7af139f7f57de56813858c1afb803639817d304ea236170c644b78ab",
+   "elapsed_ms": 493,
+   "note": [
+    "decoded 199903 characters",
+    "markers: odds x1"
+   ]
+  },
+  {
+   "label": "egamersworld-cs2",
+   "url": "https://egamersworld.com/counterstrike/matches",
+   "why": "EGamersWorld listing: the researched book-listing tier.",
+   "requested_at": "2026-10-25T13:42:40.613691Z",
+   "status": 403,
+   "final_url": "https://egamersworld.com/counterstrike/matches",
+   "content_type": "text/html; charset=UTF-8",
+   "bytes": 5715,
+   "sha256": "d6aab18fc0a6f44deef3e71a318e27132e20c7bcba186cd556307695c3bbada8",
+   "elapsed_ms": 89,
+   "note": [
+    "decoded 5715 characters"
+   ]
+  },
+  {
+   "label": "stavka-cs2",
+   "url": "https://stavka.tv/matches/csgo",
+   "why": "STAVKA listing: second researched book-listing route.",
+   "requested_at": "2026-10-25T13:42:42.703980Z",
+   "status": 200,
+   "final_url": "https://stavka.tv/matches/csgo",
+   "content_type": "text/html;charset=utf-8",
+   "bytes": 465998,
+   "sha256": "272aa8820cc8ba082fac3243d9863521ccef7f325d8610db1b5dca795c18d043",
+   "elapsed_ms": 936,
+   "note": [
+    "decoded 199945 characters",
+    "markers: bookmaker x1"
+   ]
+  },
+  {
+   "label": "thunderpick-cs2",
+   "url": "https://thunderpick.io/esports/cs2-betting",
+   "why": "Thunderpick page: is any price server-rendered for a plain GET?",
+   "requested_at": "2026-10-25T13:42:45.643558Z",
+   "status": 200,
+   "final_url": "https://thunderpick.io/esports/cs2-betting",
+   "content_type": "text/html",
+   "bytes": 14610,
+   "sha256": "37644d5714f72bd613500ca479d3df1644862878a8de483b97c6621481337cc2",
+   "elapsed_ms": 319,
+   "note": [
+    "decoded 14610 characters",
+    "markers: Thunderpick x7, odds x1"
+   ]
+  },
+  {
+   "label": "ggbet-cs2",
+   "url": "https://gg.bet/en/esports/counter-strike",
+   "why": "GG.BET page: measured refusal history.",
+   "requested_at": "2026-10-25T13:42:47.963978Z",
+   "status": 403,
+   "final_url": "https://gg.bet/en/esports/counter-strike",
+   "content_type": "text/plain",
+   "bytes": 126,
+   "sha256": "7583d10fb1a03d33887157aee047f499dfe10cfbfcf0aeee800d7121df60e519",
+   "elapsed_ms": 242,
+   "note": [
+    "decoded 126 characters"
+   ]
+  },
+  {
+   "label": "bovada-cs2",
+   "url": "https://www.bovada.lv/services/sports/event/coupon/events/A/description/esports/counter-strike",
+   "why": "Bovada public JSON: candidate independent book source for low-tier fixtures.",
+   "requested_at": "2026-10-25T13:42:50.207065Z",
+   "status": 404,
+   "final_url": "https://www.bovada.lv/services/sports/event/coupon/events/A/description/esports/counter-strike",
+   "content_type": "text/plain;charset=iso-8859-1",
+   "bytes": 2,
+   "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+   "elapsed_ms": 800,
+   "note": [
+    "decoded 2 characters"
+   ]
+  },
+  {
+   "label": "oddspedia-cs2",
+   "url": "https://oddspedia.com/api/v1/getMatchList?sport=counter-strike",
+   "why": "Oddspedia public JSON: candidate multi-book aggregator for low-tier fixtures.",
+   "requested_at": "2026-10-25T13:42:53.007549Z",
+   "status": 400,
+   "final_url": "https://oddspedia.com/api/v1/getMatchList?sport=counter-strike",
+   "content_type": "text/html; charset=UTF-8",
+   "bytes": 0,
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "elapsed_ms": 221,
+   "note": [
+    "decoded 0 characters"
+   ]
+  }
+ ]
+}
