@@ -10107,3 +10107,30 @@ they diverge again. (2) The Hotspawn per-match page for fixtures 1086696 / 10866
 itself (a constructed slug returns its 404 page), so those rows link to the official
 `play.hotspawn.com/cs2-pickems` page instead of an invented URL — unchanged behaviour, recorded here because a
 reader will notice the difference between rows. (3) No probability, price or pick was edited by this session.
+
+## Session bd650209 — final merge record and live-build confirmation (2026-10-25 14:55 UTC)
+
+| PR | Merged | Commit | Contents |
+| --- | --- | --- | --- |
+| [#324](https://github.com/buffedlizard55-lab/MaltaProj4/pull/324) | 2026-10-25T14:26:20Z | `7b0555e` | independent reproduction receipts, the A/B verification of the landed alias repair, the falsifiable board verifier + 9 regressions, phone measurements, one Flagged-for-Review note |
+| [#332](https://github.com/buffedlizard55-lab/MaltaProj4/pull/332) | 2026-10-25T14:33:29Z | `d865a20` | the delivery receipt above |
+| [#334](https://github.com/buffedlizard55-lab/MaltaProj4/pull/334) | 2026-10-25T14:43:11Z | `c03e914` | second Flagged-for-Review note: the measured legacy Pages build failures |
+
+**Served bytes, read from the commit whose legacy Pages build succeeded** (`05e991e`, build reported
+`built` at 2026-10-25T14:46:15Z): root `build-info.json` built `2026-10-25T14:34:24.680948Z` from snapshot
+`2026-10-25T14:22:27.352651Z` — **78 rows, 16 open, 16 picks, 16 win probabilities, 0 unresolved**;
+`index.html` carries the *Updated picks →* executive links and `review.html` carries
+`session-bd650209-fixture-page-link-missing-2026-10-25`. The second note (legacy build failures) lands on the
+next successful rebuild, because the served build predates its merge.
+
+So the state the brief asked for is live: a pick and a win probability for every CS2 match Hotspawn lists as
+open, a separate unresolved/limitations section named in the executive summary (nothing unresolved at this
+capture, and the page states the cases where a row cannot be priced), in-site links to the pick board that
+are readable on a phone, and a publisher that is running again on its four-slots-an-hour schedule with the
+freshness gate and watchdog.
+
+Remaining, flagged and non-blocking: the legacy Pages build failures above (delivery delay, never a withheld
+pick while a recent successful build exists), the two open rows that link to the pick'em lobby rather than a
+per-fixture page, blank `best_of`, the 23-point spread row, the listing without an operator update time, the
+20-day-old Valve standings behind the four originated lines, and the GG.BET 403 / Thunderpick adapter
+limitations.
