@@ -31,6 +31,63 @@ UA = {"User-Agent": "Hotspawn-CS2-Research/1.0 (+https://github.com/buffedlizard
 KALSHI = "https://external-api.kalshi.com/trade-api/v2"
 
 
+def market_team(market):
+    """The single team a Kalshi "<Team> wins" market is about, or None."""
+    for field in ("yes_sub_title", "subtitle", "title"):
+        value = market.get(field)
+        if isinstance(value, str) and value.strip():
+            label = value.strip()
+            if label.lower().endswith(" wins"):
+                label = label[: -len(" wins")].strip()
+            if label:
+                return label
+    return None
+
+
+def pair_events(markets):
+    """Group retained markets into two-sided events. Diagnostic only.
+
+    An event is a lead only when it holds exactly two markets with two
+    distinct team labels — the shape a future typed adapter would still have
+    to re-gate (exact start, open status, spread, liquidity) before pricing.
+    """
+    from scripts.core import norm
+
+    grouped = {}
+    for market in markets or []:
+        event = market.get("event_ticker")
+        team = market_team(market)
+        if not event or not team:
+            continue
+        grouped.setdefault(event, []).append({
+            "team": team, "ticker": market.get("ticker"),
+            "title": market.get("title"),
+            "yes_bid_dollars": market.get("yes_bid_dollars"),
+            "yes_ask_dollars": market.get("yes_ask_dollars"),
+            "liquidity_dollars": market.get("liquidity_dollars"),
+            "close_time": market.get("close_time"),
+            "expected_expiration_time": market.get("expected_expiration_time"),
+        })
+    paired = []
+    for event, sides in grouped.items():
+        keys = [norm(s["team"]) for s in sides]
+        if len(sides) == 2 and len(set(keys)) == 2:
+            paired.append({"event_ticker": event, "sides": sides})
+    return paired
+
+
+def match_event(fixture_teams, paired_events):
+    """The unique paired event naming exactly these two teams, else None."""
+    from scripts.core import norm
+
+    if len(fixture_teams or []) != 2:
+        return None
+    want = {norm(t) for t in fixture_teams}
+    hits = [e for e in paired_events or []
+            if {norm(s["team"]) for s in e["sides"]} == want]
+    return hits[0] if len(hits) == 1 else None
+
+
 def get(url, timeout=30):
     started = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
     try:
@@ -95,6 +152,14 @@ def main():
     report["kalshi"]["series_total"] = len(series)
     report["kalshi"]["cs_or_esports_series"] = cs_series
 
+    # Series order is not meaningful, and the first probe (run 40199883762)
+    # only just reached the moneyline series (KXCS2GAME, 11th of 54 matches).
+    # CS2-titled series go first so the bounded fetch always starts with the
+    # candidates an adapter would actually use.
+    cs_series.sort(key=lambda s: (0 if "cs2" in str(s.get("ticker") or "").lower()
+                                  or "counter-strike" in str(s.get("title") or "").lower() else 1,
+                                  str(s.get("ticker") or "")))
+    report["kalshi"]["cs_or_esports_series"] = cs_series
     markets_by_series = {}
     for s in cs_series[:12]:
         ticker = s.get("ticker")
@@ -121,18 +186,29 @@ def main():
         }
     report["kalshi"]["markets_by_series"] = markets_by_series
 
-    # Exact-pair lead test only (both team labels present in one market's text).
-    def mentions(text, team):
-        return team and team.lower() in (text or "").lower()
-
+    # Kalshi's moneyline shape (measured run 40199883762): one event holds
+    # exactly two markets titled "<Team> wins", one per side — so a pair can
+    # never appear inside a single market's text and the first probe's
+    # both-names-in-one-market test structurally found 0 leads. Pair markets
+    # by event and compare whole labels through the project's own identity
+    # rule (scripts.core.norm: exact folded label or verified register alias,
+    # never substring — "BESTIA Academy wins" must not match "BESTIA").
+    paired = {}
+    for ticker, pack in markets_by_series.items():
+        if "TOTAL" in ticker or "MAPS" in ticker:
+            continue  # totals are not a series-winner price
+        paired[ticker] = pair_events(pack["markets"])
+    report["kalshi"]["paired_events_by_series"] = {
+        ticker: len(events) for ticker, events in paired.items()}
     leads = []
-    for m in unpriced + open_rows:
-        for ticker, pack in markets_by_series.items():
-            for mk in pack["markets"]:
-                text = " | ".join(str(mk.get(k) or "") for k in ("title", "subtitle", "yes_sub_title", "no_sub_title"))
-                if all(mentions(text, t) for t in m["teams"]):
-                    leads.append({"fixture_id": m["id"], "teams": m["teams"], "start": m.get("start"),
-                                  "series": ticker, "market_ticker": mk.get("ticker"), "title": mk.get("title")})
+    for m in open_rows:
+        for ticker, events in paired.items():
+            hit = match_event(m["teams"], events)
+            if hit:
+                leads.append({"fixture_id": m["id"], "teams": m["teams"],
+                              "start": m.get("start"), "series": ticker,
+                              "event_ticker": hit["event_ticker"],
+                              "sides": hit["sides"]})
     report["kalshi"]["exact_pair_leads"] = leads
 
     # --- HLTV dated world ranking reachability ---

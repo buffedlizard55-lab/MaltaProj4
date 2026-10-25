@@ -104,7 +104,14 @@ class FreshBoardRegressionTests(unittest.TestCase):
         if row is not None and row.get('method') == 'model_vrs':
             quote = row['evidence'][0]
             check = quote['roster_checks'][0]
-            self.assertTrue(lineup_source_ok(row, row['teams'][0], check.get('lineup') or []))
+            if check.get('overlap') is not None and check.get('lineup'):
+                # The 13:31Z capture: HLTV listed the club as Tropa do KinGui.
+                self.assertTrue(lineup_source_ok(row, row['teams'][0], check.get('lineup') or []))
+            else:
+                # The 14:01Z capture overwrote this file: HLTV pacing withheld
+                # the lineup and the row published on a unique label instead —
+                # the validator's other legitimate model shape.
+                self.assertEqual(quote['label_counts'][0], 1)
 
 
 class ShortPhonePicksCssTests(unittest.TestCase):
@@ -152,6 +159,47 @@ class ExecutiveSummaryClarityTests(unittest.TestCase):
         text = re.sub(r'\s*/\s*', '/', quick.get_text(' ', strip=True))
         self.assertIn('%d/%d picks' % (c['with_pick'], c['open']), text)
         self.assertIn('%d unresolved (no %%)' % c['without_percentage'], text)
+
+
+class KalshiProbePairingTests(unittest.TestCase):
+    """The probe never prices; it must pair Kalshi's one-team markets honestly."""
+
+    def _market(self, event, team):
+        return {'event_ticker': event, 'ticker': event + '-X', 'title': team + ' wins',
+                'yes_sub_title': team, 'yes_bid_dollars': '0.40', 'yes_ask_dollars': '0.44'}
+
+    def test_pairing_needs_exactly_two_distinct_sides(self):
+        from scripts.probe_85087497 import pair_events, match_event
+        markets = [self._market('E1', 'Alpha'), self._market('E1', 'Beta'),
+                   self._market('E2', 'Solo'),
+                   self._market('E3', 'Dup'), self._market('E3', 'Dup')]
+        events = pair_events(markets)
+        self.assertEqual([e['event_ticker'] for e in events], ['E1'])
+        self.assertIsNotNone(match_event(['Beta', 'Alpha'], events))
+        # Substring/near labels are not identity in this project.
+        self.assertIsNone(match_event(['Alpha Academy', 'Beta'], events))
+        self.assertIsNone(match_event(['Alpha'], events))
+
+    def test_retained_probe_pairs_the_2026_10_25_board(self):
+        probe = ROOT / 'research' / 'harvest-85087497' / 'probe.json'
+        snap = ROOT / 'research' / 'harvest-85087497' / 'refresh-snapshot.json'
+        if not probe.exists() or not snap.exists():
+            self.skipTest('probe receipts not retained in this tree')
+        data = json.loads(probe.read_text())
+        if data.get('snapshot_generated_at') != '2026-10-25T14:01:00.631995Z':
+            self.skipTest('retained probe is from a later board; counts are dated evidence')
+        from scripts.probe_85087497 import pair_events, match_event
+        markets = data['kalshi']['markets_by_series']['KXCS2GAME']['markets']
+        events = pair_events(markets)
+        self.assertEqual(len(events), 60)
+        board = json.loads(snap.read_text())
+        matched = {m['id'] for m in board['matches'] if m['state'] == 'open'
+                   and match_event(m['teams'], events)}
+        self.assertEqual(matched, {'1079199', '1086696', '1081158', '1082858', '1082859',
+                                   '1082860', '1082861', '1082897', '1082898', '1082900', '1082901'})
+        # Measured label traps stay unmatched: "BESTIA Academy", "YawTDKG".
+        self.assertNotIn('1082697', matched)
+        self.assertNotIn('1086697', matched)
 
 
 if __name__ == '__main__':

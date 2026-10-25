@@ -5712,5 +5712,32 @@
     "url": "https://buffedlizard55-lab.github.io/MaltaProj4/sources.html#method"
    }
   ]
+ },
+ {
+  "id": "session-85087497-kalshi-fallback-probe-2026-10-25",
+  "status": "Needs review — measured fallback candidate for rows no market prices; probe ships, pricing adapter does not (yet)",
+  "finding": "The brief asks for a sourced way to resolve matches that featured markets do not cover. On the 2026-10-25T14:01Z board there were none (16 open, 16 picked, 16 priced, 0 unresolved), so this session measured the next keyless candidate instead of inventing an adapter under time pressure. Kalshi's public Trade API needs no key for market data. A runner-side probe (scripts/probe_85087497.py, receipts with HTTP status/sha256 in research/harvest-85087497/probe.json, harvest run 40199883762) listed 15,393 series; the CS2 moneyline series KXCS2GAME held 120 open markets forming exactly 60 paired two-sided events (one '<Team> wins' market per side, yes_sub_title naming the team). Paired by event_ticker and matched with this project's exact-label/register rule (scripts.core.norm, never substring), 11 of the 16 open Hotspawn fixtures have an exact Kalshi event, including low-tier rows. Two near-misses must stay excluded: BESTIA vs paiN (Kalshi titles say 'BESTIA Academy wins') and Projeto do KinGui vs Yawara (abbreviated ticker side YawTDKG). Start identity is the unresolved design point, and the probe proves it matters: for 10 of 11 matched fixtures Kalshi's expected_expiration_time equals Hotspawn start + 4h and the event ticker encodes the US-Eastern start, but BORRACHEIROS vs RED Canids Academy implies 19:00Z on Kalshi against Hotspawn/Polymarket 16:00Z, so an adapter must derive and verify the UTC start from Kalshi's own event fields and reject conflicts under the exact-start rule. Spreads at probe time ranged from tight (B8 0.57/0.60) to unusable (Rooster 0.31/0.55, Off Chops 0.51/0.79), so existing spread/liquidity/freshness gates must apply unchanged, and keyed aggregators (odds-api.io etc.) remain unavailable because the brief requires no manual input and the project holds no API key. The same probe's single plain request to HLTV's dated world-ranking page answered HTTP 403 from the runner; the paced production HLTV reads are the ranking route, and no HLTV-points calibration is invented. Separately, the 14:01Z snapshot exposed a latent staged-root freeze: with HLTV pacing withholding fixture 1086697's lineup, the VRS model legitimately published overlap=None under unique standings labels (the validator's contract), while tests/test_session_0fae12a5 asserted an integer overlap and errored; the test now mirrors the validator (None requires label count 1, otherwise >= 3).",
+  "sources": [
+   {
+    "label": "Kalshi API docs: market data without authentication",
+    "url": "https://docs.kalshi.com/getting_started/quick_start_market_data"
+   },
+   {
+    "label": "Kalshi Trade API base used by the probe (series/markets)",
+    "url": "https://external-api.kalshi.com/trade-api/v2/series/KXCS2GAME"
+   },
+   {
+    "label": "Harvest run 40199883762 (probe receipts committed as research/harvest-85087497/probe.json)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40199883762"
+   },
+   {
+    "label": "HLTV dated world ranking (403 to the probe's single request, 2026-10-25T14:01Z)",
+    "url": "https://www.hltv.org/ranking/teams/2026/october/25"
+   },
+   {
+    "label": "Unresolved picks & limitations — where an unpriced row would be published",
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/unresolved.html"
+   }
+  ]
  }
 ]

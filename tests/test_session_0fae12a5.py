@@ -165,9 +165,20 @@ class CalculationReplayTest(unittest.TestCase):
                                    msg='VRS calibrated: %s' % m['id'])
             self.assertAlmostEqual(calibrated(raw), m['probabilities'][0], places=12,
                                    msg='VRS published: %s' % m['id'])
-            for check in ev['roster_checks']:
-                self.assertGreaterEqual(check['overlap'], 3,
-                                        'Valve 3-player roster rule: %s' % m['id'])
+            # Session 85087497 (measured on the 2026-10-25T14:01Z snapshot):
+            # when HLTV pacing withholds a lineup, a model row whose standings
+            # label is unique legitimately carries overlap=None ("unique
+            # label; roster not checked") — scripts.validate allows exactly
+            # that shape and only that shape (label_counts == 1). Asserting
+            # >= 3 unconditionally crashed this gate on fixture 1086697 and
+            # would freeze the staged root again. Mirror the validator.
+            for check, count in zip(ev['roster_checks'], ev['label_counts']):
+                if check['overlap'] is None:
+                    self.assertEqual(count, 1,
+                                     'unchecked roster needs a unique label: %s' % m['id'])
+                else:
+                    self.assertGreaterEqual(check['overlap'], 3,
+                                            'Valve 3-player roster rule: %s' % m['id'])
 
 
 class DiscoverabilityTest(unittest.TestCase):
