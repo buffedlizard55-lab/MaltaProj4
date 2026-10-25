@@ -5936,5 +5936,28 @@
     "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40201319405"
    }
   ]
+ },
+ {
+  "id": "session-bd650209-legacy-pages-build-failures-2026-10-25",
+  "status": "Needs review — legacy Pages builds fail intermittently; the last successful build still serves a fresh, fully picked board",
+  "finding": "Measured from the GitHub Pages builds API on 2026-10-25 between 14:23Z and 14:39Z: six consecutive legacy builds of main reported status 'errored' with error 'Page build failed.' (commits 2909b06, 7b0555e, d865a20, 5ceea5e, fda1408, c216e17), while a2d3b1f at 14:15:12Z and bd15104 at 14:02:47Z built successfully. Pages is configured build_type=legacy with source main:/ (confirmed by GET /repos/buffedlizard55-lab/MaltaProj4/pages), so a failed legacy build only delays propagation: the last successful build keeps being served and its root carries build-info built 2026-10-25T14:14:06Z from snapshot 2026-10-25T13:54:18Z - 78 rows, 16 open, 16 picks, 16 win probabilities, 0 unresolved. No pick was withheld by these failures, but the delivery path is degraded: a visitor can be served a build that is one or more commits behind main until a legacy build happens to succeed. The same exhaustion was recorded on 2026-10-24 in session-d15e84e5-legacy-pages-source-oscillation-2026-10-24 (Pages source cannot be switched to GitHub Actions from this repository's token), and pages.yml already stages the verified build at the root for exactly this reason. Root cause of the legacy build failures is not established here: the API exposes only 'Page build failed.' with no log, the repository root is large (COORDINATION.md alone exceeded 1 MB and the generated evidence page 575 KB), and many sessions pushed within minutes of each other, so repository size and build concurrency are both plausible. Flagged for manual review rather than repaired, because changing the Pages source or pruning other sessions' artifacts is outside this session's scope.",
+  "sources": [
+   {
+    "url": "https://api.github.com/repos/buffedlizard55-lab/MaltaProj4/pages",
+    "label": "Pages configuration: build_type legacy, source main:/"
+   },
+   {
+    "url": "https://api.github.com/repos/buffedlizard55-lab/MaltaProj4/pages/builds?per_page=20",
+    "label": "Legacy build history: six consecutive 'Page build failed.' between 14:23Z and 14:39Z"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/commit/a2d3b1f",
+    "label": "Last successful legacy build (14:15:12Z); its root carries build-info built 2026-10-25T14:14:06Z"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/.github/workflows/pages.yml",
+    "label": "The workflow that stages the verified build at the root because Pages is legacy"
+   }
+  ]
  }
 ]
