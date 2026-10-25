@@ -432,6 +432,62 @@ Other sessions are pushing to `main` continuously (runs at 14:15Z: publish, watc
 verification, and at least four pull-request runs). This session therefore edits **no** file another
 session is working in: no `scripts/`, no `tests/`, no workflow, no root page, no `data/latest.json`.
 `data/review-notes.json` is append-only by convention and will be extended, never rewritten.
+## Session 5717f7d9 — CLAIM 2026-10-25 14:18 UTC (independent line-by-line audit of every-match pick coverage, the HLTV→esportsbook→model ladder, the unresolved/limitations section and mobile discoverability)
+
+> **Post-rebase addendum 2026-10-25 14:55 UTC — re-verified on the newer integrated snapshot.** After
+> rebasing onto current `main` (PRs #322–#333), the committed snapshot is `2026-10-25T14:22:27Z`:
+> **78 feed rows, 16 open · 16 picks · 16 win probabilities · 0 unresolved** (11 `exchange`,
+> 1 `bookmaker_fallback`, 4 `model_vrs`; 62 past rows unpriced). The auditor was hardened in two
+> measured ways while re-verifying: (a) float-safe spread epsilon `> 0.25 + 1e-9` so fixture 1082861's
+> exact 25-point boundary (`0.25000000000000006`, bid .30/ask .55) is correctly strict, matching
+> `scripts/core.py`; (b) `roster_checks.overlap = null` (fixture 1086697, unique Valve label, no HLTV
+> lineup that run) is treated as "continuity not checked", not a failure, while a *duplicated* label
+> still requires ≥3/5 overlap (The Huns → standing 122, 4/5). Re-run on this tree: auditor exit 0
+> (0 fail / 0 flag / 3 info), `tests.test_session_5717f7d9` 18 OK, full suite **1,728 OK (12
+> skipped)**, `scripts.validate` exit 0 (78 rows / 16 calc / 15 pages / 726 links / 20 checksums /
+> 181 displayed rows), mobile probe clean at 320/390/412. No new irregularity → no duplicate review
+> note; the 3 info findings map to existing notes `session-0cc1138a-1081606-no-match-page-2026-10-23`,
+> `book-access`, `esportsbook-access-probe-2026-10-16`.
+
+Board read before claiming from `origin/main` (== local `arena/5717f7d9-maltaproj4` base) at
+`d5b0739` (merge of PR #322). Measured, not assumed: committed `data/latest.json` generated
+`2026-10-25T13:46:54Z`, 78 feed rows, **17 open · 17 picks · 17 win probabilities · 0 unresolved**
+(method mix 11 `exchange`, 1 `exchange_wide`, 1 `bookmaker_fallback`, 4 `model_vrs`); 61 not-open
+past feed rows never priced. On this tree `python -m scripts.validate` is green (78 rows / 17
+calculations / 15 pages / 730 links / 20 checksums / 182 displayed rows) and
+`python -m unittest discover -s tests` is **1,628 tests OK (12 skipped)**. The publisher/diagnostic
+space is saturated by sessions 8e4ff8d2, 6857421f, b85ad9b4, 58354934, 408eb0af, 2ce90427, ece64b74,
+fec4894f, cc4f95ef, 5bf6ae1b, 85087497 (open PRs #318–#327 and queued runs). This session therefore
+takes a strictly **additive, independent-verification** scope and touches no shared production file.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Independent auditor that imports no `scripts.*` code: re-derive every open row's probability (exchange raw-price orientation, book de-vig, Valve Glicko+calibration from the vendored official standings), verify complement/favourite/fair-odds, evidence freshness ≤8h, source-link completeness, no Hotspawn-probability leakage, not-open rows never priced, unresolved contract (reason + attempts) | **done** — `scripts/audit_5717f7d9.py`, exit 0, **0 fail / 0 flag / 3 info**; 17/17 open rows picked and priced, 0 unresolved, all arithmetic re-derived | 5717f7d9 | `scripts/audit_5717f7d9.py` (new), `research/session-5717f7d9/**` (new) | 2026-10-25 14:42 |
+| Verify the user-facing brief on the rendered bytes: executive-summary in-site links to the updated-pick board and the unresolved/limitations section, every displayed pick row has an official source link and both teams' percentages, phone bottom nav, no broken internal links, unresolved section rendered at zero | **done** — headless Chromium at 320/390/412 px: no horizontal overflow, no page errors, quicknav "Updated picks" above the fold, mobile tab bar on every real page, 17/17 pick rows sourced with both %; receipt `research/session-5717f7d9/mobile-probe.json` | 5717f7d9 | `research/session-5717f7d9/**`, `tests/test_session_5717f7d9.py` (new) | 2026-10-25 14:42 |
+| Pin the audit's contracts and current findings as offline regressions; add a Flagged-for-Review note only for a genuinely new, source-linked irregularity (no duplicates); PR to `main`, merge without approval, record receipt | in progress — 18 regressions in `tests/test_session_5717f7d9.py` (incl. 6 fail-closed synthetic tests); no NEW irregularity found so no duplicate review note added (the 3 info findings map to existing notes `session-0cc1138a-1081606-no-match-page-2026-10-23`, `book-access`, `esportsbook-access-probe-2026-10-16`); PR/merge next | 5717f7d9 | `tests/test_session_5717f7d9.py` (new), `COORDINATION.md` (this section only) | 2026-10-25 14:42 |
+
+**Verification performed and sources (all in `research/session-5717f7d9/REPORT.md`).** Independent of
+the pipeline: 12 Polymarket rows re-derived from named raw `outcomePrices` (including reverse-order
+fixture 1082697 and case-fold BRUTE/Brute 1079199); the Thunderpick/BO3.gg book row de-vigged from
+1.60/2.20 to 0.5789/0.4211; all 4 VRS rows re-derived with Valve Glicko RD 75 + fit slope 0.7986 and
+cross-checked point/standing/roster against the vendored Valve file (commit `eec4853d…`), including the
+duplicated "The Huns" label disambiguated to standing 122 by 4/5 HLTV roster overlap. Per-fixture
+`attempts` ledgers confirm the brief's ordering (Polymarket → HLTV → Pinnacle → wide exchange →
+Thunderpick/GG.BET → BO3.gg/EGW books → Valve VRS → HLTV mirror → rank/form) before any row is left
+without a pick. Gates: auditor exit 0; `tests.test_session_5717f7d9` 18 OK; full suite **1,646 OK (12
+skipped)**; canonical `scripts.validate` exit 0 (78 rows / 17 calc / 15 pages / 730 links / 20
+checksums / 182 displayed rows).
+
+**Irregularities (non-blocking, source-linked, no new note because each is a disclosed recurring
+limit):** (1) fixtures 1086696/1086697 have no dedicated Hotspawn match page → lobby link, feed receipt
+with sha256 remains the primary source; (2) GG.BET and two EGamersWorld gap rechecks returned HTTP 403
+this run; (3) 61/78 feed rows are past-dated and are correctly never priced.
+
+Non-overlap: this session never edits `scripts/{validate,core,build,refresh,vrs,vrs_mirror,hltv,books}.py`,
+the generated root pages/assets, `data/latest.json`, `data/matches.csv`, `build-info.json` or any
+workflow. If the audit finds a production defect it is logged here and on Flagged for Review with the
+source, not patched inside another session's scope.
+
 
 ## Session b85ad9b4 — CLAIM 2026-10-25 13:30 UTC (the publisher is red; the live board withholds every pick)
 
