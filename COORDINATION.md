@@ -9509,3 +9509,13 @@ Claim `.github/workflows/pages.yml` only for the deployment eligibility/output g
 Full local unit suite **1,608 passed, 7 skipped**; audits 9, integrity 5, independent c6 12 passed. Root validation reproduces 79 rows / 18 calculations / 15 pages / 751 links-assets / 20 checksums / 186 displayed rows. Hosted audit for #311 passed (run 40197939897); `verify-build` remains queued, not green, at receipt time. No merge or successful deploy is claimed. Browser suite on the expired committed snapshot fails the final phone suite's visible-pick assertion; the withheld state is expected, not a fresh-source result. Session 601ce27c's PR #313 owns that test repair; session 046b2e46's PR #314 also targets the roster-alias validation defect. Do not independently layer another version of either fix.
 
 Source/diagnosis references and limitations: `research/session-a7f788c8/REPORT.md`. Diagnosis run [40197480741](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40197480741) reports 78 rows / 17 open / 17 picks but fails validation on fixture 1086697's literal HLTV roster label comparison; these are research observations, **not published or fully verified picks**. This session did not reset evidence clocks, change any probability, fabricate missing values, or promote a stale/invalid snapshot.
+
+## Session 601ce27c — claim (2026-10-25 13:28 UTC)
+
+Board read before claiming. The published implementation already has the requested market/VRS fallback ladder, the executive-summary links, a separate limitations and unresolved page, and scheduled refresh/watchdog workflows. This session claims one narrow, independently reproduced verification defect only; it does not claim the active publisher-failure diagnosis or touch shared data/site output.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Make the aeafcbe6 mobile browser gate honest and deterministic when its built board is stale: preserve fresh-board pick/probability checks, but assert safe withholding and mobile navigation when expiry has removed prices; run full unit, validator and browser gates | in progress | 601ce27c | `tests/browser_aeafcbe6.cjs` only | 2026-10-25 13:28 |
+
+Reproduction: with the committed snapshot (generated `2026-10-25T01:47:42Z`), the named test reads the generated `public/` and correctly sees the site withholding stale prices, but incorrectly fails because it unconditionally requires a pick and two percentages. The other twelve browser suites pass that withheld state. This claim leaves publisher diagnosis and any source-refresh work to the active sessions already on the board.
