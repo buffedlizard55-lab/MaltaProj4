@@ -6372,5 +6372,21 @@
     "label": "Hotspawn CS2 pick'em lobby — the schedule and lock authority this board mirrors"
    }
   ]
+ },
+ {
+  "id": "session-85087497-9fca16ca-snapshot-pinned-test-2026-10-25",
+  "status": "Repaired on this branch — needs review",
+  "finding": "Harvest 40209149470 (fresh 2026-10-25T15:59Z snapshot) showed tests.test_session_9fca16ca failing on the staged root: test_direct_official_checks_are_linked_and_well_formed asserted each dated Polymarket check's fixture_id is present in the current snapshot, but fixture 1086696 (BORRACHEIROS vs RED Canids Academy, 16:00Z) had already left the Hotspawn feed, so the assertion fails on every later snapshot and the publisher's staged-root unit gate rejects every refresh. Session 85087497 changed only the membership anchor: each dated check must now appear in session 9fca16ca's own retained ROW-LEDGER.md for the 14:22Z board the checks were recorded against. All well-formedness assertions are unchanged. A second failure in the same file (ledger reproducibility) was already guarded upstream by session 9fca16ca to run only on its original snapshot. Verified: 1,765 unit tests OK on the staged 15:59Z root.",
+  "impact": "Without the re-anchor, every publisher cycle after 2026-10-25T15:59Z fails the staged-root unit gate and the verified build is withheld from the legacy root, re-freezing the board the same way as the morning's validator defect.",
+  "sources": [
+   {
+    "label": "Confirmation harvest run 40209149470",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40209149470"
+   },
+   {
+    "label": "Hotspawn lobby (inventory source)",
+    "url": "https://play.hotspawn.com/lobby"
+   }
+  ]
  }
 ]

@@ -309,8 +309,15 @@ No horizontal overflow at 320/390/412 on index, picks or unresolved
   discarding tracked churn after the evidence commit), and
   [40209149470](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40209149470)
   succeeded end to end — fresh 15:59Z snapshot, 75 fixtures, **14 open, 14
-  picked, 14 priced, 0 unresolved**, staged-root unit 1,765 tests, probe
-  retained in `research/harvest-85087497/`.
+  picked, 14 priced, 0 unresolved**, probe retained in
+  `research/harvest-85087497/`. Its staged-root unit log also exposed two
+  snapshot-pinned failures in `tests/test_session_9fca16ca.py` (the same
+  freeze class as the `overlap=None` case above): one was already guarded
+  upstream to its original snapshot, the other — dated Polymarket checks
+  asserted against the live feed's ids — is re-anchored in this follow-up to
+  that session's retained `ROW-LEDGER.md`, after which the staged 15:59Z
+  root passes all 1,765 unit tests. Flagged for Review as
+  `session-85087497-9fca16ca-snapshot-pinned-test-2026-10-25`.
 - Live site fetched after the merge: “Last checked 25 Oct 2026 · 14:59 UTC ·
   15 open · 15 with a pick · 15 with a win probability · 0 unresolved”, with
   the merged not-open wording and the How-we-price link served.
