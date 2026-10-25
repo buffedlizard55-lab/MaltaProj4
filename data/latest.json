@@ -3422,20 +3422,14 @@
       "start": "2026-10-25T15:00:00Z",
       "lock": "2026-10-25T14:54:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://www.hotspawn.com/matches/infinite-vs-brute-nodwin-clutch-series-13-1079199",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [],
-      "probabilities": [
-        0.435,
-        0.565
-      ],
-      "fair_odds": [
-        2.2988505747126435,
-        1.7699115044247788
-      ],
-      "pick": "BRUTE",
-      "method": "exchange",
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
       "evidence": [
         {
           "provider": "Polymarket",
@@ -3577,7 +3571,7 @@
           "reason": "Exact pair and UTC start; two-way series winner validated."
         }
       ],
-      "reason": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-25T14:18:55.242320Z",
@@ -12557,5 +12551,5 @@
       "participants1_score": 0
     }
   ],
-  "built_at": "2026-10-25T14:52:07.516599Z"
+  "built_at": "2026-10-25T15:31:26.279080Z"
 }

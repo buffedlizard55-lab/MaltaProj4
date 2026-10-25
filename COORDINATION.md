@@ -10742,9 +10742,40 @@ if an active claim goes stale or completes without a receipt.
 
 | Task | Status | Owner | File scope | Updated (UTC) |
 | --- | --- | --- | --- | --- |
-| V1 Independent line-by-line verification of the published board against the brief: every open Hotspawn CS2 match has a pick and two-way probabilities with an official source link per row; executive summary links to the picks/unresolved pages; unresolved + limitations section present and named in the summary | in progress | df43411c | `COORDINATION.md` (this section only), `research/session-df43411c/**` (new) | 2026-10-25 14:18 |
-| V2 Publisher-health check after the alias fixes: scheduled runs green, live Pages bytes fresh and inside the 8-hour window, 4–8 h refresh cadence intact; phone pass at 320/390/412 px | in progress | df43411c | `research/session-df43411c/**`, `COORDINATION.md` (this section) | 2026-10-25 14:18 |
-| I3 Final integration once V1–V2 are green and the active integration claims above are resolved: re-verify the combined data, confirm the site builds with no broken links, PR to `main`, merge without approval, confirm Pages deploy, record PR link and merge result here | unclaimed-yet-sequenced | df43411c | `COORDINATION.md`, generated root pages, `build-info.json`, `data/latest.json` | 2026-10-25 14:18 |
+| V1 Independent line-by-line verification of the published board against the brief: every open Hotspawn CS2 match has a pick and two-way probabilities with an official source link per row; executive summary links to the picks/unresolved pages; unresolved + limitations section present and named in the summary | **done** — 16/16 open rows verified on the 14:22Z capture (pick = argmax of its own probabilities, ≥3 https sources each; Polymarket market 6072808, HLTV 2399918/2399115 and Valve standings `eec4853d` spot-fetched live; picks page DOM parsed: all 16 cards carry both percentages, the pick and evidence links; exec banner/summary/unresolved anchors present); one start-time conflict flagged `session-df43411c-hltv-hotspawn-start-conflict-1086697-2026-10-25` | df43411c | `data/review-notes.json` (append-only note), `COORDINATION.md` (this section) | 2026-10-25 15:07 |
+| V2 Publisher-health check after the alias fixes: scheduled runs green, live Pages bytes fresh and inside the 8-hour window, 4–8 h refresh cadence intact; phone pass at 320/390/412 px | **done** — measured: publish runs green through build/validate on the repaired validator; live `build-info.json` fresh (14:11Z build, inside the 8-hour window) with picks visible; **irregularity**: no `schedule`-event run since 12:29Z (nine consecutive cron slots undelivered) so push-runs carry the 4–8 h refresh promise — logged below; local full gates green on the committed tree: unit RC=0, audits 9 OK, integrity 5 OK, verification-c6 0 failures (committed + built), quarantine 0 withheld, `scripts.validate` RC=0 (78 rows / 15 calculations / 15 pages / 726 links / 20 checksums / 179 displayed rows), all 13 Chromium suites `failures: []` with rows/picks/priced equal | df43411c | `research/session-df43411c/**`, `COORDINATION.md` (this section) | 2026-10-25 15:07 |
+| I3 Final integration once V1–V2 are green and the active integration claims above are resolved: re-verify the combined data, confirm the site builds with no broken links, PR to `main`, merge without approval, confirm Pages deploy, record PR link and merge result here | in progress (V1–V2 green; rebuilt root committed; PR next) | df43411c | `COORDINATION.md`, generated root pages, `build-info.json`, `data/latest.json` | 2026-10-25 15:07 |
 
 Evidence rules unchanged: Hotspawn supplies fixture inventory and locks only, never a probability; every
 published row carries its own source link; unverifiable values stay blank and flagged; no manual input.
+
+**Measured irregularities, session df43411c (all non-blocking, all sourced):**
+1. *Cron non-delivery:* the last `schedule`-event run on this repository was
+   [40193317196](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40193317196) at 2026-10-25T12:29:19Z
+   (it failed on the since-repaired validator defect); the :34/:49/:04/:19 slots from 12:49Z through 14:49Z all went
+   undelivered (Actions API `event=schedule`, checked 14:48Z). Push-triggered runs carried every refresh instead,
+   so the committed snapshots kept advancing (13:46Z → 13:54Z → 14:11Z → 14:22Z) and the live site stayed inside
+   its 8-hour window, but the 4–8 h promise currently rests on push delivery, not on the cron.
+2. *Publisher step-17 (root staging) failed once on the post-fix tree:* run
+   [40200401301](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40200401301) (push 14:02:48Z, head
+   `bd15104f`) completed refresh/quarantine/build/validate/browser/upload and `deploy`, then failed at
+   *Keep the legacy main:/ root fallback on the verified build* with the step's own annotation *The staged root
+   failed its own validator or unit gate* (check-run 121190252718 annotations, read 14:2xZ). Job logs and run
+   artifacts are not downloadable from this sandbox (blob host outside the egress allowlist), so the specific
+   failing assertion inside the staged-root gate cannot be named from here; every gate command reproduces RC=0
+   on the merged tree of this PR (V2 list above). The same root-staging step is the one sessions 58354934 /
+   8e4ff8d2 already flagged as the delivery path for `build_type: legacy`.
+3. *Board-union repair during this session's rebase:* `origin/main` at `d865a20` had lost five board sections
+   from earlier conflict resolutions — `601ce27c` claim, `c2166aea` integration, `58354934` claim + receipt,
+   `8e4ff8d2` claim/done receipt (225 deleted lines measured with `git diff a2d3b1f origin/main -- COORDINATION.md`).
+   This session's rebase restored all five verbatim (253-line union, no owner note removed, one stray
+   `<<<<<<< HEAD` artifact dropped) and re-verified header parity: all 208 `origin/main` headers present plus the
+   five restored plus this session's claim.
+4. *Start-time source conflict on fixture 1086697* — published on **Flagged for Review** as
+   `session-df43411c-hltv-hotspawn-start-conflict-1086697-2026-10-25`: Hotspawn's fixtures API
+   (`scheduled_start_time` 1792954800000 = 19:00:00Z, observed 13:50:44Z) vs HLTV match 2399918 rendering
+   14:00 25 Oct with a 3h41m51s countdown fetched between 14:18:11Z and 14:28:27Z (a 19:00Z target would require
+   rendering at 15:18:09Z, after the fetches — impossible; renderer control HLTV 2399115 shows the board's
+   18:00Z fixture 1079200 also as 14:00, pinning this renderer's 14:00 = 18:00Z). Display-only: the board follows
+   Hotspawn's schedule for its own lock; the pick (Projeto do KinGui 51.0% / Yawara 49.0%) is the labelled Valve
+   VRS model line and is unaffected. No value changed or inferred; both sources published for manual review.
