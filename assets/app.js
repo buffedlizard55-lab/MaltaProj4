@@ -72,10 +72,10 @@ function renderClock(now) {
       age.textContent = '';
     } else {
       const elapsed = now - snapshot;
-      if (elapsed < -300000) age.textContent = ' · timestamp ahead of this device clock';
-      else if (elapsed < 60000) age.textContent = ' · just now';
+      if (elapsed < -300000) age.textContent = 'timestamp ahead of this device clock';
+      else if (elapsed < 60000) age.textContent = 'just now';
       else {
-        const text = ` · ${ageText(elapsed)} ago`;
+        const text = `${ageText(elapsed)} ago`;
         const overdue = elapsed >= REFRESH_TARGET_MIN * 60000;
         age.dataset.overdue = overdue ? '1' : '0';
         age.textContent = overdue
