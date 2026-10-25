@@ -9467,3 +9467,65 @@ So the board is withholding every pick again, exactly the failure mode the brief
 
 Evidence rules unchanged: Hotspawn supplies fixture inventory and locks only, never a probability; no crowd
 votes, placeholder odds, inferred values or 50/50 filler; every published row carries its own source link.
+
+## Session 58354934 — receipt (2026-10-25 14:05 UTC): the freeze is fixed and the board is republished
+
+**What was broken, measured.** `main`'s publisher failed at step 13 on run 40170923727 (06:41Z) and again on
+40193317196 (12:29Z). Steps 1-12 were green; `upload-pages-artifact`, the legacy `main:/` staging step and the
+deploy were skipped, so the live site kept serving the 01:47Z snapshot and, once that aged past its eight-hour
+window, withheld **all 14 open picks** ("0 with a pick · 14 unresolved", read from the public host at 13:2xZ).
+
+**Reproduction, on GitHub's egress** (this sandbox reaches github.com/pypi/npm only and cannot read Actions logs):
+run [40197480741](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40197480741), non-publishing,
+each step-13 command with its own exit code. `refresh_rc=0`, `quarantine_rc=0`, `audit_rc=0`, `build_rc=0`,
+`published_rc=0`, **`validate_rc=1`**:
+
+```
+File "scripts/validate.py", line 122, in validate_model_row
+    assert lineup_source_ok(m, team, check.get('lineup') or []),
+           'Model roster has no HLTV source on this row'
+AssertionError: Model roster has no HLTV source on this row
+```
+
+Fixture **1086697**. Hotspawn names the club `Projeto do KinGui`; the HLTV match page the row resolves to,
+[matches/2399918](https://www.hltv.org/matches/2399918/tropa-do-kingui-vs-yawara-cct-2026-south-america-series-7),
+names the same club `Tropa do KinGui`. Both labels are entries of one canonical club in `data/identities.json`
+with primary sources, and `validate_model_row` already accepted that alias for the VRS label. Only the
+roster-source lookup compared raw labels, so a roster that **is** sourced on the row was called unsourced.
+
+**Two fixes.**
+
+1. `scripts/validate.same_club` — the roster lookup is now identity-aware: exact after case/diacritic folding or
+   through the verified alias register. The player list must still match exactly, so nothing is loosened; a
+   different club, a near-miss or an extra/missing player still fails.
+2. `scripts/quarantine.validation_violations` — a row-scoped backstop for the repository data validator, the one
+   gate that had no blast-radius limit. It withholds only the row(s) whose own recommendation cannot be
+   reproduced, and only after proving that withholding exactly those rows makes the whole snapshot pass;
+   otherwise it withholds nothing and the run still fails loudly, so a broken site is never published. Added to
+   `scripts/quarantine.quarantine(...)` and to `python -m scripts.quarantine`, which now also re-runs the
+   validator itself so the failure is named at the quarantine step instead of the build step.
+
+**Verification of the fix on a real fresh capture** — run
+[40198622636](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40198622636) (receipts in
+`research/harvest-58354934/`): `audit_rc=0`, `build_rc=0`, **`validate_rc=0`**, `published_rc=0`; snapshot
+`2026-10-25T13:46:54Z`, **78 feed rows, 17 open, 17 picks, 17 win probabilities, 0 unresolved** (11 exchange,
+1 wide exchange, 1 bookmaker listing, 4 originated VRS model lines).
+
+**Published.** The 13:46:54Z snapshot is committed at the root fallback and rebuilt into every page, so the
+`legacy main:/` site serves the same bytes as the verified artifact: 17/17 open matches with a pick and a
+probability, and a named limitation for every rung that refused, in the dedicated unresolved/limitations
+section of the executive summary.
+
+**Phone fixes, measured with Chromium on the fresh board.** (a) At 320x568 the first card's probabilities ended
+at y=519 under a tab bar starting at y=507, so 12px of the number a phone visitor wants was hidden; the short-
+phone card now tightens its own whitespace (8px row gaps, 8px team rule, 14px padding) and the probabilities
+end at y=477, fully above the bar, with the pick still directly under the teams. (b) The freshness strip
+rendered a bare "· 15m ago" because a CSS rule hides the "Last checked ..." date on the phone home page; it now
+reads "Checked 15m ago". All twelve Chromium suites pass on the fresh build.
+
+**Literature/limits flagged for review, non-blocking.** The row-scoped validator backstop deliberately does
+**not** cover snapshot-level contract failures (duplicate ids, inventory mismatch) - those still fail the run,
+because blanking picks would hide them. The deploy job's "Verify live Pages bytes match this exact build" step
+also failed on both frozen runs, because `Pages` is `legacy main:/` and the committed root was ahead of the
+artifact; it is a delivery-path signal, not a data failure. Published on the Flagged for Review page as
+`session-58354934-freeze-alias-roster-2026-10-25`.
