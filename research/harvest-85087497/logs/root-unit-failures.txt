@@ -1,0 +1,22 @@
+      1 FAIL: 1082769 K27 vs NEXORA: unresolved fair_odds must be None
+      1 FAIL: 1082769 K27 vs NEXORA: unresolved method must be None
+      1 FAIL: 1082769 K27 vs NEXORA: unresolved probabilities must be None
+      1 FAIL: 1082769 K27 vs NEXORA: unresolved row lacks its limitation
+      1 FAIL: 1082769 K27 vs NEXORA: unresolved row lacks official fixture URL
+      1 FAIL: 1082769 K27 vs NEXORA: unresolved row lacks source attempts
+      1 FAIL: test_bookmaker_scope_cutoff_and_identity_replayed (test_integrity.EvidenceIntegrityTests.test_bookmaker_scope_cutoff_and_identity_replayed)
+      1 FAIL: test_csv_expiry_is_not_optional_or_mutable (test_rendered_evidence.RenderedEvidenceTests.test_csv_expiry_is_not_optional_or_mutable)
+      1 FAIL: test_executive_summary_links_and_picks_board_dual_probabilities (test_session_0247223d.IdentityIsolationAndMobileClarityTests.test_executive_summary_links_and_picks_board_dual_probabilities)
+      1 FAIL: test_full_board_and_fresh_build_pass_independent_auditor (test_session_7271c5d5.Session7271c5d5Tests.test_full_board_and_fresh_build_pass_independent_auditor)
+      1 FAIL: test_known_series_format_must_match (test_integrity.EvidenceIntegrityTests.test_known_series_format_must_match)
+      1 FAIL: test_missing_required_expiry_fact_fails_closed (test_integrity.EvidenceIntegrityTests.test_missing_required_expiry_fact_fails_closed)
+      1 FAIL: test_missing_visible_inventory_row_fails_before_checksum_check (test_rendered_evidence.RenderedEvidenceTests.test_missing_visible_inventory_row_fails_before_checksum_check)
+      1 FAIL: test_nonfinite_liquidity_never_valid (test_integrity.EvidenceIntegrityTests.test_nonfinite_liquidity_never_valid)
+      1 FAIL: test_raw_identity_cannot_be_replaced_by_derived_labels (test_integrity.EvidenceIntegrityTests.test_raw_identity_cannot_be_replaced_by_derived_labels)
+      1 FAIL: test_raw_quality_gates_replayed (test_integrity.EvidenceIntegrityTests.test_raw_quality_gates_replayed)
+      1 FAIL: test_reproducible_probabilities_for_priced_rows (test_session_13e99ca6.TestLineByLineVerification.test_reproducible_probabilities_for_priced_rows)
+      1 FAIL: test_source_deadline_includes_book_cutoff (test_integrity.EvidenceIntegrityTests.test_source_deadline_includes_book_cutoff)
+      1 FAIL: test_source_deadline_includes_update_time (test_integrity.EvidenceIntegrityTests.test_source_deadline_includes_update_time)
+      1 FAIL: test_start_bound_to_raw_quote (test_integrity.EvidenceIntegrityTests.test_start_bound_to_raw_quote)
+      1 FAIL: test_validator_accepts_the_converted_row (test_session_b6e37c61.GatesTest.test_validator_accepts_the_converted_row)
+      1 FAIL: test_wrong_rendered_probability_fails_before_checksum_check (test_rendered_evidence.RenderedEvidenceTests.test_wrong_rendered_probability_fails_before_checksum_check)

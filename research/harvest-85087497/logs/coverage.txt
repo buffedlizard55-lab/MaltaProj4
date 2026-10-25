@@ -1,0 +1,1 @@
+{"open_rows": 17, "open_with_pick": 17, "open_with_probability": 17, "open_without_pick": [], "open_without_probability": []}
