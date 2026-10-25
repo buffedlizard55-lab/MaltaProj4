@@ -486,7 +486,7 @@ Final local candidate gates: `unittest discover -s tests` **1,719 OK (12 skipped
 
 A later merge with `origin/main` `fd4ba08` (PRs #329, #336 and #340) conflicted on generated root bytes, `data/review-notes.json` and `COORDINATION.md`. Resolution preserved every other session’s work: board entries were kept together, review notes were union-merged by ID (274 total), the strictly newer `14:22:27Z` snapshot was retained over main’s `14:20:24Z` snapshot, and main’s code, CSS, workflow and research changes were adopted. The canonical root was rebuilt at the snapshot clock with all merged notes. A merged short-phone CSS change then put the home page’s second probability at bottom y=517 against the 320×568 tab bar y=507; `tests/browser_ce45f672.cjs` caught it. Final integration added a narrowly scoped short-phone card compaction, and all 13 browser suites pass again. Final gates: **1,747 unit tests OK (13 skipped)**, audits 9 OK, integrity 5 OK, verification-c6 12 OK, validator 78 rows / 16 calculations / 727 links / 20 checksums / 181 displayed rows, independent auditors 0 failures, coverage 0 problems. PR #337’s `audit` and `verify-build` checks both passed before the first merge attempt.
 
-Final integration (merge PR #337 without approval, live Pages byte check) is the only open row; its receipt is appended after the live deployment is confirmed.
+Final integration: PR #337 merged (`f07cfc6`); the verified 14:22Z artifact was deployed by run 40206503942, and its live Pages byte check passed. The legacy root staging step reported a gate failure; that diagnostic is left for a future session, as it does not block the verified Pages artifact. **All 9fca16ca tasks done.**
 
 ---
 
