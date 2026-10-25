@@ -1,0 +1,257 @@
+name: Fresh coverage harvest and publish-gate diagnosis fec4894f (non-publishing)
+
+# Session fec4894f (Arena-fixed branch arena/fec4894f-maltaproj4).
+#
+# Why this workflow exists. The authoring sandbox reaches github.com,
+# codeload.github.com, api.github.com, registry.npmjs.org and pypi.org only, and
+# GitHub serves job logs and run artifacts from
+# productionresultssa*.blob.core.windows.net, which it cannot reach either. So
+# neither the live sources nor the log of a red `main` run can be read from the
+# sandbox. Everything therefore happens here, on a normal GitHub egress, and every
+# command's exit code and full output is committed back to the session branch:
+#
+#   * `main` runs 40170923727 (06:56Z) and 40193317196 (12:29Z) both fail at
+#     "Build and independently verify every row, calculation and internal link",
+#     which is four commands run as one step, so the failing one is unknown.
+#   * This workflow runs the same four commands separately, records each exit
+#     code, and never aborts on the first failure, so the receipt names the
+#     command, the row and the assertion.
+#
+# It never deploys Pages and never pushes to main: it refreshes, rebuilds,
+# re-validates, runs the phone/browser gates, and commits the dated receipts to
+# THIS branch so the session can verify them line by line before the integration
+# PR. Nothing is published by this workflow.
+
+on:
+  push:
+    branches: [arena/fec4894f-maltaproj4]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: coverage-harvest-fec4894f
+  cancel-in-progress: false
+
+jobs:
+  capture:
+    if: github.ref == 'refs/heads/arena/fec4894f-maltaproj4' && (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[capture]'))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+          cache: npm
+      - run: pip install -r requirements.txt
+      - run: npm ci --ignore-scripts
+
+      - name: Record runner identity and the exact tree under test
+        run: |
+          mkdir -p research/harvest-fec4894f runtime
+          python - <<'PY'
+          import json, os, subprocess
+          from pathlib import Path
+          receipt = {
+              'workflow_run_id': os.environ['GITHUB_RUN_ID'],
+              'attempt': os.environ['GITHUB_RUN_ATTEMPT'],
+              'checkout_sha': os.environ['GITHUB_SHA'],
+              'run_url': '%s/%s/actions/runs/%s' % (os.environ['GITHUB_SERVER_URL'], os.environ['GITHUB_REPOSITORY'], os.environ['GITHUB_RUN_ID']),
+              'publishes_pages': False,
+              'started_at': subprocess.run(['date','-u','+%Y-%m-%dT%H:%M:%SZ'],capture_output=True,text=True).stdout.strip(),
+          }
+          Path('research/harvest-fec4894f/run.json').write_text(json.dumps(receipt, indent=1) + '\n')
+          PY
+
+      - name: 'Committed tree gates (advisory: the committed snapshot may legitimately be stale)'
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          python -m unittest discover -s tests 2>&1 | tee research/harvest-fec4894f/pre-refresh-unit.log | tail -5
+          python -m unittest discover -s audits -p 'test_*.py' 2>&1 | tee research/harvest-fec4894f/pre-refresh-audits.log | tail -3
+          python verification-95b588c2/test_integrity.py 2>&1 | tee research/harvest-fec4894f/pre-refresh-integrity.log | tail -3
+          python -m unittest discover -s verification-c6 -p 'test_*.py' 2>&1 | tee research/harvest-fec4894f/pre-refresh-c6.log | tail -3
+          python -m scripts.validate --data data/latest.json --site . 2>&1 | tee research/harvest-fec4894f/pre-refresh-validate.log | tail -8
+
+      - name: Refresh official Hotspawn, HLTV, exchange, bookmaker and Valve sources
+        id: refresh
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -o pipefail
+          python -m scripts.refresh --output runtime/latest.json 2>&1 | tee research/harvest-fec4894f/refresh.log | tail -40
+          cp runtime/latest.json research/harvest-fec4894f/snapshot.json
+
+      - name: Withhold any row the independent evidence replay cannot reproduce
+        id: quarantine
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          python -m scripts.quarantine runtime/latest.json 2>&1 | tee research/harvest-fec4894f/quarantine.log | tail -20
+
+      # The four commands of the one red step on main, run separately so the
+      # receipt names the one that fails instead of "process completed with exit code 1".
+      - name: Publish gate 1/4 - independent row audit of the fresh snapshot
+        id: audit_fresh
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          python verification-c6/audit_snapshot.py runtime/latest.json --output research/harvest-fec4894f/row-audit.md 2>&1 | tee research/harvest-fec4894f/row-audit.log | tail -20
+
+      - name: Publish gate 2/4 - build the pages from the fresh snapshot
+        id: build
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          python -m scripts.build --data runtime/latest.json 2>&1 | tee research/harvest-fec4894f/build.log | tail -10
+
+      - name: Publish gate 3/4 - validator against the fresh build
+        id: validate_fresh
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          python -m scripts.validate --data runtime/latest.json 2>&1 | tee research/harvest-fec4894f/validate-fresh.log | tail -12
+
+      - name: Publish gate 4/4 - independent audit of the published copy
+        id: audit_published
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          python verification-c6/audit_snapshot.py public/data/latest.json --output research/harvest-fec4894f/published-row-audit.md 2>&1 | tee research/harvest-fec4894f/published-audit.log | tail -20
+
+      - name: Coverage receipt for every open Hotspawn CS2 match
+        id: coverage
+        continue-on-error: true
+        run: |
+          python - <<'PY' 2>&1 | tee research/harvest-fec4894f/coverage.log | tail -40
+          import json
+          from pathlib import Path
+          snap = json.loads(Path('runtime/latest.json').read_text())
+          open_rows = [m for m in snap['matches'] if m.get('state') == 'open']
+          def row(m):
+              ev = m.get('evidence') or []
+              return {
+                  'id': m['id'], 'teams': m['teams'], 'competition': m.get('competition'),
+                  'start': m.get('start'), 'lock': m.get('lock'),
+                  'pick': m.get('pick'), 'probabilities': m.get('probabilities'),
+                  'method': m.get('method'), 'reason': m.get('reason'),
+                  'evidence_urls': [q.get('api_url') or q.get('url') for q in ev],
+                  'attempts': [{k: a.get(k) for k in ('provider','status','reason','url')} for a in (m.get('attempts') or [])],
+              }
+          out = {
+              'generated_at': snap.get('generated_at'),
+              'coverage': snap.get('coverage'),
+              'rows': len(snap['matches']),
+              'open': len(open_rows),
+              'with_pick': sum(1 for m in open_rows if m.get('pick')),
+              'with_probability': sum(1 for m in open_rows if m.get('probabilities')),
+              'unresolved': sum(1 for m in open_rows if not m.get('pick')),
+              'methods': {},
+              'open_rows': [row(m) for m in open_rows],
+          }
+          for m in open_rows:
+              key = str(m.get('method'))
+              out['methods'][key] = out['methods'].get(key, 0) + 1
+          Path('research/harvest-fec4894f/coverage.json').write_text(json.dumps(out, indent=1) + '\n')
+          print(json.dumps({k: v for k, v in out.items() if k != 'open_rows'}, indent=1))
+          PY
+
+      - name: Phone, tablet, desktop, accessibility and exact expiry checks
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          npm run test:browser 2>&1 | tee research/harvest-fec4894f/browser.log | tail -30
+
+      - name: Adopt the verified candidate into this branch (never into main)
+        id: adopt
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          python -m scripts.publish_root_fallback --public public --root . --cooldown-hours 0 2>&1 | tee research/harvest-fec4894f/stage-root.log | tail -20
+
+      - name: Post-refresh gates on the adopted tree
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          python -m unittest discover -s tests 2>&1 | tee research/harvest-fec4894f/post-refresh-unit.log | tail -25
+          python -m unittest discover -s audits -p 'test_*.py' 2>&1 | tee research/harvest-fec4894f/post-refresh-audits.log | tail -3
+          python verification-95b588c2/test_integrity.py 2>&1 | tee research/harvest-fec4894f/post-refresh-integrity.log | tail -3
+          python -m unittest discover -s verification-c6 -p 'test_*.py' 2>&1 | tee research/harvest-fec4894f/post-refresh-c6.log | tail -3
+          python -m scripts.validate --data data/latest.json --site . 2>&1 | tee research/harvest-fec4894f/post-refresh-validate.log | tail -10
+
+      - name: Summarise every exit code into one machine-readable receipt
+        if: always()
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          prev = json.loads(Path('research/harvest-fec4894f/run.json').read_text())
+          prev['exit_codes'] = {
+              'refresh': '${{ steps.refresh.outcome }}',
+              'quarantine': '${{ steps.quarantine.outcome }}',
+              'audit_fresh': '${{ steps.audit_fresh.outcome }}',
+              'build': '${{ steps.build.outcome }}',
+              'validate_fresh': '${{ steps.validate_fresh.outcome }}',
+              'audit_published': '${{ steps.audit_published.outcome }}',
+              'coverage': '${{ steps.coverage.outcome }}',
+              'adopt': '${{ steps.adopt.outcome }}',
+          }
+          Path('research/harvest-fec4894f/run.json').write_text(json.dumps(prev, indent=1) + '\n')
+          print(json.dumps(prev, indent=1))
+          PY
+
+      - name: Commit the receipts and the verified candidate to the session branch
+        id: commit_receipt
+        if: always()
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          git config user.name "cs2-evidence-runner"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A -- research/harvest-fec4894f || true
+          for path in 404.html analysis.html assets build-info.json data/latest.json data/matches.csv \
+                      evidence.html index.html matches.html methodology.html picks.html review.html \
+                      site sources.html unresolved.html .nojekyll; do
+            test -e "$path" && git add -A -- "$path" || true
+          done
+          if git diff --cached --quiet; then
+            echo "No receipt change to commit."
+            exit 0
+          fi
+          git status --short
+          git commit -m "Harvest receipt and fresh verified candidate (run ${GITHUB_RUN_ID}) [skip ci]"
+          git fetch --depth=1 origin "$GITHUB_REF_NAME"
+          if ! git rebase --autostash FETCH_HEAD; then
+            echo "::error title=receipt-rebase::$(git status --porcelain | head -6 | tr '\n' ' ')"
+            git rebase --abort || true
+            exit 1
+          fi
+          git push origin "HEAD:$GITHUB_REF_NAME"
+
+      - name: Explain a receipt commit that could not be pushed
+        # Diagnostic only. This step is what makes the failure readable from the
+        # run page, because GitHub serves job logs from a blob host that some
+        # environments cannot reach.
+        if: failure() || steps.commit_receipt.outcome == 'failure'
+        run: |
+          echo "::error title=git-status::$(git status --porcelain | head -8 | tr '\n' ' ')"
+          echo "::error title=last-commit::$(git log -1 --format='%H %s')"
+          echo "::error title=ref::$(git rev-parse --abbrev-ref HEAD) $(git rev-parse HEAD)"
+          echo "::error title=remote::$(git ls-remote origin "refs/heads/${GITHUB_REF_NAME}")"
+
+      - name: Retain logs even when a gate fails
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: harvest-fec4894f-${{ github.run_id }}
+          path: |
+            research/harvest-fec4894f
+            runtime/latest.json
+          retention-days: 14
