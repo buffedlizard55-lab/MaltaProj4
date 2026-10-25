@@ -119,8 +119,12 @@ jobs:
           # failed here — the browser suite's own measurement receipt
           # (research/session-aeafcbe6/mobile-measurements.json) is rewritten on
           # a successful run, and `git pull --rebase` refuses a dirty tree.
-          # That receipt belongs to its owning session, so restore it.
-          git checkout -- research/session-aeafcbe6/mobile-measurements.json 2>/dev/null || true
+          # Harvest 40207424914 hit the wider form of the same trap: the
+          # staged-root re-gate rewrites tracked root files (index.html,
+          # data/latest.json, ...). The evidence is already committed above,
+          # so discard every remaining tracked working-tree change before the
+          # rebase; nothing else in this step needs them.
+          git checkout -- . 2>/dev/null || true
           git pull --rebase origin arena/85087497-maltaproj4
           git push origin arena/85087497-maltaproj4
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2

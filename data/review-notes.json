@@ -6350,6 +6350,46 @@
   ]
  },
  {
+  "id": "session-df43411c-hltv-hotspawn-start-conflict-1086697-2026-10-25",
+  "status": "Open source conflict — published for manual review; no value changed",
+  "finding": "Fixture 1086697 (Projeto do KinGui vs Yawara, CCT South America 2026 Series #7): the Hotspawn fixtures API observed 2026-10-25T13:50:44Z reports scheduled_start_time=1792954800000 (2026-10-25T19:00:00Z) with lock_time=1792954440000 (2026-10-25T18:54:00Z, lock_offset_sec 360), and the board publishes exactly those Hotspawn schedule values (start 19:00 UTC, locks 18:54 UTC). HLTV match 2399918, fetched 2026-10-25 between the session stamps 14:18:11Z and 14:28:27Z, renders the same pairing at 14:00 on 25 Oct with a static countdown of 3h:41m:51s; a repeat fetch after 14:31:24Z returned byte-identical text, so the countdown was rendered before the first fetch. A 19:00Z target would require that rendering at 15:18:09Z — after both fetches — which is impossible, so HLTV's target is before 18:11Z. As a renderer control, HLTV match 2399115 shows the same '14:00 25 Oct' for fixture 1079200, whose start (2026-10-25T18:00:00Z) is agreed by the Hotspawn API, Polymarket and this board — so this renderer's 14:00 corresponds to 18:00Z (UTC-4 on this date) and HLTV has the 1086697 match at 18:00Z, one hour before Hotspawn's schedule. Impact: displayed schedule and lock time on one open row only; the pick (Projeto do KinGui 51.0% / Yawara 49.0%) is the labelled Valve VRS model line and is unaffected. No value was changed or inferred; both official sources are published side by side for manual review. Win probabilities are never taken from Hotspawn.",
+  "impact": "Display-only on fixture 1086697: board start 19:00 UTC / lock 18:54 UTC (Hotspawn) vs HLTV 18:00 UTC. Pick and probability unchanged (Valve VRS model line, no market price involved).",
+  "sources": [
+   {
+    "url": "https://www.hltv.org/matches/2399918/tropa-do-kingui-vs-yawara-cct-2026-south-america-series-7",
+    "label": "HLTV match 2399918 — renders 14:00 25 Oct with a 3h41m51s countdown (fetched 2026-10-25 14:18–14:31Z)"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399115/color-vs-ex-zero-tenacity-nodwin-clutch-series-13",
+    "label": "HLTV match 2399115 — renderer control: shows 14:00 25 Oct for the board's 18:00Z fixture 1079200"
+   },
+   {
+    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+    "label": "Hotspawn fixtures API — scheduled_start_time 1792954800000 = 2026-10-25T19:00:00Z, observed 2026-10-25T13:50:44Z"
+   },
+   {
+    "url": "https://play.hotspawn.com/lobby",
+    "label": "Hotspawn CS2 pick'em lobby — the schedule and lock authority this board mirrors"
+   }
+  ]
+ },
+ {
+  "id": "session-85087497-9fca16ca-snapshot-pinned-test-2026-10-25",
+  "status": "Repaired on this branch — needs review",
+  "finding": "Harvest 40209149470 (fresh 2026-10-25T15:59Z snapshot) showed tests.test_session_9fca16ca failing on the staged root: test_direct_official_checks_are_linked_and_well_formed asserted each dated Polymarket check's fixture_id is present in the current snapshot, but fixture 1086696 (BORRACHEIROS vs RED Canids Academy, 16:00Z) had already left the Hotspawn feed, so the assertion fails on every later snapshot and the publisher's staged-root unit gate rejects every refresh. Session 85087497 changed only the membership anchor: each dated check must now appear in session 9fca16ca's own retained ROW-LEDGER.md for the 14:22Z board the checks were recorded against. All well-formedness assertions are unchanged. A second failure in the same file (ledger reproducibility) was already guarded upstream by session 9fca16ca to run only on its original snapshot. Verified: 1,765 unit tests OK on the staged 15:59Z root.",
+  "impact": "Without the re-anchor, every publisher cycle after 2026-10-25T15:59Z fails the staged-root unit gate and the verified build is withheld from the legacy root, re-freezing the board the same way as the morning's validator defect.",
+  "sources": [
+   {
+    "label": "Confirmation harvest run 40209149470",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40209149470"
+   },
+   {
+    "label": "Hotspawn lobby (inventory source)",
+    "url": "https://play.hotspawn.com/lobby"
+   }
+  ]
+ },
+ {
   "id": "session-6d111263-publisher-alias-freeze-2026-10-25",
   "status": "Needs review — publisher defect independently reproduced by this session; fix adopted from upstream (PR #316), limitation disclosed",
   "finding": "The scheduled publisher failed at the step 'Build and independently verify every row, calculation and internal link' on runs 40143667147 (2026-10-24T23:40Z), 40170923727 (06:56Z) and 40193317196 (12:29Z), so no pages artifact was uploaded, deploy had nothing to publish, and the live board served the 2026-10-25T01:47:42Z snapshot until its eight-hour window closed at 09:47Z and withheld every pick (public read at 13:26Z: '14 open · 0 with a pick · 14 unresolved'). Independently reproduced on GitHub egress by the non-publishing run 40197851926 (research/harvest-6d111263/): refresh, quarantine, the independent row audit and the build all succeeded; scripts.validate crashed with AssertionError 'Model roster has no HLTV source on this row' on fixture 1086697 (Projeto do KinGui vs Yawara, model_vrs). Cause: HLTV created its match page for that fixture under the club's own label 'Tropa do KinGui'; the row's hltv_context.lineups therefore names the team with HLTV's label, and lineup_source_ok compared team labels with plain_name equality only, refusing the pair even though data/identities.json already registers ['Tropa do KinGui','Projeto do KinGui','ex-Keyd Stars'] with an HLTV source link — the same registered-alias rule validate_model_row applies to the VRS labels and the independent auditor applies via same_team. Resolution: while this session's diagnosis was running, session b85ad9b4 landed the same repair on main (PR #316, scripts/validate.py same_club(): exact fold first; identity-register bridge only; the fixture's two team labels must stay distinct). This session adopted that implementation rather than layering a second one, kept its independent reproduction receipts (run 40197851926) and added tests/test_session_6d111263.py, which replays the exact rejected snapshot with and without the identity register. Unregistered labels and source-less identities still fail. Limitation disclosed rather than hidden: any future validator assertion stricter than the identity register can still delay publication for the whole board, and nothing announces a red publisher beyond the site's own expiry banner; the board itself never published an unsourced pick.",

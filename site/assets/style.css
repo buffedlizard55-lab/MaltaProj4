@@ -793,3 +793,20 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
   body[data-page="index"] .glance-card-scores{gap:2px}
   body[data-page="index"] .glance-card-meta{margin-top:4px}
 }
+
+/* Session df43411c (2026-10-25): the quick-nav copy merged in #329/#330 gave
+   the executive summary two extra wrapped lines, and on a 320x568 phone whose
+   first open fixture carries long low-tier names (Borracheiros vs RED Canids
+   Academy) the glance card's two win probabilities ended at y=517 — 10px
+   below the fixed tab bar (top y=507) — so browser_ce45f672 blocked
+   publication. Continue the compaction ladder the short-phone blocks above
+   already set (card 10px 12px, pick 6px 10px — never widen those back):
+   take a further 14px of padding and inter-row gaps only. Fonts, horizontal
+   padding and every line of content stay untouched, and both probabilities
+   clear the bar with 4px to spare. */
+@media(max-width:650px) and (max-height:700px){
+  body[data-page=index] .glance-card-mobile{padding:4px 12px}
+  body[data-page=index] .glance-card-top{margin-bottom:0}
+  body[data-page=index] .glance-card-pick{padding:4px 10px;gap:3px;margin-bottom:2px}
+  body[data-page=index] .glance-card-scores{gap:2px}
+}

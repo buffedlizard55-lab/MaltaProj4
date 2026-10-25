@@ -283,3 +283,41 @@ No horizontal overflow at 320/390/412 on index, picks or unresolved
   that an adapter must reject, spread range, and the decision to ship the
   measuring probe before any pricing adapter; plus the `overlap=None`
   staged-root test fragility found at 14:01Z and the HLTV ranking-page 403.
+
+## Post-merge confirmation (2026-10-25, 15:02–16:2x UTC)
+
+- [PR #329](https://github.com/buffedlizard55-lab/MaltaProj4/pull/329) merged
+  to `main` as `57d34f2` at 2026-10-25T15:02:18Z. Its triggered publisher run
+  [40205035197](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40205035197)
+  passed every verification step (unit, fresh refresh, independent audit,
+  build, full browser/expiry checks) and its **deploy job succeeded**; the
+  run's overall "failure" is solely the legacy root-fallback commit step,
+  which lost the race to later `main` merges during the ~28-minute run and
+  was superseded by subsequent publisher cycles. That failure mode is
+  recorded, not hidden.
+- Two PR-context runs on the final head (40204967532, 40204967569) failed in
+  browser/mobile steps. PR runs skip the source refresh and rebuild from the
+  committed snapshot; by the time the queued runs executed, the earliest
+  fixtures had locked, so the exact-boundary expiry checks measured a
+  different board than the committed root. The identical steps passed in
+  every refreshed context: the merge run above, branch run 40207424903
+  (success), and both confirmation harvests below.
+- Confirmation harvests on post-merge `main` code:
+  [40207424914](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40207424914)
+  passed all 15 substantive steps and failed only while committing its own
+  evidence (staged-root churn blocked its `git pull --rebase`; fixed by
+  discarding tracked churn after the evidence commit), and
+  [40209149470](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40209149470)
+  succeeded end to end — fresh 15:59Z snapshot, 75 fixtures, **14 open, 14
+  picked, 14 priced, 0 unresolved**, probe retained in
+  `research/harvest-85087497/`. Its staged-root unit log also exposed two
+  snapshot-pinned failures in `tests/test_session_9fca16ca.py` (the same
+  freeze class as the `overlap=None` case above): one was already guarded
+  upstream to its original snapshot, the other — dated Polymarket checks
+  asserted against the live feed's ids — is re-anchored in this follow-up to
+  that session's retained `ROW-LEDGER.md`, after which the staged 15:59Z
+  root passes all 1,765 unit tests. Flagged for Review as
+  `session-85087497-9fca16ca-snapshot-pinned-test-2026-10-25`.
+- Live site fetched after the merge: “Last checked 25 Oct 2026 · 14:59 UTC ·
+  15 open · 15 with a pick · 15 with a win probability · 0 unresolved”, with
+  the merged not-open wording and the How-we-price link served.

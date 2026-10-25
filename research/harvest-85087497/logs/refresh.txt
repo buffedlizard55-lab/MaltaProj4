@@ -1,1 +1,1 @@
-{"coverage": "verified", "matches": 78, "priced": 16, "research_only": 0, "unresolved_without_any_pick": 0}
+{"coverage": "verified", "matches": 75, "priced": 14, "research_only": 0, "unresolved_without_any_pick": 0}

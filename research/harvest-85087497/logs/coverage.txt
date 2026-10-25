@@ -1,1 +1,1 @@
-{"open_rows": 16, "open_with_pick": 16, "open_with_probability": 16, "open_without_pick": [], "open_without_probability": []}
+{"open_rows": 14, "open_with_pick": 14, "open_with_probability": 14, "open_without_pick": [], "open_without_probability": []}

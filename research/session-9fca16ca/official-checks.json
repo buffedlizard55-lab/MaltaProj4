@@ -80,22 +80,21 @@
   ],
   "current_market_checks": [
     {
-      "fixture_id": "1079199",
-      "source_url": "https://gamma-api.polymarket.com/markets/6072808",
-      "market_id": "6072808",
-      "outcomes": ["Infinite", "Brute"],
-      "outcomePrices": [0.435, 0.565],
-      "stored_order_prices": [0.435, 0.565],
-      "updatedAt": "2026-10-25T14:12:37.482955Z",
-      "provider": "Polymarket Gamma API"
-    },
-    {
       "fixture_id": "1086696",
       "source_url": "https://gamma-api.polymarket.com/markets/6158760",
       "market_id": "6158760",
-      "outcomes": ["BORRACHEIROS", "RED Canids Academy"],
-      "outcomePrices": [0.435, 0.565],
-      "stored_order_prices": [0.435, 0.565],
+      "outcomes": [
+        "BORRACHEIROS",
+        "RED Canids Academy"
+      ],
+      "outcomePrices": [
+        0.435,
+        0.565
+      ],
+      "stored_order_prices": [
+        0.435,
+        0.565
+      ],
       "updatedAt": "2026-10-25T14:18:37.119833Z",
       "provider": "Polymarket Gamma API"
     },
@@ -103,9 +102,18 @@
       "fixture_id": "1081158",
       "source_url": "https://gamma-api.polymarket.com/markets/6098416",
       "market_id": "6098416",
-      "outcomes": ["FORZE Reload", "ex-RUSTEC"],
-      "outcomePrices": [0.565, 0.435],
-      "stored_order_prices": [0.565, 0.435],
+      "outcomes": [
+        "FORZE Reload",
+        "ex-RUSTEC"
+      ],
+      "outcomePrices": [
+        0.565,
+        0.435
+      ],
+      "stored_order_prices": [
+        0.565,
+        0.435
+      ],
       "updatedAt": "2026-10-25T14:16:38.069083Z",
       "provider": "Polymarket Gamma API"
     },
@@ -113,9 +121,18 @@
       "fixture_id": "1082697",
       "source_url": "https://gamma-api.polymarket.com/markets/6166390",
       "market_id": "6166390",
-      "outcomes": ["paiN", "BESTIA"],
-      "outcomePrices": [0.585, 0.415],
-      "stored_order_prices": [0.415, 0.585],
+      "outcomes": [
+        "paiN",
+        "BESTIA"
+      ],
+      "outcomePrices": [
+        0.585,
+        0.415
+      ],
+      "stored_order_prices": [
+        0.415,
+        0.585
+      ],
       "updatedAt": "2026-10-25T14:16:38.069083Z",
       "provider": "Polymarket Gamma API"
     },
@@ -123,9 +140,18 @@
       "fixture_id": "1082858",
       "source_url": "https://gamma-api.polymarket.com/markets/6066508",
       "market_id": "6066508",
-      "outcomes": ["Ground Zero", "Off Chops"],
-      "outcomePrices": [0.37, 0.63],
-      "stored_order_prices": [0.37, 0.63],
+      "outcomes": [
+        "Ground Zero",
+        "Off Chops"
+      ],
+      "outcomePrices": [
+        0.37,
+        0.63
+      ],
+      "stored_order_prices": [
+        0.37,
+        0.63
+      ],
       "updatedAt": "2026-10-25T14:16:38.069083Z",
       "bestBid": 0.26,
       "bestAsk": 0.48,
@@ -135,9 +161,18 @@
       "fixture_id": "1082860",
       "source_url": "https://gamma-api.polymarket.com/markets/6066520",
       "market_id": "6066520",
-      "outcomes": ["FlyQuest", "Staqued"],
-      "outcomePrices": [0.925, 0.075],
-      "stored_order_prices": [0.925, 0.075],
+      "outcomes": [
+        "FlyQuest",
+        "Staqued"
+      ],
+      "outcomePrices": [
+        0.925,
+        0.075
+      ],
+      "stored_order_prices": [
+        0.925,
+        0.075
+      ],
       "updatedAt": "2026-10-25T14:20:38.876414Z",
       "provider": "Polymarket Gamma API"
     },
@@ -145,9 +180,18 @@
       "fixture_id": "1082861",
       "source_url": "https://gamma-api.polymarket.com/markets/6066525",
       "market_id": "6066525",
-      "outcomes": ["Rooster", "Abyssal"],
-      "outcomePrices": [0.425, 0.575],
-      "stored_order_prices": [0.425, 0.575],
+      "outcomes": [
+        "Rooster",
+        "Abyssal"
+      ],
+      "outcomePrices": [
+        0.425,
+        0.575
+      ],
+      "stored_order_prices": [
+        0.425,
+        0.575
+      ],
       "updatedAt": "2026-10-25T14:16:38.069083Z",
       "bestBid": 0.3,
       "bestAsk": 0.55,
@@ -157,9 +201,18 @@
       "fixture_id": "1082897",
       "source_url": "https://gamma-api.polymarket.com/markets/6024944",
       "market_id": "6024944",
-      "outcomes": ["B8", "K27"],
-      "outcomePrices": [0.595, 0.405],
-      "stored_order_prices": [0.595, 0.405],
+      "outcomes": [
+        "B8",
+        "K27"
+      ],
+      "outcomePrices": [
+        0.595,
+        0.405
+      ],
+      "stored_order_prices": [
+        0.595,
+        0.405
+      ],
       "updatedAt": "2026-10-25T14:20:38.876414Z",
       "provider": "Polymarket Gamma API"
     },
@@ -167,9 +220,18 @@
       "fixture_id": "1082898",
       "source_url": "https://gamma-api.polymarket.com/markets/6024952",
       "market_id": "6024952",
-      "outcomes": ["Alliance", "FaZe"],
-      "outcomePrices": [0.375, 0.625],
-      "stored_order_prices": [0.375, 0.625],
+      "outcomes": [
+        "Alliance",
+        "FaZe"
+      ],
+      "outcomePrices": [
+        0.375,
+        0.625
+      ],
+      "stored_order_prices": [
+        0.375,
+        0.625
+      ],
       "updatedAt": "2026-10-25T14:14:38.413969Z",
       "provider": "Polymarket Gamma API"
     },
@@ -177,9 +239,18 @@
       "fixture_id": "1082900",
       "source_url": "https://gamma-api.polymarket.com/markets/6024960",
       "market_id": "6024960",
-      "outcomes": ["Luminosity", "HOTU"],
-      "outcomePrices": [0.525, 0.475],
-      "stored_order_prices": [0.525, 0.475],
+      "outcomes": [
+        "Luminosity",
+        "HOTU"
+      ],
+      "outcomePrices": [
+        0.525,
+        0.475
+      ],
+      "stored_order_prices": [
+        0.525,
+        0.475
+      ],
       "updatedAt": "2026-10-25T14:10:38.476648Z",
       "provider": "Polymarket Gamma API"
     },
@@ -187,9 +258,18 @@
       "fixture_id": "1082901",
       "source_url": "https://gamma-api.polymarket.com/markets/6037120",
       "market_id": "6037120",
-      "outcomes": ["Envy", "GamerLegion"],
-      "outcomePrices": [0.455, 0.545],
-      "stored_order_prices": [0.455, 0.545],
+      "outcomes": [
+        "Envy",
+        "GamerLegion"
+      ],
+      "outcomePrices": [
+        0.455,
+        0.545
+      ],
+      "stored_order_prices": [
+        0.455,
+        0.545
+      ],
       "updatedAt": "2026-10-25T14:12:37.482955Z",
       "provider": "Polymarket Gamma API"
     }
@@ -198,8 +278,14 @@
     "fixture_id": "1082859",
     "source_url": "https://bo3.gg/matches/nexvoid-vs-alter-ego-26-10-2026",
     "api_url": "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
-    "decimal_odds": [1.6, 2.2],
-    "normalized_probabilities": [0.5789473684210527, 0.42105263157894735],
+    "decimal_odds": [
+      1.6,
+      2.2
+    ],
+    "normalized_probabilities": [
+      0.5789473684210527,
+      0.42105263157894735
+    ],
     "limitation": "Single-operator listing read through BO3.gg; no tick-level operator price-update timestamp is published."
   },
   "prior_snapshot_movements": [
