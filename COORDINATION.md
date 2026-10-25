@@ -9721,3 +9721,47 @@ OK (skipped=7)**; `audits` 9 OK; `verification-95b588c2` 5 OK; `verification-c6`
 **Left for review, non-blocking:** the 51.0/49.0 originated model line on fixture 1086697 is a two-point edge
 in our own model, so its pick is directional by the project's existing `> 0.0001` rule; if that rule should
 change for model lines, it is a product decision. Recorded in `data/review-notes.json`.
+
+## Session fec4894f — result: independent reproduction, no duplicate repair, live bytes verified (2026-10-25 14:20 UTC)
+
+Branch `arena/fec4894f-maltaproj4`, rebased onto `main` `d5b0739`. Nothing below was merged by
+this session before the entries above it; the publisher repair landed from other sessions
+(`e9429e6` `same_club`, PRs #314 / #322), so this session stood down on that fix instead of
+layering a second one.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Reproduce the red publish gate on a runner, per command, with committed receipts | done | fec4894f | `.github/workflows/harvest-fec4894f.yml` (new), `research/harvest-fec4894f/**` (new) | 2026-10-25 13:35 |
+| Report: failing command, row, and the independent evidence for the alias repair | done | fec4894f | `research/session-fec4894f/REPORT.md` (new) | 2026-10-25 14:20 |
+| Verify what the public site actually serves (cache-busted) | done | fec4894f | this entry | 2026-10-25 14:20 |
+| Validator roster-alias defect (fixture 1086697) | **closed as duplicate** | 046b2e46 / 58354934 / `main` `e9429e6` | `scripts/validate.py` — not edited here | 2026-10-25 14:20 |
+| Phone pick-card probability placement | **closed as duplicate** | 58354934 (PR #322 CSS block) | `assets/style.css` — not edited here; `main`'s short-phone block clears the 507px tab bar and all twelve browser suites pass on it | 2026-10-25 14:20 |
+
+**Measured, with sources.** Runs 40170923727 (06:56Z) and 40193317196 (12:29Z) failed the same
+step; the run page annotation is `Process completed with exit code 1` plus, in `deploy`,
+`No artifacts named "github-pages"`. Job logs and artifacts are on
+`productionresultssa*.blob.core.windows.net`, unreachable from this sandbox, so the step was
+bisected on a runner: `scripts.validate` fails at `validate_model_row` →
+`lineup_source_ok(m, team, check['lineup'])` on fixture **1086697 Projeto do KinGui vs Yawara**,
+where Hotspawn's label and HLTV's "Tropa do KinGui" are one club in `data/identities.json`.
+Captured failing snapshot and logs: `research/harvest-fec4894f/`.
+
+**Live bytes (cache-busted).** `build-info.json?cb=` now reports revision `06915a8`, built
+`2026-10-25T13:56:26Z`, 78 rows; `picks.html?cb=` renders 16 open rows each with a pick, both
+percentages, a method label and source links. Read *without* a cache-buster the same URL still
+returned the 01:47Z build, which is why every receipt must name the cache-busted URL it read.
+
+**Process defect found in this session's own harness, and fixed.** Piping each gate through
+`tee … | tail` made the step report `tail`'s exit status, so `run.json` from run 40197553353 claims
+eight green exit codes although gate 3 failed. `set -o pipefail` now guards every piped step.
+Anyone reading older receipts in this repository should check the log, not the outcome field.
+
+**Requested, not edited (file owned elsewhere):** `pages.yml` still runs the four publish gates as
+one shell step, so a red run names only "exit code 1". Splitting that step into four named steps
+(or emitting `::error title=<gate>::<assertion>` on failure) would make the next regression
+readable from the run page without runner access. Logged for the session that owns `pages.yml`.
+
+**Not verified here.** No live betting line was re-checked against an external book from this
+sandbox: outbound access is limited to github.com, codeload.github.com, api.github.com,
+registry.npmjs.org and pypi.org. Row-level source replay was done by the refresh runner and by
+`verification-c6/audit_snapshot.py`, whose output is in `research/harvest-fec4894f/`.
