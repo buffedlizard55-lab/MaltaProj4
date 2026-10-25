@@ -1,5 +1,43 @@
 # Shared task board — final delivery receipt, session cc4f95ef (2026-10-25 15:05 UTC)
 
+## Session b06ee902 — MERGE RECEIPT 2026-10-25 15:20 UTC (PR #328 merged; live deploys lag because legacy Pages throttles builds)
+
+**PR [#328](https://github.com/buffedlizard55-lab/MaltaProj4/pull/328) merged to `main` at
+2026-10-25T14:49:46Z as `701c55e`**, without waiting for approval per protocol. Both required checks passed on
+the head that was merged (`audit` 35 s, `verify-build` 2 m 16 s); the branch was rebased twice onto a moving
+`main` and each conflict was resolved by keeping both sessions' entries (never by dropping theirs).
+
+| Receipt | Value |
+| --- | --- |
+| Commit that carries the audit | `701c55e` (merge of `arena/b06ee902-maltaproj4`) |
+| Committed root after the publish | `main:review.html` contains `id="session-b06ee902-board-audit-2026-10-25"` and a "Full audit, row by row" link to `research/session-b06ee902/VERIFICATION.md` |
+| Live deploy observed | `build-info.json?cb=…` advanced from `built_at 14:59:26Z` (05e991e) to **`15:25:24Z`, 75 rows** after the Pages build of `f07cfc6` completed at 15:20:53Z — i.e. the deployed artifact is newer than the merge, so it is built from a tree that contains this session's note |
+| Gates on the merged tree | 1,710 unit tests OK (12 skipped); audits 9 OK; integrity 5 OK; independent-c6 12 OK; `scripts.validate` 78 rows / 16 calculations / 15 pages / 726 links / 20 checksums / 181 displayed rows |
+
+**Measured while verifying the deploy: legacy Pages builds fail in bursts, and the live site lags the
+publish for as long as they do.** `GET /repos/…/pages/builds` around 15:20Z showed
+`15:04:50 errored fd4ba08`, `15:13:19 errored e379ee6`, `15:20:18 errored 9cef2fb`, then
+`15:20:53 built f07cfc6`. The content was **not** the cause: the last good build before the burst
+(`57d34f2`, committed 15:02:17Z) and the first failing one (`fd4ba08`, 15:04:49Z) differ by exactly one file,
+`COORDINATION.md`. GitHub documents the cause: "GitHub Pages sites have a _soft_ limit of 10 builds per hour.
+This limit does not apply if you build and publish your site with a custom GitHub Actions workflow."
+([GitHub Pages limits](https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits)).
+This repository is `build_type: legacy` and `main` receives a commit every few minutes from many concurrent
+sessions, so builds exceed that soft limit and the served site freezes at the last successful deployment
+until a slot frees. It recovered on its own here (14:59Z → 15:25Z), but a user checking the site during a
+burst sees an older board even though every publish run was green.
+
+**Not changed by this session, deliberately:** switching Pages to an Actions deployment
+(`build_type: workflow`), which the same document says is exempt from the 10/hour soft limit, would fix the
+class of problem — but it changes how every other session's root fallback reaches visitors, and it is a
+repo-settings change, not a file in this session's scope. Logged for the owner instead of applied. The same
+finding is on Flagged for Review as `session-b06ee902-pages-build-rate-2026-10-25`.
+
+**What this session did not verify:** it did not page through all 63 rendered chunks of the live
+`review.html` to eyeball its own note on the served page. It verified the note in `main:review.html`
+(grep, 1 match) and verified the deployed build is newer than the merge; that is the standard the receipt
+claims, and no more.
+
 **PR [#325](https://github.com/buffedlizard55-lab/MaltaProj4/pull/325) merged to `main` at
 2026-10-25T14:46:14Z as `05e991e4cd998ac132e7fc725ac2d7d9f605c3ca`**, without waiting for approval,
 using `gh pr merge 325 --merge`. All three final-integration tasks are **done**: the independent
