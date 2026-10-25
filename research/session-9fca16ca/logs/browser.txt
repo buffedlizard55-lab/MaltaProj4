@@ -15,7 +15,7 @@ Passed: completeness prose matches the runtime counters (fresh and 8-hour-stale)
 Passed: 320/390px pick placement, all open rows, both team probabilities, official row links, blank safeguards, guide deep links and stale-prose/counter agreement.
 {"suite":"browser_caca91b8","open_rows":16,"priced_open_rows":16,"session_review_notes":3,"pages_checked":8,"status":"ok"}
 {
- "measured_at": "2026-10-25T14:44:27.562Z",
+ "measured_at": "2026-10-25T14:54:07.688Z",
  "board": "public/ from research/diagnose-aeafcbe6/snapshot.json",
  "viewports": [
   {
@@ -28,14 +28,14 @@ Passed: 320/390px pick placement, all open rows, both team probabilities, offici
     "horizontalOverflow": false,
     "withheld": false,
     "exec_summary": {
-     "top": 3715,
-     "height": 237
+     "top": 3716,
+     "height": 254
     },
     "exec_quicknav": {
-     "top": 290,
+     "top": 306,
      "height": 57
     },
-    "quicknav_text": "Executive summary · 16/16 picks · 0 unresolved · 62 past feed rows are not open.Updated picks →Unresolved & limits ↓",
+    "quicknav_text": "Executive summary · 15/15 picks · 0 unresolved · 62 feed rows are not open.Updated picks →Unresolved & limits ↓",
     "exec_links": [
      "picks.html",
      "#picks-at-a-glance",
@@ -56,22 +56,22 @@ Passed: 320/390px pick placement, all open rows, both team probabilities, offici
    "board": {
     "found": true,
     "top": 280,
-    "height": 334,
-    "pick": "BRUTE",
-    "teams": "InfinitevsBRUTE",
+    "height": 385,
+    "pick": "RED Canids Academy",
+    "teams": "BORRACHEIROSvsRED Canids Academy",
     "percentages": [
      "43.5%",
      "56.5%"
     ],
     "percentage_labels": [
-     "Infinite 43.5 percent",
-     "BRUTE 56.5 percent"
+     "BORRACHEIROS 43.5 percent",
+     "RED Canids Academy 56.5 percent"
     ],
     "tabbar_top": 507,
     "horizontalOverflow": false,
     "rows": 16,
-    "publishedPicks": 16,
-    "pricedRows": 16
+    "publishedPicks": 15,
+    "pricedRows": 15
    },
    "documentWidth": 0
   },
@@ -85,14 +85,14 @@ Passed: 320/390px pick placement, all open rows, both team probabilities, offici
     "horizontalOverflow": false,
     "withheld": false,
     "exec_summary": {
-     "top": 4170,
+     "top": 4154,
      "height": 219
     },
     "exec_quicknav": {
      "top": 300,
      "height": 65
     },
-    "quicknav_text": "Executive summary · 16/16 picks · 0 unresolved · 62 past feed rows are not open.Updated picks →Unresolved & limits ↓",
+    "quicknav_text": "Executive summary · 15/15 picks · 0 unresolved · 62 feed rows are not open.Updated picks →Unresolved & limits ↓",
     "exec_links": [
      "picks.html",
      "#picks-at-a-glance",
@@ -113,22 +113,22 @@ Passed: 320/390px pick placement, all open rows, both team probabilities, offici
    "board": {
     "found": true,
     "top": 243,
-    "height": 360,
-    "pick": "BRUTE",
-    "teams": "InfinitevsBRUTE",
+    "height": 407,
+    "pick": "RED Canids Academy",
+    "teams": "BORRACHEIROSvsRED Canids Academy",
     "percentages": [
      "43.5%",
      "56.5%"
     ],
     "percentage_labels": [
-     "Infinite 43.5 percent",
-     "BRUTE 56.5 percent"
+     "BORRACHEIROS 43.5 percent",
+     "RED Canids Academy 56.5 percent"
     ],
     "tabbar_top": 783,
     "horizontalOverflow": false,
     "rows": 16,
-    "publishedPicks": 16,
-    "pricedRows": 16
+    "publishedPicks": 15,
+    "pricedRows": 15
    },
    "documentWidth": 0
   },
@@ -142,14 +142,14 @@ Passed: 320/390px pick placement, all open rows, both team probabilities, offici
     "horizontalOverflow": false,
     "withheld": false,
     "exec_summary": {
-     "top": 4102,
-     "height": 202
+     "top": 4086,
+     "height": 219
     },
     "exec_quicknav": {
      "top": 300,
      "height": 65
     },
-    "quicknav_text": "Executive summary · 16/16 picks · 0 unresolved · 62 past feed rows are not open.Updated picks →Unresolved & limits ↓",
+    "quicknav_text": "Executive summary · 15/15 picks · 0 unresolved · 62 feed rows are not open.Updated picks →Unresolved & limits ↓",
     "exec_links": [
      "picks.html",
      "#picks-at-a-glance",
@@ -170,22 +170,22 @@ Passed: 320/390px pick placement, all open rows, both team probabilities, offici
    "board": {
     "found": true,
     "top": 243,
-    "height": 360,
-    "pick": "BRUTE",
-    "teams": "InfinitevsBRUTE",
+    "height": 375,
+    "pick": "RED Canids Academy",
+    "teams": "BORRACHEIROSvsRED Canids Academy",
     "percentages": [
      "43.5%",
      "56.5%"
     ],
     "percentage_labels": [
-     "Infinite 43.5 percent",
-     "BRUTE 56.5 percent"
+     "BORRACHEIROS 43.5 percent",
+     "RED Canids Academy 56.5 percent"
     ],
     "tabbar_top": 854,
     "horizontalOverflow": false,
     "rows": 16,
-    "publishedPicks": 16,
-    "pricedRows": 16
+    "publishedPicks": 15,
+    "pricedRows": 15
    },
    "documentWidth": 0
   }

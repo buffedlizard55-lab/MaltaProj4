@@ -107,6 +107,17 @@ class Session9fca16ca(unittest.TestCase):
                     pinnacle = providers.index('Pinnacle')
                     self.assertLess(hltv, pinnacle)
 
+    def test_executive_summary_link_label_is_escaped_once(self):
+        index = (ROOT / 'index.html').read_text(encoding='utf-8')
+        for page in sorted((ROOT).glob('*.html')):
+            with self.subTest(page=page.name):
+                text = page.read_text(encoding='utf-8')
+                self.assertNotIn('&amp;amp;', text)
+                self.assertNotIn('&amp;lt;', text)
+                self.assertNotIn('&amp;quot;', text)
+        self.assertIn('odds &amp; prediction overview', index)
+        self.assertIn('https://www.hltv.org/betting/analytics/2399918/tropa-do-kingui-vs-yawara-cct-2026-south-america-series-7', index)
+
     def test_refresh_cadence_and_eight_hour_window_are_published(self):
         self.assertEqual(self.data['stale_after_hours'], 8)
         pages = (ROOT / '.github/workflows/pages.yml').read_text(encoding='utf-8')
@@ -121,6 +132,7 @@ class Session9fca16ca(unittest.TestCase):
         ids = {note['id'] for note in notes}
         self.assertIn('session-9fca16ca-dated-market-drift-2026-10-25', ids)
         self.assertIn('session-9fca16ca-fallback-access-limitations-2026-10-25', ids)
+        self.assertIn('session-9fca16ca-double-escaped-summary-link-2026-10-25', ids)
         for note in notes:
             self.assertTrue(note['sources'])
             for source in note['sources']:

@@ -6201,5 +6201,36 @@
     "label": "EGamersWorld gap-recheck page, access restriction recorded"
    }
   ]
+ },
+ {
+  "id": "session-9fca16ca-double-escaped-summary-link-2026-10-25",
+  "status": "Fixed and regression-tested; flagged because the defect was user-visible in the executive summary",
+  "finding": "A rebase onto main commit 05e991e (session 65af11da) exposed a double-escaped HTML entity in the executive-summary limitations list: scripts/build.py passed a pre-escaped ampersand entity inside the HLTV analytics link label to link(), which escapes labels itself, so index.html and unresolved.html rendered the literal entity text instead of the word and. The existing test_session_f0814674 gate caught it; final integration changed the builder label to use a plain ampersand, rebuilt the root with the canonical scripts.build and scripts.stage_legacy path, and pinned the exact once-escaped output plus the absence of double-escaped entities across all root pages in tests/test_session_9fca16ca.py. No source value, probability or pick was changed.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/scripts/build.py",
+    "label": "Canonical builder: label is escaped once by link()"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/tests/test_session_9fca16ca.py",
+    "label": "Final-integration regression for all rendered root pages"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/tests/test_session_f0814674.py",
+    "label": "Existing gate that first detected the double escape"
+   },
+   {
+    "url": "https://www.hltv.org/betting/analytics/2399918/tropa-do-kingui-vs-yawara-cct-2026-south-america-series-7",
+    "label": "Official HLTV analytics overview linked by the corrected label"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-9fca16ca/logs/unit.txt",
+    "label": "Unit-suite receipt used to detect the regression"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/tests/test_session_f0814674.py",
+    "label": "Existing gate that first detected the double escape"
+   }
+  ]
  }
 ]

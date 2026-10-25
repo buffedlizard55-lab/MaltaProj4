@@ -28,7 +28,7 @@ All eleven current exchange quotes and the researched BO3/Thunderpick line repro
 
 | Gate | Result |
 | --- | --- |
-| `python -m unittest discover -s tests` | **1,701 tests OK**, 12 skipped |
+| `python -m unittest discover -s tests` | **1,719 tests OK**, 12 skipped |
 | `python -m unittest discover -s audits` | 9 OK |
 | `verification-95b588c2/test_integrity.py` | 5 OK |
 | `python -m unittest discover -s verification-c6` | 12 OK |
@@ -39,7 +39,7 @@ All eleven current exchange quotes and the researched BO3/Thunderpick line repro
 | `npm run test:browser` | all 13 Chromium suites pass; no horizontal overflow at 320/390/412px; both percentages and the pick clear the fixed phone tab bar |
 | `research/session-9fca16ca/build_report.py` | 16/16 open rows, 0 row/HTML/receipt failures, 20/20 manifest checksums, 0 concurrent quote differences |
 
-Logs are in [`logs/`](logs/) and the generated receipt is [`build-info.json`](../../build-info.json). The publisher uses a 15-minute cron (`:04`, `:19`, `:34`, `:49`) plus a 10-minute freshness watchdog, with an eight-hour evidence window and browser-side expiry; this exceeds the requested 4–8-hour refresh target without weakening expiry rules.
+Logs are in [`logs/`](logs/) and the generated receipt is [`build-info.json`](../../build-info.json) (`2026-10-25T14:52:07.516599Z`). A final rebase caught and fixed a double-escaped ampersand in a newly added HLTV analytics link label; the regression is pinned in `tests/test_session_9fca16ca.py` and published on Flagged for Review. The publisher uses a 15-minute cron (`:04`, `:19`, `:34`, `:49`) plus a 10-minute freshness watchdog, with an eight-hour evidence window and browser-side expiry; this exceeds the requested 4–8-hour refresh target without weakening expiry rules.
 
 ## Flagged for review (non-blocking)
 
@@ -49,6 +49,7 @@ Logs are in [`logs/`](logs/) and the generated receipt is [`build-info.json`](..
 - All 16 open rows have `best_of: null` because the official feed did not state a series format; the value is blank, not inferred.
 - Fixture 1082858 carries a wide-spread, low-precision warning; fixture 1082861 is a labelled wide-exchange tier; fixture 1082859's listing has no operator price-update timestamp.
 - All four originated lines use Valve's 2026-10-05 standings, which are inside the published model age limit but are a model input, not a live bookmaker price.
+- [Final-integration double-escaped summary link](https://buffedlizard55-lab.github.io/MaltaProj4/review.html#session-9fca16ca-double-escaped-summary-link-2026-10-25): fixed and regression-tested.
 - The legacy `main:/` Pages build and the Actions artifact can show different receipt timestamps while a deployment is building; the site itself remains inside its evidence window and `scripts.verify_live.py` is the final byte-consistency gate. See the final integration receipt in `COORDINATION.md`.
 
 No flagged irregularity is hidden, and none blocks publication. Values that could not be confirmed from a linked official source remain blank and marked unverified; no 50/50 filler, crowd vote, guessed slug or invented price is used.
