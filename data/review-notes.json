@@ -6258,5 +6258,28 @@
     "url": "https://play.hotspawn.com/lobby"
    }
   ]
+ },
+ {
+  "id": "session-6d111263-phone-tabbar-overlap-2026-10-25",
+  "status": "Diagnosed and fixed by this session; verification in progress",
+  "finding": "Measured with Chromium on the built index at 320x568 on 2026-10-25 ~15:30Z: with the then-first open fixture BORRACHEIROS vs RED Canids Academy (Hotspawn 1086696), the first #picks-at-a-glance card's two .glance-card-score elements occupied y=461..483 and y=486..517 while the fixed bottom tab bar starts at y=507 — the second win probability rendered BEHIND the tab bar on a short phone, failing tests/browser_ce45f672.cjs:108 and hiding exactly the number the brief requires a phone reader to see. The same assertion failed for other sessions' branches in the same window (runs 40205770553, 40205395251, 40206447470) because the overlap began the moment the 15:00Z fixture left the board and the longer two-line team heading became first. Fix: a new @media(max-width:650px) and (max-height:700px) block in site/assets/style.css (session 6d111263) — heading 14px so pairs of this length fit one line, pick row 16px/19px instead of 17px/22px, and a few pixels of vertical rhythm removed; short viewports only, so 390x844/412x915/desktop typography and every other page are untouched, and no text, order, tap target or percentage changes. Root cause class: repeated content-driven squeezes on the first phone screen had reached zero headroom for longer fixture names; this fix restores measured headroom. Verification: full 13-suite Chromium run and the 320/390/412 re-measurements are recorded in COORDINATION.md.",
+  "sources": [
+   {
+    "label": "Failing gate: session 6d111263 PR verify-build run 40206447470 (browser step)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40206447470"
+   },
+   {
+    "label": "Same-window failure on another session's branch (run 40205770553)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40205770553"
+   },
+   {
+    "label": "The fixture whose long heading triggered the overlap",
+    "url": "https://play.hotspawn.com/lobby"
+   },
+   {
+    "label": "The gate itself (tests/browser_ce45f672.cjs, assertion at line 108)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/tests/browser_ce45f672.cjs"
+   }
+  ]
  }
 ]
