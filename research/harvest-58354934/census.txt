@@ -1,0 +1,15 @@
+generated_at 2026-10-25T13:46:54.275795Z
+feed rows 78 open 17
+open with pick 17
+open with probabilities 17
+methods Counter({'exchange': 11, 'model_vrs': 4, 'bookmaker_fallback': 1, 'exchange_wide': 1})
+--- open rows without a pick ---
+--- priced rows without a pick ---
+--- issues ---
+[
+ {
+  "code": "feed_status",
+  "message": "61 feed entries are not open by sourced timestamps/status. They remain in All matches and are not treated as future picks.",
+  "source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+ }
+]
