@@ -10053,3 +10053,41 @@ they diverge again. (2) The Hotspawn per-match page for fixtures 1086696 / 10866
 itself (a constructed slug returns its 404 page), so those rows link to the official
 `play.hotspawn.com/cs2-pickems` page instead of an invented URL — unchanged behaviour, recorded here because a
 reader will notice the difference between rows. (3) No probability, price or pick was edited by this session.
+
+## Session 8e4ff8d2 — delivery receipt: PR #319 merged, publisher repaired, Pages build verified (2026-10-25 14:50Z)
+
+**PR [#319](https://github.com/buffedlizard55-lab/MaltaProj4/pull/319) merged to `main` at
+`2026-10-25T14:15:11Z` as `a2d3b1f`**, without waiting for approval, after the head `275d9fb` reported
+`MERGEABLE`. `main` moved five times during this session (PRs #313, #315, #316, #322 and the roster-alias
+repair); every conflict was resolved by union on the append-only board, by adopting upstream's
+`scripts/validate.py` (`same_club`, PR #316) instead of layering this session's duplicate helpers, and by
+regenerating the root pages from the branch's own capture. Nothing owned by another session was discarded;
+`data/review-notes.json` merged to **253 notes** (this session's one added).
+
+**What shipped.** A fresh capture `2026-10-25T13:54:18Z` — **78 feed rows · 16 open · 16 picks · 16 win
+probabilities · 0 unresolved** (10 exchange, 1 wide exchange, 1 researched bookmaker listing, 4 our own
+Valve-VRS model line) — plus the short-phone stylesheet repair, the non-publishing diagnostic and its receipt,
+`research/session-8e4ff8d2/REPORT.md`, an independent test file that re-verifies the upstream alias repair
+against the real failing row, and the Flagged-for-Review note
+`session-8e4ff8d2-alias-roster-source-froze-the-publisher-2026-10-25`.
+
+**Gates on the merged head:** `scripts.validate` exit 0 for `public/` and for the root, **1,629 unit tests OK
+(12 skipped)**, audits 9 OK, integrity 5 OK, verification-c6 12 OK, independent row auditor 0 failures, all
+Chromium suites pass. On GitHub's own egress the branch's diagnostic run
+[40199429511](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40199429511) returned
+`refresh_rc=0 quarantine_rc=0 row_audit_rc=0 build_rc=0 validate_rc=0 published_audit_rc=0 publish_rc=0
+staged_validate_rc=0 staged_unit_rc=0 npm_rc=0 browser_rc=0` — the eleven-command pipeline that had been dying
+at `validate_rc=1` since 06:56Z.
+
+**Live publication.** Pages is `legacy main:/`, so the committed root is what visitors receive. The Pages build
+for this merge commit `a2d3b1f` completed **`built`** at `2026-10-25T14:15:12Z` (Pages builds API), i.e. the
+bytes deployed are exactly the root tree this session verified. Flagged, not hidden: every Pages build for the
+commits other sessions pushed to `main` between `14:21Z` and `14:40Z` returned `errored` ("Page build failed")
+while their publish runs were cancelled by the next push — this is the legacy builder's hourly build-rate limit
+under six merges in twenty minutes, not a content defect, and those commits' roots are other sessions' work.
+The board served in the meantime is this session's verified build, which is inside its eight-hour window.
+
+**Open items left for whoever integrates next:** the 61 past-dated Hotspawn feed records that are still returned
+as `scheduled`; the four open rows that carry our own model line rather than a market price; and the fact that
+a committed capture whose earliest lock has passed will fail the PR browser gate even when the pipeline is
+healthy (measured here on PR head 40199433314). All three are published on **Flagged for Review**.
