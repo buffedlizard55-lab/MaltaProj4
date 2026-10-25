@@ -77,11 +77,20 @@ MARKERS = ('Thunderpick', 'Pinnacle', 'Bet365', 'bet365', '1xBet', 'GG.BET',
            'odds', '"coefficient"', 'team_1', 'bookmaker')
 
 
-def note_for(kind, body):
-    """Facts derived mechanically from the captured bytes (``body`` is bytes)."""
+def note_for(kind, body, saved=None):
+    """Facts derived mechanically from the captured bytes (``body`` is bytes).
+
+    ``body`` is the whole response; ``saved`` is how much of it was committed.
+    A truncated JSON document cannot parse, and saying "did not parse" about a
+    document we truncated ourselves would be a false statement about the source,
+    so the full body is parsed whenever it is available and truncation is
+    reported as truncation.
+    """
     if isinstance(body, str):
         body = body.encode('utf-8')
     facts = []
+    if saved is not None and saved < len(body):
+        facts.append('body committed truncated (%d of %d bytes)' % (saved, len(body)))
     if kind == 'json':
         try:
             data = json.loads(body)
@@ -123,7 +132,7 @@ def probe(target, session):
                   bytes=len(body),
                   sha256=hashlib.sha256(body).hexdigest(),
                   elapsed_ms=int((datetime.now(timezone.utc) - started).total_seconds() * 1000),
-                  note=note_for(kind, body[:200000]))
+                  note=note_for(kind, body, len(body[:BODY_CAP])))
     return record, body[:BODY_CAP]
 
 

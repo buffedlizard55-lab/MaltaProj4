@@ -5720,5 +5720,40 @@
     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/details/2026_10_05/0144--ex-keyd_stars--ckzao-drg-lash-xureba-zede.md"
    }
   ]
+ },
+ {
+  "id": "session-408eb0af-low-tier-source-reachability-2026-10-25",
+  "status": "Measured 2026-10-25 on GitHub runners from one GET per endpoint; published on the site; needs no action unless an operator reopens access",
+  "finding": "Session 408eb0af probed every outside pre-match CS2 line source this project can reach from its runners, once each, and committed the response bodies beside the report (research/session-408eb0af/probe/, run 40198727513). Result, verbatim from that receipt: Hotspawn fixtures API 200 (78 fixtures), Hotspawn lobby 200, Polymarket Gamma sports 200 (491 entries), Pinnacle guest matchups 200 (36 CS2 matchups) and moneylines 200 (578 kB), BO3.gg matches 200 (structured, Thunderpick-bound where a line is posted), HLTV matches / world ranking / Valve mirror all 200, STAVKA TV listing 200, Thunderpick web page 200 but only a 14.6 kB client-side shell with no server-rendered price. Refused or gone: EGamersWorld 403, GG.BET 403 (after rate-limit waits), Bovada public JSON 404, Oddspedia public JSON 400. No alternative endpoint was guessed, no credentials were sent and no refusal was retried into a bypass. What this means for the brief's 'generate a pick for every match': a low-tier or academy fixture is often absent from the exchange and from Pinnacle, and no accessible bookmaker publishes a line for it, so the honest ladder is the one already shipped - the researched bookmaker listing (BO3.gg/Thunderpick, STAVKA TV, EGamersWorld where a dated receipt exists), then our own labelled Valve-VRS model line, then a research-only ranking/form pick with no percentage, and finally a blank that is listed with its reason. Paid multi-book APIs (odds-api.io, OddsPapi, esportsodds.gg, the-odds-api) were found during the search but every one requires a paid key that this project does not hold, so none was used or reported as available. The measured table is now published at unresolved.html#measured-source-access and inside the executive summary's unresolved section, so no reader has to take an unlinked claim on trust.",
+  "sources": [
+   {
+    "label": "Committed probe report",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-408eb0af/probe/report.md"
+   },
+   {
+    "label": "Probe run (non-publishing)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40198727513"
+   },
+   {
+    "label": "BO3.gg public API",
+    "url": "https://api.bo3.gg/api/v1/matches"
+   },
+   {
+    "label": "Pinnacle guest esports matchups",
+    "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/matchups?withSpecials=false"
+   },
+   {
+    "label": "Polymarket Gamma sports registry",
+    "url": "https://gamma-api.polymarket.com/sports"
+   },
+   {
+    "label": "HLTV match list",
+    "url": "https://www.hltv.org/matches"
+   },
+   {
+    "label": "STAVKA TV CS2 listing",
+    "url": "https://stavka.tv/matches/csgo"
+   }
+  ]
  }
 ]
