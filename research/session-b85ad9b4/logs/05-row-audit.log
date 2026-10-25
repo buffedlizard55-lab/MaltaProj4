@@ -1,0 +1,9 @@
+command: /opt/hostedtoolcache/Python/3.11.17/x64/bin/python verification-c6/audit_snapshot.py runtime/latest.json --output runtime/independent-row-audit.md
+started: 2026-10-25T13:32:27.588723+00:00
+finished: 2026-10-25T13:32:27.640095+00:00
+return code: 0
+----- stdout -----
+runtime/independent-row-audit.md: 0 failures
+
+----- stderr -----
+

@@ -1,0 +1,9 @@
+command: /opt/hostedtoolcache/Python/3.11.17/x64/bin/python -m scripts.refresh --output runtime/latest.json
+started: 2026-10-25T13:28:49.092333+00:00
+finished: 2026-10-25T13:32:27.526290+00:00
+return code: 0
+----- stdout -----
+{"coverage": "verified", "matches": 78, "priced": 17, "research_only": 0, "unresolved_without_any_pick": 0}
+
+----- stderr -----
+

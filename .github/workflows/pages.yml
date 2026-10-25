@@ -36,6 +36,7 @@ jobs:
       manifest_sha: ${{ steps.receipt.outputs.manifest_sha }}
       built_at: ${{ steps.receipt.outputs.built_at }}
       publish: ${{ steps.gate.outputs.publish }}
+      artifact_ready: ${{ steps.pages_artifact.outcome }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Freshness gate (scheduled slots only; fails open)
@@ -111,6 +112,7 @@ jobs:
       # to stop the verified artifact from deploying. The run still goes red at
       # step 15 (that step keeps `|| return 3`), so the fault stays visible.
       - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        id: pages_artifact
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && steps.gate.outputs.publish == 'true'
         with:
           path: public
@@ -246,8 +248,9 @@ jobs:
     # `always()` so a red step *after* the verified artifact was uploaded (the
     # legacy main:/ staging step) cannot suppress publication of that artifact.
     # Every condition that decides whether the build is publishable is kept:
-    # the ref, the event, and the freshness gate's own output.
-    if: always() && github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && needs.verify-build.outputs.publish == 'true'
+    # the ref, event, freshness intention AND successful verified-artifact upload.
+    # A failure before upload must never enter deployment (run 40193317196).
+    if: always() && github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && needs.verify-build.outputs.publish == 'true' && needs.verify-build.outputs.artifact_ready == 'success'
     needs: verify-build
     runs-on: ubuntu-24.04
     timeout-minutes: 15
