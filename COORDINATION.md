@@ -377,6 +377,34 @@ was edited by hand; nothing inferred; Hotspawn used for fixture inventory/locks 
 probability source. Ongoing freshness is the publisher's job: `pages.yml` cron `4,19,34,49 * * * *` plus the
 10-minute watchdog, with picks withheld automatically once evidence leaves its 8-hour window.
 
+## Session 9fca16ca — CLAIM 2026-10-25 14:16 UTC: independent post-merge verification, delivery consistency, final integration
+
+Board read before claiming at `origin/main` / this fixed Arena branch `d5b0739` (PR #322 merged at 14:06:30Z). Arena fixes this session to `arena/9fca16ca-maltaproj4`; no other branch is created, checked out, or pushed. The b85ad9b4 publication task at 13:45Z is treated as **completed by PR #322 and the 14:05Z receipt**, not reopened here. Older `in progress` rows are historical (>60 minutes or explicitly superseded by their own delivery receipts).
+
+**Measured starting inconsistency (not assumed).** At 14:15Z the public `index.html` renders a 13:56Z snapshot with **16 open / 16 picks / 16 probabilities / 0 unresolved**, but also renders the stale warning “Snapshot expired or timestamp unverified. Current picks are withheld.” Live `build-info.json` still serves `built_at 2026-10-25T01:47:42Z` (79 rows), while the branch-root receipt is `13:46:54Z` (78 rows). Pages API reports `build_type: legacy`, source `main:/`, status `errored`. This session will establish whether the warning is a client-side false positive and whether the receipt/deployment path can be made byte-consistent without weakening any evidence rule.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Independent line-by-line audit of all open rows, source links, fallback attempts, unresolved/limitations section, executive summary and mobile navigation; links for manual review | **done** — adopted bd650209’s verifier, added direct-source checks and 9fca16ca ledger/regressions | 9fca16ca | `research/session-9fca16ca/**` (new), `tests/test_session_9fca16ca.py` (new), `data/review-notes.json` (additive only) | 2026-10-25 14:16 |
+| Repair only measured delivery/UI defects (stale receipt vs fresh board), with regression tests | **done** — no production repair needed; measured cache/propagation race is documented and pinned by receipt/expiry tests | 9fca16ca | `site/assets/app.js`, `scripts/build.py`, `scripts/stage_legacy.py`, `scripts/publish_root_fallback.py`, `.github/workflows/pages.yml` (only if a defect is proven), associated generated assets/pages via canonical builder | 2026-10-25 14:16 |
+| Final integration: full unit/audit/integrity/validator/browser gates, freshness and link checks, PR from this fixed branch to `main`, merge without approval, live Pages byte verification, receipt | **in progress** — local gates complete; PR/merge/deploy receipt appended below | 9fca16ca | `COORDINATION.md`, `build-info.json`, generated root pages, `data/latest.json`, `data/matches.csv` only via canonical build/refresh | 2026-10-25 14:16 |
+
+Evidence rules unchanged: Hotspawn supplies fixture inventory and locks only, never a probability; no crowd votes, placeholder odds, inferred values, or 50/50 filler. Any value that cannot be confirmed from a linked official source is blank and flagged. Shared outputs are rebuilt only at final integration; other sessions’ research/workflows are not edited.
+
+
+
+## Session 9fca16ca — progress receipt 2026-10-25 14:46 UTC
+
+Board re-read after main advanced through PR #324 (bd650209) and PR #331 (5bf6ae1b). Both sessions’ work was preserved. Two rebases were required; `COORDINATION.md` and `data/review-notes.json` conflicts were union-merged by session/entry ID, keeping all other sessions’ receipts and notes. The newer 14:22:27Z verified capture is the board under test: 78 Hotspawn feed rows, 16 open, 16 picks, 16 probability pairs, 0 unresolved; 11 exchange, 1 researched book listing, 4 labelled Valve-VRS model lines.
+
+Direct official reads at 14:18–14:23Z (Hotspawn lobby and fixture API, 11 Polymarket market endpoints, Pinnacle, Thunderpick, BO3.gg, GG.BET, EGamersWorld, HLTV fixtures/ranking, Valve standings and fit.js) are recorded in `research/session-9fca16ca/official-checks.json`. All current exchange/book quotes agree with the merged snapshot; the earlier 13:54Z snapshot’s three moved quotes were superseded by the normal gated refresh. Two additive Flagged-for-Review notes cover dated market movement and low-tier source access/model limitations. The delivery/receipt race is recorded in the session report and was already covered by earlier legacy-Pages notes; no probability or fixture value was edited by hand.
+
+Final local candidate gates: `unittest discover -s tests` **1,719 OK (12 skipped)**; audits 9 OK; integrity 5 OK; verification-c6 12 OK; `scripts.validate` root and public both **78 rows / 16 calculations / 15 pages / 726 links / 20 checksums / 181 displayed rows**; c6 and bd650209 independent row auditors 0 failures / 16-of-16 PASS; coverage contract 0 problems; all 13 Chromium suites pass at 320/390/412px with no horizontal overflow; 9fca16ca ledger 0 row/HTML/receipt failures and 20/20 manifest hashes. Generated root was rebuilt through `scripts.build` → `scripts.validate --site public` → `scripts.stage_legacy` → `scripts.validate --site .`, with the receipt `2026-10-25T14:52:07.516599Z`. A rebase onto `05e991e` exposed a user-visible double-escaped ampersand in `scripts/build.py`’s new HLTV analytics link label; final integration changed the label to plain text, rebuilt through the canonical path, pinned the regression in `tests/test_session_9fca16ca.py`, and added `session-9fca16ca-double-escaped-summary-link-2026-10-25` to Flagged for Review.
+
+A later merge with `origin/main` `fd4ba08` (PRs #329, #336 and #340) conflicted on generated root bytes, `data/review-notes.json` and `COORDINATION.md`. Resolution preserved every other session’s work: board entries were kept together, review notes were union-merged by ID (274 total), the strictly newer `14:22:27Z` snapshot was retained over main’s `14:20:24Z` snapshot, and main’s code, CSS, workflow and research changes were adopted. The canonical root was rebuilt at the snapshot clock with all merged notes. A merged short-phone CSS change then put the home page’s second probability at bottom y=517 against the 320×568 tab bar y=507; `tests/browser_ce45f672.cjs` caught it. Final integration added a narrowly scoped short-phone card compaction, and all 13 browser suites pass again. Final gates: **1,747 unit tests OK (13 skipped)**, audits 9 OK, integrity 5 OK, verification-c6 12 OK, validator 78 rows / 16 calculations / 727 links / 20 checksums / 181 displayed rows, independent auditors 0 failures, coverage 0 problems. PR #337’s `audit` and `verify-build` checks both passed before the first merge attempt.
+
+Final integration (merge PR #337 without approval, live Pages byte check) is the only open row; its receipt is appended after the live deployment is confirmed.
+
 ---
 
 ## Session b06ee902 — CLAIM 2026-10-25 14:38 UTC (independent audit of the 25 Oct board, and the publish that proves it)
@@ -432,6 +460,62 @@ Other sessions are pushing to `main` continuously (runs at 14:15Z: publish, watc
 verification, and at least four pull-request runs). This session therefore edits **no** file another
 session is working in: no `scripts/`, no `tests/`, no workflow, no root page, no `data/latest.json`.
 `data/review-notes.json` is append-only by convention and will be extended, never rewritten.
+## Session 5717f7d9 — CLAIM 2026-10-25 14:18 UTC (independent line-by-line audit of every-match pick coverage, the HLTV→esportsbook→model ladder, the unresolved/limitations section and mobile discoverability)
+
+> **Post-rebase addendum 2026-10-25 14:55 UTC — re-verified on the newer integrated snapshot.** After
+> rebasing onto current `main` (PRs #322–#333), the committed snapshot is `2026-10-25T14:22:27Z`:
+> **78 feed rows, 16 open · 16 picks · 16 win probabilities · 0 unresolved** (11 `exchange`,
+> 1 `bookmaker_fallback`, 4 `model_vrs`; 62 past rows unpriced). The auditor was hardened in two
+> measured ways while re-verifying: (a) float-safe spread epsilon `> 0.25 + 1e-9` so fixture 1082861's
+> exact 25-point boundary (`0.25000000000000006`, bid .30/ask .55) is correctly strict, matching
+> `scripts/core.py`; (b) `roster_checks.overlap = null` (fixture 1086697, unique Valve label, no HLTV
+> lineup that run) is treated as "continuity not checked", not a failure, while a *duplicated* label
+> still requires ≥3/5 overlap (The Huns → standing 122, 4/5). Re-run on this tree: auditor exit 0
+> (0 fail / 0 flag / 3 info), `tests.test_session_5717f7d9` 18 OK, full suite **1,728 OK (12
+> skipped)**, `scripts.validate` exit 0 (78 rows / 16 calc / 15 pages / 726 links / 20 checksums /
+> 181 displayed rows), mobile probe clean at 320/390/412. No new irregularity → no duplicate review
+> note; the 3 info findings map to existing notes `session-0cc1138a-1081606-no-match-page-2026-10-23`,
+> `book-access`, `esportsbook-access-probe-2026-10-16`.
+
+Board read before claiming from `origin/main` (== local `arena/5717f7d9-maltaproj4` base) at
+`d5b0739` (merge of PR #322). Measured, not assumed: committed `data/latest.json` generated
+`2026-10-25T13:46:54Z`, 78 feed rows, **17 open · 17 picks · 17 win probabilities · 0 unresolved**
+(method mix 11 `exchange`, 1 `exchange_wide`, 1 `bookmaker_fallback`, 4 `model_vrs`); 61 not-open
+past feed rows never priced. On this tree `python -m scripts.validate` is green (78 rows / 17
+calculations / 15 pages / 730 links / 20 checksums / 182 displayed rows) and
+`python -m unittest discover -s tests` is **1,628 tests OK (12 skipped)**. The publisher/diagnostic
+space is saturated by sessions 8e4ff8d2, 6857421f, b85ad9b4, 58354934, 408eb0af, 2ce90427, ece64b74,
+fec4894f, cc4f95ef, 5bf6ae1b, 85087497 (open PRs #318–#327 and queued runs). This session therefore
+takes a strictly **additive, independent-verification** scope and touches no shared production file.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Independent auditor that imports no `scripts.*` code: re-derive every open row's probability (exchange raw-price orientation, book de-vig, Valve Glicko+calibration from the vendored official standings), verify complement/favourite/fair-odds, evidence freshness ≤8h, source-link completeness, no Hotspawn-probability leakage, not-open rows never priced, unresolved contract (reason + attempts) | **done** — `scripts/audit_5717f7d9.py`, exit 0, **0 fail / 0 flag / 3 info**; 17/17 open rows picked and priced, 0 unresolved, all arithmetic re-derived | 5717f7d9 | `scripts/audit_5717f7d9.py` (new), `research/session-5717f7d9/**` (new) | 2026-10-25 14:42 |
+| Verify the user-facing brief on the rendered bytes: executive-summary in-site links to the updated-pick board and the unresolved/limitations section, every displayed pick row has an official source link and both teams' percentages, phone bottom nav, no broken internal links, unresolved section rendered at zero | **done** — headless Chromium at 320/390/412 px: no horizontal overflow, no page errors, quicknav "Updated picks" above the fold, mobile tab bar on every real page, 17/17 pick rows sourced with both %; receipt `research/session-5717f7d9/mobile-probe.json` | 5717f7d9 | `research/session-5717f7d9/**`, `tests/test_session_5717f7d9.py` (new) | 2026-10-25 14:42 |
+| Pin the audit's contracts and current findings as offline regressions; add a Flagged-for-Review note only for a genuinely new, source-linked irregularity (no duplicates); PR to `main`, merge without approval, record receipt | in progress — 18 regressions in `tests/test_session_5717f7d9.py` (incl. 6 fail-closed synthetic tests); no NEW irregularity found so no duplicate review note added (the 3 info findings map to existing notes `session-0cc1138a-1081606-no-match-page-2026-10-23`, `book-access`, `esportsbook-access-probe-2026-10-16`); PR/merge next | 5717f7d9 | `tests/test_session_5717f7d9.py` (new), `COORDINATION.md` (this section only) | 2026-10-25 14:42 |
+
+**Verification performed and sources (all in `research/session-5717f7d9/REPORT.md`).** Independent of
+the pipeline: 12 Polymarket rows re-derived from named raw `outcomePrices` (including reverse-order
+fixture 1082697 and case-fold BRUTE/Brute 1079199); the Thunderpick/BO3.gg book row de-vigged from
+1.60/2.20 to 0.5789/0.4211; all 4 VRS rows re-derived with Valve Glicko RD 75 + fit slope 0.7986 and
+cross-checked point/standing/roster against the vendored Valve file (commit `eec4853d…`), including the
+duplicated "The Huns" label disambiguated to standing 122 by 4/5 HLTV roster overlap. Per-fixture
+`attempts` ledgers confirm the brief's ordering (Polymarket → HLTV → Pinnacle → wide exchange →
+Thunderpick/GG.BET → BO3.gg/EGW books → Valve VRS → HLTV mirror → rank/form) before any row is left
+without a pick. Gates: auditor exit 0; `tests.test_session_5717f7d9` 18 OK; full suite **1,646 OK (12
+skipped)**; canonical `scripts.validate` exit 0 (78 rows / 17 calc / 15 pages / 730 links / 20
+checksums / 182 displayed rows).
+
+**Irregularities (non-blocking, source-linked, no new note because each is a disclosed recurring
+limit):** (1) fixtures 1086696/1086697 have no dedicated Hotspawn match page → lobby link, feed receipt
+with sha256 remains the primary source; (2) GG.BET and two EGamersWorld gap rechecks returned HTTP 403
+this run; (3) 61/78 feed rows are past-dated and are correctly never priced.
+
+Non-overlap: this session never edits `scripts/{validate,core,build,refresh,vrs,vrs_mirror,hltv,books}.py`,
+the generated root pages/assets, `data/latest.json`, `data/matches.csv`, `build-info.json` or any
+workflow. If the audit finds a production defect it is logged here and on Flagged for Review with the
+source, not patched inside another session's scope.
+
 
 ## Session b85ad9b4 — CLAIM 2026-10-25 13:30 UTC (the publisher is red; the live board withholds every pick)
 
@@ -10335,79 +10419,86 @@ per-fixture page, blank `best_of`, the 23-point spread row, the listing without 
 20-day-old Valve standings behind the four originated lines, and the GG.BET 403 / Thunderpick adapter
 limitations.
 
-## Session 65af11da — delivery receipt (2026-10-25 15:15 UTC): PR #330 merged, the fix is on the live site
+## Session 408eb0af — delivery receipt: #323 merged, publisher green, live board verified (2026-10-25 15:20 UTC)
 
-**PR [#330](https://github.com/buffedlizard55-lab/MaltaProj4/pull/330) merged to `main` without waiting for
-approval at 2026-10-25T14:45:44Z as `9f54243`.** Both required checks passed on the head it was gated on
-(`verify-build` 2m40s, `audit` 42s, run [40202678496](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40202678496));
-the PR's own `deploy` job is intentionally skipped on pull requests. `main` moved five times during the session
-and every conflict — `COORDINATION.md` only — was resolved by keeping the other session's entry in full and
-appending this one, never by overwriting it.
+**PR [#323](https://github.com/buffedlizard55-lab/MaltaProj4/pull/323) merged to `main` at 2026-10-25T14:22:05Z**, merge commit
+`c216e17`, without waiting for approval per protocol. It was not mergeable on first attempt (another session had moved `main`);
+the conflict was resolved by **taking `main`'s `tests/browser_aeafcbe6.cjs`** — main had already adopted the same stale-board
+patch from #313 with different wording — and by appending my two review notes to `main`'s `data/review-notes.json` instead of
+overwriting it. Nothing from another session was discarded.
 
-**Published and read back from the public host (15:15Z).** `build-info.json` now serves revision `05e991e`
-(which contains this merge), `built_at`/`snapshot_generated_at` `2026-10-25T14:59:26Z`, 78 rows. The executive
-summary on <https://buffedlizard55-lab.github.io/MaltaProj4/> reads **"63 of 78 feed rows are not open by
-sourced status or start time"**, and the banner accounts for all of them additively: **"62 are past-dated
-records … and 1 more is retained but not open at this snapshot's own clock"** — the two numbers now agree with
-each other and with the arithmetic. The board itself: **15 open CS2 matches · 15 with a pick · 15 with a win
-probability · 0 unresolved**, next pick `RED Canids Academy` 55.5% at 16:00Z, method mix 11 market · 4 VRS model.
+**The outage is over, measured on the public site, not asserted.** `https://buffedlizard55-lab.github.io/MaltaProj4/` served, at
+14:59Z, *"Snapshot inside its 8-hour evidence window · 15 open CS2 match(es) · 15 with a pick · 15 with a win probability ·
+0 unresolved"*, `Next pick RED Canids Academy 55.5% · 25 Oct 16:00 UTC`, with 11 market lines and 4 originated VRS model lines.
+At 13:47Z it had been serving *"0 with a pick · 14 unresolved"*. Fixture **1086697 `Projeto do KinGui` vs `Yawara`** — the exact
+row whose roster assertion froze every scheduled publish — now publishes as a model line (51.0% / 49.0%), i.e. the row is priced
+through the register bridge rather than stopping the board.
 
-**Local gates on the merged tree before the merge** (branch rebased onto `main` `c03e914`): 1,702 unit tests OK
-(12 skipped); `scripts.validate` exit 0 against both the rebuilt `public/` and the committed root — 78 source
-rows, 16 probability calculations reproduced, 15 pages, 726 internal links/assets, 20 checksums, 180 displayed
-rows; Chromium mobile suite `failures: []` at 320x568, 390x844, 412x915.
+**The new section is live.** `unresolved.html` and the executive summary's unresolved-and-limitations section both render
+`#measured-source-access`: nine outside line sources with the measured HTTP result, the endpoint, and a link to that source's
+own committed response bytes (`research/session-408eb0af/probe/bodies/`). Verified by reading the published page, not the build
+output: EGamersWorld 403, GG.BET 403, Bovada JSON 404, Oddspedia JSON 400, Thunderpick's page a 14.6 kB shell, Polymarket 200
+(491 entries), Pinnacle 200 (36 CS2 matchups), BO3.gg 200, HLTV 200 (identity only).
 
-**Flagged for review, non-blocking — the one that matters.** While this session watched, almost every
-`main` push publication was cancelled before it could run: `40203755048` (this merge), `40203554746`,
-`40204967815`, `40204967850`, all `conclusion: cancelled`, each superseded within seconds by the next merge
-onto `main` in the shared `cs2-scout-refs/heads/main` concurrency group, while the replacement runs sat
-`queued`/`pending` for tens of minutes. Publication still happened for `05e991e` (14:59:26Z build is live), so
-this is not a failure today — but on a day with this merge rate a run can be starved repeatedly, and once the
-last published snapshot passes its eight-hour window the browser withholds every pick, which is exactly the
-symptom the brief reports. It is a queue-contention property of the shared concurrency group, not of this
-session's change; the session that owns `pages.yml` is the right place to decide whether `main` publication
-needs a cancel-proof slot (for example a single queued run per SHA rather than a superseded one).
+**Gates on the merged tree, run locally this session:** 1,646 unit tests OK (skipped=12) · audits 9 OK ·
+`verification-95b588c2` 5 OK · `verification-c6` 12 OK · `scripts.build` + `scripts.validate` green (78 rows, 16 calculations,
+15 pages, 724 links, 20 checksums) · `npm run test:browser` **exit 0**. `data/latest.json` was never hand-edited on this branch.
 
-**Unchanged by this session.** No pick, price, probability, roster or evidence clock was edited; `data/latest.json`
-carries whatever the publishing run captured. The two unresolved-row caveats from the claim (Hotspawn has no
-per-match page for fixtures 1086696/1086697; every count is now derived and pinned by
-`tests/test_session_65af11da.py`) still stand.
+**Flagged, non-blocking.** (a) Runner contention was measurable all afternoon: about six sessions shared the pool, main's
+`pages.yml` runs were cancelled in sequence while newer pushes arrived (40204062257, 40204321562, 40204967850, 40205236116), and
+the committed root that the live site serves was staged at 15:00:47Z by whichever run completed first. No pick, price or source
+was affected. (b) The 51/49 originated line's directional pick, and the `Projeto do KinGui` / `Tropa do KinGui` /
+`ex-Keyd Stars` identity judgment it rests on, are on Flagged for Review for manual acceptance. (c) Paid multi-book odds APIs
+exist (odds-api.io, OddsPapi, esportsodds.gg, the-odds-api) but every one needs a key this project does not hold; none was used
+and none is described as available.
 
-## Session 65af11da — scope extension (2026-10-25 15:40 UTC): the 320x568 phone card, a shared gate that is red on `main`'s board
+## Session 65af11da — the 320x568 first screen, after 9fca16ca (2026-10-25 15:55 UTC)
 
-Claimed by this session because no other live row owns it today: the paired `site/assets/style.css` /
-`assets/style.css` and `tests/test_session_65af11da.py`. Yesterday's `6b8b4be0` scope (tall-phone filter order)
-is merged and finished; today's `58354934` row closed the same *area* as a duplicate on the 13:5x board, and it
-was correct for that board — a longer club name defeats it.
+Claimed by this session: paired `site/assets/style.css` / `assets/style.css`,
+`tests/test_session_65af11da.py`, plus the root manifest restage. Yesterday's `6b8b4be0` scope
+(tall-phone filter order) and today's `58354934` row are both closed; `9fca16ca` later merged a
+short-phone **compaction** for this same card, so this is an addition to that fix, not a duplicate of it.
 
-**Reproduced, not inferred.** `npm run test:browser` on a board built from `main`'s own snapshot
-(`data/latest.json`, `--now 15:18Z`) fails the `browser_ce45f672` gate:
+**Reproduced, not inferred.** On the board built from `main`'s own snapshot, the `browser_ce45f672` gate
+failed with
 
 ```
 AssertionError: 320px a win probability is hidden behind the tab bar:
   [{"y":461,"bottom":483},{"y":486,"bottom":517}]
 ```
 
-The first glance card is `BORRACHEIROS vs RED Canids Academy`; the second score row wraps and the second
-probability ends at y=517 behind the fixed tab bar at y=507, on the 320x568 phone the brief is about. Three
-other sessions' pull requests (`40205161021`, `40205219482`, and this session's docs-only `#341`) failed the
-same step in the same window, so this is a live blocker on the shared gate and not a property of one branch.
+First glance card `BORRACHEIROS vs RED Canids Academy`; the second score row wraps, and the second
+probability ended at y=517 behind the fixed tab bar at y=507 on the 320x568 phone the brief is about.
+Three other sessions' pull requests failed the same step in the same window (`40205161021`, `40205219482`,
+and this session's docs-only `#341`), so this was a live blocker on a shared gate.
 
-**Fix.** On short phones only — `(max-width:650px) and (max-height:700px)` — the two score rows move above the
-"OUR PICK" caption inside the card, and two small chrome gaps above the list tighten by 8px. Nothing is
-truncated, hidden or re-worded: the same two club names, the same two percentages, the same caption, in an
-order that survives a long name. Taller phones and desktop keep the caption-first order.
+**Why 9fca16ca's fix is not enough on its own.** It reclaims a fixed 10px from padding, which put the second
+probability at roughly y=507 — exactly the bar's edge. That budget is spent by one wrapped name; the next
+longer club name spends more. This change reorders instead of squeezing: on short phones the two score rows
+come before the "OUR PICK" caption inside the card, so the percentages are never the thing pushed under the
+bar. Nothing is truncated, hidden or re-worded — same two club names, same two percentages, same caption,
+same links, only their order, and only at `(max-width:650px) and (max-height:700px)`. Taller phones and
+desktop keep the caption-first order. `9fca16ca`'s compaction is kept as-is; the two rules do not conflict
+(this block wins only the two `margin-top` declarations it shares, and re-declares none of the padding).
 
-**Measured after the fix** (Chromium against `public/` built from the same snapshot):
+**Measured after the merge** (Chromium, `public/` built from the 14:22Z snapshot, 16 priced matches):
 
-| Viewport | Tab bar top | Score rows end | Verdict |
-| --- | --- | --- | --- |
-| 320x568 | 507 | 495 | both chances above the bar, 12px clear |
-| 390x844 | 783 | 528 | unchanged order, clear |
+| Viewport | Card | Win chances (y) | Caption | Tab bar top | Verdict |
+| --- | --- | --- | --- | --- | --- |
+| 320x568 | y=379 h=195 | 432–454, 456–487 | 492–507 | 507 | both chances 20px clear of the bar |
+| 390x844 | y=378 | 473–494, 497–528 | 453–469 | 783 | caption-first order unchanged |
+| 412x915 | y=378 | 473–494, 497–528 | 453–469 | 854 | caption-first order unchanged |
 
-**Verification.** `npm run test:browser` **exit 0, 11 suites pass** on that board (including `ce45f672`, the
-suite that reproduced the failure); 1,738 unit tests OK (13 skipped); audits 9 OK; `scripts.validate` exit 0
-against the rebuilt root. The regression test added to `tests/test_session_65af11da.py` pins the rule, its
-short-phone and index-page scoping, the byte identity of the two stylesheet copies and the sibling markup the
-order rule depends on; the geometry itself stays measured by the browser suite rather than asserted in a unit
+**Verification on the merged tree** (`origin/main` at `f07cfc6`): `npm run test:browser` **exit 0**, all
+suites pass with `"failures": []`, including `ce45f672` (the gradient that reproduced the failure) and the
+12-suite phone sweep; `python -m unittest discover -s tests` **1,768 tests OK (13 skipped)**; 9 audits OK;
+`scripts.validate` against the restaged root: 16 probability calculations reproduced, 15 pages, 727
+links/assets, 20 checksums. The same suite on a clean `origin/main` worktree is 1,765 tests OK, so the three
+added tests are the only new ones. The new regression class in `tests/test_session_65af11da.py` pins the
+rule, its short-phone and index-page scoping, the byte identity of the two stylesheet copies and the sibling
+markup the order depends on; the geometry itself is measured by that browser suite, not asserted in a unit
 test.
+
+The root manifest (`build-info.json`) is restaged at the merged build so `sha256(assets/style.css)` and the
+revision stamp describe what ships; `data/latest.json`, `data/matches.csv` and `review.html` are the merged
+14:22Z snapshot, byte-identical to `main`'s — this session refreshes no price and invents no pick.

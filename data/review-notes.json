@@ -1,5 +1,51 @@
 [
  {
+  "id": "session-046b2e46-thin-model-edge-2026-10-25",
+  "status": "Open — product decision for manual review",
+  "finding": "Fixture 1086697 (Projeto do KinGui vs Yawara, CCT South America 2026 Series #7, 2026-10-25T19:00:00Z) is published from our own originated Valve-VRS line at 51.0% / 49.0%: the required directional pick is Projeto do KinGui on a 1.2 percentage-point edge. The arithmetic is fully reproducible from Valve's official standings file and Valve's published fit slope, and the row is labelled as a non-market estimate, but the model's own published calibration spread is far wider than 1.2 points. The product question is whether such a thin originated edge should be presented as a pick at all, since no market line exists for this fixture and the alternative is an unresolved row rather than a different price. Left visible for manual review instead of being suppressed, rounded, or strengthened.",
+  "sources": [
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "label": "Valve official global standings used as the model input"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/model/fit.js",
+    "label": "Valve's published expectation formula"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/modelfit.png",
+    "label": "Valve's published model-fit calibration"
+   },
+   {
+    "url": "https://play.hotspawn.com/cs2-pickems",
+    "label": "Hotspawn fixture inventory (locks only, never a probability)"
+   }
+  ]
+ },
+ {
+  "id": "session-046b2e46-lobby-level-source-link-2026-10-25",
+  "status": "Open — source-link limitation, not a data error",
+  "finding": "Two open fixtures in the 2026-10-25T13:28Z capture (1086696 BORRACHEIROS vs RED Canids Academy and 1086697 Projeto do KinGui vs Yawara) are served by Hotspawn only through its lobby/pickems page: the feed returns no per-match URL for them, so the row's fixture link is the lobby while its price evidence still links the exact Polymarket market or Valve standings file. The percentage, the pick and the lock time are unaffected and each carries its own official source. Recorded so a reviewer sees why those two rows link a lobby page instead of a match page.",
+  "sources": [
+   {
+    "url": "https://play.hotspawn.com/cs2-pickems",
+    "label": "Hotspawn pickems lobby page that carries these fixtures"
+   },
+   {
+    "url": "https://play.hotspawn.com/lobby",
+    "label": "Hotspawn CS2 lobby"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/markets/6158760",
+    "label": "Polymarket market for fixture 1086696"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "label": "Valve standings backing fixture 1086697's model line"
+   }
+  ]
+ },
+ {
   "id": "session-53284c80-alias-roster-provenance-2026-10-25",
   "status": "Repaired on this branch — needs review of the alias policy; live coverage unverified until a fresh publish",
   "finding": "On 2026-10-25 the scheduled publisher failed at pages.yml step 13 (runs 40170923727 and 40193317196), so the 01:47Z snapshot aged out and the live board withheld every pick. Independently reproduced: Hotspawn labels the club Projeto do KinGui while HLTV’s match page for the same slot labels it Tropa do KinGui. data/identities.json already registers those names as one club (HLTV match 2399904, Polymarket market 6033256). scripts.validate.lineup_source_ok compared plain_name, so a verified Valve roster on that HLTV page was rejected and one model row froze publication. verification-c6 already accepts the alias, which is why quarantine could not save the run. lineup_source_ok now uses core.norm (registered aliases only). An unregistered pair is still refused. No probability was invented.",
@@ -5842,125 +5888,6 @@
   ]
  },
  {
-  "id": "session-85087497-validator-alias-freeze-2026-10-25",
-  "status": "Needs review — publisher root cause fixed; validator identity rule aligned with the collector and the independent auditor",
-  "finding": "Measured: from the 2026-10-25T01:47:42Z snapshot until this session, every scheduled publish failed at 'Build and independently verify every row, calculation and internal link' (runs 40170923727 at 06:56Z and 40193317196 at 12:29Z are the retained examples), so the live site withheld all picks from about 09:47Z. The non-publishing harvest on arena/85087497-maltaproj4 (run 40197633940) reproduced the gate exactly on a fresh 13:31Z snapshot: refresh priced 17/17 open rows, quarantine withheld 0, the independent row auditor reported 0 failures, and scripts.validate asserted 'Model roster has no HLTV source on this row'. The row is Hotspawn fixture 1086697 (Projeto do KinGui vs Yawara, 2026-10-25T19:00Z), priced model_vrs 51.0/49.0. HLTV's exact-pair/exact-start fixture page lists the same club and the identical starting five (drg, ALLE, ckzao, xureba, lash) under the label Tropa do KinGui, a sourced alias pair already in data/identities.json (HLTV match 2399904 basis). The collector (scripts.core.orientation/norm) and verification-c6 accept that alias; scripts.validate.lineup_source_ok compared raw labels only, so one legitimately sourced model row froze the whole board and cascaded into 16 unit-test failures at the root-staging gate. The validator now accepts the fixture label or its verified register alias while still requiring the exact same five players and an HLTV URL on the row; an unregistered label or a single changed player still fails (tests/test_session_85087497.py). Review point: this widens the validator to the collector's existing identity rule; it does not add any new alias, and the standing alias-scope risk (a register entry can map a future fixture) remains governed by the exact opponent-pair + exact UTC-start requirement and is already flagged as c828a275-alias-scope-risk-2026-10-22.",
-  "sources": [
-   {
-    "label": "Harvest run 40197633940 (fresh-snapshot gate replay, logs committed to the session branch)",
-    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40197633940"
-   },
-   {
-    "label": "Identity register entry: Tropa do KinGui / Projeto do KinGui (HLTV match 2399904 basis)",
-    "url": "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7"
-   },
-   {
-    "label": "scripts/validate.py lineup_source_ok (register-alias label, exact players)",
-    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/scripts/validate.py"
-   },
-   {
-    "label": "Failed scheduled publish run 40193317196 (2026-10-25T12:29Z)",
-    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40193317196"
-   }
-  ]
- },
- {
-  "id": "session-85087497-short-phone-picks-fold-2026-10-25",
-  "status": "Needs review — layout compaction on short phones; no content or font-size change",
-  "finding": "Measured on the same fresh board in Chromium at 320x568: picks.html's first row (ex-Zero Tenacity vs Spirit Academy, exchange 59.5/40.5 with a VRS comparison line) rendered its .prob-pair at y=493..519 while the fixed phone tab bar begins at y=507, so tests/browser_019a253a.cjs ('the first probabilities must clear the tab bar') failed and would have blocked publication even after the validator fix. Long low-tier team names plus the model-comparison line are ordinary content, so the board must absorb them. A short-phone rule (max-width:650px and max-height:700px, picks page only) returns about 34px of vertical chrome — page-head margin, caption padding, card padding and grid gaps — and the same measurement now ends the probabilities at y=443, 64px clear of the tab bar. No text is hidden, no font shrinks, and taller phones are unchanged. Flagged because any future first-row content taller by roughly three more wrapped lines could exhaust the new headroom; the browser gate will catch it as a red run rather than a silent layout loss, and the fix then is chrome, not content removal. The same session also labelled the phone quick-nav count 'unresolved (no %)' because that number counts rows without a percentage (research-only picks included) while the freshness strip's 'unresolved' counts rows with no pick at all, and added a one-tap 'How we price' link (sources.html#method) to the always-visible executive-summary bar.",
-  "sources": [
-   {
-    "label": "Browser gate: tests/browser_019a253a.cjs (pick board clear of the tab bar at 320x568)",
-    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/tests/browser_019a253a.cjs"
-   },
-   {
-    "label": "Updated picks board (phone view)",
-    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/picks.html"
-   },
-   {
-    "label": "Executive summary (quick links to the updated picks)",
-    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/#exec-summary"
-   },
-   {
-    "label": "Method: how a pick is priced when no book lists the match",
-    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/sources.html#method"
-   }
-  ]
- },
- {
-  "id": "session-85087497-kalshi-fallback-probe-2026-10-25",
-  "status": "Needs review — measured fallback candidate for rows no market prices; probe ships, pricing adapter does not (yet)",
-  "finding": "The brief asks for a sourced way to resolve matches that featured markets do not cover. On the 2026-10-25T14:01Z board there were none (16 open, 16 picked, 16 priced, 0 unresolved), so this session measured the next keyless candidate instead of inventing an adapter under time pressure. Kalshi's public Trade API needs no key for market data. A runner-side probe (scripts/probe_85087497.py, receipts with HTTP status/sha256 in research/harvest-85087497/probe.json, harvest run 40199883762) listed 15,393 series; the CS2 moneyline series KXCS2GAME held 120 open markets forming exactly 60 paired two-sided events (one '<Team> wins' market per side, yes_sub_title naming the team). Paired by event_ticker and matched with this project's exact-label/register rule (scripts.core.norm, never substring), 11 of the 16 open Hotspawn fixtures have an exact Kalshi event, including low-tier rows. Two near-misses must stay excluded: BESTIA vs paiN (Kalshi titles say 'BESTIA Academy wins') and Projeto do KinGui vs Yawara (abbreviated ticker side YawTDKG). Start identity is the unresolved design point, and the probe proves it matters: for 10 of 11 matched fixtures Kalshi's expected_expiration_time equals Hotspawn start + 4h and the event ticker encodes the US-Eastern start, but BORRACHEIROS vs RED Canids Academy implies 19:00Z on Kalshi against Hotspawn/Polymarket 16:00Z, so an adapter must derive and verify the UTC start from Kalshi's own event fields and reject conflicts under the exact-start rule. Spreads at probe time ranged from tight (B8 0.57/0.60) to unusable (Rooster 0.31/0.55, Off Chops 0.51/0.79), so existing spread/liquidity/freshness gates must apply unchanged, and keyed aggregators (odds-api.io etc.) remain unavailable because the brief requires no manual input and the project holds no API key. The same probe's single plain request to HLTV's dated world-ranking page answered HTTP 403 from the runner; the paced production HLTV reads are the ranking route, and no HLTV-points calibration is invented. Separately, the 14:01Z snapshot exposed a latent staged-root freeze: with HLTV pacing withholding fixture 1086697's lineup, the VRS model legitimately published overlap=None under unique standings labels (the validator's contract), while tests/test_session_0fae12a5 asserted an integer overlap and errored; the test now mirrors the validator (None requires label count 1, otherwise >= 3).",
-  "sources": [
-   {
-    "label": "Kalshi API docs: market data without authentication",
-    "url": "https://docs.kalshi.com/getting_started/quick_start_market_data"
-   },
-   {
-    "label": "Kalshi Trade API base used by the probe (series/markets)",
-    "url": "https://external-api.kalshi.com/trade-api/v2/series/KXCS2GAME"
-   },
-   {
-    "label": "Harvest run 40199883762 (probe receipts committed as research/harvest-85087497/probe.json)",
-    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40199883762"
-   },
-   {
-    "label": "HLTV dated world ranking (403 to the probe's single request, 2026-10-25T14:01Z)",
-    "url": "https://www.hltv.org/ranking/teams/2026/october/25"
-   },
-   {
-    "label": "Unresolved picks & limitations — where an unpriced row would be published",
-    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/unresolved.html"
-   }
-  ]
- },
- {
-  "id": "session-046b2e46-thin-model-edge-2026-10-25",
-  "status": "Open — product decision for manual review",
-  "finding": "Fixture 1086697 (Projeto do KinGui vs Yawara, CCT South America 2026 Series #7, 2026-10-25T19:00:00Z) is published from our own originated Valve-VRS line at 51.0% / 49.0%: the required directional pick is Projeto do KinGui on a 1.2 percentage-point edge. The arithmetic is fully reproducible from Valve's official standings file and Valve's published fit slope, and the row is labelled as a non-market estimate, but the model's own published calibration spread is far wider than 1.2 points. The product question is whether such a thin originated edge should be presented as a pick at all, since no market line exists for this fixture and the alternative is an unresolved row rather than a different price. Left visible for manual review instead of being suppressed, rounded, or strengthened.",
-  "sources": [
-   {
-    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
-    "label": "Valve official global standings used as the model input"
-   },
-   {
-    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/model/fit.js",
-    "label": "Valve's published expectation formula"
-   },
-   {
-    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/modelfit.png",
-    "label": "Valve's published model-fit calibration"
-   },
-   {
-    "url": "https://play.hotspawn.com/cs2-pickems",
-    "label": "Hotspawn fixture inventory (locks only, never a probability)"
-   }
-  ]
- },
- {
-  "id": "session-046b2e46-lobby-level-source-link-2026-10-25",
-  "status": "Open — source-link limitation, not a data error",
-  "finding": "Two open fixtures in the 2026-10-25T13:28Z capture (1086696 BORRACHEIROS vs RED Canids Academy and 1086697 Projeto do KinGui vs Yawara) are served by Hotspawn only through its lobby/pickems page: the feed returns no per-match URL for them, so the row's fixture link is the lobby while its price evidence still links the exact Polymarket market or Valve standings file. The percentage, the pick and the lock time are unaffected and each carries its own official source. Recorded so a reviewer sees why those two rows link a lobby page instead of a match page.",
-  "sources": [
-   {
-    "url": "https://play.hotspawn.com/cs2-pickems",
-    "label": "Hotspawn pickems lobby page that carries these fixtures"
-   },
-   {
-    "url": "https://play.hotspawn.com/lobby",
-    "label": "Hotspawn CS2 lobby"
-   },
-   {
-    "url": "https://gamma-api.polymarket.com/markets/6158760",
-    "label": "Polymarket market for fixture 1086696"
-   },
-   {
-    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
-    "label": "Valve standings backing fixture 1086697's model line"
-   }
-  ]
- },
- {
   "id": "session-bd650209-fixture-page-link-missing-2026-10-25",
   "status": "Needs review — two open rows link to the Hotspawn CS2 pick'em lobby instead of a per-fixture page",
   "finding": "On the 2026-10-25T13:56:28Z independent capture (run 40198565605, 78 Hotspawn CS2 feed rows, 16 open, 16 picks, 16 win probabilities, 0 unresolved) every row carries an official Hotspawn link, but two of the sixteen open rows - fixture 1086696 (BORRACHEIROS vs RED Canids Academy) and fixture 1086697 (Projeto do KinGui vs Yawara) - cite 'https://play.hotspawn.com/cs2-pickems', the CS2 pick'em lobby, as their source_url, because no per-fixture 'www.hotspawn.com/matches/...' page was linked in the inventory this run read. The other fourteen open rows cite their own per-fixture pages. The identity of those two rows is therefore confirmed by Hotspawn's own fixture feed and lobby, not by a fixture page a reviewer can open; no slug was guessed or constructed, which is why no per-fixture link was invented. Both rows are otherwise fully sourced: 1086696 is priced from Polymarket market 6158760, and 1086697 from Valve's official standings through the labelled VRS model line. Recorded for manual review rather than repaired, because inventing a per-fixture URL from team labels would be exactly the inference this project forbids. Impact is presentation only: no pick or probability depends on that link.",
@@ -6198,6 +6125,184 @@
    {
     "label": "Full audit, row by row",
     "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-b06ee902/VERIFICATION.md"
+   }
+  ]
+ },
+ {
+  "id": "session-9fca16ca-dated-market-drift-2026-10-25",
+  "status": "Resolved on the newer 14:22Z capture; retained for review because market quotes are dated observations",
+  "finding": "Direct official reads of eleven Polymarket Gamma market endpoints at 14:18–14:23 UTC on 25 Oct 2026 found that three quotes had moved relative to the earlier retained 13:54Z snapshot: market 6158760 from 42.5/57.5% to 43.5/56.5%, market 6066508 from 36.5/63.5% to 37/63%, and market 6066525 from 43/57% to 42.5/57.5%. A normal gated publisher capture at 14:22:27Z then refreshed those raw receipts; the merged board now stores 43.5/56.5%, 37/63% and 42.5/57.5% respectively, and all eleven direct official exchange checks agree with the current snapshot's stored orientation and values. No quote was hand-edited. The 15-minute publisher and 10-minute watchdog continue to recapture every source receipt under the same validation gates. Market-implied values remain estimates, not guarantees, and the earlier movement is retained so a reviewer sees why a dated snapshot is not a live tick.",
+  "sources": [
+   {
+    "url": "https://gamma-api.polymarket.com/markets/6158760",
+    "label": "Polymarket Gamma API: later official quote for BORRACHEIROS vs RED Canids Academy"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/markets/6066508",
+    "label": "Polymarket Gamma API: later official quote for Ground Zero vs Off Chops"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/markets/6066525",
+    "label": "Polymarket Gamma API: later official quote for Rooster vs Abyssal"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-9fca16ca/official-checks.json",
+    "label": "Dated direct-source check receipt for all eleven exchange markets"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/.github/workflows/pages.yml",
+    "label": "Publisher cadence and validation gates"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/.github/workflows/refresh-watchdog.yml",
+    "label": "Ten-minute freshness watchdog"
+   }
+  ]
+ },
+ {
+  "id": "session-9fca16ca-fallback-access-limitations-2026-10-25",
+  "status": "For review — low-tier source access limitations; no unsupported value was filled in",
+  "finding": "For this snapshot all 16 open Hotspawn CS2 fixtures have a directional pick and both win probabilities, with 0 unresolved. Four low-tier fixtures had no accepted exchange or bookmaker whole-match line, so the site publishes a clearly labelled originated VRS model line from Valve’s official 2026-10-05 standings, checked against HLTV fixture identity and lineups. A fifth low-tier fixture is priced from a researched Thunderpick series moneyline read through BO3.gg’s official API; that listing has no operator tick-level update timestamp, so only its observation time is published. GG.BET returned a regional-access notice / HTTP 403 and EGamersWorld returned HTTP 403 for gap rechecks; those restrictions are recorded, never bypassed and never treated as proof that a market is absent. Pinnacle’s official guest API resolved, but no resolvable whole-match price was accepted for the four model rows. Hotspawn supplies fixture inventory and locks only; its crowd percentages and HLTV crowd votes are never used as probability inputs. Every row’s attempted source ladder, limitation and official link is retained on the evidence page.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-9fca16ca/ROW-LEDGER.md",
+    "label": "Line-by-line ledger: all 16 open rows, source ladder and later official checks"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "label": "Valve official global standings, the originated model-line inputs"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399115/color-vs-ex-zero-tenacity-nodwin-clutch-series-13",
+    "label": "HLTV fixture and lineups for one originated model row"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399918/tropa-do-kingui-vs-yawara-cct-2026-south-america-series-7",
+    "label": "HLTV identity and lineups for the sourced club alias"
+   },
+   {
+    "url": "https://bo3.gg/matches/nexvoid-vs-alter-ego-26-10-2026",
+    "label": "BO3.gg match page with the researched Thunderpick 1.60 / 2.20 listing"
+   },
+   {
+    "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+    "label": "Pinnacle official esports moneyline API"
+   },
+   {
+    "url": "https://thunderpick.io/esports/cs2-betting",
+    "label": "Thunderpick official CS2 betting page"
+   },
+   {
+    "url": "https://gg.bet/en/esports/counter-strike",
+    "label": "GG.BET official CS2 page, regional access restriction observed"
+   },
+   {
+    "url": "https://egamersworld.com/counterstrike/match/EkalRNMvVx/hotu-vs-the-huns-esports-SfdtzDhiK",
+    "label": "EGamersWorld gap-recheck page, access restriction recorded"
+   }
+  ]
+ },
+ {
+  "id": "session-9fca16ca-double-escaped-summary-link-2026-10-25",
+  "status": "Fixed and regression-tested; flagged because the defect was user-visible in the executive summary",
+  "finding": "A rebase onto main commit 05e991e (session 65af11da) exposed a double-escaped HTML entity in the executive-summary limitations list: scripts/build.py passed a pre-escaped ampersand entity inside the HLTV analytics link label to link(), which escapes labels itself, so index.html and unresolved.html rendered the literal entity text instead of the word and. The existing test_session_f0814674 gate caught it; final integration changed the builder label to use a plain ampersand, rebuilt the root with the canonical scripts.build and scripts.stage_legacy path, and pinned the exact once-escaped output plus the absence of double-escaped entities across all root pages in tests/test_session_9fca16ca.py. No source value, probability or pick was changed.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/scripts/build.py",
+    "label": "Canonical builder: label is escaped once by link()"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/tests/test_session_9fca16ca.py",
+    "label": "Final-integration regression for all rendered root pages"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/tests/test_session_f0814674.py",
+    "label": "Existing gate that first detected the double escape"
+   },
+   {
+    "url": "https://www.hltv.org/betting/analytics/2399918/tropa-do-kingui-vs-yawara-cct-2026-south-america-series-7",
+    "label": "Official HLTV analytics overview linked by the corrected label"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-9fca16ca/logs/unit.txt",
+    "label": "Unit-suite receipt used to detect the regression"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/tests/test_session_f0814674.py",
+    "label": "Existing gate that first detected the double escape"
+   }
+  ]
+ },
+ {
+  "id": "session-85087497-validator-alias-freeze-2026-10-25",
+  "status": "Needs review — publisher root cause fixed; validator identity rule aligned with the collector and the independent auditor",
+  "finding": "Measured: from the 2026-10-25T01:47:42Z snapshot until this session, every scheduled publish failed at 'Build and independently verify every row, calculation and internal link' (runs 40170923727 at 06:56Z and 40193317196 at 12:29Z are the retained examples), so the live site withheld all picks from about 09:47Z. The non-publishing harvest on arena/85087497-maltaproj4 (run 40197633940) reproduced the gate exactly on a fresh 13:31Z snapshot: refresh priced 17/17 open rows, quarantine withheld 0, the independent row auditor reported 0 failures, and scripts.validate asserted 'Model roster has no HLTV source on this row'. The row is Hotspawn fixture 1086697 (Projeto do KinGui vs Yawara, 2026-10-25T19:00Z), priced model_vrs 51.0/49.0. HLTV's exact-pair/exact-start fixture page lists the same club and the identical starting five (drg, ALLE, ckzao, xureba, lash) under the label Tropa do KinGui, a sourced alias pair already in data/identities.json (HLTV match 2399904 basis). The collector (scripts.core.orientation/norm) and verification-c6 accept that alias; scripts.validate.lineup_source_ok compared raw labels only, so one legitimately sourced model row froze the whole board and cascaded into 16 unit-test failures at the root-staging gate. The validator now accepts the fixture label or its verified register alias while still requiring the exact same five players and an HLTV URL on the row; an unregistered label or a single changed player still fails (tests/test_session_85087497.py). Review point: this widens the validator to the collector's existing identity rule; it does not add any new alias, and the standing alias-scope risk (a register entry can map a future fixture) remains governed by the exact opponent-pair + exact UTC-start requirement and is already flagged as c828a275-alias-scope-risk-2026-10-22.",
+  "sources": [
+   {
+    "label": "Harvest run 40197633940 (fresh-snapshot gate replay, logs committed to the session branch)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40197633940"
+   },
+   {
+    "label": "Identity register entry: Tropa do KinGui / Projeto do KinGui (HLTV match 2399904 basis)",
+    "url": "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7"
+   },
+   {
+    "label": "scripts/validate.py lineup_source_ok (register-alias label, exact players)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/scripts/validate.py"
+   },
+   {
+    "label": "Failed scheduled publish run 40193317196 (2026-10-25T12:29Z)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40193317196"
+   }
+  ]
+ },
+ {
+  "id": "session-85087497-short-phone-picks-fold-2026-10-25",
+  "status": "Needs review — layout compaction on short phones; no content or font-size change",
+  "finding": "Measured on the same fresh board in Chromium at 320x568: picks.html's first row (ex-Zero Tenacity vs Spirit Academy, exchange 59.5/40.5 with a VRS comparison line) rendered its .prob-pair at y=493..519 while the fixed phone tab bar begins at y=507, so tests/browser_019a253a.cjs ('the first probabilities must clear the tab bar') failed and would have blocked publication even after the validator fix. Long low-tier team names plus the model-comparison line are ordinary content, so the board must absorb them. A short-phone rule (max-width:650px and max-height:700px, picks page only) returns about 34px of vertical chrome — page-head margin, caption padding, card padding and grid gaps — and the same measurement now ends the probabilities at y=443, 64px clear of the tab bar. No text is hidden, no font shrinks, and taller phones are unchanged. Flagged because any future first-row content taller by roughly three more wrapped lines could exhaust the new headroom; the browser gate will catch it as a red run rather than a silent layout loss, and the fix then is chrome, not content removal. The same session also labelled the phone quick-nav count 'unresolved (no %)' because that number counts rows without a percentage (research-only picks included) while the freshness strip's 'unresolved' counts rows with no pick at all, and added a one-tap 'How we price' link (sources.html#method) to the always-visible executive-summary bar.",
+  "sources": [
+   {
+    "label": "Browser gate: tests/browser_019a253a.cjs (pick board clear of the tab bar at 320x568)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/tests/browser_019a253a.cjs"
+   },
+   {
+    "label": "Updated picks board (phone view)",
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/picks.html"
+   },
+   {
+    "label": "Executive summary (quick links to the updated picks)",
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/#exec-summary"
+   },
+   {
+    "label": "Method: how a pick is priced when no book lists the match",
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/sources.html#method"
+   }
+  ]
+ },
+ {
+  "id": "session-85087497-kalshi-fallback-probe-2026-10-25",
+  "status": "Needs review — measured fallback candidate for rows no market prices; probe ships, pricing adapter does not (yet)",
+  "finding": "The brief asks for a sourced way to resolve matches that featured markets do not cover. On the 2026-10-25T14:01Z board there were none (16 open, 16 picked, 16 priced, 0 unresolved), so this session measured the next keyless candidate instead of inventing an adapter under time pressure. Kalshi's public Trade API needs no key for market data. A runner-side probe (scripts/probe_85087497.py, receipts with HTTP status/sha256 in research/harvest-85087497/probe.json, harvest run 40199883762) listed 15,393 series; the CS2 moneyline series KXCS2GAME held 120 open markets forming exactly 60 paired two-sided events (one '<Team> wins' market per side, yes_sub_title naming the team). Paired by event_ticker and matched with this project's exact-label/register rule (scripts.core.norm, never substring), 11 of the 16 open Hotspawn fixtures have an exact Kalshi event, including low-tier rows. Two near-misses must stay excluded: BESTIA vs paiN (Kalshi titles say 'BESTIA Academy wins') and Projeto do KinGui vs Yawara (abbreviated ticker side YawTDKG). Start identity is the unresolved design point, and the probe proves it matters: for 10 of 11 matched fixtures Kalshi's expected_expiration_time equals Hotspawn start + 4h and the event ticker encodes the US-Eastern start, but BORRACHEIROS vs RED Canids Academy implies 19:00Z on Kalshi against Hotspawn/Polymarket 16:00Z, so an adapter must derive and verify the UTC start from Kalshi's own event fields and reject conflicts under the exact-start rule. Spreads at probe time ranged from tight (B8 0.57/0.60) to unusable (Rooster 0.31/0.55, Off Chops 0.51/0.79), so existing spread/liquidity/freshness gates must apply unchanged, and keyed aggregators (odds-api.io etc.) remain unavailable because the brief requires no manual input and the project holds no API key. The same probe's single plain request to HLTV's dated world-ranking page answered HTTP 403 from the runner; the paced production HLTV reads are the ranking route, and no HLTV-points calibration is invented. Separately, the 14:01Z snapshot exposed a latent staged-root freeze: with HLTV pacing withholding fixture 1086697's lineup, the VRS model legitimately published overlap=None under unique standings labels (the validator's contract), while tests/test_session_0fae12a5 asserted an integer overlap and errored; the test now mirrors the validator (None requires label count 1, otherwise >= 3).",
+  "sources": [
+   {
+    "label": "Kalshi API docs: market data without authentication",
+    "url": "https://docs.kalshi.com/getting_started/quick_start_market_data"
+   },
+   {
+    "label": "Kalshi Trade API base used by the probe (series/markets)",
+    "url": "https://external-api.kalshi.com/trade-api/v2/series/KXCS2GAME"
+   },
+   {
+    "label": "Harvest run 40199883762 (probe receipts committed as research/harvest-85087497/probe.json)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40199883762"
+   },
+   {
+    "label": "HLTV dated world ranking (403 to the probe's single request, 2026-10-25T14:01Z)",
+    "url": "https://www.hltv.org/ranking/teams/2026/october/25"
+   },
+   {
+    "label": "Unresolved picks & limitations — where an unpriced row would be published",
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/unresolved.html"
    }
   ]
  },

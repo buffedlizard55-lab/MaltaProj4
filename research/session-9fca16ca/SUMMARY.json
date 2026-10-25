@@ -1,0 +1,59 @@
+{
+ "snapshot_generated_at": "2026-10-25T14:22:27.352651Z",
+ "rows": 78,
+ "open": 16,
+ "picks": 16,
+ "probabilities": 16,
+ "unresolved": 0,
+ "method_counts": {
+  "exchange": 11,
+  "model_vrs": 4,
+  "bookmaker_fallback": 1
+ },
+ "row_failures": [],
+ "html_failures": [],
+ "receipt_failures": [],
+ "official_quote_movements": [],
+ "source_access_errors": [
+  {
+   "name": "GG.BET fallback access",
+   "url": "https://gg.bet/en/esports/counter-strike",
+   "http_status": 403
+  },
+  {
+   "name": "Book listing gap recheck 1082792",
+   "url": "https://egamersworld.com/counterstrike/match/EkalRNMvVx/hotu-vs-the-huns-esports-SfdtzDhiK",
+   "http_status": 403
+  },
+  {
+   "name": "Book listing gap recheck 1082793",
+   "url": "https://egamersworld.com/counterstrike/match/EkalRNMvVx/1win-vs-5star-esports-4hTvdd1uN",
+   "http_status": null
+  }
+ ],
+ "receipt": {
+  "checks": {
+   "schema": true,
+   "snapshot_timestamp": true,
+   "build_timestamp": true,
+   "row_count": true,
+   "file_count": true,
+   "every_checksum": true,
+   "eight_hour_evidence_window": true
+  },
+  "revision": "6cd861713778d9577c56eca1dd005a09e8447182",
+  "built_at": "2026-10-25T14:52:07.516599Z",
+  "snapshot_generated_at": "2026-10-25T14:22:27.352651Z",
+  "rows": 78,
+  "files_checked": 20
+ },
+ "mobile": {
+  "quicknav_top": {
+   "320x568": 290,
+   "390x844": 300,
+   "412x915": 300
+  },
+  "horizontal_overflow": false
+ },
+ "verified": true
+}

@@ -1,0 +1,434 @@
+[
+ {
+  "id": "1079199",
+  "teams": [
+   "Infinite",
+   "BRUTE"
+  ],
+  "probabilities": [
+   0.435,
+   0.565
+  ],
+  "pick": "BRUTE",
+  "method": "exchange",
+  "checks": {
+   "P1": true,
+   "P2": true,
+   "P3": true,
+   "P4": true,
+   "P5": true,
+   "P6": true,
+   "P7": true,
+   "P8": true
+  },
+  "failed": [],
+  "source_url": "https://www.hotspawn.com/matches/infinite-vs-brute-nodwin-clutch-series-13-1079199",
+  "quote_url": "https://gamma-api.polymarket.com/markets/6072808",
+  "quote_provider": "Polymarket"
+ },
+ {
+  "id": "1086696",
+  "teams": [
+   "BORRACHEIROS",
+   "RED Canids Academy"
+  ],
+  "probabilities": [
+   0.435,
+   0.565
+  ],
+  "pick": "RED Canids Academy",
+  "method": "exchange",
+  "checks": {
+   "P1": true,
+   "P2": true,
+   "P3": true,
+   "P4": true,
+   "P5": true,
+   "P6": true,
+   "P7": true,
+   "P8": true
+  },
+  "failed": [],
+  "source_url": "https://play.hotspawn.com/cs2-pickems",
+  "quote_url": "https://gamma-api.polymarket.com/markets/6158760",
+  "quote_provider": "Polymarket"
+ },
+ {
+  "id": "1079200",
+  "teams": [
+   "Color",
+   "ex-Zero Tenacity"
+  ],
+  "probabilities": [
+   0.6883951727580038,
+   0.31160482724199623
+  ],
+  "pick": "Color",
+  "method": "model_vrs",
+  "checks": {
+   "P1": true,
+   "P2": true,
+   "P3": true,
+   "P4": true,
+   "P5": true,
+   "P6": true,
+   "P7": true,
+   "P8": true
+  },
+  "failed": [],
+  "source_url": "https://www.hotspawn.com/matches/color-vs-ex-zero-tenacity-nodwin-clutch-series-13-1079200",
+  "quote_url": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+  "quote_provider": "Valve VRS model"
+ },
+ {
+  "id": "1081158",
+  "teams": [
+   "FORZE Reload",
+   "ex-RUSTEC"
+  ],
+  "probabilities": [
+   0.565,
+   0.435
+  ],
+  "pick": "FORZE Reload",
+  "method": "exchange",
+  "checks": {
+   "P1": true,
+   "P2": true,
+   "P3": true,
+   "P4": true,
+   "P5": true,
+   "P6": true,
+   "P7": true,
+   "P8": true
+  },
+  "failed": [],
+  "source_url": "https://www.hotspawn.com/matches/forze-reload-vs-ex-rustec-cct-europe-2026-series-12-1081158",
+  "quote_url": "https://gamma-api.polymarket.com/markets/6098416",
+  "quote_provider": "Polymarket"
+ },
+ {
+  "id": "1082697",
+  "teams": [
+   "BESTIA",
+   "paiN"
+  ],
+  "probabilities": [
+   0.415,
+   0.585
+  ],
+  "pick": "paiN",
+  "method": "exchange",
+  "checks": {
+   "P1": true,
+   "P2": true,
+   "P3": true,
+   "P4": true,
+   "P5": true,
+   "P6": true,
+   "P7": true,
+   "P8": true
+  },
+  "failed": [],
+  "source_url": "https://www.hotspawn.com/matches/pain-vs-bestia-circuit-x-curitiba-4-1082697",
+  "quote_url": "https://gamma-api.polymarket.com/markets/6166390",
+  "quote_provider": "Polymarket"
+ },
+ {
+  "id": "1086697",
+  "teams": [
+   "Projeto do KinGui",
+   "Yawara"
+  ],
+  "probabilities": [
+   0.5100602445117999,
+   0.4899397554882001
+  ],
+  "pick": "Projeto do KinGui",
+  "method": "model_vrs",
+  "checks": {
+   "P1": true,
+   "P2": true,
+   "P3": true,
+   "P4": true,
+   "P5": true,
+   "P6": true,
+   "P7": true,
+   "P8": true
+  },
+  "failed": [],
+  "source_url": "https://play.hotspawn.com/cs2-pickems",
+  "quote_url": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+  "quote_provider": "Valve VRS model"
+ },
+ {
+  "id": "1082858",
+  "teams": [
+   "Ground Zero",
+   "Off Chops"
+  ],
+  "probabilities": [
+   0.37,
+   0.63
+  ],
+  "pick": "Off Chops",
+  "method": "exchange",
+  "checks": {
+   "P1": true,
+   "P2": true,
+   "P3": true,
+   "P4": true,
+   "P5": true,
+   "P6": true,
+   "P7": true,
+   "P8": true
+  },
+  "failed": [],
+  "source_url": "https://www.hotspawn.com/matches/ground-zero-vs-off-chops-dfrag-invitational-2026-1082858",
+  "quote_url": "https://gamma-api.polymarket.com/markets/6066508",
+  "quote_provider": "Polymarket"
+ },
+ {
+  "id": "1082859",
+  "teams": [
+   "NEXVOID",
+   "Alter Ego"
+  ],
+  "probabilities": [
+   0.5789473684210527,
+   0.42105263157894735
+  ],
+  "pick": "NEXVOID",
+  "method": "bookmaker_fallback",
+  "checks": {
+   "P1": true,
+   "P2": true,
+   "P3": true,
+   "P4": true,
+   "P5": true,
+   "P6": true,
+   "P7": true,
+   "P8": true
+  },
+  "failed": [],
+  "source_url": "https://www.hotspawn.com/matches/nexvoid-vs-alter-ego-dfrag-invitational-2026-1082859",
+  "quote_url": "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
+  "quote_provider": "Thunderpick (via BO3.gg API)"
+ },
+ {
+  "id": "1082860",
+  "teams": [
+   "FlyQuest",
+   "Staqued"
+  ],
+  "probabilities": [
+   0.925,
+   0.075
+  ],
+  "pick": "FlyQuest",
+  "method": "exchange",
+  "checks": {
+   "P1": true,
+   "P2": true,
+   "P3": true,
+   "P4": true,
+   "P5": true,
+   "P6": true,
+   "P7": true,
+   "P8": true
+  },
+  "failed": [],
+  "source_url": "https://www.hotspawn.com/matches/flyquest-vs-staqued-dfrag-invitational-2026-1082860",
+  "quote_url": "https://gamma-api.polymarket.com/markets/6066520",
+  "quote_provider": "Polymarket"
+ },
+ {
+  "id": "1082861",
+  "teams": [
+   "Rooster",
+   "Abyssal"
+  ],
+  "probabilities": [
+   0.425,
+   0.575
+  ],
+  "pick": "Abyssal",
+  "method": "exchange",
+  "checks": {
+   "P1": true,
+   "P2": true,
+   "P3": true,
+   "P4": true,
+   "P5": true,
+   "P6": true,
+   "P7": true,
+   "P8": true
+  },
+  "failed": [],
+  "source_url": "https://www.hotspawn.com/matches/rooster-vs-abyssal-dfrag-invitational-2026-1082861",
+  "quote_url": "https://gamma-api.polymarket.com/markets/6066525",
+  "quote_provider": "Polymarket"
+ },
+ {
+  "id": "1082897",
+  "teams": [
+   "B8",
+   "K27"
+  ],
+  "probabilities": [
+   0.595,
+   0.405
+  ],
+  "pick": "B8",
+  "method": "exchange",
+  "checks": {
+   "P1": true,
+   "P2": true,
+   "P3": true,
+   "P4": true,
+   "P5": true,
+   "P6": true,
+   "P7": true,
+   "P8": true
+  },
+  "failed": [],
+  "source_url": "https://www.hotspawn.com/matches/b8-vs-k27-tesla-cup-2026-1082897",
+  "quote_url": "https://gamma-api.polymarket.com/markets/6024944",
+  "quote_provider": "Polymarket"
+ },
+ {
+  "id": "1082898",
+  "teams": [
+   "Alliance",
+   "FaZe"
+  ],
+  "probabilities": [
+   0.375,
+   0.625
+  ],
+  "pick": "FaZe",
+  "method": "exchange",
+  "checks": {
+   "P1": true,
+   "P2": true,
+   "P3": true,
+   "P4": true,
+   "P5": true,
+   "P6": true,
+   "P7": true,
+   "P8": true
+  },
+  "failed": [],
+  "source_url": "https://www.hotspawn.com/matches/alliance-vs-faze-tesla-cup-2026-1082898",
+  "quote_url": "https://gamma-api.polymarket.com/markets/6024952",
+  "quote_provider": "Polymarket"
+ },
+ {
+  "id": "1082900",
+  "teams": [
+   "Luminosity",
+   "HOTU"
+  ],
+  "probabilities": [
+   0.525,
+   0.475
+  ],
+  "pick": "Luminosity",
+  "method": "exchange",
+  "checks": {
+   "P1": true,
+   "P2": true,
+   "P3": true,
+   "P4": true,
+   "P5": true,
+   "P6": true,
+   "P7": true,
+   "P8": true
+  },
+  "failed": [],
+  "source_url": "https://www.hotspawn.com/matches/luminosity-vs-hotu-tesla-cup-2026-1082900",
+  "quote_url": "https://gamma-api.polymarket.com/markets/6024960",
+  "quote_provider": "Polymarket"
+ },
+ {
+  "id": "1082901",
+  "teams": [
+   "Envy",
+   "GamerLegion"
+  ],
+  "probabilities": [
+   0.455,
+   0.545
+  ],
+  "pick": "GamerLegion",
+  "method": "exchange",
+  "checks": {
+   "P1": true,
+   "P2": true,
+   "P3": true,
+   "P4": true,
+   "P5": true,
+   "P6": true,
+   "P7": true,
+   "P8": true
+  },
+  "failed": [],
+  "source_url": "https://www.hotspawn.com/matches/envy-vs-gamerlegion-tesla-cup-2026-1082901",
+  "quote_url": "https://gamma-api.polymarket.com/markets/6037120",
+  "quote_provider": "Polymarket"
+ },
+ {
+  "id": "1082792",
+  "teams": [
+   "HOTU",
+   "The Huns"
+  ],
+  "probabilities": [
+   0.851799765370461,
+   0.14820023462953902
+  ],
+  "pick": "HOTU",
+  "method": "model_vrs",
+  "checks": {
+   "P1": true,
+   "P2": true,
+   "P3": true,
+   "P4": true,
+   "P5": true,
+   "P6": true,
+   "P7": true,
+   "P8": true
+  },
+  "failed": [],
+  "source_url": "https://www.hotspawn.com/matches/hotu-vs-the-huns-moscow-cyber-games-2026-1082792",
+  "quote_url": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+  "quote_provider": "Valve VRS model"
+ },
+ {
+  "id": "1082793",
+  "teams": [
+   "5star",
+   "1WIN"
+  ],
+  "probabilities": [
+   0.242985776930831,
+   0.757014223069169
+  ],
+  "pick": "1WIN",
+  "method": "model_vrs",
+  "checks": {
+   "P1": true,
+   "P2": true,
+   "P3": true,
+   "P4": true,
+   "P5": true,
+   "P6": true,
+   "P7": true,
+   "P8": true
+  },
+  "failed": [],
+  "source_url": "https://www.hotspawn.com/matches/5star-vs-1win-moscow-cyber-games-2026-1082793",
+  "quote_url": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+  "quote_provider": "Valve VRS model"
+ }
+]
