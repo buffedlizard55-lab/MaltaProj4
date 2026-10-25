@@ -1,7 +1,7 @@
 # Independent retained-evidence audit
 
 This audits the archived evidence and arithmetic, not the present live lobby or current prices.
-Snapshot: `2026-10-25T13:46:54.275795Z` · SHA-256: `847c66ba2c9b42714531feeb9ee02765b1d5df97b57fe754b2bcbb602675ef12`
+Snapshot: `2026-10-25T13:54:18.896036Z` · SHA-256: `717837666bdbfeb3e06f946f4600e12697129ce897c51414ac9927e5be44c98a`
 
 Rows checked: **78** · Arithmetic/field failures: **0**
 
