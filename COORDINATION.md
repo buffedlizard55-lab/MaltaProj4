@@ -1,3 +1,40 @@
+## Session 046b2e46 — independent pick ledger and alias-bridge tests (14:30 UTC)
+
+**Both overlapping repairs landed on `main` first; both of mine were withdrawn, not stacked.** Session
+b85ad9b4 shipped the alias-aware roster re-check (`e9429e6`, 13:37Z) that this session had independently
+reproduced; session 58354934's PR [#322](https://github.com/buffedlizard55-lab/MaltaProj4/pull/322) shipped the
+browser-suite state handling that this session measured failing on pull-request run
+[40199487283](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40199487283) (the committed
+snapshot was 12 h old, so `app.js` correctly withheld every pick and the unconditional pick assertion failed).
+Main's versions are what ship; my edits to `scripts/validate.py` and `tests/browser_aeafcbe6.cjs` were dropped.
+
+**Publisher verified from committed bytes, not from a claim.** `main` = `7b0555e` at the time of this rebase,
+`build-info.json` built `2026-10-25T13:46:54Z`, and the committed snapshot holds 78 rows with every open match
+picked and priced. Replayed through this session's independent ledger on `main`'s committed snapshot and on the
+13:28:50Z capture: **all open rows reproduced, 0 failures**.
+
+**Additive contribution.**
+
+| Contribution | File | Verification |
+| --- | --- | --- |
+| Independent every-open-pick ledger (own arithmetic: Polymarket midpoint, de-vigged decimal odds, Valve Glicko + published fit slope; re-checks orientation from the quote's own labels and abbreviations) | `scripts/session_046b2e46.py` | open rows reproduced on `main`'s snapshot **and** on the 13:28:50Z capture, 0 failures |
+| Regression tests pointed at main's shipped `same_club(m, team, label)` | `tests/test_session_046b2e46.py` | 24 tests OK |
+| Dated capture that reproduces the 12-hour outage offline | `research/session-046b2e46/captured-snapshot.json` | replays clean through `scripts.validate` |
+| Session report and row-by-row ledger | `research/session-046b2e46/REPORT.md`, `ROW-LEDGER.md` | — |
+| Two findings on Flagged for Review | `data/review-notes.json` | rendered in `review.html` |
+
+**The ledger's refusals are tested**: a shifted probability, a wrong pick, wrong fair odds, a reversed quote
+that no label or abbreviation can justify, a missing market link and an unlabelled model row each fail.
+Orientation is why that matters — Polymarket had *paiN* first on fixture `1082697` while Hotspawn lists
+*BESTIA* first, and fixture `1082996` is *UNiTY* on Hotspawn but *UNiTY esports* on the exchange (whose own
+abbreviation metadata says `unity`). A reorder is allowed only on that evidence and must be a bijection.
+
+**Flagged for review, non-blocking.** (a) Fixture `1086697` publishes a **1.2-point** originated edge
+(51.0% / 49.0%) — a product decision, not suppressed or rounded. (b) Fixtures `1086696` and `1086697` link
+Hotspawn's lobby page rather than a per-match page because the feed serves none; their price evidence still
+links the exact market or Valve file. Main's `session-b85ad9b4-alias-bridge-publication-failure-2026-10-25`
+already records the outage itself, so this session adds no duplicate.
+
 ## Session 53284c80 claim — 2026-10-25 13:30 UTC (fresh every-match picks; publisher red at step 13; phone executive summary)
 
 Board read before claiming. Arena-fixed branch `arena/53284c80-maltaproj4`, based on
