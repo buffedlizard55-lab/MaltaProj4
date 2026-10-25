@@ -1,0 +1,5 @@
+generated_at 2026-10-25T13:37:06.375001Z
+total 78 open 17
+open_without_pick 0
+open_without_probabilities 0
+issues: [{"code": "feed_status", "message": "61 feed entries are not open by sourced timestamps/status. They remain in All matches and are not treated as future picks.", "source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"}]
