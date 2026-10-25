@@ -9440,3 +9440,30 @@ Flagged for Review page.
 the stale watchdog, so the 4–8 hour promise is now backed by a publisher that actually completes;
 the eight-hour silence was a contract violation in the data, not a cron problem, and it is
 recorded rather than papered over.
+
+## Session 58354934 — CLAIM (2026-10-25 13:25 UTC): every open match gets a pick; unblock the publisher
+
+Arena-fixed branch `arena/58354934-maltaproj4` (the branch name is fixed by the session; no other branch is
+created, checked out or pushed). Board read before claiming: no row in this file is dated 2026-10-25, so no
+live claim exists; the last receipts are 2026-10-24 18:25Z and are complete.
+
+**Measured starting state (not assumed).**
+
+| Fact | Value | Source |
+| --- | --- | --- |
+| Committed snapshot | `data/latest.json` generated `2026-10-25T01:47:42Z`, 79 feed rows, 18 priced open rows | `python3 -c` on the file |
+| Published snapshot | `build-info.json` revision `cbe9dce`, built `2026-10-25T01:47:42Z`, 79 rows | file |
+| Live site | "Last checked 25 Oct 2026 · 01:47 UTC · 11h 40m ago", **14 open · 0 picks · 0 probabilities · 14 unresolved** | `fetch_page` on the public host 13:2xZ |
+| Failing publication runs | 40193317196 (12:29Z) and 40170923727 (06:41Z), both at step 13 *Build and independently verify every row, calculation and internal link*; deploy step 5 then fails the live-byte check | `gh run view --json jobs` |
+| Actions logs | not downloadable from this sandbox (`results-receiver.actions.githubusercontent.com` is outside the egress allowlist) | `gh run view --log-failed` returned EOF |
+
+So the board is withholding every pick again, exactly the failure mode the brief names. This session's work:
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| T1 Diagnose step 13 on a real fresh snapshot and fix the code defect it exposes | in progress | 58354934 | `.github/workflows/harvest-58354934.yml` (new), `research/harvest-58354934/**` (new), `scripts/*.py` (targeted), `tests/test_session_58354934.py` (new) | 2026-10-25 13:25 |
+| T2 Re-verify pick/probability coverage for every open Hotspawn CS2 match, incl. low-tier rows, and the separate unresolved/limitations section | in progress | 58354934 | same as T1 | 2026-10-25 13:25 |
+| T3 Mobile/executive-summary re-verification at 320/390/412 px, then final integration (fresh verified build, PR, merge, live Pages check, receipt) | in progress | 58354934 | `COORDINATION.md`, `data/latest.json`, `data/matches.csv`, generated root pages, `build-info.json` | 2026-10-25 13:25 |
+
+Evidence rules unchanged: Hotspawn supplies fixture inventory and locks only, never a probability; no crowd
+votes, placeholder odds, inferred values or 50/50 filler; every published row carries its own source link.
