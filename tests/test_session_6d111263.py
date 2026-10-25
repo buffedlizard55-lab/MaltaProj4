@@ -7,14 +7,19 @@ Hotspawn fixture label in data/identities.json (the same entry the VRS label
 check at ``norm(team) == norm(label)`` already accepts). ``lineup_source_ok``
 compared labels with ``plain_name`` equality only, so the model row's roster
 check failed and ``scripts.validate`` crashed the publisher's *Build and
-independently verify* step on every scheduled run from 2026-10-24T23:40Z until
-the fix, while the live board aged past its eight-hour evidence window and
-withheld every pick.
+independently verify* step on every scheduled run from 2026-10-24T23:40Z
+(runs 40143667147, 40170923727, 40193317196), while the live board aged past
+its eight-hour evidence window and withheld every pick.
 
-Rule under test: a label on the HLTV side matches the fixture team when it is
-the exact normalized label, or when both labels sit inside one entry of
-data/identities.json that itself carries a primary source link. Nothing else —
-unregistered labels and source-less identities must keep failing.
+This session reproduced the failure independently (run 40197851926,
+research/harvest-6d111263/) and then adopted the repair session b85ad9b4
+landed on main in PR #316 — ``scripts/validate.py same_club()`` — rather than
+layering a second implementation. The rule under test: a label on the HLTV
+side matches the fixture team when it is the exact normalized label, or when
+both labels sit inside one entry of data/identities.json that itself carries
+an https source link, and the fixture's two team labels must stay distinct so
+one team's lineup can never satisfy the other. Nothing else — unregistered
+labels, source-less identities and self-colliding fixtures must keep failing.
 """
 import json
 import unittest
@@ -52,25 +57,36 @@ def row():
     }
 
 
-class SourcedLabelMatch(unittest.TestCase):
+class SameClub(unittest.TestCase):
     def test_exact_normalized_label_matches(self):
-        self.assertTrue(validate.sourced_label_match('Yawara', 'Yawara'))
-        self.assertTrue(validate.sourced_label_match('LOS NINOS', 'Los Niños'))
+        m = row()
+        self.assertTrue(validate.same_club(m, 'Yawara', 'Yawara'))
+        self.assertTrue(validate.same_club(m, 'LOS NINOS', 'Los Niños'))
 
     def test_registered_pair_with_a_source_matches_in_both_directions(self):
+        m = row()
         with mock.patch.object(validate, 'IDENTITIES', [SOURCED_IDENTITY]):
-            self.assertTrue(validate.sourced_label_match('Tropa do KinGui', 'Projeto do KinGui'))
-            self.assertTrue(validate.sourced_label_match('Projeto do KinGui', 'Tropa do KinGui'))
+            self.assertTrue(validate.same_club(m, 'Projeto do KinGui', 'Tropa do KinGui'))
+            self.assertTrue(validate.same_club(m, 'Tropa do KinGui', 'Projeto do KinGui'))
 
     def test_registered_pair_without_a_source_is_rejected(self):
         with mock.patch.object(validate, 'IDENTITIES', [UNSOURCED_IDENTITY]):
-            self.assertFalse(validate.sourced_label_match('Tropa do KinGui', 'Projeto do KinGui'))
+            self.assertFalse(validate.same_club(row(), 'Projeto do KinGui', 'Tropa do KinGui'))
 
     def test_unregistered_label_is_rejected(self):
         with mock.patch.object(validate, 'IDENTITIES', [SOURCED_IDENTITY]):
-            self.assertFalse(validate.sourced_label_match('Tropa do KinGui', 'Yawara'))
+            self.assertFalse(validate.same_club(row(), 'Yawara', 'Tropa do KinGui'))
         with mock.patch.object(validate, 'IDENTITIES', []):
-            self.assertFalse(validate.sourced_label_match('Tropa do KinGui', 'Projeto do KinGui'))
+            self.assertFalse(validate.same_club(row(), 'Projeto do KinGui', 'Tropa do KinGui'))
+
+    def test_fixture_with_self_colliding_team_labels_refuses_the_bridge(self):
+        # Both fixture labels resolve to one canonical key: the register cannot
+        # keep the two clubs apart, so no lineup may cross over.
+        m = {'teams': ['Projeto do KinGui', 'Tropa do KinGui']}
+        with mock.patch.object(validate, 'IDENTITIES', [SOURCED_IDENTITY]):
+            self.assertFalse(validate.same_club(m, 'Projeto do KinGui', 'Tropa do KinGui'))
+        # Exact spellings still match even in that degenerate fixture.
+        self.assertTrue(validate.same_club(m, 'Projeto do KinGui', 'Projeto do KinGui'))
 
 
 class LineupSourceOkAlias(unittest.TestCase):

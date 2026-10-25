@@ -5617,9 +5617,60 @@
   ]
  },
  {
+  "id": "session-b85ad9b4-alias-bridge-publication-failure-2026-10-25",
+  "status": "Diagnosed from a committed runner replay and repaired; the repair is verified offline against the retained capture and is being re-verified on GitHub egress. Flagged for review because it changes what the validator may accept as an HLTV roster source.",
+  "finding": "Measured: the public board read 'Last checked 25 Oct 2026 - 01:47 UTC', 14 open matches, 0 with a pick, 0 with a win probability, and 'Snapshot expired or timestamp unverified: all current picks are withheld'. The schedule was running; the publisher was not. On main (6ade440) the scheduled runs 40143667147 (23:40Z), 40170923727 (06:56Z) and 40193317196 (12:29Z) all died at the single step 'Build and independently verify every row, calculation and internal link', while 40151731896 (01:43Z) succeeded and stamped build-info.json at 01:47:42Z. Because Pages is build_type legacy with source main:/, the committed root is what visitors get, so the board froze there and then withheld every pick once its eight-hour window closed at 09:47Z. This sandbox cannot reach Hotspawn, HLTV or Polymarket and this repository's job logs redirect to blob storage outside the host allowlist, so the failing step was replayed on GitHub's egress by a dispatch-only, non-publishing workflow (run 40197667220, bundle research/session-b85ad9b4/): steps 01-06 and 08-09 returned 0 and step 07-validate-fresh returned 1 with 'scripts/validate.py:122 in validate_model_row - AssertionError: Model roster has no HLTV source on this row'. The row was Hotspawn fixture 1086697, Projeto do KinGui vs Yawara (CCT South America 2026 Series #7, 2026-10-25T19:00Z), an originated Valve-VRS line. Its roster continuity was verified against HLTV match 2399918, whose own heading for that club is 'Tropa do KinGui', so the stored lineup sits under that heading while the fixture label is Hotspawn's 'Projeto do KinGui'. The offline re-check looked the heading up with plain_name(), an exact folded comparison, while the rest of the model verification (norm(), ALIAS_MAP) resolves the two spellings through data/identities.json, which already holds both spellings in one sourced entry. A correct row that could not be re-read failed scripts.validate, and that is the step that died. The repair is in scripts/validate.py: lineup_source_ok resolves the heading with a new same_club() that keeps the exact match as the primary rule and permits the identity register as the only bridge - both spellings inside one entry, that entry linking an https source, and the register keeping the fixture's two teams apart so one team's lineup can never satisfy the other. No fuzzy or substring matching was added, and no probability, roster overlap, pick orientation or freshness rule changed. Verified offline against the retained capture: scripts.validate now reproduces 78 rows, 17 calculations, 15 pages, 730 links, 20 checksums; the build reports 17 open rows, 17 with percentages, 0 unresolved; the full unit suite is 1,617 tests OK with the 11 new regressions in tests/test_session_b85ad9b4.py. For review: (1) the repair makes the validator accept an HLTV heading that differs from the Hotspawn label, and although that is gated on the sourced identity register, it is a widening of what counts as an HLTV roster source; (2) the same defect would have blocked any future snapshot where an originated model row belongs to a club whose HLTV heading differs from Hotspawn's spelling, so it was a standing trap, not a one-off; (3) nothing announces a red publisher publicly - the site's own expiry banner was the only signal, and that only appears after the eight-hour window has already lapsed.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40193317196",
+    "label": "Scheduled publisher run whose 'Build and independently verify every row, calculation and internal link' step failed (2026-10-25 12:29Z)"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40170923727",
+    "label": "Earlier scheduled run that failed on the same step (2026-10-25 06:56Z)"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40151731896",
+    "label": "Last successful scheduled publication (2026-10-25 01:43Z), which stamped build-info.json 01:47:42Z"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40197667220",
+    "label": "Non-publishing replay that identified the failing step and returned the assertion text"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-b85ad9b4/REPORT.md",
+    "label": "Return code of every publication step plus the failing output"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399918/tropa-do-kingui-vs-yawara-cct-2026-south-america-series-7",
+    "label": "HLTV fixture page whose heading for the club is 'Tropa do KinGui' (the alias this row needed)"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7",
+    "label": "Primary source recorded on the identity-register entry that links Projeto do KinGui, Tropa do KinGui and ex-Keyd Stars"
+   },
+   {
+    "url": "https://play.hotspawn.com/cs2-pickems",
+    "label": "Hotspawn CS2 pick'em lobby that lists fixture 1086697; Hotspawn supplies the fixture label, never a probability"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "label": "Valve's official standings, the only inputs of the originated line on this row"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/scripts/validate.py",
+    "label": "The repaired offline re-check (same_club / lineup_source_ok)"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/tests/test_session_b85ad9b4.py",
+    "label": "The regressions, including the four ways the alias bridge must refuse"
+   }
+  ]
+ },
+ {
   "id": "session-6d111263-publisher-alias-freeze-2026-10-25",
-  "status": "Needs review — publisher defect diagnosed and fixed by this session; limitation disclosed",
-  "finding": "The scheduled publisher failed at the step 'Build and independently verify every row, calculation and internal link' on runs 40143667147 (2026-10-24T23:40Z), 40170923727 (06:56Z) and 40193317196 (12:29Z), so no pages artifact was uploaded, deploy had nothing to publish, and the live board served the 2026-10-25T01:47:42Z snapshot until it passed its eight-hour window and withheld every pick (live reads on 2026-10-25 ~13:26Z: '14 open · 0 with a pick · 14 unresolved'). Reproduced on GitHub egress by the non-publishing run 40197851926 (research/harvest-6d111263/): refresh, quarantine, the independent row audit and the build all succeeded; scripts.validate crashed with AssertionError 'Model roster has no HLTV source on this row' on fixture 1086697 (Projeto do KinGui vs Yawara, model_vrs). Cause: HLTV created its match page for that fixture under the club's own label 'Tropa do KinGui'; the row's hltv_context.lineups therefore names the team with HLTV's label, and lineup_source_ok compared team labels with plain_name equality only, refusing the pair even though data/identities.json already registers ['Tropa do KinGui','Projeto do KinGui','ex-Keyd Stars'] with an HLTV source link — the same registered-alias rule validate_model_row already applies to the VRS labels and the independent auditor applies via same_team. Fix: lineup_source_ok now accepts a label pair only when both labels sit in one identity entry that itself carries a source (scripts/validate.py sourced_label_match); unregistered labels and source-less identities still fail, pinned by tests/test_session_6d111263.py (12 tests, including a replay of the exact rejected snapshot). Limitation disclosed rather than hidden: a fixture's publication can still be delayed by any future validator assertion that is stricter than the identity register; the board itself never published an unsourced pick, and the 12h15m staleness window (2026-10-24T23:40Z–2026-10-25T11:55Z expected recovery) is the operational impact recorded here.",
+  "status": "Needs review — publisher defect independently reproduced by this session; fix adopted from upstream (PR #316), limitation disclosed",
+  "finding": "The scheduled publisher failed at the step 'Build and independently verify every row, calculation and internal link' on runs 40143667147 (2026-10-24T23:40Z), 40170923727 (06:56Z) and 40193317196 (12:29Z), so no pages artifact was uploaded, deploy had nothing to publish, and the live board served the 2026-10-25T01:47:42Z snapshot until its eight-hour window closed at 09:47Z and withheld every pick (public read at 13:26Z: '14 open · 0 with a pick · 14 unresolved'). Independently reproduced on GitHub egress by the non-publishing run 40197851926 (research/harvest-6d111263/): refresh, quarantine, the independent row audit and the build all succeeded; scripts.validate crashed with AssertionError 'Model roster has no HLTV source on this row' on fixture 1086697 (Projeto do KinGui vs Yawara, model_vrs). Cause: HLTV created its match page for that fixture under the club's own label 'Tropa do KinGui'; the row's hltv_context.lineups therefore names the team with HLTV's label, and lineup_source_ok compared team labels with plain_name equality only, refusing the pair even though data/identities.json already registers ['Tropa do KinGui','Projeto do KinGui','ex-Keyd Stars'] with an HLTV source link — the same registered-alias rule validate_model_row applies to the VRS labels and the independent auditor applies via same_team. Resolution: while this session's diagnosis was running, session b85ad9b4 landed the same repair on main (PR #316, scripts/validate.py same_club(): exact fold first; identity-register bridge only; the fixture's two team labels must stay distinct). This session adopted that implementation rather than layering a second one, kept its independent reproduction receipts (run 40197851926) and added tests/test_session_6d111263.py, which replays the exact rejected snapshot with and without the identity register. Unregistered labels and source-less identities still fail. Limitation disclosed rather than hidden: any future validator assertion stricter than the identity register can still delay publication for the whole board, and nothing announces a red publisher beyond the site's own expiry banner; the board itself never published an unsourced pick.",
   "sources": [
    {
     "label": "Publisher run 40193317196 failing at the build/verify step",
@@ -5630,11 +5681,11 @@
     "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40170923727"
    },
    {
-    "label": "Non-publishing reproduction run 40197851926 (validate rc=1, everything else 0)",
+    "label": "This session's non-publishing reproduction run 40197851926 (validate rc=1, everything else 0)",
     "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40197851926"
    },
    {
-    "label": "Committed diagnosis receipt: failing assertion in scripts/validate.py",
+    "label": "Committed diagnosis receipt: the failing assertion as the runner saw it",
     "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/harvest-6d111263/logs/05-validate.log"
    },
    {
@@ -5650,7 +5701,7 @@
     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
    },
    {
-    "label": "Hotspawn lobby the board mirrors",
+    "label": "Hotspawn lobby the board mirrors (fixture inventory only, never a probability)",
     "url": "https://play.hotspawn.com/lobby"
    }
   ]
