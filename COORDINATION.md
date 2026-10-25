@@ -10372,3 +10372,42 @@ needs a cancel-proof slot (for example a single queued run per SHA rather than a
 carries whatever the publishing run captured. The two unresolved-row caveats from the claim (Hotspawn has no
 per-match page for fixtures 1086696/1086697; every count is now derived and pinned by
 `tests/test_session_65af11da.py`) still stand.
+
+## Session 65af11da — scope extension (2026-10-25 15:40 UTC): the 320x568 phone card, a shared gate that is red on `main`'s board
+
+Claimed by this session because no other live row owns it today: the paired `site/assets/style.css` /
+`assets/style.css` and `tests/test_session_65af11da.py`. Yesterday's `6b8b4be0` scope (tall-phone filter order)
+is merged and finished; today's `58354934` row closed the same *area* as a duplicate on the 13:5x board, and it
+was correct for that board — a longer club name defeats it.
+
+**Reproduced, not inferred.** `npm run test:browser` on a board built from `main`'s own snapshot
+(`data/latest.json`, `--now 15:18Z`) fails the `browser_ce45f672` gate:
+
+```
+AssertionError: 320px a win probability is hidden behind the tab bar:
+  [{"y":461,"bottom":483},{"y":486,"bottom":517}]
+```
+
+The first glance card is `BORRACHEIROS vs RED Canids Academy`; the second score row wraps and the second
+probability ends at y=517 behind the fixed tab bar at y=507, on the 320x568 phone the brief is about. Three
+other sessions' pull requests (`40205161021`, `40205219482`, and this session's docs-only `#341`) failed the
+same step in the same window, so this is a live blocker on the shared gate and not a property of one branch.
+
+**Fix.** On short phones only — `(max-width:650px) and (max-height:700px)` — the two score rows move above the
+"OUR PICK" caption inside the card, and two small chrome gaps above the list tighten by 8px. Nothing is
+truncated, hidden or re-worded: the same two club names, the same two percentages, the same caption, in an
+order that survives a long name. Taller phones and desktop keep the caption-first order.
+
+**Measured after the fix** (Chromium against `public/` built from the same snapshot):
+
+| Viewport | Tab bar top | Score rows end | Verdict |
+| --- | --- | --- | --- |
+| 320x568 | 507 | 495 | both chances above the bar, 12px clear |
+| 390x844 | 783 | 528 | unchanged order, clear |
+
+**Verification.** `npm run test:browser` **exit 0, 11 suites pass** on that board (including `ce45f672`, the
+suite that reproduced the failure); 1,738 unit tests OK (13 skipped); audits 9 OK; `scripts.validate` exit 0
+against the rebuilt root. The regression test added to `tests/test_session_65af11da.py` pins the rule, its
+short-phone and index-page scoping, the byte identity of the two stylesheet copies and the sibling markup the
+order rule depends on; the geometry itself stays measured by the browser suite rather than asserted in a unit
+test.

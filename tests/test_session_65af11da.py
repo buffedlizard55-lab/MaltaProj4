@@ -163,3 +163,53 @@ class HltvLimitationTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class PhoneShortScreenOrderTests(unittest.TestCase):
+    """The 320x568 first card must keep both win chances above the fixed tab bar.
+
+    Measured failure, not a theory: with the 2026-10-25 15:18Z board the first
+    glance card is ``BORRACHEIROS vs RED Canids Academy``; the second score row
+    wraps, and the second probability ended at y=517 while the fixed tab bar
+    starts at y=507 (Chromium, 320x568, ``npm run test:browser`` suite
+    ``browser_ce45f672``). The stylesheet now puts the two score rows above the
+    "OUR PICK" caption on short phones only, so the numbers are the first thing
+    under the teams. These tests pin the rule and the markup it depends on; the
+    geometry itself is measured by that browser suite.
+    """
+
+    RULE = '.glance-card-pick>.glance-card-scores{order:1}'
+
+    @classmethod
+    def setUpClass(cls):
+        cls.root_css = (ROOT / 'assets' / 'style.css').read_text()
+        cls.site_css = (ROOT / 'site' / 'assets' / 'style.css').read_text()
+        cls.snapshot = json.loads((ROOT / 'data/latest.json').read_text())
+        cls.temp = tempfile.TemporaryDirectory()
+        observed = datetime.fromisoformat(cls.snapshot['generated_at'].replace('Z', '+00:00'))
+        build_module.build(copy.deepcopy(cls.snapshot), cls.temp.name, now=observed)
+        cls.index = (Path(cls.temp.name) / 'index.html').read_text()
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.temp.cleanup()
+
+    def test_both_stylesheet_copies_are_identical_and_carry_the_rule(self):
+        self.assertEqual(self.root_css, self.site_css,
+                         'assets/style.css and site/assets/style.css must stay byte-identical')
+        self.assertIn(self.RULE, self.site_css)
+
+    def test_rule_is_scoped_to_short_phones_and_the_index_page(self):
+        css = self.site_css
+        index = css.index(self.RULE)
+        media = css.rindex('@media', 0, index)
+        self.assertIn('max-width:650px', css[media:index])
+        self.assertIn('max-height:700px', css[media:index])
+        self.assertIn('body[data-page="index"]', css[index - 80:index + 60])
+
+    def test_card_markup_keeps_the_caption_and_scores_as_siblings(self):
+        # The order rule only works because both are direct children of the pick block.
+        card = re.search(r'<div class="glance-card-pick[^"]*"><span class="glance-card-pick-label">'
+                         r'([^<]+)</span><div class="glance-card-scores">', self.index)
+        self.assertIsNotNone(card, 'the priced glance card must keep label and scores as direct siblings')
+        self.assertIn(card.group(1).strip().upper(), {'OUR PICK', 'UNRESOLVED'})
