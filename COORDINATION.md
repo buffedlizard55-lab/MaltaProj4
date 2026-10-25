@@ -9932,3 +9932,82 @@ Sources: https://api.github.com/repos/buffedlizard55-lab/MaltaProj4/pages ·
 https://api.github.com/repos/buffedlizard55-lab/MaltaProj4/pages/builds?per_page=20 ·
 https://github.com/buffedlizard55-lab/MaltaProj4/commit/a2d3b1f ·
 https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/.github/workflows/pages.yml
+## Session 65af11da — CLAIM 2026-10-25 14:35 UTC (executive-summary counts must match their arithmetic; HLTV limitation re-checked against the live page)
+
+Board read before claiming, from `origin/main` (**not** from a branch): `main` == `origin/main` == `d5b0739` at
+claim time (the branch was later rebased onto `2909b06`, the `main` of 14:4xZ; no file in this session's scope
+moved in between). No row for 65af11da exists. The other 2026-10-25 claims (`b85ad9b4`, `a7f788c8`, `601ce27c`, `58354934`,
+`c2166aea`) own `scripts/validate.py`, `.github/workflows/pages.yml`, `tests/browser_aeafcbe6.cjs` and the
+publication receipts; this session touches none of them.
+
+**Measured starting state (not assumed).**
+
+| Fact | Value | How it was read |
+| --- | --- | --- |
+| Committed snapshot | `data/latest.json` generated `2026-10-25T13:46:54.275795Z`, 78 feed rows, 17 open, 17 picks, 17 win probabilities, 0 unresolved (11 exchange · 1 wide exchange · 1 bookmaker listing · 4 VRS model) | `python3 -c` on the file |
+| Live site | "Last checked 25 Oct 2026 · 13:56 UTC", **16 open · 16 with a pick · 16 with a win probability · 0 unresolved**, next pick BRUTE 56.5% at 15:00Z | `fetch_page https://buffedlizard55-lab.github.io/MaltaProj4/` at 14:20Z |
+| Live pick board | 16 rows, each with both percentages, the pick, its method and its source links | `fetch_page .../picks.html` at 14:21Z |
+| Local gates on the committed tree | 1,628 unit tests OK (12 skipped), audits 9 OK, verification-c6 12 OK, verification-93fafca6 80 OK, `scripts.validate` exit 0 | `.venv/bin/python` (deps in `requirements.txt`) |
+| Mobile rendering | Chromium at 320x568, 390x844, 412x915 against a locally built board: `failures: []`, 16 rows, no horizontal overflow | `node tests/browser_aeafcbe6.cjs` |
+
+So the publisher is **not** red at claim time and every open match already carries a pick: the brief's pick
+coverage is met by the tree. This session claims one narrow, independently reproduced accuracy defect plus one
+source re-check, and does not re-do any other session's work.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| T1 Executive summary must not describe the not-open count as "past their lock or start" (two different sets, and the live page published both 61 and 62 for the same 78 rows) | done | 65af11da | `scripts/build.py` (`exec_summary_bar`, `executive_banner`, `exec_summary_quicknav`), `tests/test_session_65af11da.py` (new), `tests/test_session_4ed657ce.py` (wording assertions only) | 2026-10-25 14:35 |
+| T2 Re-check HLTV as a line source for a low-tier fixture the ladder could not price from a book, and publish the dated result in the limitations list and the ladder | done | 65af11da | `scripts/build.py` (`#pick-limitations`), `scripts/summary.py` (`LADDER` hltv step), `tests/test_session_65af11da.py` | 2026-10-25 14:35 |
+| T3 Integrate: rebuild, full gate set, PR to `main`, merge without approval, live Pages check, receipt | in progress | 65af11da | `COORDINATION.md`, and (through the `main` publication run this merge triggers) `data/latest.json`, `data/matches.csv`, generated root pages, `build-info.json` | 2026-10-25 14:35 |
+
+**T1 — reproduction.** The live 13:56Z build said, in one paragraph, *"Of those 78 feed rows, 61 are
+past-dated records the endpoint still returns with status: scheduled"* and, in another, *"62 of 78 feed rows are
+past their lock or start and stay unpriced on All matches"*. The second number is `len(rows) - len(open)`; the
+first is `len(past_dated_rows(...))` (start before the snapshot's fixture-observation clock). They are different
+sets by construction, and the 13:54:18Z snapshot names the difference exactly: fixture **1085542** (`ex-Zero
+Tenacity` vs `Spirit Academy`, start `2026-10-25T14:00:00Z`) starts *after* the fixture observation, so it is
+not past-dated, but its pick lock (`13:54:00Z`) had passed by the 13:56Z build clock, so it is not open — the
+62nd row. Nothing about picks, prices or probabilities was wrong; one sentence named the wrong set. Fix: the sentence now says exactly what it counts
+(*"not open by sourced status or start time"*), and the banner publishes both numbers explicitly and
+additively (*"P of those N feed rows are past-dated … and R more are retained but not open at this snapshot's own
+clock"*), so a reader can account for every row (61 + 1 = 62 on the 13:54:18Z snapshot). `data-past-rows` keeps its value; the quick-nav label no
+longer calls the not-open count "past".
+
+**T2 — the HLTV re-check, with links.** The brief asks for HLTV to be tried before esportsbooks on matches no
+book prices. Checked live on 2026-10-25 at 14:2xZ for Hotspawn fixture 1086697 (`Projeto do KinGui` vs
+`Yawara`, CCT South America 2026 Series #7), a tier-C row our ladder priced only from the Valve VRS model:
+
+* [hltv.org/matches/2399918](https://www.hltv.org/matches/2399918/tropa-do-kingui-vs-yawara-cct-2026-south-america-series-7)
+  — the fixture, both lineups and the event resolve; its **Betting** panel rendered one partner promo row
+  ("No promocode available") and no price for either side.
+* [hltv.org/betting/analytics/2399918](https://www.hltv.org/betting/analytics/2399918/tropa-do-kingui-vs-yawara-cct-2026-south-america-series-7)
+  — the "odds & prediction" overview rendered pros/cons, head-to-head, map stats and an empty odds overview;
+  **no numeric two-way price for either side**. Its community vote (33.3% / 66.7% on the same day) is not a
+  line and is not used.
+
+That is a confirmation, not a refutation, of the documented limitation, so the limitation now carries this
+dated, linked example instead of the bare claim it carried before. No new probability is derived from HLTV.
+
+**Independent verification of the published numbers (not a restatement of the build's own arithmetic).**
+
+| Check | Result | Source |
+| --- | --- | --- |
+| Vendored Valve standings are the official file, byte for byte | `sha256 df96e7fc…ae61b` identical to the file at pinned commit `eec4853` | `gh api repos/ValveSoftware/counter-strike_regional_standings/contents/live/2026/standings_global_2026_10_05.md?ref=eec4853…` |
+| Valve monthly file is still the current one (no newer release missed) | latest `standings_global_2026_10_05.md`, committed 2026-10-05T16:36:11Z | `gh api .../contents/live/2026` and `.../commits?path=live/2026` |
+| 4 published VRS model lines recomputed from Valve points with Valve's own formula (RD 75, fit slope 0.7986) | Color 1249 / ex-Zero Tenacity 1066 → 68.84% (published 68.84%); Projeto do KinGui 854 / Yawara 845 → 51.01% (published 51.01%); HOTU 1437 / The Huns 944 → 85.18% (published 85.18%); 5star 1110 / 1WIN 1383 → 24.30% (published 24.30%) | `data/vrs/standings_global_2026_10_05.md`, `scripts/vrs.py` |
+| Exchange row 1079199 (Infinite vs BRUTE) still carries its published quote upstream | market 6072808 `outcomePrices 0.435 / 0.565`, `updatedAt 2026-10-25T14:12:37Z`, `acceptingOrders true` — matches the published 43.5% / 56.5% | [gamma-api.polymarket.com/markets/6072808](https://gamma-api.polymarket.com/markets/6072808) |
+| Hotspawn fixture page for that row exists and matches | [hotspawn.com/matches/infinite-vs-brute-nodwin-clutch-series-13-1079199](https://www.hotspawn.com/matches/infinite-vs-brute-nodwin-clutch-series-13-1079199), 15:00 25 OCT, both lineups | Hotspawn |
+
+**Gates after the change (local, on this branch, rebased onto `main` `2909b06`).** 1,665 unit tests OK
+(12 skipped); audits 9 OK; verification-c6 12 OK; verification-93fafca6 80 OK; `scripts.validate` exit 0
+against **both** the rebuilt `public/` and the committed root: 78 source rows, 16 probability calculations
+reproduced, 15 pages, 724 internal links/assets, 20 checksums, 180 displayed rows; Chromium mobile suite
+`failures: []` at 320x568, 390x844 and 412x915 against the freshly built board (16 rows, both percentages per
+row, pick directly under the teams, no horizontal overflow).
+
+**Flagged for review, non-blocking.** (1) The same class of mismatch could reappear wherever a count is typed
+rather than derived; the new test pins the two sentences to `summary.counts` and `past_dated_rows` and fails if
+they diverge again. (2) The Hotspawn per-match page for fixtures 1086696 / 1086697 is not published by Hotspawn
+itself (a constructed slug returns its 404 page), so those rows link to the official
+`play.hotspawn.com/cs2-pickems` page instead of an invented URL — unchanged behaviour, recorded here because a
+reader will notice the difference between rows. (3) No probability, price or pick was edited by this session.
