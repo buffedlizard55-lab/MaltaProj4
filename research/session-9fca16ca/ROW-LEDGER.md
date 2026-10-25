@@ -6,10 +6,10 @@ This ledger is generated from committed bytes by `build_report.py`. It does not 
 | --- | --- |
 | Snapshot generated | `2026-10-25T14:22:27.352651Z` |
 | Fixtures observed | `2026-10-25T14:18:55.242320Z` |
-| Build receipt | `2026-10-25T14:52:07.516599Z` (revision `0a5434e8723f`) |
-| Hotspawn inventory | 78 rows, 16 open at snapshot instant |
-| Pick / probability coverage | 16 picks, 16 probability pairs, 0 unresolved |
-| Method mix | bookmaker_fallback 1, exchange 11, model_vrs 4 |
+| Build receipt | `2026-10-25T15:35:50.729905Z` (revision `791cb7838c28`) |
+| Hotspawn inventory | 78 rows, 15 open at snapshot instant |
+| Pick / probability coverage | 15 picks, 15 probability pairs, 0 unresolved |
+| Method mix | bookmaker_fallback 1, exchange 10, model_vrs 4 |
 | Evidence window | 8 hours |
 | Artifact checksums | 20/20 match |
 
@@ -17,7 +17,6 @@ This ledger is generated from committed bytes by `build_report.py`. It does not 
 
 | Fixture | Teams | Start UTC | A / B | Pick | Method | Evidence expires | Reproduced | Row sources | Concurrent official check |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [1079199](<https://www.hotspawn.com/matches/infinite-vs-brute-nodwin-clutch-series-13-1079199>) | Infinite vs BRUTE | 2026-10-25T15:00:00Z | 43.5% / 56.5% | **BRUTE** | `exchange` | 2026-10-25T14:54:00Z | PASS | [Hotspawn](<https://www.hotspawn.com/matches/infinite-vs-brute-nodwin-clutch-series-13-1079199>) [Feed API](<https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1>) [Polymarket](<https://gamma-api.polymarket.com/markets/6072808>) [Evidence ledger](<evidence.html#match-1079199>) | Concurrent official quote matches stored 43.5%/56.5% (Δ 0.0 / 0.0 pp); direct read never overwrites the retained raw receipt. [Polymarket market 6072808](<https://gamma-api.polymarket.com/markets/6072808>) |
 | [1086696](<https://play.hotspawn.com/cs2-pickems>) | BORRACHEIROS vs RED Canids Academy | 2026-10-25T16:00:00Z | 43.5% / 56.5% | **RED Canids Academy** | `exchange` | 2026-10-25T15:54:00Z | PASS | [Hotspawn](<https://play.hotspawn.com/cs2-pickems>) [Feed API](<https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1>) [Polymarket](<https://gamma-api.polymarket.com/markets/6158760>) [Evidence ledger](<evidence.html#match-1086696>) | Concurrent official quote matches stored 43.5%/56.5% (Δ 0.0 / 0.0 pp); direct read never overwrites the retained raw receipt. [Polymarket market 6158760](<https://gamma-api.polymarket.com/markets/6158760>) |
 | [1079200](<https://www.hotspawn.com/matches/color-vs-ex-zero-tenacity-nodwin-clutch-series-13-1079200>) | Color vs ex-Zero Tenacity | 2026-10-25T18:00:00Z | 68.8% / 31.2% | **Color** | `model_vrs` | 2026-10-25T17:54:00Z | PASS | [Hotspawn](<https://www.hotspawn.com/matches/color-vs-ex-zero-tenacity-nodwin-clutch-series-13-1079200>) [Feed API](<https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1>) [Valve VRS model](<https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md>) [Evidence ledger](<evidence.html#match-1079200>) | No accepted current market line; labelled originated VRS model line from official Valve standings. [Valve official standings](<https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md>) |
 | [1081158](<https://www.hotspawn.com/matches/forze-reload-vs-ex-rustec-cct-europe-2026-series-12-1081158>) | FORZE Reload vs ex-RUSTEC | 2026-10-25T18:00:00Z | 56.5% / 43.5% | **FORZE Reload** | `exchange` | 2026-10-25T17:54:00Z | PASS | [Hotspawn](<https://www.hotspawn.com/matches/forze-reload-vs-ex-rustec-cct-europe-2026-series-12-1081158>) [Feed API](<https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1>) [Polymarket](<https://gamma-api.polymarket.com/markets/6098416>) [Evidence ledger](<evidence.html#match-1081158>) | Concurrent official quote matches stored 56.5%/43.5% (Δ 0.0 / 0.0 pp); direct read never overwrites the retained raw receipt. [Polymarket market 6098416](<https://gamma-api.polymarket.com/markets/6098416>) |
@@ -98,4 +97,4 @@ Phone measurements from `npm run test:browser`: quick navigation at y=290 on 320
 
 ## Result
 
-16 open rows replayed; 0 row failures; 0 HTML/delivery failures; 0 receipt failures; 0 concurrent official quote difference(s).
+15 open rows replayed; 0 row failures; 0 HTML/delivery failures; 0 receipt failures; 0 concurrent official quote difference(s).

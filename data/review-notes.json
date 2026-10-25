@@ -6324,5 +6324,53 @@
     "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/data/identities.json"
    }
   ]
+ },
+ {
+  "id": "session-b06ee902-pages-build-rate-2026-10-25",
+  "status": "Measured — the live site lagged the publish by ~26 minutes while every publish run was green; legacy Pages builds are soft-limited to 10 per hour",
+  "finding": "While checking that its own merge reached visitors, session b06ee902 found the live deployment frozen at build-info built_at 2026-10-25T14:59:26Z while main's committed root already carried 15:00:47Z and later. The Pages build list explains it: 15:04:50 errored fd4ba08, 15:13:19 errored e379ee6, 15:20:18 errored 9cef2fb ('Page build failed.'), then 15:20:53 built f07cfc6, after which the live build-info advanced to 15:25:24Z with 75 rows. The site content was not the cause and was ruled out by diff: the last successful build before the burst (57d34f2, committed 15:02:17Z) and the first failing one (fd4ba08, 15:04:49Z) differ in exactly one file, COORDINATION.md, and the tree is 120 MB across 2,561 files with no symlinks, so neither the 1 GB site limit nor the 100 MB per-file limit is in play. GitHub documents the actual constraint: 'GitHub Pages sites have a soft limit of 10 builds per hour. This limit does not apply if you build and publish your site with a custom GitHub Actions workflow.' This repository is published with build_type legacy and main receives commits every few minutes from many concurrent sessions, so builds exceed that soft limit and the served site stays on the last successful deployment until a slot frees. Nothing is broken and no pick is wrong: the board is simply older than the repository during a burst, and a visitor reads an older snapshot than the run that just succeeded. The remedy (switching Pages to a GitHub Actions deployment) is a repository-settings change outside this session's file scope, so it is recorded here for the owner rather than applied unilaterally while other sessions publish through the legacy main:/ root fallback.",
+  "impact": "Presentation and freshness only: no pick, price or probability changes, and the site recovers on its own once a build slot frees (observed 14:59Z to 15:25Z). It does mean that 'the publish run was green' is not by itself evidence that the served page is current; the deployed build-info.json must be compared with the committed root, with a cache-busting query because the CDN otherwise serves the previous build-info.json.",
+  "sources": [
+   {
+    "label": "GitHub Pages limits — 10 builds per hour soft limit, exempt for custom Actions workflows",
+    "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits"
+   },
+   {
+    "label": "Pages build list showing the errored/built sequence",
+    "url": "https://api.github.com/repos/buffedlizard55-lab/MaltaProj4/pages/builds"
+   },
+   {
+    "label": "Live build that the deployment advanced to",
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json"
+   },
+   {
+    "label": "Session receipt with the same measurement",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/COORDINATION.md"
+   }
+  ]
+ },
+ {
+  "id": "session-df43411c-hltv-hotspawn-start-conflict-1086697-2026-10-25",
+  "status": "Open source conflict — published for manual review; no value changed",
+  "finding": "Fixture 1086697 (Projeto do KinGui vs Yawara, CCT South America 2026 Series #7): the Hotspawn fixtures API observed 2026-10-25T13:50:44Z reports scheduled_start_time=1792954800000 (2026-10-25T19:00:00Z) with lock_time=1792954440000 (2026-10-25T18:54:00Z, lock_offset_sec 360), and the board publishes exactly those Hotspawn schedule values (start 19:00 UTC, locks 18:54 UTC). HLTV match 2399918, fetched 2026-10-25 between the session stamps 14:18:11Z and 14:28:27Z, renders the same pairing at 14:00 on 25 Oct with a static countdown of 3h:41m:51s; a repeat fetch after 14:31:24Z returned byte-identical text, so the countdown was rendered before the first fetch. A 19:00Z target would require that rendering at 15:18:09Z — after both fetches — which is impossible, so HLTV's target is before 18:11Z. As a renderer control, HLTV match 2399115 shows the same '14:00 25 Oct' for fixture 1079200, whose start (2026-10-25T18:00:00Z) is agreed by the Hotspawn API, Polymarket and this board — so this renderer's 14:00 corresponds to 18:00Z (UTC-4 on this date) and HLTV has the 1086697 match at 18:00Z, one hour before Hotspawn's schedule. Impact: displayed schedule and lock time on one open row only; the pick (Projeto do KinGui 51.0% / Yawara 49.0%) is the labelled Valve VRS model line and is unaffected. No value was changed or inferred; both official sources are published side by side for manual review. Win probabilities are never taken from Hotspawn.",
+  "impact": "Display-only on fixture 1086697: board start 19:00 UTC / lock 18:54 UTC (Hotspawn) vs HLTV 18:00 UTC. Pick and probability unchanged (Valve VRS model line, no market price involved).",
+  "sources": [
+   {
+    "url": "https://www.hltv.org/matches/2399918/tropa-do-kingui-vs-yawara-cct-2026-south-america-series-7",
+    "label": "HLTV match 2399918 — renders 14:00 25 Oct with a 3h41m51s countdown (fetched 2026-10-25 14:18–14:31Z)"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399115/color-vs-ex-zero-tenacity-nodwin-clutch-series-13",
+    "label": "HLTV match 2399115 — renderer control: shows 14:00 25 Oct for the board's 18:00Z fixture 1079200"
+   },
+   {
+    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+    "label": "Hotspawn fixtures API — scheduled_start_time 1792954800000 = 2026-10-25T19:00:00Z, observed 2026-10-25T13:50:44Z"
+   },
+   {
+    "url": "https://play.hotspawn.com/lobby",
+    "label": "Hotspawn CS2 pick'em lobby — the schedule and lock authority this board mirrors"
+   }
+  ]
  }
 ]
