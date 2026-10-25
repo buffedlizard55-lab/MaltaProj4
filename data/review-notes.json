@@ -6388,5 +6388,71 @@
     "url": "https://play.hotspawn.com/lobby"
    }
   ]
+ },
+ {
+  "id": "session-6d111263-publisher-alias-freeze-2026-10-25",
+  "status": "Needs review — publisher defect independently reproduced by this session; fix adopted from upstream (PR #316), limitation disclosed",
+  "finding": "The scheduled publisher failed at the step 'Build and independently verify every row, calculation and internal link' on runs 40143667147 (2026-10-24T23:40Z), 40170923727 (06:56Z) and 40193317196 (12:29Z), so no pages artifact was uploaded, deploy had nothing to publish, and the live board served the 2026-10-25T01:47:42Z snapshot until its eight-hour window closed at 09:47Z and withheld every pick (public read at 13:26Z: '14 open · 0 with a pick · 14 unresolved'). Independently reproduced on GitHub egress by the non-publishing run 40197851926 (research/harvest-6d111263/): refresh, quarantine, the independent row audit and the build all succeeded; scripts.validate crashed with AssertionError 'Model roster has no HLTV source on this row' on fixture 1086697 (Projeto do KinGui vs Yawara, model_vrs). Cause: HLTV created its match page for that fixture under the club's own label 'Tropa do KinGui'; the row's hltv_context.lineups therefore names the team with HLTV's label, and lineup_source_ok compared team labels with plain_name equality only, refusing the pair even though data/identities.json already registers ['Tropa do KinGui','Projeto do KinGui','ex-Keyd Stars'] with an HLTV source link — the same registered-alias rule validate_model_row applies to the VRS labels and the independent auditor applies via same_team. Resolution: while this session's diagnosis was running, session b85ad9b4 landed the same repair on main (PR #316, scripts/validate.py same_club(): exact fold first; identity-register bridge only; the fixture's two team labels must stay distinct). This session adopted that implementation rather than layering a second one, kept its independent reproduction receipts (run 40197851926) and added tests/test_session_6d111263.py, which replays the exact rejected snapshot with and without the identity register. Unregistered labels and source-less identities still fail. Limitation disclosed rather than hidden: any future validator assertion stricter than the identity register can still delay publication for the whole board, and nothing announces a red publisher beyond the site's own expiry banner; the board itself never published an unsourced pick.",
+  "sources": [
+   {
+    "label": "Publisher run 40193317196 failing at the build/verify step",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40193317196"
+   },
+   {
+    "label": "Publisher run 40170923727 failing at the build/verify step",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40170923727"
+   },
+   {
+    "label": "This session's non-publishing reproduction run 40197851926 (validate rc=1, everything else 0)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40197851926"
+   },
+   {
+    "label": "Committed diagnosis receipt: the failing assertion as the runner saw it",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/harvest-6d111263/logs/05-validate.log"
+   },
+   {
+    "label": "HLTV match page whose 'Tropa do KinGui' label triggered the assertion",
+    "url": "https://www.hltv.org/matches/2399918/tropa-do-kingui-vs-yawara-cct-2026-south-america-series-7"
+   },
+   {
+    "label": "HLTV match page that is the registered source of the identity pair",
+    "url": "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7"
+   },
+   {
+    "label": "Valve official standings file used by the originated VRS line (854 vs 845 points)",
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+   },
+   {
+    "label": "Hotspawn lobby the board mirrors (fixture inventory only, never a probability)",
+    "url": "https://play.hotspawn.com/lobby"
+   }
+  ]
+ },
+ {
+  "id": "session-6d111263-phone-tabbar-overlap-2026-10-25",
+  "status": "Diagnosed independently by this session; fix adopted from session 9fca16ca (PR #337); verification green",
+  "finding": "Measured with Chromium on the built index at 320x568 on 2026-10-25 ~15:30Z: with the then-first open fixture BORRACHEIROS vs RED Canids Academy (Hotspawn 1086696), the first #picks-at-a-glance card's two .glance-card-score elements occupied y=461..483 and y=486..517 while the fixed bottom tab bar starts at y=507 — the second win probability rendered BEHIND the tab bar on a short phone, failing tests/browser_ce45f672.cjs:108 and hiding exactly the number the brief requires a phone reader to see. The same assertion failed for other sessions' branches in the same window (runs 40205770553, 40205395251, 40206447470) because the overlap began the moment the 15:00Z fixture left the board and this card's two-line team heading became first on the list. While this session measured and drafted an equivalent compaction, session 9fca16ca's final integration (PR #337) merged the same diagnosis with the fix to main first — a @media(max-width:650px) and (max-height:700px) block recovering ~10px of short-phone chrome (list top margin, card and pick padding, gaps). Per the protocol this session ADOPTED main's block and dropped its own draft rather than layering two compactions. Verification after adoption, re-measured on the merged tree at 320x568 with the same long-named first card: scores bottom y=505 <= tab bar y=507 (clear), 390x844 and 412x915 unchanged and far clear; full 13-suite Chromium run green. Observation for future work (non-blocking): main's fix leaves a 2px margin for this card because it recovers chrome but not content — a fixture whose heading wraps to three lines at 360px-class widths would break the same contract again, so a content-independent headroom fix may be worth claiming later. Root cause class: repeated content-driven squeezes on the first phone screen had reached zero headroom for longer fixture names.",
+  "sources": [
+   {
+    "label": "The adopted fix: PR #337 (session 9fca16ca final integration)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/pull/337"
+   },
+   {
+    "label": "This session's failing gate run 40206447470 (browser step)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40206447470"
+   },
+   {
+    "label": "Same-window failure on another session's branch (run 40205770553)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40205770553"
+   },
+   {
+    "label": "The gate itself (tests/browser_ce45f672.cjs, assertion at line 108)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/tests/browser_ce45f672.cjs"
+   },
+   {
+    "label": "The fixture whose long heading triggered the overlap (Hotspawn lobby)",
+    "url": "https://play.hotspawn.com/lobby"
+   }
+  ]
  }
 ]

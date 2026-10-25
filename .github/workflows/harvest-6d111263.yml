@@ -1,0 +1,227 @@
+name: Publisher diagnosis harvest 6d111263 (non-publishing)
+
+# Session 6d111263 (Arena-fixed branch arena/6d111263-maltaproj4).
+#
+# The authoring sandbox reaches github.com, codeload.github.com, api.github.com,
+# registry.npmjs.org and pypi.org only, and job logs live on hosts outside that
+# allowlist, so the real Hotspawn / HLTV / exchange / bookmaker / Valve refresh,
+# the exact gates main's publisher runs, the phone/browser suites and the
+# legacy-root staging all run here on a normal GitHub egress, with every
+# command's exit code and stderr committed back to this branch for line-by-line
+# reading. This workflow never deploys Pages and never pushes to main: Pages
+# publication stays with pages.yml after the integration PR merges.
+on:
+  push:
+    branches: [arena/6d111263-maltaproj4]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: harvest-6d111263
+  cancel-in-progress: false
+
+jobs:
+  capture:
+    if: github.ref == 'refs/heads/arena/6d111263-maltaproj4' && (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[capture]'))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+
+      - name: Record entry state
+        run: |
+          mkdir -p research/harvest-6d111263/logs runtime
+          python - <<'PY'
+          import json, subprocess, datetime, pathlib
+          sha = subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip()
+          d = json.load(open('data/latest.json'))
+          pathlib.Path('research/harvest-6d111263/entry.json').write_text(json.dumps({
+              'head': sha,
+              'committed_snapshot': d['generated_at'],
+              'started_at': datetime.datetime.now(datetime.timezone.utc).isoformat(),
+          }, indent=1) + '\n')
+          PY
+
+      - name: A. Refresh official sources (same command as the publisher)
+        id: refresh
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -o pipefail
+          python -m scripts.refresh --output runtime/latest.json 2>&1 | tee research/harvest-6d111263/logs/01-refresh.log
+          echo "rc=$?" >> research/harvest-6d111263/logs/rcs.txt
+
+      - name: B. Withhold any row the independent audit cannot reproduce
+        id: quarantine
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          python -m scripts.quarantine runtime/latest.json 2>&1 | tee research/harvest-6d111263/logs/02-quarantine.log
+          echo "rc=$?" >> research/harvest-6d111263/logs/rcs.txt
+
+      - name: C1. Independent row audit of the refreshed snapshot
+        id: audit1
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          python verification-c6/audit_snapshot.py runtime/latest.json --output runtime/independent-row-audit.md 2>&1 | tee research/harvest-6d111263/logs/03-audit1.log
+          echo "rc=$?" >> research/harvest-6d111263/logs/rcs.txt
+
+      - name: C2. Build exactly as publication does
+        id: build
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          python -m scripts.build --data runtime/latest.json 2>&1 | tee research/harvest-6d111263/logs/04-build.log
+          echo "rc=$?" >> research/harvest-6d111263/logs/rcs.txt
+
+      - name: C3. Validate exactly as publication does
+        id: validate
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          python -m scripts.validate --data runtime/latest.json 2>&1 | tee research/harvest-6d111263/logs/05-validate.log
+          echo "rc=$?" >> research/harvest-6d111263/logs/rcs.txt
+
+      - name: C4. Independent row audit of the built artifact
+        id: audit2
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          python verification-c6/audit_snapshot.py public/data/latest.json --output runtime/published-row-audit.md 2>&1 | tee research/harvest-6d111263/logs/06-audit2.log
+          echo "rc=$?" >> research/harvest-6d111263/logs/rcs.txt
+
+      - name: D. Coverage census of the refreshed snapshot
+        id: census
+        continue-on-error: true
+        run: |
+          python - <<'PY' 2>&1 | tee research/harvest-6d111263/logs/07-census.log
+          import json, datetime
+          d = json.load(open('runtime/latest.json'))
+          rows = d.get('matches', [])
+          now = datetime.datetime.now(datetime.timezone.utc)
+          opens = [r for r in rows if r.get('state') == 'open']
+          print('generated_at', d.get('generated_at'))
+          print('total', len(rows), 'open', len(opens))
+          nopick = [r for r in opens if not r.get('pick')]
+          noprob = [r for r in opens if not r.get('probabilities')]
+          print('open_without_pick', len(nopick))
+          print('open_without_probabilities', len(noprob))
+          for r in nopick:
+              print('NOPICK', r.get('id'), r.get('teams'), '| reason:', r.get('reason'), '| method:', r.get('method'))
+          for r in noprob:
+              print('NOPROB', r.get('id'), r.get('teams'), '| reason:', r.get('reason'))
+          for r in opens:
+              exp = r.get('expires_at')
+              if exp:
+                  e = datetime.datetime.fromisoformat(exp.replace('Z', '+00:00'))
+                  if e < now:
+                      print('EXPIRED', r.get('id'), r.get('teams'), 'expires', exp, 'pick', r.get('pick'))
+          print('issues:', json.dumps(d.get('issues', []))[:2000])
+          PY
+
+      - name: E. Unit suite against the refreshed snapshot
+        id: unit
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          python -m unittest discover -s tests 2>&1 | tee research/harvest-6d111263/logs/08-unit.log | tail -40
+          echo "rc=$?" >> research/harvest-6d111263/logs/rcs.txt
+          python -m unittest discover -s audits -p 'test_*.py' 2>&1 | tee research/harvest-6d111263/logs/08-audits.log | tail -3
+          python verification-95b588c2/test_integrity.py 2>&1 | tee research/harvest-6d111263/logs/08-integrity.log | tail -3
+          python -m unittest discover -s verification-c6 -p 'test_*.py' 2>&1 | tee research/harvest-6d111263/logs/08-c6.log | tail -3
+
+      - name: F. Phone, tablet, desktop and accessibility gates
+        id: browser
+        continue-on-error: true
+        run: |
+          npm ci --ignore-scripts 2>&1 | tee research/harvest-6d111263/logs/09-npm-ci.log | tail -3
+          set -o pipefail
+          npm run test:browser 2>&1 | tee research/harvest-6d111263/logs/09-browser.log | tail -30
+          echo "rc=$?" >> research/harvest-6d111263/logs/rcs.txt
+
+      - name: G. Stage the verified build to the session branch root
+        id: stage
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          python -m scripts.publish_root_fallback --public public --root . --cooldown-hours 0 2>&1 | tee research/harvest-6d111263/logs/10-stage.log | tail -20
+          echo "rc=$?" >> research/harvest-6d111263/logs/rcs.txt
+
+      - name: H. Gates against the staged root (same as the publisher's own gate)
+        id: staged
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          python -m scripts.validate --data data/latest.json --site . 2>&1 | tee research/harvest-6d111263/logs/11-staged-validate.log | tail -10
+          echo "rc_validate=$?" >> research/harvest-6d111263/logs/rcs.txt
+          python -m unittest discover -s tests 2>&1 | tee research/harvest-6d111263/logs/11-staged-unit.log | tail -20
+          echo "rc_unit=$?" >> research/harvest-6d111263/logs/rcs.txt
+
+      - name: Assemble receipt
+        if: always()
+        env:
+          RESULT_refresh: ${{ steps.refresh.outcome }}
+          RESULT_quarantine: ${{ steps.quarantine.outcome }}
+          RESULT_audit1: ${{ steps.audit1.outcome }}
+          RESULT_build: ${{ steps.build.outcome }}
+          RESULT_validate: ${{ steps.validate.outcome }}
+          RESULT_audit2: ${{ steps.audit2.outcome }}
+          RESULT_census: ${{ steps.census.outcome }}
+          RESULT_unit: ${{ steps.unit.outcome }}
+          RESULT_browser: ${{ steps.browser.outcome }}
+          RESULT_stage: ${{ steps.stage.outcome }}
+          RESULT_staged: ${{ steps.staged.outcome }}
+        run: |
+          python - <<'PY'
+          import json, os, pathlib, datetime, subprocess
+          out = {
+              'run_id': os.environ.get('GITHUB_RUN_ID'),
+              'run_url': f"{os.environ.get('GITHUB_SERVER_URL')}/{os.environ.get('GITHUB_REPOSITORY')}/actions/runs/{os.environ.get('GITHUB_RUN_ID')}",
+              'checkout_sha': subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip(),
+              'finished_at': datetime.datetime.now(datetime.timezone.utc).isoformat(),
+              'publishes_pages': False,
+              'step_conclusions': {k: os.environ.get('RESULT_' + k)
+                                   for k in ('refresh', 'quarantine', 'audit1', 'build', 'validate',
+                                             'audit2', 'census', 'unit', 'browser', 'stage', 'staged')},
+          }
+          pathlib.Path('research/harvest-6d111263/rcs.json').write_text(json.dumps(out, indent=1) + '\n')
+          print(json.dumps(out, indent=1))
+          PY
+
+      - name: Commit dated receipts and the staged build to the session branch
+        if: always()
+        run: |
+          git config user.name "cs2-evidence-runner"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp runtime/latest.json research/harvest-6d111263/snapshot.json 2>/dev/null || true
+          git add -A -- research/harvest-6d111263 \
+            404.html analysis.html assets build-info.json data/latest.json data/matches.csv \
+            data/book-receipts.json evidence.html index.html matches.html methodology.html picks.html \
+            review.html site sources.html unresolved.html .nojekyll
+          if git diff --cached --quiet; then
+            echo "No diagnosis or staged-build change to commit."
+            exit 0
+          fi
+          git commit -m "Publisher diagnosis and verified staged build from run ${GITHUB_RUN_ID} (no publication) [skip ci]"
+          git pull --rebase origin arena/6d111263-maltaproj4
+          git push origin arena/6d111263-maltaproj4
+
+      - name: Retain diagnosis artifacts even when a gate fails
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: diagnosis-6d111263-${{ github.run_id }}
+          path: |
+            research/harvest-6d111263
+            runtime/latest.json
+            public/build-info.json
+          retention-days: 14

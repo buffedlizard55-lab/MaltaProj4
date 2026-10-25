@@ -10168,6 +10168,38 @@ the stale watchdog, so the 4–8 hour promise is now backed by a publisher that 
 the eight-hour silence was a contract violation in the data, not a cron problem, and it is
 recorded rather than papered over.
 
+## Session 6d111263 claim — 2026-10-25 13:30 UTC (fresh diagnosis, coverage, integration)
+
+Board read before claiming. Arena-fixed branch `arena/6d111263-maltaproj4`, based on `main` `6ade440`.
+No other branch is created, checked out or pushed. All `in progress` rows in this file dated 2026-10-18
+through 2026-10-24 are stale by the 60-minute rule and their owners' branches are not touched here.
+
+**Measured starting state (not assumed).** `main` == `origin/main` == `6ade440`. The committed snapshot
+`data/latest.json` is `2026-10-25T01:47:42Z` (79 feed rows, 18 open / 18 picks / 18 win probabilities /
+0 unresolved), i.e. **11.6 h old at claim time — outside the 8-hour evidence window**. The scheduled
+publisher is red: `Verify, refresh and publish CS2 Scout` runs
+[40143667147](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40143667147) (00:24Z, head
+`cbe9dce`), [40170923727](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40170923727)
+(07:24Z, head `6ade440`) and
+[40193317196](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40193317196) (12:30Z, head
+`6ade440`) all failed at step *Build and independently verify every row, calculation and internal link*,
+so `upload-pages-artifact` never ran and the live board has been serving the 01:47Z snapshot since.
+The independent audit workflow fails with `Live snapshot is expired` — a symptom of the same freeze.
+Local reproduction of that exact step against the **committed** snapshot passes (row audit 0 failures,
+build OK, validate 802 links OK, published audit 0 failures), so the defect is in the snapshot the
+runner produces from live sources. Job logs cannot be read from this sandbox (artifact/blob hosts are
+outside the egress allowlist), so the diagnosis runs on a GitHub runner via a session harvest.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Diagnose the failing publish step on a fresh runner refresh (refresh → quarantine → audit/build/validate on the refreshed snapshot), commit dated logs | in progress | 6d111263 | `.github/workflows/harvest-6d111263.yml` (new), `research/harvest-6d111263/**` (new) | 2026-10-25 13:30 |
+| Fix the defect that blocks publication; keep a sourced pick or a documented unresolved limitation for every open Hotspawn CS2 match | in progress | 6d111263 | `scripts/**` only as the diagnosis names the file(s), `tests/test_session_6d111263.py` (new) | 2026-10-25 13:30 |
+| Line-by-line verification of the refreshed board (rows, arithmetic, source links, expiry); executive-summary links, unresolved section and 320–412 px layout re-check | in progress | 6d111263 | `research/session-6d111263/**` (new), `data/review-notes.json` (append-only) | 2026-10-25 13:30 |
+| Final integration: all gates, PR to `main`, merge without approval, confirm Pages deploy and live bytes, receipt | in progress | 6d111263 | `COORDINATION.md`, generated root pages/data, `build-info.json` | 2026-10-25 13:30 |
+
+Evidence rules unchanged: Hotspawn supplies fixture inventory and locks only, never a probability; no
+crowd votes, placeholder odds, inferred values or 50/50 filler; any match that cannot be priced by the
+sourced ladder stays in the separate unresolved section with its attempted sources and limitation.
 ## Session a7f788c8 — 2026-10-25 independent integration claim
 
 | Task | Status | Owner | File scope |
@@ -10765,6 +10797,26 @@ per-fixture page, blank `best_of`, the 23-point spread row, the listing without 
 20-day-old Valve standings behind the four originated lines, and the GG.BET 403 / Thunderpick adapter
 limitations.
 
+### Session 6d111263 — scope extension claim (2026-10-25 15:45 UTC): phone glance-card compaction
+
+Measured on the built index at 320x568 (Chromium, this session): with the first open fixture
+BORRACHEIROS vs RED Canids Academy (fixture 1086696), the first `#picks-at-a-glance` card's two
+`.glance-card-score` elements end at y=461..517 while the fixed tab bar starts at y=507, so the
+second win probability sits **behind** the tab bar on a 320px phone. This is exactly what
+`tests/browser_ce45f672.cjs:108` fails on, and it started failing for every session once the
+15:00Z fixture left the board (~15:00Z); runs 40206447470 (this branch), 40205770553 and 40205395251
+failed the same window. The live site carries the same bytes, so it is a user-visible phone defect
+against the brief's "probabilities visible on the phone" requirement.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Compact the glance card at ≤360px so both win chances clear the tab bar; re-run every browser suite and re-measure 320/390/412 | in progress | 6d111263 | `site/assets/style.css` (≤360px glance-card block only), regenerated `assets/style.css` + root pages/`build-info.json` via the normal build/stage path, `research/session-6d111263/**`, `data/review-notes.json` (append-only) | 2026-10-25 15:45 |
+
+Overlap note (logged, not edited): open PRs #318 (6857421f), #319 (8e4ff8d2) and #321 (53284c80)
+announce phone-card fixes and touch the same stylesheet. None is merged into `main`; `main`'s
+`site/assets/style.css` still carries the failing layout. This session takes the claim because the
+defect is live and its PR #335 is otherwise green — any later conflict must be resolved in favour
+of whichever fix is already on `main`, never by layering two compactions.
 ## Session 408eb0af — delivery receipt: #323 merged, publisher green, live board verified (2026-10-25 15:20 UTC)
 
 **PR [#323](https://github.com/buffedlizard55-lab/MaltaProj4/pull/323) merged to `main` at 2026-10-25T14:22:05Z**, merge commit
@@ -10798,6 +10850,14 @@ was affected. (b) The 51/49 originated line's directional pick, and the `Projeto
 exist (odds-api.io, OddsPapi, esportsodds.gg, the-odds-api) but every one needs a key this project does not hold; none was used
 and none is described as available.
 
+**Outcome of the 15:45 phone-compaction claim (session 6d111263, 2026-10-25 16:0x UTC):** while this claim was being
+worked, session 9fca16ca's PR #337 merged a fix for the identical measurement (`y=486..517` vs the tab bar at `507`)
+into `main`. Per the claim's own overlap rule this session **adopted main's block and deleted its draft** (the only
+stylesheet delta it had staged), then re-measured on the merged tree: at 320x568 the same first card's scores now end
+at **y=505 ≤ 507** (clear by 2px), 390x844 and 412x915 unchanged, no horizontal overflow, and the full 13-suite
+Chromium run plus 1,769 unit tests are green on the merged tree. The flagged note
+`session-6d111263-phone-tabbar-overlap-2026-10-25` records the defect, the adopted fix and the remaining 2px margin
+observation (non-blocking; a three-line heading would need a content-independent fix). Task row: **done — adopted**.
 ## Session df43411c — CLAIM (2026-10-25 14:18 UTC): independent verification of the live board, publisher health, then final integration
 
 Board read before claiming: `origin/main` = `a2d3b1f` (PR #319 merged; snapshot `2026-10-25T13:54:18Z`,
