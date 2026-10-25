@@ -75,7 +75,7 @@ class VerifierModuleTests(unittest.TestCase):
         self.assertFalse(self.module.row_checks(mutated, self.module.parse(self.data['generated_at']))['P3'])
 
     def test_a_missing_source_link_fails(self):
-        row = next(m for m in self.data['matches'] if m.get('evidence'))
+        row = next(m for m in self.data['matches'] if m.get('evidence') and m.get('probabilities'))
         mutated = json.loads(json.dumps(row))
         for quote in mutated['evidence']:
             quote.pop('api_url', None)
