@@ -1,37 +1,45 @@
 {
  "schema_version": 1,
- "snapshot_sha256": "2b81a0431d95a66a2362e58191dc107cefc3b9804dedf9a4fd214ace95ac5f79",
- "snapshot_generated_at": "2026-10-25T14:20:24.409995Z",
- "fixtures_observed_at": "2026-10-25T14:16:52.070017Z",
- "previous_generated_at": "2026-10-25T14:01:00.631995Z",
+ "snapshot_sha256": "405b6bd3e0cb50a74399df41c34d238678e9d9afd542dcd16e441e8af87bacfb",
+ "snapshot_generated_at": "2026-10-25T15:59:18.261543Z",
+ "fixtures_observed_at": "2026-10-25T15:55:45.025437Z",
+ "previous_generated_at": "2026-10-25T14:22:27.352651Z",
  "coverage": "verified",
  "coverage_counts": {
-  "api": 78,
-  "page": 78,
-  "lobby": 78,
-  "retained": 78
+  "api": 75,
+  "page": 75,
+  "lobby": 75,
+  "retained": 75
  },
  "fixture_conflicts": [],
  "inventory_changes_reported_by_refresh": {
-  "compared_with": "2026-10-25T14:01:00.631995Z",
+  "compared_with": "2026-10-25T14:22:27.352651Z",
   "added_ids": [],
-  "removed_ids": []
+  "removed_ids": [
+   "1079199",
+   "1085542",
+   "1086696"
+  ]
  },
  "added_vs_previous": [],
- "removed_vs_previous": [],
+ "removed_vs_previous": [
+  "1079199",
+  "1085542",
+  "1086696"
+ ],
  "changed_fixture_facts_vs_previous": [],
  "counts": {
-  "fixtures": 78,
-  "open": 16,
-  "open_with_pick": 16,
-  "open_with_probability": 16,
-  "open_fully_resolved": 16,
+  "fixtures": 75,
+  "open": 14,
+  "open_with_pick": 14,
+  "open_with_probability": 14,
+  "open_fully_resolved": 14,
   "open_with_pick_but_no_probability": 0,
   "open_without_pick": 0,
-  "not_open": 62,
+  "not_open": 61,
   "methods": {
    "bookmaker_fallback": 1,
-   "exchange": 11,
+   "exchange": 9,
    "model_vrs": 4
   }
  },
@@ -42,74 +50,74 @@
   {
    "name": "Hotspawn CS2 fixtures",
    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
-   "checked_at": "2026-10-25T14:16:50.485501Z",
+   "checked_at": "2026-10-25T15:55:44.562591Z",
    "request_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
    "cache_bust": null,
    "http_status": 200,
    "status": "ok",
-   "retrieved_at": "2026-10-25T14:16:52.070017Z",
-   "observed_at": "2026-10-25T14:16:52.070017Z",
+   "retrieved_at": "2026-10-25T15:55:45.025437Z",
+   "observed_at": "2026-10-25T15:55:45.025437Z",
    "cache_age_seconds": null,
    "cache_status": null,
-   "sha256": "2357ffb1c53d8e21c59999e43c6f9e814f6b549e952e2db6eb213b91b061497f",
-   "bytes": 61043
+   "sha256": "f3c27daf20369f102c32fd15d8a398f67122b734767868cf39dfbc55dea72de7",
+   "bytes": 58714
   },
   {
    "name": "Hotspawn CS2 lobby",
    "url": "https://play.hotspawn.com/cs2-pickems",
-   "checked_at": "2026-10-25T14:16:52.072161Z",
-   "request_url": "https://play.hotspawn.com/cs2-pickems?_cb=1792937812072-5e40e412",
-   "cache_bust": "1792937812072-5e40e412",
+   "checked_at": "2026-10-25T15:55:45.026823Z",
+   "request_url": "https://play.hotspawn.com/cs2-pickems?_cb=1792943745026-7bbec3c3",
+   "cache_bust": "1792943745026-7bbec3c3",
    "http_status": 200,
    "status": "ok",
-   "retrieved_at": "2026-10-25T14:16:53.110719Z",
-   "observed_at": "2026-10-25T14:16:53.110719Z",
+   "retrieved_at": "2026-10-25T15:55:46.027197Z",
+   "observed_at": "2026-10-25T15:55:46.027197Z",
    "cache_age_seconds": 0,
    "cache_status": "MISS",
-   "sha256": "910dcd3cc795bcb91ed2b20fb7476a6d61afe3c4da1d167b05b4d0920e3bedf3",
-   "bytes": 290681
+   "sha256": "5de7d12f03f25477ff0df9235e8ac0171920be5449982287e7d730e786ee8b73",
+   "bytes": 272481
   },
   {
    "name": "Hotspawn general lobby",
    "url": "https://play.hotspawn.com/lobby",
-   "checked_at": "2026-10-25T14:16:53.166221Z",
-   "request_url": "https://play.hotspawn.com/lobby?_cb=1792937813166-2296014e",
-   "cache_bust": "1792937813166-2296014e",
+   "checked_at": "2026-10-25T15:55:46.053878Z",
+   "request_url": "https://play.hotspawn.com/lobby?_cb=1792943746053-33b15cc0",
+   "cache_bust": "1792943746053-33b15cc0",
    "http_status": 200,
    "status": "ok",
-   "retrieved_at": "2026-10-25T14:16:53.999105Z",
-   "observed_at": "2026-10-25T14:16:53.999105Z",
+   "retrieved_at": "2026-10-25T15:55:46.713610Z",
+   "observed_at": "2026-10-25T15:55:46.713610Z",
    "cache_age_seconds": 0,
    "cache_status": "MISS",
-   "sha256": "fc9126df6fb762a91a0dc05f4b0dd0ed4c69ff6c14d1149e3b3e2eb9719d1213",
-   "bytes": 291554
+   "sha256": "d81101beab1c7393eda818a47a0c57cdc29a9a27abbbc295a63f4d8085b6d8d5",
+   "bytes": 273309
   },
   {
    "name": "HLTV Valve ranking mirror (dated view)",
    "url": "https://www.hltv.org/valve-ranking/teams/2026/october/25",
-   "checked_at": "2026-10-25T14:16:54.056682Z",
+   "checked_at": "2026-10-25T15:55:46.740765Z",
    "request_url": "https://www.hltv.org/valve-ranking/teams/2026/october/25",
    "cache_bust": null,
    "http_status": 200,
    "status": "ok",
-   "retrieved_at": "2026-10-25T14:16:54.534592Z",
-   "observed_at": "2026-10-25T14:16:54.534592Z",
+   "retrieved_at": "2026-10-25T15:55:47.212147Z",
+   "observed_at": "2026-10-25T15:55:47.212147Z",
    "cache_age_seconds": null,
    "cache_status": "DYNAMIC",
-   "sha256": "ce3967770b2e44194f373299c544de47377d6369050dd98f4db36dad325264b5",
-   "bytes": 1679337
+   "sha256": "56573ba854a7a9979ff5b7996aad0fb416a2174af9364c217fe821b99a935aeb",
+   "bytes": 1677940
   },
   {
    "name": "Polymarket sports registry",
    "url": "https://gamma-api.polymarket.com/sports",
-   "checked_at": "2026-10-25T14:16:56.228068Z",
+   "checked_at": "2026-10-25T15:55:48.069646Z",
    "request_url": "https://gamma-api.polymarket.com/sports",
    "cache_bust": null,
    "http_status": 200,
    "status": "ok",
-   "retrieved_at": "2026-10-25T14:16:56.396349Z",
-   "observed_at": "2026-10-25T13:58:00.396349Z",
-   "cache_age_seconds": 1136,
+   "retrieved_at": "2026-10-25T15:55:48.190118Z",
+   "observed_at": "2026-10-25T15:41:56.190118Z",
+   "cache_age_seconds": 832,
    "cache_status": "Hit from cloudfront",
    "sha256": "f6b2d546b1cdd25010f185b821ab492ec72b3759a5b05a277df57ce37153a254",
    "bytes": 155942
@@ -117,193 +125,193 @@
   {
    "name": "Polymarket events page 1",
    "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-25T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
-   "checked_at": "2026-10-25T14:16:56.398052Z",
+   "checked_at": "2026-10-25T15:55:48.191256Z",
    "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-25T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
    "cache_bust": null,
    "http_status": 200,
    "status": "ok",
-   "retrieved_at": "2026-10-25T14:16:56.646274Z",
-   "observed_at": "2026-10-25T14:16:56.646274Z",
+   "retrieved_at": "2026-10-25T15:55:48.517574Z",
+   "observed_at": "2026-10-25T15:55:48.517574Z",
    "cache_age_seconds": null,
    "cache_status": "Miss from cloudfront",
-   "sha256": "15318041b1fce34e21651b43d3081d838540c30a6366666116a1e8e29cf5065a",
-   "bytes": 3009289
+   "sha256": "3c59bd7d342cc7bce6ba503133847c7c64d5dd0ad1045796616ec746a51c41b5",
+   "bytes": 3087251
   },
   {
    "name": "HLTV fallback discovery",
    "url": "https://www.hltv.org/matches",
-   "checked_at": "2026-10-25T14:16:56.705836Z",
+   "checked_at": "2026-10-25T15:55:48.550345Z",
    "request_url": "https://www.hltv.org/matches",
    "cache_bust": null,
    "http_status": 200,
    "status": "ok",
-   "retrieved_at": "2026-10-25T14:16:56.882491Z",
-   "observed_at": "2026-10-25T14:16:56.882491Z",
+   "retrieved_at": "2026-10-25T15:55:48.756677Z",
+   "observed_at": "2026-10-25T15:55:48.756677Z",
    "cache_age_seconds": null,
    "cache_status": "DYNAMIC",
-   "sha256": "56f41825b38d1a3389b698b3686fdc28abb4a09178c65ef851605a59f0bc995d",
-   "bytes": 643309
+   "sha256": "84b8fdf777fdd4b48da6853ab92300f884ecb01d8c6525b594533fcdce3de393",
+   "bytes": 602130
   },
   {
    "name": "HLTV matches 2026-10-25",
    "url": "https://www.hltv.org/matches?selectedDate=2026-10-25",
-   "checked_at": "2026-10-25T14:16:57.106080Z",
+   "checked_at": "2026-10-25T15:55:48.853619Z",
    "request_url": "https://www.hltv.org/matches?selectedDate=2026-10-25",
    "cache_bust": null,
    "http_status": 200,
    "status": "ok",
-   "retrieved_at": "2026-10-25T14:16:57.322435Z",
-   "observed_at": "2026-10-25T14:16:57.322435Z",
+   "retrieved_at": "2026-10-25T15:55:49.080930Z",
+   "observed_at": "2026-10-25T15:55:49.080930Z",
    "cache_age_seconds": null,
    "cache_status": "DYNAMIC",
-   "sha256": "90e287bba7a46a067d32164ee761052d984d3d39f315b6987eaf43ea2fd947fe",
-   "bytes": 657919
+   "sha256": "bea4becc38edcda3d436e3f047f1f0dbf2058167f280fa285de70daa0b93ad1f",
+   "bytes": 613073
   },
   {
    "name": "HLTV matches 2026-10-26",
    "url": "https://www.hltv.org/matches?selectedDate=2026-10-26",
-   "checked_at": "2026-10-25T14:16:57.610363Z",
+   "checked_at": "2026-10-25T15:55:49.275235Z",
    "request_url": "https://www.hltv.org/matches?selectedDate=2026-10-26",
    "cache_bust": null,
    "http_status": 200,
    "status": "ok",
-   "retrieved_at": "2026-10-25T14:16:57.799012Z",
-   "observed_at": "2026-10-25T14:16:57.799012Z",
+   "retrieved_at": "2026-10-25T15:55:49.468234Z",
+   "observed_at": "2026-10-25T15:55:49.468234Z",
    "cache_age_seconds": null,
    "cache_status": "DYNAMIC",
-   "sha256": "46570115381a7faae1397c4bab1982287270124f4e7fe3681aed7e1363d00538",
-   "bytes": 639932
+   "sha256": "851941b1e645ac1c4939551af378d34bd45019091208478fa1ce4caa8b8d5bc0",
+   "bytes": 607548
   },
   {
    "name": "HLTV matches 2026-10-24",
    "url": "https://www.hltv.org/matches?selectedDate=2026-10-24",
-   "checked_at": "2026-10-25T14:16:58.016993Z",
+   "checked_at": "2026-10-25T15:55:49.563937Z",
    "request_url": "https://www.hltv.org/matches?selectedDate=2026-10-24",
    "cache_bust": null,
    "http_status": 200,
    "status": "ok",
-   "retrieved_at": "2026-10-25T14:16:58.609994Z",
-   "observed_at": "2026-10-25T14:16:58.609994Z",
+   "retrieved_at": "2026-10-25T15:55:49.921736Z",
+   "observed_at": "2026-10-25T15:55:49.921736Z",
    "cache_age_seconds": null,
    "cache_status": "DYNAMIC",
-   "sha256": "386fda76fefda2c3f61bd35d8db57bc9301cd3590552a20134b657cc7935b65f",
-   "bytes": 590684
+   "sha256": "d5bd1bb8d8ca1f8588b7da82c9c124878f80b2aee216925cc80ed9fe2c9c43b0",
+   "bytes": 572653
   },
   {
    "name": "HLTV match 1079200",
    "url": "https://www.hltv.org/matches/2399115/color-vs-ex-zero-tenacity-nodwin-clutch-series-13",
-   "checked_at": "2026-10-25T14:16:58.803171Z",
+   "checked_at": "2026-10-25T15:55:50.008541Z",
    "request_url": "https://www.hltv.org/matches/2399115/color-vs-ex-zero-tenacity-nodwin-clutch-series-13",
    "cache_bust": null,
    "http_status": 200,
    "status": "ok",
-   "retrieved_at": "2026-10-25T14:16:58.980291Z",
-   "observed_at": "2026-10-25T14:16:58.980291Z",
+   "retrieved_at": "2026-10-25T15:55:50.356038Z",
+   "observed_at": "2026-10-25T15:55:50.356038Z",
    "cache_age_seconds": null,
    "cache_status": "DYNAMIC",
-   "sha256": "355747de0dc8eba535c42dceaeb85678a7b9d23a630c0b15e487be96a4d4dcc2",
-   "bytes": 451480
+   "sha256": "fe7f7be592eeb18fdd3042d2a0b614b95dd8a13d52ce6ece755691c148b1f7aa",
+   "bytes": 443885
   },
   {
    "name": "HLTV match 1082859",
    "url": "https://www.hltv.org/matches/2399889/nexvoid-vs-alter-ego-dfrag-invitational-2026",
-   "checked_at": "2026-10-25T14:16:59.363887Z",
+   "checked_at": "2026-10-25T15:55:50.583254Z",
    "request_url": "https://www.hltv.org/matches/2399889/nexvoid-vs-alter-ego-dfrag-invitational-2026",
    "cache_bust": null,
    "http_status": 200,
    "status": "ok",
-   "retrieved_at": "2026-10-25T14:16:59.650459Z",
-   "observed_at": "2026-10-25T14:16:59.650459Z",
+   "retrieved_at": "2026-10-25T15:55:50.959765Z",
+   "observed_at": "2026-10-25T15:55:50.959765Z",
    "cache_age_seconds": null,
    "cache_status": "DYNAMIC",
-   "sha256": "22219994967b620ddb224e41220d39aedd00bc2809b03544061828e8bda93dc5",
-   "bytes": 416016
+   "sha256": "431108524d9b36d45a174c657292f2a24fa36f01ea8dec47e4c895fa113ff76f",
+   "bytes": 409221
   },
   {
    "name": "HLTV match 1082792",
    "url": "https://www.hltv.org/matches/2399437/hotu-vs-the-huns-gluck-moscow-cyber-games-2026",
-   "checked_at": "2026-10-25T14:16:59.921594Z",
+   "checked_at": "2026-10-25T15:55:51.099229Z",
    "request_url": "https://www.hltv.org/matches/2399437/hotu-vs-the-huns-gluck-moscow-cyber-games-2026",
    "cache_bust": null,
    "http_status": 200,
    "status": "ok",
-   "retrieved_at": "2026-10-25T14:17:00.201458Z",
-   "observed_at": "2026-10-25T14:17:00.201458Z",
+   "retrieved_at": "2026-10-25T15:55:52.162758Z",
+   "observed_at": "2026-10-25T15:55:52.162758Z",
    "cache_age_seconds": null,
    "cache_status": "DYNAMIC",
-   "sha256": "abc58f57c85a8eb0b3c1421a6b8885ee641cbf0293f58a3360ed0bc37e13c01b",
-   "bytes": 443477
+   "sha256": "91a8cb41e0fef7ccbedbd461241ac669d5867bf2b0d83b8308dfbcf10fa091dc",
+   "bytes": 434190
   },
   {
    "name": "HLTV match 1082793",
    "url": "https://www.hltv.org/matches/2399438/1win-vs-5star-gluck-moscow-cyber-games-2026",
-   "checked_at": "2026-10-25T14:17:00.506168Z",
+   "checked_at": "2026-10-25T15:55:52.312010Z",
    "request_url": "https://www.hltv.org/matches/2399438/1win-vs-5star-gluck-moscow-cyber-games-2026",
    "cache_bust": null,
    "http_status": 200,
    "status": "ok",
-   "retrieved_at": "2026-10-25T14:17:00.795291Z",
-   "observed_at": "2026-10-25T14:17:00.795291Z",
+   "retrieved_at": "2026-10-25T15:55:53.288548Z",
+   "observed_at": "2026-10-25T15:55:53.288548Z",
    "cache_age_seconds": null,
    "cache_status": "DYNAMIC",
-   "sha256": "579dffbc2f43ce9b4dc3dc4be524f8ea6e7ab3737fa522e1cd56115fe2857b5f",
-   "bytes": 450205
+   "sha256": "dac4262f1b8775327cdc5b4439728fda981a1e56e6a2ee9649563073d8e745f8",
+   "bytes": 440933
   },
   {
    "name": "HLTV team search Projeto do KinGui",
    "url": "https://www.hltv.org/search?query=Projeto%20do%20KinGui",
-   "checked_at": "2026-10-25T14:17:01.094670Z",
+   "checked_at": "2026-10-25T15:55:53.447688Z",
    "request_url": "https://www.hltv.org/search?query=Projeto%20do%20KinGui",
    "cache_bust": null,
    "http_status": 200,
    "status": "ok",
-   "retrieved_at": "2026-10-25T14:17:01.332670Z",
-   "observed_at": "2026-10-25T14:17:01.332670Z",
+   "retrieved_at": "2026-10-25T15:55:53.717014Z",
+   "observed_at": "2026-10-25T15:55:53.717014Z",
    "cache_age_seconds": null,
    "cache_status": "DYNAMIC",
-   "sha256": "2009c482438e1f387e08e09741ea97882bf33806e6132a3c6dfdf59724f51a07",
-   "bytes": 220068
+   "sha256": "e2fe2d15a538b77feb152a4bbe34988f4dc625291005597784fb1801b0169cf8",
+   "bytes": 214496
   },
   {
    "name": "Pinnacle esports fixtures",
    "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/matchups?withSpecials=false",
-   "checked_at": "2026-10-25T14:17:01.433255Z",
+   "checked_at": "2026-10-25T15:55:53.743970Z",
    "request_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/matchups?withSpecials=false",
    "cache_bust": null,
    "http_status": 200,
    "status": "ok",
-   "retrieved_at": "2026-10-25T14:17:01.559810Z",
-   "observed_at": "2026-10-25T14:16:39.559810Z",
-   "cache_age_seconds": 22,
+   "retrieved_at": "2026-10-25T15:55:53.860837Z",
+   "observed_at": "2026-10-25T15:47:14.860837Z",
+   "cache_age_seconds": 519,
    "cache_status": "HIT",
-   "sha256": "3c75fc9a110031691d36eeb3e5d4763d7bd4fb9318a5efee9ad56acd49d44089",
-   "bytes": 103054
+   "sha256": "cbbaef5dad039786a644611144824c2acbd0f8a5607361ca64f33aaca1074e61",
+   "bytes": 87558
   },
   {
    "name": "Pinnacle esports moneylines",
    "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
-   "checked_at": "2026-10-25T14:17:01.560820Z",
+   "checked_at": "2026-10-25T15:55:53.861544Z",
    "request_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
    "cache_bust": null,
    "http_status": 200,
    "status": "ok",
-   "retrieved_at": "2026-10-25T14:17:01.579798Z",
-   "observed_at": "2026-10-25T14:03:15.579798Z",
-   "cache_age_seconds": 826,
+   "retrieved_at": "2026-10-25T15:55:53.884985Z",
+   "observed_at": "2026-10-25T15:48:58.884985Z",
+   "cache_age_seconds": 415,
    "cache_status": "HIT",
-   "sha256": "acb75fc05d7cadc7684da0b0e56007b6f871c9dbb37e3dc3cf488071bdc5dd47",
-   "bytes": 554012
+   "sha256": "64782f4ee6ce9b6f255f2fb0fd50f2170ba24b82fcae27d9c5641a643dd87a18",
+   "bytes": 465781
   },
   {
    "name": "Thunderpick fallback access",
    "url": "https://thunderpick.io/esports/cs2-betting",
-   "checked_at": "2026-10-25T14:17:01.594838Z",
+   "checked_at": "2026-10-25T15:55:53.974233Z",
    "request_url": "https://thunderpick.io/esports/cs2-betting",
    "cache_bust": null,
    "http_status": 200,
    "status": "ok",
-   "retrieved_at": "2026-10-25T14:17:01.996462Z",
-   "observed_at": "2026-10-25T14:17:01.996462Z",
+   "retrieved_at": "2026-10-25T15:55:54.899992Z",
+   "observed_at": "2026-10-25T15:55:54.899992Z",
    "cache_age_seconds": null,
    "cache_status": "DYNAMIC",
    "sha256": "37644d5714f72bd613500ca479d3df1644862878a8de483b97c6621481337cc2",
@@ -312,7 +320,7 @@
   {
    "name": "GG.BET fallback access",
    "url": "https://gg.bet/en/esports/counter-strike",
-   "checked_at": "2026-10-25T14:17:01.996775Z",
+   "checked_at": "2026-10-25T15:55:54.900304Z",
    "request_url": "https://gg.bet/en/esports/counter-strike",
    "cache_bust": null,
    "tls_fallback": "refused: HTTP 403",
@@ -343,52 +351,52 @@
   {
    "name": "BO3.gg CS2 upcoming feed page 1",
    "url": "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
-   "checked_at": "2026-10-25T14:18:42.512674Z",
+   "checked_at": "2026-10-25T15:57:35.482011Z",
    "request_url": "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
    "cache_bust": null,
    "http_status": 200,
    "status": "ok",
-   "retrieved_at": "2026-10-25T14:18:42.888438Z",
-   "observed_at": "2026-10-25T14:18:42.888438Z",
+   "retrieved_at": "2026-10-25T15:57:36.201634Z",
+   "observed_at": "2026-10-25T15:57:36.201634Z",
    "cache_age_seconds": null,
    "cache_status": "DYNAMIC",
-   "sha256": "5a55eae16f06e9786f936edbd28245b8e9f7c25ce4a2b4cd20970ff871a8c526",
-   "bytes": 232106
+   "sha256": "522e6d32f90d621511a571fc1551438ab627e07e217a06aa7a0d51af75caec3f",
+   "bytes": 223721
   },
   {
    "name": "BO3.gg CS2 upcoming feed page 2",
    "url": "https://api.bo3.gg/api/v1/matches?page[offset]=100&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
-   "checked_at": "2026-10-25T14:18:42.892710Z",
+   "checked_at": "2026-10-25T15:57:36.204353Z",
    "request_url": "https://api.bo3.gg/api/v1/matches?page[offset]=100&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
    "cache_bust": null,
    "http_status": 200,
    "status": "ok",
-   "retrieved_at": "2026-10-25T14:18:43.165230Z",
-   "observed_at": "2026-10-25T14:18:43.165230Z",
+   "retrieved_at": "2026-10-25T15:57:36.494542Z",
+   "observed_at": "2026-10-25T15:57:36.494542Z",
    "cache_age_seconds": null,
    "cache_status": "DYNAMIC",
-   "sha256": "d11827223f76a182f11b571ab44311f81e15af700b474dd09ae1d3e3d58f89e7",
-   "bytes": 202019
+   "sha256": "23861409c87582209b3d19d95b01c3f1710b55708a7fa66bd72348def33de556",
+   "bytes": 203917
   },
   {
    "name": "BO3.gg CS2 upcoming feed page 3",
    "url": "https://api.bo3.gg/api/v1/matches?page[offset]=200&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
-   "checked_at": "2026-10-25T14:18:43.168048Z",
+   "checked_at": "2026-10-25T15:57:36.496901Z",
    "request_url": "https://api.bo3.gg/api/v1/matches?page[offset]=200&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
    "cache_bust": null,
    "http_status": 200,
    "status": "ok",
-   "retrieved_at": "2026-10-25T14:18:43.437619Z",
-   "observed_at": "2026-10-25T14:18:43.437619Z",
+   "retrieved_at": "2026-10-25T15:57:36.829360Z",
+   "observed_at": "2026-10-25T15:57:36.829360Z",
    "cache_age_seconds": null,
    "cache_status": "DYNAMIC",
-   "sha256": "df3849654e48b660beddc473bd73d0cfe43a5b641496cf2eab1fa22cabcafad2",
-   "bytes": 98197
+   "sha256": "4f0d66b9129350a71f2718b3e34505a12edb988bbc50135d1d4fbbaa29a2f6ed",
+   "bytes": 83963
   },
   {
    "name": "Book listing gap recheck 1082792",
    "url": "https://egamersworld.com/counterstrike/match/EkalRNMvVx/hotu-vs-the-huns-esports-SfdtzDhiK",
-   "checked_at": "2026-10-25T14:18:43.442216Z",
+   "checked_at": "2026-10-25T15:57:36.832292Z",
    "request_url": "https://egamersworld.com/counterstrike/match/EkalRNMvVx/hotu-vs-the-huns-esports-SfdtzDhiK",
    "cache_bust": null,
    "tls_fallback": "refused: HTTP 403",
@@ -419,20 +427,20 @@
   {
    "name": "Book listing gap recheck 1082793",
    "url": "https://egamersworld.com/counterstrike/match/EkalRNMvVx/1win-vs-5star-esports-4hTvdd1uN",
-   "checked_at": "2026-10-25T14:20:23.863804Z",
+   "checked_at": "2026-10-25T15:59:17.431630Z",
    "status": "error",
    "error": "Skipped after earlier access/rate restriction on this host: 403"
   },
   {
    "name": "Valve VRS standings index 2026",
    "url": "https://api.github.com/repos/ValveSoftware/counter-strike_regional_standings/contents/live/2026",
-   "checked_at": "2026-10-25T14:20:23.864215Z",
+   "checked_at": "2026-10-25T15:59:17.432081Z",
    "request_url": "https://api.github.com/repos/ValveSoftware/counter-strike_regional_standings/contents/live/2026",
    "cache_bust": null,
    "http_status": 200,
    "status": "ok",
-   "retrieved_at": "2026-10-25T14:20:24.093976Z",
-   "observed_at": "2026-10-25T14:20:24.093976Z",
+   "retrieved_at": "2026-10-25T15:59:17.765330Z",
+   "observed_at": "2026-10-25T15:59:17.765330Z",
    "cache_age_seconds": null,
    "cache_status": null,
    "sha256": "a0c70433d2727db5d568fa6267b7000a2c15e92a4aa8820cabf07ae84338ee23",
@@ -441,13 +449,13 @@
   {
    "name": "Valve VRS standings commit",
    "url": "https://api.github.com/repos/ValveSoftware/counter-strike_regional_standings/commits?path=live/2026/standings_global_2026_10_05.md&per_page=1",
-   "checked_at": "2026-10-25T14:20:24.094507Z",
+   "checked_at": "2026-10-25T15:59:17.765824Z",
    "request_url": "https://api.github.com/repos/ValveSoftware/counter-strike_regional_standings/commits?path=live/2026/standings_global_2026_10_05.md&per_page=1",
    "cache_bust": null,
    "http_status": 200,
    "status": "ok",
-   "retrieved_at": "2026-10-25T14:20:24.296288Z",
-   "observed_at": "2026-10-25T14:20:24.296288Z",
+   "retrieved_at": "2026-10-25T15:59:18.007338Z",
+   "observed_at": "2026-10-25T15:59:18.007338Z",
    "cache_age_seconds": null,
    "cache_status": null,
    "sha256": "4c4be0dd3026a2d736efaf8d4fd78c09b4dc8763e73612a502f0f537dab22a6e",
@@ -456,15 +464,15 @@
   {
    "name": "Valve VRS global standings",
    "url": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
-   "checked_at": "2026-10-25T14:20:24.296529Z",
+   "checked_at": "2026-10-25T15:59:18.007632Z",
    "request_url": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
    "cache_bust": null,
    "http_status": 200,
    "status": "ok",
-   "retrieved_at": "2026-10-25T14:20:24.341297Z",
-   "observed_at": "2026-10-25T14:20:24.341297Z",
+   "retrieved_at": "2026-10-25T15:59:18.227902Z",
+   "observed_at": "2026-10-25T15:59:18.227902Z",
    "cache_age_seconds": null,
-   "cache_status": "HIT",
+   "cache_status": "MISS",
    "sha256": "df96e7fc3cd91a2687ec08cac0128e50cc4e4e55346581679572e881d79ae61b",
    "bytes": 77872
   }
@@ -472,7 +480,7 @@
  "issues": [
   {
    "code": "feed_status",
-   "message": "62 feed entries are not open by sourced timestamps/status. They remain in All matches and are not treated as future picks.",
+   "message": "61 feed entries are not open by sourced timestamps/status. They remain in All matches and are not treated as future picks.",
    "source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
   }
  ],
@@ -2114,98 +2122,6 @@
    "source_attempts": []
   },
   {
-   "id": "1085542",
-   "teams": [
-    "ex-Zero Tenacity",
-    "Spirit Academy"
-   ],
-   "competition": "CCT Europe 2026 Series #11",
-   "start": "2026-10-25T14:00:00Z",
-   "lock": "2026-10-25T13:54:00Z",
-   "state": "not_open",
-   "pick": null,
-   "probabilities": null,
-   "fair_odds": null,
-   "method": null,
-   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
-   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
-   "evidence_sources": [],
-   "expires_at": null,
-   "limitation": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
-   "flags": [
-    "Scheduled feed entry is past its start; current match status is unverified."
-   ],
-   "independent_audit_problems": [],
-   "additional_audit_problems": [],
-   "source_attempts": []
-  },
-  {
-   "id": "1079199",
-   "teams": [
-    "Infinite",
-    "BRUTE"
-   ],
-   "competition": "NODWIN Clutch Series #13",
-   "start": "2026-10-25T15:00:00Z",
-   "lock": "2026-10-25T14:54:00Z",
-   "state": "open",
-   "pick": "BRUTE",
-   "probabilities": [
-    0.435,
-    0.565
-   ],
-   "fair_odds": [
-    2.2988505747126435,
-    1.7699115044247788
-   ],
-   "method": "exchange",
-   "fixture_source": "https://www.hotspawn.com/matches/infinite-vs-brute-nodwin-clutch-series-13-1079199",
-   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
-   "evidence_sources": [
-    "https://gamma-api.polymarket.com/markets/6072808",
-    "https://polymarket.com/event/cs2-inf6-brute-2026-10-25"
-   ],
-   "expires_at": "2026-10-25T14:54:00Z",
-   "limitation": null,
-   "flags": [],
-   "independent_audit_problems": [],
-   "additional_audit_problems": [],
-   "source_attempts": []
-  },
-  {
-   "id": "1086696",
-   "teams": [
-    "BORRACHEIROS",
-    "RED Canids Academy"
-   ],
-   "competition": "CCT South America 2026 Series #7",
-   "start": "2026-10-25T16:00:00Z",
-   "lock": "2026-10-25T15:54:00Z",
-   "state": "open",
-   "pick": "RED Canids Academy",
-   "probabilities": [
-    0.435,
-    0.565
-   ],
-   "fair_odds": [
-    2.2988505747126435,
-    1.7699115044247788
-   ],
-   "method": "exchange",
-   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
-   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
-   "evidence_sources": [
-    "https://gamma-api.polymarket.com/markets/6158760",
-    "https://polymarket.com/event/cs2-chama-reda-2026-10-25"
-   ],
-   "expires_at": "2026-10-25T15:54:00Z",
-   "limitation": null,
-   "flags": [],
-   "independent_audit_problems": [],
-   "additional_audit_problems": [],
-   "source_attempts": []
-  },
-  {
    "id": "1079200",
    "teams": [
     "Color",
@@ -2251,7 +2167,7 @@
      "status": "rejected",
      "reason": "Exact exchange opponent pair and UTC start found, but the parent event is ended=true. Market active/acceptingOrders cannot override event status; no probability accepted.",
      "url": "https://gamma-api.polymarket.com/events/1238707",
-     "observed_at": "2026-10-25T14:16:56.646274Z",
+     "observed_at": "2026-10-25T15:55:48.517574Z",
      "event_status": {
       "id": "1238707",
       "slug": "cs2-color-zerote-2026-10-25",
@@ -2269,17 +2185,17 @@
      "source_receipt": {
       "name": "Polymarket events page 1",
       "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-25T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
-      "checked_at": "2026-10-25T14:16:56.398052Z",
+      "checked_at": "2026-10-25T15:55:48.191256Z",
       "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-25T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
       "cache_bust": null,
       "http_status": 200,
       "status": "ok",
-      "retrieved_at": "2026-10-25T14:16:56.646274Z",
-      "observed_at": "2026-10-25T14:16:56.646274Z",
+      "retrieved_at": "2026-10-25T15:55:48.517574Z",
+      "observed_at": "2026-10-25T15:55:48.517574Z",
       "cache_age_seconds": null,
       "cache_status": "Miss from cloudfront",
-      "sha256": "15318041b1fce34e21651b43d3081d838540c30a6366666116a1e8e29cf5065a",
-      "bytes": 3009289
+      "sha256": "3c59bd7d342cc7bce6ba503133847c7c64d5dd0ad1045796616ec746a51c41b5",
+      "bytes": 3087251
      }
     },
     {
@@ -2290,19 +2206,19 @@
       {
        "url": "https://www.hltv.org/matches?selectedDate=2026-10-25",
        "status": "ok",
-       "fixtures_listed": 35,
+       "fixtures_listed": 32,
        "new_candidates": 0
       },
       {
        "url": "https://www.hltv.org/matches?selectedDate=2026-10-26",
        "status": "ok",
-       "fixtures_listed": 35,
+       "fixtures_listed": 32,
        "new_candidates": 0
       },
       {
        "url": "https://www.hltv.org/matches?selectedDate=2026-10-24",
        "status": "ok",
-       "fixtures_listed": 35,
+       "fixtures_listed": 32,
        "new_candidates": 0
       }
      ],
@@ -2451,16 +2367,7 @@
      "provider": "Polymarket",
      "status": "unresolved",
      "url": "https://gamma-api.polymarket.com/sports",
-     "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.",
-     "candidates": [
-      {
-       "teams": [
-        "Tropa do KinGui",
-        "Yawara Esports"
-       ],
-       "url": "https://gamma-api.polymarket.com/markets/6169151"
-      }
-     ]
+     "reason": "No exact team-pair and UTC-start match in retrieved feed."
     },
     {
      "provider": "HLTV",
@@ -2470,19 +2377,19 @@
       {
        "url": "https://www.hltv.org/matches?selectedDate=2026-10-25",
        "status": "ok",
-       "fixtures_listed": 35,
+       "fixtures_listed": 32,
        "new_candidates": 0
       },
       {
        "url": "https://www.hltv.org/matches?selectedDate=2026-10-26",
        "status": "ok",
-       "fixtures_listed": 35,
+       "fixtures_listed": 32,
        "new_candidates": 0
       },
       {
        "url": "https://www.hltv.org/matches?selectedDate=2026-10-24",
        "status": "ok",
-       "fixtures_listed": 35,
+       "fixtures_listed": 32,
        "new_candidates": 0
       }
      ],
@@ -2515,16 +2422,7 @@
      "provider": "Polymarket",
      "status": "unresolved",
      "url": "https://gamma-api.polymarket.com/sports",
-     "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.",
-     "candidates": [
-      {
-       "teams": [
-        "Tropa do KinGui",
-        "Yawara Esports"
-       ],
-       "url": "https://gamma-api.polymarket.com/markets/6169151"
-      }
-     ]
+     "reason": "No exact team-pair and UTC-start match in retrieved feed."
     },
     {
      "provider": "Thunderpick",
@@ -2541,8 +2439,8 @@
     {
      "provider": "Thunderpick (via BO3.gg API)",
      "status": "unresolved",
-     "url": "https://bo3.gg/matches/tropa-do-kingui-vs-yawara-esports-25-10-2026",
-     "reason": "Fixture found on BO3.gg with exact UTC start, but no active sportsbook moneyline is posted yet (bet_updates is null)."
+     "url": "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
+     "reason": "No exact team-pair and UTC-start match in the live BO3.gg CS2 feed."
     },
     {
      "provider": "Valve VRS model",
@@ -2564,12 +2462,12 @@
    "state": "open",
    "pick": "Off Chops",
    "probabilities": [
-    0.37,
-    0.63
+    0.245,
+    0.755
    ],
    "fair_odds": [
-    2.7027027027027026,
-    1.5873015873015872
+    4.081632653061225,
+    1.3245033112582782
    ],
    "method": "exchange",
    "fixture_source": "https://www.hotspawn.com/matches/ground-zero-vs-off-chops-dfrag-invitational-2026-1082858",
@@ -2578,11 +2476,9 @@
     "https://gamma-api.polymarket.com/markets/6066508",
     "https://polymarket.com/event/cs2-gz1-offcho-2026-10-25"
    ],
-   "expires_at": "2026-10-25T22:16:38.069083Z",
+   "expires_at": "2026-10-25T23:54:39.299804Z",
    "limitation": null,
-   "flags": [
-    "Wide exchange spread; low precision."
-   ],
+   "flags": [],
    "independent_audit_problems": [],
    "additional_audit_problems": [],
    "source_attempts": []
@@ -2613,7 +2509,7 @@
     "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
     "https://bo3.gg/matches/nexvoid-vs-alter-ego-26-10-2026"
    ],
-   "expires_at": "2026-10-25T22:16:52.070017Z",
+   "expires_at": "2026-10-25T23:55:45.025437Z",
    "limitation": null,
    "flags": [
     "Bookmaker line from a researched listing (no automated adapter for this book): Researched bookmaker listing; the listing supplies no price-update timestamp. Observation time shown."
@@ -2648,7 +2544,7 @@
     "https://gamma-api.polymarket.com/markets/6066520",
     "https://polymarket.com/event/cs2-fly-staque-2026-10-26"
    ],
-   "expires_at": "2026-10-25T22:16:38.069083Z",
+   "expires_at": "2026-10-25T23:54:39.299804Z",
    "limitation": null,
    "flags": [],
    "independent_audit_problems": [],
@@ -2681,7 +2577,7 @@
     "https://gamma-api.polymarket.com/markets/6066525",
     "https://polymarket.com/event/cs2-rstr-abyssa-2026-10-26"
    ],
-   "expires_at": "2026-10-25T22:16:38.069083Z",
+   "expires_at": "2026-10-25T23:54:39.299804Z",
    "limitation": null,
    "flags": [
     "Wide exchange spread; low precision."
@@ -2716,7 +2612,7 @@
     "https://gamma-api.polymarket.com/markets/6024944",
     "https://polymarket.com/event/cs2-b8-k271-2026-10-27"
    ],
-   "expires_at": "2026-10-25T22:14:38.413969Z",
+   "expires_at": "2026-10-25T23:52:37.891668Z",
    "limitation": null,
    "flags": [],
    "independent_audit_problems": [],
@@ -2749,7 +2645,7 @@
     "https://gamma-api.polymarket.com/markets/6024952",
     "https://polymarket.com/event/cs2-all-faze-2026-10-27"
    ],
-   "expires_at": "2026-10-25T22:16:38.069083Z",
+   "expires_at": "2026-10-25T23:54:39.299804Z",
    "limitation": null,
    "flags": [],
    "independent_audit_problems": [],
@@ -2782,7 +2678,7 @@
     "https://gamma-api.polymarket.com/markets/6024960",
     "https://polymarket.com/event/cs2-lg6-hotu-2026-10-27"
    ],
-   "expires_at": "2026-10-25T22:10:38.476648Z",
+   "expires_at": "2026-10-25T23:50:37.743576Z",
    "limitation": null,
    "flags": [],
    "independent_audit_problems": [],
@@ -2815,7 +2711,7 @@
     "https://gamma-api.polymarket.com/markets/6037120",
     "https://polymarket.com/event/cs2-envy-gl1-2026-10-27"
    ],
-   "expires_at": "2026-10-25T22:12:37.482955Z",
+   "expires_at": "2026-10-25T23:50:37.743576Z",
    "limitation": null,
    "flags": [],
    "independent_audit_problems": [],
@@ -2848,7 +2744,7 @@
     "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
     "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
    ],
-   "expires_at": "2026-10-25T22:16:52.070017Z",
+   "expires_at": "2026-10-25T23:55:45.025437Z",
    "limitation": null,
    "flags": [
     "Originated line: Valve VRS model estimate, not a market price."
@@ -2879,19 +2775,19 @@
       {
        "url": "https://www.hltv.org/matches?selectedDate=2026-10-25",
        "status": "ok",
-       "fixtures_listed": 35,
+       "fixtures_listed": 32,
        "new_candidates": 0
       },
       {
        "url": "https://www.hltv.org/matches?selectedDate=2026-10-26",
        "status": "ok",
-       "fixtures_listed": 35,
+       "fixtures_listed": 32,
        "new_candidates": 0
       },
       {
        "url": "https://www.hltv.org/matches?selectedDate=2026-10-24",
        "status": "ok",
-       "fixtures_listed": 35,
+       "fixtures_listed": 32,
        "new_candidates": 0
       }
      ],
@@ -2976,7 +2872,7 @@
     "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
     "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
    ],
-   "expires_at": "2026-10-25T22:16:52.070017Z",
+   "expires_at": "2026-10-25T23:55:45.025437Z",
    "limitation": null,
    "flags": [
     "Originated line: Valve VRS model estimate, not a market price."
@@ -2997,7 +2893,7 @@
        "5star"
       ],
       "start": "2026-10-31 13:00:00+00",
-      "observed_at": "2026-10-25T14:16:56.646274Z",
+      "observed_at": "2026-10-25T15:55:48.517574Z",
       "updated_at": "2026-10-25T13:22:38.92942Z",
       "raw": {
        "id": "6147278",
@@ -3021,17 +2917,17 @@
        {
         "name": "Polymarket events page 1",
         "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-25T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
-        "checked_at": "2026-10-25T14:16:56.398052Z",
+        "checked_at": "2026-10-25T15:55:48.191256Z",
         "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-25T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
         "cache_bust": null,
         "http_status": 200,
         "status": "ok",
-        "retrieved_at": "2026-10-25T14:16:56.646274Z",
-        "observed_at": "2026-10-25T14:16:56.646274Z",
+        "retrieved_at": "2026-10-25T15:55:48.517574Z",
+        "observed_at": "2026-10-25T15:55:48.517574Z",
         "cache_age_seconds": null,
         "cache_status": "Miss from cloudfront",
-        "sha256": "15318041b1fce34e21651b43d3081d838540c30a6366666116a1e8e29cf5065a",
-        "bytes": 3009289
+        "sha256": "3c59bd7d342cc7bce6ba503133847c7c64d5dd0ad1045796616ec746a51c41b5",
+        "bytes": 3087251
        }
       ],
       "notice": "Rejected evidence, not a pick or verified probability."
@@ -3045,19 +2941,19 @@
       {
        "url": "https://www.hltv.org/matches?selectedDate=2026-10-25",
        "status": "ok",
-       "fixtures_listed": 35,
+       "fixtures_listed": 32,
        "new_candidates": 0
       },
       {
        "url": "https://www.hltv.org/matches?selectedDate=2026-10-26",
        "status": "ok",
-       "fixtures_listed": 35,
+       "fixtures_listed": 32,
        "new_candidates": 0
       },
       {
        "url": "https://www.hltv.org/matches?selectedDate=2026-10-24",
        "status": "ok",
-       "fixtures_listed": 35,
+       "fixtures_listed": 32,
        "new_candidates": 0
       }
      ],
@@ -3082,7 +2978,7 @@
        "5star"
       ],
       "start": "2026-10-31 13:00:00+00",
-      "observed_at": "2026-10-25T14:16:56.646274Z",
+      "observed_at": "2026-10-25T15:55:48.517574Z",
       "updated_at": "2026-10-25T13:22:38.92942Z",
       "raw": {
        "id": "6147278",
@@ -3106,17 +3002,17 @@
        {
         "name": "Polymarket events page 1",
         "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-25T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
-        "checked_at": "2026-10-25T14:16:56.398052Z",
+        "checked_at": "2026-10-25T15:55:48.191256Z",
         "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-25T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
         "cache_bust": null,
         "http_status": 200,
         "status": "ok",
-        "retrieved_at": "2026-10-25T14:16:56.646274Z",
-        "observed_at": "2026-10-25T14:16:56.646274Z",
+        "retrieved_at": "2026-10-25T15:55:48.517574Z",
+        "observed_at": "2026-10-25T15:55:48.517574Z",
         "cache_age_seconds": null,
         "cache_status": "Miss from cloudfront",
-        "sha256": "15318041b1fce34e21651b43d3081d838540c30a6366666116a1e8e29cf5065a",
-        "bytes": 3009289
+        "sha256": "3c59bd7d342cc7bce6ba503133847c7c64d5dd0ad1045796616ec746a51c41b5",
+        "bytes": 3087251
        }
       ],
       "notice": "Rejected evidence, not a pick or verified probability."

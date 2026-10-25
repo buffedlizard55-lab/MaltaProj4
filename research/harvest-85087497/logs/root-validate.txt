@@ -1,9 +1,9 @@
 {
-  "rows_verified_against_primary_snapshot": 78,
-  "probability_calculations_reproduced": 16,
+  "rows_verified_against_primary_snapshot": 75,
+  "probability_calculations_reproduced": 14,
   "pages": 15,
-  "internal_links_and_assets_checked": 727,
+  "internal_links_and_assets_checked": 711,
   "artifact_checksums_verified": 20,
-  "displayed_match_rows_verified": 181
+  "displayed_match_rows_verified": 172
 }
 validate rc=0

@@ -4,7 +4,7 @@
 
 Passed: 32 page/viewport accessibility and no-overflow scans, 320/390/768/1440px layout, subpath URLs, navigation, filters, six legacy redirects, evidence anchors and expiry.
 Passed: seven board expiry scenarios (including live No percentage filter/count updates) plus four research-quote boundary/future-clock scenarios.
-Passed: phone-first summary on 3 viewports (320x568 y=367, 390x844 y=378, 412x915 y=378), pick board clear of the tab bar, and the 9-rung fallback ladder with counts totalling 16.
+Passed: phone-first summary on 3 viewports (320x568 y=363, 390x844 y=378, 412x915 y=378), pick board clear of the tab bar, and the 9-rung fallback ladder with counts totalling 14.
 Passed: freshness clock on 2 viewports x 3 snapshot ages (6 reads) and the phone pick board's per-row observation/expiry times — the advertised slot is always ahead of the reader and the snapshot age is always stated.
 Passed: count-aware runtime summary copy; first pick and both probabilities above the 320x568 phone tab bar; post-board filters and 390px layout.
 Passed: eight phone/desktop/queue/unresolved-summary/research expiry and live-count scenarios.
@@ -13,9 +13,9 @@ Passed: the phone home page names itself an executive summary, keeps the next pi
 Passed: first-screen 44px pick CTA, first list within 1700px at 320/390px, four legacy hidden-anchor reveals, native keyboard disclosures, unresolved records visible.
 Passed: completeness prose matches the runtime counters (fresh and 8-hour-stale), the stale banner agrees with the snapshot age, and on a fresh build the first pick plus its probability are on the first phone screen at 320/390px.
 Passed: 320/390px pick placement, all open rows, both team probabilities, official row links, blank safeguards, guide deep links and stale-prose/counter agreement.
-{"suite":"browser_caca91b8","open_rows":16,"priced_open_rows":16,"session_review_notes":3,"pages_checked":8,"status":"ok"}
+{"suite":"browser_caca91b8","open_rows":14,"priced_open_rows":14,"session_review_notes":3,"pages_checked":8,"status":"ok"}
 {
- "measured_at": "2026-10-25T14:22:37.858Z",
+ "measured_at": "2026-10-25T16:01:30.277Z",
  "board": "public/ from research/diagnose-aeafcbe6/snapshot.json",
  "viewports": [
   {
@@ -28,14 +28,14 @@ Passed: 320/390px pick placement, all open rows, both team probabilities, offici
     "horizontalOverflow": false,
     "withheld": false,
     "exec_summary": {
-     "top": 3728,
-     "height": 237
+     "top": 3075,
+     "height": 254
     },
     "exec_quicknav": {
      "top": 290,
      "height": 69
     },
-    "quicknav_text": "Executive summary · 16/16 picks · 0 unresolved (no %) · 62 past feed rows are not open.Updated picks →Unresolved & limits ↓",
+    "quicknav_text": "Executive summary · 14/14 picks · 0 unresolved (no %) · 61 feed rows are not open.Updated picks →Unresolved & limits ↓",
     "exec_links": [
      "picks.html",
      "#picks-at-a-glance",
@@ -57,22 +57,22 @@ Passed: 320/390px pick placement, all open rows, both team probabilities, offici
    "board": {
     "found": true,
     "top": 272,
-    "height": 326,
-    "pick": "BRUTE",
-    "teams": "InfinitevsBRUTE",
+    "height": 517,
+    "pick": "Color",
+    "teams": "Colorvsex-Zero Tenacity",
     "percentages": [
-     "43.5%",
-     "56.5%"
+     "68.8%",
+     "31.2%"
     ],
     "percentage_labels": [
-     "Infinite 43.5 percent",
-     "BRUTE 56.5 percent"
+     "Color 68.8 percent",
+     "ex-Zero Tenacity 31.2 percent"
     ],
     "tabbar_top": 507,
     "horizontalOverflow": false,
-    "rows": 16,
-    "publishedPicks": 16,
-    "pricedRows": 16
+    "rows": 14,
+    "publishedPicks": 14,
+    "pricedRows": 14
    },
    "documentWidth": 0
   },
@@ -86,14 +86,14 @@ Passed: 320/390px pick placement, all open rows, both team probabilities, offici
     "horizontalOverflow": false,
     "withheld": false,
     "exec_summary": {
-     "top": 4170,
+     "top": 3719,
      "height": 219
     },
     "exec_quicknav": {
      "top": 300,
      "height": 65
     },
-    "quicknav_text": "Executive summary · 16/16 picks · 0 unresolved (no %) · 62 past feed rows are not open.Updated picks →Unresolved & limits ↓",
+    "quicknav_text": "Executive summary · 14/14 picks · 0 unresolved (no %) · 61 feed rows are not open.Updated picks →Unresolved & limits ↓",
     "exec_links": [
      "picks.html",
      "#picks-at-a-glance",
@@ -115,22 +115,22 @@ Passed: 320/390px pick placement, all open rows, both team probabilities, offici
    "board": {
     "found": true,
     "top": 243,
-    "height": 360,
-    "pick": "BRUTE",
-    "teams": "InfinitevsBRUTE",
+    "height": 536,
+    "pick": "Color",
+    "teams": "Colorvsex-Zero Tenacity",
     "percentages": [
-     "43.5%",
-     "56.5%"
+     "68.8%",
+     "31.2%"
     ],
     "percentage_labels": [
-     "Infinite 43.5 percent",
-     "BRUTE 56.5 percent"
+     "Color 68.8 percent",
+     "ex-Zero Tenacity 31.2 percent"
     ],
     "tabbar_top": 783,
     "horizontalOverflow": false,
-    "rows": 16,
-    "publishedPicks": 16,
-    "pricedRows": 16
+    "rows": 14,
+    "publishedPicks": 14,
+    "pricedRows": 14
    },
    "documentWidth": 0
   },
@@ -144,14 +144,14 @@ Passed: 320/390px pick placement, all open rows, both team probabilities, offici
     "horizontalOverflow": false,
     "withheld": false,
     "exec_summary": {
-     "top": 4102,
-     "height": 202
+     "top": 3668,
+     "height": 219
     },
     "exec_quicknav": {
      "top": 300,
      "height": 65
     },
-    "quicknav_text": "Executive summary · 16/16 picks · 0 unresolved (no %) · 62 past feed rows are not open.Updated picks →Unresolved & limits ↓",
+    "quicknav_text": "Executive summary · 14/14 picks · 0 unresolved (no %) · 61 feed rows are not open.Updated picks →Unresolved & limits ↓",
     "exec_links": [
      "picks.html",
      "#picks-at-a-glance",
@@ -173,22 +173,22 @@ Passed: 320/390px pick placement, all open rows, both team probabilities, offici
    "board": {
     "found": true,
     "top": 243,
-    "height": 360,
-    "pick": "BRUTE",
-    "teams": "InfinitevsBRUTE",
+    "height": 520,
+    "pick": "Color",
+    "teams": "Colorvsex-Zero Tenacity",
     "percentages": [
-     "43.5%",
-     "56.5%"
+     "68.8%",
+     "31.2%"
     ],
     "percentage_labels": [
-     "Infinite 43.5 percent",
-     "BRUTE 56.5 percent"
+     "Color 68.8 percent",
+     "ex-Zero Tenacity 31.2 percent"
     ],
     "tabbar_top": 854,
     "horizontalOverflow": false,
-    "rows": 16,
-    "publishedPicks": 16,
-    "pricedRows": 16
+    "rows": 14,
+    "publishedPicks": 14,
+    "pricedRows": 14
    },
    "documentWidth": 0
   }

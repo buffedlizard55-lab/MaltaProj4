@@ -10,15 +10,19 @@
  M research/harvest-85087497/COVERAGE.md
  M research/harvest-85087497/audit.json
  M research/harvest-85087497/coverage-report.json
+ M research/harvest-85087497/logs/build.txt
+ M research/harvest-85087497/logs/coverage.txt
  M research/harvest-85087497/logs/integrity-before.txt
  M research/harvest-85087497/logs/ledger.txt
  M research/harvest-85087497/logs/probe.txt
+ M research/harvest-85087497/logs/refresh.txt
  M research/harvest-85087497/logs/root-stage.txt
  M research/harvest-85087497/logs/root-status.txt
  M research/harvest-85087497/logs/root-unit-failures.txt
  M research/harvest-85087497/logs/root-unit.txt
  M research/harvest-85087497/logs/root-validate.txt
  M research/harvest-85087497/logs/unit-before.txt
+ M research/harvest-85087497/logs/validate-committed.txt
  M research/harvest-85087497/logs/validate-fresh.txt
  M research/harvest-85087497/probe.json
  M research/harvest-85087497/published-row-audit.md
@@ -26,6 +30,8 @@
  M research/harvest-85087497/row-ledger.md
  M research/harvest-85087497/snapshot.json
  M research/harvest-85087497/summary.md
+ M research/session-9fca16ca/ROW-LEDGER.md
+ M research/session-9fca16ca/SUMMARY.json
  M review.html
  M sources.html
  M unresolved.html

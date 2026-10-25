@@ -1,9 +1,9 @@
 # Independent retained-evidence audit
 
 This audits the archived evidence and arithmetic, not the present live lobby or current prices.
-Snapshot: `2026-10-25T14:20:24.409995Z` · SHA-256: `5fed6fb001181f6439cada774a02dad48ddbf64146c8647d4d57b1df69a9449d`
+Snapshot: `2026-10-25T15:59:18.261543Z` · SHA-256: `59f70aed63f4830da7e7ba3d7dde76ffb7ea2480dabc7f5f40983236aea9e615`
 
-Rows checked: **78** · Arithmetic/field failures: **0**
+Rows checked: **75** · Arithmetic/field failures: **0**
 
 | Fixture | Teams | Probability source | Result |
 | --- | --- | --- | --- |
@@ -68,9 +68,6 @@ Rows checked: **78** · Arithmetic/field failures: **0**
 | [1055478](https://play.hotspawn.com/cs2-pickems) | illwill / Lavked | Not priced; blank values checked | Consistent with stored evidence |
 | [1081105](https://play.hotspawn.com/cs2-pickems) | SUKEBAN / your end | Not priced; blank values checked | Consistent with stored evidence |
 | [1079621](https://play.hotspawn.com/cs2-pickems) | Gothic / Lavked | Not priced; blank values checked | Consistent with stored evidence |
-| [1085542](https://play.hotspawn.com/cs2-pickems) | ex-Zero Tenacity / Spirit Academy | Not priced; blank values checked | Consistent with stored evidence |
-| [1079199](https://www.hotspawn.com/matches/infinite-vs-brute-nodwin-clutch-series-13-1079199) | Infinite / BRUTE | [Polymarket](https://gamma-api.polymarket.com/markets/6072808) | Consistent with stored evidence |
-| [1086696](https://play.hotspawn.com/cs2-pickems) | BORRACHEIROS / RED Canids Academy | [Polymarket](https://gamma-api.polymarket.com/markets/6158760) | Consistent with stored evidence |
 | [1079200](https://www.hotspawn.com/matches/color-vs-ex-zero-tenacity-nodwin-clutch-series-13-1079200) | Color / ex-Zero Tenacity | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
 | [1081158](https://www.hotspawn.com/matches/forze-reload-vs-ex-rustec-cct-europe-2026-series-12-1081158) | FORZE Reload / ex-RUSTEC | [Polymarket](https://gamma-api.polymarket.com/markets/6098416) | Consistent with stored evidence |
 | [1082697](https://www.hotspawn.com/matches/pain-vs-bestia-circuit-x-curitiba-4-1082697) | BESTIA / paiN | [Polymarket](https://gamma-api.polymarket.com/markets/6166390) | Consistent with stored evidence |
