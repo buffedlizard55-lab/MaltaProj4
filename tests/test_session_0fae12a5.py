@@ -165,17 +165,20 @@ class CalculationReplayTest(unittest.TestCase):
                                    msg='VRS calibrated: %s' % m['id'])
             self.assertAlmostEqual(calibrated(raw), m['probabilities'][0], places=12,
                                    msg='VRS published: %s' % m['id'])
-            # Session 85087497 (measured on the 2026-10-25T14:01Z snapshot):
-            # when HLTV pacing withholds a lineup, a model row whose standings
-            # label is unique legitimately carries overlap=None ("unique
-            # label; roster not checked") — scripts.validate allows exactly
-            # that shape and only that shape (label_counts == 1). Asserting
-            # >= 3 unconditionally crashed this gate on fixture 1086697 and
-            # would freeze the staged root again. Mirror the validator.
+            # Mirror scripts/validate.py validate_model_row: a checked roster
+            # must satisfy Valve's 3-player continuity rule; an unchecked one
+            # (no HLTV lineup available) is legitimate only when the Valve
+            # label is unique, and the row must carry that limitation flag.
+            # (Session 5bf6ae1b, 2026-10-25: fixture 1086697 rotated into the
+            # unchecked shape and the old unconditional assertion went red on
+            # valid, validator-passing data.)
             for check, count in zip(ev['roster_checks'], ev['label_counts']):
                 if check['overlap'] is None:
                     self.assertEqual(count, 1,
-                                     'unchecked roster needs a unique label: %s' % m['id'])
+                                     'unchecked VRS roster with duplicated label: %s' % m['id'])
+                    self.assertIn('roster continuity not checked',
+                                  ' '.join(m.get('flags') or []),
+                                  'unchecked VRS roster not flagged: %s' % m['id'])
                 else:
                     self.assertGreaterEqual(check['overlap'], 3,
                                             'Valve 3-player roster rule: %s' % m['id'])
