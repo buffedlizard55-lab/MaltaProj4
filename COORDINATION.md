@@ -9915,3 +9915,20 @@ operator update time, the 20-day-old Valve standings behind the four originated 
 `main`; https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40202234380 (the push run for
 `7b0555e`); https://api.github.com/repos/buffedlizard55-lab/MaltaProj4/pages/builds/latest (Pages build for
 `7b0555e`, created 2026-10-25T14:26:21Z).
+
+## Session bd650209 — addendum: legacy Pages build streak flagged (2026-10-25 14:50 UTC)
+
+Read from the Pages builds API: six consecutive legacy builds of `main` reported `Page build failed.` between
+14:23Z and 14:39Z (`2909b06`, `7b0555e`, `d865a20`, `5ceea5e`, `fda1408`, `c216e17`), while `a2d3b1f`
+(14:15:12Z) and `bd15104` (14:02:47Z) built. Pages remains `build_type: legacy` with source `main:/`, so a
+failed legacy build delays propagation instead of withholding data: the last successful build's root carries
+`build-info` built `2026-10-25T14:14:06Z` from snapshot `2026-10-25T13:54:18Z` — 78 rows, 16 open, **16 picks,
+16 win probabilities, 0 unresolved**. Published as
+`session-bd650209-legacy-pages-build-failures-2026-10-25` on Flagged for Review with the API links. Not
+repaired here: the API exposes only "Page build failed." with no log, and changing the Pages source or pruning
+other sessions' artifacts is outside this session's scope. No pick, price or probability is affected.
+
+Sources: https://api.github.com/repos/buffedlizard55-lab/MaltaProj4/pages ·
+https://api.github.com/repos/buffedlizard55-lab/MaltaProj4/pages/builds?per_page=20 ·
+https://github.com/buffedlizard55-lab/MaltaProj4/commit/a2d3b1f ·
+https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/.github/workflows/pages.yml
