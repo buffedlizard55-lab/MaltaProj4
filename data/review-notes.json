@@ -5691,6 +5691,95 @@
   ]
  },
  {
+  "id": "session-408eb0af-roster-gate-freeze-2026-10-25",
+  "status": "Diagnosed from a measured replay, fixed at source, and regression-tested; non-blocking for review",
+  "finding": "Measured: the scheduled publisher failed at step 13 ('Build and independently verify every row, calculation and internal link') on 2026-10-24T23:40Z (run 40143667147), 2026-10-25T06:56Z (40170923727) and 2026-10-25T12:29Z (40193317196), so the public board stayed on the 2026-10-25T01:47:42Z snapshot and withheld every pick once that snapshot left its eight-hour evidence window. Job logs and artifact blobs are unreadable from the authoring sandbox, so the failure was replayed on GitHub's egress by a non-publishing workflow (.github/workflows/diag-408eb0af.yml, run 40197625638). It returned refresh=0 quarantine=0 row_audit=0 build=0 published_audit=0 unittest=0 and validate=1, with the single assertion 'Model roster has no HLTV source on this row' on fixture 1086697 (Projeto do KinGui vs Yawara, CCT South America 2026 Series #7, 2026-10-25T19:00Z). The row was priced from Valve's 'ex-Keyd Stars' standings row; the HLTV lineup stored on the row is labelled 'Tropa do KinGui'. Those labels are one team in the verified identity register data/identities.json (entry canonical 'Tropa do KinGui', names Tropa do KinGui / Projeto do KinGui / ex-Keyd Stars, with an HLTV match link, an EGamersWorld match link, Valve's own detail sheet and a written basis). scripts.validate.lineup_source_ok compared labels with plain_name equality alone, so a register-proven pair was treated as unproven and the whole board stopped publishing instead of one row blanking. Fix: scripts.core.label_matches_team / registered_alias accept an exact label or one register entry that carries a primary source (never a fuzzy match), and lineup_source_ok uses that rule for the HLTV fixture lineup, the retained lineup receipt and the team-page path. The players must still match exactly, so a roster is still proven from an HLTV page. Backstop: scripts.quarantine.roster_lineage_violations re-uses the validator's own function and withholds a single row that still cannot prove its roster, instead of failing publication. No pick, probability, price or source was edited by hand; the 51.0% / 49.0% line this row now publishes is the same arithmetic the collector produced.",
+  "sources": [
+   {
+    "label": "Diagnostic replay run (non-publishing)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40197625638"
+   },
+   {
+    "label": "Failing scheduled publish, 12:29Z",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40193317196"
+   },
+   {
+    "label": "Committed gate-by-gate measurement",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-408eb0af/report-40197625638.md"
+   },
+   {
+    "label": "Identity register (verified aliases)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/data/identities.json"
+   },
+   {
+    "label": "HLTV fixture page",
+    "url": "https://www.hltv.org/matches/2399918/tropa-do-kingui-vs-yawara-cct-2026-south-america-series-7"
+   },
+   {
+    "label": "Valve's official global standings, 2026-10-05",
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+   }
+  ]
+ },
+ {
+  "id": "session-408eb0af-near-even-model-line-2026-10-25",
+  "status": "Published as labelled; flagged for a human to accept or reject the product rule",
+  "finding": "Fixture 1086697 (Projeto do KinGui vs Yawara) is published as an originated VRS model line of 51.0% / 49.0%, so its pick follows a two-point edge in our own model, not a market price. It is labelled 'Our own VRS model line' and 'Originated line: Valve VRS model estimate, not a market price' everywhere it appears, and its inputs are Valve's official 2026-10-05 global standings points (ex-Keyd Stars #144, 854 points; Yawara) through Valve's published expected-win formula. Two things are worth a manual look: (a) the project rule treats any edge above 0.0001 as directional, so a 51/49 model line yields a pick - if you would rather such a row publish no pick while keeping its percentage, that is a product decision for you, not a data error; (b) the 'Projeto do KinGui' / 'Tropa do KinGui' / 'ex-Keyd Stars' labels are one team only according to the register entry, which rests on fixture parity plus a four-of-five roster match. Both labels remain listed separately on the site so you can see which one the price used.",
+  "sources": [
+   {
+    "label": "Identity register (verified aliases)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/data/identities.json"
+   },
+   {
+    "label": "HLTV fixture page",
+    "url": "https://www.hltv.org/matches/2399918/tropa-do-kingui-vs-yawara-cct-2026-south-america-series-7"
+   },
+   {
+    "label": "EGamersWorld fixture listing",
+    "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/projeto-do-kingui-vs-martians-esports-3j3hkuf0"
+   },
+   {
+    "label": "Valve detail sheet, ex-Keyd Stars #144",
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/details/2026_10_05/0144--ex-keyd_stars--ckzao-drg-lash-xureba-zede.md"
+   }
+  ]
+ },
+ {
+  "id": "session-408eb0af-low-tier-source-reachability-2026-10-25",
+  "status": "Measured 2026-10-25 on GitHub runners from one GET per endpoint; published on the site; needs no action unless an operator reopens access",
+  "finding": "Session 408eb0af probed every outside pre-match CS2 line source this project can reach from its runners, once each, and committed the response bodies beside the report (research/session-408eb0af/probe/, run 40198727513). Result, verbatim from that receipt: Hotspawn fixtures API 200 (78 fixtures), Hotspawn lobby 200, Polymarket Gamma sports 200 (491 entries), Pinnacle guest matchups 200 (36 CS2 matchups) and moneylines 200 (578 kB), BO3.gg matches 200 (structured, Thunderpick-bound where a line is posted), HLTV matches / world ranking / Valve mirror all 200, STAVKA TV listing 200, Thunderpick web page 200 but only a 14.6 kB client-side shell with no server-rendered price. Refused or gone: EGamersWorld 403, GG.BET 403 (after rate-limit waits), Bovada public JSON 404, Oddspedia public JSON 400. No alternative endpoint was guessed, no credentials were sent and no refusal was retried into a bypass. What this means for the brief's 'generate a pick for every match': a low-tier or academy fixture is often absent from the exchange and from Pinnacle, and no accessible bookmaker publishes a line for it, so the honest ladder is the one already shipped - the researched bookmaker listing (BO3.gg/Thunderpick, STAVKA TV, EGamersWorld where a dated receipt exists), then our own labelled Valve-VRS model line, then a research-only ranking/form pick with no percentage, and finally a blank that is listed with its reason. Paid multi-book APIs (odds-api.io, OddsPapi, esportsodds.gg, the-odds-api) were found during the search but every one requires a paid key that this project does not hold, so none was used or reported as available. The measured table is now published at unresolved.html#measured-source-access and inside the executive summary's unresolved section, so no reader has to take an unlinked claim on trust.",
+  "sources": [
+   {
+    "label": "Committed probe report",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-408eb0af/probe/report.md"
+   },
+   {
+    "label": "Probe run (non-publishing)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40198727513"
+   },
+   {
+    "label": "BO3.gg public API",
+    "url": "https://api.bo3.gg/api/v1/matches"
+   },
+   {
+    "label": "Pinnacle guest esports matchups",
+    "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/matchups?withSpecials=false"
+   },
+   {
+    "label": "Polymarket Gamma sports registry",
+    "url": "https://gamma-api.polymarket.com/sports"
+   },
+   {
+    "label": "HLTV match list",
+    "url": "https://www.hltv.org/matches"
+   },
+   {
+    "label": "STAVKA TV CS2 listing",
+    "url": "https://stavka.tv/matches/csgo"
+   }
+  ]
+ },
+ {
   "id": "session-58354934-freeze-alias-roster-2026-10-25",
   "status": "Fixed and verified: two code changes plus regression tests; the board was republished from a fresh verified snapshot",
   "finding": "Measured: the scheduled publisher failed at step 13 'Build and independently verify every row, calculation and internal link' on run 40170923727 (2026-10-25T06:41Z) and again on 40193317196 (12:29Z); upload-pages-artifact, the legacy main:/ staging step and every deploy were skipped, so the live site served the 2026-10-25T01:47Z snapshot and, once that snapshot left its eight-hour window, withheld all 14 open picks ('0 with a pick', '14 unresolved' at 13:2xZ). The sandbox has no egress to Hotspawn/HLTV and cannot read Actions logs, so the same commands were re-run on a GitHub runner (non-publishing run 40197480741, receipts in research/harvest-58354934/). refresh, quarantine, the independent row audit (a and d) and build all exited 0; validate exited 1 with AssertionError 'Model roster has no HLTV source on this row' at scripts/validate.py line 122 (validate_model_row) for fixture 1086697. The row's roster evidence IS sourced: Hotspawn names the club 'Projeto do KinGui' while the HLTV match page it resolves to (matches/2399918) names the same club 'Tropa do KinGui', and data/identities.json registers both labels under one canonical club with primary sources. validate_model_row already accepts that alias for the VRS label (norm(team) == norm(label)), but lineup_source_ok compared raw labels, so the sourced roster was judged unsourced and the whole snapshot was refused. Two changes: (1) scripts/validate.same_club makes the roster lookup identity-aware - exact after case/diacritic folding, or through the verified alias register, with the player list still required to match exactly; (2) scripts/quarantine.validation_violations, a row-scoped backstop that withholds only the row(s) the repository data validator cannot reproduce, and only after proving that withholding exactly those rows makes the whole snapshot pass - otherwise it withholds nothing and the run still fails loudly, so a broken site is never published. On the same fresh capture the fixed tree now builds and validates: 78 rows, 17 open, 17 picks, 17 win probabilities, 0 unresolved. Not fixed and flagged here for manual review: the publisher still fails closed on snapshot-level contract problems (by design), and the deploy job's 'Verify live Pages bytes match this exact build' step also failed on both runs because Pages is legacy main:/ and the committed root was ahead of the artifact - it is a delivery-path signal, not a data failure, and it will report success again once the root fallback is staged from the same verified build.",
