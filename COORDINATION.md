@@ -51,7 +51,7 @@ touched.
 | --- | --- | --- | --- | --- |
 | T1 Fresh capture on runner egress | **done** — run [40201319405](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40201319405), receipts in `research/harvest-5bf6ae1b/` (`rc.txt`: audit/build/validate/published all 0) | 5bf6ae1b | `.github/workflows/harvest-5bf6ae1b.yml`, `research/harvest-5bf6ae1b/**` | 2026-10-25 14:22 |
 | T2 Line-by-line verification | **done** — see findings below | 5bf6ae1b | `tests/test_session_0fae12a5.py` (one assertion block), `tests/test_session_5bf6ae1b.py` (new), `data/review-notes.json` (append-only, 253 notes) | 2026-10-25 14:50 |
-| T3 Mobile verification + final integration (fresh build, PR, merge, live byte check) | **done** — PR link and live check recorded at the end of this section | 5bf6ae1b | `COORDINATION.md`, `data/latest.json`, `data/matches.csv`, generated root pages, `build-info.json` | 2026-10-25 14:50 |
+| T3 Mobile verification + final integration (fresh build, PR, merge, live byte check) | **done** — PR [#331](https://github.com/buffedlizard55-lab/MaltaProj4/pull/331) merged 2026-10-25T14:36:59Z as `fda1408`; live byte check recorded at the end of this section | 5bf6ae1b | `COORDINATION.md`, `data/latest.json`, `data/matches.csv`, generated root pages, `build-info.json` | 2026-10-25 14:50 |
 
 **Fresh board (snapshot `2026-10-25T14:22:27Z`, replacing `13:46:54Z`):** 78 Hotspawn feed rows, **16 open,
 16 with a pick, 16 with a win probability, 0 unresolved** — 11 Polymarket exchange, 1 bookmaker listing
@@ -68,6 +68,13 @@ and `unresolved.html`) currently lists 0 rows and names the limitation for every
 Chromium suites pass (320×568, 390×844, 412×915 — no horizontal overflow, 16 pick rows with both teams'
 percentages clear of the fixed phone tab bar). Executive summary carries `#exec-banner`, `#exec-summary`
 (links to `picks.html`, `unresolved.html`, `matches.html`, `sources.html#method`) and `#unresolved-summary`.
+
+**Delivery receipt:** PR [#331](https://github.com/buffedlizard55-lab/MaltaProj4/pull/331) merged to `main`
+2026-10-25T14:36:59Z as `fda1408` without waiting for approval, per protocol. `main`'s root `build-info.json`
+at the merge carries revision `fccf2ca`, snapshot `2026-10-25T14:22:27Z`, 78 rows — the board verified above.
+GitHub Pages is `legacy main:/`; its first build after the merge reported `errored` while the host still
+served the previous 14:11Z build, so a receipt push re-triggers the build and the live bytes are re-read
+after it lands (result appended below).
 
 **Merge note (PR #331):** `main` moved during the session (PR #324, session bd650209, snapshot
 `2026-10-25T13:54:18Z`). The merge adopted bd650209's code, tests, workflows and research receipts in
