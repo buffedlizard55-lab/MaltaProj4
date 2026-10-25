@@ -178,3 +178,20 @@ count. Two honest limitations are carried with this capture anyway:
 is blocked here); the failing command is established from the replay's exit codes, which reproduce
 the same step on the same code. Live deployment and the post-merge publisher run are recorded in
 `COORDINATION.md` only once they are actually observed.
+
+## 6. Delivery receipt
+
+| Item | Value |
+| --- | --- |
+| Pull request | [#318](https://github.com/buffedlizard55-lab/MaltaProj4/pull/318) — `arena/6857421f-maltaproj4` → `main` |
+| Merged without waiting for review | `2026-10-25T15:01:27Z` |
+| Merge commit | `57a86c98c486041bb53c0af85aea84f0f2263a60` |
+| Branch head merged | `0dd215b` |
+| Checks at merge | `audit` pass · `verify-build` pass · `diagnose` skipped · `MERGEABLE/CLEAN` |
+| Post-merge unit gate on `main` | 1,765 tests OK (13 skipped), including this session's 15 |
+| Live `build-info.json` | revision `57d34f2…` · `built_at 2026-10-25T15:25:24.617016Z` · `rows 75` |
+| Live board at that build | 16 open · 16 picks · 16 probability pairs · 0 unresolved · inside the 8-hour window |
+
+The board's `#runtime-stale` banner ships `hidden` on every page and is toggled by `assets/app.js`; a text-only
+reader sees its wording even when the snapshot is fresh. Always confirm freshness from `build-info.json`'s
+`built_at` / `snapshot_generated_at` rather than from that paragraph.

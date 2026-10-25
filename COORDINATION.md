@@ -1,3 +1,48 @@
+## Session 6857421f — delivery receipt: PR #318 merged without waiting, Pages re-verified live (2026-10-25 15:30 UTC)
+
+**Merged.** [PR #318](https://github.com/buffedlizard55-lab/MaltaProj4/pull/318) —
+*Adopt main's canonical repairs, keep the independent evidence and 15 regressions* — merged to `main`
+**without waiting for further review** at `2026-10-25T15:01:27Z`, merge commit
+`57a86c98c486041bb53c0af85aea84f0f2263a60`, from branch head `0dd215b`. `git merge-base --is-ancestor`
+confirms the merge commit is on `origin/main`.
+
+**What shipped (and what deliberately did not).**
+
+* `tests/test_session_6857421f.py` — 15 regressions: a registered alias must resolve and an **unregistered**
+  opponent label must still be refused; a registered alias must not license a different roster (the
+  *Tropa do KinGui* / *Yawara* fixture); the `2026-10-25T13:34:30Z` capture must validate end to end; both
+  stylesheet copies byte-identical and brace-balanced; no phone media query may hide a percentage, fair line,
+  model comparison, flag or source link; the phone suites stay registered as browser gates.
+* `research/diag-6857421f/**` — the non-publishing runner replay that named the failing command by exit code
+  (`published_validate_rc=1`), plus the fresh snapshot and the independent row-audit table.
+* `research/session-6857421f/REPORT.md` — the 78-row pick/probability ledger and the measured phone geometry.
+* One open limitation note, `session-6857421f-unregistered-opponent-labels-2026-10-25` (Polymarket `6169151`
+  prices fixture `1086697`, but *Yawara Esports* has no sourced alias; no alias was invented — the row publishes
+  our own labelled model line instead).
+* **Not shipped, on purpose:** this branch's duplicate `scripts/validate.py` edit and its own phone CSS rule.
+  `main` already carried session b85ad9b4's `same_club` and session 58354934's short-phone reorder, so both were
+  adopted verbatim in the merges and this branch's copies withdrawn. Every generated file (root pages,
+  `build-info.json`, `data/latest.json`, `data/matches.csv`) is main's; this branch competes for none of them.
+
+**Gates on the merged tree.** `python3 -m unittest discover -s tests` → **1,765 tests OK (13 skipped)**;
+audits 9; `verification-95b588c2/test_integrity.py` 5; `verification-c6` 12; `scripts.validate --site .`
+→ 78 rows / 16 calculations / 15 pages / 726 links / 20 checksums / 181 displayed rows; `npm run test:browser`
+→ `"failures": []` across 13 Chromium suites, including the phone measurements. The `audit` and `verify-build`
+checks on PR #318 were green when the merge was taken.
+
+**Live verification after the merge.** `build-info.json` on Pages now reads
+`revision 57d34f2…`, `built_at 2026-10-25T15:25:24.617016Z`, `snapshot_generated_at 2026-10-25T15:25:24.138314Z`,
+`rows 75` — i.e. a full publish ran **after** this merge and its bytes are the ones served. The published board
+at that build reads **16 open CS2 matches · 16 picks · 16 win-probability pairs · 0 unresolved**, with the
+freshness strip stating *Snapshot inside its 8-hour evidence window* and 12 market lines / 4 originated VRS model
+lines. The `Snapshot expired or timestamp unverified` paragraph is `#runtime-stale` with the `hidden` attribute —
+it is present in every page's DOM and toggled by `assets/app.js`, so a text-only reader will show it even when the
+board is fresh; it is **not** the current state.
+
+**Standing caveat for the next session.** The published board is whatever the newest successful publisher capture
+is; this receipt records the 15:25Z build. Re-read `build-info.json` before reusing these counts — sibling
+sessions merge every few minutes and each push starts a new capture.
+
 # Shared task board — final delivery receipt, session cc4f95ef (2026-10-25 15:05 UTC)
 
 ## Session b06ee902 — MERGE RECEIPT 2026-10-25 15:20 UTC (PR #328 merged; live deploys lag because legacy Pages throttles builds)
