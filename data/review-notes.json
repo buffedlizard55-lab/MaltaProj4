@@ -5615,5 +5615,32 @@
     "label": "Phone measurement on a fresh capture (executive summary links, first pick, both win chances)"
    }
   ]
- }
+ },
+  {
+    "id": "session-e009964b-validator-row-freeze-2026-10-25",
+    "status": "Diagnosed and fixed on branch arena/e009964b-maltaproj4 (PR to main). The fix withholds one originated-model row instead of blocking the whole publish. Flagged for manual review; the withheld fixture 1086697 currently has no pick.",
+    "finding": "Measured: scheduled publish run 40193317196 (2026-10-25 12:29Z) failed at 'Build and independently verify every row, calculation and internal link'. Its job logs and artifact blobs could not be downloaded from the agent sandbox, so the failing command was reproduced on a GitHub runner by a dispatch-style diagnostic (research/session-e009964b/). Run 40197625563 on the unfixed branch: refresh_rc=0, quarantine_rc=0, both independent audits rc=0, build rc=0, unit suite rc=0, but scripts.validate rc=1 with 'AssertionError: Model roster has no HLTV source on this row' (scripts/validate.py validate_model_row). One originated Valve-VRS row (fixture 1086697) had a roster overlap but no HLTV source for that roster on the row. The independent auditor accepted it, so it was not quarantined, and validate runs on the whole snapshot, so one row froze the board at the last verified snapshot. Fix: scripts/quarantine.py now re-runs the publisher's own validate_model_row / validate_mirror_row per model row and withholds only a row they reject, recording the validator message (tests/test_session_e009964b.py). Re-run 40198180848 on the fixed branch: refresh_rc=0 quarantine_rc=0 withheld_rows=1 (1086697) build_rc=0 validate_rc=0 audit_public_rc=0 unittest_rc=0 validate_committed_rc=0; build reports 78 sourced rows, 16 with percentages, 1 unresolved. Not verified in this session: the fixture's teams and the exact lineup mismatch, because the fresh snapshot is not retained in the repo (it exceeds the repo's artifact policy). Next step for a reviewer: open the fixture on the Flagged-for-Review page after deploy, check its HLTV lineup against the VRS roster, and decide whether a lower ladder tier (book or HLTV research) should supply its pick.",
+    "sources": [
+      {
+        "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40193317196",
+        "label": "Failed scheduled publish run (verify-build step 'Build and independently verify every row, calculation and internal link')"
+      },
+      {
+        "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40197625563",
+        "label": "Reproduction on the unfixed branch: validate_rc=1 (receipts: research/session-e009964b/run-40197625563/)"
+      },
+      {
+        "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40198180848",
+        "label": "Reproduction on the fixed branch: all gates rc=0, one row withheld (receipts: research/session-e009964b/run-40198180848/)"
+      },
+      {
+        "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/arena/e009964b-maltaproj4/scripts/quarantine.py",
+        "label": "Per-row publication re-check added to the quarantine step"
+      },
+      {
+        "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/arena/e009964b-maltaproj4/scripts/validate.py",
+        "label": "Rule that rejected the row: validate_model_row / lineup_source_ok"
+      }
+    ]
+  }
 ]

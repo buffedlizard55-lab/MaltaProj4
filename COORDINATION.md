@@ -11,7 +11,11 @@ so the failing command cannot be read directly. Locally the committed snapshot p
 
 | Task | Status | Owner | File scope | Updated (UTC) |
 | --- | --- | --- | --- | --- |
-| Reproduce the failing publish step on a fresh snapshot (dispatch-only, non-publishing), identify the failing check, repair it, republish | in progress | e009964b | `.github/workflows/diag-e009964b.yml` (new), `research/session-e009964b/**` (new) | 2026-10-25 13:30 |
+| Reproduce the failing publish step on a fresh snapshot, identify the failing check, repair it | done (republish via PR to main) | e009964b | `scripts/quarantine.py`, `tests/test_session_e009964b.py` (new), `research/session-e009964b/**` (new), `data/review-notes.json` (one note appended) | 2026-10-25 14:30 |
+
+**Receipt (2026-10-25).** Failing run: [40193317196](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40193317196) (verify-build, *Build and independently verify every row*). Job logs and artifact blobs return EOF from the sandbox, so the failing command was reproduced on runners: [40197625563](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40197625563) on the unfixed branch (refresh, quarantine, both independent audits, build and unit suite all rc=0; `scripts.validate` rc=1: *Model roster has no HLTV source on this row*, fixture row of an originated Valve-VRS line). Fix: quarantine re-runs the publisher's own `validate_model_row` / `validate_mirror_row` per model row and withholds only a row they reject, with the validator message on the row. Verified in [40198180848](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40198180848): every gate rc=0; one row withheld (fixture `1086697`), 78 sourced rows, 16 priced, 1 unresolved. Local: `unittest discover` 1,610 tests OK, `scripts.validate` on committed data rc=0, `audit_snapshot` 0 failures.
+
+**Flagged for review.** (a) Fixture `1086697` currently has no pick; its teams and lineup mismatch are not retained in the repo, see the Flagged-for-Review note `session-e009964b-validator-row-freeze-2026-10-25`. (b) The Hotspawn lobby (fetched 2026-10-25) lists about 80 CS2 matches; the fresh snapshot carried 78 rows. (c) Workflow logs and artifact blobs are unreadable from the agent sandbox; diagnosis relied on dispatch-style receipts committed to the branch. (d) Hotspawn, HLTV, and Polymarket are not reachable from the sandbox shell, so every row verification here came from the CI runner, not from a local fetch.
 
 ## Session 2b856884 — published-state addendum (2026-10-24 18:05 UTC)
 
