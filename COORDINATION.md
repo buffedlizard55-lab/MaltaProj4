@@ -47,7 +47,7 @@ touched.
 
 ## Session 85087497 claim — 2026-10-25 13:30 UTC (diagnose failed publisher, fresh full-coverage board, mobile executive summary)
 
-**Status: in progress.** Arena-fixed branch `arena/85087497-maltaproj4` (based on `main` `6ade440`);
+**Status: done — PR opened from this branch (see receipt appended below the interim note); merge + live verification recorded there.** Arena-fixed branch `arena/85087497-maltaproj4` (based on `main` `6ade440`);
 no other branch is created or pushed. Board read before claiming: the top entry (2b856884,
 2026-10-24 18:05 UTC) is a published-state addendum, not an open claim on these files.
 
@@ -86,6 +86,26 @@ added (`session-85087497-validator-alias-freeze-2026-10-25`, `session-85087497-s
 Root restaged from the verified fresh build; local gates: 1,617 unit tests OK (12 skipped), audits 9 OK,
 integrity 5 OK, verification-c6 12 OK, validate rc=0, row audit 0 failures, all 13 browser suites pass.
 Next: harvest #2 with the Kalshi/HLTV-ranking probe (`scripts/probe_85087497.py`) for rows no market prices.
+
+
+**Receipt (14:26 UTC).** Root cause proven by harvest replay and fixed (validator alias bridge —
+main's stricter b85ad9b4 `same_club` adopted over this session's equivalent), 320×568 fold fixed
+(three independent measurements of y=519 vs tab bar 507; merged headroom ends probabilities at
+y≈426), staged-root `overlap=None` test fragility fixed to the validator contract, executive
+summary clarified ("unresolved (no %)", one-tap How-we-price), and a keyless fallback probe shipped:
+Kalshi `KXCS2GAME` pairs 11/16 open fixtures exactly (receipts in
+`research/harvest-85087497/probe.json`, harvests 40199883762 + 40201133204), with the adapter
+design and its start-time trap flagged rather than rushed. Fresh boards verified end to end:
+13:31Z 17/17, 14:01Z 16/16, 14:20Z 16/16 picked+priced, 0 unresolved; `pages.yml` success on this
+branch (40199003224, 40199883973); fully merged tree 1,669 unit tests OK. Merges of `main` were
+taken repeatedly (#311/#316/#313/#322/#319/#323/#327) adopting concurrent work; conflicts were
+confined to generated root/data files (resolved by rebuild+restage), `data/review-notes.json`
+(union by id: 260 notes), COORDINATION (both boards kept) and CSS (all fold blocks stack). One
+local `git pull --rebase` misfired on the merge commits and was aborted with the pushed merge
+stack intact — merges, not rebases, thereafter. Full write-up:
+`research/session-85087497/REPORT.md`. PR: RECORDED_IN_PR_DESCRIPTION (this branch →
+`main`, merged without approval per brief once checks pass; merge SHA and the live receipt follow
+in the PR and, if needed, a docs-only follow-up).
 
 **Tasks:** (1) harvest-diagnose the build failure on a fresh snapshot; (2) fix root cause, keep
 every gate; (3) verify every open Hotspawn CS2 match has a pick — market line first (Polymarket/

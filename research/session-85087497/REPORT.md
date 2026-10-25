@@ -247,7 +247,28 @@ No horizontal overflow at 320/390/412 on index, picks or unresolved
   legitimately published with `overlap=None` under unique standings labels
   (the validator's own contract). The test now mirrors that contract
   (None ⇒ label count 1; otherwise ≥3) and passes on both snapshots.
-- HARVEST4_TODO
+- Harvest [40201133204](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40201133204)
+  (fresh 2026-10-25T14:20:24Z snapshot, pair-aware probe): refresh 16 priced /
+  0 research-only / 0 without a pick, probe **11 exact Kalshi pair leads**,
+  staged-root unit 1,632 OK, validate and audits green, browser suites pass.
+- Concurrent sessions merged the same defects from other angles and all of it
+  is adopted here, none overwritten: b85ad9b4's `same_club` validator bridge
+  (#316), a7f788c8's artifact-ready deploy guard (#311), the #313 browser-gate
+  tolerance, 58354934's per-row quarantine backstop + fold reorder (#322),
+  8e4ff8d2's one-line probability labels (#319), 408eb0af's measured
+  source-access table on the unresolved page and 53284c80's receipts (#323),
+  fec4894f's verification harvest (#327). Three sessions measured the same
+  y=519 vs 507 fold deficit independently; merged, the first probabilities
+  end at y≈426 at 320×568.
+- Fully merged tree at PR time: **1,669 unit tests OK** (13 skipped), audits 9
+  OK, integrity 5 OK, verification-c6 12 OK, `validate --site .` rc=0 on the
+  staged 14:20Z root, phone browser gate green.
+- Live check 14:15Z (before this PR, via main's own publishes): the public
+  summary reads “Last checked 25 Oct 2026 · 13:56 UTC · 16 open · 16 with a
+  pick · 16 with a win probability · 0 unresolved” — the board the brief
+  asked for is already serving; this PR adds the probe, the extra fold
+  headroom, the summary wording/links, the gate-contract test fix and the
+  retained receipts.
 
 ## Flagged for review (non-blocking)
 
