@@ -1,0 +1,2 @@
+::notice title=53284c80-coverage::open=17 picked=17 priced=17 unresolved=0 methods={'exchange': 11, 'model_vrs': 4, 'bookmaker_fallback': 1, 'exchange_wide': 1}
+{"methods": {"bookmaker_fallback": 1, "exchange": 11, "exchange_wide": 1, "model_vrs": 4}, "open": 17, "picked": 17, "priced": 17, "rows": 78, "unresolved": 0}
