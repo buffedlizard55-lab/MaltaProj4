@@ -1,0 +1,100 @@
+{
+ "measured_at": "2026-10-25T14:08:41.459Z",
+ "snapshot_generated_at": "2026-10-25T13:54:18.896036Z",
+ "snapshot_fixtures_observed_at": "2026-10-25T13:50:44.261459Z",
+ "open_rows": 16,
+ "board": "public/ built from data/latest.json",
+ "viewports": [
+  {
+   "viewport": "320x568",
+   "home": {
+    "horizontalOverflow": false,
+    "picks_link_reachable": true,
+    "unresolved_link": true,
+    "quicknav_top": 290,
+    "first_glance_card_top": 3615.75
+   },
+   "board": {
+    "horizontalOverflow": false,
+    "rows": 16,
+    "teams": "Infinite vs BRUTE",
+    "pick": "BRUTE",
+    "pick_box": {
+     "top": 362,
+     "bottom": 385
+    },
+    "probability_box": {
+     "top": 414,
+     "bottom": 441
+    },
+    "probabilities": [
+     "43.5%",
+     "56.5%"
+    ],
+    "tab_bar_top": 507
+   },
+   "first_pick_and_both_percentages_above_tab_bar": true
+  },
+  {
+   "viewport": "390x844",
+   "home": {
+    "horizontalOverflow": false,
+    "picks_link_reachable": true,
+    "unresolved_link": true,
+    "quicknav_top": 300,
+    "first_glance_card_top": 4103.90625
+   },
+   "board": {
+    "horizontalOverflow": false,
+    "rows": 16,
+    "teams": "Infinite vs BRUTE",
+    "pick": "BRUTE",
+    "pick_box": {
+     "top": 334,
+     "bottom": 357
+    },
+    "probability_box": {
+     "top": 392,
+     "bottom": 421
+    },
+    "probabilities": [
+     "43.5%",
+     "56.5%"
+    ],
+    "tab_bar_top": 783
+   },
+   "first_pick_and_both_percentages_above_tab_bar": true
+  },
+  {
+   "viewport": "412x915",
+   "home": {
+    "horizontalOverflow": false,
+    "picks_link_reachable": true,
+    "unresolved_link": true,
+    "quicknav_top": 300,
+    "first_glance_card_top": 4035.71875
+   },
+   "board": {
+    "horizontalOverflow": false,
+    "rows": 16,
+    "teams": "Infinite vs BRUTE",
+    "pick": "BRUTE",
+    "pick_box": {
+     "top": 334,
+     "bottom": 357
+    },
+    "probability_box": {
+     "top": 392,
+     "bottom": 421
+    },
+    "probabilities": [
+     "43.5%",
+     "56.5%"
+    ],
+    "tab_bar_top": 854
+   },
+   "first_pick_and_both_percentages_above_tab_bar": true
+  }
+ ],
+ "failures": []
+}
