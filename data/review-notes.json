@@ -6127,5 +6127,24 @@
     "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-b06ee902/VERIFICATION.md"
    }
   ]
+ },
+ {
+  "id": "session-6857421f-unregistered-opponent-labels-2026-10-25",
+  "status": "Open limitation, non-blocking; a sourced alias is what would close it",
+  "finding": "One row on the 2026-10-25T13:34:30Z capture lost its market line to an unregistered opponent label rather than to a missing price: Polymarket market 6169151 prices 'Tropa do KinGui vs Yawara Esports' at the fixture's exact UTC start, and the fixture side of that pair (Projeto do KinGui = Tropa do KinGui) is a registered alias, but 'Yawara Esports' has no entry in data/identities.json, so the collector refused the pair and fell through to our own model line (Projeto do KinGui 51.0%). Registering that second label needs a primary source that ties 'Yawara' to 'Yawara Esports' -- HLTV prints only 'Yawara' on the fixture page used above -- and this session's sandbox has no egress to HLTV or Polymarket, so no alias is invented here. The row still carries a pick, both probabilities, and the model label, so nothing is missing from the board; the limitation is that a verified market price existed and was not used.",
+  "sources": [
+   {
+    "label": "Polymarket market 6169151",
+    "url": "https://gamma-api.polymarket.com/markets/6169151"
+   },
+   {
+    "label": "HLTV fixture page (prints 'Yawara')",
+    "url": "https://www.hltv.org/matches/2399918/tropa-do-kingui-vs-yawara-cct-2026-south-america-series-7"
+   },
+   {
+    "label": "Alias register requiring an https source and a written basis",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/data/identities.json"
+   }
+  ]
  }
 ]

@@ -1,3 +1,95 @@
+## Session 6857421f — receipt: the 2026-10-25 publisher failure independently reproduced, canonical repairs adopted, coverage verified (2026-10-25 14:20 UTC)
+
+**Result, stated exactly.** This session diagnosed the same failure that sessions b85ad9b4 and 58354934 were
+fixing at the same time, from its own non-publishing runner replay. `main` landed both canonical repairs first
+(`same_club` in `scripts/validate.py`, and 58354934's short-phone board reorder), so this branch **adopted them
+verbatim and withdrew its own duplicate edits** rather than layering a second implementation over them. What this
+branch adds is the independent evidence and the regressions those files did not carry.
+
+**The failure, measured here.** The public site was serving the `2026-10-25T01:47:42Z` build while the board's own
+`stale_after_hours` is 8, so every pick had been withheld since 09:47Z. Both scheduled publishers on `6ade440`
+([40170923727](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40170923727) 06:56Z,
+[40193317196](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40193317196) 12:29Z) failed at
+*Build and independently verify every row, calculation and internal link* — after the unit gate, the refresh and
+the quarantine had all passed. Because Actions log blobs are outside this sandbox's egress allow list, the failing
+command was named by replaying the step on GitHub's egress and committing its own receipt
+([`research/diag-6857421f/00-return-codes.txt`](research/diag-6857421f/00-return-codes.txt)):
+`pre_unit_rc=0 pre_validate_rc=0 refresh_rc=0 quarantine_rc=0 row_audit_rc=0 build_rc=0`
+**`published_validate_rc=1`** `published_row_audit_rc=0 browser_rc=1`, with
+`scripts/validate.py:122 AssertionError: Model roster has no HLTV source on this row` on the
+`2026-10-25T13:34:30Z` capture (row `1086697`, *Projeto do KinGui* vs *Yawara*; HLTV's fixture page
+[2399918](https://www.hltv.org/matches/2399918/tropa-do-kingui-vs-yawara-cct-2026-south-america-series-7)
+prints the registered alias *Tropa do KinGui* for the same five players) and, from the same run,
+`browser_rc=1` at `tests/browser_019a253a.cjs:105` with the first card's percentages at y=493–519 against a
+tab bar at y=507. Both are recorded in `research/session-6857421f/REPORT.md` with the per-row ledger.
+
+**Adopted, not duplicated.** `git merge origin/main` resolved `scripts/validate.py` to main's `same_club`
+implementation, `site/assets/style.css` to session 58354934's canonical block (with `assets/style.css` copied so
+both stay byte-identical), and `data/latest.json` to main's newer `2026-10-25T13:46:54Z` capture. This session's
+own CSS rule and its validator edit were dropped in that merge; only main's code ships. Two of this session's
+three review notes were withdrawn for the same reason (main's `session-b85ad9b4-*` and `session-58354934-*` notes
+already publish those findings with sources).
+
+**What this branch does add.**
+* `tests/test_session_6857421f.py` (15 regressions): the registered alias must resolve and an **unregistered**
+  label must still be refused; a registered alias must not license a different roster; the
+  `2026-10-25T13:34:30Z` capture must validate end to end; both stylesheet copies byte-identical and balanced;
+  no phone rule may hide a percentage, fair line, model comparison, flag or source link; and the four phone
+  suites must stay registered as browser gates.
+* `research/diag-6857421f/**`: the independent replay with the exit code of every sub-command, the fresh
+  snapshot, the independent row audit table (78 rows, 0 failures) and the browser failure log.
+* One review note that is still open and unique to this session:
+  `session-6857421f-unregistered-opponent-labels-2026-10-25` — Polymarket market `6169151` prices fixture
+  `1086697` at its exact UTC start, but *Yawara Esports* has no sourced alias, so a verified market price could
+  not be used and the row published our own model line (51.0%). No alias was invented.
+
+**Coverage on the adopted capture** (`2026-10-25T13:46:54Z`): 78 feed rows, **17 open · 17 picks · 17
+win-probability pairs · 0 unresolved**. Hotspawn supplies inventory and locks only, never a probability; every
+open row links the official source behind its number.
+
+**Gates on this merged tree:** 1,633 unit tests OK (12 skipped); audits 9; integrity 5; verification-c6 12;
+`scripts.validate --site .` 78 rows / 16 calculations / 15 pages / 724 links / 20 checksums / 180 displayed rows;
+**all 13 Chromium suites pass**, including the two that measure the phone board and the 9-rung ladder.
+
+## Session 6857421f claim — 2026-10-25 13:25 UTC (P0: the live board is again withholding every pick; publisher red at the post-refresh gate)
+
+Board read before claiming: `COORDINATION.md` (top 400 lines + `grep 2026-10-25` = no hits, so no
+session has claimed since the 2026-10-24 18:25Z receipts), `gh run list`, the Actions API and the
+committed snapshot. Arena fixes this session to `arena/6857421f-maltaproj4`, branched from `main`
+`6ade440`; no other branch is created, switched to or pushed.
+
+**Measured starting state (not assumed).**
+
+| Fact | Value | Source |
+| --- | --- | --- |
+| Published snapshot | `2026-10-25T01:47:42Z`, 79 feed rows, 18 open / 18 picks / 18 win probabilities / 0 unresolved | committed `data/latest.json` + `build-info.json` |
+| Snapshot age at claim | **11h 38m**, `stale_after_hours: 8` → every pick withheld on the public board | clock read |
+| Last full-green publisher | [40151731896](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40151731896) (01:43Z, `cbe9dce`). It published `build-info.json` built `01:47:42Z` — every publisher run after it is red | Actions API |
+| Red publishers on `6ade440` | [40170923727](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40170923727) (06:56Z) and [40193317196](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40193317196) (12:29Z), both at the same step | Actions API `/runs/{id}/jobs` |
+| Earlier red publisher | [40143667147](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40143667147) (2026-10-24 23:40Z, `cbe9dce`) failed one step later, at *Keep the legacy main:/ root fallback*, while its `deploy` succeeded | Actions API |
+| Failing step | *Build and independently verify every row, calculation and internal link* — i.e. after the unit gate, the refresh and the quarantine all passed | `actions/runs/40193317196/jobs` |
+| Second failure | `deploy` → *Verify live Pages bytes match this exact build* (no artifact was uploaded, so the served bytes are the 01:47Z build) | same job list |
+| Independent checker | `Independent CS2 source and mobile verification` [40190478424](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40190478424) also red at 11:49Z | `gh run list` |
+
+So the user-visible "we have no picks" report is the publisher, not the sources: the data-dependent
+failure happens *after* a successful live refresh, exactly as on 2026-10-24. The sandbox has no egress
+to Hotspawn/HLTV/Polymarket/books, and Actions log blobs are not downloadable here, so the failing
+sub-command is identified from a runner replay that commits its own receipt (see the workflow below).
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Diagnose the post-refresh gate failure on GitHub's egress and repair it with a regression test | in progress | 6857421f | `.github/workflows/diag-6857421f.yml` (new, removed before the final PR), `research/diag-6857421f/**`, `research/session-6857421f/**`, `tests/test_session_6857421f.py` (new), and only the production file the receipt names | 2026-10-25 13:25 |
+| Fresh full-coverage board: a pick and a win probability for every open Hotspawn CS2 match, HLTV first then esportsbook/exchange lines, with the separate unresolved section and its limitations carried into the executive summary | in progress | 6857421f | `research/session-6857421f/**`; `scripts/build.py` / `site/assets/**` only for a measured defect | 2026-10-25 13:25 |
+| Phone check of the executive-summary in-site links and the pick board at 320×568, 390×844, 412×915, 768×1024, 1440×900 on the published bytes | in progress | 6857421f | `research/session-6857421f/**`, existing browser suites read-only unless a defect is measured | 2026-10-25 13:25 |
+| Line-by-line verification with an official source link on every row; irregularities published on Flagged for Review | in progress | 6857421f | `data/review-notes.json` (additive IDs only), `verification-6857421f/**` (new) | 2026-10-25 13:25 |
+| Final integration: all gates on the combined tree, PR to `main`, merge without waiting, live Pages byte verification, receipt | in progress | 6857421f | `COORDINATION.md`, regenerated root via `scripts.build` / `scripts.stage_legacy` only | 2026-10-25 13:25 |
+
+Evidence rules unchanged: Hotspawn supplies fixture inventory and locks only, never a probability. A
+pick for a low-tier or unlisted match comes only from the sourced ladder (HLTV identity/rank/form, a
+verified esportsbook or exchange two-way line, or the labelled Valve-standings model), and anything
+left stays in the separate unresolved section with the provider it tried and the limitation that
+stopped it — never a placeholder, an inferred value or a 50/50 filler.
+
 # Shared task board — final additive integration, session cc4f95ef (2026-10-25 14:43 UTC)
 
 Board read before this integration. Arena fixes this session to
