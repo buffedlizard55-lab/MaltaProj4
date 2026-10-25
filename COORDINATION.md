@@ -10091,3 +10091,35 @@ The board served in the meantime is this session's verified build, which is insi
 as `scheduled`; the four open rows that carry our own model line rather than a market price; and the fact that
 a committed capture whose earliest lock has passed will fail the PR browser gate even when the pipeline is
 healthy (measured here on PR head 40199433314). All three are published on **Flagged for Review**.
+
+### Session 8e4ff8d2 — live publication confirmed (2026-10-25 15:05Z)
+
+Read from GitHub's API, not assumed:
+
+| Fact | Value | Source of the fact |
+| --- | --- | --- |
+| This session's PR | **#319 merged** `2026-10-25T14:15:11Z` as `a2d3b1f` | `GET /repos/.../pulls/319` |
+| Pages build for that merge | **`built`** at `14:15:12Z` | `GET /repos/.../pages/builds` |
+| What that deployment serves | `build-info.json` → revision `ec8cf021` (this session's head), built `14:14:06Z`, **snapshot `2026-10-25T13:54:18Z`**, 78 rows | `GET /repos/.../contents/build-info.json?ref=a2d3b1f` |
+| Current `main` root | revision `fccf2caa`, built `14:34:24Z`, **snapshot `2026-10-25T14:22:27Z`**, 78 rows, **16 open · 16 picks · 16 priced** | same path on `main` |
+| Pages status now | **`built`** — the `14:46:15Z` build of `05e991e4` succeeded | `GET /repos/.../pages`, `/pages/builds` |
+| Independent re-check of that tree on this machine | `scripts.validate --data data/latest.json --site .` exit 0 (78 rows / 16 calculations / 15 pages / 726 links-assets / 20 checksums / 181 displayed rows), **1,710 unit tests OK (12 skipped)** | this session, 15:02Z |
+
+So the public board is live, carries the pick board for every open Hotspawn CS2 match, keeps the separate
+unresolved/limits section named in the executive summary, and serves the short-phone layout this session
+measured (first pick and both percentages above the 507px tab bar at 320×568).
+
+**On the 14:21–14:45Z `Page build failed` streak:** it was investigated rather than waved through. The
+commits in question are other sessions' merges, `a2d3b1f` built normally before them and `05e991e4` built
+normally after them, no symlink or oversized file was introduced (`git ls-tree -r -l`), and every failing
+attempt was immediately followed by another push that cancelled the publish run in the same minute — the
+signature of the legacy builder's per-hour build limit under six merges in twenty minutes. The site kept
+serving the last successful build (this session's) throughout, and the builder is `built` again. Recorded here
+so the next integrator does not mistake it for a data defect.
+
+**One cross-session observation, no action taken:** run
+[40201290596](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40201290596) on this branch before it
+was rebased showed `staged_unit_rc=1` from `tests/test_session_0fae12a5.py::test_vrs_rows_replay_from_valve_formula`
+(`'>=' not supported between instances of 'NoneType' and 'int'`). Session 5bf6ae1b had already landed the guard
+on `main` (`overlap is None` ⇒ `label_count == 1` plus the limitation flag), and the merged tree now passes it —
+verified above in the 1,710-test run. Nothing was edited in another session's file.
