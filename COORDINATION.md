@@ -9354,3 +9354,43 @@ because blanking picks would hide them. The deploy job's "Verify live Pages byte
 also failed on both frozen runs, because `Pages` is `legacy main:/` and the committed root was ahead of the
 artifact; it is a delivery-path signal, not a data failure. Published on the Flagged for Review page as
 `session-58354934-freeze-alias-roster-2026-10-25`.
+
+## Session 58354934 — delivery receipt: PR #322 merged, publisher unblocked, live board verified (2026-10-25 15:20 UTC)
+
+**PR [#322](https://github.com/buffedlizard55-lab/MaltaProj4/pull/322) merged to `main` at 2026-10-25T14:06:30Z**
+as `d5b0739`, without waiting for approval per protocol. Two conflicts were resolved by adopting the other session's
+work, never by overwriting it: `scripts/validate.py` was taken wholesale from `origin/main` (session b85ad9b4 had
+landed an equivalent, independently-tested `same_club` bridge for the same freeze), and the append-only coordination
+boards and review-note registers were merged by id so every note on both sides survives (252 notes after the merge).
+
+**What this session actually shipped** (the rest converged with upstream work and was not duplicated):
+
+| Change | File | Why |
+| --- | --- | --- |
+| Row-scoped backstop for the repository data validator | `scripts/quarantine.py` (`validation_violations`), `scripts/quarantine.py` CLI | The validator was the one publication gate with no blast radius: one unreproducible row refused the whole snapshot and froze every pick. It now withholds only that row, and only when withholding exactly those rows provably repairs the snapshot; otherwise nothing is blanked and the run still fails loudly. |
+| Alias-aware roster sourcing | `scripts/validate.py` (`same_club`) | Landed independently upstream by b85ad9b4; adopted, with this session's regression tests retained (`tests/test_session_58354934.py`, 9 tests). |
+| Snapshot-ageing tolerance in two phone suites | `tests/browser_caca91b8.cjs`, `tests/browser_aeafcbe6.cjs` | Both compared a *static* snapshot against a page that had correctly closed a row past its own lock, so a correct board failed its own gate 25 minutes after capture. They now measure the first still-published row and require closed rows to say so; a live row with no number still fails. |
+| Phone legibility of the freshness strip | `site/assets/app.js`, `site/assets/style.css` | The phone home page hid "Last checked ..." but left a bare "· 15m ago" separator. It now reads "Checked 15m ago". |
+| 320x568 pick-board fix | (superseded upstream) | This session's own short-phone card tightening was replaced on `main` by session 8e4ff8d2's independent fix for the same measurement (12px of the probabilities under the tab bar). Recorded here as a handoff, not a loss: the served stylesheet carries 8e4ff8d2's block and all twelve phone suites pass against it. |
+| Flagged review note | `data/review-notes.json` | `session-58354934-freeze-alias-roster-2026-10-25`, with every run link, the HLTV page, the identity register and the validator. |
+
+**Live, measured on the public site at 15:13Z** (not from a run annotation):
+
+| Fact | Value | Source |
+| --- | --- | --- |
+| Served build | revision `05e991e`, built `2026-10-25T14:59:26Z`, snapshot `14:59:26Z`, 78 rows | `https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json` |
+| Coverage | **15 open CS2 matches · 15 with a pick · 15 with a win probability · 0 unresolved** | the executive summary |
+| Method mix | 11 from betting markets · 4 from our own VRS model line | same page |
+| In-site routes | `picks.html`, `unresolved.html`, `matches.html`, `analysis.html`, `review.html`, `sources.html`, `#unresolved-summary`, `#unresolved-limits` all present on the landing page, plus the phone tab bar Home · Picks · Unresolved · Matches · Analysis | same page |
+| Publisher | `deploy` **success** on run 40203794822 (`05e991e`); step 13 green, which is the gate that had been failing since 06:41Z | Actions API |
+
+**Step 17 (legacy `main:/` root staging) failed on that run and does not block delivery.** `deploy` is
+`always()` and succeeded, so the verified artifact reached Pages; the staging step is the documented
+infrastructure path that also refuses to go backwards when `main` moves during a run. It is visible as a red step
+and is not evidence about the board. Recorded, not papered over.
+
+**Runner contention, measured.** This session's publisher runs for `d5b0739`, `7b0555e`, `05e991e` and later were
+mostly `cancelled` within seconds by other sessions' pushes to `main` (the repository's documented queue behaviour);
+the run that first published this work is 40203794822. Eight other session branches were pushing to `main`
+concurrently during this session (53284c80, b85ad9b4, 85087497, 408eb0af, c2166aea, 046b2e46, 5bf6ae1b, bd650209,
+cc4f95ef, 8e4ff8d2 among them). No pick, probability or source was affected.
