@@ -179,6 +179,7 @@ probability source. Ongoing freshness is the publisher's job: `pages.yml` cron `
 
 ---
 
+<<<<<<< HEAD
 ## Session b06ee902 — CLAIM 2026-10-25 14:38 UTC (independent audit of the 25 Oct board, and the publish that proves it)
 
 Board read before claiming, from `origin/main` after `git pull --rebase` (**not** from a branch): `main` ==
@@ -232,6 +233,32 @@ Other sessions are pushing to `main` continuously (runs at 14:15Z: publish, watc
 verification, and at least four pull-request runs). This session therefore edits **no** file another
 session is working in: no `scripts/`, no `tests/`, no workflow, no root page, no `data/latest.json`.
 `data/review-notes.json` is append-only by convention and will be extended, never rewritten.
+=======
+## Session 5717f7d9 — CLAIM 2026-10-25 14:18 UTC (independent line-by-line audit of every-match pick coverage, the HLTV→esportsbook→model ladder, the unresolved/limitations section and mobile discoverability)
+
+Board read before claiming from `origin/main` (== local `arena/5717f7d9-maltaproj4` base) at
+`d5b0739` (merge of PR #322). Measured, not assumed: committed `data/latest.json` generated
+`2026-10-25T13:46:54Z`, 78 feed rows, **17 open · 17 picks · 17 win probabilities · 0 unresolved**
+(method mix 11 `exchange`, 1 `exchange_wide`, 1 `bookmaker_fallback`, 4 `model_vrs`); 61 not-open
+past feed rows never priced. On this tree `python -m scripts.validate` is green (78 rows / 17
+calculations / 15 pages / 730 links / 20 checksums / 182 displayed rows) and
+`python -m unittest discover -s tests` is **1,628 tests OK (12 skipped)**. The publisher/diagnostic
+space is saturated by sessions 8e4ff8d2, 6857421f, b85ad9b4, 58354934, 408eb0af, 2ce90427, ece64b74,
+fec4894f, cc4f95ef, 5bf6ae1b, 85087497 (open PRs #318–#327 and queued runs). This session therefore
+takes a strictly **additive, independent-verification** scope and touches no shared production file.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Independent auditor that imports no `scripts.*` code: re-derive every open row's probability (exchange raw-price orientation, book de-vig, Valve Glicko+calibration from the vendored official standings), verify complement/favourite/fair-odds, evidence freshness ≤8h, source-link completeness, no Hotspawn-probability leakage, not-open rows never priced, unresolved contract (reason + attempts) | in progress | 5717f7d9 | `scripts/audit_5717f7d9.py` (new), `research/session-5717f7d9/**` (new) | 2026-10-25 14:18 |
+| Verify the user-facing brief on the rendered bytes: executive-summary in-site links to the updated-pick board and the unresolved/limitations section, every displayed pick row has an official source link and both teams' percentages, phone bottom nav, no broken internal links, unresolved section rendered at zero | in progress | 5717f7d9 | `research/session-5717f7d9/**`, `tests/test_session_5717f7d9.py` (new) | 2026-10-25 14:18 |
+| Pin the audit's contracts and current findings as offline regressions; add a Flagged-for-Review note only for a genuinely new, source-linked irregularity (no duplicates); PR to `main`, merge without approval, record receipt | in progress | 5717f7d9 | `tests/test_session_5717f7d9.py` (new), `data/review-notes.json` (additive unique IDs only), `COORDINATION.md` (this section only) | 2026-10-25 14:18 |
+
+Non-overlap: this session never edits `scripts/{validate,core,build,refresh,vrs,vrs_mirror,hltv,books}.py`,
+the generated root pages/assets, `data/latest.json`, `data/matches.csv`, `build-info.json` or any
+workflow. If the audit finds a production defect it is logged here and on Flagged for Review with the
+source, not patched inside another session's scope.
+
+>>>>>>> 4c0c5df (session 5717f7d9: claim independent line-by-line pick-coverage audit (additive scope))
 
 ## Session b85ad9b4 — CLAIM 2026-10-25 13:30 UTC (the publisher is red; the live board withholds every pick)
 
