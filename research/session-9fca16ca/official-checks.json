@@ -1,7 +1,7 @@
 {
   "session": "9fca16ca",
-  "scope": "Direct reads of the official sources named by the committed 2026-10-25T13:54:18.896036Z snapshot. These are later observations than the snapshot and never overwrite its retained raw receipts.",
-  "checked_at_window_utc": "2026-10-25T14:18:00Z/2026-10-25T14:23:00Z",
+  "scope": "Direct reads of the official sources named by the committed 2026-10-25T14:22:27.352651Z snapshot. The reads straddle that capture by a few minutes; every current exchange quote agrees with its retained raw receipt. An older 13:54Z capture had three quotes that moved before these reads; the publisher superseded it with the 14:22Z capture.",
+  "checked_at_window_utc": "2026-10-25T14:18:00Z/2026-10-25T14:23:00Z (straddles the 14:22:27Z snapshot)",
   "inventory": {
     "hotspawn_lobby": "https://play.hotspawn.com/lobby",
     "hotspawn_cs2_pickems": "https://play.hotspawn.com/cs2-pickems",
@@ -202,8 +202,14 @@
     "normalized_probabilities": [0.5789473684210527, 0.42105263157894735],
     "limitation": "Single-operator listing read through BO3.gg; no tick-level operator price-update timestamp is published."
   },
+  "prior_snapshot_movements": [
+    {
+      "snapshot_generated_at": "2026-10-25T13:54:18.896036Z",
+      "detail": "Three exchange quotes had moved by 0.5–1.0 percentage points at the later direct reads; the 14:22:27Z publisher capture replaced them through the normal gated refresh and all eleven official quotes now agree."
+    }
+  ],
   "limitations": [
-    "Prices move. A later official quote is a check on source availability, not a correction to the dated raw receipt on which the published calculation is based.",
+    "Prices move. Direct official reads are a check on source availability and orientation, not a hand edit to the dated raw receipt on which the published calculation is based.",
     "The authoring sandbox cannot persist raw HTTP bodies for all sources; the committed snapshot retains hashes, observation times and status codes for each collector read.",
     "GG.BET and EGamersWorld access restrictions are recorded rather than bypassed or treated as evidence that no market exists.",
     "Originated VRS lines are labelled model estimates from Valve's official standings, not betting lines."

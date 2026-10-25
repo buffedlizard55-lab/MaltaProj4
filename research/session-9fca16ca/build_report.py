@@ -175,15 +175,15 @@ def valve_rows(data: dict) -> dict[str, str]:
 
 
 def official_status(m: dict, official: dict) -> tuple[str, str]:
-    """Return (status, source link) for the later direct-source check."""
+    """Return (status, source link) for the concurrent direct-source check."""
     by_fixture = {entry['fixture_id']: entry for entry in official['current_market_checks']}
     if m['id'] in by_fixture:
         entry = by_fixture[m['id']]
         current = entry['stored_order_prices']
         stored = m['probabilities']
         delta = [abs(a - b) for a, b in zip(current, stored)]
-        verb = 'matches' if max(delta) <= 1e-9 else 'moved since'
-        status = 'Current official quote %s stored %s (Δ %s / %s pp); later quote never overwrites the dated receipt.' % (
+        verb = 'matches' if max(delta) <= 1e-9 else 'differs from'
+        status = 'Concurrent official quote %s stored %s (Δ %s / %s pp); direct read never overwrites the retained raw receipt.' % (
             verb, '/'.join(pct(x) for x in stored),
             '%.1f' % (delta[0] * 100), '%.1f' % (delta[1] * 100))
         return status, md_link(entry['source_url'], 'Polymarket market %s' % entry['market_id'])
@@ -191,12 +191,12 @@ def official_status(m: dict, official: dict) -> tuple[str, str]:
         entry = official['current_book_check']
         delta = max(abs(a - b) for a, b in zip(entry['normalized_probabilities'], m['probabilities']))
         status = '%s (1.60 / 2.20 decimal, de-vigged); no operator tick timestamp.' % (
-            'Current official listing matches stored line' if delta <= 1e-9 else 'Current official listing moved')
+            'Current official listing matches stored line' if delta <= 1e-9 else 'Current official listing differs')
         return status, md_link(entry['source_url'], 'BO3.gg / Thunderpick listing')
     if m['method'] in ('model_vrs', 'model_vrs_mirror'):
         status = 'No accepted current market line; labelled originated VRS model line from official Valve standings.'
         return status, md_link(official['official_sources'][2]['url'], 'Valve official standings')
-    return 'No separate later official check recorded.', md_link(m.get('source_url') or '', 'Hotspawn fixture')
+    return 'No separate concurrent official check recorded.', md_link(m.get('source_url') or '', 'Hotspawn fixture')
 
 
 def main() -> int:
@@ -217,7 +217,7 @@ def main() -> int:
         q = (m.get('evidence') or [{}])[0]
         price_url = q.get('api_url') or q.get('url') or ''
         status, current_source = official_status(m, official)
-        if 'moved since' in status or 'listing moved' in status:
+        if 'differs from' in status or 'listing differs' in status:
             market_moves.append({'fixture_id': m['id'], 'status': status})
         source_cells = ' '.join(filter(None, [
             md_link(m.get('source_url') or '', 'Hotspawn'),
@@ -265,9 +265,9 @@ def main() -> int:
     lines.append('| Evidence window | %s hours |' % data['stale_after_hours'])
     lines.append('| Artifact checksums | %d/%d match |' % (receipt['files_checked'], receipt['files_checked']))
     lines.append('')
-    lines.append('## Every open match — calculation, sources and later official check')
+    lines.append('## Every open match — calculation, sources and concurrent official check')
     lines.append('')
-    lines.append('| Fixture | Teams | Start UTC | A / B | Pick | Method | Evidence expires | Reproduced | Row sources | Later official check |')
+    lines.append('| Fixture | Teams | Start UTC | A / B | Pick | Method | Evidence expires | Reproduced | Row sources | Concurrent official check |')
     lines.append('| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |')
     lines.extend(rows_md)
     lines.append('')
@@ -323,7 +323,7 @@ def main() -> int:
     lines.append('')
     lines.append('## Result')
     lines.append('')
-    lines.append('%d open rows replayed; %d row failures; %d HTML/delivery failures; %d receipt failures; %d later official quote movement(s).' % (
+    lines.append('%d open rows replayed; %d row failures; %d HTML/delivery failures; %d receipt failures; %d concurrent official quote difference(s).' % (
         len(open_rows), sum(bool(r['failed']) for r in row_results), len(site_failures), len(receipt_failures), len(market_moves)))
     if failures:
         lines.append('')
@@ -348,7 +348,7 @@ def main() -> int:
         'verified': not failures,
     }
     (HERE / 'SUMMARY.json').write_text(json.dumps(summary, indent=1, ensure_ascii=False) + '\n', encoding='utf-8')
-    print('Wrote ROW-LEDGER.md and SUMMARY.json: %d open rows, %d failures, %d later quote movement(s).' % (
+    print('Wrote ROW-LEDGER.md and SUMMARY.json: %d open rows, %d failures, %d concurrent quote difference(s).' % (
         len(open_rows), len(failures), len(market_moves)))
     return 1 if failures else 0
 

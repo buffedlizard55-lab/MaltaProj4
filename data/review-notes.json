@@ -6130,8 +6130,8 @@
  },
  {
   "id": "session-9fca16ca-dated-market-drift-2026-10-25",
-  "status": "For review — later official quotes moved; the published snapshot remains a dated observation",
-  "finding": "Direct official reads of eleven Polymarket Gamma market endpoints at 14:18–14:21 UTC on 25 Oct 2026 found that three quotes had moved relative to the retained 13:50 UTC receipts: market 6158760 (BORRACHEIROS vs RED Canids Academy) from 42.5/57.5% to 43.5/56.5%, market 6066508 (Ground Zero vs Off Chops) from 36.5/63.5% to 37/63%, and market 6066525 (Rooster vs Abyssal) from 43/57% to 42.5/57.5%. The other eight exchange markets still matched their stored quotes. The board does not silently overwrite a dated raw receipt with a later unvalidated observation; the 15-minute publisher and 10-minute watchdog recapture all source receipts under the same gates. Market-implied values are estimates, not guarantees. This is flagged so a reviewer does not mistake a deliberately dated snapshot for a live tick.",
+  "status": "Resolved on the newer 14:22Z capture; retained for review because market quotes are dated observations",
+  "finding": "Direct official reads of eleven Polymarket Gamma market endpoints at 14:18–14:23 UTC on 25 Oct 2026 found that three quotes had moved relative to the earlier retained 13:54Z snapshot: market 6158760 from 42.5/57.5% to 43.5/56.5%, market 6066508 from 36.5/63.5% to 37/63%, and market 6066525 from 43/57% to 42.5/57.5%. A normal gated publisher capture at 14:22:27Z then refreshed those raw receipts; the merged board now stores 43.5/56.5%, 37/63% and 42.5/57.5% respectively, and all eleven direct official exchange checks agree with the current snapshot's stored orientation and values. No quote was hand-edited. The 15-minute publisher and 10-minute watchdog continue to recapture every source receipt under the same validation gates. Market-implied values remain estimates, not guarantees, and the earlier movement is retained so a reviewer sees why a dated snapshot is not a live tick.",
   "sources": [
    {
     "url": "https://gamma-api.polymarket.com/markets/6158760",

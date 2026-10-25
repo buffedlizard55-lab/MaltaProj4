@@ -185,12 +185,23 @@ Board read before claiming at `origin/main` / this fixed Arena branch `d5b0739` 
 
 | Task | Status | Owner | File scope | Updated (UTC) |
 | --- | --- | --- | --- | --- |
-| Independent line-by-line audit of all open rows, source links, fallback attempts, unresolved/limitations section, executive summary and mobile navigation; links for manual review | in progress | 9fca16ca | `research/session-9fca16ca/**` (new), `tests/test_session_9fca16ca.py` (new), `data/review-notes.json` (additive only) | 2026-10-25 14:16 |
-| Repair only measured delivery/UI defects (stale receipt vs fresh board), with regression tests | in progress | 9fca16ca | `site/assets/app.js`, `scripts/build.py`, `scripts/stage_legacy.py`, `scripts/publish_root_fallback.py`, `.github/workflows/pages.yml` (only if a defect is proven), associated generated assets/pages via canonical builder | 2026-10-25 14:16 |
-| Final integration: full unit/audit/integrity/validator/browser gates, freshness and link checks, PR from this fixed branch to `main`, merge without approval, live Pages byte verification, receipt | unclaimed until the two rows above are done | 9fca16ca | `COORDINATION.md`, `build-info.json`, generated root pages, `data/latest.json`, `data/matches.csv` only via canonical build/refresh | 2026-10-25 14:16 |
+| Independent line-by-line audit of all open rows, source links, fallback attempts, unresolved/limitations section, executive summary and mobile navigation; links for manual review | **done** — adopted bd650209’s verifier, added direct-source checks and 9fca16ca ledger/regressions | 9fca16ca | `research/session-9fca16ca/**` (new), `tests/test_session_9fca16ca.py` (new), `data/review-notes.json` (additive only) | 2026-10-25 14:16 |
+| Repair only measured delivery/UI defects (stale receipt vs fresh board), with regression tests | **done** — no production repair needed; measured cache/propagation race is documented and pinned by receipt/expiry tests | 9fca16ca | `site/assets/app.js`, `scripts/build.py`, `scripts/stage_legacy.py`, `scripts/publish_root_fallback.py`, `.github/workflows/pages.yml` (only if a defect is proven), associated generated assets/pages via canonical builder | 2026-10-25 14:16 |
+| Final integration: full unit/audit/integrity/validator/browser gates, freshness and link checks, PR from this fixed branch to `main`, merge without approval, live Pages byte verification, receipt | **in progress** — local gates complete; PR/merge/deploy receipt appended below | 9fca16ca | `COORDINATION.md`, `build-info.json`, generated root pages, `data/latest.json`, `data/matches.csv` only via canonical build/refresh | 2026-10-25 14:16 |
 
 Evidence rules unchanged: Hotspawn supplies fixture inventory and locks only, never a probability; no crowd votes, placeholder odds, inferred values, or 50/50 filler. Any value that cannot be confirmed from a linked official source is blank and flagged. Shared outputs are rebuilt only at final integration; other sessions’ research/workflows are not edited.
 
+
+
+## Session 9fca16ca — progress receipt 2026-10-25 14:46 UTC
+
+Board re-read after main advanced through PR #324 (bd650209) and PR #331 (5bf6ae1b). Both sessions’ work was preserved. Two rebases were required; `COORDINATION.md` and `data/review-notes.json` conflicts were union-merged by session/entry ID, keeping all other sessions’ receipts and notes. The newer 14:22:27Z verified capture is the board under test: 78 Hotspawn feed rows, 16 open, 16 picks, 16 probability pairs, 0 unresolved; 11 exchange, 1 researched book listing, 4 labelled Valve-VRS model lines.
+
+Direct official reads at 14:18–14:23Z (Hotspawn lobby and fixture API, 11 Polymarket market endpoints, Pinnacle, Thunderpick, BO3.gg, GG.BET, EGamersWorld, HLTV fixtures/ranking, Valve standings and fit.js) are recorded in `research/session-9fca16ca/official-checks.json`. All current exchange/book quotes agree with the merged snapshot; the earlier 13:54Z snapshot’s three moved quotes were superseded by the normal gated refresh. Two additive Flagged-for-Review notes cover dated market movement and low-tier source access/model limitations. The delivery/receipt race is recorded in the session report and was already covered by earlier legacy-Pages notes; no probability or fixture value was edited by hand.
+
+Final local candidate gates: `unittest discover -s tests` **1,701 OK (12 skipped)**; audits 9 OK; integrity 5 OK; verification-c6 12 OK; `scripts.validate` root and public both **78 rows / 16 calculations / 15 pages / 726 links / 20 checksums / 181 displayed rows**; c6 and bd650209 independent row auditors 0 failures / 16-of-16 PASS; coverage contract 0 problems; all 13 Chromium suites pass at 320/390/412px with no horizontal overflow; 9fca16ca ledger 0 row/HTML/receipt failures and 20/20 manifest hashes. Generated root was rebuilt through `scripts.build` → `scripts.validate --site public` → `scripts.stage_legacy` → `scripts.validate --site .`, with the receipt `2026-10-25T14:42:15.613536Z`.
+
+Final integration (PR, merge without approval, live Pages byte check) is the only open row; its receipt is appended after the live deployment is confirmed.
 
 ---
 

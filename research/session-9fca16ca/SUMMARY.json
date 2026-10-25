@@ -1,33 +1,19 @@
 {
- "snapshot_generated_at": "2026-10-25T13:54:18.896036Z",
+ "snapshot_generated_at": "2026-10-25T14:22:27.352651Z",
  "rows": 78,
  "open": 16,
  "picks": 16,
  "probabilities": 16,
  "unresolved": 0,
  "method_counts": {
-  "exchange": 10,
+  "exchange": 11,
   "model_vrs": 4,
-  "bookmaker_fallback": 1,
-  "exchange_wide": 1
+  "bookmaker_fallback": 1
  },
  "row_failures": [],
  "html_failures": [],
  "receipt_failures": [],
- "official_quote_movements": [
-  {
-   "fixture_id": "1086696",
-   "status": "Current official quote moved since stored 42.5%/57.5% (Δ 1.0 / 1.0 pp); later quote never overwrites the dated receipt."
-  },
-  {
-   "fixture_id": "1082858",
-   "status": "Current official quote moved since stored 36.5%/63.5% (Δ 0.5 / 0.5 pp); later quote never overwrites the dated receipt."
-  },
-  {
-   "fixture_id": "1082861",
-   "status": "Current official quote moved since stored 43.0%/57.0% (Δ 0.5 / 0.5 pp); later quote never overwrites the dated receipt."
-  }
- ],
+ "official_quote_movements": [],
  "source_access_errors": [
   {
    "name": "GG.BET fallback access",
@@ -55,9 +41,9 @@
    "every_checksum": true,
    "eight_hour_evidence_window": true
   },
-  "revision": "1d31c24e1f8a3e7d40d1aec7ee5aaa913bd2b46f",
-  "built_at": "2026-10-25T14:21:29.507670Z",
-  "snapshot_generated_at": "2026-10-25T13:54:18.896036Z",
+  "revision": "197276a69a8191e81174524439d01e0e8f0333cb",
+  "built_at": "2026-10-25T14:42:15.613536Z",
+  "snapshot_generated_at": "2026-10-25T14:22:27.352651Z",
   "rows": 78,
   "files_checked": 20
  },
