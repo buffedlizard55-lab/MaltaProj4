@@ -10997,3 +10997,47 @@ site can lag a green run by minutes (session b06ee902's measurement).
 **Gates on the exact committed snapshot:** `scripts.validate --data data/latest.json --site .` RC=0; independent validator on built `public/` RC=0 (**73 rows / 11 calculations / 15 pages / 693 links-assets / 20 checksums / 165 displayed rows**); independent `verification-c6/audit_snapshot.py` **0 errors**; **1,778 unit tests OK (14 skipped)**; audits 9 OK; integrity 5 OK; verification-c6 tests 12 OK; all 13 Chromium suites RC=0. At 320×568, 390×844 and 412×915 the summary quick-nav and updated-picks path are present, the first pick and both probabilities clear the fixed tab bar, and no horizontal overflow is reported. The first browser invocation stopped because the local `public/` build had not yet been created; after building and validating `public/`, the complete suite passed.
 
 **Coordination note.** While the browser suite ran, it refreshed the older tracked `research/session-aeafcbe6/mobile-measurements.json` fixture with this snapshot. That file was restored byte-for-byte from this branch's `HEAD`; this session's new measurements are preserved only in its own `browser.log`/`VERIFICATION.md`. No other session's artifact is included in this branch's diff.
+
+## Session 77046e56 — CLAIM (2026-10-26 00:55 UTC): Hotspawn inventory parity, every-match picks, mobile executive summary
+
+**Measured before claiming.** Branch `arena/77046e56-maltaproj4` is at `eca5117`. The live public
+board (fetched 2026-10-26 ~00:50 UTC) reads *"11 open CS2 match(es) · 11 with a pick · 11 with a win
+probability · 0 unresolved"* — i.e. every row it *has* is priced. But the live Hotspawn lobby
+(`https://play.hotspawn.com/lobby`, read 2026-10-26 ~00:50 UTC through the research fetch tool) renders
+**"Tier All tiers (81)"** and **"19 matches this week"** (plus a further Upcoming list), while the
+committed snapshot `data/latest.json` (`generated_at 2026-10-26T00:10:49Z`) holds **73** rows and 11 open.
+Eight fixtures visible on the lobby are **absent from the board**:
+
+| Hotspawn fixture | Teams | Competition | Lobby lock-in at read |
+| --- | --- | --- | --- |
+| 1079201 | INOX Division vs Nemesis | NODWIN Clutch Series #13 | ~8h |
+| 1079202 | FOKUS vs ex-Zero Tenacity | NODWIN Clutch Series #13 | ~11h |
+| 1079203 | Metizport vs BRUTE | NODWIN Clutch Series #13 | ~14h |
+| 1081159 | LFO 10 vs ex-6666 | CCT Europe 2026 Series #12 | ~11h |
+| 1081160 | HAVU vs ILLYRIANS | CCT Europe 2026 Series #12 | ~14h |
+| 1081162 | ex-RUSTEC vs Spirit Academy | CCT Europe 2026 Series #12 | ~15h |
+| 1081163 | BakS vs Saint Sinners | CCT Europe 2026 Series #12 | ~18h |
+| 1081164 | Inner Circle Academy vs Lavked | CCT Europe 2026 Series #12 | ~21h |
+
+These are *not* past-dated feed noise: they are the next eight matches on Hotspawn, and one locks within
+a few hours. The board therefore fails the brief's *"a pick for every match listed on Hotspawn"* on
+coverage, not on pricing. This session's job is to measure **why** the collector's three reads all
+report 73 while the rendered lobby reports 81, repair the collector so the union is complete, price the
+new rows through the existing sourced ladder, re-verify the executive summary/mobile layout, and
+integrate.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| D1 Measure the lobby-vs-API coverage gap on a real GitHub egress (parameter matrix, raw-page ID scan, per-source counts), keep dated receipts | in progress | 77046e56 | `research/session-77046e56/**`, `scripts/diag_77046e56.py` (new), `.github/workflows/diag-77046e56.yml` (new) | 2026-10-26 00:55 |
+| C1 Repair the collector so every fixture the lobby lists is on the board (union/parity rule stated in code), with a regression test | in progress | 77046e56 | `scripts/inventory.py`, `scripts/core.py`, `tests/test_session_77046e56.py` (new) | 2026-10-26 00:55 |
+| P1 Price every newly covered fixture through the existing ladder (Polymarket → HLTV → Pinnacle → wide quote → listing → VRS → VRS mirror → research pick), or publish it in the unresolved section with its limitation | in progress | 77046e56 | `data/latest.json` (pipeline output only), `data/review-notes.json` (append-only) | 2026-10-26 00:55 |
+| V1 Line-by-line verification of the published board against official sources + 320/390/412 px pass, executive-summary in-site links, unresolved section | in progress | 77046e56 | `research/session-77046e56/VERIFICATION.md` (new) | 2026-10-26 00:55 |
+| I1 Final integration: gates, PR to `main`, merge without waiting, confirm Pages deploy and live bytes, receipt | in progress | 77046e56 | `COORDINATION.md`, generated root pages, `build-info.json` | 2026-10-26 00:55 |
+
+**Coordination.** 22 older PRs (#221–#341) are open from earlier sessions; none is merged and none of
+their claims is newer than 2026-10-25 17:05 UTC, so under the 60-minute rule none blocks this session.
+This session edits `scripts/inventory.py`, `scripts/core.py` and `data/review-notes.json`
+(append-only) — the narrowest scope that can fix a collector defect — and adds its own new files. It
+does not touch `pages.yml`, `scripts/build.py`, `scripts/validate.py`, or any other session's research
+directory. If a later rebase finds a competing change in those two collector files, the resolution is
+keep-both and log it here.
