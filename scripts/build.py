@@ -735,6 +735,10 @@ def lobby_coverage_panel(data, anchor='lobby-coverage'):
         return ''
     missing = [str(x) for x in (cov.get('missing_from_feed') or [])]
     observed = cov.get('observed_at')
+    # Bound the rendered table: a page that links a long history of fixtures must
+    # not turn an evidence block into a wall. The complete list stays in the
+    # snapshot (`lobby_coverage.missing_from_feed`) and in data/latest.json.
+    shown, hidden_count = missing[:25], max(0, len(missing) - 25)
     if missing:
         headline = ('<strong>%d fixture(s) the lobby links to are not in this capture</strong>. '
                     'They carry no pick, because the official feed published no start or lock time '
@@ -745,14 +749,18 @@ def lobby_coverage_panel(data, anchor='lobby-coverage'):
             '<td><span class="muted">Not published by the feed at this capture</span></td>'
             '<td class="source-links">%s%s</td></tr>'
             % (e(ident), link(LOBBY_URL, 'Hotspawn lobby ↗'), link(FEED_API, 'Fixture feed ↗'))
-            for ident in missing)
+            for ident in shown)
         table_html = ('<div class="table-wrap" tabindex="0" role="region" aria-label="Lobby fixtures '
                       'absent from the feed"><table role="table"><caption>Every id the public lobby '
                       'linked to that the official fixture feed did not return at this capture. '
                       'Blank means uncollected, never 50/50.</caption><thead><tr>'
                       '<th scope="col">Fixture id</th><th scope="col">Start &amp; lock</th>'
                       '<th scope="col">Sources</th></tr></thead><tbody>' + rows +
-                      '</tbody></table></div>')
+                      '</tbody></table></div>'
+                      + ('<p class="small">%d further id(s) are recorded in the snapshot and in '
+                         '%s; the panel lists the first 25.</p>'
+                         % (hidden_count, link('data/latest.json', 'the JSON data'))
+                         if hidden_count else ''))
     else:
         read = cov.get('lobby_read')
         headline = ('<strong>The lobby and the feed agreed at this capture</strong>: every fixture id '
