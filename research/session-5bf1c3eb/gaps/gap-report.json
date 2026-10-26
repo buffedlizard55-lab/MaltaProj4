@@ -1,0 +1,1474 @@
+{
+  "session": "5bf1c3eb",
+  "probed_at": "2026-10-26T00:57:15.087511Z",
+  "snapshot_generated_at": "2026-10-26T00:57:14.425163Z",
+  "fixtures_observed_at": "2026-10-26T00:53:32.505797Z",
+  "coverage": "verified",
+  "policy": "Read-only. No probability is derived, converted or defaulted here; a source with no numeric two-way price is retained as a collection limitation for manual review.",
+  "counts": {
+    "total_feed_rows": 81,
+    "open_rows": 19,
+    "not_open_rows": 62,
+    "open_with_pick": 19,
+    "open_with_probabilities": 19,
+    "open_research_only_no_pct": 0,
+    "open_unresolved_no_pick": 0
+  },
+  "open_pick_methods": {
+    "exchange": 8,
+    "bookmaker_fallback": 1,
+    "model_vrs": 8,
+    "model_vrs_mirror": 2
+  },
+  "issues": [
+    {
+      "code": "feed_status",
+      "message": "62 feed entries are not open by sourced timestamps/status. They remain in All matches and are not treated as future picks.",
+      "source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+    }
+  ],
+  "live_pages_at_probe_time": {
+    "checked_at": "2026-10-26T00:57:15.087569Z",
+    "base_url": "https://buffedlizard55-lab.github.io/MaltaProj4/",
+    "manifest_http_status": 200,
+    "manifest_sha256": "94daadd4d15732e6346fad9d098a71df3c2eb8a7ad0261956204ef3e63eaaa2f",
+    "manifest": {
+      "revision": "3b158a37e442b0440521a83350d4d515eb20aa49",
+      "built_at": "2026-10-26T00:10:50.130013Z",
+      "snapshot_generated_at": "2026-10-26T00:10:49.639616Z",
+      "rows": 73
+    },
+    "snapshot_age_seconds": 2785.7,
+    "snapshot_age_hours": 0.774,
+    "within_8h_window": true
+  },
+  "open_rows_without_a_percentage": [],
+  "source_probes": {
+    "bo3_gg_upcoming_rows": 0,
+    "egamersworld": {
+      "skipped": "every open row already carries a probability"
+    },
+    "polymarket": {
+      "skipped": "every open row already carries a probability"
+    },
+    "pinnacle": {
+      "skipped": "every open row already carries a probability"
+    }
+  },
+  "closed_rows_that_cannot_take_a_pick": [
+    {
+      "id": "1052746",
+      "teams": [
+        "Fortress",
+        "Endless Journey"
+      ],
+      "competition": "European Pro League Series 8 Play-In",
+      "tier": "c",
+      "scheduled_start_utc": "2026-06-26T10:30:00Z",
+      "lock_utc": "2026-06-26T10:24:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-26T11:45:27.439000Z",
+      "feed_end_time_utc": "2026-06-26T12:51:00.961000Z",
+      "feed_lock_time_utc": "2026-06-26T10:24:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-26T10:24:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-26T10:30:00Z).",
+        "Hotspawn also reports an end_time (2026-06-26T12:51:00.961000Z) while status is still \"scheduled\"."
+      ],
+      "upstream_irregularity": true
+    },
+    {
+      "id": "1051339",
+      "teams": [
+        "Acend",
+        "Infinite"
+      ],
+      "competition": "DraculaN Season 7",
+      "tier": "b",
+      "scheduled_start_utc": "2026-06-26T12:00:00Z",
+      "lock_utc": "2026-06-26T11:54:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-26T12:09:47.460000Z",
+      "feed_end_time_utc": "2026-06-26T13:47:19.362000Z",
+      "feed_lock_time_utc": "2026-06-26T11:54:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-26T11:54:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-26T12:00:00Z).",
+        "Hotspawn also reports an end_time (2026-06-26T13:47:19.362000Z) while status is still \"scheduled\"."
+      ],
+      "upstream_irregularity": true
+    },
+    {
+      "id": "1051301",
+      "teams": [
+        "CYBERSHOKE Prospects",
+        "PCIFIC"
+      ],
+      "competition": "LG UltraGear Tournament 2026",
+      "tier": "c",
+      "scheduled_start_utc": "2026-06-26T13:00:00Z",
+      "lock_utc": "2026-06-26T12:54:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-26T13:12:48.913000Z",
+      "feed_end_time_utc": "2026-06-26T14:38:36.969000Z",
+      "feed_lock_time_utc": "2026-06-26T12:54:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-26T12:54:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-26T13:00:00Z).",
+        "Hotspawn also reports an end_time (2026-06-26T14:38:36.969000Z) while status is still \"scheduled\"."
+      ],
+      "upstream_irregularity": true
+    },
+    {
+      "id": "1053068",
+      "teams": [
+        "Johnny Speeds",
+        "ReThink"
+      ],
+      "competition": "Svenska CS-Ligan 2026",
+      "tier": "c",
+      "scheduled_start_utc": "2026-06-26T13:00:00Z",
+      "lock_utc": "2026-06-26T12:54:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-26T13:04:22.996000Z",
+      "feed_end_time_utc": "2026-06-26T15:23:25.588000Z",
+      "feed_lock_time_utc": "2026-06-26T12:54:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-26T12:54:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-26T13:00:00Z).",
+        "Hotspawn also reports an end_time (2026-06-26T15:23:25.588000Z) while status is still \"scheduled\"."
+      ],
+      "upstream_irregularity": true
+    },
+    {
+      "id": "1052747",
+      "teams": [
+        "Sashi Academy",
+        "eternal premium"
+      ],
+      "competition": "European Pro League Series 8 Play-In",
+      "tier": "c",
+      "scheduled_start_utc": "2026-06-26T13:10:00Z",
+      "lock_utc": "2026-06-26T13:04:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-26T13:40:49.845000Z",
+      "feed_end_time_utc": "2026-06-26T17:04:13.407000Z",
+      "feed_lock_time_utc": "2026-06-26T13:04:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-26T13:04:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-26T13:10:00Z).",
+        "Hotspawn also reports an end_time (2026-06-26T17:04:13.407000Z) while status is still \"scheduled\"."
+      ],
+      "upstream_irregularity": true
+    },
+    {
+      "id": "1053146",
+      "teams": [
+        "Atrix",
+        "Clutchain"
+      ],
+      "competition": "Rainhas do Clutch 2026",
+      "tier": "b",
+      "scheduled_start_utc": "2026-06-26T14:00:00Z",
+      "lock_utc": "2026-06-26T13:54:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-26T14:16:47.147000Z",
+      "feed_end_time_utc": "2026-06-26T16:55:14.855000Z",
+      "feed_lock_time_utc": "2026-06-26T13:54:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-26T13:54:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-26T14:00:00Z).",
+        "Hotspawn also reports an end_time (2026-06-26T16:55:14.855000Z) while status is still \"scheduled\"."
+      ],
+      "upstream_irregularity": true
+    },
+    {
+      "id": "1051340",
+      "teams": [
+        "Walczaki",
+        "Inner Circle"
+      ],
+      "competition": "DraculaN Season 7",
+      "tier": "b",
+      "scheduled_start_utc": "2026-06-26T15:00:00Z",
+      "lock_utc": "2026-06-26T14:54:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-26T15:09:13.707000Z",
+      "feed_end_time_utc": "2026-06-26T16:48:16.332000Z",
+      "feed_lock_time_utc": "2026-06-26T14:54:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-26T14:54:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-26T15:00:00Z).",
+        "Hotspawn also reports an end_time (2026-06-26T16:48:16.332000Z) while status is still \"scheduled\"."
+      ],
+      "upstream_irregularity": true
+    },
+    {
+      "id": "1053069",
+      "teams": [
+        "roamsfiest",
+        "train launcher"
+      ],
+      "competition": "Svenska CS-Ligan 2026",
+      "tier": "c",
+      "scheduled_start_utc": "2026-06-26T16:45:00Z",
+      "lock_utc": "2026-06-26T16:39:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-26T16:47:09.197000Z",
+      "feed_end_time_utc": "2026-06-26T18:10:30.011000Z",
+      "feed_lock_time_utc": "2026-06-26T16:39:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-26T16:39:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-26T16:45:00Z).",
+        "Hotspawn also reports an end_time (2026-06-26T18:10:30.011000Z) while status is still \"scheduled\"."
+      ],
+      "upstream_irregularity": true
+    },
+    {
+      "id": "1052686",
+      "teams": [
+        "shimmer",
+        "MIBR fe"
+      ],
+      "competition": "Rainhas do Clutch 2026",
+      "tier": "b",
+      "scheduled_start_utc": "2026-06-26T17:45:00Z",
+      "lock_utc": "2026-06-26T17:39:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-26T17:58:49.009000Z",
+      "feed_end_time_utc": "2026-06-26T22:19:28.354000Z",
+      "feed_lock_time_utc": "2026-06-26T17:39:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-26T17:39:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-26T17:45:00Z).",
+        "Hotspawn also reports an end_time (2026-06-26T22:19:28.354000Z) while status is still \"scheduled\"."
+      ],
+      "upstream_irregularity": true
+    },
+    {
+      "id": "1051789",
+      "teams": [
+        "MIBR Academy",
+        "Isurus"
+      ],
+      "competition": "Thunderpick World Championship 2026: South American Series #1",
+      "tier": "c",
+      "scheduled_start_utc": "2026-06-26T18:00:00Z",
+      "lock_utc": "2026-06-26T17:54:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-26T18:08:07.787000Z",
+      "feed_end_time_utc": "2026-06-26T19:35:16.004000Z",
+      "feed_lock_time_utc": "2026-06-26T17:54:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-26T17:54:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-26T18:00:00Z).",
+        "Hotspawn also reports an end_time (2026-06-26T19:35:16.004000Z) while status is still \"scheduled\"."
+      ],
+      "upstream_irregularity": true
+    },
+    {
+      "id": "1053070",
+      "teams": [
+        "ReThink",
+        "train launcher"
+      ],
+      "competition": "Svenska CS-Ligan 2026",
+      "tier": "c",
+      "scheduled_start_utc": "2026-06-26T19:00:00Z",
+      "lock_utc": "2026-06-26T18:54:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-26T19:04:24.772000Z",
+      "feed_end_time_utc": "2026-06-26T21:49:36.675000Z",
+      "feed_lock_time_utc": "2026-06-26T18:54:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-26T18:54:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-26T19:00:00Z).",
+        "Hotspawn also reports an end_time (2026-06-26T21:49:36.675000Z) while status is still \"scheduled\"."
+      ],
+      "upstream_irregularity": true
+    },
+    {
+      "id": "1051790",
+      "teams": [
+        "Keyd",
+        "Yawara"
+      ],
+      "competition": "Thunderpick World Championship 2026: South American Series #1",
+      "tier": "c",
+      "scheduled_start_utc": "2026-06-26T21:00:00Z",
+      "lock_utc": "2026-06-26T20:54:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-26T21:04:29.415000Z",
+      "feed_end_time_utc": "2026-06-26T22:26:16.804000Z",
+      "feed_lock_time_utc": "2026-06-26T20:54:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-26T20:54:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-26T21:00:00Z).",
+        "Hotspawn also reports an end_time (2026-06-26T22:26:16.804000Z) while status is still \"scheduled\"."
+      ],
+      "upstream_irregularity": true
+    },
+    {
+      "id": "1052748",
+      "teams": [
+        "Inner Circle Academy",
+        "sAw"
+      ],
+      "competition": "European Pro League Series 8 Play-In",
+      "tier": "c",
+      "scheduled_start_utc": "2026-06-27T08:00:00Z",
+      "lock_utc": "2026-06-27T07:54:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-27T08:06:20.912000Z",
+      "feed_end_time_utc": "2026-06-27T09:52:15.916000Z",
+      "feed_lock_time_utc": "2026-06-27T07:54:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-27T07:54:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-27T08:00:00Z).",
+        "Hotspawn also reports an end_time (2026-06-27T09:52:15.916000Z) while status is still \"scheduled\"."
+      ],
+      "upstream_irregularity": true
+    },
+    {
+      "id": "1053071",
+      "teams": [
+        "Johnny Speeds",
+        "roamsfiest"
+      ],
+      "competition": "Svenska CS-Ligan 2026",
+      "tier": "c",
+      "scheduled_start_utc": "2026-06-27T10:00:00Z",
+      "lock_utc": "2026-06-27T09:54:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-27T10:04:38.621000Z",
+      "feed_end_time_utc": "2026-06-27T13:41:44.895000Z",
+      "feed_lock_time_utc": "2026-06-27T09:54:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-27T09:54:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-27T10:00:00Z).",
+        "Hotspawn also reports an end_time (2026-06-27T13:41:44.895000Z) while status is still \"scheduled\"."
+      ],
+      "upstream_irregularity": true
+    },
+    {
+      "id": "1052749",
+      "teams": [
+        "Misa",
+        "WROTBERRY"
+      ],
+      "competition": "European Pro League Series 8 Play-In",
+      "tier": "c",
+      "scheduled_start_utc": "2026-06-27T10:30:00Z",
+      "lock_utc": "2026-06-27T10:24:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-27T10:44:12.374000Z",
+      "feed_end_time_utc": "2026-06-27T12:54:24.507000Z",
+      "feed_lock_time_utc": "2026-06-27T10:24:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-27T10:24:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-27T10:30:00Z).",
+        "Hotspawn also reports an end_time (2026-06-27T12:54:24.507000Z) while status is still \"scheduled\"."
+      ],
+      "upstream_irregularity": true
+    },
+    {
+      "id": "1052180",
+      "teams": [
+        "NEW VISION",
+        "Julie&Cie"
+      ],
+      "competition": "CCT Europe 2026 Challengers #4",
+      "tier": "c",
+      "scheduled_start_utc": "2026-06-27T11:00:00Z",
+      "lock_utc": "2026-06-27T10:54:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-27T11:16:06.403000Z",
+      "feed_end_time_utc": "2026-06-27T13:37:11.230000Z",
+      "feed_lock_time_utc": "2026-06-27T10:54:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-27T10:54:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-27T11:00:00Z).",
+        "Hotspawn also reports an end_time (2026-06-27T13:37:11.230000Z) while status is still \"scheduled\"."
+      ],
+      "upstream_irregularity": true
+    },
+    {
+      "id": "1052181",
+      "teams": [
+        "Just Players",
+        "OlyBet"
+      ],
+      "competition": "CCT Europe 2026 Challengers #4",
+      "tier": "c",
+      "scheduled_start_utc": "2026-06-27T11:00:00Z",
+      "lock_utc": "2026-06-27T10:54:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": null,
+      "feed_end_time_utc": null,
+      "feed_lock_time_utc": "2026-06-27T10:54:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-27T10:54:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-27T11:00:00Z)."
+      ],
+      "upstream_irregularity": false
+    },
+    {
+      "id": "1051800",
+      "teams": [
+        "ShindeN",
+        "MIBR Academy"
+      ],
+      "competition": "Thunderpick World Championship 2026: South American Series #1",
+      "tier": "c",
+      "scheduled_start_utc": "2026-06-27T13:00:00Z",
+      "lock_utc": "2026-06-27T12:54:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-27T13:05:45.700000Z",
+      "feed_end_time_utc": "2026-06-27T14:42:56.045000Z",
+      "feed_lock_time_utc": "2026-06-27T12:54:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-27T12:54:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-27T13:00:00Z).",
+        "Hotspawn also reports an end_time (2026-06-27T14:42:56.045000Z) while status is still \"scheduled\"."
+      ],
+      "upstream_irregularity": true
+    },
+    {
+      "id": "1052699",
+      "teams": [
+        "Vasco",
+        "Red Feet"
+      ],
+      "competition": "CCT South America 2026 Series #3",
+      "tier": "b",
+      "scheduled_start_utc": "2026-06-27T13:00:00Z",
+      "lock_utc": "2026-06-27T12:54:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": null,
+      "feed_end_time_utc": null,
+      "feed_lock_time_utc": "2026-06-27T12:54:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-27T12:54:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-27T13:00:00Z)."
+      ],
+      "upstream_irregularity": false
+    },
+    {
+      "id": "1052183",
+      "teams": [
+        "Misa",
+        "Wampirki"
+      ],
+      "competition": "CCT Europe 2026 Challengers #4",
+      "tier": "c",
+      "scheduled_start_utc": "2026-06-27T13:45:00Z",
+      "lock_utc": "2026-06-27T13:39:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": null,
+      "feed_end_time_utc": null,
+      "feed_lock_time_utc": "2026-06-27T13:39:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-27T13:39:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-27T13:45:00Z)."
+      ],
+      "upstream_irregularity": false
+    },
+    {
+      "id": "1051341",
+      "teams": [
+        "Sharks",
+        "Inner Circle"
+      ],
+      "competition": "DraculaN Season 7",
+      "tier": "b",
+      "scheduled_start_utc": "2026-06-27T13:50:00Z",
+      "lock_utc": "2026-06-27T13:44:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-27T13:51:03.119000Z",
+      "feed_end_time_utc": "2026-06-27T17:19:30.976000Z",
+      "feed_lock_time_utc": "2026-06-27T13:44:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-27T13:44:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-27T13:50:00Z).",
+        "Hotspawn also reports an end_time (2026-06-27T17:19:30.976000Z) while status is still \"scheduled\"."
+      ],
+      "upstream_irregularity": true
+    },
+    {
+      "id": "1052599",
+      "teams": [
+        "Mai Tai",
+        "Megoshort"
+      ],
+      "competition": "CCT Europe 2026 Challengers #4",
+      "tier": "c",
+      "scheduled_start_utc": "2026-06-27T14:00:00Z",
+      "lock_utc": "2026-06-27T13:54:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": null,
+      "feed_end_time_utc": null,
+      "feed_lock_time_utc": "2026-06-27T13:54:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-27T13:54:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-27T14:00:00Z)."
+      ],
+      "upstream_irregularity": false
+    },
+    {
+      "id": "1053072",
+      "teams": [
+        "train launcher",
+        "roamsfiest"
+      ],
+      "competition": "Svenska CS-Ligan 2026",
+      "tier": "c",
+      "scheduled_start_utc": "2026-06-27T14:10:00Z",
+      "lock_utc": "2026-06-27T14:04:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-27T14:19:29.207000Z",
+      "feed_end_time_utc": "2026-06-27T16:15:06.399000Z",
+      "feed_lock_time_utc": "2026-06-27T14:04:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-27T14:04:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-27T14:10:00Z).",
+        "Hotspawn also reports an end_time (2026-06-27T16:15:06.399000Z) while status is still \"scheduled\"."
+      ],
+      "upstream_irregularity": true
+    },
+    {
+      "id": "1052357",
+      "teams": [
+        "BIG Academy",
+        "BERG"
+      ],
+      "competition": "DACH CS Masters Season 5",
+      "tier": "c",
+      "scheduled_start_utc": "2026-06-27T15:00:00Z",
+      "lock_utc": "2026-06-27T14:54:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-27T15:04:26.543000Z",
+      "feed_end_time_utc": "2026-06-27T16:41:34.437000Z",
+      "feed_lock_time_utc": "2026-06-27T14:54:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-27T14:54:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-27T15:00:00Z).",
+        "Hotspawn also reports an end_time (2026-06-27T16:41:34.437000Z) while status is still \"scheduled\"."
+      ],
+      "upstream_irregularity": true
+    },
+    {
+      "id": "1051801",
+      "teams": [
+        "Bounty Hunters",
+        "UNO MILLE"
+      ],
+      "competition": "Thunderpick World Championship 2026: South American Series #1",
+      "tier": "c",
+      "scheduled_start_utc": "2026-06-27T16:00:00Z",
+      "lock_utc": "2026-06-27T15:54:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-27T16:06:39.298000Z",
+      "feed_end_time_utc": "2026-06-27T17:43:10.711000Z",
+      "feed_lock_time_utc": "2026-06-27T15:54:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-27T15:54:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-27T16:00:00Z).",
+        "Hotspawn also reports an end_time (2026-06-27T17:43:10.711000Z) while status is still \"scheduled\"."
+      ],
+      "upstream_irregularity": true
+    },
+    {
+      "id": "1052700",
+      "teams": [
+        "GameHunters",
+        "VEXA"
+      ],
+      "competition": "CCT South America 2026 Series #3",
+      "tier": "b",
+      "scheduled_start_utc": "2026-06-27T16:00:00Z",
+      "lock_utc": "2026-06-27T15:54:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-27T16:43:09.040000Z",
+      "feed_end_time_utc": "2026-06-27T18:51:50.590000Z",
+      "feed_lock_time_utc": "2026-06-27T15:54:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-27T15:54:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-27T16:00:00Z).",
+        "Hotspawn also reports an end_time (2026-06-27T18:51:50.590000Z) while status is still \"scheduled\"."
+      ],
+      "upstream_irregularity": true
+    },
+    {
+      "id": "1051342",
+      "teams": [
+        "ex-Tricked",
+        "Acend"
+      ],
+      "competition": "DraculaN Season 7",
+      "tier": "b",
+      "scheduled_start_utc": "2026-06-27T17:00:00Z",
+      "lock_utc": "2026-06-27T16:54:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-27T18:19:00.570000Z",
+      "feed_end_time_utc": "2026-06-27T21:52:21.777000Z",
+      "feed_lock_time_utc": "2026-06-27T16:54:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-27T16:54:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-27T17:00:00Z).",
+        "Hotspawn also reports an end_time (2026-06-27T21:52:21.777000Z) while status is still \"scheduled\"."
+      ],
+      "upstream_irregularity": true
+    },
+    {
+      "id": "1053073",
+      "teams": [
+        "roamsfiest",
+        "ReThink"
+      ],
+      "competition": "Svenska CS-Ligan 2026",
+      "tier": "c",
+      "scheduled_start_utc": "2026-06-27T17:00:00Z",
+      "lock_utc": "2026-06-27T16:54:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-27T17:07:13.987000Z",
+      "feed_end_time_utc": "2026-06-27T19:46:11.980000Z",
+      "feed_lock_time_utc": "2026-06-27T16:54:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-27T16:54:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-27T17:00:00Z).",
+        "Hotspawn also reports an end_time (2026-06-27T19:46:11.980000Z) while status is still \"scheduled\"."
+      ],
+      "upstream_irregularity": true
+    },
+    {
+      "id": "1052701",
+      "teams": [
+        "paiN Academy",
+        "Alka"
+      ],
+      "competition": "CCT South America 2026 Series #3",
+      "tier": "b",
+      "scheduled_start_utc": "2026-06-27T19:00:00Z",
+      "lock_utc": "2026-06-27T18:54:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-27T20:14:34.188000Z",
+      "feed_end_time_utc": "2026-06-27T21:36:21.296000Z",
+      "feed_lock_time_utc": "2026-06-27T18:54:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-27T18:54:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-27T19:00:00Z).",
+        "Hotspawn also reports an end_time (2026-06-27T21:36:21.296000Z) while status is still \"scheduled\"."
+      ],
+      "upstream_irregularity": true
+    },
+    {
+      "id": "1053313",
+      "teams": [
+        "Fake do Biru",
+        "LP"
+      ],
+      "competition": "Thunderpick World Championship 2026: South American Series #1",
+      "tier": "c",
+      "scheduled_start_utc": "2026-06-27T19:00:00Z",
+      "lock_utc": "2026-06-27T18:54:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-27T19:07:40.096000Z",
+      "feed_end_time_utc": "2026-06-27T20:55:22.164000Z",
+      "feed_lock_time_utc": "2026-06-27T18:54:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-27T18:54:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-27T19:00:00Z).",
+        "Hotspawn also reports an end_time (2026-06-27T20:55:22.164000Z) while status is still \"scheduled\"."
+      ],
+      "upstream_irregularity": true
+    },
+    {
+      "id": "1051803",
+      "teams": [
+        "Fluxo",
+        "Keyd"
+      ],
+      "competition": "Thunderpick World Championship 2026: South American Series #1",
+      "tier": "c",
+      "scheduled_start_utc": "2026-06-27T22:00:00Z",
+      "lock_utc": "2026-06-27T21:54:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-27T22:05:52.510000Z",
+      "feed_end_time_utc": "2026-06-27T23:42:36.717000Z",
+      "feed_lock_time_utc": "2026-06-27T21:54:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-27T21:54:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-27T22:00:00Z).",
+        "Hotspawn also reports an end_time (2026-06-27T23:42:36.717000Z) while status is still \"scheduled\"."
+      ],
+      "upstream_irregularity": true
+    },
+    {
+      "id": "1052702",
+      "teams": [
+        "Procyon",
+        "BESTIA Academy"
+      ],
+      "competition": "CCT South America 2026 Series #3",
+      "tier": "b",
+      "scheduled_start_utc": "2026-06-27T22:00:00Z",
+      "lock_utc": "2026-06-27T21:54:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": null,
+      "feed_end_time_utc": null,
+      "feed_lock_time_utc": "2026-06-27T21:54:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-27T21:54:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-27T22:00:00Z)."
+      ],
+      "upstream_irregularity": false
+    },
+    {
+      "id": "1052750",
+      "teams": [
+        "Honvéd",
+        "OlyBet"
+      ],
+      "competition": "European Pro League Series 8 Play-In",
+      "tier": "c",
+      "scheduled_start_utc": "2026-06-28T08:00:00Z",
+      "lock_utc": "2026-06-28T07:54:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-28T08:13:04.041000Z",
+      "feed_end_time_utc": "2026-06-28T10:39:14.336000Z",
+      "feed_lock_time_utc": "2026-06-28T07:54:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-28T07:54:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-28T08:00:00Z).",
+        "Hotspawn also reports an end_time (2026-06-28T10:39:14.336000Z) while status is still \"scheduled\"."
+      ],
+      "upstream_irregularity": true
+    },
+    {
+      "id": "1052751",
+      "teams": [
+        "ex-MANA",
+        "Subtop De France"
+      ],
+      "competition": "European Pro League Series 8 Play-In",
+      "tier": "c",
+      "scheduled_start_utc": "2026-06-28T10:50:00Z",
+      "lock_utc": "2026-06-28T10:44:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-28T11:02:29.289000Z",
+      "feed_end_time_utc": "2026-06-28T13:09:08.054000Z",
+      "feed_lock_time_utc": "2026-06-28T10:44:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-28T10:44:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-28T10:50:00Z).",
+        "Hotspawn also reports an end_time (2026-06-28T13:09:08.054000Z) while status is still \"scheduled\"."
+      ],
+      "upstream_irregularity": true
+    },
+    {
+      "id": "1052185",
+      "teams": [
+        "sAw",
+        "Entropy"
+      ],
+      "competition": "CCT Europe 2026 Challengers #4",
+      "tier": "c",
+      "scheduled_start_utc": "2026-06-28T11:00:00Z",
+      "lock_utc": "2026-06-28T10:54:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-28T11:34:41.075000Z",
+      "feed_end_time_utc": null,
+      "feed_lock_time_utc": "2026-06-28T10:54:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-28T10:54:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-28T11:00:00Z)."
+      ],
+      "upstream_irregularity": false
+    },
+    {
+      "id": "1053431",
+      "teams": [
+        "GAMEHARMONY",
+        "Coalesce"
+      ],
+      "competition": "Urban Riga Open #5",
+      "tier": "c",
+      "scheduled_start_utc": "2026-06-28T11:00:00Z",
+      "lock_utc": "2026-06-28T10:54:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-28T11:08:49.253000Z",
+      "feed_end_time_utc": "2026-06-28T11:49:27.600000Z",
+      "feed_lock_time_utc": "2026-06-28T10:54:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-28T10:54:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-28T11:00:00Z).",
+        "Hotspawn also reports an end_time (2026-06-28T11:49:27.600000Z) while status is still \"scheduled\"."
+      ],
+      "upstream_irregularity": true
+    },
+    {
+      "id": "1053432",
+      "teams": [
+        "Leo",
+        "Aimhaus"
+      ],
+      "competition": "Urban Riga Open #5",
+      "tier": "c",
+      "scheduled_start_utc": "2026-06-28T11:00:00Z",
+      "lock_utc": "2026-06-28T10:54:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-28T11:08:35.913000Z",
+      "feed_end_time_utc": "2026-06-28T11:52:16.296000Z",
+      "feed_lock_time_utc": "2026-06-28T10:54:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-28T10:54:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-28T11:00:00Z).",
+        "Hotspawn also reports an end_time (2026-06-28T11:52:16.296000Z) while status is still \"scheduled\"."
+      ],
+      "upstream_irregularity": true
+    },
+    {
+      "id": "1053433",
+      "teams": [
+        "GAMEHARMONY",
+        "Aimhaus"
+      ],
+      "competition": "Urban Riga Open #5",
+      "tier": "c",
+      "scheduled_start_utc": "2026-06-28T12:00:00Z",
+      "lock_utc": "2026-06-28T11:54:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-28T12:12:42.773000Z",
+      "feed_end_time_utc": "2026-06-28T12:49:01.254000Z",
+      "feed_lock_time_utc": "2026-06-28T11:54:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-28T11:54:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-28T12:00:00Z).",
+        "Hotspawn also reports an end_time (2026-06-28T12:49:01.254000Z) while status is still \"scheduled\"."
+      ],
+      "upstream_irregularity": true
+    },
+    {
+      "id": "1053434",
+      "teams": [
+        "Leo",
+        "Coalesce"
+      ],
+      "competition": "Urban Riga Open #5",
+      "tier": "c",
+      "scheduled_start_utc": "2026-06-28T12:00:00Z",
+      "lock_utc": "2026-06-28T11:54:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-28T12:16:58.823000Z",
+      "feed_end_time_utc": "2026-06-28T13:01:02.599000Z",
+      "feed_lock_time_utc": "2026-06-28T11:54:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-28T11:54:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-28T12:00:00Z).",
+        "Hotspawn also reports an end_time (2026-06-28T13:01:02.599000Z) while status is still \"scheduled\"."
+      ],
+      "upstream_irregularity": true
+    },
+    {
+      "id": "1052698",
+      "teams": [
+        "ex-KRÜ",
+        "MAGICOS"
+      ],
+      "competition": "CCT South America 2026 Series #3",
+      "tier": "b",
+      "scheduled_start_utc": "2026-06-28T13:00:00Z",
+      "lock_utc": "2026-06-28T12:54:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": null,
+      "feed_end_time_utc": null,
+      "feed_lock_time_utc": "2026-06-28T12:54:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-28T12:54:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-28T13:00:00Z)."
+      ],
+      "upstream_irregularity": false
+    },
+    {
+      "id": "1053435",
+      "teams": [
+        "GAMEHARMONY",
+        "Leo"
+      ],
+      "competition": "Urban Riga Open #5",
+      "tier": "c",
+      "scheduled_start_utc": "2026-06-28T13:00:00Z",
+      "lock_utc": "2026-06-28T12:54:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-28T13:41:11.701000Z",
+      "feed_end_time_utc": "2026-06-28T14:19:07.567000Z",
+      "feed_lock_time_utc": "2026-06-28T12:54:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-28T12:54:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-28T13:00:00Z).",
+        "Hotspawn also reports an end_time (2026-06-28T14:19:07.567000Z) while status is still \"scheduled\"."
+      ],
+      "upstream_irregularity": true
+    },
+    {
+      "id": "1053436",
+      "teams": [
+        "Aimhaus",
+        "Coalesce"
+      ],
+      "competition": "Urban Riga Open #5",
+      "tier": "c",
+      "scheduled_start_utc": "2026-06-28T13:00:00Z",
+      "lock_utc": "2026-06-28T12:54:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-28T13:28:29.337000Z",
+      "feed_end_time_utc": "2026-06-28T14:13:37.238000Z",
+      "feed_lock_time_utc": "2026-06-28T12:54:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-28T12:54:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-28T13:00:00Z).",
+        "Hotspawn also reports an end_time (2026-06-28T14:13:37.238000Z) while status is still \"scheduled\"."
+      ],
+      "upstream_irregularity": true
+    },
+    {
+      "id": "1051343",
+      "teams": [
+        "Sharks",
+        "ex-Tricked"
+      ],
+      "competition": "DraculaN Season 7",
+      "tier": "b",
+      "scheduled_start_utc": "2026-06-28T13:35:00Z",
+      "lock_utc": "2026-06-28T13:29:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-28T13:37:20.847000Z",
+      "feed_end_time_utc": "2026-06-28T16:47:31.972000Z",
+      "feed_lock_time_utc": "2026-06-28T13:29:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-28T13:29:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-28T13:35:00Z).",
+        "Hotspawn also reports an end_time (2026-06-28T16:47:31.972000Z) while status is still \"scheduled\"."
+      ],
+      "upstream_irregularity": true
+    },
+    {
+      "id": "1052186",
+      "teams": [
+        "Lilmix",
+        "Subtop De France"
+      ],
+      "competition": "CCT Europe 2026 Challengers #4",
+      "tier": "c",
+      "scheduled_start_utc": "2026-06-28T13:45:00Z",
+      "lock_utc": "2026-06-28T13:39:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-28T14:04:02.361000Z",
+      "feed_end_time_utc": "2026-06-28T16:55:49.574000Z",
+      "feed_lock_time_utc": "2026-06-28T13:39:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-28T13:39:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-28T13:45:00Z).",
+        "Hotspawn also reports an end_time (2026-06-28T16:55:49.574000Z) while status is still \"scheduled\"."
+      ],
+      "upstream_irregularity": true
+    },
+    {
+      "id": "1052187",
+      "teams": [
+        "BIG Academy",
+        "Endless Journey"
+      ],
+      "competition": "CCT Europe 2026 Challengers #4",
+      "tier": "c",
+      "scheduled_start_utc": "2026-06-28T13:45:00Z",
+      "lock_utc": "2026-06-28T13:39:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": null,
+      "feed_end_time_utc": null,
+      "feed_lock_time_utc": "2026-06-28T13:39:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-28T13:39:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-28T13:45:00Z)."
+      ],
+      "upstream_irregularity": false
+    },
+    {
+      "id": "1052184",
+      "teams": [
+        "Atreides",
+        "Donstu"
+      ],
+      "competition": "CCT Europe 2026 Challengers #4",
+      "tier": "c",
+      "scheduled_start_utc": "2026-06-28T14:05:00Z",
+      "lock_utc": "2026-06-28T13:59:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-28T14:34:05.832000Z",
+      "feed_end_time_utc": "2026-06-28T17:27:02.308000Z",
+      "feed_lock_time_utc": "2026-06-28T13:59:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-28T13:59:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-28T14:05:00Z).",
+        "Hotspawn also reports an end_time (2026-06-28T17:27:02.308000Z) while status is still \"scheduled\"."
+      ],
+      "upstream_irregularity": true
+    },
+    {
+      "id": "1052696",
+      "teams": [
+        "Yawara",
+        "Blitzkrieg"
+      ],
+      "competition": "CCT South America 2026 Series #3",
+      "tier": "b",
+      "scheduled_start_utc": "2026-06-28T16:00:00Z",
+      "lock_utc": "2026-06-28T15:54:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-28T16:12:37.436000Z",
+      "feed_end_time_utc": "2026-06-28T17:20:21.234000Z",
+      "feed_lock_time_utc": "2026-06-28T15:54:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-28T15:54:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-28T16:00:00Z).",
+        "Hotspawn also reports an end_time (2026-06-28T17:20:21.234000Z) while status is still \"scheduled\"."
+      ],
+      "upstream_irregularity": true
+    },
+    {
+      "id": "1053439",
+      "teams": [
+        "6666",
+        "ASTRAL"
+      ],
+      "competition": "Urban Riga Open #5",
+      "tier": "c",
+      "scheduled_start_utc": "2026-06-28T16:00:00Z",
+      "lock_utc": "2026-06-28T15:54:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-28T16:07:13.822000Z",
+      "feed_end_time_utc": "2026-06-28T17:01:59.136000Z",
+      "feed_lock_time_utc": "2026-06-28T15:54:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-28T15:54:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-28T16:00:00Z).",
+        "Hotspawn also reports an end_time (2026-06-28T17:01:59.136000Z) while status is still \"scheduled\"."
+      ],
+      "upstream_irregularity": true
+    },
+    {
+      "id": "1053469",
+      "teams": [
+        "BERG",
+        "SINQU REHTI"
+      ],
+      "competition": "Urban Riga Open #5",
+      "tier": "c",
+      "scheduled_start_utc": "2026-06-28T16:00:00Z",
+      "lock_utc": "2026-06-28T15:54:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-28T16:07:58.333000Z",
+      "feed_end_time_utc": "2026-06-28T16:47:16.922000Z",
+      "feed_lock_time_utc": "2026-06-28T15:54:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-28T15:54:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-28T16:00:00Z).",
+        "Hotspawn also reports an end_time (2026-06-28T16:47:16.922000Z) while status is still \"scheduled\"."
+      ],
+      "upstream_irregularity": true
+    },
+    {
+      "id": "1053441",
+      "teams": [
+        "ASTRAL",
+        "BERG"
+      ],
+      "competition": "Urban Riga Open #5",
+      "tier": "c",
+      "scheduled_start_utc": "2026-06-28T17:00:00Z",
+      "lock_utc": "2026-06-28T16:54:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-28T17:17:01.930000Z",
+      "feed_end_time_utc": "2026-06-28T17:50:43.458000Z",
+      "feed_lock_time_utc": "2026-06-28T16:54:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-28T16:54:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-28T17:00:00Z).",
+        "Hotspawn also reports an end_time (2026-06-28T17:50:43.458000Z) while status is still \"scheduled\"."
+      ],
+      "upstream_irregularity": true
+    },
+    {
+      "id": "1053470",
+      "teams": [
+        "6666",
+        "SINQU REHTI"
+      ],
+      "competition": "Urban Riga Open #5",
+      "tier": "c",
+      "scheduled_start_utc": "2026-06-28T17:00:00Z",
+      "lock_utc": "2026-06-28T16:54:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-28T17:25:18.152000Z",
+      "feed_end_time_utc": "2026-06-28T18:41:33.280000Z",
+      "feed_lock_time_utc": "2026-06-28T16:54:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-28T16:54:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-28T17:00:00Z).",
+        "Hotspawn also reports an end_time (2026-06-28T18:41:33.280000Z) while status is still \"scheduled\"."
+      ],
+      "upstream_irregularity": true
+    },
+    {
+      "id": "1051344",
+      "teams": [
+        "Inner Circle",
+        "Acend"
+      ],
+      "competition": "DraculaN Season 7",
+      "tier": "b",
+      "scheduled_start_utc": "2026-06-28T17:30:00Z",
+      "lock_utc": "2026-06-28T17:24:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-28T17:37:41.440000Z",
+      "feed_end_time_utc": "2026-06-28T22:27:18.639000Z",
+      "feed_lock_time_utc": "2026-06-28T17:24:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-28T17:24:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-28T17:30:00Z).",
+        "Hotspawn also reports an end_time (2026-06-28T22:27:18.639000Z) while status is still \"scheduled\"."
+      ],
+      "upstream_irregularity": true
+    },
+    {
+      "id": "1051804",
+      "teams": [
+        "Fluxo",
+        "UNO MILLE"
+      ],
+      "competition": "Thunderpick World Championship 2026: South American Series #1",
+      "tier": "c",
+      "scheduled_start_utc": "2026-06-28T18:00:00Z",
+      "lock_utc": "2026-06-28T17:54:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-28T18:06:44.101000Z",
+      "feed_end_time_utc": "2026-06-28T21:03:08.499000Z",
+      "feed_lock_time_utc": "2026-06-28T17:54:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-28T17:54:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-28T18:00:00Z).",
+        "Hotspawn also reports an end_time (2026-06-28T21:03:08.499000Z) while status is still \"scheduled\"."
+      ],
+      "upstream_irregularity": true
+    },
+    {
+      "id": "1053442",
+      "teams": [
+        "6666",
+        "BERG"
+      ],
+      "competition": "Urban Riga Open #5",
+      "tier": "c",
+      "scheduled_start_utc": "2026-06-28T18:00:00Z",
+      "lock_utc": "2026-06-28T17:54:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-28T19:14:32.825000Z",
+      "feed_end_time_utc": "2026-06-28T20:03:56.396000Z",
+      "feed_lock_time_utc": "2026-06-28T17:54:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-28T17:54:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-28T18:00:00Z).",
+        "Hotspawn also reports an end_time (2026-06-28T20:03:56.396000Z) while status is still \"scheduled\"."
+      ],
+      "upstream_irregularity": true
+    },
+    {
+      "id": "1053471",
+      "teams": [
+        "ASTRAL",
+        "SINQU REHTI"
+      ],
+      "competition": "Urban Riga Open #5",
+      "tier": "c",
+      "scheduled_start_utc": "2026-06-28T18:00:00Z",
+      "lock_utc": "2026-06-28T17:54:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-28T19:13:57.616000Z",
+      "feed_end_time_utc": "2026-06-28T19:51:24.031000Z",
+      "feed_lock_time_utc": "2026-06-28T17:54:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-28T17:54:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-28T18:00:00Z).",
+        "Hotspawn also reports an end_time (2026-06-28T19:51:24.031000Z) while status is still \"scheduled\"."
+      ],
+      "upstream_irregularity": true
+    },
+    {
+      "id": "1052697",
+      "teams": [
+        "METANOIA Wolves",
+        "Guara"
+      ],
+      "competition": "CCT South America 2026 Series #3",
+      "tier": "b",
+      "scheduled_start_utc": "2026-06-28T19:05:00Z",
+      "lock_utc": "2026-06-28T18:59:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-28T19:08:26.322000Z",
+      "feed_end_time_utc": "2026-06-28T21:37:30.909000Z",
+      "feed_lock_time_utc": "2026-06-28T18:59:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-28T18:59:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-28T19:05:00Z).",
+        "Hotspawn also reports an end_time (2026-06-28T21:37:30.909000Z) while status is still \"scheduled\"."
+      ],
+      "upstream_irregularity": true
+    },
+    {
+      "id": "1053679",
+      "teams": [
+        "ShindeN",
+        "LP"
+      ],
+      "competition": "Thunderpick World Championship 2026: South American Series #1",
+      "tier": "c",
+      "scheduled_start_utc": "2026-06-28T21:15:00Z",
+      "lock_utc": "2026-06-28T21:09:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-28T21:23:41.838000Z",
+      "feed_end_time_utc": "2026-06-28T23:12:51.534000Z",
+      "feed_lock_time_utc": "2026-06-28T21:09:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-28T21:09:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-28T21:15:00Z).",
+        "Hotspawn also reports an end_time (2026-06-28T23:12:51.534000Z) while status is still \"scheduled\"."
+      ],
+      "upstream_irregularity": true
+    },
+    {
+      "id": "1052695",
+      "teams": [
+        "MIBR Academy",
+        "Patins de Ferrari"
+      ],
+      "competition": "CCT South America 2026 Series #3",
+      "tier": "b",
+      "scheduled_start_utc": "2026-06-28T22:00:00Z",
+      "lock_utc": "2026-06-28T21:54:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": "2026-06-28T22:03:15.676000Z",
+      "feed_end_time_utc": "2026-06-29T00:47:40.378000Z",
+      "feed_lock_time_utc": "2026-06-28T21:54:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-06-28T21:54:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-06-28T22:00:00Z).",
+        "Hotspawn also reports an end_time (2026-06-29T00:47:40.378000Z) while status is still \"scheduled\"."
+      ],
+      "upstream_irregularity": true
+    },
+    {
+      "id": "1055478",
+      "teams": [
+        "illwill",
+        "Lavked"
+      ],
+      "competition": "European Pro League Series 8",
+      "tier": "c",
+      "scheduled_start_utc": "2026-07-10T08:00:00Z",
+      "lock_utc": "2026-07-10T07:54:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": null,
+      "feed_end_time_utc": null,
+      "feed_lock_time_utc": "2026-07-10T07:54:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-07-10T07:54:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-07-10T08:00:00Z)."
+      ],
+      "upstream_irregularity": false
+    },
+    {
+      "id": "1081105",
+      "teams": [
+        "SUKEBAN",
+        "your end"
+      ],
+      "competition": "CCT South America 2026 Series #7",
+      "tier": "c",
+      "scheduled_start_utc": "2026-10-13T22:00:00Z",
+      "lock_utc": "2026-10-13T21:54:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": null,
+      "feed_end_time_utc": null,
+      "feed_lock_time_utc": "2026-10-13T21:54:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-10-13T21:54:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-10-13T22:00:00Z)."
+      ],
+      "upstream_irregularity": false
+    },
+    {
+      "id": "1079621",
+      "teams": [
+        "Gothic",
+        "Lavked"
+      ],
+      "competition": "CCT Europe 2026 Series #11",
+      "tier": "b",
+      "scheduled_start_utc": "2026-10-14T08:00:00Z",
+      "lock_utc": "2026-10-14T07:54:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": null,
+      "feed_end_time_utc": null,
+      "feed_lock_time_utc": "2026-10-14T07:54:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-10-14T07:54:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-10-14T08:00:00Z)."
+      ],
+      "upstream_irregularity": false
+    },
+    {
+      "id": "1079200",
+      "teams": [
+        "Color",
+        "ex-Zero Tenacity"
+      ],
+      "competition": "NODWIN Clutch Series #13",
+      "tier": "b",
+      "scheduled_start_utc": "2026-10-25T18:00:00Z",
+      "lock_utc": "2026-10-25T17:54:00Z",
+      "feed_status": "scheduled",
+      "feed_start_time_utc": null,
+      "feed_end_time_utc": null,
+      "feed_lock_time_utc": "2026-10-25T17:54:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "cannot_take_a_pick_because": [
+        "Hotspawn lock_time has passed (2026-10-25T17:54:00Z), so the pick window is closed.",
+        "Hotspawn scheduled_start_time has passed (2026-10-25T18:00:00Z)."
+      ],
+      "upstream_irregularity": false
+    }
+  ]
+}
