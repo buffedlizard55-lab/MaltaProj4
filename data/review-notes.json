@@ -6454,5 +6454,59 @@
     "url": "https://play.hotspawn.com/lobby"
    }
   ]
+ },
+ {
+  "id": "session-11e17543-valve-duplicate-labels-2026-10-26",
+  "status": "Flagged for review — measured irregularity in Valve's official standings file; no value was inferred to cover it",
+  "finding": "Measured 2026-10-26 on the vendored copy of Valve's official global standings (standings_global_2026_10_05.md, sha256 df96e7fc3cd91a2687ec08cac0128e50cc4e4e55346581679572e881d79ae61b, matching data/vrs/meta.json, and confirmed against the live repository listing as the newest global file Valve publishes): the single 380-row table repeats 31 normalised team labels on two different rows with two different rosters and two different point totals. Worked example read straight from the file: 'Johnny Speeds' is #99 with 1049 points (bsover, draken, hampus, Rack, Svedjehed) and #164 with 802 points (HEAP, jocab, Lekr0, nawwk, titulus). HLTV's own Valve-ranking view independently shows the same shape for '6666' and annotates the second row 'This is an old roster'. scripts/vrs.line already refuses to publish a percentage for such a label, which is correct: the project cannot know which roster is meant. What was missing was any pick at all for those fixtures, so the every-match ladder (scripts/every_match_11e17543.py) adds a bounded-direction rung: it publishes a directional pick with NO percentage only when the weaker of one club's candidate point totals still beats the stronger of the other's, so every possible reading of Valve's file gives the same winner. 14 of 73 rows resolve that way on this snapshot. Where the ranges overlap the row stays blank: 6666 (425 or 923) against BERG (754) is one of the 2 unresolved rows, because 425 < 754 < 923. Duplicated labels: 6666, aimclub, bandachuya, bebop, benchedgods, betclicapogeeesports, bigacademy, brute, chinggiswarriors, club333, cybershoke, depo, empire, exrustec, famalicao, farmville, honved, johnnyspeeds, justplayers, leo, lilmix, maitai, marsborne, metanoiawolves, misa, mouznxt, rbls, thehuns, unomille, zomblers, zotix.",
+  "sources": [
+   {
+    "label": "Valve official global standings, 2026_10_05 (pinned commit eec4853d)",
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+   },
+   {
+    "label": "Valve repository listing proving 2026_10_05 is the newest global file",
+    "url": "https://api.github.com/repos/ValveSoftware/counter-strike_regional_standings/contents/live/2026"
+   },
+   {
+    "label": "HLTV's Valve-ranking view showing both 6666 rows, one annotated 'This is an old roster'",
+    "url": "https://www.hltv.org/valve-ranking/teams?teamId=4869"
+   },
+   {
+    "label": "The ladder and its bounded-direction rung",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/scripts/every_match_11e17543.py"
+   },
+   {
+    "label": "Row-by-row output of the ladder on this snapshot",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-11e17543/every-match-picks.md"
+   }
+  ]
+ },
+ {
+  "id": "session-11e17543-every-listed-match-coverage-2026-10-26",
+  "status": "Policy change published — needs review: 62 previously unpriced feed rows now carry a researched, explicitly non-actionable pick",
+  "finding": "Until this change the production ladder priced only rows whose Hotspawn pick lock was still open, so on the 2026-10-26T00:10:49Z snapshot 62 of 73 listed CS2 matches showed no pick at all. The brief asks for a pick for every match Hotspawn lists. The ladder now walks all 73 rows and returns 71 picks (34 with a win probability) and 2 honest blanks. Every non-actionable row states in its own cell that the Hotspawn pick lock has passed, names the lock timestamp, and says the line is historical evidence rather than a current recommendation; the actionable pick board on picks.html is unchanged and still carries only the open rows. The product question for review is whether a historical, model-derived line for a match nobody can pick any more should appear on the same page as the actionable board at all, or be split onto its own page. No probability for these rows comes from a market: they are our own labelled Valve-standings model lines or directional research picks, because operator moneylines for fixtures that finished between 26 June and 25 October 2026 are no longer published by the books this collector reads.",
+  "sources": [
+   {
+    "label": "Hotspawn CS2 pick'ems (which rows are listed)",
+    "url": "https://play.hotspawn.com/cs2-pickems"
+   },
+   {
+    "label": "Hotspawn fixtures endpoint (the 73-row feed)",
+    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+   },
+   {
+    "label": "The every-match table as published",
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/matches.html#every-match"
+   },
+   {
+    "label": "Unresolved rows and their attempted sources",
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/unresolved.html#every-match-unresolved"
+   },
+   {
+    "label": "The attempted-source ledger retained in the repository",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-11e17543/outside-lines.json"
+   }
+  ]
  }
 ]

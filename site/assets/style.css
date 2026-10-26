@@ -810,3 +810,11 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
   body[data-page=index] .glance-card-pick{padding:4px 10px;gap:3px;margin-bottom:2px}
   body[data-page=index] .glance-card-scores{gap:2px}
 }
+
+/* Session 11e17543: the phone quick nav gained a third destination
+   (matches.html#every-match), and three nowrap links cannot share a 320px row.
+   Measured: index.html overflowed at 320px until this landed. The fix is
+   flex-wrap, never a horizontal scroller - this row's pinned contract is that
+   it wraps rather than scrolls, and tests/test_session_2b856884.py greps the
+   raw stylesheet text for the scrolling property, comments included. */
+@media(max-width:650px){.exec-quicknav-actions{flex-wrap:wrap}.exec-quicknav-actions a{flex:1 1 auto;min-width:0}}

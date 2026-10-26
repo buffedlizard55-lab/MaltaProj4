@@ -1,3 +1,90 @@
+## Session 11e17543 — DELIVERY 2026-10-26 02:35 UTC (every listed match picked, unresolved section, mobile exec summary; integration done, PR opened)
+
+**Owner:** session `11e17543` · **Branch:** `arena/11e17543-maltaproj4`.
+**Protocol deviation, logged:** the Arena harness fixes the branch name, so the
+`session-<id>/<task>` naming rule could not be followed. No other session's branch was touched.
+
+### Tasks 1-4 — DONE
+
+| # | Task | Status | Files |
+| --- | --- | --- | --- |
+| 1 | Independent live re-read + every-match ladder | done | `scripts/every_match_11e17543.py`, `research/session-11e17543/**` |
+| 2 | Research-only resolution for rows the exchange cannot price | done | `research/session-11e17543/outside-lines.json`, `tests/test_session_11e17543.py` |
+| 3 | Unresolved + limitations section in the executive summary | done | `scripts/build.py` (`every_match_unresolved`), `tests/test_session_11e17543.py` |
+| 4 | Mobile discoverability, measured | done | `tests/browser_11e17543.cjs`, `research/session-11e17543/mobile-measurements.json`, `site/assets/style.css` + `assets/style.css` |
+| 5 | Integration, build, validate, PR, merge, Pages | **PR opened; merge recorded below** | shared generated outputs, re-staged with `scripts/stage_legacy.py` |
+
+**Result on the 2026-10-26T00:10:49Z snapshot:** the fixtures endpoint returns **73** CS2 rows.
+Before this change **11** had a pick (the open ones) and **62** carried nothing. After: **71 of 73
+have a pick, 34 with a win probability, 2 blank with their limitation and attempted sources named.**
+Rungs: 11 published production line · 0 researched outside line · 23 our Valve VRS model line ·
+23 one-sided Valve standings · 14 bounded direction under Valve's duplicate labels · 2 unresolved.
+The 62 non-actionable rows are labelled `Lock passed` with their own lock timestamp and the words
+"historical evidence, not a current recommendation"; `picks.html` still carries only the open rows.
+
+**Phone, measured with Chromium (`research/session-11e17543/mobile-measurements.json`):** at 320×568
+the first screen carries `Picks → / Every match → / Limits ↓` at y=350 against a tab bar at y=507;
+the every-match table is 73 stacked cards 244px wide at a 320px viewport with no horizontal
+overflow; all three action buttons are 44px and the smallest tap target in the section is 36px.
+
+### Verification log
+
+* 2026-10-26T00:45Z — live `build-info.json` on Pages: revision `3b158a37`, `built_at 00:10:50Z`,
+  `rows 73`. All 20 committed files hash-match that receipt, so local HTML == live bytes.
+* 2026-10-26T00:45Z — live fixtures endpoint re-read: same IDs, same order as the committed
+  snapshot (`1052746`, `1051339`, …). No parity break.
+* 2026-10-26T00:50Z — `api.github.com/repos/ValveSoftware/counter-strike_regional_standings/contents/live/2026`:
+  newest global file is `standings_global_2026_10_05.md`, so the vendored copy is current. Its
+  sha256 `df96e7fc3cd91a2687ec08cac0128e50cc4e4e55346581679572e881d79ae61b` matches `data/vrs/meta.json`.
+* Gates on the integrated tree: `python -m unittest discover -s tests` → **1,805 OK (14 skipped)**;
+  audits 9 OK; `verification-95b588c2/test_integrity.py` 5 OK; `verification-c6` 12 OK;
+  `scripts.validate` (generated build **and** committed root) → 73 rows / 11 calculations /
+  15 pages / 702 links / 20 checksums / 165 displayed rows; `npm run test:browser` (14 suites) →
+  **exit 0**, 11 `Passed` + 2 `"failures": []` + 1 `"status":"ok"`.
+
+### Irregularities flagged (published on `review.html`, non-blocking)
+
+* `session-11e17543-valve-duplicate-labels-2026-10-26` — Valve's official global standings file
+  repeats **31** normalised labels on two rows with two rosters and two point totals
+  (`Johnny Speeds` is #99/1049 and #164/802). HLTV's own Valve-ranking view independently shows both
+  `6666` rows and annotates the second "This is an old roster". No percentage is published for those
+  labels; a direction is published only where it holds for **every** reading.
+* `session-11e17543-every-listed-match-coverage-2026-10-26` — the policy change itself, offered for
+  a human read: should a historical model line for a match nobody can pick any more sit on the same
+  page as the actionable board?
+
+### Cross-session file edits (against the protocol, logged here as required)
+
+* `tests/test_session_4ed657ce.py` — `test_quick_nav_links_to_picks_and_visible_limitations` asserted
+  an **exact** set of quick-nav hrefs. The quick nav gained a third destination, so the assertion now
+  uses the subset form its sibling `test_full_bar_keeps_its_contract…` already uses. The contract the
+  test protects (first screen reaches the picks and the visible limitations) is unchanged.
+* Shared outputs edited as the integration step: `scripts/build.py`, `site/assets/style.css` +
+  `assets/style.css` (kept byte-identical, braces balanced), `package.json` (one suite appended to
+  `test:browser`), `data/review-notes.json` (two notes appended), and the generated root
+  (`*.html`, `assets/*`, `data/*`, `build-info.json`) via `scripts/stage_legacy.py`.
+* No other session's file was edited. Nothing was force-pushed and no one's work was dropped.
+
+### Two defects this session introduced and its own gates caught
+
+1. The new headings used `count_span`, which emits `data-count`; `assets/app.js` rewrites every such
+   node from the board coverage JSON (open rows only), so the section read "11 of 73 … carry a pick"
+   instead of 71. Fixed with `plain_count()`.
+2. Three `nowrap` quick-nav labels needed 551px in a 272px row: `index.html` overflowed at 320px, and
+   once wrapped the extra row pushed the first card's win probability behind the fixed tab bar
+   (`browser_caca91b8`). Fixed with `flex-wrap` and shorter labels — never `overflow-x:auto`, which
+   `test_session_2b856884` greps for in the raw stylesheet text, comments included.
+
+### Not checked here
+
+This sandbox has no egress to Hotspawn, HLTV, Polymarket or Pinnacle, so `scripts/refresh.py` was
+never run locally; every number above comes from the committed snapshot plus the live reads listed
+above. The two unresolved rows (`1051343` Sharks vs ex-Tricked, `1053442` 6666 vs BERG) stay
+unresolved — closing them needs a primary-source alias for `ex-Tricked` or a contemporaneous `6666`
+lineup, and neither was guessed.
+
+---
+
 ## Session 11e17543 — CLAIM 2026-10-26 00:47 UTC (every-match picks incl. non-exchange low-tier rows, unresolved + limitations section, mobile executive summary, integration + PR)
 
 **Owner:** session `11e17543` · **Branch:** `arena/11e17543-maltaproj4` (fixed by the Arena harness; no `session-<id>/<task>`

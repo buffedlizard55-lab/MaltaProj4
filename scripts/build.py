@@ -138,6 +138,17 @@ def feed_scope(data):
         + link('picks.html', 'Actionable picks only →', 'button secondary') + '</div></section>')
 
 
+def plain_count(value):
+    """A count the client-side counters must not rewrite.
+
+    ``count_span`` emits ``data-count`` and ``assets/app.js`` overwrites every such
+    node from the board coverage JSON, which counts only the open rows. The
+    every-match sections count all 73 feed rows, so their numbers are static by
+    necessity: they come from the snapshot beside them and cannot move with a lock.
+    """
+    return f'<strong>{int(value)}</strong>'
+
+
 def every_match_report(data):
     """Session 11e17543: the same ladder run over EVERY row, not only the open ones.
 
@@ -212,15 +223,15 @@ def every_match_section(data):
     return (
         '<section class="panel" id="every-match" aria-label="A pick for every match Hotspawn lists">'
         '<p class="eyebrow muted">Coverage &middot; every listed match, not only the open ones</p>'
-        f'<h2>{count_span("picked", rep["with_pick"])} of {rep["rows_total"]} listed CS2 matches carry a pick</h2>'
-        f'<p>{count_span("priced", rep["with_probability"])} of them also carry a win probability. '
-        f'{count_span("open", rep["actionable"])} are still actionable - the Hotspawn pick lock has not passed - and '
+        f'<h2>{plain_count(rep["with_pick"])} of {rep["rows_total"]} listed CS2 matches carry a pick</h2>'
+        f'<p>{plain_count(rep["with_probability"])} of them also carry a win probability. '
+        f'{plain_count(rep["actionable"])} are still actionable - the Hotspawn pick lock has not passed - and '
         f'{rep["rows_total"] - rep["actionable"]} are historical rows the feed still returns, labelled as such and never '
         'presented as current recommendations. Probabilities come from external betting lines or from our own labelled '
         'Valve-standings model; Hotspawn\u2019s own crowd percentages are never used.</p>'
         f'<p class="small">{e(ladder_line)}. Standings: Valve <em>{e(rep["standings"]["as_of"])}</em>.</p>'
         '<div class="notice info">A row no official source supports keeps a blank pick and states its limitation. '
-        f'{count_span("unresolved", rep["unresolved"])} of {rep["rows_total"]} rows are in that state; each is named on '
+        f'{plain_count(rep["unresolved"])} of {rep["rows_total"]} rows are in that state; each is named on '
         + unresolved_link + '.</div>'
         '<div class="table-wrap" tabindex="0" role="region" aria-label="Every listed CS2 match and its pick">'
         '<table class="source-table" role="table"><caption>Every CS2 row Hotspawn\u2019s fixture endpoint returns. '
@@ -254,7 +265,7 @@ def every_match_unresolved(data):
     head = (
         '<section class="panel" id="every-match-unresolved" aria-label="Unresolved picks across every listed match">'
         '<p class="eyebrow muted">Executive summary &middot; unresolved picks &amp; limitations, every listed match</p>'
-        '<h2>' + count_span('unresolved', len(rows)) + ' of ' + str(rep['rows_total'])
+        '<h2>' + plain_count(len(rows)) + ' of ' + str(rep['rows_total'])
         + ' listed CS2 matches have no pick</h2>'
         '<p>The ' + link('matches.html#every-match', 'every-listed-match table') + ' gives '
         + str(rep['with_pick']) + ' of ' + str(rep['rows_total']) + ' rows a pick: '
@@ -664,9 +675,23 @@ def exec_summary_quicknav(data):
         # different numbers. Session 65af11da: the trailing count is every not-open feed row, not only past-dated ones.
         + ' unresolved (no %)<span class="exec-quicknav-past"> · <span data-past-rows="'
         + str(past) + '">' + str(past) + '</span> feed rows are not open</span>.</p>'
+        # Session 11e17543: the first phone screen also answers "and the matches
+        # that are not open?". Measured at 320x568 the full #exec-banner sits at
+        # y=3517, far below the fold, so its every-match link was unreachable
+        # without scrolling past all eleven pick cards.
+        + '<span class="exec-quicknav-every"> · ' + plain_count(every_match_report(data)['with_pick'])
+        + '/' + str(c['feed_rows']) + ' listed matches have a pick</span>'
+        # Labels are deliberately short. Measured at 320x568 the action row is
+        # 272px wide and three verbose labels ("Updated picks", "Every match",
+        # "Unresolved & limits") needed 551px, so the row wrapped to two lines,
+        # pushed the first pick card down 43px and put its win probability behind
+        # the fixed tab bar. The sentence above each link already names what the
+        # three destinations are; the full #exec-banner below carries the long
+        # labels for a reader who wants them.
         '<span class="exec-quicknav-actions">'
-        + link('picks.html', 'Updated picks →', 'exec-quicknav-primary')
-        + link('#unresolved-limits', 'Unresolved & limits ↓', 'exec-quicknav-link')
+        + link('picks.html', 'Picks →', 'exec-quicknav-primary')
+        + link('matches.html#every-match', 'Every match →', 'exec-quicknav-link')
+        + link('#unresolved-limits', 'Limits ↓', 'exec-quicknav-link')
         + '</span></nav>'
     )
 
