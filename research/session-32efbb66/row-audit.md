@@ -1,7 +1,7 @@
 # Independent retained-evidence audit
 
 This audits the archived evidence and arithmetic, not the present live lobby or current prices.
-Snapshot: `2026-10-26T00:54:50.375699Z` · SHA-256: `e6e166f65854033a2e6f341960996572cc00678574caaf315d95b60d478fe555`
+Snapshot: `2026-10-26T01:19:11.176769Z` · SHA-256: `3c38f2b281a46caa792e429e8ca665da55ccd37edb71958abc802129f44aea54`
 
 Rows checked: **81** · Arithmetic/field failures: **0**
 
@@ -70,7 +70,7 @@ Rows checked: **81** · Arithmetic/field failures: **0**
 | [1079621](https://play.hotspawn.com/cs2-pickems) | Gothic / Lavked | Not priced; blank values checked | Consistent with stored evidence |
 | [1079200](https://play.hotspawn.com/cs2-pickems) | Color / ex-Zero Tenacity | Not priced; blank values checked | Consistent with stored evidence |
 | [1082858](https://www.hotspawn.com/matches/ground-zero-vs-off-chops-dfrag-invitational-2026-1082858) | Ground Zero / Off Chops | [Polymarket](https://gamma-api.polymarket.com/markets/6066508) | Consistent with stored evidence |
-| [1082859](https://www.hotspawn.com/matches/nexvoid-vs-alter-ego-dfrag-invitational-2026-1082859) | NEXVOID / Alter Ego | [Thunderpick (via BO3.gg API)](https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament) | Consistent with stored evidence |
+| [1082859](https://www.hotspawn.com/matches/nexvoid-vs-alter-ego-dfrag-invitational-2026-1082859) | NEXVOID / Alter Ego | [Kalshi](https://api.elections.kalshi.com/trade-api/v2/events/KXCS2GAME-26OCT252300AENEX) | Consistent with stored evidence |
 | [1079201](https://www.hotspawn.com/matches/inox-division-vs-nemesis-nodwin-clutch-series-13-1079201) | INOX Division / Nemesis | [Polymarket](https://gamma-api.polymarket.com/markets/6186053) | Consistent with stored evidence |
 | [1079202](https://www.hotspawn.com/matches/fokus-vs-ex-zero-tenacity-nodwin-clutch-series-13-1079202) | FOKUS / ex-Zero Tenacity | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
 | [1081159](https://www.hotspawn.com/matches/lfo-10-vs-ex-6666-cct-europe-2026-series-12-1081159) | LFO 10 / ex-6666 | [HLTV Valve ranking (Valve points)](https://www.hltv.org/valve-ranking/teams/2026/october/26) | Consistent with stored evidence |

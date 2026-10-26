@@ -1,6 +1,6 @@
 {
- "probed_at": "2026-10-26T00:54:50.634064Z",
- "snapshot_generated_at": "2026-10-26T00:54:50.375699Z",
+ "probed_at": "2026-10-26T01:19:11.471308Z",
+ "snapshot_generated_at": "2026-10-26T01:19:11.176769Z",
  "open_fixtures": [
   {
    "id": "1082858",
@@ -20,7 +20,7 @@
    ],
    "start": "2026-10-26T03:00:00Z",
    "pick": "NEXVOID",
-   "method": "bookmaker_fallback"
+   "method": "exchange"
   },
   {
    "id": "1079201",
@@ -230,8 +230,8 @@
    "intra_exchange_transfers_active": true,
    "trading_active": true
   },
-  "observed_at": "2026-10-26T00:54:43.685290Z",
-  "open_markets": 116,
+  "observed_at": "2026-10-26T01:19:04.548141Z",
+  "open_markets": 112,
   "keys": [
    "can_close_early",
    "close_time",
@@ -398,7 +398,7 @@
     "latest_expiration_time": "2026-10-28T12:00:00Z",
     "market_type": "binary",
     "no_ask_dollars": "0.9300",
-    "no_bid_dollars": "0.3600",
+    "no_bid_dollars": "0.3700",
     "no_sub_title": "Sokerorg",
     "notional_value_dollars": "1.0000",
     "occurrence_datetime": "2026-10-26T16:00:00Z",
@@ -427,14 +427,14 @@
     "updated_time": "2026-10-25T23:35:00.324257Z",
     "volume_24h_fp": "0.00",
     "volume_fp": "0.00",
-    "yes_ask_dollars": "0.6400",
+    "yes_ask_dollars": "0.6300",
     "yes_ask_size_fp": "5.00",
     "yes_bid_dollars": "0.0700",
     "yes_bid_size_fp": "5.00",
     "yes_sub_title": "Sokerorg"
    }
   ],
-  "open_events": 58,
+  "open_events": 56,
   "markets_per_event": [
    2
   ],
@@ -1015,7 +1015,7 @@
   ]
  },
  "thunderpick_shell": {
-  "observed_at": "2026-10-26T00:56:31.980532Z",
+  "observed_at": "2026-10-26T01:20:52.443840Z",
   "api_like_urls": [],
   "relative_api_paths": [],
   "shell_bytes": 14610
@@ -1024,14 +1024,14 @@
   {
    "name": "Kalshi exchange status",
    "url": "https://api.elections.kalshi.com/trade-api/v2/exchange/status",
-   "checked_at": "2026-10-26T00:54:50.634082Z",
+   "checked_at": "2026-10-26T01:19:11.471331Z",
    "request_url": "https://api.elections.kalshi.com/trade-api/v2/exchange/status",
    "cache_bust": null,
    "http_status": 200,
    "status": "ok",
-   "retrieved_at": "2026-10-26T00:54:50.677423Z",
-   "observed_at": "2026-10-26T00:54:50.677423Z",
-   "cache_age_seconds": 0,
+   "retrieved_at": "2026-10-26T01:19:11.537795Z",
+   "observed_at": "2026-10-26T01:19:11.537795Z",
+   "cache_age_seconds": null,
    "cache_status": "Hit from cloudfront",
    "sha256": "9c900e19dad1f05812a0c3c40c19253e5962c839b1739481aef3d20244c4f778",
    "bytes": 667
@@ -1039,29 +1039,29 @@
   {
    "name": "Kalshi KXCS2GAME markets",
    "url": "https://api.elections.kalshi.com/trade-api/v2/markets?series_ticker=KXCS2GAME&status=open&limit=1000",
-   "checked_at": "2026-10-26T00:54:50.677596Z",
+   "checked_at": "2026-10-26T01:19:11.538068Z",
    "request_url": "https://api.elections.kalshi.com/trade-api/v2/markets?series_ticker=KXCS2GAME&status=open&limit=1000",
    "cache_bust": null,
    "http_status": 200,
    "status": "ok",
-   "retrieved_at": "2026-10-26T00:54:50.685290Z",
-   "observed_at": "2026-10-26T00:54:43.685290Z",
+   "retrieved_at": "2026-10-26T01:19:11.548141Z",
+   "observed_at": "2026-10-26T01:19:04.548141Z",
    "cache_age_seconds": 7,
    "cache_status": "Hit from cloudfront",
-   "sha256": "b4ce45804af82c5c5d58f136dda1036a7fd782b805736d2b135d8924404b0649",
-   "bytes": 293903
+   "sha256": "92beeede360288102780639b08574e7419a31690e18d102b632f76e41bd334d7",
+   "bytes": 283690
   },
   {
    "name": "SX Bet sports",
    "url": "https://api.sx.bet/sports",
-   "checked_at": "2026-10-26T00:54:50.691635Z",
+   "checked_at": "2026-10-26T01:19:11.554745Z",
    "request_url": "https://api.sx.bet/sports",
    "cache_bust": null,
    "http_status": 200,
    "status": "ok",
-   "retrieved_at": "2026-10-26T00:54:51.091487Z",
-   "observed_at": "2026-10-26T00:41:34.091487Z",
-   "cache_age_seconds": 797,
+   "retrieved_at": "2026-10-26T01:19:11.764469Z",
+   "observed_at": "2026-10-26T00:41:34.764469Z",
+   "cache_age_seconds": 2257,
    "cache_status": "HIT",
    "sha256": "083d8f9f49283d6f2c5d3aca613e8bf2987ca2286be8b790aa061c859fa59959",
    "bytes": 1028
@@ -1069,7 +1069,7 @@
   {
    "name": "HLTV team search FOKUS",
    "url": "https://www.hltv.org/search?query=FOKUS",
-   "checked_at": "2026-10-26T00:54:51.091981Z",
+   "checked_at": "2026-10-26T01:19:11.765250Z",
    "request_url": "https://www.hltv.org/search?query=FOKUS",
    "cache_bust": null,
    "tls_fallback": "refused: HTTP 403",
@@ -1100,146 +1100,146 @@
   {
    "name": "HLTV team search ex-Zero Tenacity",
    "url": "https://www.hltv.org/search?query=ex-Zero%20Tenacity",
-   "checked_at": "2026-10-26T00:56:31.752502Z",
+   "checked_at": "2026-10-26T01:20:52.093329Z",
    "status": "error",
    "error": "Skipped after earlier access/rate restriction on this host: 403"
   },
   {
    "name": "HLTV team search Metizport",
    "url": "https://www.hltv.org/search?query=Metizport",
-   "checked_at": "2026-10-26T00:56:31.752546Z",
+   "checked_at": "2026-10-26T01:20:52.093379Z",
    "status": "error",
    "error": "Skipped after earlier access/rate restriction on this host: 403"
   },
   {
    "name": "HLTV team search BRUTE",
    "url": "https://www.hltv.org/search?query=BRUTE",
-   "checked_at": "2026-10-26T00:56:31.752565Z",
+   "checked_at": "2026-10-26T01:20:52.093398Z",
    "status": "error",
    "error": "Skipped after earlier access/rate restriction on this host: 403"
   },
   {
    "name": "HLTV team search HAVU",
    "url": "https://www.hltv.org/search?query=HAVU",
-   "checked_at": "2026-10-26T00:56:31.752580Z",
+   "checked_at": "2026-10-26T01:20:52.093415Z",
    "status": "error",
    "error": "Skipped after earlier access/rate restriction on this host: 403"
   },
   {
    "name": "HLTV team search ILLYRIANS",
    "url": "https://www.hltv.org/search?query=ILLYRIANS",
-   "checked_at": "2026-10-26T00:56:31.752600Z",
+   "checked_at": "2026-10-26T01:20:52.093435Z",
    "status": "error",
    "error": "Skipped after earlier access/rate restriction on this host: 403"
   },
   {
    "name": "HLTV team search Nuclear TigeRES",
    "url": "https://www.hltv.org/search?query=Nuclear%20TigeRES",
-   "checked_at": "2026-10-26T00:56:31.752623Z",
+   "checked_at": "2026-10-26T01:20:52.093456Z",
    "status": "error",
    "error": "Skipped after earlier access/rate restriction on this host: 403"
   },
   {
    "name": "HLTV team search UNiTY",
    "url": "https://www.hltv.org/search?query=UNiTY",
-   "checked_at": "2026-10-26T00:56:31.752637Z",
+   "checked_at": "2026-10-26T01:20:52.093471Z",
    "status": "error",
    "error": "Skipped after earlier access/rate restriction on this host: 403"
   },
   {
    "name": "HLTV team search BakS",
    "url": "https://www.hltv.org/search?query=BakS",
-   "checked_at": "2026-10-26T00:56:31.752650Z",
+   "checked_at": "2026-10-26T01:20:52.093484Z",
    "status": "error",
    "error": "Skipped after earlier access/rate restriction on this host: 403"
   },
   {
    "name": "HLTV team search Saint Sinners",
    "url": "https://www.hltv.org/search?query=Saint%20Sinners",
-   "checked_at": "2026-10-26T00:56:31.752666Z",
+   "checked_at": "2026-10-26T01:20:52.093500Z",
    "status": "error",
    "error": "Skipped after earlier access/rate restriction on this host: 403"
   },
   {
    "name": "HLTV team search Inner Circle Academy",
    "url": "https://www.hltv.org/search?query=Inner%20Circle%20Academy",
-   "checked_at": "2026-10-26T00:56:31.752684Z",
+   "checked_at": "2026-10-26T01:20:52.093519Z",
    "status": "error",
    "error": "Skipped after earlier access/rate restriction on this host: 403"
   },
   {
    "name": "HLTV team search Lavked",
    "url": "https://www.hltv.org/search?query=Lavked",
-   "checked_at": "2026-10-26T00:56:31.752696Z",
+   "checked_at": "2026-10-26T01:20:52.093544Z",
    "status": "error",
    "error": "Skipped after earlier access/rate restriction on this host: 403"
   },
   {
    "name": "HLTV team search HOTU",
    "url": "https://www.hltv.org/search?query=HOTU",
-   "checked_at": "2026-10-26T00:56:31.752708Z",
+   "checked_at": "2026-10-26T01:20:52.093557Z",
    "status": "error",
    "error": "Skipped after earlier access/rate restriction on this host: 403"
   },
   {
    "name": "HLTV team search The Huns",
    "url": "https://www.hltv.org/search?query=The%20Huns",
-   "checked_at": "2026-10-26T00:56:31.752722Z",
+   "checked_at": "2026-10-26T01:20:52.093571Z",
    "status": "error",
    "error": "Skipped after earlier access/rate restriction on this host: 403"
   },
   {
    "name": "HLTV team search 5star",
    "url": "https://www.hltv.org/search?query=5star",
-   "checked_at": "2026-10-26T00:56:31.752735Z",
+   "checked_at": "2026-10-26T01:20:52.093584Z",
    "status": "error",
    "error": "Skipped after earlier access/rate restriction on this host: 403"
   },
   {
    "name": "HLTV team search 1WIN",
    "url": "https://www.hltv.org/search?query=1WIN",
-   "checked_at": "2026-10-26T00:56:31.752746Z",
+   "checked_at": "2026-10-26T01:20:52.093596Z",
    "status": "error",
    "error": "Skipped after earlier access/rate restriction on this host: 403"
   },
   {
    "name": "HLTV team search Ground Zero",
    "url": "https://www.hltv.org/search?query=Ground%20Zero",
-   "checked_at": "2026-10-26T00:56:31.752761Z",
+   "checked_at": "2026-10-26T01:20:52.093610Z",
    "status": "error",
    "error": "Skipped after earlier access/rate restriction on this host: 403"
   },
   {
    "name": "HLTV team search Off Chops",
    "url": "https://www.hltv.org/search?query=Off%20Chops",
-   "checked_at": "2026-10-26T00:56:31.752775Z",
+   "checked_at": "2026-10-26T01:20:52.093624Z",
    "status": "error",
    "error": "Skipped after earlier access/rate restriction on this host: 403"
   },
   {
    "name": "HLTV team search NEXVOID",
    "url": "https://www.hltv.org/search?query=NEXVOID",
-   "checked_at": "2026-10-26T00:56:31.752788Z",
+   "checked_at": "2026-10-26T01:20:52.093637Z",
    "status": "error",
    "error": "Skipped after earlier access/rate restriction on this host: 403"
   },
   {
    "name": "HLTV team search Alter Ego",
    "url": "https://www.hltv.org/search?query=Alter%20Ego",
-   "checked_at": "2026-10-26T00:56:31.752801Z",
+   "checked_at": "2026-10-26T01:20:52.093649Z",
    "status": "error",
    "error": "Skipped after earlier access/rate restriction on this host: 403"
   },
   {
    "name": "Thunderpick CS2 shell",
    "url": "https://thunderpick.io/esports/cs2-betting",
-   "checked_at": "2026-10-26T00:56:31.752820Z",
+   "checked_at": "2026-10-26T01:20:52.093666Z",
    "request_url": "https://thunderpick.io/esports/cs2-betting",
    "cache_bust": null,
    "http_status": 200,
    "status": "ok",
-   "retrieved_at": "2026-10-26T00:56:31.980532Z",
-   "observed_at": "2026-10-26T00:56:31.980532Z",
+   "retrieved_at": "2026-10-26T01:20:52.443840Z",
+   "observed_at": "2026-10-26T01:20:52.443840Z",
    "cache_age_seconds": null,
    "cache_status": "DYNAMIC",
    "sha256": "37644d5714f72bd613500ca479d3df1644862878a8de483b97c6621481337cc2",

@@ -1,6 +1,6 @@
 # Rung report — session 32efbb66 fresh capture
 
-generated_at: `2026-10-26T00:54:50.375699Z` · coverage: `verified` · feed rows: 81
+generated_at: `2026-10-26T01:19:11.176769Z` · coverage: `verified` · feed rows: 81
 
 ## Open rows (19)
 
@@ -9,18 +9,15 @@ generated_at: `2026-10-26T00:54:50.375699Z` · coverage: `verified` · feed rows
   - Polymarket | resolved | Exact pair and UTC start; two-way series winner validated.
 
 ### 1082859 — NEXVOID vs Alter Ego (DFRAG Invitational 2026, 2026-10-26T03:00:00Z)
-- pick: `NEXVOID` · method: `bookmaker_fallback` · probabilities: `[0.5714285714285714, 0.42857142857142855]`
+- pick: `NEXVOID` · method: `exchange` · probabilities: `[0.5643564356435644, 0.43564356435643564]`
   - Polymarket | unresolved | No exact team-pair and UTC-start match in retrieved feed.
   - HLTV | unresolved | HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. R
   - Pinnacle | unresolved | No exact team-pair and UTC-start match in retrieved feed.
   - Polymarket | unresolved | No exact team-pair and UTC-start match in retrieved feed.
-  - Thunderpick | unresolved | Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers
-  - GG.BET | error | HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.
-  - Thunderpick (via BO3.gg API) | resolved | Exact pair and UTC start verified on BO3.gg CS2 API; live Thunderpick series moneyline (1.62 / 2.16) validated.
-  - Book research | resolved | Exact fixture id, opponent pair and UTC start verified against the listed two-way book line; probabilities de-vigged by scripts.core.quote_book and replayed by the validator.
+  - Kalshi | resolved | Exact pair and UTC start; two-way series winner validated.
 
 ### 1079201 — INOX Division vs Nemesis (NODWIN Clutch Series #13, 2026-10-26T09:00:00Z)
-- pick: `Nemesis` · method: `exchange` · probabilities: `[0.275, 0.725]`
+- pick: `Nemesis` · method: `exchange` · probabilities: `[0.29, 0.71]`
   - Polymarket | resolved | Exact pair and UTC start; two-way series winner validated.
 
 ### 1079202 — FOKUS vs ex-Zero Tenacity (NODWIN Clutch Series #13, 2026-10-26T12:00:00Z)
@@ -29,6 +26,7 @@ generated_at: `2026-10-26T00:54:50.375699Z` · coverage: `verified` · feed rows
   - HLTV | unresolved | HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. R
   - Pinnacle | unresolved | No exact team-pair and UTC-start match in retrieved feed.
   - Polymarket | unresolved | No exact team-pair and UTC-start match in retrieved feed.
+  - Kalshi | unresolved | No exact team-pair and UTC-start match in retrieved feed.
   - Thunderpick | unresolved | Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers
   - GG.BET | error | HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.
   - Thunderpick (via BO3.gg API) | unresolved | No exact team-pair and UTC-start match in the live BO3.gg CS2 feed.
@@ -40,6 +38,7 @@ generated_at: `2026-10-26T00:54:50.375699Z` · coverage: `verified` · feed rows
   - HLTV | unresolved | HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. R
   - Pinnacle | unresolved | No exact team-pair and UTC-start match in retrieved feed.
   - Polymarket | unresolved | Unverified opponent/alias or roster-name mismatch; no fuzzy match used.
+  - Kalshi | unresolved | Unverified opponent/alias or roster-name mismatch; no fuzzy match used.
   - Thunderpick | unresolved | Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers
   - GG.BET | error | HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.
   - Thunderpick (via BO3.gg API) | unresolved | No exact team-pair and UTC-start match in the live BO3.gg CS2 feed.
@@ -52,6 +51,7 @@ generated_at: `2026-10-26T00:54:50.375699Z` · coverage: `verified` · feed rows
   - HLTV | unresolved | HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. R
   - Pinnacle | unresolved | No exact team-pair and UTC-start match in retrieved feed.
   - Polymarket | unresolved | No exact team-pair and UTC-start match in retrieved feed.
+  - Kalshi | unresolved | No exact team-pair and UTC-start match in retrieved feed.
   - Thunderpick | unresolved | Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers
   - GG.BET | error | HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.
   - Thunderpick (via BO3.gg API) | unresolved | No exact team-pair and UTC-start match in the live BO3.gg CS2 feed.
@@ -63,6 +63,7 @@ generated_at: `2026-10-26T00:54:50.375699Z` · coverage: `verified` · feed rows
   - HLTV | unresolved | HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. R
   - Pinnacle | unresolved | No exact team-pair and UTC-start match in retrieved feed.
   - Polymarket | unresolved | Exchange spread exceeds the 60-point ceiling for the low-confidence tier.
+  - Kalshi | unresolved | Exchange spread exceeds 25 points.
   - Thunderpick | unresolved | Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers
   - GG.BET | error | HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.
   - Thunderpick (via BO3.gg API) | unresolved | Fixture found on BO3.gg with exact UTC start, but no active sportsbook moneyline is posted yet (bet_updates is null).
@@ -74,6 +75,7 @@ generated_at: `2026-10-26T00:54:50.375699Z` · coverage: `verified` · feed rows
   - HLTV | unresolved | HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. R
   - Pinnacle | unresolved | No exact team-pair and UTC-start match in retrieved feed.
   - Polymarket | unresolved | No exact team-pair and UTC-start match in retrieved feed.
+  - Kalshi | unresolved | No exact team-pair and UTC-start match in retrieved feed.
   - Thunderpick | unresolved | Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers
   - GG.BET | error | HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.
   - Thunderpick (via BO3.gg API) | unresolved | No exact team-pair and UTC-start match in the live BO3.gg CS2 feed.
@@ -93,15 +95,16 @@ generated_at: `2026-10-26T00:54:50.375699Z` · coverage: `verified` · feed rows
   - Polymarket | resolved | Exact pair and UTC start; two-way series winner validated.
 
 ### 1082898 — Alliance vs FaZe (Tesla Cup 2026, 2026-10-27T11:00:00Z)
-- pick: `FaZe` · method: `exchange` · probabilities: `[0.345, 0.655]`
+- pick: `FaZe` · method: `exchange` · probabilities: `[0.34, 0.66]`
   - Polymarket | resolved | Exact pair and UTC start; two-way series winner validated.
 
 ### 1081162 — ex-RUSTEC vs Spirit Academy (CCT Europe 2026 Series #12, 2026-10-27T12:00:00Z)
 - pick: `ex-RUSTEC` · method: `model_vrs_mirror` · probabilities: `[0.5234518509837461, 0.47654814901625386]`
-  - Polymarket | unresolved | Exchange liquidity is below $100.
+  - Polymarket | unresolved | Exchange spread exceeds 25 points or liquidity is below $100.
   - HLTV | unresolved | HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. R
   - Pinnacle | unresolved | No exact team-pair and UTC-start match in retrieved feed.
-  - Polymarket | unresolved | Exchange liquidity is below $100.
+  - Polymarket | unresolved | Exchange spread exceeds the 60-point ceiling for the low-confidence tier.
+  - Kalshi | unresolved | Invalid or inconsistent pair of binary match-winner prices.
   - Thunderpick | unresolved | Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers
   - GG.BET | error | HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.
   - Thunderpick (via BO3.gg API) | unresolved | Fixture found on BO3.gg with exact UTC start, but no active sportsbook moneyline is posted yet (bet_updates is null).
@@ -110,10 +113,11 @@ generated_at: `2026-10-26T00:54:50.375699Z` · coverage: `verified` · feed rows
 
 ### 1081163 — BakS vs Saint Sinners (CCT Europe 2026 Series #12, 2026-10-27T15:00:00Z)
 - pick: `BakS` · method: `model_vrs` · probabilities: `[0.729661697246749, 0.270338302753251]`
-  - Polymarket | unresolved | Exchange liquidity is below $100.
+  - Polymarket | unresolved | Exchange spread exceeds 25 points or liquidity is below $100.
   - HLTV | unresolved | HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. R
   - Pinnacle | unresolved | No exact team-pair and UTC-start match in retrieved feed.
-  - Polymarket | unresolved | Exchange liquidity is below $100.
+  - Polymarket | unresolved | Exchange spread exceeds the 60-point ceiling for the low-confidence tier.
+  - Kalshi | unresolved | Exchange spread exceeds 25 points.
   - Thunderpick | unresolved | Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers
   - GG.BET | error | HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.
   - Thunderpick (via BO3.gg API) | unresolved | Fixture found on BO3.gg with exact UTC start, but no active sportsbook moneyline is posted yet (bet_updates is null).
@@ -125,10 +129,11 @@ generated_at: `2026-10-26T00:54:50.375699Z` · coverage: `verified` · feed rows
 
 ### 1081164 — Inner Circle Academy vs Lavked (CCT Europe 2026 Series #12, 2026-10-27T18:00:00Z)
 - pick: `Inner Circle Academy` · method: `model_vrs` · probabilities: `[0.7044899765611272, 0.2955100234388728]`
-  - Polymarket | unresolved | Exchange liquidity is below $100.
+  - Polymarket | unresolved | Exchange spread exceeds 25 points or liquidity is below $100.
   - HLTV | unresolved | HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. R
   - Pinnacle | unresolved | No exact team-pair and UTC-start match in retrieved feed.
-  - Polymarket | unresolved | Exchange liquidity is below $100.
+  - Polymarket | unresolved | Exchange spread exceeds the 60-point ceiling for the low-confidence tier.
+  - Kalshi | unresolved | Exchange spread exceeds 25 points.
   - Thunderpick | unresolved | Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers
   - GG.BET | error | HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.
   - Thunderpick (via BO3.gg API) | unresolved | Fixture found on BO3.gg with exact UTC start, but no active sportsbook moneyline is posted yet (bet_updates is null).
@@ -144,6 +149,7 @@ generated_at: `2026-10-26T00:54:50.375699Z` · coverage: `verified` · feed rows
   - HLTV | unresolved | HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. R
   - Pinnacle | unresolved | No exact team-pair and UTC-start match in retrieved feed.
   - Polymarket | unresolved | Unverified opponent/alias or roster-name mismatch; no fuzzy match used.
+  - Kalshi | unresolved | No exact team-pair and UTC-start match in retrieved feed.
   - Thunderpick | unresolved | Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers
   - GG.BET | error | HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.
   - Thunderpick (via BO3.gg API) | unresolved | No exact team-pair and UTC-start match in the live BO3.gg CS2 feed.
@@ -156,6 +162,7 @@ generated_at: `2026-10-26T00:54:50.375699Z` · coverage: `verified` · feed rows
   - HLTV | unresolved | HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. R
   - Pinnacle | unresolved | No exact team-pair and UTC-start match in retrieved feed.
   - Polymarket | unresolved | Exchange spread exceeds the 60-point ceiling for the low-confidence tier.
+  - Kalshi | unresolved | No exact team-pair and UTC-start match in retrieved feed.
   - Thunderpick | unresolved | Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers
   - GG.BET | error | HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.
   - Thunderpick (via BO3.gg API) | unresolved | No exact team-pair and UTC-start match in the live BO3.gg CS2 feed.
