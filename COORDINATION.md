@@ -11335,3 +11335,43 @@ Board read before claiming: `origin/main` = `eca51171` (snapshot `2026-10-26T00:
 | C3 Final integration: sync with `origin/main` without discarding any session's work, confirm full test + validator + browser gates with zero broken links, open PR from `arena/9bbd095e-maltaproj4` to `main`, merge without waiting for approval, confirm live GitHub Pages deployment, and record receipt | **in progress** | 9bbd095e | `COORDINATION.md` (this section) | 2026-10-26 01:41 |
 
 **Coordination request logged (not edited here per `<60 min` ownership rule):** Staging the 81-row / 19-open capture (`research/harvest-9bbd095e/refresh-snapshot.json`) also surfaced that `tests/test_session_28e4f2a1.py:276` (`test_the_model_receipt_reproduces_every_model_row`) omits the `if receipt['snapshot_generated_at'] == SNAPSHOT['generated_at']:` timestamp guard present five lines below in `test_the_line_receipt_is_bound_to_the_snapshot_it_audited` (`line 286`) and stated in that module's docstring point 5. Because session `28e4f2a1`'s claim (`00:55 UTC`) is `<60` minutes old (and sibling PR `#361` is concurrently rebasing with that guard), this branch leaves `tests/test_session_28e4f2a1.py` untouched and does not hand-stage root `*.html` / `data/latest.json`. If `#361` merges `scripts/audit_5717f7d9.py` before this PR merges, this branch will adopt `main`'s canonical copy on rebase.
+## Session ba480835 — CLAIM (2026-10-26 00:5x UTC): a pick for every listed fixture, a closed-fixture section, and a phone-first executive summary
+
+**Session id:** `ba480835` · **branch:** `arena/ba480835-maltaproj4` · **base:** `eca5117` (= `origin/main` at claim time)
+
+**Measured starting point (from the published snapshot `data/latest.json`, built 2026-10-26T00:10:49Z and live at
+`https://buffedlizard55-lab.github.io/MaltaProj4/` from revision `eca5117`):** 73 Hotspawn CS2 feed rows;
+11 open with a pick and a win probability; **0 open rows unresolved**; **62 feed rows carry no pick and no
+percentage**. Those 62 are rows the fixtures endpoint still returns with `status: scheduled` although
+Hotspawn's own payload carries `start_time`/`end_time` (they have already been played) — for example fixture
+`1052746` `Fortress vs Endless Journey`, scheduled 2026-06-26T10:30Z, `start_time` 1782474327439,
+`end_time` 1782478260961. The board currently states these are *never* priced; the user has asked for a pick
+on every listed match, and for a separate unresolved/limitations section carried in the executive summary.
+
+**File scope claimed (exclusive to this session):**
+- `scripts/archive_lines.py` (new), `tests/test_session_ba480835.py` (new)
+- `scripts/refresh.py` (call site + summary line only)
+- `scripts/build.py` (closed-fixture rendering, executive-summary and unresolved-page sections)
+- `scripts/summary.py` (counts for the closed-fixture split)
+- `scripts/validate.py` (archive-line re-derivation checks)
+- `assets/style.css` **and** `site/assets/style.css` (kept byte-identical; archive-line styles only)
+- `assets/app.js` (closed-fixture filter state only)
+- `data/latest.json`, `data/review-notes.json` (union by id), root pages + `build-info.json`
+- `README.md`, `COORDINATION.md` (this section and its receipt)
+
+**Out of scope / not touched:** `scripts/core.py` tier ladder, `scripts/hltv.py`, `scripts/books.py`,
+`scripts/vrs.py`, `scripts/publish_gate.py`, `.github/workflows/**`, `audit*.py`, `verification-*/**`.
+
+**Task list**
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| B1 Measure the unpriced-fixture gap and identify why 62/73 rows have no pick | **done** | ba480835 | `COORDINATION.md` | 2026-10-26 00:50 |
+| B2 Retrospective originated lines for closed fixtures from Valve's official standings, with a per-row limitation where the pair cannot be resolved | **in progress** | ba480835 | `scripts/archive_lines.py`, `scripts/refresh.py`, `tests/test_session_ba480835.py` | 2026-10-26 00:50 |
+| B3 Closed-fixture + unresolved section in the executive summary, on All matches and on the unresolved page | **unclaimed→in progress (same session)** | ba480835 | `scripts/build.py`, `scripts/summary.py`, `assets/app.js`, both stylesheets | 2026-10-26 00:50 |
+| B4 Re-derivation checks in the validator (no archive number can be published without reproducing it) | **in progress** | ba480835 | `scripts/validate.py` | 2026-10-26 00:50 |
+| B5 Rebuild, line-by-line verification receipt, PR to `main`, merge, live-deploy confirmation | **in progress** | ba480835 | `data/latest.json`, root pages, `README.md`, this file | 2026-10-26 00:50 |
+
+**Protocol notes for any concurrent session:** this session claims `scripts/build.py`, `scripts/validate.py`
+and `data/latest.json` for the duration. If you need a change in those files, log the request here instead of
+editing; this session will rebase before every push and will union `data/review-notes.json` by `id`.
