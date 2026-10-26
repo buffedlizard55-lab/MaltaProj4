@@ -221,3 +221,31 @@ limitations, each already published in the executive summary
 * HLTV/Pinnacle/BO3 pages for all 19 rows by eye: three live spot-checks
   above, plus machine re-derivation and the independent `verification-c6`
   audit over all 81 rows.
+
+## Addendum (integration, ~01:25Z): cross-session corroboration
+
+While this session worked, main merged PRs #353 (session 160f03c8's flag),
+#354 and #357 (session 77046e56). Session 77046e56's own runner harvest
+(`research/session-77046e56/harvest/snapshot.json`, generated
+2026-10-26T00:52:33Z) is an independent capture of the same board. Compared
+row by row with this session's 01:00:10Z capture: identical open set (19),
+identical pick and identical method on all 19 rows, and maximum probability
+difference 0.00 percentage points on every row. 77046e56 also re-read the
+1081159 mirror inputs at source (HLTV 26 October Valve ranking: LFO 10 #157
+803 pts, ex-6666 #118 968 pts — the same digits), and measured that GitHub
+delivered no scheduled publish run between 00:05Z and their note, i.e. the
+hour-long 73-row visibility gap was scheduler delivery, not collection
+(`session-77046e56-cron-delivery-gap-2026-10-26`). For 1081162, 77046e56
+did not eyeball the two point values; this session eyeballed HLTV match
+2399512 confirming **VRS #94 (ex-RUSTEC)** and **VRS #101 (Spirit
+Academy)** and both lineups (4/5 and 5/5 against the retained rosters),
+and the point digits (1059 / 1038) were parsed identically by two
+independent runner captures of the same dated page eight minutes apart.
+This session did not eyeball those two point digits in the ranking page's
+own text.
+
+Final integration merged `origin/main` (to PR #357) first — conflicts only
+in `COORDINATION.md` (append/append; both sides kept verbatim) and
+`data/review-notes.json` (union by id: 285 notes, no divergent same-id
+note) — then rebuilt and re-staged the root from the newer 01:00Z capture,
+so upstream review notes and research are preserved and rendered.

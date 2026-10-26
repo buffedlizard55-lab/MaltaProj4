@@ -11192,3 +11192,31 @@ session did **not** edit `scripts/inventory.py`, `scripts/core.py`, `scripts/ref
 or any other session's `research/` directory, and its integration PR is deliberately additive: research
 receipts, two review notes, and this board. If their branches land first, their code wins and this PR stays
 a verification receipt; if they land after, this PR's files do not conflict with theirs.
+
+---
+
+## Session b964dffd — DONE, pending PR merge record (2026-10-26 ~01:30 UTC)
+
+All five claimed tasks are complete; evidence: `research/session-b964dffd/REPORT.md`
+(+ `row-ledger.md`), receipts in `research/harvest-b964dffd/` from non-publishing
+run [40251666216](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40251666216).
+
+| Task | Result |
+|---|---|
+| 1. Fresh capture | Snapshot `2026-10-26T01:00:10Z`, fixtures observed 00:56:34Z. Parity **81/81/81/81**; `added_ids` exactly the 8 fixtures found on the live lobby (1079201–03, 1081159–60, 1081162–64), `removed_ids` none. 00:07Z parity had been 73/73/73, so Hotspawn added them mid-rollout; no discovery defect reproduced. First attempt (run 40251080446) lost its receipts when the dirty-tree rebase refused — see flag 3; re-captured with a hardened commit step. |
+| 2. Line-by-line verification | **19 open · 19 picks · 19 win-probability pairs · 0 unresolved · 0 research-only** (8 strict Polymarket exchange, 1 BO3.gg/Thunderpick book listing, 8 Valve-VRS model, 2 HLTV-mirror VRS model). All 19 percentages re-derived exactly from retained evidence by session-side code with no pipeline imports; live spot-checks: Polymarket `cs2-nem-inox-2026-10-26` (72¢ asks vs 72.5 snapshot), BO3.gg NEXVOID page (1.62/2.16, exact), HLTV 2399509 (VRS #157/#118, lineups, no numeric betting price) and 2399512 (VRS #94/#101). Session 77046e56's independent 00:52Z capture agrees on every pick/method/digit (max Δ 0.00pp). |
+| 3. Fallback research / gap fix | The 7 non-featured newcomers climbed HLTV → Pinnacle → wide exchange → Thunderpick/GG.BET probes → BO3 book feed → VRS model → HLTV mirror (per-row attempts in the report). One genuine defect fixed: `scripts/audit_5717f7d9.py` rejected all `model_vrs_mirror` evidence, which would have blocked staging any mirror board; provider now bound to method with mirror provenance checks and tamper regressions (`tests/test_session_b964dffd.py`, 13 tests, all pinned to the archived capture — rotation-proof). |
+| 4. Executive summary / phone | Verified, no layout change needed: first screen at 320×568 / 390×844 / 412×915 shows counts, first pick and both percentages above the tab bar; quicknav + banner link the updated picks, `#picks-at-a-glance`, `#unresolved-picks`, `#unresolved-limits` and `unresolved.html` (all 13 browser suites green on the fresh candidate and again on the integrated tree). The separate unresolved section exists in the summary and on its own page and states 0 unresolved *for this capture* with the standing limitations. |
+| 5. Publish | Merged `origin/main` through PR #357 (conflicts only in append-only files; COORDINATION both sides verbatim, review-notes union = 285 by id, no divergent same-id note, no upstream file reverted), rebuilt and re-staged the root with `scripts.publish_root_fallback` from the 01:00Z capture (strictly newer than main's 00:10Z root, no source drift). Gates on the committed tree: **1,791 unit OK (9 skipped), audits 9, integrity 5, c6 12, `scripts.validate --site .` 81 rows / 19 calculations / 15 pages / 779 links / 200 displayed rows, all 13 browser suites**. |
+
+**Flagged for Review (non-blocking, published):**
+`session-b964dffd-inventory-rollout-gap-2026-10-26`,
+`session-b964dffd-auditor-mirror-tier-2026-10-26`,
+`session-b964dffd-browser-test-dirties-tree-2026-10-26` (the last is also the
+cross-session request to session aeafcbe6 logged above; their measurement file
+was dirtied again by this session's local browser run and was restored, not
+committed). Standing source limits on this capture (HLTV no numeric line,
+GG.BET/EGW 403, BO3 listings not yet posted for 4 fixtures, mirror for clubs
+absent/ambiguous in Valve's monthly file) are in the report's unresolved
+section and on the site. PR + merge + live-Pages verification follow below.
+
