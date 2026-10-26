@@ -6456,6 +6456,7 @@
   ]
  },
  {
+<<<<<<< HEAD
   "id": "session-160f03c8-hotspawn-inventory-drift-2026-10-26",
   "status": "Open — live source inventory mismatch; refresh/reconcile required",
   "finding": "At 2026-10-26 00:52 UTC, the live Hotspawn general lobby displayed 81 CS2 entries and 19 matches this week, while its separate /cs2-pickems page displayed 72 entries. The verified board snapshot generated 2026-10-26T00:10:49.639616Z retained 73 rows. A later read of Hotspawn’s official fixtures feed and lobby exposed eight scheduled fixtures absent from that snapshot: 1079201 INOX Division–Nemesis (09:00Z), 1081159 LFO 10–ex-6666 (12:00Z), 1079202 FOKUS–ex-Zero Tenacity (12:00Z), 1081160 HAVU–ILLYRIANS (15:00Z), 1079203 Metizport–BRUTE (15:00Z), 1081162 ex-RUSTEC–Spirit Academy (27 Oct 12:00Z), 1081163 BakS–Saint Sinners (27 Oct 15:00Z), and 1081164 Inner Circle Academy–Lavked (27 Oct 18:00Z). The line-by-line receipt lists the exact match-page URLs and the shared fixture API URL. This is a dated discrepancy, not a claim that either surface is authoritative over the other. The later eight were not added or assigned a pick: no accepted external market line, exact HLTV evidence or verified Valve model calculation was established in this audit. Hotspawn vote percentages are explicitly excluded. Re-harvest all three surfaces, reconcile IDs, then run the existing market/HLTV/book/model ladder. The site refresh workflow is best-effort; the live summary still showed the 00:10Z snapshot at 00:52Z, and no newer publish run appeared in the Actions run list at audit time.",
@@ -6633,5 +6634,25 @@
     "label": "BO3.gg CS2 matches API (the Thunderpick line behind the bookmaker row)"
    }
   ]
+=======
+  "id": "session-5bf1c3eb-hotspawn-stale-scheduled-2026-10-26",
+  "status": "Open — upstream data conflict disclosed, not repaired; no value inferred",
+  "finding": "Measured on the live harvest run 40251492364 (fixtures observed 2026-10-26T00:53:32Z): Hotspawn's fixtures endpoint returns 81 CS2 rows with status \"scheduled\", of which 62 carry a lock_time earlier than the observation clock and therefore cannot take a pick, and 50 of those 62 ALSO carry an end_time in the past while still reporting status \"scheduled\" (example: fixture 1052746 Fortress v Endless Journey, scheduled_start_time 2026-06-26T10:30:00Z, start_time 2026-06-26T11:45:27Z, end_time 2026-06-26T12:51:00Z, status \"scheduled\"). A status of \"scheduled\" beside a completed end_time is internally inconsistent in the upstream feed. This project keeps the rows verbatim for complete inventory, publishes no pick or percentage for them, and lists all of them in the separate \"Closed pick windows\" register with each row's own lock_time and limitation. The feed's own participants*_picked_percent crowd numbers for these rows are deliberately never used as a probability (the brief forbids Hotspawn as a probability source). No row was corrected, inferred or back-filled; the raw fields are retained per row in research/session-5bf1c3eb/gaps/gap-report.json.",
+  "sources": [
+   {
+    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+    "label": "Hotspawn fixtures endpoint (official, read 2026-10-26T00:53:32Z)"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40251492364",
+    "label": "Live harvest run 40251492364 (2026-10-26)"
+   },
+   {
+    "url": "https://play.hotspawn.com/cs2-pickems",
+    "label": "Hotspawn CS2 Pick'ems lobby (official)"
+   }
+  ],
+  "impact": "Cosmetic-to-moderate for readers: without the separate register the 62 closed rows read as \"matches with no pick\". The register and this note state the rule and the upstream conflict. Coverage of the 19 open rows is unaffected: 19 picks, 19 win probabilities, 0 unresolved at this observation."
+>>>>>>> c1dbd0a (session 5bf1c3eb: separate closed-pick-window register with per-row limitations, executive-summary links, upstream status-conflict flag + 10 regressions)
  }
 ]

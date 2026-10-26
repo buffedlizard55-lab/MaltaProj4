@@ -25,7 +25,9 @@ future change to the order has to be reflected here.
 """
 from __future__ import annotations
 
-from scripts.core import GAMMA, PIN
+from datetime import datetime, timezone
+
+from scripts.core import GAMMA, PIN, iso
 
 # Every method a priced row can carry, and where the number came from.
 ORIGINS = {
@@ -179,6 +181,84 @@ def counts(matches):
         'research_rows': [m for m in without_percentage if m.get('pick')],
         'blank_rows': [m for m in without_percentage if not m.get('pick')],
     }
+
+
+def closed_register(rows, data):
+    """The third answer a feed row can have: its pick window already closed.
+
+    The brief asks for a pick on every match, then for a separate section for the
+    matches that cannot have one with the limitations that cause it. Measured on
+    the 2026-10-26 harvest (run 40251492364), every *open* Hotspawn row resolves
+    through the ladder, while 62 rows are still returned by the fixtures endpoint
+    with a ``lock_time`` earlier than the snapshot's own observation clock. Those
+    rows are neither priced nor unresolved research: Hotspawn closes a pick six
+    minutes before each start, so no pick can be placed on the source itself and
+    publishing one here would be an invented recommendation.
+
+    Every field below is copied from the snapshot's own retained feed evidence
+    (``fixture_evidence``) or from the row itself. Nothing is corrected, inferred
+    or defaulted; a row whose evidence is missing keeps ``None`` and says so.
+    """
+    evidence = {str(x.get('id')): x for x in (data or {}).get('fixture_evidence') or []
+                if isinstance(x, dict)}
+    out = []
+    for m in rows:
+        if m.get('state') == 'open':
+            continue
+        raw = evidence.get(str(m.get('id'))) or {}
+        def epoch_ms(field):
+            value = raw.get(field)
+            try:
+                return iso(datetime.fromtimestamp(int(value) / 1000.0, timezone.utc))
+            except (TypeError, ValueError, OSError, OverflowError):
+                return None
+        end = epoch_ms('end_time')
+        start = epoch_ms('start_time')
+        lock = epoch_ms('lock_time')
+        status = raw.get('status') or m.get('source_status')
+        reasons = []
+        if m.get('lock'):
+            reasons.append('Hotspawn lock_time %s is earlier than this snapshot’s '
+                           'observation, so the pick window is closed on the source itself.'
+                           % m['lock'])
+        elif lock:
+            reasons.append('Feed lock_time %s has passed; no pick can be placed.' % lock)
+        else:
+            reasons.append('No usable lock time is retained for this row; it stays '
+                           'unpriced rather than guessed.')
+        if end and status == 'scheduled':
+            reasons.append('Upstream conflict: the endpoint reports status "scheduled" '
+                           'while also reporting end_time %s. Retained verbatim, never '
+                           'corrected by inference.' % end)
+        out.append({
+            'id': str(m.get('id')),
+            'teams': list(m.get('teams') or []),
+            'competition': m.get('competition'),
+            'tier': m.get('tier'),
+            'scheduled_start_utc': m.get('start'),
+            'lock_utc': m.get('lock'),
+            'feed_status': status,
+            'feed_start_utc': start,
+            'feed_end_utc': end,
+            'source_url': m.get('source_url'),
+            'feed_url': m.get('feed_url'),
+            'upstream_conflict': bool(end and status == 'scheduled'),
+            'reasons': reasons,
+        })
+    out.sort(key=lambda r: (r['scheduled_start_utc'] or '', r['id']))
+    return out
+
+
+def closed_sentence(register):
+    """One sentence naming the closed set without calling it unresolved or past."""
+    if not register:
+        return 'Every feed row this snapshot retains is open for picks.'
+    conflicts = sum(1 for r in register if r['upstream_conflict'])
+    starts = sorted(r['scheduled_start_utc'] for r in register if r['scheduled_start_utc'])
+    span = ('scheduled %s to %s UTC' % (starts[0][:10], starts[-1][:10])) if starts else 'with no retained start'
+    return ('%d feed rows cannot carry a pick: Hotspawn’s own lock_time on each of them '
+            '(%s) has already passed, and %d of them are still returned with status '
+            '"scheduled" beside a past end_time.' % (len(register), span, conflicts))
 
 
 def completeness_sentence(c):

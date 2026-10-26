@@ -412,6 +412,7 @@ def executive_banner(data):
         + '<div class="exec-banner-actions">'
         f'<a class="button exec-primary" href="picks.html">Updated picks — all {count_span("picked", c["with_pick"])} →</a>'
         f'<a class="button secondary" href="unresolved.html">Unresolved &amp; limits ({count_span("missing", c["without_percentage"])} without %) →</a>'
+        f'<a class="button secondary" href="#closed-windows">Closed pick windows →</a>'
         f'<a class="button secondary" href="review.html">Flagged for review →</a>'
         f'<a class="button secondary" href="matches.html">All {c["feed_rows"]} matches →</a>'
         f'<a class="button secondary" href="sources.html#method">How we price →</a>'
@@ -449,6 +450,7 @@ def exec_summary_bar(data):
         + link('#picks-at-a-glance', 'Every pick on this page ↓', 'exec-bar-link')
         + link('unresolved.html', 'Unresolved & limitations →', 'exec-bar-link')
         + link('#unresolved-summary', 'Why a pick can be missing ↓', 'exec-bar-link')
+        + link('#closed-windows', 'Closed pick windows ↓', 'exec-bar-link')
         + link('#unresolved-limits', 'Visible limitations ↓', 'exec-bar-link')
         + link('matches.html', 'All matches →', 'exec-bar-link')
         # Session 85087497: the summary also answers "how is a pick priced when
@@ -747,6 +749,85 @@ def coverage_boundary():
         '</section>')
 
 
+def closed_windows_section(data, compact=False):
+    """The separate register of rows that cannot carry a pick, with each limitation.
+
+    Session 5bf1c3eb. The brief asks for a pick on every match *and* for a separate
+    section that names the matches that cannot have one with the limitations that
+    cause it, referenced from the executive summary. On the 2026-10-26 harvest
+    (run 40251492364) every open Hotspawn row resolves through the ladder, while
+    62 rows the endpoint still returns have a ``lock_time`` earlier than the
+    snapshot's own observation clock. Those rows are neither priced nor unresolved
+    research, and folding them into either list is exactly what made this board
+    read as "62 matches with no pick". Every number and date below comes from the
+    snapshot's retained feed evidence; nothing is inferred, and the upstream
+    ``status: scheduled`` + past ``end_time`` conflict is flagged, not repaired.
+    """
+    register = summary.closed_register(data['matches'], data)
+    c = summary.counts(data['matches'])
+    if not register:
+        return ('<section class="panel" id="closed-windows" aria-label="Rows that cannot take a pick">'
+                '<p class="eyebrow muted">Executive summary · closed pick windows</p>'
+                '<h2>Closed pick windows</h2>'
+                '<p>Every feed row this snapshot retains is open for picks, so this register is empty.</p>'
+                '</section>')
+    conflicts = sum(1 for r in register if r['upstream_conflict'])
+    starts = sorted(r['scheduled_start_utc'] for r in register if r['scheduled_start_utc'])
+    rows = ''
+    for r in register:
+        limitation = ' '.join(r['reasons'])
+        rows += ('<tr><td data-label="Match"><strong>' + e(r['teams'][0]) + '</strong> <span class="muted">vs</span> '
+                 '<strong>' + e(r['teams'][1]) + '</strong><br><span class="muted">' + e(r['competition'] or '')
+                 + (' · tier ' + e(r['tier']) if r['tier'] else '') + '</span></td>'
+                 '<td data-label="Scheduled / lock (UTC)">' + e(r['scheduled_start_utc'] or '') + '<br>'
+                 '<span class="muted">lock ' + e(r['lock_utc'] or '') + '</span></td>'
+                 '<td data-label="Why no pick is possible">' + e(limitation) + '</td>'
+                 '<td data-label="Source" class="source-links">'
+                 + link(r['source_url'] or 'https://play.hotspawn.com/cs2-pickems', 'Hotspawn ↗')
+                 + link(r['feed_url'] or FIXTURES, 'Feed ↗')
+                 + link('evidence.html#match-' + r['id'], 'Evidence') + '</td></tr>')
+    return (
+        '<section class="panel" id="closed-windows" aria-label="Closed pick windows: rows that cannot take a pick">'
+        '<p class="eyebrow muted">Executive summary · separate register</p>'
+        '<h2>Closed pick windows — the rows a pick can never be issued for</h2>'
+        '<p><span data-closed-sentence>' + e(summary.closed_sentence(register)) + '</span> '
+        'These rows are <strong>not unresolved research</strong>: Hotspawn closes a pick six minutes '
+        'before each start, and every lock time below is earlier than this snapshot’s own observation '
+        'time (' + e(date(data.get('fixtures_observed_at'), True)) + '), so no pick can be placed on the '
+        'source itself. Publishing a percentage for them would be an invented recommendation.</p>'
+        '<div class="panel limitations" id="closed-limits"><h3>Limitations for generating these picks</h3>'
+        '<ul class="checklist">'
+        '<li><strong>The window is closed on Hotspawn, not on us.</strong> Each row’s own <code>lock_time</code> '
+        'from the fixtures endpoint is in the past at observation time; the lobby is not accepting picks for '
+        'these fixtures. ' + link(FIXTURES, 'Fixtures endpoint ↗') + '</li>'
+        '<li><strong>' + str(conflicts) + ' of ' + str(len(register)) + ' rows carry an upstream data '
+        'conflict.</strong> Hotspawn returns <em>status: scheduled</em> beside an <code>end_time</code> in the '
+        'past (first seen ' + e(starts[0][:10]) + ' to ' + e(starts[-1][:10]) + ' UTC). The raw fields are '
+        'retained per row and flagged on ' + link('review.html#session-5bf1c3eb-hotspawn-stale-scheduled-2026-10-26',
+        'Flagged for Review') + '; nothing here is corrected by inference.</li>'
+        '<li><strong>No back-fill from Hotspawn’s crowd percentages.</strong> The feed also returns '
+        '<code>participants*_picked_percent</code> for many of these rows; the brief forbids using Hotspawn as a '
+        'probability source, so those numbers are never converted into a pick or a percentage.</li>'
+        '<li><strong>No result is back-filled either.</strong> A played match is not a missing pick, and a '
+        'result we have not verified line by line from an official source stays blank here. '
+        + link('review.html', 'Flagged for Review →') + '</li>'
+        '<li><strong>They stay in the inventory.</strong> All ' + str(len(register)) + ' rows remain on '
+        + link('matches.html?status=not_open', 'All matches') + ' for complete feed visibility; the live board '
+        'above is the ' + str(c['open']) + ' open row(s) only.</li>'
+        '</ul></div>'
+        + details('Show all %d closed rows — teams, scheduled start, lock, limitation and the official source '
+                  'for each' % len(register),
+                  '<div class="table-wrap"><table class="source-table closed-table" role="table">'
+                  '<caption>Feed rows whose Hotspawn pick window closed before this snapshot’s observation. '
+                  'No pick and no percentage is possible for any of them.</caption>'
+                  '<thead><tr><th scope="col">Match</th><th scope="col">Scheduled / lock (UTC)</th>'
+                  '<th scope="col">Why no pick is possible</th><th scope="col">Source</th></tr></thead>'
+                  '<tbody>' + rows + '</tbody></table></div>', 'more closed-more')
+        + '<p class="small">' + link('matches.html?status=not_open', 'Filter All matches to these rows →')
+        + ' · ' + link('unresolved.html#coverage-boundary', 'The standing coverage rules →')
+        + ' · ' + link('unresolved.html', 'Unresolved &amp; no-percentage queue →') + '</p></section>')
+
+
 def measured_source_access():
     """Dated, measured access for every outside line source the ladder tries.
 
@@ -851,7 +932,8 @@ def unresolved_picks(data):
         + '<p class="small">' + link('unresolved.html', 'Full unresolved & non-market queue →') + ' · '
         + link('unresolved.html#coverage-boundary', 'Matches that can never carry a pick →') + ' · '
         + link('sources.html', 'Source health and access results →') + ' · '
-        + link('review.html', 'Flagged for review →') + '</p></section>')
+        + link('review.html', 'Flagged for review →') + ' · '
+        + link('#closed-windows', 'Rows whose pick window already closed ↓') + '</p></section>')
 
 
 def standings_link(data):
@@ -1330,6 +1412,9 @@ def overview(data):
     # every pick first and then the rows that have no percentage. The coverage
     # block at the top links straight down to it.
     body+=unresolved_picks(data)
+    # Session 5bf1c3eb: the third register, separate from both priced rows and
+    # unresolved research, and named inside the executive summary itself.
+    body+=closed_windows_section(data)
     body+='<details class="briefing-more" id="detailed-summary"><summary>Detailed tables, source attempts &amp; coverage notes</summary>'
     body+=('<nav class="section-nav" aria-label="Where the picks are">'
         +('<a href="picks.html">Updated picks (<span data-count="open">'+str(len(opens))+'</span>)</a>')
@@ -1956,7 +2041,7 @@ def build(data,out,now=None):
         'picks':('Updated picks',head('The pick board','Updated CS2 picks.','Every open Hotspawn CS2 match: our pick, both supported win probabilities, and direct source links.',data)+'<nav class="section-nav" aria-label="Pick lists">'+link('picks.html','All open matches ('+str(len(opens))+')')+('<a href="unresolved.html?status=needs">No percentage (<span data-count="missing">'+str(len(no_probability))+'</span>)</a>')+link('unresolved.html','No market line ('+str(len(nonmarket))+')')+link('matches.html','All matches')+'</nav><details class="method-details board-method"><summary>How picks, model lines &amp; blanks work</summary><div class="notice info">One complete board: market probabilities first, our labelled VRS model where no accepted market line was collected, and research-only picks with <strong>no percentage</strong> where a number is unsupported. Unresolved entries stay visible, not omitted. Estimates, not promises. '+link('unresolved.html','Read every non-market limitation →')+'</div></details>'+filters(opens,'open')+table(opens,True,label='Every open CS2 match and pick')),
         'matches':('All matches',head('Complete coverage','Every listed fixture.','All CS2 records returned by the official Hotspawn lobby feed, including not-open entries.',data)+feed_scope(data)+filters(matches,'open')+table(matches,past_ids={str(m['id']) for m in past_dated_rows(matches,data)})),
         'analysis':('TWC analysis',analysis_page(data)),
-        'unresolved':('Unresolved picks',unresolved_page(data)),
+        'unresolved':('Unresolved picks',unresolved_page(data)+closed_windows_section(data)),
         'sources':('Sources and methodology',methodology(data)),
         'evidence':('Evidence ledger',evidence_page(data))}
     review=head('Published irregularities','Flagged for Review.','These limitations are visible, not silently filled in. They do not prevent publication.',data)
