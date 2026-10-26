@@ -1,0 +1,162 @@
+[
+  {
+    "page": "index",
+    "width": 320,
+    "violations": []
+  },
+  {
+    "page": "picks",
+    "width": 320,
+    "violations": []
+  },
+  {
+    "page": "matches",
+    "width": 320,
+    "violations": []
+  },
+  {
+    "page": "analysis",
+    "width": 320,
+    "violations": []
+  },
+  {
+    "page": "unresolved",
+    "width": 320,
+    "violations": []
+  },
+  {
+    "page": "review",
+    "width": 320,
+    "violations": []
+  },
+  {
+    "page": "sources",
+    "width": 320,
+    "violations": []
+  },
+  {
+    "page": "evidence",
+    "width": 320,
+    "violations": []
+  },
+  {
+    "page": "index",
+    "width": 390,
+    "violations": []
+  },
+  {
+    "page": "picks",
+    "width": 390,
+    "violations": []
+  },
+  {
+    "page": "matches",
+    "width": 390,
+    "violations": []
+  },
+  {
+    "page": "analysis",
+    "width": 390,
+    "violations": []
+  },
+  {
+    "page": "unresolved",
+    "width": 390,
+    "violations": []
+  },
+  {
+    "page": "review",
+    "width": 390,
+    "violations": []
+  },
+  {
+    "page": "sources",
+    "width": 390,
+    "violations": []
+  },
+  {
+    "page": "evidence",
+    "width": 390,
+    "violations": []
+  },
+  {
+    "page": "index",
+    "width": 768,
+    "violations": []
+  },
+  {
+    "page": "picks",
+    "width": 768,
+    "violations": []
+  },
+  {
+    "page": "matches",
+    "width": 768,
+    "violations": []
+  },
+  {
+    "page": "analysis",
+    "width": 768,
+    "violations": []
+  },
+  {
+    "page": "unresolved",
+    "width": 768,
+    "violations": []
+  },
+  {
+    "page": "review",
+    "width": 768,
+    "violations": []
+  },
+  {
+    "page": "sources",
+    "width": 768,
+    "violations": []
+  },
+  {
+    "page": "evidence",
+    "width": 768,
+    "violations": []
+  },
+  {
+    "page": "index",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "page": "picks",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "page": "matches",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "page": "analysis",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "page": "unresolved",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "page": "review",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "page": "sources",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "page": "evidence",
+    "width": 1440,
+    "violations": []
+  }
+]

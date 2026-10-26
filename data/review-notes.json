@@ -6487,6 +6487,58 @@
   ]
  },
  {
+  "id": "session-77046e56-cron-delivery-gap-2026-10-26",
+  "status": "Open — delivery limitation, published for manual review; does not block publication",
+  "finding": "Measured on 2026-10-26: Hotspawn added eight CS2 fixtures to its scheduled feed after the 00:07:16Z observation that produced the 2026-10-26T00:10:49Z board (1079201 INOX Division vs Nemesis, 1079202 FOKUS vs ex-Zero Tenacity, 1079203 Metizport vs BRUTE, 1081159 LFO 10 vs ex-6666, 1081160 HAVU vs ILLYRIANS, 1081162 ex-RUSTEC vs Spirit Academy, 1081163 BakS vs Saint Sinners, 1081164 Inner Circle Academy vs Lavked). A read-only probe at 2026-10-26T00:47:52Z against the collector's exact URL returned 81 CS2 rows including all eight, with 19 future starts, and the lobby and CS2 page agreed at 81 — so the collector is not dropping fixtures and no collector code was changed. The published board nonetheless showed 73 rows and 11 open matches for the next hour: GitHub delivered no scheduled 'Verify, refresh and publish' run between 2026-10-26T00:05:31Z and the writing of this note, and the ten-minute refresh watchdog also produced no run in that window (its previous run started 2026-10-25T23:19:50Z). The gap is inside the project's 8-hour evidence window, but it is the mechanism by which a low-tier fixture can appear to have no pick: the fixture exists on Hotspawn before any board has refreshed. A fresh refresh on a GitHub runner at 00:52:33Z priced all 19 open fixtures with 0 unresolved, and the same build validated (81 rows / 19 calculations / 779 links / 20 checksums). This is the measured counter-evidence to the line in note session-160f03c8-hotspawn-inventory-drift-2026-10-26 that the later eight 'were not added or assigned a pick': they were not in the 00:10Z snapshot, but the collector does return them and the existing ladder prices all eight with no manual value entered.",
+  "sources": [
+   {
+    "url": "https://play.hotspawn.com/lobby",
+    "label": "Hotspawn lobby — rendered 81 CS2 entries and 19 matches this week at the time of measurement"
+   },
+   {
+    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+    "label": "Fixtures endpoint read by the probe — 81 rows, 19 future, all eight fixtures present"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40251063027",
+    "label": "Read-only inventory probe run that measured the parity (receipts committed under research/session-77046e56/diag/)"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40251150280",
+    "label": "Fresh coverage harvest run whose refresh priced all 19 open fixtures with 0 unresolved"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions",
+    "label": "Run history used to measure the deliverability gap"
+   }
+  ],
+  "impact": "Time-to-publish for newly added Hotspawn fixtures. No price, pick or source value is affected; the next successful publication carries the fixtures, and every row that publishes is independently audited before it ships."
+ },
+ {
+  "id": "session-77046e56-mirror-points-partial-2026-10-26",
+  "status": "Open — partially verified at source; published for manual review; does not block publication",
+  "finding": "Two open rows are priced from HLTV's dated view of Valve's ranking (model_vrs_mirror), because Valve's monthly standings file does not resolve every club on the row. For 1081159 LFO 10 vs ex-6666 the two inputs were re-read at source on 2026-10-26: HLTV's 26 October global Valve ranking shows #157 LFO 10 with 803 Valve points and #118 ex-6666 with 968 points, and both five-player rosters match the board. For 1081162 ex-RUSTEC vs Spirit Academy this session confirmed the same page and heading, the ex-RUSTEC roster, and its position immediately before #95 BET-M (so #94), but did not read the two point values (1059 and 1038) directly in the page text; the published probability reproduces exactly from those two numbers with Valve's published formula and 0.7986 calibration slope, but the inputs themselves remain unverified at source in this session. The row publishes the dated HLTV page and states the provenance, and no monthly-file and mirror value is mixed within a row.",
+  "sources": [
+   {
+    "url": "https://www.hltv.org/valve-ranking/teams/2026/october/26",
+    "label": "HLTV dated Valve global ranking used as the mirror input (heading read: 'Valve global ranking on October 26th, 2026')"
+   },
+   {
+    "url": "https://www.hltv.org/valve-ranking/teams/2026/october/26#",
+    "label": "Same page, #157 LFO 10 (803 points) and #118 ex-6666 (968 points) read directly"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "label": "Valve's official monthly file that does not resolve these clubs"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/model/fit.js",
+    "label": "Valve's published expectation formula used to reproduce the probability"
+   }
+  ],
+  "impact": "Evidence depth on one originated line. The value is labelled as a non-market model estimate on the row; it is not presented as a market price. Re-reading the two numbers on HLTV's page would close it."
+ },
+ {
   "id": "session-28e4f2a1-executive-summary-directory-2026-10-26",
   "status": "Published with limitation — counts are dated to the snapshot; needs review of the category policy",
   "finding": "The executive summary now carries a counts-driven pick directory (#picks-directory) inside its unresolved-and-limitations section, repeated at the top of the unresolved page: one row per published ladder step, the number of open matches it answered for, how many of those carry a percentage, the official source of that kind of line and the page on this site that lists them, plus a 'no pick' row and a total. Re-derived for the 2026-10-26T00:10:49Z snapshot (73 feed rows, 11 open): exchange 7, bookmaker listing 1, our VRS model 3, research-only 0, unresolved 0; total 11, all 11 with a percentage. The rendered cells were measured with Chromium at 320x568, 390x844 and 412x915 on both pages: no horizontal overflow, every one of the 9 rows x 5 cells visible with text, no count hidden behind the fixed tab bar, and the category counts add up to the published total (receipt: research/session-28e4f2a1/phone-directory-measurements.json). LIMITATION FOR REVIEW: the numbers are static in the generated HTML and describe the snapshot named in the paragraph above the table, so a page served after its eight-hour evidence window shows that snapshot's counts while the board withholds its expired picks; the page says so in the same paragraph. Category boundaries follow scripts.summary's published ladder (a Pinnacle line and a researched book listing are separate rows, 'no pick' covers both unresolved rows and any method outside the ladder), which is a product decision a reviewer may want to change.",

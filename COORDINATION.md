@@ -11008,6 +11008,122 @@ site can lag a green run by minutes (session b06ee902's measurement).
 | Run relevant project gates and deliver a scoped verification receipt; no other shared build/data/UI edits unless a concrete defect is demonstrated and logged first | **done** — 1,778 unit tests (14 skipped); validate 73 rows / 11 probability calculations / 693 links / 20 checksums; independent retained-evidence audit 73 rows / 0 failures; audits 9 + integrity 5 + verification-c6 12 pass; all 13 browser suites pass at 320/390/768/1440px | 160f03c8 | `research/session-160f03c8/**`, `COORDINATION.md` | 2026-10-26 |
 | Final integration: PR from this fixed Arena branch to `main`, merge after green checks, confirm Pages includes the review note and state the live coverage discrepancy precisely | in progress | 160f03c8 | `COORDINATION.md`, generated root pages/data/build receipt | 2026-10-26 |
 
+++ b/COORDINATION.md
+
+## Session 77046e56 — CLAIM (2026-10-26 00:55 UTC): Hotspawn inventory parity, every-match picks, mobile executive summary
+
+**Measured before claiming.** Branch `arena/77046e56-maltaproj4` is at `eca5117`. The live public
+board (fetched 2026-10-26 ~00:50 UTC) reads *"11 open CS2 match(es) · 11 with a pick · 11 with a win
+probability · 0 unresolved"* — i.e. every row it *has* is priced. But the live Hotspawn lobby
+(`https://play.hotspawn.com/lobby`, read 2026-10-26 ~00:50 UTC through the research fetch tool) renders
+**"Tier All tiers (81)"** and **"19 matches this week"** (plus a further Upcoming list), while the
+committed snapshot `data/latest.json` (`generated_at 2026-10-26T00:10:49Z`) holds **73** rows and 11 open.
+Eight fixtures visible on the lobby are **absent from the board**:
+
+| Hotspawn fixture | Teams | Competition | Lobby lock-in at read |
+| --- | --- | --- | --- |
+| 1079201 | INOX Division vs Nemesis | NODWIN Clutch Series #13 | ~8h |
+| 1079202 | FOKUS vs ex-Zero Tenacity | NODWIN Clutch Series #13 | ~11h |
+| 1079203 | Metizport vs BRUTE | NODWIN Clutch Series #13 | ~14h |
+| 1081159 | LFO 10 vs ex-6666 | CCT Europe 2026 Series #12 | ~11h |
+| 1081160 | HAVU vs ILLYRIANS | CCT Europe 2026 Series #12 | ~14h |
+| 1081162 | ex-RUSTEC vs Spirit Academy | CCT Europe 2026 Series #12 | ~15h |
+| 1081163 | BakS vs Saint Sinners | CCT Europe 2026 Series #12 | ~18h |
+| 1081164 | Inner Circle Academy vs Lavked | CCT Europe 2026 Series #12 | ~21h |
+
+These are *not* past-dated feed noise: they are the next eight matches on Hotspawn, and one locks within
+a few hours. The board therefore fails the brief's *"a pick for every match listed on Hotspawn"* on
+coverage, not on pricing. This session's job is to measure **why** the collector's three reads all
+report 73 while the rendered lobby reports 81, repair the collector so the union is complete, price the
+new rows through the existing sourced ladder, re-verify the executive summary/mobile layout, and
+integrate.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| D1 Measure the lobby-vs-API coverage gap on a real GitHub egress (parameter matrix, raw-page ID scan, per-source counts), keep dated receipts | in progress | 77046e56 | `research/session-77046e56/**`, `scripts/diag_77046e56.py` (new), `.github/workflows/diag-77046e56.yml` (new) | 2026-10-26 00:55 |
+| C1 Repair the collector so every fixture the lobby lists is on the board (union/parity rule stated in code), with a regression test | in progress | 77046e56 | `scripts/inventory.py`, `scripts/core.py`, `tests/test_session_77046e56.py` (new) | 2026-10-26 00:55 |
+| P1 Price every newly covered fixture through the existing ladder (Polymarket → HLTV → Pinnacle → wide quote → listing → VRS → VRS mirror → research pick), or publish it in the unresolved section with its limitation | in progress | 77046e56 | `data/latest.json` (pipeline output only), `data/review-notes.json` (append-only) | 2026-10-26 00:55 |
+| V1 Line-by-line verification of the published board against official sources + 320/390/412 px pass, executive-summary in-site links, unresolved section | in progress | 77046e56 | `research/session-77046e56/VERIFICATION.md` (new) | 2026-10-26 00:55 |
+| I1 Final integration: gates, PR to `main`, merge without waiting, confirm Pages deploy and live bytes, receipt | in progress | 77046e56 | `COORDINATION.md`, generated root pages, `build-info.json` | 2026-10-26 00:55 |
+
+**Coordination.** 22 older PRs (#221–#341) are open from earlier sessions; none is merged and none of
+their claims is newer than 2026-10-25 17:05 UTC, so under the 60-minute rule none blocks this session.
+This session edits `scripts/inventory.py`, `scripts/core.py` and `data/review-notes.json`
+(append-only) — the narrowest scope that can fix a collector defect — and adds its own new files. It
+does not touch `pages.yml`, `scripts/build.py`, `scripts/validate.py`, or any other session's research
+directory. If a later rebase finds a competing change in those two collector files, the resolution is
+keep-both and log it here.
+
+## Session 77046e56 — status update (2026-10-26 01:15 UTC): the gap is delivery, not collection; the fresh board prices 19/19
+
+**D1 done — measured, not assumed.** A read-only probe (`scripts/diag_77046e56.py`, run
+[40251063027](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40251063027), receipts in
+`research/session-77046e56/diag/`) requested **the collector's exact URL**
+(`…/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1`) once at `2026-10-26T00:47:52Z` with the
+collector's own User-Agent. It returned **200, 63,325 bytes, 81 CS2 rows, 19 with a future start, and all
+eight absent fixtures present**. Dropping `status` returned 10,626 rows (20 future); dropping `tenantId`
+returned the same 81. `limit`, `page`, `offset`, `per_page` and `take` are rejected by the API with
+`property … should not exist` (400). The rendered lobby (200, 309,875 B) carries all eight IDs in its
+`/matches/…` links and the same "81" tier count; the CS2 pick'em page (200, 236,678 B) is a stale 72.
+The lobby's two JS bundles contain **zero** `api/v1/fixtures` references, so the browser request is not
+the missing piece either. **Conclusion: the collector is correct; Hotspawn added the eight fixtures after
+the 00:07Z observation, and the board was simply older than the fixtures.** C1 is therefore **withdrawn, not
+done**: no collector defect was reproduced, so `scripts/inventory.py`, `scripts/core.py` were not edited —
+changing them would have been a fix for a problem that does not exist.
+
+**P1 done on a real egress — 19/19 priced, 0 unresolved.** `harvest-77046e56` run
+[40251150280](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40251150280) ran the
+publisher's own commands. Every step returned 0: refresh, quarantine (`{"withheld_rows": 0}`), census,
+independent audit (81 rows, 0 failures on both the refreshed and the built snapshot), build, validate
+(81 rows / 19 calculations / 15 pages / 779 links / 20 checksums / 200 displayed), unit suite. Snapshot
+`2026-10-26T00:52:33Z`, fixtures observed `00:48:58Z`, `coverage_counts {"api":81,"page":81,"lobby":81,"retained":81}`,
+**81 feed rows · 19 open · 19 picks · 19 two-way probabilities · 0 research-only · 0 unresolved**. Methods:
+8 exchange, 1 researched bookmaker listing, 8 Valve-VRS model, 2 HLTV-dated Valve-ranking mirror. The eight
+fixtures that were missing from the published board are priced through the existing ladder — no new tier
+was needed.
+
+**V1 done — sources re-read, arithmetic reproduced.** `research/session-77046e56/VERIFICATION.md` carries
+the per-row ledger. In this session: Polymarket `6066508` (`0.205/0.795`, spread 0.01), `6186053`
+(`0.725/0.275`, start 09:00Z), `6066525` (`0.425/0.575`, spread 0.25, liquidity 4,928.74) were read live and
+match their rows; BO3.gg's `132601` line re-read `1.62/2.16` and de-vigs to the published
+57.14/42.86; Valve's official detail files `0046` (Nuclear TigeRES 46 / 1323.5), `0069` (UNiTY 69 /
+1167.4), `0048` (FOKUS 48 / 1320.8) and `0158` (Saint Sinners 158 / 809.6) match the board's rounded points
+and rosters; HLTV's dated Valve ranking shows **#157 LFO 10 (803)** and **#118 ex-6666 (968)** exactly.
+All twelve originated lines recompute from their recorded points to **<1e-9**, all eight exchange pairs sum
+to 1, and the bookmaker row de-vigs exactly. Two mirror inputs (ex-RUSTEC 1059 / Spirit Academy 1038) were
+**not** read directly — disclosed in the ledger and on Flagged for Review rather than assumed.
+
+**Mobile / executive summary re-measured on the 19-row build** (`npm run test:browser`, 13 suites, exit 0,
+`"failures": []`; raw geometry in `research/session-77046e56/mobile/`): at 320×568 the summary title sits at
+y=290–359, the first pick card at y=363–526 with both percentages at y=409–430 and y=432–463, and the fixed
+tab bar starts at y=507 — 44px of clear space, no horizontal overflow, 19/19/19 cards/picks/prices, and 32
+axe scans with 0 violations at 320/390/768/1440. The quicknav a phone reader sees first reads
+*"19/19 picks · 0 unresolved (no %) · 62 feed rows are not open"* and carries in-site links to `picks.html`,
+`#picks-at-a-glance`, `unresolved.html`, `#unresolved-summary`, `#unresolved-limits`, `matches.html`,
+`sources.html#method` and `review.html`.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| D1 Measure the lobby-vs-API coverage gap (parameter matrix, raw-page scan, per-source counts) | **done** — collector URL returns all 81 incl. the 8; receipts committed | 77046e56 | `research/session-77046e56/diag/**`, `scripts/diag_77046e56.py`, `.github/workflows/diag-77046e56.yml` | 2026-10-26 01:10 |
+| C1 Repair the collector if (and only if) a defect reproduces | **withdrawn** — no defect reproduced; collector union already 81/81/81 | 77046e56 | none (no edit made) | 2026-10-26 01:10 |
+| P1 Fresh capture + price every new fixture through the existing ladder | **done** — 19/19 picks, 19/19 probabilities, 0 unresolved; all gates 0 | 77046e56 | `scripts/census_77046e56.py`, `.github/workflows/harvest-77046e56.yml`, `research/session-77046e56/harvest/**` | 2026-10-26 01:12 |
+| V1 Line-by-line source verification + mobile/exec-summary measurement | **done** — ledger + measurements committed; 2 limitations flagged | 77046e56 | `research/session-77046e56/VERIFICATION.md`, `data/review-notes.json` (2 additive ids) | 2026-10-26 01:15 |
+| I1 Integration: PR to `main`, merge without waiting, confirm Pages deploy and live bytes, receipt | in progress | 77046e56 | `COORDINATION.md`, PR | 2026-10-26 01:15 |
+
+**Flagged for review (non-blocking, published on the Flagged for Review page).**
+`session-77046e56-cron-delivery-gap-2026-10-26` — no scheduled publish between 00:05:31Z and 01:1xZ and no
+watchdog run in that window, so eight real fixtures sat on Hotspawn for over an hour before any board could
+show them (inside the 8-hour window, but it is the mechanism that makes a fixture look unpicked).
+`session-77046e56-mirror-points-partial-2026-10-26` — the two mirror point inputs above were not re-read at
+source, although the page, heading, roster and rank position were.
+
+**Coordination, honestly stated.** Sessions `b964dffd` and `32efbb66` claimed overlapping work at 00:50Z
+(fresh capture, low-tier ladder, exec-summary/phone check) while this session held the same scope. This
+session did **not** edit `scripts/inventory.py`, `scripts/core.py`, `scripts/refresh.py`, `scripts/build.py`
+or any other session's `research/` directory, and its integration PR is deliberately additive: research
+receipts, two review notes, and this board. If their branches land first, their code wins and this PR stays
+a verification receipt; if they land after, this PR's files do not conflict with theirs.
+
 ## Session 28e4f2a1 — claim (2026-10-26 00:55 UTC): executive-summary pick directory + unresolved section, mobile-first
 
 **Branch:** `arena/28e4f2a1-maltaproj4` (from `main` @ `eca5117`). **Owner:** session `28e4f2a1`.

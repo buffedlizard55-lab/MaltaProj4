@@ -1,0 +1,32 @@
+[
+  {
+    "width": 320,
+    "height": 568,
+    "overflow": false,
+    "mainDisplay": "flex",
+    "cardOrder": "4",
+    "guideOrder": "6",
+    "cardTop": 363,
+    "answerTop": 409,
+    "numericProbability": true,
+    "tabTop": 507,
+    "ctaHeight": 46,
+    "unresolvedSection": true,
+    "unresolvedLink": true
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "overflow": false,
+    "mainDisplay": "flex",
+    "cardOrder": "4",
+    "guideOrder": "6",
+    "cardTop": 378,
+    "answerTop": 473,
+    "numericProbability": true,
+    "tabTop": 783,
+    "ctaHeight": 46,
+    "unresolvedSection": true,
+    "unresolvedLink": true
+  }
+]
