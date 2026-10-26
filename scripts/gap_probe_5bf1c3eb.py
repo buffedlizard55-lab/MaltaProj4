@@ -268,7 +268,14 @@ def main() -> int:
         key = str(m.get('method') or 'none')
         methods[key] = methods.get(key, 0) + 1
 
-    targets = [(str(m.get('id')), list(m.get('teams') or [])) for m in gaps]
+    # The brief asks for outside-source evidence specifically for the rows that
+    # cannot be resolved the way the featured (market-priced) picks are, so the
+    # book/exchange probes also cover every open row whose published line is NOT
+    # a market line: a dated "no two-way price found" receipt per row is the
+    # evidence that the model label on it is honest.
+    nonmarket = [m for m in opens if m.get('probabilities') is not None
+                 and str(m.get('method')) not in ('exchange', 'bookmaker_fallback', 'exchange_wide')]
+    targets = [(str(m.get('id')), list(m.get('teams') or [])) for m in gaps + nonmarket]
     bo3_rows = fetch_bo3_upcoming(session) if targets else []
 
     per_row = []
@@ -315,6 +322,8 @@ def main() -> int:
         'issues': snapshot.get('issues') or [],
         'live_pages_at_probe_time': check_live_pages(session),
         'open_rows_without_a_percentage': per_row,
+        'nonmarket_rows_probed': [fid for fid, _ in targets if fid not in
+                                  {str(m.get('id')) for m in gaps}],
         'source_probes': {
             'bo3_gg_upcoming_rows': len(bo3_rows),
             'egamersworld': probe_egamersworld(session, targets) if targets else {'skipped': 'every open row already carries a probability'},
