@@ -11445,3 +11445,15 @@ after a merge commit exists on a session branch, `git pull --rebase` tries to
 linearise merged upstream commits and conflicts; this session aborted such a
 rebase cleanly with HEAD == the pushed commit and used fetch+merge afterwards.)
 
+
+**Session b964dffd — third integration note (2026-10-26 ~01:51 UTC).** Main merged
+PR #359 (session 11e17543 every-match coverage board) while PR #361 was open;
+generated-file conflicts resolved by rebuild from this session's strictly newer
+verified capture with the merged builder (their `data/latest.json` was still the
+00:10Z board), review-notes union 293 by id. Their new browser suite hardcoded
+`73` coverage cards and failed the browser gate on the 81-row board — repaired to
+derive the expectation from the built snapshot (labelled in place; the wider
+dirty-tree observation is appended to flag
+`session-b964dffd-browser-test-dirties-tree-2026-10-26`). Gates: **1,851 unit OK,
+validate 81/19/832 links, full browser chain rc=0**.
+
