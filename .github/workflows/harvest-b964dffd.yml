@@ -100,14 +100,25 @@ jobs:
           Path('research/harvest-b964dffd/run.json').write_text(json.dumps(receipt, indent=1) + '\n')
           PY
       - name: Commit only the dated research receipts to the fixed session branch
+        # Run 40251080446: refresh/build/validate/browser all succeeded but this
+        # step failed (its log is on a host the authoring sandbox cannot read,
+        # so the exact line is unverified). The diagnostic steps above install
+        # the fresh snapshot and run suites that rebuild pages, which can leave
+        # modified tracked files in this disposable tree; `git pull --rebase`
+        # refuses with unstaged changes. So: record the dirty state as a
+        # receipt, commit only research/harvest-b964dffd, discard every other
+        # tracked modification in the runner tree, then rebase and push.
         run: |
+          set -x
           git config user.name "cs2-evidence-runner"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git status --porcelain > research/harvest-b964dffd/commit-step-status.txt || true
           git checkout -- data/latest.json 2>/dev/null || true
           git add -A -- research/harvest-b964dffd
           if git diff --cached --quiet; then exit 0; fi
           git commit -m "Retain live coverage harvest b964dffd from run ${GITHUB_RUN_ID} [skip ci]"
-          git pull --rebase origin arena/b964dffd-maltaproj4
+          git checkout -- . 2>/dev/null || true
+          git pull --rebase --autostash origin arena/b964dffd-maltaproj4
           git push origin arena/b964dffd-maltaproj4
       - name: Retain candidate and audit artifacts even when a gate fails
         if: always()
