@@ -1,0 +1,122 @@
+name: Coverage harvest 32efbb66 (non-publishing)
+
+# Why this exists: the authoring sandbox reaches only github.com, pypi.org and
+# npm, so the real Hotspawn / HLTV / exchange / book refresh and the candidate
+# source measurements (Kalshi KXCS2GAME, SX Bet, HLTV team-page results,
+# Thunderpick shell) must run on a GitHub-hosted runner. This workflow never
+# deploys Pages and never pushes to main: it commits dated evidence under
+# research/session-32efbb66/** to this session's fixed Arena branch and emits
+# check annotations the sandbox can read.
+on:
+  push:
+    branches: [arena/32efbb66-maltaproj4]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: coverage-harvest-32efbb66
+  cancel-in-progress: false
+jobs:
+  capture:
+    if: github.ref == 'refs/heads/arena/32efbb66-maltaproj4' && (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[capture]'))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+          cache: npm
+      - run: pip install -r requirements.txt
+      - run: npm ci --ignore-scripts
+
+      - name: Refresh official Hotspawn, HLTV, exchange, book and Valve sources
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p research/session-32efbb66/logs runtime
+          set +e
+          python -m scripts.refresh --output runtime/latest.json > research/session-32efbb66/logs/refresh.txt 2>&1
+          echo "refresh_rc=$?" | tee research/session-32efbb66/logs/return-codes.txt
+          if test -s runtime/latest.json; then cp runtime/latest.json research/session-32efbb66/snapshot.json; fi
+          tail -40 research/session-32efbb66/logs/refresh.txt
+          exit 0
+
+      - name: Measure candidate low-tier sources (Kalshi, SX Bet, HLTV team pages)
+        run: |
+          set +e
+          python -m scripts.probe_32efbb66 --snapshot research/session-32efbb66/snapshot.json > research/session-32efbb66/logs/probe.txt 2>&1
+          echo "probe_rc=$?" | tee -a research/session-32efbb66/logs/return-codes.txt
+          tail -60 research/session-32efbb66/logs/probe.txt
+          python - <<'PY'
+          from pathlib import Path
+          tail = Path('research/session-32efbb66/logs/probe.txt').read_text(errors='replace')[-800:].replace('\n', ' | ')
+          print('::notice title=32efbb66-probe::' + tail)
+          PY
+          exit 0
+
+      - name: Quarantine, row audit, build and validate the fresh capture
+        run: |
+          set +e
+          python -m scripts.quarantine runtime/latest.json > research/session-32efbb66/logs/quarantine.txt 2>&1
+          echo "quarantine_rc=$?" | tee -a research/session-32efbb66/logs/return-codes.txt
+          python verification-c6/audit_snapshot.py runtime/latest.json --output research/session-32efbb66/row-audit.md > research/session-32efbb66/logs/row-audit.txt 2>&1
+          echo "row_audit_rc=$?" | tee -a research/session-32efbb66/logs/return-codes.txt
+          python -m scripts.build --data runtime/latest.json > research/session-32efbb66/logs/build.txt 2>&1
+          echo "build_rc=$?" | tee -a research/session-32efbb66/logs/return-codes.txt
+          python -m scripts.validate --data runtime/latest.json > research/session-32efbb66/logs/validate-fresh.txt 2>&1
+          echo "validate_rc=$?" | tee -a research/session-32efbb66/logs/return-codes.txt
+          if test -s runtime/latest.json; then cp runtime/latest.json research/session-32efbb66/snapshot.json; fi
+          echo '### 32efbb66 return codes' >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          cat research/session-32efbb66/logs/return-codes.txt >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          for f in row-audit.txt build.txt validate-fresh.txt; do
+            echo "----- $f (tail) -----"
+            tail -60 "research/session-32efbb66/logs/$f" || true
+          done
+          exit 0
+
+      - name: Retain runner identity
+        env:
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+          RUN_SHA: ${{ github.sha }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          receipt = {
+              'workflow_run_id': os.environ['RUN_ID'],
+              'attempt': os.environ['RUN_ATTEMPT'],
+              'checkout_sha': os.environ['RUN_SHA'],
+              'run_url': os.environ['RUN_URL'],
+              'publishes_pages': False,
+              'pushes_main': False,
+          }
+          Path('research/session-32efbb66/run.json').write_text(json.dumps(receipt, indent=1) + '\n')
+          PY
+          find research/session-32efbb66 -name '*.gz' -size +2M -delete || true
+          du -sh research/session-32efbb66 || true
+
+      - name: Commit dated research evidence to the fixed session branch
+        if: always()
+        run: |
+          git config user.name "cs2-evidence-runner"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A -- research/session-32efbb66
+          git checkout -- . || true
+          git clean -fd -- public runtime || true
+          git commit -m "Retain low-tier coverage harvest from run ${GITHUB_RUN_ID} [skip ci]" || echo "nothing to commit"
+          for attempt in 1 2 3; do
+            if git push origin HEAD:arena/32efbb66-maltaproj4; then echo "receipt pushed"; exit 0; fi
+            git pull --rebase --autostash origin arena/32efbb66-maltaproj4 || true
+          done
+          echo "::warning::Could not push the harvest receipt."
