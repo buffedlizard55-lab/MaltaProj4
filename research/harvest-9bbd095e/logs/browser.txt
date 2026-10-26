@@ -1,0 +1,197 @@
+
+> hotspawn-cs2-scout@1.0.0 test:browser
+> node tests/browser.cjs && node tests/expiry.cjs && node tests/browser_019a253a.cjs && node tests/browser_138cbedd.cjs && node tests/browser_9b97d585.cjs && node tests/browser_ac4743a3.cjs && node tests/browser_cb16f548.cjs && node tests/browser_ce45f672.cjs && node tests/browser_eaff7cce.cjs && node tests/browser_f0814674.cjs && node tests/browser_fe7f5de4.cjs && node tests/browser_caca91b8.cjs && node tests/browser_aeafcbe6.cjs
+
+Passed: 32 page/viewport accessibility and no-overflow scans, 320/390/768/1440px layout, subpath URLs, navigation, filters, six legacy redirects, evidence anchors and expiry.
+Passed: seven board expiry scenarios (including live No percentage filter/count updates) plus four research-quote boundary/future-clock scenarios.
+Passed: phone-first summary on 3 viewports (320x568 y=363, 390x844 y=378, 412x915 y=378), pick board clear of the tab bar, and the 9-rung fallback ladder with counts totalling 19.
+Passed: freshness clock on 2 viewports x 3 snapshot ages (6 reads) and the phone pick board's per-row observation/expiry times — the advertised slot is always ahead of the reader and the snapshot age is always stated.
+Passed: count-aware runtime summary copy; first pick and both probabilities above the 320x568 phone tab bar; post-board filters and 390px layout.
+Passed: eight phone/desktop/queue/unresolved-summary/research expiry and live-count scenarios.
+Passed: phone-first computed order, match/probability placement, 44px pick CTA, and unresolved links at 320x568 and 390x844.
+Passed: the phone home page names itself an executive summary, keeps the next pick and both win chances above the tab bar at 320/390px, keeps every in-site route a 44px tap target, holds the 246px card budget and renders one card per open match.
+Passed: first-screen 44px pick CTA, first list within 1700px at 320/390px, four legacy hidden-anchor reveals, native keyboard disclosures, unresolved records visible.
+Passed: completeness prose matches the runtime counters (fresh and 8-hour-stale), the stale banner agrees with the snapshot age, and on a fresh build the first pick plus its probability are on the first phone screen at 320/390px.
+Passed: 320/390px pick placement, all open rows, both team probabilities, official row links, blank safeguards, guide deep links and stale-prose/counter agreement.
+{"suite":"browser_caca91b8","open_rows":19,"priced_open_rows":19,"session_review_notes":3,"pages_checked":8,"status":"ok"}
+{
+ "measured_at": "2026-10-26T01:00:09.533Z",
+ "board": "public/ from research/diagnose-aeafcbe6/snapshot.json",
+ "viewports": [
+  {
+   "name": "iPhone SE",
+   "viewport": {
+    "width": 320,
+    "height": 568
+   },
+   "home": {
+    "horizontalOverflow": false,
+    "withheld": false,
+    "exec_summary": {
+     "top": 3750,
+     "height": 254
+    },
+    "exec_quicknav": {
+     "top": 290,
+     "height": 69
+    },
+    "quicknav_text": "Executive summary · 19/19 picks · 0 unresolved (no %) · 62 feed rows are not open.Updated picks →Unresolved & limits ↓",
+    "exec_links": [
+     "picks.html",
+     "#picks-at-a-glance",
+     "unresolved.html",
+     "#unresolved-summary",
+     "#unresolved-limits",
+     "matches.html",
+     "sources.html#method",
+     "review.html",
+     "#unresolved-summary",
+     "unresolved.html",
+     "matches.html",
+     "picks.html",
+     "#unresolved-limits"
+    ],
+    "picks_link_reachable": true,
+    "unresolved_link": true
+   },
+   "board": {
+    "found": true,
+    "top": 272,
+    "height": 343,
+    "pick": "Off Chops",
+    "teams": "Ground ZerovsOff Chops",
+    "percentages": [
+     "20.5%",
+     "79.5%"
+    ],
+    "percentage_labels": [
+     "Ground Zero 20.5 percent",
+     "Off Chops 79.5 percent"
+    ],
+    "tabbar_top": 507,
+    "horizontalOverflow": false,
+    "rows": 19,
+    "publishedPicks": 19,
+    "pricedRows": 19
+   },
+   "documentWidth": 0
+  },
+  {
+   "name": "iPhone 14",
+   "viewport": {
+    "width": 390,
+    "height": 844
+   },
+   "home": {
+    "horizontalOverflow": false,
+    "withheld": false,
+    "exec_summary": {
+     "top": 4907,
+     "height": 219
+    },
+    "exec_quicknav": {
+     "top": 300,
+     "height": 65
+    },
+    "quicknav_text": "Executive summary · 19/19 picks · 0 unresolved (no %) · 62 feed rows are not open.Updated picks →Unresolved & limits ↓",
+    "exec_links": [
+     "picks.html",
+     "#picks-at-a-glance",
+     "unresolved.html",
+     "#unresolved-summary",
+     "#unresolved-limits",
+     "matches.html",
+     "sources.html#method",
+     "review.html",
+     "#unresolved-summary",
+     "unresolved.html",
+     "matches.html",
+     "picks.html",
+     "#unresolved-limits"
+    ],
+    "picks_link_reachable": true,
+    "unresolved_link": true
+   },
+   "board": {
+    "found": true,
+    "top": 243,
+    "height": 379,
+    "pick": "Off Chops",
+    "teams": "Ground ZerovsOff Chops",
+    "percentages": [
+     "20.5%",
+     "79.5%"
+    ],
+    "percentage_labels": [
+     "Ground Zero 20.5 percent",
+     "Off Chops 79.5 percent"
+    ],
+    "tabbar_top": 783,
+    "horizontalOverflow": false,
+    "rows": 19,
+    "publishedPicks": 19,
+    "pricedRows": 19
+   },
+   "documentWidth": 0
+  },
+  {
+   "name": "Pixel 7",
+   "viewport": {
+    "width": 412,
+    "height": 915
+   },
+   "home": {
+    "horizontalOverflow": false,
+    "withheld": false,
+    "exec_summary": {
+     "top": 4821,
+     "height": 219
+    },
+    "exec_quicknav": {
+     "top": 300,
+     "height": 65
+    },
+    "quicknav_text": "Executive summary · 19/19 picks · 0 unresolved (no %) · 62 feed rows are not open.Updated picks →Unresolved & limits ↓",
+    "exec_links": [
+     "picks.html",
+     "#picks-at-a-glance",
+     "unresolved.html",
+     "#unresolved-summary",
+     "#unresolved-limits",
+     "matches.html",
+     "sources.html#method",
+     "review.html",
+     "#unresolved-summary",
+     "unresolved.html",
+     "matches.html",
+     "picks.html",
+     "#unresolved-limits"
+    ],
+    "picks_link_reachable": true,
+    "unresolved_link": true
+   },
+   "board": {
+    "found": true,
+    "top": 243,
+    "height": 379,
+    "pick": "Off Chops",
+    "teams": "Ground ZerovsOff Chops",
+    "percentages": [
+     "20.5%",
+     "79.5%"
+    ],
+    "percentage_labels": [
+     "Ground Zero 20.5 percent",
+     "Off Chops 79.5 percent"
+    ],
+    "tabbar_top": 854,
+    "horizontalOverflow": false,
+    "rows": 19,
+    "publishedPicks": 19,
+    "pricedRows": 19
+   },
+   "documentWidth": 0
+  }
+ ],
+ "failures": []
+}

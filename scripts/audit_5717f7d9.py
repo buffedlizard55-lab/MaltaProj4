@@ -373,64 +373,23 @@ def _audit_book(m, generated, amap, findings, rec):
                                 [e.get("url")]))
 
 
-# Session b964dffd (2026-10-26): the router above sends BOTH model tiers
-# here, but this filter used to accept only the monthly-file provider, so
-# every board containing a ``model_vrs_mirror`` row failed this audit with
-# "Model row has no VRS evidence" even though the row's HLTV-mirror evidence
-# re-derives exactly (reproduced on the 2026-10-26T01:00:10Z capture, rows
-# 1081159 and 1081162; the same defect class session e334b970 fixed in
-# verify_0cc1138a.py — see README, 24 October 2026). The provider is now
-# bound to the method, so a swapped or mislabelled evidence record still
-# fails, and the mirror tier carries its own dated-page checks below
-# instead of the vendored-monthly-file cross-check it cannot pass by design.
-VRS_PROVIDER_BY_METHOD = {
-    "model_vrs": "Valve VRS model",
-    "model_vrs_mirror": "HLTV Valve ranking (Valve points)",
-}
+_HLTV_VRS_URL = re.compile(
+    r"^https://www\.hltv\.org/valve-ranking/teams(?:/\d{4}/[a-z]+/\d{1,2})?$"
+)
+MAX_STANDINGS_AGE_DAYS = 45
 
 
 def _audit_vrs(m, generated, standings, findings, rec):
-    expected_provider = VRS_PROVIDER_BY_METHOD.get(m.get("method"))
+    expected_provider = (
+        "HLTV Valve ranking (Valve points)"
+        if m["method"] == "model_vrs_mirror"
+        else "Valve VRS model"
+    )
     ev = [e for e in m["evidence"] if e.get("provider") == expected_provider]
     if not ev:
-        providers = [e.get("provider") for e in m["evidence"]]
-        findings.append(Finding("fail", "vrs_evidence", m["id"],
-                                f"Model row ({m.get('method')}) has no evidence from its own "
-                                f"provider {expected_provider!r}; providers present: {providers}.", []))
+        findings.append(Finding("fail", "vrs_evidence", m["id"], "Model row has no VRS evidence.", []))
         return
     e = ev[0]
-    if m.get("method") == "model_vrs_mirror":
-        # The mirror tier exists precisely because Valve's monthly file could
-        # not resolve a club, so instead of the vendored-file cross-check the
-        # retained dated HLTV page is the evidence: it must be named, dated
-        # no later than the snapshot, hash-retained, and disclosed on the row.
-        for key in ("ranking_as_of", "ranking_page_sha256"):
-            if not e.get(key):
-                findings.append(Finding("fail", "vrs_mirror_source", m["id"],
-                                        f"Mirror evidence missing {key}; the dated HLTV page "
-                                        "behind these points is not re-derivable.", [e.get("url")]))
-        if e.get("ranking_as_of"):
-            try:
-                as_of = datetime.strptime(e["ranking_as_of"], "%Y-%m-%d").replace(tzinfo=timezone.utc)
-                if as_of.date() > generated.date():
-                    findings.append(Finding("fail", "vrs_mirror_source", m["id"],
-                                            f"Mirror ranking dated {e['ranking_as_of']} is after the "
-                                            f"snapshot date {generated.date()}.", [e.get("url")]))
-            except (ValueError, TypeError):
-                findings.append(Finding("fail", "vrs_mirror_source", m["id"],
-                                        f"Mirror ranking_as_of {e.get('ranking_as_of')!r} is not a date.",
-                                        [e.get("url")]))
-        if "hltv.org/valve-ranking/teams" not in str(e.get("url") or ""):
-            findings.append(Finding("fail", "vrs_mirror_source", m["id"],
-                                    "Mirror evidence URL is not HLTV's dated Valve ranking page.",
-                                    [e.get("url")]))
-        if not any("dated valve ranking" in f.lower() for f in m.get("flags", [])):
-            findings.append(Finding("flag", "vrs_mirror_label", m["id"],
-                                    "Mirror line missing the flag disclosing that its points came "
-                                    "from HLTV's dated Valve ranking, not Valve's monthly file.",
-                                    [e.get("url")]))
-        else:
-            rec["checks"].append("mirror points sourced to HLTV's dated Valve ranking page")
     points = e.get("points")
     if not points or len(points) != 2:
         findings.append(Finding("fail", "vrs_points", m["id"], "No retained Valve points.", [e.get("url")]))
@@ -502,6 +461,58 @@ def _audit_vrs(m, generated, standings, findings, rec):
                     rec["checks"].append(
                         f"duplicate label disambiguated by {overlap}/5 roster overlap -> standing {standing}")
         rec["checks"].append("points/standings/roster cross-checked against vendored Valve file")
+    elif m["method"] == "model_vrs_mirror":
+        _fresh(e, generated, findings, m["id"])
+        url = str(e.get("url") or "")
+        if not _HLTV_VRS_URL.match(url) or e.get("api_url") != url:
+            findings.append(Finding("fail", "vrs_mirror_source", m["id"],
+                                    f"Mirror evidence URL {url!r} is not HLTV's Valve ranking page.",
+                                    [url]))
+        as_of = e.get("ranking_as_of")
+        if not as_of:
+            findings.append(Finding("fail", "vrs_mirror_age", m["id"],
+                                    "Mirror evidence has no ranking_as_of date.", [url]))
+        else:
+            age_days = (generated.date() - parse_ts(str(as_of) + "T00:00:00Z").date()).days
+            if not (0 <= age_days <= MAX_STANDINGS_AGE_DAYS):
+                findings.append(Finding("fail", "vrs_mirror_age", m["id"],
+                                        f"Mirror ranking date {as_of} age {age_days}d outside [0, "
+                                        f"{MAX_STANDINGS_AGE_DAYS}].", [url]))
+        teams_count = e.get("ranking_teams_count")
+        if not isinstance(teams_count, int) or teams_count < 100:
+            findings.append(Finding("fail", "vrs_mirror_completeness", m["id"],
+                                    f"Mirror ranking_teams_count {teams_count!r} < 100.", [url]))
+        # Session b964dffd (adopted 9bbd095e's mirror audit verbatim above;
+        # this check is the one retained from that session's parallel fix):
+        # the dated page's retained SHA-256 is what lets a later reader prove
+        # the points came from the bytes the pipeline actually parsed.
+        if not e.get("ranking_page_sha256"):
+            findings.append(Finding("fail", "vrs_mirror_source", m["id"],
+                                    "Mirror evidence missing ranking_page_sha256; the dated "
+                                    "HLTV page behind these points is not re-verifiable.", [url]))
+        for team, count, chk in zip(
+                e.get("vrs_teams", m["teams"]),
+                e.get("label_counts") or [1, 1],
+                e.get("roster_checks") or [{}, {}]):
+            if isinstance(count, int) and count > 1:
+                overlap = chk.get("overlap") if isinstance(chk, dict) else None
+                if not isinstance(overlap, int) or overlap < 3:
+                    findings.append(Finding("fail", "vrs_duplicate_label", m["id"],
+                                            f"Duplicated HLTV Valve label {team!r} (count {count}) selected "
+                                            "without the required >=3-player HLTV roster overlap.", [url]))
+                else:
+                    rec["checks"].append(
+                        f"duplicate mirror label disambiguated by {overlap}/5 roster overlap")
+        if not any("dated valve ranking" in f.lower() for f in m.get("flags", [])):
+            findings.append(Finding("flag", "vrs_label", m["id"],
+                                    "Mirror model line missing the dated-Valve-ranking provenance flag.",
+                                    [url]))
+        if not any(a.get("provider") == "Valve VRS model" and a.get("status") == "unresolved"
+                   for a in m.get("attempts", [])):
+            findings.append(Finding("fail", "vrs_mirror_precedence", m["id"],
+                                    "Mirror line published without a recorded unresolved official-file "
+                                    "Valve VRS model attempt.", [url]))
+        rec["checks"].append("HLTV dated Valve ranking provenance, freshness and completeness verified")
     # roster overlap: Valve treats >=3 shared players as the same club. A null
     # overlap means roster continuity was not checked on this run (legal for a
     # unique Valve label); it is neither a pass nor a failure here.

@@ -187,10 +187,18 @@ class MirrorTierAuditorRegression(unittest.TestCase):
         self.assertTrue(any(f["area"] == "vrs_evidence" for f in bad), bad)
 
     def test_undated_mirror_evidence_fails(self):
-        def strip(row):
+        # Areas are the upstream auditor's (session 9bbd095e's parallel fix,
+        # adopted verbatim at integration): a missing ranking date is an age
+        # failure; a missing retained page hash is the source failure this
+        # session's check adds.
+        def strip_date(row):
             row["evidence"][0].pop("ranking_as_of", None)
+        bad = self.findings_for(self.tampered("1081162", strip_date), "1081162")
+        self.assertTrue(any(f["area"] == "vrs_mirror_age" for f in bad), bad)
+
+        def strip_hash(row):
             row["evidence"][0].pop("ranking_page_sha256", None)
-        bad = self.findings_for(self.tampered("1081162", strip), "1081162")
+        bad = self.findings_for(self.tampered("1081162", strip_hash), "1081162")
         self.assertTrue(any(f["area"] == "vrs_mirror_source" for f in bad), bad)
 
     def test_tampered_mirror_points_fail_the_rederivation(self):
