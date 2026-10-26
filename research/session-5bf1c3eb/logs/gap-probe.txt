@@ -1,0 +1,21 @@
+{
+  "counts": {
+    "total_feed_rows": 81,
+    "open_rows": 19,
+    "not_open_rows": 62,
+    "open_with_pick": 19,
+    "open_with_probabilities": 19,
+    "open_research_only_no_pct": 0,
+    "open_unresolved_no_pick": 0
+  },
+  "open_pick_methods": {
+    "exchange": 8,
+    "bookmaker_fallback": 1,
+    "model_vrs": 8,
+    "model_vrs_mirror": 2
+  },
+  "closed_rows": 62,
+  "closed_rows_with_upstream_status_conflict": 50,
+  "gaps_probed": 0,
+  "live_pages_within_8h": true
+}
