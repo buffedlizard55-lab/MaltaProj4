@@ -373,8 +373,19 @@ def _audit_book(m, generated, amap, findings, rec):
                                 [e.get("url")]))
 
 
+_HLTV_VRS_URL = re.compile(
+    r"^https://www\.hltv\.org/valve-ranking/teams(?:/\d{4}/[a-z]+/\d{1,2})?$"
+)
+MAX_STANDINGS_AGE_DAYS = 45
+
+
 def _audit_vrs(m, generated, standings, findings, rec):
-    ev = [e for e in m["evidence"] if e.get("provider") in ("Valve VRS model",)]
+    expected_provider = (
+        "HLTV Valve ranking (Valve points)"
+        if m["method"] == "model_vrs_mirror"
+        else "Valve VRS model"
+    )
+    ev = [e for e in m["evidence"] if e.get("provider") == expected_provider]
     if not ev:
         findings.append(Finding("fail", "vrs_evidence", m["id"], "Model row has no VRS evidence.", []))
         return
@@ -450,6 +461,50 @@ def _audit_vrs(m, generated, standings, findings, rec):
                     rec["checks"].append(
                         f"duplicate label disambiguated by {overlap}/5 roster overlap -> standing {standing}")
         rec["checks"].append("points/standings/roster cross-checked against vendored Valve file")
+    elif m["method"] == "model_vrs_mirror":
+        _fresh(e, generated, findings, m["id"])
+        url = str(e.get("url") or "")
+        if not _HLTV_VRS_URL.match(url) or e.get("api_url") != url:
+            findings.append(Finding("fail", "vrs_mirror_source", m["id"],
+                                    f"Mirror evidence URL {url!r} is not HLTV's Valve ranking page.",
+                                    [url]))
+        as_of = e.get("ranking_as_of")
+        if not as_of:
+            findings.append(Finding("fail", "vrs_mirror_age", m["id"],
+                                    "Mirror evidence has no ranking_as_of date.", [url]))
+        else:
+            age_days = (generated.date() - parse_ts(str(as_of) + "T00:00:00Z").date()).days
+            if not (0 <= age_days <= MAX_STANDINGS_AGE_DAYS):
+                findings.append(Finding("fail", "vrs_mirror_age", m["id"],
+                                        f"Mirror ranking date {as_of} age {age_days}d outside [0, "
+                                        f"{MAX_STANDINGS_AGE_DAYS}].", [url]))
+        teams_count = e.get("ranking_teams_count")
+        if not isinstance(teams_count, int) or teams_count < 100:
+            findings.append(Finding("fail", "vrs_mirror_completeness", m["id"],
+                                    f"Mirror ranking_teams_count {teams_count!r} < 100.", [url]))
+        for team, count, chk in zip(
+                e.get("vrs_teams", m["teams"]),
+                e.get("label_counts") or [1, 1],
+                e.get("roster_checks") or [{}, {}]):
+            if isinstance(count, int) and count > 1:
+                overlap = chk.get("overlap") if isinstance(chk, dict) else None
+                if not isinstance(overlap, int) or overlap < 3:
+                    findings.append(Finding("fail", "vrs_duplicate_label", m["id"],
+                                            f"Duplicated HLTV Valve label {team!r} (count {count}) selected "
+                                            "without the required >=3-player HLTV roster overlap.", [url]))
+                else:
+                    rec["checks"].append(
+                        f"duplicate mirror label disambiguated by {overlap}/5 roster overlap")
+        if not any("dated valve ranking" in f.lower() for f in m.get("flags", [])):
+            findings.append(Finding("flag", "vrs_label", m["id"],
+                                    "Mirror model line missing the dated-Valve-ranking provenance flag.",
+                                    [url]))
+        if not any(a.get("provider") == "Valve VRS model" and a.get("status") == "unresolved"
+                   for a in m.get("attempts", [])):
+            findings.append(Finding("fail", "vrs_mirror_precedence", m["id"],
+                                    "Mirror line published without a recorded unresolved official-file "
+                                    "Valve VRS model attempt.", [url]))
+        rec["checks"].append("HLTV dated Valve ranking provenance, freshness and completeness verified")
     # roster overlap: Valve treats >=3 shared players as the same club. A null
     # overlap means roster continuity was not checked on this run (legal for a
     # unique Valve label); it is neither a pass nor a failure here.
