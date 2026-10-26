@@ -52,7 +52,14 @@ class PhoneExecutiveSummaryTests(unittest.TestCase):
 
     def test_quick_nav_links_to_picks_and_visible_limitations(self):
         hrefs = {a['href'] for a in self.quick.select('a')}
-        self.assertEqual(hrefs, {'picks.html', '#unresolved-limits'})
+        # Session 11e17543 changed this from an exact-set equality to the subset
+        # form its sibling test_full_bar_keeps_its_contract already uses, because
+        # the quick nav gained a third destination (matches.html#every-match, the
+        # every-listed-match coverage table). The contract this test exists to
+        # protect - that the first phone screen reaches the picks and the visible
+        # limitations - is unchanged, and the exact-set form would forbid any
+        # future addition to the one row a phone visitor actually sees first.
+        self.assertTrue({'picks.html', '#unresolved-limits'}.issubset(hrefs), hrefs)
         self.assertTrue(self.soup.select_one('#unresolved-limits'))
 
     def test_quick_nav_counts_come_from_the_snapshot(self):

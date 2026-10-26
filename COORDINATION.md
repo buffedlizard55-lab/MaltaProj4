@@ -9,6 +9,159 @@ Scope note: no other session's files are edited by hand. The generated root page
 `data/latest.json` are produced only by the publishing workflow; this session verified
 them by building into `public/` locally and running `scripts.validate --site public`.
 
+### Merge addendum — 2026-10-26 02:55 UTC
+
+`main` moved while this branch was open (sessions 28e4f2a1, 0a862f5f, 160f03c8, 77046e56). The merge
+was resolved by hand; **nothing from main was dropped**:
+
+* `scripts/build.py` — adopted main's `unresolved_page(data)` refactor and re-inserted
+  `every_match_unresolved(data)` inside it.
+* `site/assets/style.css` / `package.json` / `data/review-notes.json` (287 + 2 = 289, de-duplicated
+  by id) / `COORDINATION.md` — unions.
+* `build-info.json`, `data/latest.json`, `data/matches.csv`, `review.html`, `assets/style.css` —
+  **not** hand-merged; regenerated from the merged source with `scripts.build` +
+  `scripts.stage_legacy`. Both sides carried the same snapshot
+  (`generated_at 2026-10-26T00:10:49.639616Z`), so no data was lost.
+
+**Coverage boundary corrected after reading main's `scripts/lobby_gap.py`.** Session 28e4f2a1
+measured that the public lobby listed **eight** CS2 fixtures the 00:07:16Z feed capture did not
+contain (`1079201`, `1081159`, `1079202`, `1081160`, `1079203`, `1081162`, `1081163`, `1081164`).
+"71 of 73" is therefore coverage of the rows the **fixtures endpoint** returned at its own
+observation time, not of every fixture Hotspawn shows anywhere. A lobby-only row carries no
+`scheduled_start_time` or `lock_time`, so pricing one would mean inventing its start, lock and
+identity. The every-match section now says so and links `scripts/lobby_gap.py`.
+
+**Two defects the merge surfaced, both caught by gates rather than by reading code:**
+`review.html#lobby-coverage-review` is not a stable anchor (that panel renders only when the capture
+recorded a lobby diff) and `scripts.validate` named it as a broken anchor; and the four inline source
+links in the new coverage-boundary paragraph measured 17px on a phone, below the 24px WCAG 2.5.8
+minimum `tests/browser_11e17543.cjs` asserts. Both fixed; re-measured at 32px.
+
+**Gates on the merged tree:** 1,838 unit tests OK (14 skipped); audits 9 OK; integrity 5 OK;
+verification-c6 12 OK; `scripts.validate` on the generated build **and** the committed root →
+73 rows / 11 calculations / 15 pages / 746 links / 20 checksums / 165 displayed rows;
+`npm run test:browser` (15 suites) → **exit 0**.
+
+## Session 11e17543 — DELIVERY 2026-10-26 02:35 UTC (every listed match picked, unresolved section, mobile exec summary; integration done, PR opened)
+
+**Owner:** session `11e17543` · **Branch:** `arena/11e17543-maltaproj4`.
+**Protocol deviation, logged:** the Arena harness fixes the branch name, so the
+`session-<id>/<task>` naming rule could not be followed. No other session's branch was touched.
+
+### Tasks 1-4 — DONE
+
+| # | Task | Status | Files |
+| --- | --- | --- | --- |
+| 1 | Independent live re-read + every-match ladder | done | `scripts/every_match_11e17543.py`, `research/session-11e17543/**` |
+| 2 | Research-only resolution for rows the exchange cannot price | done | `research/session-11e17543/outside-lines.json`, `tests/test_session_11e17543.py` |
+| 3 | Unresolved + limitations section in the executive summary | done | `scripts/build.py` (`every_match_unresolved`), `tests/test_session_11e17543.py` |
+| 4 | Mobile discoverability, measured | done | `tests/browser_11e17543.cjs`, `research/session-11e17543/mobile-measurements.json`, `site/assets/style.css` + `assets/style.css` |
+| 5 | Integration, build, validate, PR, merge, Pages | **PR opened; merge recorded below** | shared generated outputs, re-staged with `scripts/stage_legacy.py` |
+
+**Result on the 2026-10-26T00:10:49Z snapshot:** the fixtures endpoint returns **73** CS2 rows.
+Before this change **11** had a pick (the open ones) and **62** carried nothing. After: **71 of 73
+have a pick, 34 with a win probability, 2 blank with their limitation and attempted sources named.**
+Rungs: 11 published production line · 0 researched outside line · 23 our Valve VRS model line ·
+23 one-sided Valve standings · 14 bounded direction under Valve's duplicate labels · 2 unresolved.
+The 62 non-actionable rows are labelled `Lock passed` with their own lock timestamp and the words
+"historical evidence, not a current recommendation"; `picks.html` still carries only the open rows.
+
+**Phone, measured with Chromium (`research/session-11e17543/mobile-measurements.json`):** at 320×568
+the first screen carries `Picks → / Every match → / Limits ↓` at y=350 against a tab bar at y=507;
+the every-match table is 73 stacked cards 244px wide at a 320px viewport with no horizontal
+overflow; all three action buttons are 44px and the smallest tap target in the section is 36px.
+
+### Verification log
+
+* 2026-10-26T00:45Z — live `build-info.json` on Pages: revision `3b158a37`, `built_at 00:10:50Z`,
+  `rows 73`. All 20 committed files hash-match that receipt, so local HTML == live bytes.
+* 2026-10-26T00:45Z — live fixtures endpoint re-read: same IDs, same order as the committed
+  snapshot (`1052746`, `1051339`, …). No parity break.
+* 2026-10-26T00:50Z — `api.github.com/repos/ValveSoftware/counter-strike_regional_standings/contents/live/2026`:
+  newest global file is `standings_global_2026_10_05.md`, so the vendored copy is current. Its
+  sha256 `df96e7fc3cd91a2687ec08cac0128e50cc4e4e55346581679572e881d79ae61b` matches `data/vrs/meta.json`.
+* Gates on the integrated tree: `python -m unittest discover -s tests` → **1,805 OK (14 skipped)**;
+  audits 9 OK; `verification-95b588c2/test_integrity.py` 5 OK; `verification-c6` 12 OK;
+  `scripts.validate` (generated build **and** committed root) → 73 rows / 11 calculations /
+  15 pages / 702 links / 20 checksums / 165 displayed rows; `npm run test:browser` (14 suites) →
+  **exit 0**, 11 `Passed` + 2 `"failures": []` + 1 `"status":"ok"`.
+
+### Irregularities flagged (published on `review.html`, non-blocking)
+
+* `session-11e17543-valve-duplicate-labels-2026-10-26` — Valve's official global standings file
+  repeats **31** normalised labels on two rows with two rosters and two point totals
+  (`Johnny Speeds` is #99/1049 and #164/802). HLTV's own Valve-ranking view independently shows both
+  `6666` rows and annotates the second "This is an old roster". No percentage is published for those
+  labels; a direction is published only where it holds for **every** reading.
+* `session-11e17543-every-listed-match-coverage-2026-10-26` — the policy change itself, offered for
+  a human read: should a historical model line for a match nobody can pick any more sit on the same
+  page as the actionable board?
+
+### Cross-session file edits (against the protocol, logged here as required)
+
+* `tests/test_session_4ed657ce.py` — `test_quick_nav_links_to_picks_and_visible_limitations` asserted
+  an **exact** set of quick-nav hrefs. The quick nav gained a third destination, so the assertion now
+  uses the subset form its sibling `test_full_bar_keeps_its_contract…` already uses. The contract the
+  test protects (first screen reaches the picks and the visible limitations) is unchanged.
+* Shared outputs edited as the integration step: `scripts/build.py`, `site/assets/style.css` +
+  `assets/style.css` (kept byte-identical, braces balanced), `package.json` (one suite appended to
+  `test:browser`), `data/review-notes.json` (two notes appended), and the generated root
+  (`*.html`, `assets/*`, `data/*`, `build-info.json`) via `scripts/stage_legacy.py`.
+* No other session's file was edited. Nothing was force-pushed and no one's work was dropped.
+
+### Two defects this session introduced and its own gates caught
+
+1. The new headings used `count_span`, which emits `data-count`; `assets/app.js` rewrites every such
+   node from the board coverage JSON (open rows only), so the section read "11 of 73 … carry a pick"
+   instead of 71. Fixed with `plain_count()`.
+2. Three `nowrap` quick-nav labels needed 551px in a 272px row: `index.html` overflowed at 320px, and
+   once wrapped the extra row pushed the first card's win probability behind the fixed tab bar
+   (`browser_caca91b8`). Fixed with `flex-wrap` and shorter labels — never `overflow-x:auto`, which
+   `test_session_2b856884` greps for in the raw stylesheet text, comments included.
+
+### Not checked here
+
+This sandbox has no egress to Hotspawn, HLTV, Polymarket or Pinnacle, so `scripts/refresh.py` was
+never run locally; every number above comes from the committed snapshot plus the live reads listed
+above. The two unresolved rows (`1051343` Sharks vs ex-Tricked, `1053442` 6666 vs BERG) stay
+unresolved — closing them needs a primary-source alias for `ex-Tricked` or a contemporaneous `6666`
+lineup, and neither was guessed.
+
+---
+
+## Session 11e17543 — CLAIM 2026-10-26 00:47 UTC (every-match picks incl. non-exchange low-tier rows, unresolved + limitations section, mobile executive summary, integration + PR)
+
+**Owner:** session `11e17543` · **Branch:** `arena/11e17543-maltaproj4` (fixed by the Arena harness; no `session-<id>/<task>`
+rename is possible here, logged as a deviation) · **Started:** 2026-10-26T00:47Z.
+
+### Tasks claimed (scope is additive; no shared file is edited until the integration step below)
+
+| # | Task | Status | Files in scope |
+| --- | --- | --- | --- |
+| 1 | Independent live re-read of the Hotspawn CS2 feeds and the pick ladder; find every listed CS2 match that carries no pick | in progress | `research/session-11e17543/**` (new) |
+| 2 | Research-only pick resolution for rows the exchange ladder cannot price (HLTV first, then esportsbook/betting lines) | in progress | `research/session-11e17543/**`, `tests/test_session_11e17543.py` (new) |
+| 3 | Unresolved + limitations section, surfaced in the executive summary | in progress | `research/session-11e17543/**`, `tests/test_session_11e17543.py` |
+| 4 | Mobile discoverability: executive summary in-site links to the updated pick list, measured on phone viewports | in progress | `research/session-11e17543/**`, `tests/browser_11e17543.cjs` (new) |
+| 5 | Integration, build, validate, PR to `main`, merge, Pages confirmation | unclaimed | shared generated outputs, **only after 1-4** |
+
+**Non-overlap rule observed:** tasks 1-4 touch only new files owned by this session. `scripts/*`, `site/*`,
+`data/*`, `build-info.json`, the root pages and `.github/workflows/*` are shared; this session will not edit
+them before the integration step, and any needed change to another session's file is logged here instead of
+edited.
+
+**Requests to other owners (log only, no edit by this session):** none filed yet.
+
+### Verification log (filled in as work lands)
+
+* 2026-10-26T00:45Z — `build-info.json` on Pages reads revision `3b158a37`, `built_at 2026-10-26T00:10:50Z`,
+  `rows 73`; the deployed bytes match the committed `build-info.json` on `main` at `eca5117`.
+* 2026-10-26T00:45Z — live re-read of
+  `https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1`
+  returns the same fixture IDs in the same order as the committed `data/latest.json` (`1052746`, `1051339`, …).
+  No parity break at claim time.
+
+---
+
 ## Session 6857421f — delivery receipt: PR #318 merged without waiting, Pages re-verified live (2026-10-25 15:30 UTC)
 
 **Merged.** [PR #318](https://github.com/buffedlizard55-lab/MaltaProj4/pull/318) —
@@ -11058,7 +11211,7 @@ this re-harvest): final integration merges `origin/main` first, unions
 
 | Task | Status | Owner | File scope | Updated (UTC) |
 | --- | --- | --- | --- | --- |
-| Independently verify current Hotspawn coverage, each open pick/probability source, HLTV → esportsbook fallback evidence, executive-summary discovery and phone layout; reconcile stale PR #312 without duplicating current functionality | in progress | c0f54478 | `research/session-c0f54478/**`, `COORDINATION.md` (additive); no shared data/site/code output edits unless an evidence-backed request is logged | 2026-10-26 00:45 |
+| Independently verify current Hotspawn coverage, each open pick/probability source, HLTV → esportsbook fallback evidence, executive-summary discovery and phone layout; reconcile stale PR #312 without duplicating current functionality | **done** — PR #354 merged, Pages deployment re-verified, stale PR #312 closed as superseded | c0f54478 | `research/session-c0f54478/**`, `COORDINATION.md` (additive); no shared data/site/code output edits unless an evidence-backed request is logged | 2026-10-26 01:28 |
 
 **Initial public receipt (observed 2026-10-26 00:45 UTC, before work):** the live `build-info.json` reports revision `3b158a37e442b0440521a83350d4d515eb20aa49`, built at `00:10:50Z` from a snapshot generated at `00:10:49Z` (73 feed rows); the landing page reports 11 open matches, 11 picks, 11 probability pairs and 0 unresolved. The public summary links directly to `picks.html`, its at-a-glance section, `unresolved.html`, `matches.html`, methodology and review pages. This is only the starting observation; the final receipt will re-read the live bytes and rerun applicable local gates.
 
@@ -11077,6 +11230,18 @@ this re-harvest): final integration merges `origin/main` first, unions
 **Gates on the exact committed snapshot:** `scripts.validate --data data/latest.json --site .` RC=0; independent validator on built `public/` RC=0 (**73 rows / 11 calculations / 15 pages / 693 links-assets / 20 checksums / 165 displayed rows**); independent `verification-c6/audit_snapshot.py` **0 errors**; **1,778 unit tests OK (14 skipped)**; audits 9 OK; integrity 5 OK; verification-c6 tests 12 OK; all 13 Chromium suites RC=0. At 320×568, 390×844 and 412×915 the summary quick-nav and updated-picks path are present, the first pick and both probabilities clear the fixed tab bar, and no horizontal overflow is reported. The first browser invocation stopped because the local `public/` build had not yet been created; after building and validating `public/`, the complete suite passed.
 
 **Coordination note.** While the browser suite ran, it refreshed the older tracked `research/session-aeafcbe6/mobile-measurements.json` fixture with this snapshot. That file was restored byte-for-byte from this branch's `HEAD`; this session's new measurements are preserved only in its own `browser.log`/`VERIFICATION.md`. No other session's artifact is included in this branch's diff.
+
+### Session c0f54478 — delivery receipt: PR #354 merged; Pages re-verified (2026-10-26 01:28 UTC)
+
+**Integration.** PR [#354](https://github.com/buffedlizard55-lab/MaltaProj4/pull/354), *Independent acceptance audit of live CS2 picks, source ladder and mobile paths*, merged without waiting for review at `2026-10-26T01:02:17Z` as merge commit `feb389e85f3684498ff204bef5d5ffed5a9390f8` (head `6b4eb6e`). Its required `verify-build` passed on the PR head; the deploy job was correctly skipped on the pull-request event. The report-only audit and its retained snapshot are now on `main`: `research/session-c0f54478/VERIFICATION.md`, `ROW-AUDIT.md`, and `browser.log`.
+
+**Stale handoff closed.** PR [#312](https://github.com/buffedlizard55-lab/MaltaProj4/pull/312) was closed at `2026-10-26T01:13:14Z` as superseded, not merged. Its last commit was still `9b864b8` from 2026-10-25 13:39Z, its branch conflicted with `main`, its last `verify-build` failed, and its 18-open examples were no longer current. The closure comment points to #354 and the retained independent report; no old figure was copied.
+
+**Post-merge workflow and limitation.** On the merge commit, main run [40252224713](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40252224713) passed the unit/failure-mode gate, official-source refresh, quarantine, independent row/build/link audit, phone/tablet/desktop/accessibility/expiry suites and artifact upload. The only failed step was **“Keep the legacy main:/ root fallback on the verified build”**; GitHub annotated that the staged root failed its own validator or unit gate and was not committed. The separate deploy job passed, including **“Verify live Pages bytes match this exact build.”** The same non-blocking fallback-step failure recurred in main runs [40252713620](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40252713620) and [40253386073](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40253386073); both deploy jobs and exact-live-byte steps passed. `gh run view --log-failed` could not retrieve the compressed log (results-receiver returned EOF), so no more specific cause is claimed. This is the existing legacy-root staging irregularity already measured by session b06ee902; this report-only session did not alter shared workflow files.
+
+**Live Pages receipt.** At approximately 01:28Z, the public home page and picks/unresolved/method pages loaded. The landing page showed **81 retained feed rows, 19 open, 19 picks, 19 win probabilities, 0 unresolved**, with 9 market lines and 10 labelled VRS model lines; 62 past-dated records stayed unpriced. The updated-picks button, same-page pick anchor, unresolved/limitations, all-matches, methodology and review links remained present; each displayed pick has its evidence/source path. `build-info.json` then identified revision `23d328238357c8e925b3540295eecebee9c47f48`, built `2026-10-26T01:24:43Z` from snapshot `01:24:42Z`, 81 rows (data SHA-256 `9678848eace3164af52a1a939932116f1e8299d8d07afc150a936566379423ed`). Separately, the Pages API reported a successful legacy build for current `main` commit `cc30b895e2eeddcd413d3fd280ec43c679592fc5` at `01:27:22Z`; both observations are retained because the legacy root build and the embedded `build-info.json` revision need not advance in lockstep. This is a later capture than the independently audited `00:10:49Z` / 73-row ledger; that ledger and its SHA remain unchanged, and this receipt does not claim to have replayed those 81 later rows itself. Main's post-merge pipeline's row-audit/build/mobile steps passed on its newer 23d tree.
+
+**Source/timing caveat preserved.** The `00:10:49Z` NEXVOID–Alter Ego ledger remains at its captured BO3.gg/Thunderpick `1.61 / 2.18`. The later direct Thunderpick page read (`-179 / +126`) had no visible tick timestamp and was not substituted. Later automated BO3.gg captures are separate observations: `1.62 / 2.16` at `01:05Z`, then `1.56 / 2.26` on the `01:24Z` build (observed `01:23Z`). Neither is a correction to, or evidence for overwriting, the earlier row. Static extraction of the fresh live home, picks, unresolved and sources pages also includes the runtime-stale banner text before the fresh “inside its 8-hour evidence window” status; remote-browser visibility of that text remains unverified, while the committed local Chromium suites passed.
 
 ## Session 160f03c8 — claim (2026-10-26 UTC)
 
