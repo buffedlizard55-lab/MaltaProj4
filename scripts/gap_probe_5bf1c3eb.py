@@ -170,31 +170,55 @@ def probe_polymarket(session, targets):
     return out
 
 
-def probe_pinnacle(session, targets):
-    """Read Pinnacle's guest esports moneyline endpoint once and report, per
-    unpriced fixture, whether a two-way price for that exact pair was offered."""
+def probe_pinnacle(session, targets, snapshot):
+    """Read Pinnacle's guest esports endpoints once and report, per probed
+    fixture, whether the *pipeline's own* matcher finds a two-way moneyline for
+    that exact pair in that minute.
+
+    Reusing :func:`scripts.core.pinnacle_candidates` is deliberate: the receipt
+    must say exactly what the publication ladder saw, not a looser name search.
+    A partial label overlap ("Spirit" inside "Spirit Academy") is therefore
+    impossible here; a fixture with no candidate row is recorded as "no two-way
+    Pinnacle line in this minute", which is a coverage fact, not a price.
+    """
+    from scripts.core import orientation, pinnacle_candidates
     out = {'matchups': None, 'moneylines': None, 'per_fixture': {}}
     mrec, matchups, _ = _get(session, PIN + '/sports/12/matchups?withSpecials=false')
     lrec, lines, _ = _get(session, PIN + '/sports/12/markets/straight')
     out['matchups'] = dict(mrec, count=len(matchups) if isinstance(matchups, list) else None)
     out['moneylines'] = dict(lrec, count=len(lines) if isinstance(lines, list) else None)
-    names = []
-    for row in matchups if isinstance(matchups, list) else []:
-        if not isinstance(row, dict):
-            continue
-        for part in row.get('participants') or []:
-            if isinstance(part, dict) and part.get('name'):
-                names.append({'matchup_id': row.get('id'), 'name': part['name'],
-                              'starts': row.get('starts')})
+    observed = iso(datetime.now(timezone.utc))
+    try:
+        candidates = pinnacle_candidates(matchups, lines, observed)
+    except ValueError as exc:
+        out['parse_error'] = str(exc)
+        candidates = []
+    by_fixture = {fid: [] for fid, _ in targets}
     for fixture_id, teams in targets:
-        hits = [n for n in names
-                if all(any(norm(t) in norm(n['name']) or norm(n['name']) in norm(t)
-                           for t in teams) for n in [n])]
+        stub = {'teams': teams, 'start': next((m.get('start') for m in snapshot.get('matches') or []
+                                               if str(m.get('id')) == fixture_id), None)}
+        for c in candidates:
+            order = orientation(stub, c['teams'], c['start'])
+            if order is None:
+                continue
+            line = c.get('line') or {}
+            by_fixture[fixture_id].append({
+                'matchup_id': c['id'],
+                'pinnacle_teams': c['teams'],
+                'start': c['start'],
+                'line_status': line.get('status'),
+                'matchup_status': c.get('status'),
+                'prices': line.get('prices'),
+                'cutoff_at': line.get('cutoffAt'),
+                'api_url': c['api_url'],
+            })
+    for fixture_id, hits in by_fixture.items():
         out['per_fixture'][fixture_id] = {
-            'pinnacle_names_matching_both_teams': hits[:10],
-            'note': ('No Pinnacle esports matchup row names both clubs in the same '
-                     'minute as this snapshot.' if not hits else
-                     'Pinnacle names this pair; see the retained moneyline receipt.'),
+            'two_way_pinnacle_lines': hits[:5],
+            'note': ('Pinnacle lists a two-way CS2 moneyline for this exact pair in this '
+                     'minute; see the retained prices and statuses.' if hits else
+                     'Pinnacle lists no two-way CS2 moneyline for this exact pair in this '
+                     'minute (26 CS2 matchups read). Coverage gap recorded, no price inferred.'),
         }
     return out
 
@@ -275,11 +299,12 @@ def main() -> int:
     # evidence that the model label on it is honest.
     nonmarket = [m for m in opens if m.get('probabilities') is not None
                  and str(m.get('method')) not in ('exchange', 'bookmaker_fallback', 'exchange_wide')]
-    targets = [(str(m.get('id')), list(m.get('teams') or [])) for m in gaps + nonmarket]
+    probed = gaps + nonmarket
+    targets = [(str(m.get('id')), list(m.get('teams') or [])) for m in probed]
     bo3_rows = fetch_bo3_upcoming(session) if targets else []
 
     per_row = []
-    for m in gaps:
+    for m in probed:
         teams = list(m.get('teams') or [])
         per_row.append({
             'id': m.get('id'),
@@ -291,6 +316,7 @@ def main() -> int:
             'best_of': m.get('best_of'),
             'pick': m.get('pick'),
             'method': m.get('method'),
+            'probabilities': m.get('probabilities'),
             'reason': m.get('reason'),
             'flags': m.get('flags') or [],
             'attempts': m.get('attempts') or [],
@@ -328,7 +354,7 @@ def main() -> int:
             'bo3_gg_upcoming_rows': len(bo3_rows),
             'egamersworld': probe_egamersworld(session, targets) if targets else {'skipped': 'every open row already carries a probability'},
             'polymarket': probe_polymarket(session, targets) if targets else {'skipped': 'every open row already carries a probability'},
-            'pinnacle': probe_pinnacle(session, targets) if targets else {'skipped': 'every open row already carries a probability'},
+            'pinnacle': probe_pinnacle(session, targets, snapshot) if targets else {'skipped': 'every open row already carries a probability'},
         },
         'closed_rows_that_cannot_take_a_pick': closed_row_ledger(snapshot),
     }
