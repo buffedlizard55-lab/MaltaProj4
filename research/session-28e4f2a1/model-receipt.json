@@ -1,0 +1,1246 @@
+{
+  "official_file": {
+    "path": "research/session-28e4f2a1/valve-live-2026-10-05.md",
+    "sha256": "df96e7fc3cd91a2687ec08cac0128e50cc4e4e55346581679572e881d79ae61b",
+    "rows": 380
+  },
+  "snapshot_generated_at": "2026-10-26T00:52:33.666528Z",
+  "rows": [
+    {
+      "fixture": "1082858",
+      "kind": "market_check",
+      "fixture_teams": [
+        "Ground Zero",
+        "Off Chops"
+      ],
+      "vrs_teams": [
+        "Ground Zero",
+        "THUNDER dOWNUNDER"
+      ],
+      "snapshot_points": [
+        878,
+        971
+      ],
+      "confirmed": [
+        {
+          "team": "Ground Zero",
+          "listed_rows": [
+            {
+              "standing": 136,
+              "points": 878,
+              "name": "Ground Zero",
+              "roster": [
+                "apocdud",
+                "hazr",
+                "Omichella",
+                "sliimey",
+                "vision"
+              ]
+            }
+          ],
+          "points_match": true
+        },
+        {
+          "team": "THUNDER dOWNUNDER",
+          "listed_rows": [
+            {
+              "standing": 119,
+              "points": 971,
+              "name": "THUNDER dOWNUNDER",
+              "roster": [
+                "dexter",
+                "Gratisfaction",
+                "Liazz",
+                "TjP",
+                "viridian"
+              ]
+            }
+          ],
+          "points_match": true
+        }
+      ],
+      "raw_expected": 0.3726650168054963,
+      "recomputed": [
+        0.39831028242086935,
+        0.6016897175791307
+      ],
+      "published": [
+        0.39831028242086935,
+        0.6016897175791307
+      ],
+      "reproduces": true
+    },
+    {
+      "fixture": "1082859",
+      "kind": "market_check",
+      "fixture_teams": [
+        "NEXVOID",
+        "Alter Ego"
+      ],
+      "vrs_teams": [
+        "NEXVOID",
+        "Alter Ego"
+      ],
+      "snapshot_points": [
+        995,
+        819
+      ],
+      "confirmed": [
+        {
+          "team": "NEXVOID",
+          "listed_rows": [
+            {
+              "standing": 113,
+              "points": 995,
+              "name": "NEXVOID",
+              "roster": [
+                "AccuracyTG",
+                "erkaSt",
+                "MiQ",
+                "xerolte",
+                "Zesta"
+              ]
+            }
+          ],
+          "points_match": true
+        },
+        {
+          "team": "Alter Ego",
+          "listed_rows": [
+            {
+              "standing": 155,
+              "points": 819,
+              "name": "Alter Ego",
+              "roster": [
+                "adeX",
+                "BnTeT",
+                "Gratisfaction",
+                "laxiee",
+                "PokemoN"
+              ]
+            }
+          ],
+          "points_match": true
+        }
+      ],
+      "raw_expected": 0.7282182354771827,
+      "recomputed": [
+        0.6822550828520781,
+        0.31774491714792186
+      ],
+      "published": [
+        0.6822550828520781,
+        0.31774491714792186
+      ],
+      "reproduces": true
+    },
+    {
+      "fixture": "1079201",
+      "kind": "market_check",
+      "fixture_teams": [
+        "INOX Division",
+        "Nemesis"
+      ],
+      "vrs_teams": [
+        "INOX Division",
+        "Nemesis"
+      ],
+      "snapshot_points": [
+        1105,
+        1455
+      ],
+      "confirmed": [
+        {
+          "team": "INOX Division",
+          "listed_rows": [
+            {
+              "standing": 82,
+              "points": 1105,
+              "name": "INOX Division",
+              "roster": [
+                "FenomeN",
+                "finW",
+                "gooddeph",
+                "k0s",
+                "k1slll"
+              ]
+            }
+          ],
+          "points_match": true
+        },
+        {
+          "team": "Nemesis",
+          "listed_rows": [
+            {
+              "standing": 29,
+              "points": 1455,
+              "name": "Nemesis",
+              "roster": [
+                "mag1k3Y",
+                "r3salt",
+                "Sdaim",
+                "SELLTER",
+                "tex1y"
+              ]
+            }
+          ],
+          "points_match": true
+        }
+      ],
+      "raw_expected": 0.1234667528611764,
+      "recomputed": [
+        0.19930054883493548,
+        0.8006994511650645
+      ],
+      "published": [
+        0.19930054883493548,
+        0.8006994511650645
+      ],
+      "reproduces": true
+    },
+    {
+      "fixture": "1079202",
+      "kind": "published_line",
+      "fixture_teams": [
+        "FOKUS",
+        "ex-Zero Tenacity"
+      ],
+      "vrs_teams": [
+        "FOKUS",
+        "ex-Zero Tenacity"
+      ],
+      "snapshot_points": [
+        1321,
+        1066
+      ],
+      "confirmed": [
+        {
+          "team": "FOKUS",
+          "listed_rows": [
+            {
+              "standing": 48,
+              "points": 1321,
+              "name": "FOKUS",
+              "roster": [
+                "Banjo",
+                "jocab",
+                "Matheos",
+                "podi",
+                "ztr"
+              ]
+            }
+          ],
+          "points_match": true
+        },
+        {
+          "team": "ex-Zero Tenacity",
+          "listed_rows": [
+            {
+              "standing": 93,
+              "points": 1066,
+              "name": "ex-Zero Tenacity",
+              "roster": [
+                "brutmonster",
+                "Cjoffo",
+                "Dragon",
+                "Kind0",
+                "VLDN"
+              ]
+            }
+          ],
+          "points_match": true
+        }
+      ],
+      "raw_expected": 0.8065898108213129,
+      "recomputed": [
+        0.7448426229219005,
+        0.2551573770780995
+      ],
+      "published": [
+        0.7448426229219005,
+        0.2551573770780995
+      ],
+      "reproduces": true
+    },
+    {
+      "fixture": "1081159",
+      "kind": "mirror_line",
+      "fixture_teams": [
+        "LFO 10",
+        "ex-6666"
+      ],
+      "vrs_teams": [
+        "LFO 10",
+        "ex-6666"
+      ],
+      "snapshot_points": [
+        803,
+        968
+      ],
+      "confirmed": [
+        {
+          "team": "LFO 10",
+          "listed_rows": [],
+          "points_match": null
+        },
+        {
+          "team": "ex-6666",
+          "listed_rows": [],
+          "points_match": null
+        }
+      ],
+      "official_file_check": false,
+      "ranking_as_of": "2026-10-26",
+      "ranking_source": "https://www.hltv.org/valve-ranking/teams/2026/october/26",
+      "ranking_page_sha256": "5b6ff7f630e1fb784b35565cd33e6955723ce7480ec861c375dfb320d4ea8c9f",
+      "raw_expected": 0.28414330714721847,
+      "recomputed": [
+        0.32761684508776867,
+        0.6723831549122313
+      ],
+      "published": [
+        0.32761684508776867,
+        0.6723831549122313
+      ],
+      "reproduces": true
+    },
+    {
+      "fixture": "1079203",
+      "kind": "published_line",
+      "fixture_teams": [
+        "Metizport",
+        "BRUTE"
+      ],
+      "vrs_teams": [
+        "Metizport",
+        "BRUTE"
+      ],
+      "snapshot_points": [
+        1290,
+        1116
+      ],
+      "confirmed": [
+        {
+          "team": "Metizport",
+          "listed_rows": [
+            {
+              "standing": 53,
+              "points": 1290,
+              "name": "Metizport",
+              "roster": [
+                "F1KU",
+                "forsyy",
+                "MaiL09",
+                "Plopski",
+                "stanislaw"
+              ]
+            }
+          ],
+          "points_match": true
+        },
+        {
+          "team": "BRUTE",
+          "listed_rows": [
+            {
+              "standing": 75,
+              "points": 1116,
+              "name": "BRUTE",
+              "roster": [
+                "aidKiT",
+                "hfah",
+                "nbqq",
+                "tAk",
+                "ZEDKO"
+              ]
+            },
+            {
+              "standing": 218,
+              "points": 689,
+              "name": "BRUTE",
+              "roster": [
+                "hfah",
+                "KAD1M",
+                "majky",
+                "nbqq",
+                "realzen"
+              ]
+            }
+          ],
+          "points_match": true
+        }
+      ],
+      "raw_expected": 0.7259959111666857,
+      "recomputed": [
+        0.6804803346577152,
+        0.3195196653422848
+      ],
+      "published": [
+        0.6804803346577152,
+        0.3195196653422848
+      ],
+      "reproduces": true,
+      "duplicate_labels": [
+        {
+          "team": "BRUTE",
+          "lineup": [
+            "nbqq",
+            "aidKiT",
+            "ZEDKO",
+            "tAk",
+            "oontoma"
+          ],
+          "overlap_by_row": [
+            {
+              "standing": 75,
+              "overlap": 4
+            },
+            {
+              "standing": 218,
+              "overlap": 1
+            }
+          ],
+          "chosen_points": 1116,
+          "chosen_standing": 75,
+          "roster_rule_verified": true,
+          "rows": [
+            {
+              "standing": 75,
+              "points": 1116,
+              "roster": [
+                "aidKiT",
+                "hfah",
+                "nbqq",
+                "tAk",
+                "ZEDKO"
+              ]
+            },
+            {
+              "standing": 218,
+              "points": 689,
+              "roster": [
+                "hfah",
+                "KAD1M",
+                "majky",
+                "nbqq",
+                "realzen"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fixture": "1081160",
+      "kind": "published_line",
+      "fixture_teams": [
+        "HAVU",
+        "ILLYRIANS"
+      ],
+      "vrs_teams": [
+        "HAVU",
+        "Illyrians"
+      ],
+      "snapshot_points": [
+        937,
+        862
+      ],
+      "confirmed": [
+        {
+          "team": "HAVU",
+          "listed_rows": [
+            {
+              "standing": 124,
+              "points": 937,
+              "name": "HAVU",
+              "roster": [
+                "8Juho8",
+                "Alxc",
+                "ottob",
+                "p3kko",
+                "uli"
+              ]
+            }
+          ],
+          "points_match": true
+        },
+        {
+          "team": "Illyrians",
+          "listed_rows": [
+            {
+              "standing": 141,
+              "points": 862,
+              "name": "Illyrians",
+              "roster": [
+                "ammar",
+                "BledarD",
+                "cerber",
+                "vAloN",
+                "xonn1k"
+              ]
+            }
+          ],
+          "points_match": true
+        }
+      ],
+      "raw_expected": 0.6034833894974426,
+      "recomputed": [
+        0.5826418348526576,
+        0.41735816514734236
+      ],
+      "published": [
+        0.5826418348526576,
+        0.41735816514734236
+      ],
+      "reproduces": true
+    },
+    {
+      "fixture": "1093218",
+      "kind": "published_line",
+      "fixture_teams": [
+        "Nuclear TigeRES",
+        "UNiTY"
+      ],
+      "vrs_teams": [
+        "Nuclear TigeRES",
+        "UNiTY"
+      ],
+      "snapshot_points": [
+        1324,
+        1167
+      ],
+      "confirmed": [
+        {
+          "team": "Nuclear TigeRES",
+          "listed_rows": [
+            {
+              "standing": 46,
+              "points": 1324,
+              "name": "Nuclear TigeRES",
+              "roster": [
+                "ayuki",
+                "Djon8",
+                "flouzer",
+                "senka",
+                "tronic"
+              ]
+            }
+          ],
+          "points_match": true
+        },
+        {
+          "team": "UNiTY",
+          "listed_rows": [
+            {
+              "standing": 69,
+              "points": 1167,
+              "name": "UNiTY",
+              "roster": [
+                "2high",
+                "Dytor",
+                "KWERTZZ",
+                "M1key",
+                "Sn0w"
+              ]
+            }
+          ],
+          "points_match": true
+        }
+      ],
+      "raw_expected": 0.7066566672248724,
+      "recomputed": [
+        0.6650360144457831,
+        0.3349639855542169
+      ],
+      "published": [
+        0.6650360144457831,
+        0.3349639855542169
+      ],
+      "reproduces": true
+    },
+    {
+      "fixture": "1082861",
+      "kind": "market_check",
+      "fixture_teams": [
+        "Rooster",
+        "Abyssal"
+      ],
+      "vrs_teams": [
+        "Rooster",
+        "Abyssal"
+      ],
+      "snapshot_points": [
+        718,
+        734
+      ],
+      "confirmed": [
+        {
+          "team": "Rooster",
+          "listed_rows": [
+            {
+              "standing": 205,
+              "points": 718,
+              "name": "Rooster",
+              "roster": [
+                "ADK",
+                "chelleos",
+                "damyo",
+                "rekonz",
+                "SkulL"
+              ]
+            }
+          ],
+          "points_match": true
+        },
+        {
+          "team": "Abyssal",
+          "listed_rows": [
+            {
+              "standing": 195,
+              "points": 734,
+              "name": "Abyssal",
+              "roster": [
+                "blood",
+                "dangeR",
+                "foggers",
+                "gump",
+                "vinhy"
+              ]
+            }
+          ],
+          "points_match": true
+        }
+      ],
+      "raw_expected": 0.4776149428184876,
+      "recomputed": [
+        0.4821232933348442,
+        0.5178767066651557
+      ],
+      "published": [
+        0.4821232933348442,
+        0.5178767066651557
+      ],
+      "reproduces": true
+    },
+    {
+      "fixture": "1082897",
+      "kind": "market_check",
+      "fixture_teams": [
+        "B8",
+        "K27"
+      ],
+      "vrs_teams": [
+        "B8",
+        "K27"
+      ],
+      "snapshot_points": [
+        1555,
+        1435
+      ],
+      "confirmed": [
+        {
+          "team": "B8",
+          "listed_rows": [
+            {
+              "standing": 13,
+              "points": 1555,
+              "name": "B8",
+              "roster": [
+                "alex666",
+                "esenthial",
+                "kensizor",
+                "npl",
+                "s1zzi"
+              ]
+            }
+          ],
+          "points_match": true
+        },
+        {
+          "team": "K27",
+          "listed_rows": [
+            {
+              "standing": 32,
+              "points": 1435,
+              "name": "K27",
+              "roster": [
+                "clax",
+                "kashl1d",
+                "qw1nk1",
+                "X5G7V",
+                "xeedo"
+              ]
+            }
+          ],
+          "points_match": true
+        }
+      ],
+      "raw_expected": 0.6619510568294391,
+      "recomputed": [
+        0.6293341139839901,
+        0.3706658860160099
+      ],
+      "published": [
+        0.6293341139839901,
+        0.3706658860160099
+      ],
+      "reproduces": true
+    },
+    {
+      "fixture": "1082898",
+      "kind": "market_check",
+      "fixture_teams": [
+        "Alliance",
+        "FaZe"
+      ],
+      "vrs_teams": [
+        "Alliance",
+        "FaZe"
+      ],
+      "snapshot_points": [
+        1483,
+        1482
+      ],
+      "confirmed": [
+        {
+          "team": "Alliance",
+          "listed_rows": [
+            {
+              "standing": 24,
+              "points": 1483,
+              "name": "Alliance",
+              "roster": [
+                "avid",
+                "bobeksde",
+                "eraa",
+                "twist",
+                "upE"
+              ]
+            }
+          ],
+          "points_match": true
+        },
+        {
+          "team": "FaZe",
+          "listed_rows": [
+            {
+              "standing": 26,
+              "points": 1482,
+              "name": "FaZe",
+              "roster": [
+                "frozen",
+                "JBOEN",
+                "jcobbb",
+                "Neityu",
+                "Twistzz"
+              ]
+            }
+          ],
+          "points_match": true
+        }
+      ],
+      "raw_expected": 0.5013999982864173,
+      "recomputed": [
+        0.5011180386315329,
+        0.4988819613684671
+      ],
+      "published": [
+        0.5011180386315329,
+        0.4988819613684671
+      ],
+      "reproduces": true
+    },
+    {
+      "fixture": "1081162",
+      "kind": "mirror_line",
+      "fixture_teams": [
+        "ex-RUSTEC",
+        "Spirit Academy"
+      ],
+      "vrs_teams": [
+        "ex-RUSTEC",
+        "Spirit Academy"
+      ],
+      "snapshot_points": [
+        1059,
+        1038
+      ],
+      "confirmed": [
+        {
+          "team": "ex-RUSTEC",
+          "listed_rows": [],
+          "points_match": null
+        },
+        {
+          "team": "Spirit Academy",
+          "listed_rows": [],
+          "points_match": null
+        }
+      ],
+      "official_file_check": false,
+      "ranking_as_of": "2026-10-26",
+      "ranking_source": "https://www.hltv.org/valve-ranking/teams/2026/october/26",
+      "ranking_page_sha256": "5b6ff7f630e1fb784b35565cd33e6955723ce7480ec861c375dfb320d4ea8c9f",
+      "raw_expected": 0.5293662045877111,
+      "recomputed": [
+        0.5234518509837461,
+        0.47654814901625386
+      ],
+      "published": [
+        0.5234518509837461,
+        0.47654814901625386
+      ],
+      "reproduces": true
+    },
+    {
+      "fixture": "1081163",
+      "kind": "published_line",
+      "fixture_teams": [
+        "BakS",
+        "Saint Sinners"
+      ],
+      "vrs_teams": [
+        "BAKS",
+        "Saint Sinners"
+      ],
+      "snapshot_points": [
+        1044,
+        810
+      ],
+      "confirmed": [
+        {
+          "team": "BAKS",
+          "listed_rows": [
+            {
+              "standing": 100,
+              "points": 1044,
+              "name": "BAKS",
+              "roster": [
+                "danistzz",
+                "Norwi",
+                "turbo",
+                "whisper",
+                "xdENiSZERA"
+              ]
+            }
+          ],
+          "points_match": true
+        },
+        {
+          "team": "Saint Sinners",
+          "listed_rows": [
+            {
+              "standing": 158,
+              "points": 810,
+              "name": "Saint Sinners",
+              "roster": [
+                "Caleyy",
+                "deb0",
+                "iRV1NG",
+                "pavlysha666",
+                "ves111"
+              ]
+            }
+          ],
+          "points_match": true
+        }
+      ],
+      "raw_expected": 0.7875803872360995,
+      "recomputed": [
+        0.729661697246749,
+        0.270338302753251
+      ],
+      "published": [
+        0.729661697246749,
+        0.270338302753251
+      ],
+      "reproduces": true
+    },
+    {
+      "fixture": "1082900",
+      "kind": "market_check",
+      "fixture_teams": [
+        "Luminosity",
+        "HOTU"
+      ],
+      "vrs_teams": [
+        "Luminosity",
+        "HOTU"
+      ],
+      "snapshot_points": [
+        1547,
+        1437
+      ],
+      "confirmed": [
+        {
+          "team": "Luminosity",
+          "listed_rows": [
+            {
+              "standing": 16,
+              "points": 1547,
+              "name": "Luminosity",
+              "roster": [
+                "afro",
+                "AZUWU",
+                "lux",
+                "Rainwaker",
+                "yxngstxr"
+              ]
+            }
+          ],
+          "points_match": true
+        },
+        {
+          "team": "HOTU",
+          "listed_rows": [
+            {
+              "standing": 31,
+              "points": 1437,
+              "name": "HOTU",
+              "roster": [
+                "dwushka",
+                "frontales",
+                "kade0",
+                "mizu",
+                "n0rb3r7"
+              ]
+            }
+          ],
+          "points_match": true
+        }
+      ],
+      "raw_expected": 0.6493084601515879,
+      "recomputed": [
+        0.6192377362770581,
+        0.38076226372294186
+      ],
+      "published": [
+        0.6192377362770581,
+        0.38076226372294186
+      ],
+      "reproduces": true
+    },
+    {
+      "fixture": "1081164",
+      "kind": "published_line",
+      "fixture_teams": [
+        "Inner Circle Academy",
+        "Lavked"
+      ],
+      "vrs_teams": [
+        "Inner Circle Academy",
+        "Lavked"
+      ],
+      "snapshot_points": [
+        1064,
+        862
+      ],
+      "confirmed": [
+        {
+          "team": "Inner Circle Academy",
+          "listed_rows": [
+            {
+              "standing": 94,
+              "points": 1064,
+              "name": "Inner Circle Academy",
+              "roster": [
+                "3ippoch",
+                "Flierax",
+                "L1seYoung",
+                "NaYz",
+                "Tamefear"
+              ]
+            }
+          ],
+          "points_match": true
+        },
+        {
+          "team": "Lavked",
+          "listed_rows": [
+            {
+              "standing": 143,
+              "points": 862,
+              "name": "Lavked",
+              "roster": [
+                "1NVISIBLEE",
+                "azukay",
+                "k4nfuz",
+                "sol",
+                "xm1nd"
+              ]
+            }
+          ],
+          "points_match": true
+        }
+      ],
+      "raw_expected": 0.7560605767106526,
+      "recomputed": [
+        0.7044899765611272,
+        0.2955100234388728
+      ],
+      "published": [
+        0.7044899765611272,
+        0.2955100234388728
+      ],
+      "reproduces": true
+    },
+    {
+      "fixture": "1082901",
+      "kind": "market_check",
+      "fixture_teams": [
+        "Envy",
+        "GamerLegion"
+      ],
+      "vrs_teams": [
+        "3DMAX",
+        "GamerLegion"
+      ],
+      "snapshot_points": [
+        1500,
+        1479
+      ],
+      "confirmed": [
+        {
+          "team": "3DMAX",
+          "listed_rows": [
+            {
+              "standing": 21,
+              "points": 1500,
+              "name": "3DMAX",
+              "roster": [
+                "Graviti",
+                "Kursy",
+                "Lucky",
+                "Maka",
+                "misutaaa"
+              ]
+            }
+          ],
+          "points_match": true
+        },
+        {
+          "team": "GamerLegion",
+          "listed_rows": [
+            {
+              "standing": 27,
+              "points": 1479,
+              "name": "GamerLegion",
+              "roster": [
+                "FL4MUS",
+                "hypex",
+                "REZ",
+                "Snax",
+                "Tauson"
+              ]
+            }
+          ],
+          "points_match": true
+        }
+      ],
+      "raw_expected": 0.5293662045877111,
+      "recomputed": [
+        0.5234518509837461,
+        0.47654814901625386
+      ],
+      "published": [
+        0.5234518509837461,
+        0.47654814901625386
+      ],
+      "reproduces": true
+    },
+    {
+      "fixture": "1082792",
+      "kind": "published_line",
+      "fixture_teams": [
+        "HOTU",
+        "The Huns"
+      ],
+      "vrs_teams": [
+        "HOTU",
+        "The Huns"
+      ],
+      "snapshot_points": [
+        1437,
+        944
+      ],
+      "confirmed": [
+        {
+          "team": "HOTU",
+          "listed_rows": [
+            {
+              "standing": 31,
+              "points": 1437,
+              "name": "HOTU",
+              "roster": [
+                "dwushka",
+                "frontales",
+                "kade0",
+                "mizu",
+                "n0rb3r7"
+              ]
+            }
+          ],
+          "points_match": true
+        },
+        {
+          "team": "The Huns",
+          "listed_rows": [
+            {
+              "standing": 122,
+              "points": 944,
+              "name": "The Huns",
+              "roster": [
+                "Annihilation",
+                "Bart4k",
+                "bexyz",
+                "controlez",
+                "Cozen"
+              ]
+            },
+            {
+              "standing": 213,
+              "points": 701,
+              "name": "The Huns",
+              "roster": [
+                "Bart4k",
+                "controlez",
+                "nin9",
+                "sk0R",
+                "xerolte"
+              ]
+            }
+          ],
+          "points_match": true
+        }
+      ],
+      "raw_expected": 0.940520617794216,
+      "recomputed": [
+        0.851799765370461,
+        0.14820023462953902
+      ],
+      "published": [
+        0.851799765370461,
+        0.14820023462953902
+      ],
+      "reproduces": true,
+      "duplicate_labels": [
+        {
+          "team": "The Huns",
+          "lineup": [
+            "Bart4k",
+            "controlez",
+            "bexyz",
+            "Cozen",
+            "DarkMeister"
+          ],
+          "overlap_by_row": [
+            {
+              "standing": 122,
+              "overlap": 4
+            },
+            {
+              "standing": 213,
+              "overlap": 2
+            }
+          ],
+          "chosen_points": 944,
+          "chosen_standing": 122,
+          "roster_rule_verified": true,
+          "rows": [
+            {
+              "standing": 122,
+              "points": 944,
+              "roster": [
+                "Annihilation",
+                "Bart4k",
+                "bexyz",
+                "controlez",
+                "Cozen"
+              ]
+            },
+            {
+              "standing": 213,
+              "points": 701,
+              "roster": [
+                "Bart4k",
+                "controlez",
+                "nin9",
+                "sk0R",
+                "xerolte"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fixture": "1082793",
+      "kind": "published_line",
+      "fixture_teams": [
+        "5star",
+        "1WIN"
+      ],
+      "vrs_teams": [
+        "5star",
+        "1win"
+      ],
+      "snapshot_points": [
+        1110,
+        1383
+      ],
+      "confirmed": [
+        {
+          "team": "5star",
+          "listed_rows": [
+            {
+              "standing": 80,
+              "points": 1110,
+              "name": "5star",
+              "roster": [
+                "ariucle",
+                "clouden",
+                "hoolig4n",
+                "NEUZ",
+                "rate"
+              ]
+            }
+          ],
+          "points_match": true
+        },
+        {
+          "team": "1win",
+          "listed_rows": [
+            {
+              "standing": 38,
+              "points": 1383,
+              "name": "1win",
+              "roster": [
+                "ArtFr0st",
+                "Ax1Le",
+                "BELCHONOKK",
+                "fame",
+                "nafany"
+              ]
+            }
+          ],
+          "points_match": true
+        }
+      ],
+      "raw_expected": 0.17816901694318932,
+      "recomputed": [
+        0.242985776930831,
+        0.757014223069169
+      ],
+      "published": [
+        0.242985776930831,
+        0.757014223069169
+      ],
+      "reproduces": true
+    }
+  ],
+  "problems": [],
+  "summary": {
+    "model_rows": 18,
+    "reproduced": 18,
+    "problems": 0
+  }
+}

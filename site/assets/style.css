@@ -810,3 +810,44 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
   body[data-page=index] .glance-card-pick{padding:4px 10px;gap:3px;margin-bottom:2px}
   body[data-page=index] .glance-card-scores{gap:2px}
 }
+/* Session 28e4f2a1 — executive-summary pick directory (#picks-directory).
+   One table answers "how did each open match get its pick, and where do I read
+   it": the category and its basis, the two counts, the official source of that
+   kind of line, and the page on this site that lists those picks. Nothing here
+   hides a count or a percentage: the phone rules only re-flow the same cells
+   into a labelled two-column card, like .source-table, and they stay compact
+   enough that nine categories do not become nine screens of scrolling. */
+.pick-directory{scroll-margin-top:22px}
+.pick-directory h3{margin:4px 0 6px}
+.pick-directory .table-wrap{margin-top:12px}
+.directory-table td:nth-child(2),.directory-table td:nth-child(3),.directory-table th:nth-child(2),.directory-table th:nth-child(3){text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.directory-table td:first-child .small{display:block;margin-top:3px;overflow-wrap:anywhere}
+.directory-table tr.directory-total{background:#f7faf6}
+.directory-table tr.directory-total td{border-top:1px solid var(--line)}
+@media(max-width:650px){
+  .directory-table tbody tr{display:grid;grid-template-columns:1fr 1fr;gap:4px 14px;padding:13px 14px;margin-bottom:8px}
+  .directory-table td{margin:0}
+  .directory-table td:first-child{grid-column:1/-1;border-bottom:1px solid #edf0e9;padding-bottom:7px;margin-bottom:2px}
+  .directory-table td:first-child .small{font-size:11px;line-height:1.35;margin-top:2px}
+  .directory-table td:nth-child(2),.directory-table td:nth-child(3){text-align:left;font-size:15px;font-weight:700}
+  .directory-table td:nth-child(2):before,.directory-table td:nth-child(3):before,.directory-table td:nth-child(4):before,.directory-table td:nth-child(5):before{display:block;font-size:9px;letter-spacing:.6px;margin-bottom:1px}
+  .directory-table td:nth-child(4) a,.directory-table td:nth-child(5) a{min-height:26px;display:inline-flex;align-items:center;font-size:12px;white-space:normal}
+}
+/* The directory's one-tap jump to the rows below it (unresolved page). */
+.directory-jump{display:inline-flex;align-items:center;min-height:44px;font-weight:650;margin:2px 0 12px}
+
+/* Session 11e17543: the phone quick nav gained a third destination
+   (matches.html#every-match), and three nowrap links cannot share a 320px row.
+   Measured: index.html overflowed at 320px until this landed. The fix is
+   flex-wrap, never a horizontal scroller - this row's pinned contract is that
+   it wraps rather than scrolls, and tests/test_session_2b856884.py greps the
+   raw stylesheet text for the scrolling property, comments included. */
+@media(max-width:650px){.exec-quicknav-actions{flex-wrap:wrap}.exec-quicknav-actions a{flex:1 1 auto;min-width:0}}
+
+/* Session 11e17543: the coverage-boundary paragraph inside #every-match links four
+   official sources inline, and at 10.5px they measured 17px tall on a phone -
+   below the 24px WCAG 2.5.8 minimum that tests/browser_11e17543.cjs asserts.
+   WCAG's inline exception would cover them, but the site's own convention is a
+   taller target, so these links get a 32px inline-flex box. Nothing is hidden and
+   no text changes. */
+@media(max-width:650px){#every-match p.small a{display:inline-flex;align-items:center;min-height:32px}}

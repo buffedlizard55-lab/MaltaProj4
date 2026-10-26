@@ -1,0 +1,689 @@
+{
+  "snapshot_generated_at": "2026-10-26T00:10:49.639616Z",
+  "window_hours": 8,
+  "open_rows": 11,
+  "rows": [
+    {
+      "fixture": "1082858",
+      "teams": [
+        "Ground Zero",
+        "Off Chops"
+      ],
+      "method": "exchange",
+      "pick": "Off Chops",
+      "published": [
+        0.19,
+        0.81
+      ],
+      "checks": [
+        {
+          "ok": true,
+          "check": "two probabilities published"
+        },
+        {
+          "ok": true,
+          "check": "both probabilities strictly inside (0, 1)"
+        },
+        {
+          "ok": true,
+          "check": "probabilities sum to 1"
+        },
+        {
+          "ok": true,
+          "check": "fair odds are the reciprocals of the published probabilities"
+        },
+        {
+          "ok": true,
+          "check": "pick is the strictly higher-probability side"
+        },
+        {
+          "ok": true,
+          "check": "raw Polymarket outcomePrices carries two sides"
+        },
+        {
+          "ok": true,
+          "check": "exchange probabilities reproduce from the raw outcome prices (de-vigged)"
+        },
+        {
+          "ok": true,
+          "check": "market is accepting orders"
+        },
+        {
+          "ok": true,
+          "check": "market is active and not closed"
+        },
+        {
+          "ok": true,
+          "check": "two-sided bid/ask present"
+        },
+        {
+          "ok": true,
+          "check": "spread 0.020000 inside the 0.25 ceiling"
+        },
+        {
+          "ok": true,
+          "check": "liquidity at or above $100"
+        },
+        {
+          "ok": true,
+          "check": "source update inside the eight-hour window"
+        },
+        {
+          "ok": true,
+          "check": "market start '2026-10-26T03:00:00Z' equals the fixture start '2026-10-26T03:00:00Z'"
+        }
+      ],
+      "problems": []
+    },
+    {
+      "fixture": "1082859",
+      "teams": [
+        "NEXVOID",
+        "Alter Ego"
+      ],
+      "method": "bookmaker_fallback",
+      "pick": "NEXVOID",
+      "published": [
+        0.575197889182058,
+        0.42480211081794195
+      ],
+      "checks": [
+        {
+          "ok": true,
+          "check": "two probabilities published"
+        },
+        {
+          "ok": true,
+          "check": "both probabilities strictly inside (0, 1)"
+        },
+        {
+          "ok": true,
+          "check": "probabilities sum to 1"
+        },
+        {
+          "ok": true,
+          "check": "fair odds are the reciprocals of the published probabilities"
+        },
+        {
+          "ok": true,
+          "check": "pick is the strictly higher-probability side"
+        },
+        {
+          "ok": true,
+          "check": "two decimal prices recorded"
+        },
+        {
+          "ok": true,
+          "check": "book probabilities reproduce from the stored decimal odds (de-vigged)"
+        },
+        {
+          "ok": true,
+          "check": "book overround 0.0798 inside the published band"
+        },
+        {
+          "ok": true,
+          "check": "book observation inside the eight-hour window"
+        }
+      ],
+      "problems": []
+    },
+    {
+      "fixture": "1093218",
+      "teams": [
+        "Nuclear TigeRES",
+        "UNiTY"
+      ],
+      "method": "model_vrs",
+      "pick": "Nuclear TigeRES",
+      "published": [
+        0.6650360144457831,
+        0.3349639855542169
+      ],
+      "checks": [
+        {
+          "ok": true,
+          "check": "two probabilities published"
+        },
+        {
+          "ok": true,
+          "check": "both probabilities strictly inside (0, 1)"
+        },
+        {
+          "ok": true,
+          "check": "probabilities sum to 1"
+        },
+        {
+          "ok": true,
+          "check": "fair odds are the reciprocals of the published probabilities"
+        },
+        {
+          "ok": true,
+          "check": "pick is the strictly higher-probability side"
+        },
+        {
+          "ok": true,
+          "check": "model line is the one verify_model.py reproduced from official bytes"
+        }
+      ],
+      "problems": []
+    },
+    {
+      "fixture": "1082860",
+      "teams": [
+        "FlyQuest",
+        "Staqued"
+      ],
+      "method": "exchange",
+      "pick": "FlyQuest",
+      "published": [
+        0.925,
+        0.075
+      ],
+      "checks": [
+        {
+          "ok": true,
+          "check": "two probabilities published"
+        },
+        {
+          "ok": true,
+          "check": "both probabilities strictly inside (0, 1)"
+        },
+        {
+          "ok": true,
+          "check": "probabilities sum to 1"
+        },
+        {
+          "ok": true,
+          "check": "fair odds are the reciprocals of the published probabilities"
+        },
+        {
+          "ok": true,
+          "check": "pick is the strictly higher-probability side"
+        },
+        {
+          "ok": true,
+          "check": "raw Polymarket outcomePrices carries two sides"
+        },
+        {
+          "ok": true,
+          "check": "exchange probabilities reproduce from the raw outcome prices (de-vigged)"
+        },
+        {
+          "ok": true,
+          "check": "market is accepting orders"
+        },
+        {
+          "ok": true,
+          "check": "market is active and not closed"
+        },
+        {
+          "ok": true,
+          "check": "two-sided bid/ask present"
+        },
+        {
+          "ok": true,
+          "check": "spread 0.030000 inside the 0.25 ceiling"
+        },
+        {
+          "ok": true,
+          "check": "liquidity at or above $100"
+        },
+        {
+          "ok": true,
+          "check": "source update inside the eight-hour window"
+        },
+        {
+          "ok": true,
+          "check": "market start '2026-10-27T03:00:00Z' equals the fixture start '2026-10-27T03:00:00Z'"
+        }
+      ],
+      "problems": []
+    },
+    {
+      "fixture": "1082861",
+      "teams": [
+        "Rooster",
+        "Abyssal"
+      ],
+      "method": "exchange",
+      "pick": "Abyssal",
+      "published": [
+        0.425,
+        0.575
+      ],
+      "checks": [
+        {
+          "ok": true,
+          "check": "two probabilities published"
+        },
+        {
+          "ok": true,
+          "check": "both probabilities strictly inside (0, 1)"
+        },
+        {
+          "ok": true,
+          "check": "probabilities sum to 1"
+        },
+        {
+          "ok": true,
+          "check": "fair odds are the reciprocals of the published probabilities"
+        },
+        {
+          "ok": true,
+          "check": "pick is the strictly higher-probability side"
+        },
+        {
+          "ok": true,
+          "check": "raw Polymarket outcomePrices carries two sides"
+        },
+        {
+          "ok": true,
+          "check": "exchange probabilities reproduce from the raw outcome prices (de-vigged)"
+        },
+        {
+          "ok": true,
+          "check": "market is accepting orders"
+        },
+        {
+          "ok": true,
+          "check": "market is active and not closed"
+        },
+        {
+          "ok": true,
+          "check": "two-sided bid/ask present"
+        },
+        {
+          "ok": true,
+          "check": "spread 0.250000 inside the 0.25 ceiling"
+        },
+        {
+          "ok": true,
+          "check": "liquidity at or above $100"
+        },
+        {
+          "ok": true,
+          "check": "source update inside the eight-hour window"
+        },
+        {
+          "ok": true,
+          "check": "market start '2026-10-27T03:00:00Z' equals the fixture start '2026-10-27T03:00:00Z'"
+        }
+      ],
+      "problems": []
+    },
+    {
+      "fixture": "1082897",
+      "teams": [
+        "B8",
+        "K27"
+      ],
+      "method": "exchange",
+      "pick": "B8",
+      "published": [
+        0.595,
+        0.405
+      ],
+      "checks": [
+        {
+          "ok": true,
+          "check": "two probabilities published"
+        },
+        {
+          "ok": true,
+          "check": "both probabilities strictly inside (0, 1)"
+        },
+        {
+          "ok": true,
+          "check": "probabilities sum to 1"
+        },
+        {
+          "ok": true,
+          "check": "fair odds are the reciprocals of the published probabilities"
+        },
+        {
+          "ok": true,
+          "check": "pick is the strictly higher-probability side"
+        },
+        {
+          "ok": true,
+          "check": "raw Polymarket outcomePrices carries two sides"
+        },
+        {
+          "ok": true,
+          "check": "exchange probabilities reproduce from the raw outcome prices (de-vigged)"
+        },
+        {
+          "ok": true,
+          "check": "market is accepting orders"
+        },
+        {
+          "ok": true,
+          "check": "market is active and not closed"
+        },
+        {
+          "ok": true,
+          "check": "two-sided bid/ask present"
+        },
+        {
+          "ok": true,
+          "check": "spread 0.010000 inside the 0.25 ceiling"
+        },
+        {
+          "ok": true,
+          "check": "liquidity at or above $100"
+        },
+        {
+          "ok": true,
+          "check": "source update inside the eight-hour window"
+        },
+        {
+          "ok": true,
+          "check": "market start '2026-10-27T08:00:00Z' equals the fixture start '2026-10-27T08:00:00Z'"
+        }
+      ],
+      "problems": []
+    },
+    {
+      "fixture": "1082898",
+      "teams": [
+        "Alliance",
+        "FaZe"
+      ],
+      "method": "exchange",
+      "pick": "FaZe",
+      "published": [
+        0.375,
+        0.625
+      ],
+      "checks": [
+        {
+          "ok": true,
+          "check": "two probabilities published"
+        },
+        {
+          "ok": true,
+          "check": "both probabilities strictly inside (0, 1)"
+        },
+        {
+          "ok": true,
+          "check": "probabilities sum to 1"
+        },
+        {
+          "ok": true,
+          "check": "fair odds are the reciprocals of the published probabilities"
+        },
+        {
+          "ok": true,
+          "check": "pick is the strictly higher-probability side"
+        },
+        {
+          "ok": true,
+          "check": "raw Polymarket outcomePrices carries two sides"
+        },
+        {
+          "ok": true,
+          "check": "exchange probabilities reproduce from the raw outcome prices (de-vigged)"
+        },
+        {
+          "ok": true,
+          "check": "market is accepting orders"
+        },
+        {
+          "ok": true,
+          "check": "market is active and not closed"
+        },
+        {
+          "ok": true,
+          "check": "two-sided bid/ask present"
+        },
+        {
+          "ok": true,
+          "check": "spread 0.010000 inside the 0.25 ceiling"
+        },
+        {
+          "ok": true,
+          "check": "liquidity at or above $100"
+        },
+        {
+          "ok": true,
+          "check": "source update inside the eight-hour window"
+        },
+        {
+          "ok": true,
+          "check": "market start '2026-10-27T11:00:00Z' equals the fixture start '2026-10-27T11:00:00Z'"
+        }
+      ],
+      "problems": []
+    },
+    {
+      "fixture": "1082900",
+      "teams": [
+        "Luminosity",
+        "HOTU"
+      ],
+      "method": "exchange",
+      "pick": "Luminosity",
+      "published": [
+        0.525,
+        0.475
+      ],
+      "checks": [
+        {
+          "ok": true,
+          "check": "two probabilities published"
+        },
+        {
+          "ok": true,
+          "check": "both probabilities strictly inside (0, 1)"
+        },
+        {
+          "ok": true,
+          "check": "probabilities sum to 1"
+        },
+        {
+          "ok": true,
+          "check": "fair odds are the reciprocals of the published probabilities"
+        },
+        {
+          "ok": true,
+          "check": "pick is the strictly higher-probability side"
+        },
+        {
+          "ok": true,
+          "check": "raw Polymarket outcomePrices carries two sides"
+        },
+        {
+          "ok": true,
+          "check": "exchange probabilities reproduce from the raw outcome prices (de-vigged)"
+        },
+        {
+          "ok": true,
+          "check": "market is accepting orders"
+        },
+        {
+          "ok": true,
+          "check": "market is active and not closed"
+        },
+        {
+          "ok": true,
+          "check": "two-sided bid/ask present"
+        },
+        {
+          "ok": true,
+          "check": "spread 0.030000 inside the 0.25 ceiling"
+        },
+        {
+          "ok": true,
+          "check": "liquidity at or above $100"
+        },
+        {
+          "ok": true,
+          "check": "source update inside the eight-hour window"
+        },
+        {
+          "ok": true,
+          "check": "market start '2026-10-27T17:00:00Z' equals the fixture start '2026-10-27T17:00:00Z'"
+        }
+      ],
+      "problems": []
+    },
+    {
+      "fixture": "1082901",
+      "teams": [
+        "Envy",
+        "GamerLegion"
+      ],
+      "method": "exchange",
+      "pick": "GamerLegion",
+      "published": [
+        0.455,
+        0.545
+      ],
+      "checks": [
+        {
+          "ok": true,
+          "check": "two probabilities published"
+        },
+        {
+          "ok": true,
+          "check": "both probabilities strictly inside (0, 1)"
+        },
+        {
+          "ok": true,
+          "check": "probabilities sum to 1"
+        },
+        {
+          "ok": true,
+          "check": "fair odds are the reciprocals of the published probabilities"
+        },
+        {
+          "ok": true,
+          "check": "pick is the strictly higher-probability side"
+        },
+        {
+          "ok": true,
+          "check": "raw Polymarket outcomePrices carries two sides"
+        },
+        {
+          "ok": true,
+          "check": "exchange probabilities reproduce from the raw outcome prices (de-vigged)"
+        },
+        {
+          "ok": true,
+          "check": "market is accepting orders"
+        },
+        {
+          "ok": true,
+          "check": "market is active and not closed"
+        },
+        {
+          "ok": true,
+          "check": "two-sided bid/ask present"
+        },
+        {
+          "ok": true,
+          "check": "spread 0.010000 inside the 0.25 ceiling"
+        },
+        {
+          "ok": true,
+          "check": "liquidity at or above $100"
+        },
+        {
+          "ok": true,
+          "check": "source update inside the eight-hour window"
+        },
+        {
+          "ok": true,
+          "check": "market start '2026-10-27T20:00:00Z' equals the fixture start '2026-10-27T20:00:00Z'"
+        }
+      ],
+      "problems": []
+    },
+    {
+      "fixture": "1082792",
+      "teams": [
+        "HOTU",
+        "The Huns"
+      ],
+      "method": "model_vrs",
+      "pick": "HOTU",
+      "published": [
+        0.851799765370461,
+        0.14820023462953902
+      ],
+      "checks": [
+        {
+          "ok": true,
+          "check": "two probabilities published"
+        },
+        {
+          "ok": true,
+          "check": "both probabilities strictly inside (0, 1)"
+        },
+        {
+          "ok": true,
+          "check": "probabilities sum to 1"
+        },
+        {
+          "ok": true,
+          "check": "fair odds are the reciprocals of the published probabilities"
+        },
+        {
+          "ok": true,
+          "check": "pick is the strictly higher-probability side"
+        },
+        {
+          "ok": true,
+          "check": "model line is the one verify_model.py reproduced from official bytes"
+        }
+      ],
+      "problems": []
+    },
+    {
+      "fixture": "1082793",
+      "teams": [
+        "5star",
+        "1WIN"
+      ],
+      "method": "model_vrs",
+      "pick": "1WIN",
+      "published": [
+        0.242985776930831,
+        0.757014223069169
+      ],
+      "checks": [
+        {
+          "ok": true,
+          "check": "two probabilities published"
+        },
+        {
+          "ok": true,
+          "check": "both probabilities strictly inside (0, 1)"
+        },
+        {
+          "ok": true,
+          "check": "probabilities sum to 1"
+        },
+        {
+          "ok": true,
+          "check": "fair odds are the reciprocals of the published probabilities"
+        },
+        {
+          "ok": true,
+          "check": "pick is the strictly higher-probability side"
+        },
+        {
+          "ok": true,
+          "check": "model line is the one verify_model.py reproduced from official bytes"
+        }
+      ],
+      "problems": []
+    }
+  ],
+  "summary": {
+    "checks": 125,
+    "failed": 0,
+    "rows_with_problems": 0
+  },
+  "problems": []
+}
