@@ -1,0 +1,28 @@
+{
+  "measured": [
+    {
+      "viewport": "320x568",
+      "firstCardTop": 363
+    },
+    {
+      "viewport": "390x844",
+      "firstCardTop": 378
+    },
+    {
+      "viewport": "412x915",
+      "firstCardTop": 378
+    }
+  ],
+  "ladder": [
+    "exchange=8",
+    "hltv=0",
+    "pinnacle=0",
+    "exchange_wide=0",
+    "book=1",
+    "model_vrs=8",
+    "model_vrs_mirror=2",
+    "research=0",
+    "none=0"
+  ],
+  "openRows": 19
+}
