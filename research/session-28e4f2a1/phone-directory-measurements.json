@@ -1,0 +1,2711 @@
+{
+ "measured_at": "2026-10-26T01:06:31.846Z",
+ "artifact": "public/",
+ "open_matches": 11,
+ "viewports": [
+  {
+   "name": "iPhone SE",
+   "width": 320,
+   "height": 568,
+   "page": "index",
+   "overflow": false,
+   "rows": [
+    {
+     "step": "exchange",
+     "cells": [
+      {
+       "text": "Market line — Polymarket exchangeTwo-sided order book, de-vi",
+       "height": 99,
+       "width": 214,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "7",
+       "height": 38,
+       "width": 100,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "7",
+       "height": 38,
+       "width": 100,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Polymarket Gamma API ↗",
+       "height": 54,
+       "width": 100,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Open the pick board →",
+       "height": 54,
+       "width": 100,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 399
+    },
+    {
+     "step": "pinnacle",
+     "cells": [
+      {
+       "text": "Market line — Pinnacle bookmakerA sharp bookmaker’s two-way ",
+       "height": 99,
+       "width": 214,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 100,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 100,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Pinnacle guest esports API ↗",
+       "height": 54,
+       "width": 100,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Open the pick board →",
+       "height": 54,
+       "width": 100,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 636
+    },
+    {
+     "step": "exchange_wide",
+     "cells": [
+      {
+       "text": "Market line — wide exchange quoteOnly where nothing else pri",
+       "height": 114,
+       "width": 214,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 100,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 100,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Polymarket Gamma API ↗",
+       "height": 54,
+       "width": 100,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Open the pick board →",
+       "height": 54,
+       "width": 100,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 889
+    },
+    {
+     "step": "book",
+     "cells": [
+      {
+       "text": "Book listing — researched two-way priceA dated listing page ",
+       "height": 99,
+       "width": 214,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "1",
+       "height": 38,
+       "width": 100,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "1",
+       "height": 38,
+       "width": 100,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "EGamersWorld CS2 listing ↗",
+       "height": 54,
+       "width": 100,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Open the pick board →",
+       "height": 54,
+       "width": 100,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 1127
+    },
+    {
+     "step": "model_vrs",
+     "cells": [
+      {
+       "text": "Our VRS model lineValve’s official standings points through ",
+       "height": 79,
+       "width": 214,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "3",
+       "height": 38,
+       "width": 100,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "3",
+       "height": 38,
+       "width": 100,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Valve counter-strike_regional_standings ↗",
+       "height": 73,
+       "width": 100,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Open the pick board →",
+       "height": 73,
+       "width": 100,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 1363
+    },
+    {
+     "step": "model_vrs_mirror",
+     "cells": [
+      {
+       "text": "Our VRS model from HLTV’s dated Valve rankingThe same formul",
+       "height": 99,
+       "width": 214,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 100,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 100,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "HLTV dated Valve ranking ↗",
+       "height": 54,
+       "width": 100,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Open the pick board →",
+       "height": 54,
+       "width": 100,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 1601
+    },
+    {
+     "step": "research",
+     "cells": [
+      {
+       "text": "Research pick — no percentageRanking order or one-sided stan",
+       "height": 79,
+       "width": 214,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 100,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 100,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "HLTV rankings and Valve standings ↗",
+       "height": 73,
+       "width": 100,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "The research-only rows →",
+       "height": 73,
+       "width": 100,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 1837
+    },
+    {
+     "step": "none",
+     "cells": [
+      {
+       "text": "No pick at all — unresolvedNo verified line, no model input ",
+       "height": 79,
+       "width": 214,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 100,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 100,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Hotspawn lobby (inventory) ↗ · every source tried",
+       "height": 113,
+       "width": 100,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Unresolved & limitations →",
+       "height": 113,
+       "width": 100,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 2114
+    },
+    {
+     "step": "total",
+     "cells": [
+      {
+       "text": "Total open matches",
+       "height": 49,
+       "width": 214,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "11",
+       "height": 39,
+       "width": 100,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "11",
+       "height": 39,
+       "width": 100,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Hotspawn lobby ↗",
+       "height": 68,
+       "width": 100,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Snapshot JSON · CSV",
+       "height": 68,
+       "width": 100,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 2316
+    }
+   ],
+   "total_sum": 11,
+   "total_row": 11,
+   "in_summary": true,
+   "hit_tag": "TD",
+   "tab_top": 507,
+   "count_cell_covered": false,
+   "count_cell_below_tabbar": false,
+   "jump": null,
+   "destinations": [
+    "data/latest.json",
+    "https://gamma-api.polymarket.com/events",
+    "picks.html",
+    "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+    "https://egamersworld.com/counterstrike/matches",
+    "https://github.com/ValveSoftware/counter-strike_regional_standings",
+    "https://www.hltv.org/valve-ranking/teams",
+    "https://www.hltv.org/ranking/teams",
+    "unresolved.html?status=needs#unresolved-rows",
+    "https://play.hotspawn.com/cs2-pickems",
+    "unresolved.html",
+    "data/matches.csv",
+    "matches.html",
+    "review.html",
+    "sources.html#method",
+    "evidence.html",
+    "https://www.hltv.org/matches"
+   ]
+  },
+  {
+   "name": "iPhone SE",
+   "width": 320,
+   "height": 568,
+   "page": "unresolved",
+   "overflow": false,
+   "rows": [
+    {
+     "step": "exchange",
+     "cells": [
+      {
+       "text": "Market line — Polymarket exchangeTwo-sided order book, de-vi",
+       "height": 79,
+       "width": 256,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "7",
+       "height": 38,
+       "width": 121,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "7",
+       "height": 38,
+       "width": 121,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Polymarket Gamma API ↗",
+       "height": 54,
+       "width": 121,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Open the pick board →",
+       "height": 54,
+       "width": 121,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 389
+    },
+    {
+     "step": "pinnacle",
+     "cells": [
+      {
+       "text": "Market line — Pinnacle bookmakerA sharp bookmaker’s two-way ",
+       "height": 79,
+       "width": 256,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 121,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 121,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Pinnacle guest esports API ↗",
+       "height": 54,
+       "width": 121,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Open the pick board →",
+       "height": 54,
+       "width": 121,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 607
+    },
+    {
+     "step": "exchange_wide",
+     "cells": [
+      {
+       "text": "Market line — wide exchange quoteOnly where nothing else pri",
+       "height": 79,
+       "width": 256,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 121,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 121,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Polymarket Gamma API ↗",
+       "height": 54,
+       "width": 121,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Open the pick board →",
+       "height": 54,
+       "width": 121,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 824
+    },
+    {
+     "step": "book",
+     "cells": [
+      {
+       "text": "Book listing — researched two-way priceA dated listing page ",
+       "height": 99,
+       "width": 256,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "1",
+       "height": 38,
+       "width": 121,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "1",
+       "height": 38,
+       "width": 121,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "EGamersWorld CS2 listing ↗",
+       "height": 54,
+       "width": 121,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Open the pick board →",
+       "height": 54,
+       "width": 121,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 1062
+    },
+    {
+     "step": "model_vrs",
+     "cells": [
+      {
+       "text": "Our VRS model lineValve’s official standings points through ",
+       "height": 79,
+       "width": 256,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "3",
+       "height": 38,
+       "width": 121,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "3",
+       "height": 38,
+       "width": 121,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Valve counter-strike_regional_standings ↗",
+       "height": 73,
+       "width": 121,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Open the pick board →",
+       "height": 73,
+       "width": 121,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 1298
+    },
+    {
+     "step": "model_vrs_mirror",
+     "cells": [
+      {
+       "text": "Our VRS model from HLTV’s dated Valve rankingThe same formul",
+       "height": 99,
+       "width": 256,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 121,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 121,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "HLTV dated Valve ranking ↗",
+       "height": 54,
+       "width": 121,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Open the pick board →",
+       "height": 54,
+       "width": 121,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 1536
+    },
+    {
+     "step": "research",
+     "cells": [
+      {
+       "text": "Research pick — no percentageRanking order or one-sided stan",
+       "height": 79,
+       "width": 256,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 121,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 121,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "HLTV rankings and Valve standings ↗",
+       "height": 54,
+       "width": 121,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "The research-only rows →",
+       "height": 54,
+       "width": 121,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 1754
+    },
+    {
+     "step": "none",
+     "cells": [
+      {
+       "text": "No pick at all — unresolvedNo verified line, no model input ",
+       "height": 79,
+       "width": 256,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 121,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 121,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Hotspawn lobby (inventory) ↗ · every source tried",
+       "height": 80,
+       "width": 121,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Unresolved & limitations →",
+       "height": 80,
+       "width": 121,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 1997
+    },
+    {
+     "step": "total",
+     "cells": [
+      {
+       "text": "Total open matches",
+       "height": 49,
+       "width": 256,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "11",
+       "height": 39,
+       "width": 121,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "11",
+       "height": 39,
+       "width": 121,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Hotspawn lobby ↗",
+       "height": 42,
+       "width": 121,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Snapshot JSON · CSV",
+       "height": 42,
+       "width": 121,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 2173
+    }
+   ],
+   "total_sum": 11,
+   "total_row": 11,
+   "in_summary": false,
+   "hit_tag": "TD",
+   "tab_top": 507,
+   "count_cell_covered": false,
+   "count_cell_below_tabbar": false,
+   "jump": "#unresolved-rows",
+   "destinations": [
+    "data/latest.json",
+    "https://gamma-api.polymarket.com/events",
+    "picks.html",
+    "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+    "https://egamersworld.com/counterstrike/matches",
+    "https://github.com/ValveSoftware/counter-strike_regional_standings",
+    "https://www.hltv.org/valve-ranking/teams",
+    "https://www.hltv.org/ranking/teams",
+    "unresolved.html?status=needs#unresolved-rows",
+    "https://play.hotspawn.com/cs2-pickems",
+    "unresolved.html",
+    "data/matches.csv",
+    "matches.html",
+    "review.html",
+    "sources.html#method",
+    "evidence.html",
+    "#unresolved-rows",
+    "https://www.hltv.org/matches"
+   ]
+  },
+  {
+   "name": "iPhone 14",
+   "width": 390,
+   "height": 844,
+   "page": "index",
+   "overflow": false,
+   "rows": [
+    {
+     "step": "exchange",
+     "cells": [
+      {
+       "text": "Market line — Polymarket exchangeTwo-sided order book, de-vi",
+       "height": 79,
+       "width": 284,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "7",
+       "height": 38,
+       "width": 135,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "7",
+       "height": 38,
+       "width": 135,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Polymarket Gamma API ↗",
+       "height": 54,
+       "width": 135,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Open the pick board →",
+       "height": 54,
+       "width": 135,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 527
+    },
+    {
+     "step": "pinnacle",
+     "cells": [
+      {
+       "text": "Market line — Pinnacle bookmakerA sharp bookmaker’s two-way ",
+       "height": 79,
+       "width": 284,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 135,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 135,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Pinnacle guest esports API ↗",
+       "height": 54,
+       "width": 135,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Open the pick board →",
+       "height": 54,
+       "width": 135,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 745
+    },
+    {
+     "step": "exchange_wide",
+     "cells": [
+      {
+       "text": "Market line — wide exchange quoteOnly where nothing else pri",
+       "height": 79,
+       "width": 284,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 135,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 135,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Polymarket Gamma API ↗",
+       "height": 54,
+       "width": 135,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Open the pick board →",
+       "height": 54,
+       "width": 135,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 963
+    },
+    {
+     "step": "book",
+     "cells": [
+      {
+       "text": "Book listing — researched two-way priceA dated listing page ",
+       "height": 79,
+       "width": 284,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "1",
+       "height": 38,
+       "width": 135,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "1",
+       "height": 38,
+       "width": 135,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "EGamersWorld CS2 listing ↗",
+       "height": 54,
+       "width": 135,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Open the pick board →",
+       "height": 54,
+       "width": 135,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 1180
+    },
+    {
+     "step": "model_vrs",
+     "cells": [
+      {
+       "text": "Our VRS model lineValve’s official standings points through ",
+       "height": 79,
+       "width": 284,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "3",
+       "height": 38,
+       "width": 135,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "3",
+       "height": 38,
+       "width": 135,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Valve counter-strike_regional_standings ↗",
+       "height": 73,
+       "width": 135,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Open the pick board →",
+       "height": 73,
+       "width": 135,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 1416
+    },
+    {
+     "step": "model_vrs_mirror",
+     "cells": [
+      {
+       "text": "Our VRS model from HLTV’s dated Valve rankingThe same formul",
+       "height": 99,
+       "width": 284,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 135,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 135,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "HLTV dated Valve ranking ↗",
+       "height": 54,
+       "width": 135,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Open the pick board →",
+       "height": 54,
+       "width": 135,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 1654
+    },
+    {
+     "step": "research",
+     "cells": [
+      {
+       "text": "Research pick — no percentageRanking order or one-sided stan",
+       "height": 79,
+       "width": 284,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 135,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 135,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "HLTV rankings and Valve standings ↗",
+       "height": 54,
+       "width": 135,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "The research-only rows →",
+       "height": 54,
+       "width": 135,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 1872
+    },
+    {
+     "step": "none",
+     "cells": [
+      {
+       "text": "No pick at all — unresolvedNo verified line, no model input ",
+       "height": 79,
+       "width": 284,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 135,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 135,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Hotspawn lobby (inventory) ↗ · every source tried",
+       "height": 80,
+       "width": 135,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Unresolved & limitations →",
+       "height": 80,
+       "width": 135,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 2115
+    },
+    {
+     "step": "total",
+     "cells": [
+      {
+       "text": "Total open matches",
+       "height": 49,
+       "width": 284,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "11",
+       "height": 39,
+       "width": 135,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "11",
+       "height": 39,
+       "width": 135,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Hotspawn lobby ↗",
+       "height": 42,
+       "width": 135,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Snapshot JSON · CSV",
+       "height": 42,
+       "width": 135,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 2291
+    }
+   ],
+   "total_sum": 11,
+   "total_row": 11,
+   "in_summary": true,
+   "hit_tag": "TD",
+   "tab_top": 783,
+   "count_cell_covered": false,
+   "count_cell_below_tabbar": false,
+   "jump": null,
+   "destinations": [
+    "data/latest.json",
+    "https://gamma-api.polymarket.com/events",
+    "picks.html",
+    "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+    "https://egamersworld.com/counterstrike/matches",
+    "https://github.com/ValveSoftware/counter-strike_regional_standings",
+    "https://www.hltv.org/valve-ranking/teams",
+    "https://www.hltv.org/ranking/teams",
+    "unresolved.html?status=needs#unresolved-rows",
+    "https://play.hotspawn.com/cs2-pickems",
+    "unresolved.html",
+    "data/matches.csv",
+    "matches.html",
+    "review.html",
+    "sources.html#method",
+    "evidence.html",
+    "https://www.hltv.org/matches"
+   ]
+  },
+  {
+   "name": "iPhone 14",
+   "width": 390,
+   "height": 844,
+   "page": "unresolved",
+   "overflow": false,
+   "rows": [
+    {
+     "step": "exchange",
+     "cells": [
+      {
+       "text": "Market line — Polymarket exchangeTwo-sided order book, de-vi",
+       "height": 79,
+       "width": 326,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "7",
+       "height": 38,
+       "width": 156,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "7",
+       "height": 38,
+       "width": 156,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Polymarket Gamma API ↗",
+       "height": 41,
+       "width": 156,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Open the pick board →",
+       "height": 41,
+       "width": 156,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 521
+    },
+    {
+     "step": "pinnacle",
+     "cells": [
+      {
+       "text": "Market line — Pinnacle bookmakerA sharp bookmaker’s two-way ",
+       "height": 79,
+       "width": 326,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 156,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 156,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Pinnacle guest esports API ↗",
+       "height": 54,
+       "width": 156,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Open the pick board →",
+       "height": 54,
+       "width": 156,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 738
+    },
+    {
+     "step": "exchange_wide",
+     "cells": [
+      {
+       "text": "Market line — wide exchange quoteOnly where nothing else pri",
+       "height": 79,
+       "width": 326,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 156,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 156,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Polymarket Gamma API ↗",
+       "height": 41,
+       "width": 156,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Open the pick board →",
+       "height": 41,
+       "width": 156,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 943
+    },
+    {
+     "step": "book",
+     "cells": [
+      {
+       "text": "Book listing — researched two-way priceA dated listing page ",
+       "height": 79,
+       "width": 326,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "1",
+       "height": 38,
+       "width": 156,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "1",
+       "height": 38,
+       "width": 156,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "EGamersWorld CS2 listing ↗",
+       "height": 41,
+       "width": 156,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Open the pick board →",
+       "height": 41,
+       "width": 156,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 1147
+    },
+    {
+     "step": "model_vrs",
+     "cells": [
+      {
+       "text": "Our VRS model lineValve’s official standings points through ",
+       "height": 79,
+       "width": 326,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "3",
+       "height": 38,
+       "width": 156,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "3",
+       "height": 38,
+       "width": 156,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Valve counter-strike_regional_standings ↗",
+       "height": 54,
+       "width": 156,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Open the pick board →",
+       "height": 54,
+       "width": 156,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 1365
+    },
+    {
+     "step": "model_vrs_mirror",
+     "cells": [
+      {
+       "text": "Our VRS model from HLTV’s dated Valve rankingThe same formul",
+       "height": 79,
+       "width": 326,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 156,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 156,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "HLTV dated Valve ranking ↗",
+       "height": 41,
+       "width": 156,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Open the pick board →",
+       "height": 41,
+       "width": 156,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 1569
+    },
+    {
+     "step": "research",
+     "cells": [
+      {
+       "text": "Research pick — no percentageRanking order or one-sided stan",
+       "height": 79,
+       "width": 326,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 156,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 156,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "HLTV rankings and Valve standings ↗",
+       "height": 54,
+       "width": 156,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "The research-only rows →",
+       "height": 54,
+       "width": 156,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 1787
+    },
+    {
+     "step": "none",
+     "cells": [
+      {
+       "text": "No pick at all — unresolvedNo verified line, no model input ",
+       "height": 64,
+       "width": 326,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 156,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 156,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Hotspawn lobby (inventory) ↗ · every source tried",
+       "height": 80,
+       "width": 156,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Unresolved & limitations →",
+       "height": 80,
+       "width": 156,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 2016
+    },
+    {
+     "step": "total",
+     "cells": [
+      {
+       "text": "Total open matches",
+       "height": 49,
+       "width": 326,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "11",
+       "height": 39,
+       "width": 156,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "11",
+       "height": 39,
+       "width": 156,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Hotspawn lobby ↗",
+       "height": 42,
+       "width": 156,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Snapshot JSON · CSV",
+       "height": 42,
+       "width": 156,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 2191
+    }
+   ],
+   "total_sum": 11,
+   "total_row": 11,
+   "in_summary": false,
+   "hit_tag": "TD",
+   "tab_top": 783,
+   "count_cell_covered": false,
+   "count_cell_below_tabbar": false,
+   "jump": "#unresolved-rows",
+   "destinations": [
+    "data/latest.json",
+    "https://gamma-api.polymarket.com/events",
+    "picks.html",
+    "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+    "https://egamersworld.com/counterstrike/matches",
+    "https://github.com/ValveSoftware/counter-strike_regional_standings",
+    "https://www.hltv.org/valve-ranking/teams",
+    "https://www.hltv.org/ranking/teams",
+    "unresolved.html?status=needs#unresolved-rows",
+    "https://play.hotspawn.com/cs2-pickems",
+    "unresolved.html",
+    "data/matches.csv",
+    "matches.html",
+    "review.html",
+    "sources.html#method",
+    "evidence.html",
+    "#unresolved-rows",
+    "https://www.hltv.org/matches"
+   ]
+  },
+  {
+   "name": "Pixel 7",
+   "width": 412,
+   "height": 915,
+   "page": "index",
+   "overflow": false,
+   "rows": [
+    {
+     "step": "exchange",
+     "cells": [
+      {
+       "text": "Market line — Polymarket exchangeTwo-sided order book, de-vi",
+       "height": 79,
+       "width": 306,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "7",
+       "height": 38,
+       "width": 146,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "7",
+       "height": 38,
+       "width": 146,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Polymarket Gamma API ↗",
+       "height": 41,
+       "width": 146,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Open the pick board →",
+       "height": 41,
+       "width": 146,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 556
+    },
+    {
+     "step": "pinnacle",
+     "cells": [
+      {
+       "text": "Market line — Pinnacle bookmakerA sharp bookmaker’s two-way ",
+       "height": 79,
+       "width": 306,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 146,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 146,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Pinnacle guest esports API ↗",
+       "height": 54,
+       "width": 146,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Open the pick board →",
+       "height": 54,
+       "width": 146,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 774
+    },
+    {
+     "step": "exchange_wide",
+     "cells": [
+      {
+       "text": "Market line — wide exchange quoteOnly where nothing else pri",
+       "height": 79,
+       "width": 306,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 146,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 146,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Polymarket Gamma API ↗",
+       "height": 41,
+       "width": 146,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Open the pick board →",
+       "height": 41,
+       "width": 146,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 978
+    },
+    {
+     "step": "book",
+     "cells": [
+      {
+       "text": "Book listing — researched two-way priceA dated listing page ",
+       "height": 79,
+       "width": 306,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "1",
+       "height": 38,
+       "width": 146,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "1",
+       "height": 38,
+       "width": 146,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "EGamersWorld CS2 listing ↗",
+       "height": 54,
+       "width": 146,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Open the pick board →",
+       "height": 54,
+       "width": 146,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 1196
+    },
+    {
+     "step": "model_vrs",
+     "cells": [
+      {
+       "text": "Our VRS model lineValve’s official standings points through ",
+       "height": 79,
+       "width": 306,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "3",
+       "height": 38,
+       "width": 146,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "3",
+       "height": 38,
+       "width": 146,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Valve counter-strike_regional_standings ↗",
+       "height": 73,
+       "width": 146,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Open the pick board →",
+       "height": 73,
+       "width": 146,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 1432
+    },
+    {
+     "step": "model_vrs_mirror",
+     "cells": [
+      {
+       "text": "Our VRS model from HLTV’s dated Valve rankingThe same formul",
+       "height": 99,
+       "width": 306,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 146,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 146,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "HLTV dated Valve ranking ↗",
+       "height": 54,
+       "width": 146,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Open the pick board →",
+       "height": 54,
+       "width": 146,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 1670
+    },
+    {
+     "step": "research",
+     "cells": [
+      {
+       "text": "Research pick — no percentageRanking order or one-sided stan",
+       "height": 79,
+       "width": 306,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 146,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 146,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "HLTV rankings and Valve standings ↗",
+       "height": 54,
+       "width": 146,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "The research-only rows →",
+       "height": 54,
+       "width": 146,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 1887
+    },
+    {
+     "step": "none",
+     "cells": [
+      {
+       "text": "No pick at all — unresolvedNo verified line, no model input ",
+       "height": 79,
+       "width": 306,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 146,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 146,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Hotspawn lobby (inventory) ↗ · every source tried",
+       "height": 80,
+       "width": 146,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Unresolved & limitations →",
+       "height": 80,
+       "width": 146,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 2131
+    },
+    {
+     "step": "total",
+     "cells": [
+      {
+       "text": "Total open matches",
+       "height": 49,
+       "width": 306,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "11",
+       "height": 39,
+       "width": 146,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "11",
+       "height": 39,
+       "width": 146,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Hotspawn lobby ↗",
+       "height": 42,
+       "width": 146,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Snapshot JSON · CSV",
+       "height": 42,
+       "width": 146,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 2307
+    }
+   ],
+   "total_sum": 11,
+   "total_row": 11,
+   "in_summary": true,
+   "hit_tag": "TD",
+   "tab_top": 854,
+   "count_cell_covered": false,
+   "count_cell_below_tabbar": false,
+   "jump": null,
+   "destinations": [
+    "data/latest.json",
+    "https://gamma-api.polymarket.com/events",
+    "picks.html",
+    "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+    "https://egamersworld.com/counterstrike/matches",
+    "https://github.com/ValveSoftware/counter-strike_regional_standings",
+    "https://www.hltv.org/valve-ranking/teams",
+    "https://www.hltv.org/ranking/teams",
+    "unresolved.html?status=needs#unresolved-rows",
+    "https://play.hotspawn.com/cs2-pickems",
+    "unresolved.html",
+    "data/matches.csv",
+    "matches.html",
+    "review.html",
+    "sources.html#method",
+    "evidence.html",
+    "https://www.hltv.org/matches"
+   ]
+  },
+  {
+   "name": "Pixel 7",
+   "width": 412,
+   "height": 915,
+   "page": "unresolved",
+   "overflow": false,
+   "rows": [
+    {
+     "step": "exchange",
+     "cells": [
+      {
+       "text": "Market line — Polymarket exchangeTwo-sided order book, de-vi",
+       "height": 79,
+       "width": 348,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "7",
+       "height": 38,
+       "width": 167,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "7",
+       "height": 38,
+       "width": 167,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Polymarket Gamma API ↗",
+       "height": 41,
+       "width": 167,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Open the pick board →",
+       "height": 41,
+       "width": 167,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 556
+    },
+    {
+     "step": "pinnacle",
+     "cells": [
+      {
+       "text": "Market line — Pinnacle bookmakerA sharp bookmaker’s two-way ",
+       "height": 79,
+       "width": 348,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 167,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 167,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Pinnacle guest esports API ↗",
+       "height": 41,
+       "width": 167,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Open the pick board →",
+       "height": 41,
+       "width": 167,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 760
+    },
+    {
+     "step": "exchange_wide",
+     "cells": [
+      {
+       "text": "Market line — wide exchange quoteOnly where nothing else pri",
+       "height": 79,
+       "width": 348,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 167,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 167,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Polymarket Gamma API ↗",
+       "height": 41,
+       "width": 167,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Open the pick board →",
+       "height": 41,
+       "width": 167,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 964
+    },
+    {
+     "step": "book",
+     "cells": [
+      {
+       "text": "Book listing — researched two-way priceA dated listing page ",
+       "height": 64,
+       "width": 348,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "1",
+       "height": 38,
+       "width": 167,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "1",
+       "height": 38,
+       "width": 167,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "EGamersWorld CS2 listing ↗",
+       "height": 41,
+       "width": 167,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Open the pick board →",
+       "height": 41,
+       "width": 167,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 1154
+    },
+    {
+     "step": "model_vrs",
+     "cells": [
+      {
+       "text": "Our VRS model lineValve’s official standings points through ",
+       "height": 79,
+       "width": 348,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "3",
+       "height": 38,
+       "width": 167,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "3",
+       "height": 38,
+       "width": 167,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Valve counter-strike_regional_standings ↗",
+       "height": 54,
+       "width": 167,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Open the pick board →",
+       "height": 54,
+       "width": 167,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 1372
+    },
+    {
+     "step": "model_vrs_mirror",
+     "cells": [
+      {
+       "text": "Our VRS model from HLTV’s dated Valve rankingThe same formul",
+       "height": 64,
+       "width": 348,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 167,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 167,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "HLTV dated Valve ranking ↗",
+       "height": 41,
+       "width": 167,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Open the pick board →",
+       "height": 41,
+       "width": 167,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 1561
+    },
+    {
+     "step": "research",
+     "cells": [
+      {
+       "text": "Research pick — no percentageRanking order or one-sided stan",
+       "height": 79,
+       "width": 348,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 167,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 167,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "HLTV rankings and Valve standings ↗",
+       "height": 54,
+       "width": 167,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "The research-only rows →",
+       "height": 54,
+       "width": 167,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 1779
+    },
+    {
+     "step": "none",
+     "cells": [
+      {
+       "text": "No pick at all — unresolvedNo verified line, no model input ",
+       "height": 64,
+       "width": 348,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 167,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "0",
+       "height": 38,
+       "width": 167,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Hotspawn lobby (inventory) ↗ · every source tried",
+       "height": 67,
+       "width": 167,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Unresolved & limitations →",
+       "height": 67,
+       "width": 167,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 1995
+    },
+    {
+     "step": "total",
+     "cells": [
+      {
+       "text": "Total open matches",
+       "height": 49,
+       "width": 348,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "11",
+       "height": 39,
+       "width": 167,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "11",
+       "height": 39,
+       "width": 167,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Hotspawn lobby ↗",
+       "height": 42,
+       "width": 167,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      },
+      {
+       "text": "Snapshot JSON · CSV",
+       "height": 42,
+       "width": 167,
+       "display": "block",
+       "visibility": "visible",
+       "ariaHidden": null
+      }
+     ],
+     "bottom": 2170
+    }
+   ],
+   "total_sum": 11,
+   "total_row": 11,
+   "in_summary": false,
+   "hit_tag": "TD",
+   "tab_top": 854,
+   "count_cell_covered": false,
+   "count_cell_below_tabbar": false,
+   "jump": "#unresolved-rows",
+   "destinations": [
+    "data/latest.json",
+    "https://gamma-api.polymarket.com/events",
+    "picks.html",
+    "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+    "https://egamersworld.com/counterstrike/matches",
+    "https://github.com/ValveSoftware/counter-strike_regional_standings",
+    "https://www.hltv.org/valve-ranking/teams",
+    "https://www.hltv.org/ranking/teams",
+    "unresolved.html?status=needs#unresolved-rows",
+    "https://play.hotspawn.com/cs2-pickems",
+    "unresolved.html",
+    "data/matches.csv",
+    "matches.html",
+    "review.html",
+    "sources.html#method",
+    "evidence.html",
+    "#unresolved-rows",
+    "https://www.hltv.org/matches"
+   ]
+  }
+ ],
+ "failures": []
+}
