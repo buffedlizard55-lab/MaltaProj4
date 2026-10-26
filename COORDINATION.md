@@ -56,6 +56,53 @@ Scope note: no other session's files are edited by hand. The generated root page
 `data/latest.json` are produced only by the publishing workflow; this session verified
 them by building into `public/` locally and running `scripts.validate --site public`.
 
+## Session 11e17543 — FINAL: merged, deployed, live — 2026-10-26 03:20 UTC
+
+**PRs.** #359 → merged as `4467713`. #365 (the CI fix) → merged as `47f3777`.
+
+**Live now** at https://buffedlizard55-lab.github.io/MaltaProj4 — `build-info.json` serves
+`revision 5d75af2`, `snapshot_generated_at 2026-10-26T01:00:10.246310Z`, `rows 81`. Verified by
+sha256, not by eyeballing: the live `unresolved.html`, `matches.html`, `index.html`,
+`assets/style.css` and `data/latest.json` are **byte-identical** to the locally built, gate-passing
+tree (`8f145af3…`, `12903b59…`, `81181abe…`, `077d4072…`, `6731619f…` all MATCH).
+
+On the live pages: `matches.html#every-match` — "**79** of 81 listed CS2 matches carry a pick",
+42 with a probability, 19 actionable, 62 labelled historical; rungs
+`{pipeline:19, model_vrs:23, research_one_sided:23, research_bounded:14, unresolved:2}`.
+`unresolved.html#every-match-unresolved` — "**2 of 81** listed CS2 matches have no pick", 2 rows,
+5 official source links.
+
+### The CI failure, and what actually caused it
+
+Run `40255168673` failed at step 14 (browser gate) and the site did not redeploy. The Actions log is
+**not** readable from this sandbox — the log blobs live on `results-receiver.actions.githubusercontent.com`
+and Azure blob storage, both outside the outbound allowlist — so the cause came from reading
+`.github/workflows/pages.yml`: it runs `scripts.refresh` against the live feed *before* building, so
+the published snapshot is never the committed `data/latest.json`. `tests/browser_11e17543.cjs`
+asserted a literal 73. Session **b964dffd** hit the same thing independently and recorded the exact
+error, `expected 73 coverage cards, found 81`. Both fixes were kept — `expectedCards` from the built
+snapshot's data (theirs) and `total` from the rendered heading plus a picks+unresolved==total
+cross-check (mine). They are independent readings; neither alone catches a builder that mislabels its
+own table.
+
+The fix was **proved to fail when it should**: deleting one `<tr>` from `#every-match` with the
+heading left intact fails on both viewports, while a legitimately smaller snapshot passes because the
+builder regenerates its own heading. `SITE_ROOT` was added to make that reproducible.
+
+### For whoever picks this up
+
+* Do **not** pin live-derived counts in a browser suite. The feed rotates within hours; 73 → 81 in
+  this session alone.
+* Do **not** hand-merge generated files (`*.html`, `assets/*`, `data/*`, `build-info.json`). Take one
+  side, then `scripts.build` + `scripts.stage_legacy`.
+* `review.html#lobby-coverage-review` is **not** a stable anchor — that panel renders only when the
+  capture recorded a lobby diff, and `scripts.validate` will fail the build on it.
+* The "Snapshot expired" banner in the raw HTML is `hidden` and `app.js` only reveals it past the
+  8-hour TTL. A plain text extraction of the page shows it even when users never see it — do not
+  chase it as a defect.
+
+Status: **done**.
+
 ### Merge addendum — 2026-10-26 02:55 UTC
 
 `main` moved while this branch was open (sessions 28e4f2a1, 0a862f5f, 160f03c8, 77046e56). The merge
