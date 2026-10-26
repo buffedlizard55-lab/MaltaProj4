@@ -1,0 +1,122 @@
+name: Live coverage harvest b964dffd (non-publishing)
+
+# A real refresh on normal GitHub egress (the authoring sandbox reaches GitHub
+# and package registries only, so Hotspawn, HLTV, Polymarket, Pinnacle and the
+# bookmakers cannot be read from it), followed by the production build, the
+# independent evidence replay, the validator and the phone/browser gates.
+# Only dated research receipts are committed here; this workflow never deploys
+# Pages and never pushes a generated board to main. Publication stays with
+# pages.yml on main and, for this session, the final-integration PR.
+
+on:
+  push:
+    branches: [arena/b964dffd-maltaproj4]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: coverage-harvest-b964dffd
+  cancel-in-progress: false
+
+jobs:
+  capture:
+    if: github.ref == 'refs/heads/arena/b964dffd-maltaproj4' && (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[capture]'))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+          cache: npm
+      - run: pip install -r requirements.txt
+      - run: npm ci --ignore-scripts
+      - name: Verify the committed board before touching any source
+        run: |
+          mkdir -p research/harvest-b964dffd
+          python -m unittest discover -s tests 2>&1 | tee research/harvest-b964dffd/pre-refresh-unit.log | tail -5
+          python -m unittest discover -s audits -p 'test_*.py'
+          python verification-95b588c2/test_integrity.py
+          python -m unittest discover -s verification-c6 -p 'test_*.py'
+          python -m scripts.validate --data data/latest.json --site .
+      - name: Refresh official Hotspawn, HLTV, exchange, bookmaker and Valve sources
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p runtime research/harvest-b964dffd
+          python -m scripts.refresh --output runtime/latest.json 2>&1 | tee research/harvest-b964dffd/refresh.log
+      - name: Quarantine any row the independent evidence replay cannot reproduce
+        run: python -m scripts.quarantine runtime/latest.json 2>&1 | tee research/harvest-b964dffd/quarantine.log
+      - name: Independently audit every refreshed row
+        run: |
+          python verification-c6/audit_snapshot.py runtime/latest.json --output runtime/independent-row-audit.md
+          cp runtime/independent-row-audit.md research/harvest-b964dffd/independent-row-audit.md
+          cp runtime/latest.json research/harvest-b964dffd/snapshot.json
+      - name: Build and validate the fresh candidate
+        run: |
+          python -m scripts.build --data runtime/latest.json
+          python -m scripts.validate --data runtime/latest.json
+          python verification-c6/audit_snapshot.py public/data/latest.json --output research/harvest-b964dffd/published-row-audit.md
+          cp public/build-info.json research/harvest-b964dffd/build-info.json
+          mkdir -p research/harvest-b964dffd/public
+          cp public/index.html public/picks.html public/unresolved.html public/matches.html research/harvest-b964dffd/public/
+          cp public/data/matches.csv research/harvest-b964dffd/matches.csv
+      - name: Do the committed unit and audit suites survive this fresh snapshot?
+        # Diagnostic, not a gate: learn every test that pins a historical
+        # snapshot value so it can be repaired instead of blocking the next
+        # scheduled publish. The refreshed snapshot is installed as
+        # data/latest.json exactly as the publisher would install it, then
+        # the candidate build is installed at the root exactly as the legacy
+        # main:/ fallback staging would, then both are restored.
+        continue-on-error: true
+        run: |
+          cp data/latest.json runtime/previous-latest.json
+          cp research/harvest-b964dffd/snapshot.json data/latest.json
+          git stash list > /dev/null
+          python -m unittest discover -s tests -v 2>&1 | tee research/harvest-b964dffd/post-refresh-unit.log | tail -40
+          cp runtime/previous-latest.json data/latest.json
+      - name: Phone, desktop, accessibility and exact expiry checks on the fresh candidate
+        continue-on-error: true
+        run: npm run test:browser 2>&1 | tee research/harvest-b964dffd/browser.log | tail -30
+      - name: Record runner identity without changing source timestamps
+        env:
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+          RUN_SHA: ${{ github.sha }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          receipt = {'workflow_run_id': os.environ['RUN_ID'], 'attempt': os.environ['RUN_ATTEMPT'],
+                     'checkout_sha': os.environ['RUN_SHA'], 'run_url': os.environ['RUN_URL'],
+                     'publishes_pages': False, 'snapshot': 'research/harvest-b964dffd/snapshot.json'}
+          Path('research/harvest-b964dffd/run.json').write_text(json.dumps(receipt, indent=1) + '\n')
+          PY
+      - name: Commit only the dated research receipts to the fixed session branch
+        run: |
+          git config user.name "cs2-evidence-runner"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -- data/latest.json 2>/dev/null || true
+          git add -A -- research/harvest-b964dffd
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Retain live coverage harvest b964dffd from run ${GITHUB_RUN_ID} [skip ci]"
+          git pull --rebase origin arena/b964dffd-maltaproj4
+          git push origin arena/b964dffd-maltaproj4
+      - name: Retain candidate and audit artifacts even when a gate fails
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: coverage-harvest-b964dffd-${{ github.run_id }}
+          path: |
+            research/harvest-b964dffd
+            runtime/latest.json
+            runtime/independent-row-audit.md
+            public/build-info.json
+          retention-days: 14
