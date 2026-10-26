@@ -169,6 +169,33 @@ def every_match_report(data):
     return rep
 
 
+POST_HOC_TIERS = ('model_vrs', 'research_one_sided', 'research_bounded')
+
+
+def post_hoc_note(row, standings_as_of):
+    """The one thing the every-match table did not say about historical rows.
+
+    Session ba480835. A row whose pick lock has passed is labelled "Lock passed" and
+    "historical evidence", which is correct - but the percentages on those rows are
+    re-derived at BUILD time from the standings file current at that moment, so for a
+    fixture played weeks earlier they are a post-hoc estimate, not a contemporaneous
+    price, and the number moves whenever Valve publishes a new file. A reader (and a
+    re-audit) needs that stated on the row, next to the number, because nothing in the
+    snapshot pins which standings file produced it.
+
+    Returns ``''`` for an actionable row or a row with no percentage: this note is
+    only about historical numbers that come from a dated ranking file.
+    """
+    if row.get('actionable') or not row.get('probabilities'):
+        return ''
+    if row.get('ladder') not in POST_HOC_TIERS:
+        return ''
+    played = row.get('start') or 'an unverified start'
+    return (' Post-hoc estimate, not a contemporaneous price: the pick lock passed before this snapshot, and the '
+            'Valve standings of %s used for these percentages postdate the fixture (%s), so the number is '
+            're-derived from a file that did not exist when the match was played.' % (standings_as_of, played))
+
+
 def every_match_section(data):
     """One pick, or one recorded limitation, for every match Hotspawn lists.
 
@@ -202,6 +229,7 @@ def every_match_section(data):
                 source += link(s['url'], (s.get('provider') or 'source') + ' ↗')
         limitation = r['limitation'] or ('Actionable pick; priced from %s. No limitation recorded.'
                                          % (r['ladder_label'] or 'the ladder').lower())
+        limitation += post_hoc_note(r, rep['standings']['as_of'])
         body.append(
             '<tr>'
             '<td data-label="Fixture">%s</td>'
@@ -230,6 +258,12 @@ def every_match_section(data):
         'presented as current recommendations. Probabilities come from external betting lines or from our own labelled '
         'Valve-standings model; Hotspawn\u2019s own crowd percentages are never used.</p>'
         f'<p class="small">{e(ladder_line)}. Standings: Valve <em>{e(rep["standings"]["as_of"])}</em>.</p>'
+        f'<p class="small"><strong>Historical rows are post-hoc.</strong> {rep["rows_total"] - rep["actionable"]} rows '
+        'here had already passed their Hotspawn pick lock. Where such a row carries a percentage it comes from the '
+        f'standings file dated <em>{e(rep["standings"]["as_of"])}</em>, which postdates the fixture; it is re-derived '
+        'from that file at build time rather than being a price quoted when the match was still open, so it is an '
+        'estimate of who was stronger, not what a market offered. Each such row says so beside its number, and the '
+        'picks you can still act on are on ' + link('picks.html', 'the actionable board') + '.</p>'
         '<div class="notice info">A row no official source supports keeps a blank pick and states its limitation. '
         f'{plain_count(rep["unresolved"])} of {rep["rows_total"]} rows are in that state; each is named on '
         + unresolved_link + '.</div>'

@@ -6710,5 +6710,138 @@
     "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-11e17543/outside-lines.json"
    }
   ]
+ },
+ {
+  "id": "session-9bbd095e-polymarket-sokerorg-lfo10-1081159-2026-10-26",
+  "status": "Open limitation — unverified opponent rebrand refused; originated Valve VRS mirror line published instead",
+  "finding": "Hotspawn fixture 1081159 (LFO 10 vs ex-6666, CCT Season 3 Europe Series 12, 2026-10-26T12:00:00Z) matches HLTV match 2399509 (LFO 10 vs ex-6666) with LFO 10 (team/14084, HLTV #167, 2026-10-26 Valve ranking #157 at 803 pts, lineup Sapec, L00m1, dottie, flaw, Mann3n) facing ex-6666 (team/14100, HLTV #72, 2026-10-26 Valve ranking #118 at 968 pts, lineup skcH, kL1o, amster, rendysky, stefienson). Polymarket Gamma API (series_id=10310) exposes market 6231429 (Counter-Strike: Sökerorg vs ex-6666, 2026-10-26T12:00:00Z, outcomes ['Sökerorg', 'ex-6666'], outcomePrices ['0.315', '0.685'], spread 0.53, liquidity $691.77). Neither HLTV match 2399509 nor HLTV team 14084 records Sökerorg as a verified club or roster name, and the 53-point spread also fails the strict 25-point exchange gate. No unverified alias was added to data/identities.json; the pipeline refused market 6231429, recorded HLTV, Pinnacle, Thunderpick, GG.BET, BO3.gg and 2026-10-05 Valve standings attempts (LFO 10 absent from the 2026-10-05 file), and originated a labelled model_vrs_mirror estimate from HLTV's dated 2026-10-26 Valve ranking (ex-6666 67.2% / LFO 10 32.8%, 5/5 HLTV roster continuity on both clubs).",
+  "sources": [
+   {
+    "label": "Hotspawn lobby (fixture 1081159: LFO 10 vs ex-6666)",
+    "url": "https://play.hotspawn.com/lobby"
+   },
+   {
+    "label": "HLTV match 2399509: LFO 10 vs ex-6666 (2026-10-26 12:00 UTC)",
+    "url": "https://www.hltv.org/matches/2399509/lfo-10-vs-ex-6666-cct-2026-europe-series-12"
+   },
+   {
+    "label": "HLTV team 14084: LFO 10 (no Sökerorg alias published)",
+    "url": "https://www.hltv.org/team/14084/lfo-10"
+   },
+   {
+    "label": "Polymarket market 6231429: Sökerorg vs ex-6666 (spread 0.53)",
+    "url": "https://gamma-api.polymarket.com/markets/6231429"
+   },
+   {
+    "label": "HLTV dated Valve ranking (2026-10-26: #157 LFO 10 803 pts vs #118 ex-6666 968 pts)",
+    "url": "https://www.hltv.org/valve-ranking/teams/2026/october/26"
+   }
+  ]
+ },
+ {
+  "id": "session-9bbd095e-bo3-nodwin13-slot-rotation-2026-10-26",
+  "status": "Open source discrepancy — BO3.gg rotates afternoon NODWIN Clutch 13 start times vs Hotspawn and HLTV; exact-UTC gate preserved",
+  "finding": "Across the four NODWIN Clutch Series 13 playoffs quarterfinals on 2026-10-26 (1079201 INOX Division vs Nemesis at 09:00Z, 1079202 FOKUS vs ex-Zero Tenacity at 12:00Z, 1079203 Metizport vs BRUTE at 15:00Z, 1093218 Nuclear TigeRES vs UNiTY at 18:00Z), Hotspawn's official fixtures API and HLTV's event schedule (events/9440/matches: 2399116, 2399117, 2399118, 2399119) agree on every UTC start timestamp. BO3.gg's upcoming CS2 feed (tournament_id=6149) matches 09:00Z on id=131200, carries bet_updates: null across all four series, and rotates the three afternoon UTC start times (id=131201 Metizport vs BRUTE at 12:00Z, id=131202 Nuclear TigeRES vs UNiTY at 15:00Z, id=131203 FOKUS vs ex-Zero Tenacity at 18:00Z). Enforcing exact opponent-pair + UTC-start verification in scripts/bo3.py prevented cross-slot matching; 1079201 resolved via Polymarket (27.5% / 72.5%) while 1079202, 1079203 and 1093218 originated Valve VRS model lines from standings_global_2026_10_05.md with 4/5 to 5/5 HLTV lineup continuity.",
+  "sources": [
+   {
+    "label": "HLTV event 9440 matches: NODWIN Clutch Series 13 quarterfinal UTC schedule",
+    "url": "https://www.hltv.org/events/9440/matches"
+   },
+   {
+    "label": "Hotspawn CS2 scheduled fixtures API",
+    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+   },
+   {
+    "label": "BO3.gg tournament 6149 upcoming matches API (bet_updates null, afternoon slots rotated)",
+    "url": "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=20&filter[matches.status][in]=upcoming&filter[matches.tournament_id][in]=6149&sort=start_date&with=teams,tournament"
+   }
+  ]
+ },
+ {
+  "id": "session-9bbd095e-audit-5717f7d9-mirror-gate-2026-10-26",
+  "status": "Fixed — audit_5717f7d9 root-staging gate now validates model_vrs_mirror provenance, freshness and Valve calibration",
+  "finding": "When open fixtures 1081159 (LFO 10 vs ex-6666) and 1081162 (ex-RUSTEC vs Spirit Academy) entered the Hotspawn CS2 lobby on 2026-10-26, both legitimately resolved through model_vrs_mirror (HLTV Valve ranking, 2026-10-26) because LFO 10 is absent from Valve's 2026-10-05 file and ex-RUSTEC has two tied-overlap rows in 2026-10-05 versus one unique row (#94, 1059 pts, 4/5 HLTV overlap) on 2026-10-26. Although scripts.validate (validate_mirror_row) and upload-pages-artifact passed, scripts/audit_5717f7d9.py dispatched model_vrs_mirror to _audit_vrs while filtering evidence exclusively to provider == 'Valve VRS model', raising 'Model row has no VRS evidence' and failing pages.yml Step 17 (Keep the legacy main:/ root fallback on the verified build, e.g. run 40252224713) with rc=3. _audit_vrs now validates 'HLTV Valve ranking (Valve points)' on model_vrs_mirror rows, re-derives Valve's Glicko + 0.7986 calibration, and fails closed on non-HLTV URLs, stale observed_at (>8h) or ranking_as_of (>45d), incomplete lists (<100 teams), unverified duplicate labels, or missing prior unresolved official-file VRS attempts.",
+  "sources": [
+   {
+    "label": "Independent auditor module (scripts/audit_5717f7d9.py)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/scripts/audit_5717f7d9.py"
+   },
+   {
+    "label": "Main publish run 40252224713 (Step 17 root-fallback unit gate failure before fix)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40252224713"
+   },
+   {
+    "label": "Session 9bbd095e harvest run 40251642534 (captured root-unit failure trace)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40251642534"
+   },
+   {
+    "label": "HLTV dated Valve ranking (2026-10-26)",
+    "url": "https://www.hltv.org/valve-ranking/teams/2026/october/26"
+   }
+  ]
+ },
+ {
+  "id": "session-ba480835-historical-numbers-are-post-hoc-2026-10-26",
+  "status": "Open — disclosed limitation, manual review",
+  "finding": "The every-match table prices historical rows from the Valve standings file current at BUILD time. On the 2026-10-26T00:10:49Z snapshot that means the 23 historical rows that carry a percentage, all of them priced from our originated VRS line, and the 37 historical rows that carry a directional pick with no percentage, are derived from the standings of 2026-10-05 for fixtures played as early as 2026-06-26. Those percentages are therefore post-hoc estimates, not contemporaneous prices, and they are recomputed at every build rather than pinned in the snapshot, so the same historical fixture can show a different percentage after Valve publishes a new file (this project re-reads the latest standings for exactly that reason on the live rows, where the number can still be acted on). This session added one sentence per historical priced row naming the standings date and the fixture start, plus one sentence for the section. It did not change any pick, percentage or source, and it did not pin the standings file per row — that would change the published numbers and is left for review. The product question for review: should a historical row keep a price at all, and if so should each row record the standings file it was priced from so the number can never drift between builds?",
+  "sources": [
+   {
+    "label": "Valve counter-strike_regional_standings (official standings file)",
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings"
+   },
+   {
+    "label": "Hotspawn fixtures endpoint (per-row status/start/lock)",
+    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+   },
+   {
+    "label": "Valve file as vendored in this repository",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/data/vrs/meta.json"
+   }
+  ]
+ },
+ {
+  "id": "session-ba480835-two-listed-rows-have-no-pick-2026-10-26",
+  "status": "Open — coverage limitation, manual review",
+  "finding": "Two of the 73 listed CS2 rows still carry no pick and no percentage on the published every-match table (the table reports 71 of 73 with a pick, 34 with a probability, 2 unresolved: fixture 1051343 Sharks vs ex-Tricked and fixture 1053442 6666 vs BERG). Both are named with their own limitation on that row and described on the unresolved page: at least one club is absent from Valve official global standings and no outside esports line for the exact fixture could be confirmed from an official source, which is the documented fall-through of the ladder rather than a missing step. This project publishes those two as blanks on purpose - a guessed 50/50 or an invented line would be worse than the stated gap. Every count in this note is read from the snapshot beside it, not typed by hand.",
+  "sources": [
+   {
+    "label": "Valve counter-strike_regional_standings (official)",
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings"
+   },
+   {
+    "label": "Hotspawn fixtures endpoint",
+    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+   }
+  ]
+ },
+ {
+  "id": "session-ba480835-sandbox-could-not-probe-outside-lines-2026-10-26",
+  "status": "Open — process limitation, manual review",
+  "finding": "This session ran in a sandbox whose egress allowlist reached only github.com, api.github.com, codeload.github.com, registry.npmjs.org and pypi.org; direct reads of play.hotspawn.com, hltv.org, gamma-api.polymarket.com and the esportsbook listing pages all failed at the network layer. No new market line was therefore probed or claimed by this session: the live lines in this snapshot are the scheduled GitHub Actions publisher own recorded observations, and their status, URLs and observation times are published verbatim on the Sources page. Any statement on the site about an operator refusal is that run record, not this session observation.",
+  "sources": [
+   {
+    "label": "This site published source checks",
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/sources.html"
+   },
+   {
+    "label": "Repository Actions runs (publisher)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions"
+   }
+  ]
+ },
+ {
+  "id": "session-ba480835-adopted-upstream-every-match-solution-2026-10-26",
+  "status": "Fixed — duplicate mechanism withdrawn, disclosure kept",
+  "finding": "This session independently built a second \"pick for every listed fixture\" mechanism (an archive block per closed row derived from Valve standings, with the limitation named where both clubs could not be resolved), and then found that session 11e17543 had landed the same requirement upstream in PR #359 while this branch was open, with broader coverage (71 of 73 rows with a pick versus 23 retrospective lines). Two mechanisms would have put two different numbers on the same row, so per the repository coordination protocol this session withdrew its own implementation entirely - module, tests, refresh hook, validator checks, section and styles deleted rather than layered - and kept only the one thing the landed version did not say: that its historical numbers are post-hoc and derived from a standings file that postdates the fixture. The disclosure is published per row and once for the section, and pinned by tests/test_session_ba480835.py. Nothing from session 11e17543 was modified or discarded.",
+  "sources": [
+   {
+    "label": "PR #359 — every listed CS2 match gets a pick or a recorded limitation",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/pull/359"
+   },
+   {
+    "label": "Valve counter-strike_regional_standings (official)",
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings"
+   }
+  ]
  }
 ]

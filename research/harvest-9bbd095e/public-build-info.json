@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "revision": "d0530fa671c36e1dd411abd9674e74921127d011",
+  "built_at": "2026-10-26T00:58:54.488372Z",
+  "snapshot_generated_at": "2026-10-26T00:58:54.030684Z",
+  "rows": 81,
+  "files": {
+    "404.html": "d7382f3ef48c1cc8deb7fcf69e04b53f1f5ef4d447856cc9189c3a761c1f6208",
+    "analysis.html": "d6d38c82ec8f4dc4a2fd4a0325fc3724919fc80b9ec221e4538dbcfae167c585",
+    "assets/app.js": "7c09a50d6ce4098209a81a25b9549712df1153bc45b619faf80c2ae3ecbe5f0d",
+    "assets/favicon.svg": "5b0ba0da9b9bec504dc4695b59291abad789479745d4a18581fb78b0215738ba",
+    "assets/style.css": "78081bf5e257f0a38cb5b04ad1257f8b68156b9db1d7d1c44c373a95658f4a76",
+    "data/latest.json": "4a855efb76c78038e2ef315651661a43ff89b631a2ae2b437ca8327aae126b46",
+    "data/matches.csv": "790c6771d2716280f21ed16f1fe0a60bdcbbf6a9bf43b6b077b6d8709010d3d7",
+    "evidence.html": "5402c119d41ac3f53259e9284e67da538d480526d027b882898f047b4559feac",
+    "index.html": "537fe6a6b13d04ca58cb07cf1da6feab7a605adbfde6bbe4b98f893d9bdda94b",
+    "matches.html": "c21baeca6f368fe12de834076ad9abb53ddbf649ffad5b1430e0a1a8ab78806b",
+    "methodology.html": "db6dd3e60721627f0629397fd4d76b07f3f9ea5ab15b72348f3bee3b35a094ae",
+    "picks.html": "0a89e0e0ebb2a3fc59644c1731e826ea422e94fe059d0d7b5fdbef24918557b4",
+    "review.html": "ca6249f239ae4a30a78bbe98f7e808a03f39d5ce976597716ee8d08ae33644e6",
+    "site/index.html": "7ad39335aef2960a4c7f3a8f9f2322d358e59fd45631acfa19f456575ec491db",
+    "site/methodology.html": "130024ea27020261e759b42920f78c42bebcbb44f226ef5216c8bbb1a2684b33",
+    "site/picks.html": "de8e71d8a3a1f7b287299108b460956d7c52391255b567fc71cc9974f8dcd76c",
+    "site/review.html": "91547a7e0d0e5b1e9bde9a89cad48c38173aefee74ea25afd75c17d9de3937cf",
+    "site/unresolved.html": "d8c18e13a798f6d0f0f3cf8ee21bb42ed941d6077c82c8031ae3476d6120bded",
+    "sources.html": "c89cb63ebf795b353287b5255fbfa008b8723ce3458408f3535eea6eceab06f0",
+    "unresolved.html": "5e44eb5eccfeb9a9f077a55faba6ca00febe6df4d2419aa4d2957331f519e276"
+  }
+}
