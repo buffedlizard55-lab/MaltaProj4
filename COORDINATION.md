@@ -10969,3 +10969,15 @@ withholds past-lock rows in its `public/` copy by reader clock (`build.py:1733`)
 committed snapshot breaks snapshot-keyed tests; the production pipeline does this on purpose at publish time,
 diagnostic sessions must not. (f) GitHub Pages legacy `main:/` builds are soft-limited to 10/hour, so the live
 site can lag a green run by minutes (session b06ee902's measurement).
+
+## Session c0f54478 — claim (2026-10-26 00:45 UTC): fresh acceptance audit of the live CS2 board; reconcile the stale non-featured research request
+
+**Coordination read before this claim:** the full `COORDINATION.md`, current main tree, open PR list, recent Actions runs, and the public build receipt. This branch is fixed by Arena as `arena/c0f54478-maltaproj4`; it remains on that branch and will not create or switch to another branch.
+
+**Stale-task handoff.** PR [#312](https://github.com/buffedlizard55-lab/MaltaProj4/pull/312), *Non-featured CS2 pick-resolution research + executive-summary section*, is still open and conflicting. Its last commit is `9b864b8` at `2026-10-25T13:39:09Z`; it has no later commits and its latest `verify-build` failed while `audit` passed. The >60-minute handoff rule therefore permits a new session to take over. Main already contains the working source ladder, HLTV-first identity/line research, external-book and VRS fallbacks, an executive-summary link to updated picks, and a distinct unresolved/limitations section; I will first verify that against the latest published bytes instead of copying the stale PR's overlapping `scripts/build.py`/README edits. The stale PR will not be merged blindly. Any proven source discrepancy will be recorded with its primary source and limitations; shared generated data/site files are out of scope unless a separately justified integration change is logged.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Independently verify current Hotspawn coverage, each open pick/probability source, HLTV → esportsbook fallback evidence, executive-summary discovery and phone layout; reconcile stale PR #312 without duplicating current functionality | in progress | c0f54478 | `research/session-c0f54478/**`, `COORDINATION.md` (additive); no shared data/site/code output edits unless an evidence-backed request is logged | 2026-10-26 00:45 |
+
+**Initial public receipt (observed 2026-10-26 00:45 UTC, before work):** the live `build-info.json` reports revision `3b158a37e442b0440521a83350d4d515eb20aa49`, built at `00:10:50Z` from a snapshot generated at `00:10:49Z` (73 feed rows); the landing page reports 11 open matches, 11 picks, 11 probability pairs and 0 unresolved. The public summary links directly to `picks.html`, its at-a-glance section, `unresolved.html`, `matches.html`, methodology and review pages. This is only the starting observation; the final receipt will re-read the live bytes and rerun applicable local gates.
