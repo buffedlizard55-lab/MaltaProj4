@@ -19,7 +19,9 @@ const VIEWPORTS = [
 ];
 
 (async () => {
-  const root = path.resolve('public');
+  // SITE_ROOT lets the suite be pointed at a deliberately broken build to prove
+  // its assertions actually fail. Defaults to the generated build CI checks.
+  const root = path.resolve(process.env.SITE_ROOT || 'public');
   const server = http.createServer((req, res) => {
     const url = new URL(req.url, 'http://test');
     const pathname = decodeURIComponent(url.pathname).replace(/^\/MaltaProj4\//, '/');
@@ -94,8 +96,19 @@ const VIEWPORTS = [
                 sectionTop: Math.round(section.getBoundingClientRect().y + scrollY)};
       });
       if (!coverage.found) report.failures.push(`${vp.name}: #every-match is missing from matches.html`);
-      if (coverage.cards.length !== 73)
-        report.failures.push(`${vp.name}: expected 73 coverage cards, found ${coverage.cards.length}`);
+      // The row count is not pinned to a literal. CI refreshes the snapshot from
+      // the live feed before it builds, so the number of listed CS2 matches moves
+      // between runs; a hardcoded expectation would fail on a correct page and,
+      // worse, pass on a page that silently dropped rows. The invariant that
+      // actually matters is internal consistency: the table carries exactly one
+      // card per match its own heading counts, and the picks it reports plus the
+      // rows the unresolved page reports account for all of them.
+      const claimed = /of\s+(\d+)\s+listed/i.exec(coverage.heading || '');
+      const total = claimed ? Number(claimed[1]) : NaN;
+      if (!Number.isFinite(total) || total <= 0)
+        report.failures.push(`${vp.name}: the coverage heading states no match count: "${coverage.heading}"`);
+      else if (coverage.cards.length !== total)
+        report.failures.push(`${vp.name}: the heading claims ${total} listed matches but the table has ${coverage.cards.length} cards`);
       if (coverage.cards.some(c => !c.pick && !/no supported pick/i.test(c.pick))) {
         const silent = coverage.cards.filter(c => !c.pick && !c.limitation);
         if (silent.length) report.failures.push(`${vp.name}: ${silent.length} cards with neither pick nor limitation`);
@@ -128,6 +141,18 @@ const VIEWPORTS = [
                 text: s.innerText.slice(0, 400)};
       });
       if (!unresolved.found) report.failures.push(`${vp.name}: #every-match-unresolved is missing`);
+
+      // Picks plus the rows named on the unresolved page must account for every
+      // listed match, on whatever snapshot this build used.
+      if (Number.isFinite(total) && unresolved.found && unresolved.rows !== undefined) {
+        const picks = /(\d+)\s+of\s+\d+\s+listed/i.exec(coverage.heading || '');
+        const unresolvedClaim = /(\d+)\s+of\s+\d+\s+listed/i.exec(unresolved.heading || '');
+        if (picks && unresolvedClaim &&
+            Number(picks[1]) + Number(unresolvedClaim[1]) !== total)
+          report.failures.push(`${vp.name}: ${picks[1]} picks + ${unresolvedClaim[1]} unresolved != ${total} listed matches`);
+        if (unresolvedClaim && Number(unresolvedClaim[1]) !== unresolved.rows)
+          report.failures.push(`${vp.name}: the unresolved heading claims ${unresolvedClaim[1]} rows but names ${unresolved.rows}`);
+      }
 
       report.viewports.push({viewport: vp, summary, coverage: {...coverage, cards: coverage.cards.slice(0, 3)},
                              coverageCardCount: coverage.cards.length, unresolved});
