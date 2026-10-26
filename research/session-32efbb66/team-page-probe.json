@@ -1,0 +1,200 @@
+{
+ "probed_at": "2026-10-26T01:26:38.836335Z",
+ "teams": [
+  {
+   "team": "FaZe",
+   "url": "https://www.hltv.org/team/6667/faze",
+   "observed_at": "2026-10-26T01:26:39.358463Z",
+   "profile": {
+    "team": "FaZe",
+    "label": "FaZe",
+    "lineup": [
+     "frozen",
+     "Twistzz",
+     "Neityu",
+     "jcobbb",
+     "JBOEN"
+    ],
+    "world_rank": 17,
+    "world_rank_status": "ranked",
+    "world_rank_source": "https://www.hltv.org/ranking/teams/2026/october/19/details/6667",
+    "roster_absent": false,
+    "vrs_rank": 19,
+    "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=6667",
+    "limitation": "Team-page roster and ranking are identity context only; no probability is derived from an HLTV rank."
+   },
+   "match_page_parser_on_team_page": {},
+   "resultish_classes": {
+    "search-results-wrap": 3,
+    "search-results-header": 3,
+    "search-results-wrap-slider": 3,
+    "mobile-search-results": 1,
+    "recent-activity": 1,
+    "recent-activity-preferences": 1
+   },
+   "snippets": {
+    "mobile-search-results": "<div class=\"mobile-search-results\"><div class=\"carousel-slider-wrap\"><div class=\"carousel-slider-section search-results-wrap\" data-carousel-slider-section=\"\" data-nav-search-mobile-player-results=\"\" style=\"display: none\"><div class=\"carousel-slider-header-wrapper\"><div class=\"search-results-header\">Players</div><div class=\"carousel-slider-controller\"><button data-carousel-slider-previous=\"\" type=\"button\"><i class=\"fa fa-caret-left\"></i></button><button data-carousel-slider-next=\"\" type=\"button\"><i class=\"fa fa-caret-right\"></i></button></div></div><div class=\"carousel-slider-elements search-results-wrap-slider disable-scrollbar\" data-carousel-slider-elements=\"\"></div></div></div><div class=\"carousel-slider-wrap\"><div class=\"carousel-slider-section teams-slider search-results-wrap\" data-carousel-slider-section=\"\" data-nav-search-mobile-team-results=\"\" style=\"display: none\"><div class=\"carousel-slider-header-wrapper\"><div class=\"search-results-header\">Teams</div><div class=\"carousel-slider-controller\"><button data-carousel-slider-previous=\"\" type=\"button\"><i class=\"fa fa-caret-left\"></i></button><button data-carousel-slider-next=\"\" type=\"button\"><i class=\"fa fa-caret-right\"></i></button></div></div><div class=\"carousel-slider-elements teams-slider search-results-wrap-slider disable-scrollbar\" data-carousel-slider-elements=\"\"></div></div></div><div class=\"carousel-slider-wrap\"><div class=\"carousel-slider-section events-slider search-results-wrap\" data-carousel-slider-section=\"\" data-nav-search-mobile-event-results=\"\" style=\"display: none\"><div class=\"carousel-slider-header-wrapper\"><div class=\"search-results-header\">Events</div><div class=\"carousel-slider-controller\"><button data-carousel-slider-previous=\"\" type=\"button\"><i class=\"fa fa-caret-left\"></i></button><button data-carousel-slider-next=\"\" type=\"button\"><i class=\"fa fa-caret-right\"></i></button></div></div><div class=\"carousel-slider-elements events-slider search-results-wrap-slider disable-scrollbar\" data-carousel-slider-elements=\"\"></div></div></div></div>",
+    "search-results-wrap": "<div class=\"carousel-slider-section search-results-wrap\" data-carousel-slider-section=\"\" data-nav-search-mobile-player-results=\"\" style=\"display: none\"><div class=\"carousel-slider-header-wrapper\"><div class=\"search-results-header\">Players</div><div class=\"carousel-slider-controller\"><button data-carousel-slider-previous=\"\" type=\"button\"><i class=\"fa fa-caret-left\"></i></button><button data-carousel-slider-next=\"\" type=\"button\"><i class=\"fa fa-caret-right\"></i></button></div></div><div class=\"carousel-slider-elements search-results-wrap-slider disable-scrollbar\" data-carousel-slider-elements=\"\"></div></div>",
+    "search-results-header": "<div class=\"search-results-header\">Players</div>",
+    "search-results-wrap-slider": "<div class=\"carousel-slider-elements search-results-wrap-slider disable-scrollbar\" data-carousel-slider-elements=\"\"></div>",
+    "recent-activity": "<div class=\"recent-activity\"><h1><a class=\"a-reset\" href=\"/forums\">RECENT ACTIVITY</a></h1><div class=\"recent-activity-preferences\"><div class=\"forum-preferences-menu-wrap\"><div class=\"circle\"></div><div class=\"circle\"></div><div class=\"circle\"></div></div><div class=\"forum-preferences-modal-arrow hidden\"></div><div class=\"forum-preferences-modal-arrow2 hidden\"></div></div><div class=\"forum-preferences-modal standard-box hidden\"><div class=\"preferences-title\">Forum preferences</div><div class=\"preferences-options-wrap\"><div class=\"option\" title=\"Toggle Sport mode on, in Sport mode we reduce community interaction, and present mainly HLTV produced content. The Sport mode is in beta, and will be expanded going forward.\">Enable Sport mode<span class=\"slider\"><span class=\"pro-mode-toggle\">No</span><span class=\"pro-mode-toggle\">Yes</span><div class=\"selector\"></div></span></div><div class=\"option\" title=\"Enable / disable Off Topic posts\">Enable Off Topic<span class=\"slider\"><span class=\"off-topic-toggle\">No</span><span class=\"off-topic-toggle\">Yes</span><div class=\"selector\"></div></span></div></div></div></div>",
+    "recent-activity-preferences": "<div class=\"recent-activity-preferences\"><div class=\"forum-preferences-menu-wrap\"><div class=\"circle\"></div><div class=\"circle\"></div><div class=\"circle\"></div></div><div class=\"forum-preferences-modal-arrow hidden\"></div><div class=\"forum-preferences-modal-arrow2 hidden\"></div></div>"
+   }
+  },
+  {
+   "team": "HAVU",
+   "url": "https://www.hltv.org/team/7865/havu",
+   "observed_at": "2026-10-26T01:26:43.048025Z",
+   "profile": {
+    "team": "HAVU",
+    "label": "HAVU",
+    "lineup": [
+     "uli",
+     "Alxc",
+     "p3kko",
+     "ottob",
+     "8Juho8"
+    ],
+    "world_rank": 108,
+    "world_rank_status": "ranked",
+    "world_rank_source": "https://www.hltv.org/ranking/teams/2026/october/19/details/7865",
+    "roster_absent": false,
+    "vrs_rank": 107,
+    "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=7865",
+    "limitation": "Team-page roster and ranking are identity context only; no probability is derived from an HLTV rank."
+   },
+   "match_page_parser_on_team_page": {},
+   "resultish_classes": {
+    "search-results-wrap": 3,
+    "search-results-header": 3,
+    "search-results-wrap-slider": 3,
+    "mobile-search-results": 1,
+    "recent-activity": 1,
+    "recent-activity-preferences": 1
+   },
+   "snippets": {
+    "mobile-search-results": "<div class=\"mobile-search-results\"><div class=\"carousel-slider-wrap\"><div class=\"carousel-slider-section search-results-wrap\" data-carousel-slider-section=\"\" data-nav-search-mobile-player-results=\"\" style=\"display: none\"><div class=\"carousel-slider-header-wrapper\"><div class=\"search-results-header\">Players</div><div class=\"carousel-slider-controller\"><button data-carousel-slider-previous=\"\" type=\"button\"><i class=\"fa fa-caret-left\"></i></button><button data-carousel-slider-next=\"\" type=\"button\"><i class=\"fa fa-caret-right\"></i></button></div></div><div class=\"carousel-slider-elements search-results-wrap-slider disable-scrollbar\" data-carousel-slider-elements=\"\"></div></div></div><div class=\"carousel-slider-wrap\"><div class=\"carousel-slider-section teams-slider search-results-wrap\" data-carousel-slider-section=\"\" data-nav-search-mobile-team-results=\"\" style=\"display: none\"><div class=\"carousel-slider-header-wrapper\"><div class=\"search-results-header\">Teams</div><div class=\"carousel-slider-controller\"><button data-carousel-slider-previous=\"\" type=\"button\"><i class=\"fa fa-caret-left\"></i></button><button data-carousel-slider-next=\"\" type=\"button\"><i class=\"fa fa-caret-right\"></i></button></div></div><div class=\"carousel-slider-elements teams-slider search-results-wrap-slider disable-scrollbar\" data-carousel-slider-elements=\"\"></div></div></div><div class=\"carousel-slider-wrap\"><div class=\"carousel-slider-section events-slider search-results-wrap\" data-carousel-slider-section=\"\" data-nav-search-mobile-event-results=\"\" style=\"display: none\"><div class=\"carousel-slider-header-wrapper\"><div class=\"search-results-header\">Events</div><div class=\"carousel-slider-controller\"><button data-carousel-slider-previous=\"\" type=\"button\"><i class=\"fa fa-caret-left\"></i></button><button data-carousel-slider-next=\"\" type=\"button\"><i class=\"fa fa-caret-right\"></i></button></div></div><div class=\"carousel-slider-elements events-slider search-results-wrap-slider disable-scrollbar\" data-carousel-slider-elements=\"\"></div></div></div></div>",
+    "search-results-wrap": "<div class=\"carousel-slider-section search-results-wrap\" data-carousel-slider-section=\"\" data-nav-search-mobile-player-results=\"\" style=\"display: none\"><div class=\"carousel-slider-header-wrapper\"><div class=\"search-results-header\">Players</div><div class=\"carousel-slider-controller\"><button data-carousel-slider-previous=\"\" type=\"button\"><i class=\"fa fa-caret-left\"></i></button><button data-carousel-slider-next=\"\" type=\"button\"><i class=\"fa fa-caret-right\"></i></button></div></div><div class=\"carousel-slider-elements search-results-wrap-slider disable-scrollbar\" data-carousel-slider-elements=\"\"></div></div>",
+    "search-results-header": "<div class=\"search-results-header\">Players</div>",
+    "search-results-wrap-slider": "<div class=\"carousel-slider-elements search-results-wrap-slider disable-scrollbar\" data-carousel-slider-elements=\"\"></div>",
+    "recent-activity": "<div class=\"recent-activity\"><h1><a class=\"a-reset\" href=\"/forums\">RECENT ACTIVITY</a></h1><div class=\"recent-activity-preferences\"><div class=\"forum-preferences-menu-wrap\"><div class=\"circle\"></div><div class=\"circle\"></div><div class=\"circle\"></div></div><div class=\"forum-preferences-modal-arrow hidden\"></div><div class=\"forum-preferences-modal-arrow2 hidden\"></div></div><div class=\"forum-preferences-modal standard-box hidden\"><div class=\"preferences-title\">Forum preferences</div><div class=\"preferences-options-wrap\"><div class=\"option\" title=\"Toggle Sport mode on, in Sport mode we reduce community interaction, and present mainly HLTV produced content. The Sport mode is in beta, and will be expanded going forward.\">Enable Sport mode<span class=\"slider\"><span class=\"pro-mode-toggle\">No</span><span class=\"pro-mode-toggle\">Yes</span><div class=\"selector\"></div></span></div><div class=\"option\" title=\"Enable / disable Off Topic posts\">Enable Off Topic<span class=\"slider\"><span class=\"off-topic-toggle\">No</span><span class=\"off-topic-toggle\">Yes</span><div class=\"selector\"></div></span></div></div></div></div>",
+    "recent-activity-preferences": "<div class=\"recent-activity-preferences\"><div class=\"forum-preferences-menu-wrap\"><div class=\"circle\"></div><div class=\"circle\"></div><div class=\"circle\"></div></div><div class=\"forum-preferences-modal-arrow hidden\"></div><div class=\"forum-preferences-modal-arrow2 hidden\"></div></div>"
+   }
+  },
+  {
+   "team": "ILLYRIANS",
+   "url": "https://www.hltv.org/team/11719/illyrians",
+   "observed_at": "2026-10-26T01:26:44.599488Z",
+   "profile": {
+    "team": "ILLYRIANS",
+    "label": "Illyrians",
+    "lineup": [
+     "cerber",
+     "BledarD",
+     "ammar"
+    ],
+    "world_rank": 124,
+    "world_rank_status": "ranked",
+    "world_rank_source": "https://www.hltv.org/ranking/teams/2026/october/19/details/11719",
+    "roster_absent": false,
+    "vrs_rank": 129,
+    "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=11719",
+    "limitation": "Team-page roster and ranking are identity context only; no probability is derived from an HLTV rank."
+   },
+   "match_page_parser_on_team_page": {},
+   "resultish_classes": {
+    "search-results-wrap": 3,
+    "search-results-header": 3,
+    "search-results-wrap-slider": 3,
+    "mobile-search-results": 1,
+    "recent-activity": 1,
+    "recent-activity-preferences": 1
+   },
+   "snippets": {
+    "mobile-search-results": "<div class=\"mobile-search-results\"><div class=\"carousel-slider-wrap\"><div class=\"carousel-slider-section search-results-wrap\" data-carousel-slider-section=\"\" data-nav-search-mobile-player-results=\"\" style=\"display: none\"><div class=\"carousel-slider-header-wrapper\"><div class=\"search-results-header\">Players</div><div class=\"carousel-slider-controller\"><button data-carousel-slider-previous=\"\" type=\"button\"><i class=\"fa fa-caret-left\"></i></button><button data-carousel-slider-next=\"\" type=\"button\"><i class=\"fa fa-caret-right\"></i></button></div></div><div class=\"carousel-slider-elements search-results-wrap-slider disable-scrollbar\" data-carousel-slider-elements=\"\"></div></div></div><div class=\"carousel-slider-wrap\"><div class=\"carousel-slider-section teams-slider search-results-wrap\" data-carousel-slider-section=\"\" data-nav-search-mobile-team-results=\"\" style=\"display: none\"><div class=\"carousel-slider-header-wrapper\"><div class=\"search-results-header\">Teams</div><div class=\"carousel-slider-controller\"><button data-carousel-slider-previous=\"\" type=\"button\"><i class=\"fa fa-caret-left\"></i></button><button data-carousel-slider-next=\"\" type=\"button\"><i class=\"fa fa-caret-right\"></i></button></div></div><div class=\"carousel-slider-elements teams-slider search-results-wrap-slider disable-scrollbar\" data-carousel-slider-elements=\"\"></div></div></div><div class=\"carousel-slider-wrap\"><div class=\"carousel-slider-section events-slider search-results-wrap\" data-carousel-slider-section=\"\" data-nav-search-mobile-event-results=\"\" style=\"display: none\"><div class=\"carousel-slider-header-wrapper\"><div class=\"search-results-header\">Events</div><div class=\"carousel-slider-controller\"><button data-carousel-slider-previous=\"\" type=\"button\"><i class=\"fa fa-caret-left\"></i></button><button data-carousel-slider-next=\"\" type=\"button\"><i class=\"fa fa-caret-right\"></i></button></div></div><div class=\"carousel-slider-elements events-slider search-results-wrap-slider disable-scrollbar\" data-carousel-slider-elements=\"\"></div></div></div></div>",
+    "search-results-wrap": "<div class=\"carousel-slider-section search-results-wrap\" data-carousel-slider-section=\"\" data-nav-search-mobile-player-results=\"\" style=\"display: none\"><div class=\"carousel-slider-header-wrapper\"><div class=\"search-results-header\">Players</div><div class=\"carousel-slider-controller\"><button data-carousel-slider-previous=\"\" type=\"button\"><i class=\"fa fa-caret-left\"></i></button><button data-carousel-slider-next=\"\" type=\"button\"><i class=\"fa fa-caret-right\"></i></button></div></div><div class=\"carousel-slider-elements search-results-wrap-slider disable-scrollbar\" data-carousel-slider-elements=\"\"></div></div>",
+    "search-results-header": "<div class=\"search-results-header\">Players</div>",
+    "search-results-wrap-slider": "<div class=\"carousel-slider-elements search-results-wrap-slider disable-scrollbar\" data-carousel-slider-elements=\"\"></div>",
+    "recent-activity": "<div class=\"recent-activity\"><h1><a class=\"a-reset\" href=\"/forums\">RECENT ACTIVITY</a></h1><div class=\"recent-activity-preferences\"><div class=\"forum-preferences-menu-wrap\"><div class=\"circle\"></div><div class=\"circle\"></div><div class=\"circle\"></div></div><div class=\"forum-preferences-modal-arrow hidden\"></div><div class=\"forum-preferences-modal-arrow2 hidden\"></div></div><div class=\"forum-preferences-modal standard-box hidden\"><div class=\"preferences-title\">Forum preferences</div><div class=\"preferences-options-wrap\"><div class=\"option\" title=\"Toggle Sport mode on, in Sport mode we reduce community interaction, and present mainly HLTV produced content. The Sport mode is in beta, and will be expanded going forward.\">Enable Sport mode<span class=\"slider\"><span class=\"pro-mode-toggle\">No</span><span class=\"pro-mode-toggle\">Yes</span><div class=\"selector\"></div></span></div><div class=\"option\" title=\"Enable / disable Off Topic posts\">Enable Off Topic<span class=\"slider\"><span class=\"off-topic-toggle\">No</span><span class=\"off-topic-toggle\">Yes</span><div class=\"selector\"></div></span></div></div></div></div>",
+    "recent-activity-preferences": "<div class=\"recent-activity-preferences\"><div class=\"forum-preferences-menu-wrap\"><div class=\"circle\"></div><div class=\"circle\"></div><div class=\"circle\"></div></div><div class=\"forum-preferences-modal-arrow hidden\"></div><div class=\"forum-preferences-modal-arrow2 hidden\"></div></div>"
+   }
+  }
+ ],
+ "source_log": [
+  {
+   "name": "HLTV team page FaZe",
+   "url": "https://www.hltv.org/team/6667/faze",
+   "checked_at": "2026-10-26T01:26:38.836348Z",
+   "request_url": "https://www.hltv.org/team/6667/faze",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-26T01:26:39.358463Z",
+   "observed_at": "2026-10-26T01:26:39.358463Z",
+   "cache_age_seconds": null,
+   "cache_status": "DYNAMIC",
+   "sha256": "33fb15e0aba393502fde701a4f12d37bc76ba7e1e78357b5616a59fd69174f93",
+   "bytes": 5267662
+  },
+  {
+   "name": "HLTV team search HAVU",
+   "url": "https://www.hltv.org/search?query=HAVU",
+   "checked_at": "2026-10-26T01:26:42.014733Z",
+   "request_url": "https://www.hltv.org/search?query=HAVU",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-26T01:26:42.785400Z",
+   "observed_at": "2026-10-26T01:26:42.785400Z",
+   "cache_age_seconds": null,
+   "cache_status": "DYNAMIC",
+   "sha256": "a9941043786e11a818dc566fbbd96bd70b11551a9b46119592948246751be04b",
+   "bytes": 136585
+  },
+  {
+   "name": "HLTV team page HAVU",
+   "url": "https://www.hltv.org/team/7865/havu",
+   "checked_at": "2026-10-26T01:26:42.828573Z",
+   "request_url": "https://www.hltv.org/team/7865/havu",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-26T01:26:43.048025Z",
+   "observed_at": "2026-10-26T01:26:43.048025Z",
+   "cache_age_seconds": null,
+   "cache_status": "DYNAMIC",
+   "sha256": "9382621057f9067e463cf21d782d97f5c47bb447b08980e299c928fc3ed9dde5",
+   "bytes": 3522478
+  },
+  {
+   "name": "HLTV team search ILLYRIANS",
+   "url": "https://www.hltv.org/search?query=ILLYRIANS",
+   "checked_at": "2026-10-26T01:26:44.042446Z",
+   "request_url": "https://www.hltv.org/search?query=ILLYRIANS",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-26T01:26:44.386959Z",
+   "observed_at": "2026-10-26T01:26:44.386959Z",
+   "cache_age_seconds": null,
+   "cache_status": "DYNAMIC",
+   "sha256": "d271986498cc1e87ac6971fdcebb64907b42876df06d08a99e054ee0599ae3cd",
+   "bytes": 125136
+  },
+  {
+   "name": "HLTV team page ILLYRIANS",
+   "url": "https://www.hltv.org/team/11719/illyrians",
+   "checked_at": "2026-10-26T01:26:44.424586Z",
+   "request_url": "https://www.hltv.org/team/11719/illyrians",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-26T01:26:44.599488Z",
+   "observed_at": "2026-10-26T01:26:44.599488Z",
+   "cache_age_seconds": null,
+   "cache_status": "DYNAMIC",
+   "sha256": "83789bcec00d413819179430a7e38c1eea942d293597b73b241d8db1ade98c3a",
+   "bytes": 1104896
+  }
+ ]
+}
