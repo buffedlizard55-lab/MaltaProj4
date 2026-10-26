@@ -6781,6 +6781,70 @@
   ]
  },
  {
+  "id": "session-ba480835-historical-numbers-are-post-hoc-2026-10-26",
+  "status": "Open — disclosed limitation, manual review",
+  "finding": "The every-match table prices historical rows from the Valve standings file current at BUILD time. On the 2026-10-26T00:10:49Z snapshot that means the 23 historical rows that carry a percentage, all of them priced from our originated VRS line, and the 37 historical rows that carry a directional pick with no percentage, are derived from the standings of 2026-10-05 for fixtures played as early as 2026-06-26. Those percentages are therefore post-hoc estimates, not contemporaneous prices, and they are recomputed at every build rather than pinned in the snapshot, so the same historical fixture can show a different percentage after Valve publishes a new file (this project re-reads the latest standings for exactly that reason on the live rows, where the number can still be acted on). This session added one sentence per historical priced row naming the standings date and the fixture start, plus one sentence for the section. It did not change any pick, percentage or source, and it did not pin the standings file per row — that would change the published numbers and is left for review. The product question for review: should a historical row keep a price at all, and if so should each row record the standings file it was priced from so the number can never drift between builds?",
+  "sources": [
+   {
+    "label": "Valve counter-strike_regional_standings (official standings file)",
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings"
+   },
+   {
+    "label": "Hotspawn fixtures endpoint (per-row status/start/lock)",
+    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+   },
+   {
+    "label": "Valve file as vendored in this repository",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/data/vrs/meta.json"
+   }
+  ]
+ },
+ {
+  "id": "session-ba480835-two-listed-rows-have-no-pick-2026-10-26",
+  "status": "Open — coverage limitation, manual review",
+  "finding": "Two of the 73 listed CS2 rows still carry no pick and no percentage on the published every-match table (the table reports 71 of 73 with a pick, 34 with a probability, 2 unresolved: fixture 1051343 Sharks vs ex-Tricked and fixture 1053442 6666 vs BERG). Both are named with their own limitation on that row and described on the unresolved page: at least one club is absent from Valve official global standings and no outside esports line for the exact fixture could be confirmed from an official source, which is the documented fall-through of the ladder rather than a missing step. This project publishes those two as blanks on purpose - a guessed 50/50 or an invented line would be worse than the stated gap. Every count in this note is read from the snapshot beside it, not typed by hand.",
+  "sources": [
+   {
+    "label": "Valve counter-strike_regional_standings (official)",
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings"
+   },
+   {
+    "label": "Hotspawn fixtures endpoint",
+    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+   }
+  ]
+ },
+ {
+  "id": "session-ba480835-sandbox-could-not-probe-outside-lines-2026-10-26",
+  "status": "Open — process limitation, manual review",
+  "finding": "This session ran in a sandbox whose egress allowlist reached only github.com, api.github.com, codeload.github.com, registry.npmjs.org and pypi.org; direct reads of play.hotspawn.com, hltv.org, gamma-api.polymarket.com and the esportsbook listing pages all failed at the network layer. No new market line was therefore probed or claimed by this session: the live lines in this snapshot are the scheduled GitHub Actions publisher own recorded observations, and their status, URLs and observation times are published verbatim on the Sources page. Any statement on the site about an operator refusal is that run record, not this session observation.",
+  "sources": [
+   {
+    "label": "This site published source checks",
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/sources.html"
+   },
+   {
+    "label": "Repository Actions runs (publisher)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions"
+   }
+  ]
+ },
+ {
+  "id": "session-ba480835-adopted-upstream-every-match-solution-2026-10-26",
+  "status": "Fixed — duplicate mechanism withdrawn, disclosure kept",
+  "finding": "This session independently built a second \"pick for every listed fixture\" mechanism (an archive block per closed row derived from Valve standings, with the limitation named where both clubs could not be resolved), and then found that session 11e17543 had landed the same requirement upstream in PR #359 while this branch was open, with broader coverage (71 of 73 rows with a pick versus 23 retrospective lines). Two mechanisms would have put two different numbers on the same row, so per the repository coordination protocol this session withdrew its own implementation entirely - module, tests, refresh hook, validator checks, section and styles deleted rather than layered - and kept only the one thing the landed version did not say: that its historical numbers are post-hoc and derived from a standings file that postdates the fixture. The disclosure is published per row and once for the section, and pinned by tests/test_session_ba480835.py. Nothing from session 11e17543 was modified or discarded.",
+  "sources": [
+   {
+    "label": "PR #359 — every listed CS2 match gets a pick or a recorded limitation",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/pull/359"
+   },
+   {
+    "label": "Valve counter-strike_regional_standings (official)",
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings"
+   }
+  ]
+ },
+ {
   "id": "session-b964dffd-inventory-rollout-gap-2026-10-26",
   "status": "Resolved by re-harvest — retained for review",
   "finding": "Companion to session-160f03c8-hotspawn-inventory-drift-2026-10-26 (left untouched, still open on its own terms). Session b964dffd independently read the official lobby at ~00:49Z on 2026-10-26 (81 CS2 entries, 19 matches this week) and found the same eight fixtures absent from the published 00:10Z board. The requested re-harvest was then run on GitHub egress (non-publishing run 40251666216): at fixtures-observed 2026-10-26T00:56:34Z all three Hotspawn surfaces agreed 81/81/81, inventory_changes added exactly 1079201, 1079202, 1079203, 1081159, 1081160, 1081162, 1081163, 1081164 and removed none, and the existing ladder priced all 19 open rows (8 strict Polymarket, 1 BO3.gg/Thunderpick listing, 8 Valve-VRS model, 2 HLTV-mirror VRS model; 0 unresolved). Because the 00:07Z observation also showed three-surface parity (73/73/73), the eight were added by Hotspawn between observations during its weekly rollout; no discovery-code defect was reproduced. The user-visible limitation stands: fixtures Hotspawn adds between publication slots are invisible until the next slot whose gates pass (publisher now schedules every 15 minutes behind a 60-minute freshness gate, 8-hour evidence expiry). Hotspawn crowd percentages were never used. Full ledger: research/session-b964dffd/REPORT.md and row-ledger.md.",

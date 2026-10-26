@@ -11479,3 +11479,105 @@ the upstream area codes). All three suites (5717f7d9, 9bbd095e, b964dffd) pass o
 the adopted auditor. Review-notes union 296 by id. Gates: **1,867 unit OK,
 validate 81/19/832, browser chain rc=0**.
 
+## Session ba480835 — CLAIM (2026-10-26 00:5x UTC): a pick for every listed fixture, a closed-fixture section, and a phone-first executive summary
+
+**Session id:** `ba480835` · **branch:** `arena/ba480835-maltaproj4` · **base:** `eca5117` (= `origin/main` at claim time)
+
+**Measured starting point (from the published snapshot `data/latest.json`, built 2026-10-26T00:10:49Z and live at
+`https://buffedlizard55-lab.github.io/MaltaProj4/` from revision `eca5117`):** 73 Hotspawn CS2 feed rows;
+11 open with a pick and a win probability; **0 open rows unresolved**; **62 feed rows carry no pick and no
+percentage**. Those 62 are rows the fixtures endpoint still returns with `status: scheduled` although
+Hotspawn's own payload carries `start_time`/`end_time` (they have already been played) — for example fixture
+`1052746` `Fortress vs Endless Journey`, scheduled 2026-06-26T10:30Z, `start_time` 1782474327439,
+`end_time` 1782478260961. The board currently states these are *never* priced; the user has asked for a pick
+on every listed match, and for a separate unresolved/limitations section carried in the executive summary.
+
+**File scope claimed (exclusive to this session):**
+- `scripts/archive_lines.py` (new), `tests/test_session_ba480835.py` (new)
+- `scripts/refresh.py` (call site + summary line only)
+- `scripts/build.py` (closed-fixture rendering, executive-summary and unresolved-page sections)
+- `scripts/summary.py` (counts for the closed-fixture split)
+- `scripts/validate.py` (archive-line re-derivation checks)
+- `assets/style.css` **and** `site/assets/style.css` (kept byte-identical; archive-line styles only)
+- `assets/app.js` (closed-fixture filter state only)
+- `data/latest.json`, `data/review-notes.json` (union by id), root pages + `build-info.json`
+- `README.md`, `COORDINATION.md` (this section and its receipt)
+
+**Out of scope / not touched:** `scripts/core.py` tier ladder, `scripts/hltv.py`, `scripts/books.py`,
+`scripts/vrs.py`, `scripts/publish_gate.py`, `.github/workflows/**`, `audit*.py`, `verification-*/**`.
+
+**Task list**
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| B1 Measure the unpriced-fixture gap and identify why 62/73 rows have no pick | **done** | ba480835 | `COORDINATION.md` | 2026-10-26 00:50 |
+| B2 Retrospective originated lines for closed fixtures from Valve's official standings, with a per-row limitation where the pair cannot be resolved | **in progress** | ba480835 | `scripts/archive_lines.py`, `scripts/refresh.py`, `tests/test_session_ba480835.py` | 2026-10-26 00:50 |
+| B3 Closed-fixture + unresolved section in the executive summary, on All matches and on the unresolved page | **unclaimed→in progress (same session)** | ba480835 | `scripts/build.py`, `scripts/summary.py`, `assets/app.js`, both stylesheets | 2026-10-26 00:50 |
+| B4 Re-derivation checks in the validator (no archive number can be published without reproducing it) | **in progress** | ba480835 | `scripts/validate.py` | 2026-10-26 00:50 |
+| B5 Rebuild, line-by-line verification receipt, PR to `main`, merge, live-deploy confirmation | **in progress** | ba480835 | `data/latest.json`, root pages, `README.md`, this file | 2026-10-26 00:50 |
+
+**Protocol notes for any concurrent session:** this session claims `scripts/build.py`, `scripts/validate.py`
+and `data/latest.json` for the duration. If you need a change in those files, log the request here instead of
+editing; this session will rebase before every push and will union `data/review-notes.json` by `id`.
+
+### Session ba480835 — delivery receipt and upstream adoption (2026-10-26 01:4x UTC)
+
+**Outcome: the requirement was already landed upstream; this session withdrew its own duplicate mechanism and kept one
+additive finding.** While this branch was open, session `11e17543` merged PR
+[#359](https://github.com/buffedlizard55-lab/MaltaProj4/pull/359) — *Every listed CS2 match gets a pick or a recorded
+limitation* — which implements the same user request as this session's claim (B1–B5) with broader coverage: on the
+2026-10-26T00:10:49Z snapshot its every-match table carries **71 of 73** rows with a pick and **34** with a win
+probability, versus the 23 retrospective lines this session's `scripts/archive_lines.py` produced. Two mechanisms would
+have printed two different numbers for the same closed fixture, so per the protocol ("adopt the landed repair, delete
+equivalents rather than layering them") this session **deleted its implementation in full** — `scripts/archive_lines.py`,
+`tests/test_session_ba480835.py` (archive version), the `scripts/refresh.py` archive pass, the `scripts/validate.py`
+archive checks, the `scripts/build.py` `#closed-fixtures` section and rendering, `scripts/summary.py` closed counts,
+`assets/app.js` closed filter, and both stylesheet blocks — and rebased onto `main`.
+
+**What this session contributes (additive, no numbers changed).** `scripts/build.py` gains `POST_HOC_TIERS` and
+`post_hoc_note()`: every **historical** row that carries a percentage from a standings-based tier now says, beside the
+number, that it is a post-hoc estimate from a standings file that postdates the fixture, naming the file date
+(2026-10-05) and the fixture start; the every-match section states the rule once with its count of such rows. No pick,
+percentage, source, count or validator rule was altered, and actionable rows are untouched (the note is skipped for
+`actionable`, for rows without a percentage, and for `pipeline`/`researched_line`/`unresolved` tiers).
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| B1 Measure the unpriced-fixture gap (73 rows / 11 open / 62 blank) | **done** | ba480835 | `COORDINATION.md` | 2026-10-26 00:50 |
+| B2 Retrospective lines for closed fixtures | **withdrawn — superseded by PR #359; code deleted** | ba480835 | `scripts/archive_lines.py` (removed) | 2026-10-26 01:40 |
+| B3 Closed-fixture / unresolved section + phone entry point | **withdrawn — PR #359's `#every-match` section and quick nav cover it** | ba480835 | `scripts/build.py`, stylesheets (net zero) | 2026-10-26 01:40 |
+| B4 Validator re-derivation of archive numbers | **withdrawn with B2** | ba480835 | `scripts/validate.py` (net zero) | 2026-10-26 01:40 |
+| B5 Post-hoc disclosure for historical numbers + tests | **done** | ba480835 | `scripts/build.py`, `tests/test_session_ba480835.py`, `data/review-notes.json`, `README.md` | 2026-10-26 01:45 |
+| B6 Rebuild, gates, PR, merge, live verification | **in progress** | ba480835 | generated root pages, `build-info.json`, this file | 2026-10-26 01:45 |
+
+**Verification (measured on the rebased branch, none assumed).** 1,849 unit tests **OK** (14 skipped) · 9 audit tests OK ·
+`verification-95b588c2` 5/5 OK · `verification-c6` 12/12 OK · `scripts.validate --data data/latest.json --site .` → 73 rows
+/ 11 calculations / 15 pages / 747 internal links / 20 checksums / 165 displayed rows · full `npm run test:browser`
+**rc=0** (11 suites, 320/390/768/1440 px, axe WCAG 2.1 AA) · `tests/test_session_ba480835.py` (11 tests) proves the note
+reaches exactly the 23 historical priced rows, that no actionable row and no market line carries it, and that it never
+appears on `picks.html`. Nothing from session `11e17543` (or from the other concurrent sessions whose sections were kept
+on rebase — `c0f54478`, `28e4f2a1`, `0a862f5f`, `160f03c8`) was modified or discarded; `data/review-notes.json` was
+unioned by `id` across every rebase (293 notes).
+
+**Sources used.** Valve `counter-strike_regional_standings` (official, version-pinned copy in `data/vrs/meta.json`) is the
+only input to the historical percentages; Hotspawn's fixtures endpoint supplies per-row start/lock/status. This session's
+sandbox could not reach Hotspawn, HLTV, Polymarket or any bookmaker (egress allowlist: github.com, api.github.com,
+codeload.github.com, registry.npmjs.org, pypi.org), so **no new market line was probed or claimed** — the live lines on
+this snapshot are the scheduled publisher's own recorded observations.
+
+**Flagged for review (non-blocking, published on the Flagged for Review page).**
+`session-ba480835-historical-numbers-are-post-hoc-2026-10-26` (the drift question: should a historical row keep a price,
+and should each row pin the standings file it was priced from?) ·
+`session-ba480835-two-listed-rows-have-no-pick-2026-10-26` (fixtures 1051343 and 1053442, and why they stay blank) ·
+`session-ba480835-sandbox-could-not-probe-outside-lines-2026-10-26` ·
+`session-ba480835-adopted-upstream-every-match-solution-2026-10-26` (the withdrawn duplicate, recorded so the two
+sessions' work is never confused later).
+
+**Irregularities measured during delivery.** (a) `main` advanced five times while this branch was open (PRs #353, #354,
+#356, #357, #358, #359, #360); every rebase conflicted in `COORDINATION.md`, `data/review-notes.json` and the generated
+root pages, and each was resolved union-by-`id` / regenerate-from-`origin/main` rather than by choosing a side.
+(b) A conflicted `data/latest.json` is not parseable JSON, so the resolution script reads the incoming side with
+`git show origin/main:data/latest.json` — reading the working file fails. (c) The Chromium suites rewrite two tracked
+research fixtures (`research/session-aeafcbe6/mobile-measurements.json`,
+`research/session-28e4f2a1/phone-directory-measurements.json`); both are restored with `git checkout -- research/`
+after every run, and this session's own measurements are not claimed from them.
