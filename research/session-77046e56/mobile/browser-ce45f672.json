@@ -1,0 +1,135 @@
+{
+  "picks": 19,
+  "priced": 19,
+  "withheld": false,
+  "report": [
+    {
+      "viewport": "320x568",
+      "overflow": false,
+      "title": {
+        "y": 290,
+        "bottom": 359,
+        "height": 69
+      },
+      "titleText": "Executive summary · 19/19 picks · 0 unresolved (no %) · 62 feed rows are not open.",
+      "titleHidden": false,
+      "tabbar": {
+        "y": 507,
+        "bottom": 568,
+        "height": 61
+      },
+      "card": {
+        "y": 363,
+        "bottom": 526,
+        "height": 163
+      },
+      "evidenceHref": "evidence.html#match-1082858",
+      "cards": 19,
+      "staleVisible": false,
+      "staleText": "Snapshot expired or timestamp unverified. Current picks are withheld. The schedule is a target, not a guarantee. Check the refresh workflow and source status.",
+      "scores": [
+        {
+          "y": 409,
+          "bottom": 430,
+          "height": 22
+        },
+        {
+          "y": 432,
+          "bottom": 463,
+          "height": 31
+        }
+      ],
+      "scoreText": [
+        "Ground Zero20.5%",
+        "Off Chops79.5%"
+      ],
+      "time": "26 Oct · 03:00 UTC",
+      "pickLabel": "OUR PICK",
+      "cardText": "Ground ZerovsOff ChopsOUR PICKGround Zero20.5%Off Chops79.5%26 Oct · 03:00 UTC · Market line · DFRAG Invitational 2026",
+      "cta": {
+        "y": 226,
+        "bottom": 272,
+        "height": 46
+      },
+      "unresolved": {
+        "y": 226,
+        "bottom": 272,
+        "height": 46
+      },
+      "matchesLink": {
+        "y": 508,
+        "bottom": 568,
+        "height": 60
+      },
+      "picksLink": {
+        "y": 508,
+        "bottom": 568,
+        "height": 60
+      }
+    },
+    {
+      "viewport": "390x844",
+      "overflow": false,
+      "title": {
+        "y": 300,
+        "bottom": 364,
+        "height": 65
+      },
+      "titleText": "Executive summary · 19/19 picks · 0 unresolved (no %) · 62 feed rows are not open.",
+      "titleHidden": false,
+      "tabbar": {
+        "y": 783,
+        "bottom": 844,
+        "height": 61
+      },
+      "card": {
+        "y": 378,
+        "bottom": 585,
+        "height": 207
+      },
+      "evidenceHref": "evidence.html#match-1082858",
+      "cards": 19,
+      "staleVisible": false,
+      "staleText": "Snapshot expired or timestamp unverified. Current picks are withheld. The schedule is a target, not a guarantee. Check the refresh workflow and source status.",
+      "scores": [
+        {
+          "y": 473,
+          "bottom": 494,
+          "height": 22
+        },
+        {
+          "y": 497,
+          "bottom": 528,
+          "height": 31
+        }
+      ],
+      "scoreText": [
+        "Ground Zero20.5%",
+        "Off Chops79.5%"
+      ],
+      "time": "26 Oct · 03:00 UTC",
+      "pickLabel": "OUR PICK",
+      "cardText": "Ground ZerovsOff ChopsOUR PICKGround Zero20.5%Off Chops79.5%26 Oct · 03:00 UTC · Market line · DFRAG Invitational 2026",
+      "cta": {
+        "y": 230,
+        "bottom": 276,
+        "height": 46
+      },
+      "unresolved": {
+        "y": 230,
+        "bottom": 276,
+        "height": 46
+      },
+      "matchesLink": {
+        "y": 784,
+        "bottom": 844,
+        "height": 60
+      },
+      "picksLink": {
+        "y": 784,
+        "bottom": 844,
+        "height": 60
+      }
+    }
+  ]
+}

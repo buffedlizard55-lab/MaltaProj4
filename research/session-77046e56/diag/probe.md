@@ -1,0 +1,48 @@
+# Hotspawn inventory probe — session 77046e56
+
+Read-only measurement. Every URL below was requested once, with the same User-Agent the refresh sends (`Hotspawn-CS2-Research/1.0 (+https://github.com/buffedlizard55-lab/MaltaProj4)`).
+
+Recorded 2026-10-26T00:47:52.028708+00:00
+
+## Fixtures API parameter matrix
+
+| Variant | Status | Bytes | Rows | CS2 | Future | Targets found | Targets missing |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| current collector URL | 200 | 63325 | 81 | 81 | 19 | 1079201, 1079202, 1079203, 1081159, 1081160, 1081162, 1081163, 1081164 | — |
+| no status filter | 200 | 8355900 | 10626 | 10626 | 20 | 1079201, 1079202, 1079203, 1081159, 1081160, 1081162, 1081163, 1081164 | — |
+| no tenantId | 200 | 63325 | 81 | 81 | 19 | 1079201, 1079202, 1079203, 1081159, 1081160, 1081162, 1081163, 1081164 | — |
+
+### Rejected parameter names
+
+| Variant | Response |
+| --- | --- |
+| status=open | `200` |
+| status=upcoming | `200` |
+| status=locked | `200` |
+| status=live | `200` |
+| status=pending | `200` |
+| status=active | `200` |
+| limit=1000 | `object, not array: "{'message': ['property limit should not exist'], 'error': 'Bad Request', 'statusCode': 400}"` |
+| page=2 | `object, not array: "{'message': ['property page should not exist'], 'error': 'Bad Request', 'statusCode': 400}"` |
+| offset=73 | `object, not array: "{'message': ['property offset should not exist'], 'error': 'Bad Request', 'statusCode': 400}"` |
+| per_page=1000 | `object, not array: "{'message': ['property per_page should not exist'], 'error': 'Bad Request', 'statusCode': 400}"` |
+| take=1000 | `object, not array: "{'message': ['property take should not exist'], 'error': 'Bad Request', 'statusCode': 400}"` |
+
+## Rendered pages
+
+| Page | Status | Bytes | Fixture IDs in hrefs | Targets present | Tier counts | ng-state |
+| --- | --- | --- | --- | --- | --- | --- |
+| lobby | 200 | 309875 | 19 | 1079201, 1079202, 1079203, 1081159, 1081160, 1081162, 1081163, 1081164 | 81 | True |
+| cs2-pickems | 200 | 236678 | 10 | — | 72 | True |
+
+## Lobby JavaScript requests
+
+| Bundle | Status | Bytes | `api/v1/fixtures` mentions | Request found |
+| --- | --- | --- | --- | --- |
+| https://play.hotspawn.com/polyfills-5CFQRCPP.js | 200 | 34585 | 0 | `—` |
+| https://play.hotspawn.com/main-GNDEYCXE.js | 200 | 128872 | 0 | `—` |
+
+## Committed board comparison
+
+`data/latest.json` at read time: 73 rows, generated_at 2026-10-26T00:10:49.639616Z, targets absent: 1079201, 1079202, 1079203, 1081159, 1081160, 1081162, 1081163, 1081164
+

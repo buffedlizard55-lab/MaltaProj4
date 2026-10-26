@@ -1,0 +1,16 @@
+[
+  {
+    "width": 320,
+    "home_cta_y": 225.6875,
+    "home_pick_list_y": 360.875,
+    "home_first_card_y": 362.875,
+    "open_rows": 19
+  },
+  {
+    "width": 390,
+    "home_cta_y": 229.6875,
+    "home_pick_list_y": 368.28125,
+    "home_first_card_y": 378.28125,
+    "open_rows": 19
+  }
+]
