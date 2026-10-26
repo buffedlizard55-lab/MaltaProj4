@@ -19,7 +19,9 @@ const VIEWPORTS = [
 ];
 
 (async () => {
-  const root = path.resolve('public');
+  // SITE_ROOT lets the suite be pointed at a deliberately broken build to prove
+  // its assertions actually fail. Defaults to the generated build CI checks.
+  const root = path.resolve(process.env.SITE_ROOT || 'public');
   // Session b964dffd repair (2026-10-26): the expected card count was pinned
   // to the literal 73 of the 2026-10-26T00:10Z board this suite was authored
   // against, so the first rotated board (81 feed rows) failed the browser
@@ -27,6 +29,12 @@ const VIEWPORTS = [
   // class that froze publication on 2026-10-23/24. The coverage table renders
   // one card per feed row in the built snapshot, so derive the expectation
   // from that same snapshot (the tests/browser.cjs pattern).
+  //
+  // Session 11e17543 kept both readings deliberately: expectedCards comes from
+  // the built snapshot's data, while `total` below is read off the rendered
+  // heading. They are independent, so a page can be checked against the rows
+  // the builder was given AND against the count it advertises. Either check
+  // alone would miss a builder that mislabels its own table.
   const snapshot = JSON.parse(fs.readFileSync(path.join(root, 'data/latest.json'), 'utf8'));
   const expectedCards = snapshot.matches.length;
   const server = http.createServer((req, res) => {
@@ -103,8 +111,18 @@ const VIEWPORTS = [
                 sectionTop: Math.round(section.getBoundingClientRect().y + scrollY)};
       });
       if (!coverage.found) report.failures.push(`${vp.name}: #every-match is missing from matches.html`);
+      // (a) one card per feed row the builder was given...
       if (coverage.cards.length !== expectedCards)
         report.failures.push(`${vp.name}: expected ${expectedCards} coverage cards (one per feed row in the built snapshot), found ${coverage.cards.length}`);
+      // ...and (b) the same count the page advertises in its own heading, so a
+      // table that silently drops or duplicates a row cannot hide behind a
+      // heading that agrees with it.
+      const claimed = /of\s+(\d+)\s+listed/i.exec(coverage.heading || '');
+      const total = claimed ? Number(claimed[1]) : NaN;
+      if (!Number.isFinite(total) || total <= 0)
+        report.failures.push(`${vp.name}: the coverage heading states no match count: "${coverage.heading}"`);
+      else if (coverage.cards.length !== total)
+        report.failures.push(`${vp.name}: the heading claims ${total} listed matches but the table has ${coverage.cards.length} cards`);
       if (coverage.cards.some(c => !c.pick && !/no supported pick/i.test(c.pick))) {
         const silent = coverage.cards.filter(c => !c.pick && !c.limitation);
         if (silent.length) report.failures.push(`${vp.name}: ${silent.length} cards with neither pick nor limitation`);
@@ -137,6 +155,18 @@ const VIEWPORTS = [
                 text: s.innerText.slice(0, 400)};
       });
       if (!unresolved.found) report.failures.push(`${vp.name}: #every-match-unresolved is missing`);
+
+      // Picks plus the rows named on the unresolved page must account for every
+      // listed match, on whatever snapshot this build used.
+      if (Number.isFinite(total) && unresolved.found && unresolved.rows !== undefined) {
+        const picks = /(\d+)\s+of\s+\d+\s+listed/i.exec(coverage.heading || '');
+        const unresolvedClaim = /(\d+)\s+of\s+\d+\s+listed/i.exec(unresolved.heading || '');
+        if (picks && unresolvedClaim &&
+            Number(picks[1]) + Number(unresolvedClaim[1]) !== total)
+          report.failures.push(`${vp.name}: ${picks[1]} picks + ${unresolvedClaim[1]} unresolved != ${total} listed matches`);
+        if (unresolvedClaim && Number(unresolvedClaim[1]) !== unresolved.rows)
+          report.failures.push(`${vp.name}: the unresolved heading claims ${unresolvedClaim[1]} rows but names ${unresolved.rows}`);
+      }
 
       report.viewports.push({viewport: vp, summary, coverage: {...coverage, cards: coverage.cards.slice(0, 3)},
                              coverageCardCount: coverage.cards.length, unresolved});

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-26T01:37:22.492Z",
+ "generated_at": "2026-10-26T02:09:16.426Z",
  "viewports": [
   {
    "viewport": {
@@ -9,11 +9,11 @@
    },
    "summary": {
     "banner": {
-     "y": 3545,
+     "y": 4895,
      "height": 1004
     },
     "bar": {
-     "y": 2428,
+     "y": 3778,
      "height": 288
     },
     "quicknav": {
@@ -24,67 +24,67 @@
      {
       "href": "picks.html",
       "text": "Updated picks →",
-      "y": 2481
+      "y": 3830
      },
      {
       "href": "#picks-at-a-glance",
       "text": "Every pick on this page ↓",
-      "y": 2481
+      "y": 3830
      },
      {
       "href": "unresolved.html",
       "text": "Unresolved & limitations →",
-      "y": 2481
+      "y": 3830
      },
      {
       "href": "#unresolved-summary",
       "text": "Why a pick can be missing ↓",
-      "y": 2481
+      "y": 3830
      },
      {
       "href": "#unresolved-limits",
       "text": "Visible limitations ↓",
-      "y": 2481
+      "y": 3830
      },
      {
       "href": "matches.html#every-match",
       "text": "Every listed match →",
-      "y": 2481
+      "y": 3830
      },
      {
       "href": "matches.html",
       "text": "All matches →",
-      "y": 2481
+      "y": 3830
      },
      {
       "href": "sources.html#method",
       "text": "How we price →",
-      "y": 2481
+      "y": 3830
      },
      {
       "href": "review.html",
       "text": "Flagged for review →",
-      "y": 2481
+      "y": 3830
      },
      {
       "href": "#picks-directory",
       "text": "Picks by category ↓",
-      "y": 2481
+      "y": 3830
      },
      {
       "href": "#unresolved-summary",
       "text": "unresolved section below",
-      "y": 2603
+      "y": 3952
      },
      {
       "href": "unresolved.html",
       "text": "unresolved page",
-      "y": 2620
+      "y": 3969
      },
      {
       "href": "matches.html#every-match",
       "text": "Every listed match",
-      "y": 2671
+      "y": 4020
      },
      {
       "href": "picks.html",
@@ -104,59 +104,59 @@
      {
       "href": "matches.html",
       "text": "",
-      "y": 3979
+      "y": 5328
      },
      {
       "href": "matches.html#every-match",
       "text": "",
-      "y": 4072
+      "y": 5421
      },
      {
       "href": "matches.html#feed-scope",
       "text": "",
-      "y": 4090
+      "y": 5440
      },
      {
       "href": "picks.html",
       "text": "",
-      "y": 4121
+      "y": 5470
      },
      {
       "href": "unresolved.html",
       "text": "",
-      "y": 4165
+      "y": 5514
      },
      {
       "href": "review.html",
       "text": "",
-      "y": 4226
+      "y": 5575
      },
      {
       "href": "matches.html#every-match",
       "text": "",
-      "y": 4270
+      "y": 5619
      },
      {
       "href": "matches.html",
       "text": "",
-      "y": 4331
+      "y": 5681
      },
      {
       "href": "sources.html#method",
       "text": "",
-      "y": 4375
+      "y": 5725
      }
     ],
     "tabbarTop": 507
    },
    "coverage": {
     "found": true,
-    "heading": "71 of 73 listed CS2 matches carry a pick",
+    "heading": "79 of 81 listed CS2 matches carry a pick",
     "cards": [
      {
       "fixture": "1082858",
       "pick": "Off Chops",
-      "probability": "19.0% / 81.0%",
+      "probability": "20.5% / 79.5%",
       "limitation": "Actionable pick; priced from published production line. No limitation recorded.",
       "sources": 2,
       "width": 244,
@@ -165,16 +165,16 @@
      {
       "fixture": "1082859",
       "pick": "NEXVOID",
-      "probability": "57.5% / 42.5%",
+      "probability": "57.1% / 42.9%",
       "limitation": "Actionable pick; priced from published production line. No limitation recorded.",
       "sources": 2,
       "width": 244,
       "height": 614
      },
      {
-      "fixture": "1093218",
-      "pick": "Nuclear TigeRES",
-      "probability": "66.5% / 33.5%",
+      "fixture": "1079201",
+      "pick": "Nemesis",
+      "probability": "27.5% / 72.5%",
       "limitation": "Actionable pick; priced from published production line. No limitation recorded.",
       "sources": 2,
       "width": 244,
@@ -202,12 +202,12 @@
     ],
     "sectionTop": 1019
    },
-   "coverageCardCount": 73,
+   "coverageCardCount": 81,
    "unresolved": {
     "found": true,
-    "heading": "2 of 73 listed CS2 matches have no pick",
+    "heading": "2 of 81 listed CS2 matches have no pick",
     "rows": 2,
-    "text": "EXECUTIVE SUMMARY · UNRESOLVED PICKS & LIMITATIONS, EVERY LISTED MATCH\n\n2 of 73 listed CS2 matches have no pick\n\nThe every-listed-match table gives 71 of 73 rows a pick: 11 from the published market line, 0 from a researched outside line, 23 from our own Valve-standings model, 23 as a one-sided Valve-standings research pick and 14 as a bounded-direction research pick. The rest stay blank, because "
+    "text": "EXECUTIVE SUMMARY · UNRESOLVED PICKS & LIMITATIONS, EVERY LISTED MATCH\n\n2 of 81 listed CS2 matches have no pick\n\nThe every-listed-match table gives 79 of 81 rows a pick: 19 from the published market line, 0 from a researched outside line, 23 from our own Valve-standings model, 23 as a one-sided Valve-standings research pick and 14 as a bounded-direction research pick. The rest stay blank, because "
    }
   },
   {
@@ -218,11 +218,11 @@
    },
    "summary": {
     "banner": {
-     "y": 4015,
+     "y": 5870,
      "height": 747
     },
     "bar": {
-     "y": 3077,
+     "y": 4932,
      "height": 237
     },
     "quicknav": {
@@ -233,67 +233,67 @@
      {
       "href": "picks.html",
       "text": "Updated picks →",
-      "y": 3129
+      "y": 4984
      },
      {
       "href": "#picks-at-a-glance",
       "text": "Every pick on this page ↓",
-      "y": 3129
+      "y": 4984
      },
      {
       "href": "unresolved.html",
       "text": "Unresolved & limitations →",
-      "y": 3129
+      "y": 4984
      },
      {
       "href": "#unresolved-summary",
       "text": "Why a pick can be missing ↓",
-      "y": 3129
+      "y": 4984
      },
      {
       "href": "#unresolved-limits",
       "text": "Visible limitations ↓",
-      "y": 3129
+      "y": 4984
      },
      {
       "href": "matches.html#every-match",
       "text": "Every listed match →",
-      "y": 3129
+      "y": 4984
      },
      {
       "href": "matches.html",
       "text": "All matches →",
-      "y": 3129
+      "y": 4984
      },
      {
       "href": "sources.html#method",
       "text": "How we price →",
-      "y": 3129
+      "y": 4984
      },
      {
       "href": "review.html",
       "text": "Flagged for review →",
-      "y": 3129
+      "y": 4984
      },
      {
       "href": "#picks-directory",
       "text": "Picks by category ↓",
-      "y": 3129
+      "y": 4984
      },
      {
       "href": "#unresolved-summary",
       "text": "unresolved section below",
-      "y": 3234
+      "y": 5090
      },
      {
       "href": "unresolved.html",
       "text": "unresolved page",
-      "y": 3234
+      "y": 5090
      },
      {
       "href": "matches.html#every-match",
       "text": "Every listed match",
-      "y": 3285
+      "y": 5141
      },
      {
       "href": "picks.html",
@@ -313,59 +313,59 @@
      {
       "href": "matches.html",
       "text": "",
-      "y": 4351
+      "y": 6206
      },
      {
       "href": "matches.html#every-match",
       "text": "",
-      "y": 4407
+      "y": 6262
      },
      {
       "href": "matches.html#feed-scope",
       "text": "",
-      "y": 4425
+      "y": 6281
      },
      {
       "href": "picks.html",
       "text": "",
-      "y": 4456
+      "y": 6311
      },
      {
       "href": "unresolved.html",
       "text": "",
-      "y": 4500
+      "y": 6355
      },
      {
       "href": "review.html",
       "text": "",
-      "y": 4544
+      "y": 6399
      },
      {
       "href": "matches.html#every-match",
       "text": "",
-      "y": 4588
+      "y": 6443
      },
      {
       "href": "matches.html",
       "text": "",
-      "y": 4632
+      "y": 6487
      },
      {
       "href": "sources.html#method",
       "text": "",
-      "y": 4632
+      "y": 6487
      }
     ],
     "tabbarTop": 783
    },
    "coverage": {
     "found": true,
-    "heading": "71 of 73 listed CS2 matches carry a pick",
+    "heading": "79 of 81 listed CS2 matches carry a pick",
     "cards": [
      {
       "fixture": "1082858",
       "pick": "Off Chops",
-      "probability": "19.0% / 81.0%",
+      "probability": "20.5% / 79.5%",
       "limitation": "Actionable pick; priced from published production line. No limitation recorded.",
       "sources": 2,
       "width": 314,
@@ -374,16 +374,16 @@
      {
       "fixture": "1082859",
       "pick": "NEXVOID",
-      "probability": "57.5% / 42.5%",
+      "probability": "57.1% / 42.9%",
       "limitation": "Actionable pick; priced from published production line. No limitation recorded.",
       "sources": 2,
       "width": 314,
       "height": 550
      },
      {
-      "fixture": "1093218",
-      "pick": "Nuclear TigeRES",
-      "probability": "66.5% / 33.5%",
+      "fixture": "1079201",
+      "pick": "Nemesis",
+      "probability": "27.5% / 72.5%",
       "limitation": "Actionable pick; priced from published production line. No limitation recorded.",
       "sources": 2,
       "width": 314,
@@ -411,12 +411,12 @@
     ],
     "sectionTop": 860
    },
-   "coverageCardCount": 73,
+   "coverageCardCount": 81,
    "unresolved": {
     "found": true,
-    "heading": "2 of 73 listed CS2 matches have no pick",
+    "heading": "2 of 81 listed CS2 matches have no pick",
     "rows": 2,
-    "text": "EXECUTIVE SUMMARY · UNRESOLVED PICKS & LIMITATIONS, EVERY LISTED MATCH\n\n2 of 73 listed CS2 matches have no pick\n\nThe every-listed-match table gives 71 of 73 rows a pick: 11 from the published market line, 0 from a researched outside line, 23 from our own Valve-standings model, 23 as a one-sided Valve-standings research pick and 14 as a bounded-direction research pick. The rest stay blank, because "
+    "text": "EXECUTIVE SUMMARY · UNRESOLVED PICKS & LIMITATIONS, EVERY LISTED MATCH\n\n2 of 81 listed CS2 matches have no pick\n\nThe every-listed-match table gives 79 of 81 rows a pick: 19 from the published market line, 0 from a researched outside line, 23 from our own Valve-standings model, 23 as a one-sided Valve-standings research pick and 14 as a bounded-direction research pick. The rest stay blank, because "
    }
   }
  ],

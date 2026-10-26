@@ -1,18 +1,18 @@
 # Every match Hotspawn lists for CS2 - pick, probability, or the reason there is neither
 
-Session `11e17543`. Snapshot `2026-10-26T00:10:49.639616Z` (fixture evidence `2026-10-26T00:07:16.611284Z`). Standings: Valve `2026-10-05`.
+Session `11e17543`. Snapshot `2026-10-26T01:00:10.246310Z` (fixture evidence `2026-10-26T00:56:34.557911Z`). Standings: Valve `2026-10-05`.
 
 Feed: <https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1>
 
 | Coverage | Count |
 | --- | --- |
-| CS2 rows Hotspawn lists | 73 |
-| Still actionable (pick lock open) | 11 |
-| With a pick | 71 |
-| With a win probability | 34 |
+| CS2 rows Hotspawn lists | 81 |
+| Still actionable (pick lock open) | 19 |
+| With a pick | 79 |
+| With a win probability | 42 |
 | Unresolved (no official source supports a pick) | 2 |
 
-* Published production line: 11
+* Published production line: 19
 * Researched outside line: 0
 * Our Valve VRS model line: 23
 * Research pick, no percentage: 23
@@ -21,14 +21,22 @@ Feed: <https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_
 
 | Fixture | Match | Start (UTC) | Actionable | Pick | Win probability | Ladder rung | Source | Limitation |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 1082858 | Ground Zero vs Off Chops | 2026-10-26T03:00:00Z | yes | Off Chops | Ground Zero 19.0% / Off Chops 81.0% | Published production line | [Polymarket](https://polymarket.com/event/cs2-gz1-offcho-2026-10-25) |  |
-| 1082859 | NEXVOID vs Alter Ego | 2026-10-26T03:00:00Z | yes | NEXVOID | NEXVOID 57.5% / Alter Ego 42.5% | Published production line | [Thunderpick (via BO3.gg API)](https://bo3.gg/matches/nexvoid-vs-alter-ego-26-10-2026) |  |
+| 1082858 | Ground Zero vs Off Chops | 2026-10-26T03:00:00Z | yes | Off Chops | Ground Zero 20.5% / Off Chops 79.5% | Published production line | [Polymarket](https://polymarket.com/event/cs2-gz1-offcho-2026-10-25) |  |
+| 1082859 | NEXVOID vs Alter Ego | 2026-10-26T03:00:00Z | yes | NEXVOID | NEXVOID 57.1% / Alter Ego 42.9% | Published production line | [Thunderpick (via BO3.gg API)](https://bo3.gg/matches/nexvoid-vs-alter-ego-26-10-2026) |  |
+| 1079201 | INOX Division vs Nemesis | 2026-10-26T09:00:00Z | yes | Nemesis | INOX Division 27.5% / Nemesis 72.5% | Published production line | [Polymarket](https://polymarket.com/event/cs2-nem-inox-2026-10-26) |  |
+| 1079202 | FOKUS vs ex-Zero Tenacity | 2026-10-26T12:00:00Z | yes | FOKUS | FOKUS 74.5% / ex-Zero Tenacity 25.5% | Published production line | [Valve VRS model](https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) |  |
+| 1081159 | LFO 10 vs ex-6666 | 2026-10-26T12:00:00Z | yes | ex-6666 | LFO 10 32.8% / ex-6666 67.2% | Published production line | [HLTV Valve ranking (Valve points)](https://www.hltv.org/valve-ranking/teams/2026/october/26) |  |
+| 1079203 | Metizport vs BRUTE | 2026-10-26T15:00:00Z | yes | Metizport | Metizport 68.0% / BRUTE 32.0% | Published production line | [Valve VRS model](https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) |  |
+| 1081160 | HAVU vs ILLYRIANS | 2026-10-26T15:00:00Z | yes | HAVU | HAVU 58.3% / ILLYRIANS 41.7% | Published production line | [Valve VRS model](https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) |  |
 | 1093218 | Nuclear TigeRES vs UNiTY | 2026-10-26T18:00:00Z | yes | Nuclear TigeRES | Nuclear TigeRES 66.5% / UNiTY 33.5% | Published production line | [Valve VRS model](https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) |  |
 | 1082860 | FlyQuest vs Staqued | 2026-10-27T03:00:00Z | yes | FlyQuest | FlyQuest 92.5% / Staqued 7.5% | Published production line | [Polymarket](https://polymarket.com/event/cs2-fly-staque-2026-10-26) |  |
 | 1082861 | Rooster vs Abyssal | 2026-10-27T03:00:00Z | yes | Abyssal | Rooster 42.5% / Abyssal 57.5% | Published production line | [Polymarket](https://polymarket.com/event/cs2-rstr-abyssa-2026-10-26) |  |
 | 1082897 | B8 vs K27 | 2026-10-27T08:00:00Z | yes | B8 | B8 59.5% / K27 40.5% | Published production line | [Polymarket](https://polymarket.com/event/cs2-b8-k271-2026-10-27) |  |
-| 1082898 | Alliance vs FaZe | 2026-10-27T11:00:00Z | yes | FaZe | Alliance 37.5% / FaZe 62.5% | Published production line | [Polymarket](https://polymarket.com/event/cs2-all-faze-2026-10-27) |  |
+| 1082898 | Alliance vs FaZe | 2026-10-27T11:00:00Z | yes | FaZe | Alliance 34.5% / FaZe 65.5% | Published production line | [Polymarket](https://polymarket.com/event/cs2-all-faze-2026-10-27) |  |
+| 1081162 | ex-RUSTEC vs Spirit Academy | 2026-10-27T12:00:00Z | yes | ex-RUSTEC | ex-RUSTEC 52.3% / Spirit Academy 47.7% | Published production line | [HLTV Valve ranking (Valve points)](https://www.hltv.org/valve-ranking/teams/2026/october/26) |  |
+| 1081163 | BakS vs Saint Sinners | 2026-10-27T15:00:00Z | yes | BakS | BakS 73.0% / Saint Sinners 27.0% | Published production line | [Valve VRS model](https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) |  |
 | 1082900 | Luminosity vs HOTU | 2026-10-27T17:00:00Z | yes | Luminosity | Luminosity 52.5% / HOTU 47.5% | Published production line | [Polymarket](https://polymarket.com/event/cs2-lg6-hotu-2026-10-27) |  |
+| 1081164 | Inner Circle Academy vs Lavked | 2026-10-27T18:00:00Z | yes | Inner Circle Academy | Inner Circle Academy 70.4% / Lavked 29.6% | Published production line | [Valve VRS model](https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) |  |
 | 1082901 | Envy vs GamerLegion | 2026-10-27T20:00:00Z | yes | GamerLegion | Envy 45.5% / GamerLegion 54.5% | Published production line | [Polymarket](https://polymarket.com/event/cs2-envy-gl1-2026-10-27) |  |
 | 1082792 | HOTU vs The Huns | 2026-10-31T09:00:00Z | yes | HOTU | HOTU 85.2% / The Huns 14.8% | Published production line | [Valve VRS model](https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) |  |
 | 1082793 | 5star vs 1WIN | 2026-10-31T13:00:00Z | yes | 1WIN | 5star 24.3% / 1WIN 75.7% | Published production line | [Valve VRS model](https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) |  |
