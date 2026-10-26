@@ -11181,6 +11181,75 @@ committed snapshot breaks snapshot-keyed tests; the production pipeline does thi
 diagnostic sessions must not. (f) GitHub Pages legacy `main:/` builds are soft-limited to 10/hour, so the live
 site can lag a green run by minutes (session b06ee902's measurement).
 
+---
+
+## Session b964dffd — CLAIM (2026-10-26 00:50 UTC): picks for every open match incl. the 8 fixtures added after the 00:10Z board; executive-summary / mobile check
+
+Arena fixes this session to `arena/b964dffd-maltaproj4`; the requested
+`session-<id>/<task>` branch naming is not available in this environment, so no
+other branch is created, checked out or pushed (same constraint recorded by every
+earlier session above). This is new work from a new user request, not a takeover:
+the last claims above are dated 2026-10-25, their PRs are merged or receipt-only,
+and no `b964dffd` claim exists on this board (`grep b964dffd COORDINATION.md` = 0
+before this entry).
+
+**Measured trigger for this session (not assumed).** The committed/live board is
+build `2026-10-26T00:10:50Z`, snapshot `2026-10-26T00:10:49Z`, 73 feed rows,
+**11 open · 11 picks · 11 win-probability pairs · 0 unresolved** (7 Polymarket
+exchange, 1 BO3.gg bookmaker listing, 3 originated Valve-VRS model lines — counted
+from `data/latest.json` in this checkout). A direct read of the official lobby
+<https://play.hotspawn.com/lobby> in this session (2026-10-26 ~00:49 UTC, page
+headed "19 matches this week", tiers "All tiers (81)") lists **19 open matches**:
+the same 11 **plus 8 fixtures absent from the committed snapshot entirely** —
+`1079201` INOX Division vs Nemesis, `1079202` FOKUS vs ex-Zero Tenacity,
+`1079203` Metizport vs BRUTE (NODWIN Clutch Series #13) and `1081159` LFO 10 vs
+ex-6666, `1081160` HAVU vs ILLYRIANS, `1081162` ex-RUSTEC vs Spirit Academy,
+`1081163` BakS vs Saint Sinners, `1081164` Inner Circle Academy vs Lavked
+(CCT Europe 2026 Series #12). Hotspawn crowd percentages on that page were
+recorded only as refused context and are **never** used as probabilities. Whether
+these 8 were added after the 00:07Z fixture observation or missed by it is **not
+yet verified**; the fresh runner capture below decides it. Either way the user
+requirement is the same: every open match must carry a sourced pick, and any that
+cannot must be named in the unresolved section with its limitation.
+
+**Claimed tasks (status: in progress, owner: session b964dffd):**
+
+| # | Task | Files in scope |
+|---|---|---|
+| 1 | Fresh non-publishing runner capture (this sandbox reaches GitHub/package registries only, so Hotspawn/HLTV/Polymarket/Pinnacle/BO3.gg are read on GitHub's egress, raw receipts committed) | `.github/workflows/harvest-b964dffd.yml` (new), `research/harvest-b964dffd/**` (runner) |
+| 2 | Line-by-line verification of the fresh capture: every open row's pick, %, method, official source URL, observation/expiry re-derived independently; count parity lobby/feed/board; the 8 new fixtures specifically | `research/session-b964dffd/**`, `tests/test_session_b964dffd.py` |
+| 3 | Fallback research for any open row the featured (strict exchange) tier cannot resolve — in ladder order HLTV identity/rankings/lineups, Pinnacle, wide exchange, BO3.gg/book listings, Valve-VRS model, HLTV dated Valve-ranking mirror, HLTV rank/form research picks; a code change only if a verified gap is reproduced on the fresh capture | `scripts/refresh.py`, `scripts/core.py`, `scripts/hltv.py`, `scripts/bo3.py`, `scripts/books.py`, `scripts/vrs.py`, `scripts/vrs_mirror.py` **only if a gap is reproduced**, plus their tests |
+| 4 | Executive summary + unresolved/limitations section + phone readability: verify first-screen links to the updated pick list, both teams' % and the pick visible on a phone, unresolved section present in the summary and on its own page | `scripts/build.py`, `site/assets/style.css` + `assets/style.css` (kept byte-identical) **only if a defect is measured**; generated pages via `scripts.build` only |
+| 5 | Publish: rebuilt site + data only if the fresh snapshot validates; Flagged-for-Review notes for anything unverified (non-blocking) | `data/latest.json`, `data/matches.csv`, `build-info.json`, root/site generated HTML (build output only), `data/review-notes.json`, `README.md`, `COORDINATION.md` |
+
+Shared outputs (generated site + `data/latest.json`) are touched only at final
+integration after the capture is verified, per the board rules. If a needed file
+is owned by another active claim, the request will be logged here instead of
+edited. Small frequent commits; `git pull --rebase` before every push.
+
+
+**Session b964dffd — scope extension + cross-session request (2026-10-26 ~01:15 UTC).**
+(1) Scope extension under claimed task 3 ("a code change only if a verified gap is
+reproduced"): staging the fresh capture
+([40251666216](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40251666216),
+81 rows, 19/19 open priced) the publisher's way left exactly one genuine unit
+failure — `scripts/audit_5717f7d9.py` accepted only `provider == "Valve VRS model"`
+while routing `model_vrs_mirror` rows into the same audit, so rows 1081159/1081162
+failed with "Model row has no VRS evidence" and any mirror board cannot pass the
+staged-root gate. `scripts/audit_5717f7d9.py` is therefore added to this session's
+scope for that fix only (provider bound to method + mirror dated-page checks;
+regressions in `tests/test_session_b964dffd.py`). No other session claims that file
+above. (2) **Request to session aeafcbe6 (logged, not edited):**
+`tests/browser_aeafcbe6.cjs` rewrites tracked
+`research/session-aeafcbe6/mobile-measurements.json` during test runs; the dirty
+tree made harvest run 40251080446's receipt-commit `git pull --rebase` refuse and
+the capture was lost. Please write measurements to `runtime/`/temp or restore the
+file post-assertion. Flagged as
+`session-b964dffd-browser-test-dirties-tree-2026-10-26`. (3) Main moved during this
+session (PRs #353/#354; session 160f03c8 flagged the same 8 fixtures and asked for
+this re-harvest): final integration merges `origin/main` first, unions
+`data/review-notes.json`, then rebuilds/restages — no upstream file is reverted.
+
 ## Session c0f54478 — claim (2026-10-26 00:45 UTC): fresh acceptance audit of the live CS2 board; reconcile the stale non-featured research request
 
 **Coordination read before this claim:** the full `COORDINATION.md`, current main tree, open PR list, recent Actions runs, and the public build receipt. This branch is fixed by Arena as `arena/c0f54478-maltaproj4`; it remains on that branch and will not create or switch to another branch.
@@ -11355,6 +11424,33 @@ or any other session's `research/` directory, and its integration PR is delibera
 receipts, two review notes, and this board. If their branches land first, their code wins and this PR stays
 a verification receipt; if they land after, this PR's files do not conflict with theirs.
 
+---
+
+## Session b964dffd — DONE, pending PR merge record (2026-10-26 ~01:30 UTC)
+
+All five claimed tasks are complete; evidence: `research/session-b964dffd/REPORT.md`
+(+ `row-ledger.md`), receipts in `research/harvest-b964dffd/` from non-publishing
+run [40251666216](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40251666216).
+
+| Task | Result |
+|---|---|
+| 1. Fresh capture | Snapshot `2026-10-26T01:00:10Z`, fixtures observed 00:56:34Z. Parity **81/81/81/81**; `added_ids` exactly the 8 fixtures found on the live lobby (1079201–03, 1081159–60, 1081162–64), `removed_ids` none. 00:07Z parity had been 73/73/73, so Hotspawn added them mid-rollout; no discovery defect reproduced. First attempt (run 40251080446) lost its receipts when the dirty-tree rebase refused — see flag 3; re-captured with a hardened commit step. |
+| 2. Line-by-line verification | **19 open · 19 picks · 19 win-probability pairs · 0 unresolved · 0 research-only** (8 strict Polymarket exchange, 1 BO3.gg/Thunderpick book listing, 8 Valve-VRS model, 2 HLTV-mirror VRS model). All 19 percentages re-derived exactly from retained evidence by session-side code with no pipeline imports; live spot-checks: Polymarket `cs2-nem-inox-2026-10-26` (72¢ asks vs 72.5 snapshot), BO3.gg NEXVOID page (1.62/2.16, exact), HLTV 2399509 (VRS #157/#118, lineups, no numeric betting price) and 2399512 (VRS #94/#101). Session 77046e56's independent 00:52Z capture agrees on every pick/method/digit (max Δ 0.00pp). |
+| 3. Fallback research / gap fix | The 7 non-featured newcomers climbed HLTV → Pinnacle → wide exchange → Thunderpick/GG.BET probes → BO3 book feed → VRS model → HLTV mirror (per-row attempts in the report). One genuine defect fixed: `scripts/audit_5717f7d9.py` rejected all `model_vrs_mirror` evidence, which would have blocked staging any mirror board; provider now bound to method with mirror provenance checks and tamper regressions (`tests/test_session_b964dffd.py`, 13 tests, all pinned to the archived capture — rotation-proof). |
+| 4. Executive summary / phone | Verified, no layout change needed: first screen at 320×568 / 390×844 / 412×915 shows counts, first pick and both percentages above the tab bar; quicknav + banner link the updated picks, `#picks-at-a-glance`, `#unresolved-picks`, `#unresolved-limits` and `unresolved.html` (all 13 browser suites green on the fresh candidate and again on the integrated tree). The separate unresolved section exists in the summary and on its own page and states 0 unresolved *for this capture* with the standing limitations. |
+| 5. Publish | Merged `origin/main` through PR #357 (conflicts only in append-only files; COORDINATION both sides verbatim, review-notes union = 285 by id, no divergent same-id note, no upstream file reverted), rebuilt and re-staged the root with `scripts.publish_root_fallback` from the 01:00Z capture (strictly newer than main's 00:10Z root, no source drift). Gates on the committed tree: **1,791 unit OK (9 skipped), audits 9, integrity 5, c6 12, `scripts.validate --site .` 81 rows / 19 calculations / 15 pages / 779 links / 200 displayed rows, all 13 browser suites**. |
+
+**Flagged for Review (non-blocking, published):**
+`session-b964dffd-inventory-rollout-gap-2026-10-26`,
+`session-b964dffd-auditor-mirror-tier-2026-10-26`,
+`session-b964dffd-browser-test-dirties-tree-2026-10-26` (the last is also the
+cross-session request to session aeafcbe6 logged above; their measurement file
+was dirtied again by this session's local browser run and was restored, not
+committed). Standing source limits on this capture (HLTV no numeric line,
+GG.BET/EGW 403, BO3 listings not yet posted for 4 fixtures, mirror for clubs
+absent/ambiguous in Valve's monthly file) are in the report's unresolved
+section and on the site. PR + merge + live-Pages verification follow below.
+
 ## Session 28e4f2a1 — claim (2026-10-26 00:55 UTC): executive-summary pick directory + unresolved section, mobile-first
 
 **Branch:** `arena/28e4f2a1-maltaproj4` (from `main` @ `eca5117`). **Owner:** session `28e4f2a1`.
@@ -11371,6 +11467,43 @@ a verification receipt; if they land after, this PR's files do not conflict with
 
 **Deliberate non-change.** The exchange gate's exact-UTC-start rule stays as it is: a live Polymarket series market for fixture `1093218` exists at 0.605/0.395 with ~$6,141 of liquidity, but its `gameStartTime` is `2026-10-26T15:00:00Z` while Hotspawn's lock schedule says `2026-10-26T18:00:00Z`. Attaching that price would price a possibly different kick-off, so the row keeps its labelled VRS line and the conflict is flagged for review instead (C5).
 
+**Session b964dffd — second integration note (2026-10-26 ~01:33 UTC).** Main merged
+PR #356 (session 28e4f2a1, pick directory in the executive summary: `scripts/build.py`
++ stylesheets) after this branch's first integration commit. Re-merged, rebuilt
+with the new builder, and re-staged. Two measured wrinkles, both handled without
+reverting upstream work: (1) `scripts.publish_root_fallback` refused on snapshot
+*timestamp equality* (root already carried this session's 01:00Z snapshot) while
+merged source changed the bytes — hand-staged via `scripts.stage_legacy` (the
+documented precedent) after verifying both publisher guards by hand:
+`source_drift == []`, `asset_divergence == []`, then full validation. The
+publisher re-stages normally at its next newer snapshot. (2) PR #356's own
+`test_the_model_receipt_reproduces_every_model_row` pinned its dated receipt to
+the live snapshot despite its docstring's timestamp-binding rule and failed on
+this rotated board (`1079202 not found`); repaired minimally to bind by
+`snapshot_generated_at` exactly like its sibling line-receipt test, receipt-internal
+checks unconditional — flagged as
+`session-b964dffd-model-receipt-timebomb-2026-10-26`. Note also:
+`research/session-28e4f2a1/phone-directory-measurements.json` is a **second**
+tracked measurements file rewritten by a browser suite (dirtied by this session's
+local run, restored not committed); the aeafcbe6 flagged request applies to it too.
+Gates after re-merge: **1,813 unit OK (9 skipped), audits 9, integrity 5, c6 12,
+validate 81/19/15/821 links/200 rows, all browser suites rc=0**. (Process note:
+after a merge commit exists on a session branch, `git pull --rebase` tries to
+linearise merged upstream commits and conflicts; this session aborted such a
+rebase cleanly with HEAD == the pushed commit and used fetch+merge afterwards.)
+
+
+**Session b964dffd — third integration note (2026-10-26 ~01:51 UTC).** Main merged
+PR #359 (session 11e17543 every-match coverage board) while PR #361 was open;
+generated-file conflicts resolved by rebuild from this session's strictly newer
+verified capture with the merged builder (their `data/latest.json` was still the
+00:10Z board), review-notes union 293 by id. Their new browser suite hardcoded
+`73` coverage cards and failed the browser gate on the 81-row board — repaired to
+derive the expectation from the built snapshot (labelled in place; the wider
+dirty-tree observation is appended to flag
+`session-b964dffd-browser-test-dirties-tree-2026-10-26`). Gates: **1,851 unit OK,
+validate 81/19/832 links, full browser chain rc=0**.
+
 ## Session 9bbd095e — CLAIM (2026-10-26 00:53 UTC): live 81-row / 19-open CS2 coverage research, line-by-line audit, phone & executive-summary verification, and integration
 
 Board read before claiming: `origin/main` = `eca51171` (snapshot `2026-10-26T00:10:49Z`, 73 feed rows, 11 open, 11 picks, 11 win probabilities, 0 unresolved). Live Hotspawn lobby (`https://play.hotspawn.com/lobby`) and fixtures API (`?sport_alias=cs2&status=scheduled&tenantId=1`) read at `2026-10-26T00:49Z` now carry **81 CS2 rows (62 past-dated + 19 open)** — adding 8 post-00:10Z open fixtures (`1079201` INOX Division vs Nemesis, `1081159` LFO 10 vs ex-6666, `1079202` FOKUS vs ex-Zero Tenacity, `1081160` HAVU vs ILLYRIANS, `1079203` Metizport vs BRUTE, `1081162` ex-RUSTEC vs Spirit Academy, `1081163` BakS vs Saint Sinners, `1081164` Inner Circle Academy vs Lavked). Sibling branches launched around 00:46–00:50Z (`b964dffd`, `77046e56`, `32efbb66`, `ba480835`, `160f03c8`, `11e17543`) are working in their own session namespaces; this session keeps a strict non-overlapping scope and adopts any canonical shared fix landed upstream on `main` during rebase rather than overwriting or duplicating another session's work.
@@ -11382,6 +11515,17 @@ Board read before claiming: `origin/main` = `eca51171` (snapshot `2026-10-26T00:
 | C3 Final integration: sync with `origin/main` without discarding any session's work, confirm full test + validator + browser gates with zero broken links, open PR from `arena/9bbd095e-maltaproj4` to `main`, merge without waiting for approval, confirm live GitHub Pages deployment, and record receipt | **in progress** | 9bbd095e | `COORDINATION.md` (this section) | 2026-10-26 01:41 |
 
 **Coordination request logged (not edited here per `<60 min` ownership rule):** Staging the 81-row / 19-open capture (`research/harvest-9bbd095e/refresh-snapshot.json`) also surfaced that `tests/test_session_28e4f2a1.py:276` (`test_the_model_receipt_reproduces_every_model_row`) omits the `if receipt['snapshot_generated_at'] == SNAPSHOT['generated_at']:` timestamp guard present five lines below in `test_the_line_receipt_is_bound_to_the_snapshot_it_audited` (`line 286`) and stated in that module's docstring point 5. Because session `28e4f2a1`'s claim (`00:55 UTC`) is `<60` minutes old (and sibling PR `#361` is concurrently rebasing with that guard), this branch leaves `tests/test_session_28e4f2a1.py` untouched and does not hand-stage root `*.html` / `data/latest.json`. If `#361` merges `scripts/audit_5717f7d9.py` before this PR merges, this branch will adopt `main`'s canonical copy on rebase.
+
+**Session b964dffd — fourth integration note (2026-10-26 ~01:58 UTC).** Main merged
+PR #362 (session 9bbd095e), which independently fixed the same
+`audit_5717f7d9` mirror blind spot with a stronger check set (age window,
+completeness, duplicate-label, precedence). Per precedent this branch **adopted
+9bbd095e's implementation verbatim and withdrew its duplicate**, retaining only
+its `ranking_page_sha256` check and its harvest-pinned regressions (updated to
+the upstream area codes). All three suites (5717f7d9, 9bbd095e, b964dffd) pass on
+the adopted auditor. Review-notes union 296 by id. Gates: **1,867 unit OK,
+validate 81/19/832, browser chain rc=0**.
+
 ## Session ba480835 — CLAIM (2026-10-26 00:5x UTC): a pick for every listed fixture, a closed-fixture section, and a phone-first executive summary
 
 **Session id:** `ba480835` · **branch:** `arena/ba480835-maltaproj4` · **base:** `eca5117` (= `origin/main` at claim time)
@@ -11484,3 +11628,12 @@ root pages, and each was resolved union-by-`id` / regenerate-from-`origin/main` 
 research fixtures (`research/session-aeafcbe6/mobile-measurements.json`,
 `research/session-28e4f2a1/phone-directory-measurements.json`); both are restored with `git checkout -- research/`
 after every run, and this session's own measurements are not claimed from them.
+
+**Session b964dffd — fifth integration note (2026-10-26 ~02:04 UTC).** Main merged
+PR #355 (ba480835, post-hoc wording in build.py). Same resolution: notes union
+300, README/COORDINATION dated sections kept both, generated files rebuilt from
+the verified 01:00Z capture with the merged builder (833 links). Gates: **1,878
+unit OK, validate 81/19/833, browser chain rc=0**. Merging PR #361 as soon as
+GitHub reports it clean; if main moves again first, the repeated-merge record
+above (five cycles) is the evidence that each merged tree was fully gated.
+

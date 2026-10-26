@@ -20,6 +20,15 @@ const VIEWPORTS = [
 
 (async () => {
   const root = path.resolve('public');
+  // Session b964dffd repair (2026-10-26): the expected card count was pinned
+  // to the literal 73 of the 2026-10-26T00:10Z board this suite was authored
+  // against, so the first rotated board (81 feed rows) failed the browser
+  // gate with "expected 73 coverage cards, found 81" — the pinned-live-value
+  // class that froze publication on 2026-10-23/24. The coverage table renders
+  // one card per feed row in the built snapshot, so derive the expectation
+  // from that same snapshot (the tests/browser.cjs pattern).
+  const snapshot = JSON.parse(fs.readFileSync(path.join(root, 'data/latest.json'), 'utf8'));
+  const expectedCards = snapshot.matches.length;
   const server = http.createServer((req, res) => {
     const url = new URL(req.url, 'http://test');
     const pathname = decodeURIComponent(url.pathname).replace(/^\/MaltaProj4\//, '/');
@@ -94,8 +103,8 @@ const VIEWPORTS = [
                 sectionTop: Math.round(section.getBoundingClientRect().y + scrollY)};
       });
       if (!coverage.found) report.failures.push(`${vp.name}: #every-match is missing from matches.html`);
-      if (coverage.cards.length !== 73)
-        report.failures.push(`${vp.name}: expected 73 coverage cards, found ${coverage.cards.length}`);
+      if (coverage.cards.length !== expectedCards)
+        report.failures.push(`${vp.name}: expected ${expectedCards} coverage cards (one per feed row in the built snapshot), found ${coverage.cards.length}`);
       if (coverage.cards.some(c => !c.pick && !/no supported pick/i.test(c.pick))) {
         const silent = coverage.cards.filter(c => !c.pick && !c.limitation);
         if (silent.length) report.failures.push(`${vp.name}: ${silent.length} cards with neither pick nor limitation`);

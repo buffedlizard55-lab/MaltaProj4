@@ -482,6 +482,14 @@ def _audit_vrs(m, generated, standings, findings, rec):
         if not isinstance(teams_count, int) or teams_count < 100:
             findings.append(Finding("fail", "vrs_mirror_completeness", m["id"],
                                     f"Mirror ranking_teams_count {teams_count!r} < 100.", [url]))
+        # Session b964dffd (adopted 9bbd095e's mirror audit verbatim above;
+        # this check is the one retained from that session's parallel fix):
+        # the dated page's retained SHA-256 is what lets a later reader prove
+        # the points came from the bytes the pipeline actually parsed.
+        if not e.get("ranking_page_sha256"):
+            findings.append(Finding("fail", "vrs_mirror_source", m["id"],
+                                    "Mirror evidence missing ranking_page_sha256; the dated "
+                                    "HLTV page behind these points is not re-verifiable.", [url]))
         for team, count, chk in zip(
                 e.get("vrs_teams", m["teams"]),
                 e.get("label_counts") or [1, 1],

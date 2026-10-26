@@ -273,9 +273,19 @@ class PublishedLinesReDerive(unittest.TestCase):
         self.assertEqual(receipt['summary']['problems'], 0, receipt['problems'])
         self.assertEqual(receipt['summary']['reproduced'], receipt['summary']['model_rows'])
         model_ids = {r['fixture'] for r in receipt['rows'] if r['kind'] == 'published_line'}
-        for m in open_rows():
-            if m.get('method') in ('model_vrs', 'model_vrs_mirror'):
-                self.assertIn(m['id'], model_ids)
+        # Session b964dffd repair (2026-10-26): bind this receipt to its own
+        # snapshot exactly like the line-receipt test below — this suite's own
+        # stated rule (docstring point 5). Unbound, the assertion held every
+        # future board's model rows to the 2026-10-26T00:10:49Z receipt and
+        # failed on the first rotated snapshot (2026-10-26T01:00:10Z, new
+        # model row 1079202), which is the pinned-live-value failure class
+        # that froze publication on 2026-10-23/24. The receipt-internal
+        # checks above and below stay unconditional.
+        self.assertIn('snapshot_generated_at', receipt)
+        if receipt['snapshot_generated_at'] == SNAPSHOT['generated_at']:
+            for m in open_rows():
+                if m.get('method') in ('model_vrs', 'model_vrs_mirror'):
+                    self.assertIn(m['id'], model_ids)
         for row in receipt['rows']:
             for duplicate in row.get('duplicate_labels', []):
                 self.assertTrue(duplicate['roster_rule_verified'], (row['fixture'], duplicate))
