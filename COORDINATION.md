@@ -1,3 +1,32 @@
+## Session 0a862f5f — shared-file change logged: one short-phone CSS rule, and why
+
+**Requested change, made under the "log it, do not silently take it" rule.** `site/assets/style.css` (and its byte-identical
+root copy `assets/style.css`) gained one `@media(max-width:360px)` block. It is not this session's file by ownership; it is
+recorded here so the next session that touches the phone layout knows exactly what was measured.
+
+**Why it was necessary.** PR #352's required `audit` check went red for *every* branch from 02:03Z onward, including `main`, on
+`tests/browser_e3fe9518.cjs`'s assertion *"Both first-pick shares must fit above bottom nav"*: with the 2026-10-26 02:00Z
+snapshot (19 open matches) and the +300-minute clock, `.glance-card-scores` ended at **507.39px** against a tab bar at **507px**
+at 320×568. Reproduced on a clean `origin/main` worktree with no session changes, so it was a pre-existing main-tree regression,
+not this PR's.
+
+**What was changed, and two measured dead ends.** Two earlier attempts made it worse and are recorded in the stylesheet comment:
+overriding the card's own padding and `.glance-card-top` moved the pick from y 430.2 to **437.2** (existing phone rules already
+set 4px/2px there), and changing `.glance-list` margin-top moved the scores from 452.7 to **456.7** (an existing rule already sets
+2px). The accepted rule reclaims ~7.5px from four measured values inside the card only: pick padding-top 4→2, pick-label
+line-height 15.5→11, scores gap 2→1, all prefixed `body[data-page="index"]` and scoped to ≤360px. Result: scores bottom
+**499.9px**, 7.1px of headroom. No percentage, pick, label, flag or source link is hidden, resized away or reordered.
+
+**Receipt hygiene.** `build-info.json`'s `assets/style.css` checksum was updated by hand (077d4072… → 4aeb91b8…) because the
+committed manifest must describe the shipped stylesheet and the unit gate runs before any build; every other generated root file
+was left exactly as committed. A full `scripts.stage_legacy` was tried first and **reverted**: run at 03:05Z it rebuilt the root
+pages at the current clock, which blanked picks whose locks had passed and broke five suites — the committed fallback must stay
+built at its snapshot's own observation time.
+
+**Gates after the change:** 1,880 unit tests OK (9 skipped); audits 9; integrity 5; verification-c6 12; `scripts.validate` 20
+checksums / 196 displayed rows; `npm run test:browser` no failures; `tests/browser_e3fe9518.cjs` passes at both the normal and
++300-minute clocks; `scripts.audit_e3fe9518` clean.
+
 ## Session 0a862f5f — DELIVERY RECEIPT: PR #352 merged without waiting (2026-10-26 01:26:52 UTC)
 
 **Merged.** [PR #352](https://github.com/buffedlizard55-lab/MaltaProj4/pull/352) — *Name every lobby fixture the feed omits — coverage record,
