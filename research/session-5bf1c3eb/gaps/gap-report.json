@@ -1,8 +1,8 @@
 {
   "session": "5bf1c3eb",
-  "probed_at": "2026-10-26T00:57:15.087511Z",
-  "snapshot_generated_at": "2026-10-26T00:57:14.425163Z",
-  "fixtures_observed_at": "2026-10-26T00:53:32.505797Z",
+  "probed_at": "2026-10-26T01:21:16.635465Z",
+  "snapshot_generated_at": "2026-10-26T01:21:12.913968Z",
+  "fixtures_observed_at": "2026-10-26T01:17:37.555207Z",
   "coverage": "verified",
   "policy": "Read-only. No probability is derived, converted or defaulted here; a source with no numeric two-way price is retained as a collection limitation for manual review.",
   "counts": {
@@ -28,31 +28,334 @@
     }
   ],
   "live_pages_at_probe_time": {
-    "checked_at": "2026-10-26T00:57:15.087569Z",
+    "checked_at": "2026-10-26T01:21:16.635528Z",
     "base_url": "https://buffedlizard55-lab.github.io/MaltaProj4/",
     "manifest_http_status": 200,
-    "manifest_sha256": "94daadd4d15732e6346fad9d098a71df3c2eb8a7ad0261956204ef3e63eaaa2f",
+    "manifest_sha256": "2cbf6105ec26e88119fb60df02ad6e3a2f9802514874ff20658f285e8923c09b",
     "manifest": {
-      "revision": "3b158a37e442b0440521a83350d4d515eb20aa49",
-      "built_at": "2026-10-26T00:10:50.130013Z",
-      "snapshot_generated_at": "2026-10-26T00:10:49.639616Z",
-      "rows": 73
+      "revision": "8598f73671429cea040b4940b72bec374366f3d0",
+      "built_at": "2026-10-26T01:17:03.519822Z",
+      "snapshot_generated_at": "2026-10-26T01:17:02.772384Z",
+      "rows": 81
     },
-    "snapshot_age_seconds": 2785.7,
-    "snapshot_age_hours": 0.774,
+    "snapshot_age_seconds": 254.0,
+    "snapshot_age_hours": 0.071,
     "within_8h_window": true
   },
   "open_rows_without_a_percentage": [],
+  "nonmarket_rows_probed": [
+    "1079202",
+    "1081159",
+    "1079203",
+    "1081160",
+    "1093218",
+    "1081162",
+    "1081163",
+    "1081164",
+    "1082792",
+    "1082793"
+  ],
   "source_probes": {
-    "bo3_gg_upcoming_rows": 0,
+    "bo3_gg_upcoming_rows": 221,
     "egamersworld": {
-      "skipped": "every open row already carries a probability"
+      "listing": {
+        "url": "https://egamersworld.com/counterstrike/matches",
+        "read_at": "2026-10-26T01:21:16.735642Z",
+        "http_status": 403,
+        "bytes": 5651,
+        "status": "refused"
+      },
+      "pages": [],
+      "per_fixture": {}
     },
     "polymarket": {
-      "skipped": "every open row already carries a probability"
+      "registry": {
+        "url": "https://gamma-api.polymarket.com/sports",
+        "read_at": "2026-10-26T01:21:16.787114Z",
+        "http_status": 200,
+        "bytes": 155942,
+        "status": "ok",
+        "leagues": 491
+      },
+      "searches": [
+        {
+          "url": "https://gamma-api.polymarket.com/events?limit=20&active=true&closed=false&search=FOKUS",
+          "read_at": "2026-10-26T01:21:16.909074Z",
+          "http_status": 200,
+          "bytes": 389784,
+          "status": "ok",
+          "fixture_id": "1079202",
+          "query_team": "FOKUS",
+          "both_teams_in_title": []
+        },
+        {
+          "url": "https://gamma-api.polymarket.com/events?limit=20&active=true&closed=false&search=ex-Zero+Tenacity",
+          "read_at": "2026-10-26T01:21:17.958174Z",
+          "http_status": 200,
+          "bytes": 389784,
+          "status": "ok",
+          "fixture_id": "1079202",
+          "query_team": "ex-Zero Tenacity",
+          "both_teams_in_title": []
+        },
+        {
+          "url": "https://gamma-api.polymarket.com/events?limit=20&active=true&closed=false&search=LFO+10",
+          "read_at": "2026-10-26T01:21:18.698931Z",
+          "http_status": 200,
+          "bytes": 389784,
+          "status": "ok",
+          "fixture_id": "1081159",
+          "query_team": "LFO 10",
+          "both_teams_in_title": []
+        },
+        {
+          "url": "https://gamma-api.polymarket.com/events?limit=20&active=true&closed=false&search=ex-6666",
+          "read_at": "2026-10-26T01:21:19.256821Z",
+          "http_status": 200,
+          "bytes": 389784,
+          "status": "ok",
+          "fixture_id": "1081159",
+          "query_team": "ex-6666",
+          "both_teams_in_title": []
+        },
+        {
+          "url": "https://gamma-api.polymarket.com/events?limit=20&active=true&closed=false&search=Metizport",
+          "read_at": "2026-10-26T01:21:19.809979Z",
+          "http_status": 200,
+          "bytes": 389784,
+          "status": "ok",
+          "fixture_id": "1079203",
+          "query_team": "Metizport",
+          "both_teams_in_title": []
+        },
+        {
+          "url": "https://gamma-api.polymarket.com/events?limit=20&active=true&closed=false&search=BRUTE",
+          "read_at": "2026-10-26T01:21:20.379586Z",
+          "http_status": 200,
+          "bytes": 389784,
+          "status": "ok",
+          "fixture_id": "1079203",
+          "query_team": "BRUTE",
+          "both_teams_in_title": []
+        },
+        {
+          "url": "https://gamma-api.polymarket.com/events?limit=20&active=true&closed=false&search=HAVU",
+          "read_at": "2026-10-26T01:21:20.927980Z",
+          "http_status": 200,
+          "bytes": 389784,
+          "status": "ok",
+          "fixture_id": "1081160",
+          "query_team": "HAVU",
+          "both_teams_in_title": []
+        },
+        {
+          "url": "https://gamma-api.polymarket.com/events?limit=20&active=true&closed=false&search=ILLYRIANS",
+          "read_at": "2026-10-26T01:21:21.479106Z",
+          "http_status": 200,
+          "bytes": 389784,
+          "status": "ok",
+          "fixture_id": "1081160",
+          "query_team": "ILLYRIANS",
+          "both_teams_in_title": []
+        },
+        {
+          "url": "https://gamma-api.polymarket.com/events?limit=20&active=true&closed=false&search=Nuclear+TigeRES",
+          "read_at": "2026-10-26T01:21:22.024514Z",
+          "http_status": 200,
+          "bytes": 389784,
+          "status": "ok",
+          "fixture_id": "1093218",
+          "query_team": "Nuclear TigeRES",
+          "both_teams_in_title": []
+        },
+        {
+          "url": "https://gamma-api.polymarket.com/events?limit=20&active=true&closed=false&search=UNiTY",
+          "read_at": "2026-10-26T01:21:22.585791Z",
+          "http_status": 200,
+          "bytes": 389784,
+          "status": "ok",
+          "fixture_id": "1093218",
+          "query_team": "UNiTY",
+          "both_teams_in_title": []
+        },
+        {
+          "url": "https://gamma-api.polymarket.com/events?limit=20&active=true&closed=false&search=ex-RUSTEC",
+          "read_at": "2026-10-26T01:21:23.141462Z",
+          "http_status": 200,
+          "bytes": 389784,
+          "status": "ok",
+          "fixture_id": "1081162",
+          "query_team": "ex-RUSTEC",
+          "both_teams_in_title": []
+        },
+        {
+          "url": "https://gamma-api.polymarket.com/events?limit=20&active=true&closed=false&search=Spirit+Academy",
+          "read_at": "2026-10-26T01:21:23.713115Z",
+          "http_status": 200,
+          "bytes": 389784,
+          "status": "ok",
+          "fixture_id": "1081162",
+          "query_team": "Spirit Academy",
+          "both_teams_in_title": []
+        },
+        {
+          "url": "https://gamma-api.polymarket.com/events?limit=20&active=true&closed=false&search=BakS",
+          "read_at": "2026-10-26T01:21:24.263564Z",
+          "http_status": 200,
+          "bytes": 389784,
+          "status": "ok",
+          "fixture_id": "1081163",
+          "query_team": "BakS",
+          "both_teams_in_title": []
+        },
+        {
+          "url": "https://gamma-api.polymarket.com/events?limit=20&active=true&closed=false&search=Saint+Sinners",
+          "read_at": "2026-10-26T01:21:24.814701Z",
+          "http_status": 200,
+          "bytes": 389784,
+          "status": "ok",
+          "fixture_id": "1081163",
+          "query_team": "Saint Sinners",
+          "both_teams_in_title": []
+        },
+        {
+          "url": "https://gamma-api.polymarket.com/events?limit=20&active=true&closed=false&search=Inner+Circle+Academy",
+          "read_at": "2026-10-26T01:21:25.377994Z",
+          "http_status": 200,
+          "bytes": 389784,
+          "status": "ok",
+          "fixture_id": "1081164",
+          "query_team": "Inner Circle Academy",
+          "both_teams_in_title": []
+        },
+        {
+          "url": "https://gamma-api.polymarket.com/events?limit=20&active=true&closed=false&search=Lavked",
+          "read_at": "2026-10-26T01:21:25.935506Z",
+          "http_status": 200,
+          "bytes": 389784,
+          "status": "ok",
+          "fixture_id": "1081164",
+          "query_team": "Lavked",
+          "both_teams_in_title": []
+        },
+        {
+          "url": "https://gamma-api.polymarket.com/events?limit=20&active=true&closed=false&search=HOTU",
+          "read_at": "2026-10-26T01:21:26.489921Z",
+          "http_status": 200,
+          "bytes": 389784,
+          "status": "ok",
+          "fixture_id": "1082792",
+          "query_team": "HOTU",
+          "both_teams_in_title": []
+        },
+        {
+          "url": "https://gamma-api.polymarket.com/events?limit=20&active=true&closed=false&search=The+Huns",
+          "read_at": "2026-10-26T01:21:27.272356Z",
+          "http_status": 200,
+          "bytes": 389784,
+          "status": "ok",
+          "fixture_id": "1082792",
+          "query_team": "The Huns",
+          "both_teams_in_title": []
+        },
+        {
+          "url": "https://gamma-api.polymarket.com/events?limit=20&active=true&closed=false&search=5star",
+          "read_at": "2026-10-26T01:21:27.829479Z",
+          "http_status": 200,
+          "bytes": 389784,
+          "status": "ok",
+          "fixture_id": "1082793",
+          "query_team": "5star",
+          "both_teams_in_title": []
+        },
+        {
+          "url": "https://gamma-api.polymarket.com/events?limit=20&active=true&closed=false&search=1WIN",
+          "read_at": "2026-10-26T01:21:28.468432Z",
+          "http_status": 200,
+          "bytes": 389784,
+          "status": "ok",
+          "fixture_id": "1082793",
+          "query_team": "1WIN",
+          "both_teams_in_title": []
+        }
+      ]
     },
     "pinnacle": {
-      "skipped": "every open row already carries a probability"
+      "matchups": {
+        "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/matchups?withSpecials=false",
+        "read_at": "2026-10-26T01:21:29.035655Z",
+        "http_status": 200,
+        "bytes": 77600,
+        "status": "ok",
+        "count": 26
+      },
+      "moneylines": {
+        "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+        "read_at": "2026-10-26T01:21:29.134903Z",
+        "http_status": 200,
+        "bytes": 582040,
+        "status": "ok",
+        "count": 1070
+      },
+      "per_fixture": {
+        "1079202": {
+          "pinnacle_names_matching_both_teams": [],
+          "note": "No Pinnacle esports matchup row names both clubs in the same minute as this snapshot."
+        },
+        "1081159": {
+          "pinnacle_names_matching_both_teams": [],
+          "note": "No Pinnacle esports matchup row names both clubs in the same minute as this snapshot."
+        },
+        "1079203": {
+          "pinnacle_names_matching_both_teams": [],
+          "note": "No Pinnacle esports matchup row names both clubs in the same minute as this snapshot."
+        },
+        "1081160": {
+          "pinnacle_names_matching_both_teams": [],
+          "note": "No Pinnacle esports matchup row names both clubs in the same minute as this snapshot."
+        },
+        "1093218": {
+          "pinnacle_names_matching_both_teams": [],
+          "note": "No Pinnacle esports matchup row names both clubs in the same minute as this snapshot."
+        },
+        "1081162": {
+          "pinnacle_names_matching_both_teams": [
+            {
+              "matchup_id": 1638612939,
+              "name": "Spirit",
+              "starts": null
+            },
+            {
+              "matchup_id": 1639275275,
+              "name": "Spirit",
+              "starts": null
+            }
+          ],
+          "note": "Pinnacle names this pair; see the retained moneyline receipt."
+        },
+        "1081163": {
+          "pinnacle_names_matching_both_teams": [],
+          "note": "No Pinnacle esports matchup row names both clubs in the same minute as this snapshot."
+        },
+        "1081164": {
+          "pinnacle_names_matching_both_teams": [],
+          "note": "No Pinnacle esports matchup row names both clubs in the same minute as this snapshot."
+        },
+        "1082792": {
+          "pinnacle_names_matching_both_teams": [
+            {
+              "matchup_id": 1639017847,
+              "name": "HOTU",
+              "starts": null
+            }
+          ],
+          "note": "Pinnacle names this pair; see the retained moneyline receipt."
+        },
+        "1082793": {
+          "pinnacle_names_matching_both_teams": [],
+          "note": "No Pinnacle esports matchup row names both clubs in the same minute as this snapshot."
+        }
+      }
     }
   },
   "closed_rows_that_cannot_take_a_pick": [
