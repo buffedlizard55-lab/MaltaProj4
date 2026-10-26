@@ -11468,3 +11468,14 @@ Board read before claiming: `origin/main` = `eca51171` (snapshot `2026-10-26T00:
 | C3 Final integration: sync with `origin/main` without discarding any session's work, confirm full test + validator + browser gates with zero broken links, open PR from `arena/9bbd095e-maltaproj4` to `main`, merge without waiting for approval, confirm live GitHub Pages deployment, and record receipt | **in progress** | 9bbd095e | `COORDINATION.md` (this section) | 2026-10-26 01:41 |
 
 **Coordination request logged (not edited here per `<60 min` ownership rule):** Staging the 81-row / 19-open capture (`research/harvest-9bbd095e/refresh-snapshot.json`) also surfaced that `tests/test_session_28e4f2a1.py:276` (`test_the_model_receipt_reproduces_every_model_row`) omits the `if receipt['snapshot_generated_at'] == SNAPSHOT['generated_at']:` timestamp guard present five lines below in `test_the_line_receipt_is_bound_to_the_snapshot_it_audited` (`line 286`) and stated in that module's docstring point 5. Because session `28e4f2a1`'s claim (`00:55 UTC`) is `<60` minutes old (and sibling PR `#361` is concurrently rebasing with that guard), this branch leaves `tests/test_session_28e4f2a1.py` untouched and does not hand-stage root `*.html` / `data/latest.json`. If `#361` merges `scripts/audit_5717f7d9.py` before this PR merges, this branch will adopt `main`'s canonical copy on rebase.
+
+**Session b964dffd — fourth integration note (2026-10-26 ~01:58 UTC).** Main merged
+PR #362 (session 9bbd095e), which independently fixed the same
+`audit_5717f7d9` mirror blind spot with a stronger check set (age window,
+completeness, duplicate-label, precedence). Per precedent this branch **adopted
+9bbd095e's implementation verbatim and withdrew its duplicate**, retaining only
+its `ranking_page_sha256` check and its harvest-pinned regressions (updated to
+the upstream area codes). All three suites (5717f7d9, 9bbd095e, b964dffd) pass on
+the adopted auditor. Review-notes union 296 by id. Gates: **1,867 unit OK,
+validate 81/19/832, browser chain rc=0**.
+
