@@ -1,8 +1,8 @@
 {
   "session": "5bf1c3eb",
-  "probed_at": "2026-10-26T01:21:16.635465Z",
-  "snapshot_generated_at": "2026-10-26T01:21:12.913968Z",
-  "fixtures_observed_at": "2026-10-26T01:17:37.555207Z",
+  "probed_at": "2026-10-26T01:29:50.923648Z",
+  "snapshot_generated_at": "2026-10-26T01:28:55.438641Z",
+  "fixtures_observed_at": "2026-10-26T01:25:18.559727Z",
   "coverage": "verified",
   "policy": "Read-only. No probability is derived, converted or defaulted here; a source with no numeric two-way price is retained as a collection limitation for manual review.",
   "counts": {
@@ -28,21 +28,2225 @@
     }
   ],
   "live_pages_at_probe_time": {
-    "checked_at": "2026-10-26T01:21:16.635528Z",
+    "checked_at": "2026-10-26T01:29:50.923700Z",
     "base_url": "https://buffedlizard55-lab.github.io/MaltaProj4/",
     "manifest_http_status": 200,
-    "manifest_sha256": "2cbf6105ec26e88119fb60df02ad6e3a2f9802514874ff20658f285e8923c09b",
+    "manifest_sha256": "ae36c0d4ec977013ecab94c757e4e4de0075f453a6500010adfcc258d139652e",
     "manifest": {
-      "revision": "8598f73671429cea040b4940b72bec374366f3d0",
-      "built_at": "2026-10-26T01:17:03.519822Z",
-      "snapshot_generated_at": "2026-10-26T01:17:02.772384Z",
+      "revision": "23d328238357c8e925b3540295eecebee9c47f48",
+      "built_at": "2026-10-26T01:24:43.198637Z",
+      "snapshot_generated_at": "2026-10-26T01:24:42.843419Z",
       "rows": 81
     },
-    "snapshot_age_seconds": 254.0,
-    "snapshot_age_hours": 0.071,
+    "snapshot_age_seconds": 308.4,
+    "snapshot_age_hours": 0.086,
     "within_8h_window": true
   },
-  "open_rows_without_a_percentage": [],
+  "open_rows_without_a_percentage": [
+    {
+      "id": "1079202",
+      "teams": [
+        "FOKUS",
+        "ex-Zero Tenacity"
+      ],
+      "competition": "NODWIN Clutch Series #13",
+      "tier": "b",
+      "start": "2026-10-26T12:00:00Z",
+      "lock": "2026-10-26T11:54:00Z",
+      "best_of": null,
+      "pick": "FOKUS",
+      "method": "model_vrs",
+      "probabilities": [
+        0.7448426229219005,
+        0.2551573770780995
+      ],
+      "reason": null,
+      "flags": [
+        "Originated line: Valve VRS model estimate, not a market price."
+      ],
+      "attempts": [
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/sports",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed."
+        },
+        {
+          "provider": "HLTV",
+          "status": "unresolved",
+          "url": "https://www.hltv.org/matches/2399117/fokus-vs-ex-zero-tenacity-nodwin-clutch-series-13",
+          "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. Recent results and head-to-head wins are recorded for the final research tier only; no probability is derived from them."
+        },
+        {
+          "provider": "Pinnacle",
+          "status": "unresolved",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed."
+        },
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/sports",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed."
+        },
+        {
+          "provider": "Thunderpick",
+          "status": "unresolved",
+          "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+          "url": "https://thunderpick.io/esports/cs2-betting"
+        },
+        {
+          "provider": "GG.BET",
+          "status": "error",
+          "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+          "url": "https://gg.bet/en/esports/counter-strike"
+        },
+        {
+          "provider": "Thunderpick (via BO3.gg API)",
+          "status": "unresolved",
+          "url": "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
+          "reason": "No exact team-pair and UTC-start match in the live BO3.gg CS2 feed."
+        },
+        {
+          "provider": "Valve VRS model",
+          "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+          "status": "resolved",
+          "reason": "Originated line from both teams' Valve standings points (2026-10-05)."
+        }
+      ],
+      "source_url": "https://www.hotspawn.com/matches/fokus-vs-ex-zero-tenacity-nodwin-clutch-series-13-1079202",
+      "bo3_candidates": [
+        {
+          "bo3_id": 132602,
+          "slug": "ground-zero-vs-off-chops-26-10-2026",
+          "url": "https://bo3.gg/matches/ground-zero-vs-off-chops-26-10-2026",
+          "start_date": "2026-10-26T03:00:00.000+00:00",
+          "bo_type": 3,
+          "team1": "Ground Zero",
+          "team2": "Off Chops",
+          "tournament": "DFRAG Invitational 2026",
+          "bet_team_1": null,
+          "bet_team_2": null,
+          "token_overlap": true
+        },
+        {
+          "bo3_id": 132725,
+          "slug": "copenhagen-wolves-vs-wonderkids-26-10-2026",
+          "url": "https://bo3.gg/matches/copenhagen-wolves-vs-wonderkids-26-10-2026",
+          "start_date": "2026-10-26T11:30:00.000+00:00",
+          "bo_type": 3,
+          "team1": "CPH Wolves",
+          "team2": "WonderKids",
+          "tournament": "United21 Season 57",
+          "bet_team_1": null,
+          "bet_team_2": null,
+          "token_overlap": false
+        },
+        {
+          "bo3_id": 132682,
+          "slug": "donstu-esports-vs-invicta-dk-26-10-2026",
+          "url": "https://bo3.gg/matches/donstu-esports-vs-invicta-dk-26-10-2026",
+          "start_date": "2026-10-26T11:30:00.000+00:00",
+          "bo_type": 3,
+          "team1": "DONSTU",
+          "team2": "Invicta",
+          "tournament": "European Pro League Series 10 Play-In",
+          "bet_team_1": null,
+          "bet_team_2": null,
+          "token_overlap": false
+        },
+        {
+          "bo3_id": 131201,
+          "slug": "metizport-vs-brute-26-10-2026",
+          "url": "https://bo3.gg/matches/metizport-vs-brute-26-10-2026",
+          "start_date": "2026-10-26T12:00:00.000+00:00",
+          "bo_type": 3,
+          "team1": "BRUTE",
+          "team2": "Metizport",
+          "tournament": "NODWIN Clutch Series 13",
+          "bet_team_1": null,
+          "bet_team_2": null,
+          "token_overlap": false
+        },
+        {
+          "bo3_id": 131984,
+          "slug": "sokerorg-vs-ex-6666-26-10-2026",
+          "url": "https://bo3.gg/matches/sokerorg-vs-ex-6666-26-10-2026",
+          "start_date": "2026-10-26T12:00:00.000+00:00",
+          "bo_type": 3,
+          "team1": "Sökerorg",
+          "team2": "ex-6666",
+          "tournament": "CCT Europe 2026 Series 12",
+          "bet_team_1": null,
+          "bet_team_2": null,
+          "token_overlap": false
+        },
+        {
+          "bo3_id": 132749,
+          "slug": "walczaki-vs-wingman-26-10-2026",
+          "url": "https://bo3.gg/matches/walczaki-vs-wingman-26-10-2026",
+          "start_date": "2026-10-26T12:00:00.000+00:00",
+          "bo_type": 3,
+          "team1": "Walczaki",
+          "team2": "Wingman",
+          "tournament": "Fiesta Series 3",
+          "bet_team_1": null,
+          "bet_team_2": null,
+          "token_overlap": false
+        },
+        {
+          "bo3_id": 131203,
+          "slug": "fokus-cs-vs-ex-zero-tenacity-26-10-2026",
+          "url": "https://bo3.gg/matches/fokus-cs-vs-ex-zero-tenacity-26-10-2026",
+          "start_date": "2026-10-26T18:00:00.000+00:00",
+          "bo_type": 3,
+          "team1": "FOKUS",
+          "team2": "ex-Zero Tenacity",
+          "tournament": "NODWIN Clutch Series 13",
+          "bet_team_1": null,
+          "bet_team_2": null,
+          "token_overlap": true
+        }
+      ],
+      "vrs_candidates": {
+        "file": "data/vrs/standings_global_2026_10_05.md",
+        "teams": {
+          "FOKUS": [
+            "| 48       |   1321 | FOKUS                | Banjo, jocab, Matheos, podi, ztr                      | [details](details/2026_10_05/0048--fokus--banjo-jocab-matheos-podi-ztr.md)                           |"
+          ],
+          "ex-Zero Tenacity": [
+            "| 44       |   1340 | TYLOO                | JamYoung, Jee, Mercury, Moseyuh, Zero                 | [details](details/2026_10_05/0044--tyloo--jamyoung-jee-mercury-moseyuh-zero.md)                      |",
+            "| 93       |   1066 | ex-Zero Tenacity     | brutmonster, Cjoffo, Dragon, Kind0, VLDN              | [details](details/2026_10_05/0093--ex-zero_tenacity--brutmonster-cjoffo-dragon-kind0-vldn.md)        |",
+            "| 136      |    878 | Ground Zero          | apocdud, hazr, Omichella, sliimey, vision             | [details](details/2026_10_05/0136--ground_zero--apocdud-hazr-omichella-sliimey-vision.md)            |"
+          ]
+        }
+      },
+      "hltv_search": {
+        "FOKUS": [
+          {
+            "url": "https://www.hltv.org/search?query=FOKUS",
+            "http_status": 403
+          }
+        ],
+        "ex-Zero Tenacity": [
+          {
+            "url": "https://www.hltv.org/search?query=ex-Zero+Tenacity",
+            "http_status": 403
+          }
+        ]
+      }
+    },
+    {
+      "id": "1081159",
+      "teams": [
+        "LFO 10",
+        "ex-6666"
+      ],
+      "competition": "CCT Europe 2026 Series #12",
+      "tier": "b",
+      "start": "2026-10-26T12:00:00Z",
+      "lock": "2026-10-26T11:54:00Z",
+      "best_of": null,
+      "pick": "ex-6666",
+      "method": "model_vrs_mirror",
+      "probabilities": [
+        0.32761684508776867,
+        0.6723831549122313
+      ],
+      "reason": null,
+      "flags": [
+        "Originated line: Valve VRS model estimate from HLTV's dated view of Valve's ranking, not a market price.",
+        "Valve points came from HLTV's dated Valve ranking of 2026-10-26, not from Valve's monthly standings file of 2026-10-05."
+      ],
+      "attempts": [
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/sports",
+          "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.",
+          "candidates": [
+            {
+              "teams": [
+                "Sökerorg",
+                "ex-6666"
+              ],
+              "url": "https://gamma-api.polymarket.com/markets/6231429"
+            }
+          ]
+        },
+        {
+          "provider": "HLTV",
+          "status": "unresolved",
+          "url": "https://www.hltv.org/matches/2399509/lfo-10-vs-ex-6666-cct-2026-europe-series-12",
+          "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. Recent results and head-to-head wins are recorded for the final research tier only; no probability is derived from them."
+        },
+        {
+          "provider": "Pinnacle",
+          "status": "unresolved",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed."
+        },
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/sports",
+          "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.",
+          "candidates": [
+            {
+              "teams": [
+                "Sökerorg",
+                "ex-6666"
+              ],
+              "url": "https://gamma-api.polymarket.com/markets/6231429"
+            }
+          ]
+        },
+        {
+          "provider": "Thunderpick",
+          "status": "unresolved",
+          "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+          "url": "https://thunderpick.io/esports/cs2-betting"
+        },
+        {
+          "provider": "GG.BET",
+          "status": "error",
+          "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+          "url": "https://gg.bet/en/esports/counter-strike"
+        },
+        {
+          "provider": "Thunderpick (via BO3.gg API)",
+          "status": "unresolved",
+          "url": "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
+          "reason": "No exact team-pair and UTC-start match in the live BO3.gg CS2 feed."
+        },
+        {
+          "provider": "Valve VRS model",
+          "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+          "status": "unresolved",
+          "reason": "No originated line: LFO 10: not listed in the Valve global standings."
+        },
+        {
+          "provider": "HLTV Valve ranking (Valve points)",
+          "url": "https://www.hltv.org/valve-ranking/teams/2026/october/26",
+          "status": "resolved",
+          "reason": "Originated line from both clubs' Valve rankings points as HLTV publishes them (2026-10-26)."
+        }
+      ],
+      "source_url": "https://www.hotspawn.com/matches/lfo-10-vs-ex-6666-cct-europe-2026-series-12-1081159",
+      "bo3_candidates": [
+        {
+          "bo3_id": 132725,
+          "slug": "copenhagen-wolves-vs-wonderkids-26-10-2026",
+          "url": "https://bo3.gg/matches/copenhagen-wolves-vs-wonderkids-26-10-2026",
+          "start_date": "2026-10-26T11:30:00.000+00:00",
+          "bo_type": 3,
+          "team1": "CPH Wolves",
+          "team2": "WonderKids",
+          "tournament": "United21 Season 57",
+          "bet_team_1": null,
+          "bet_team_2": null,
+          "token_overlap": false
+        },
+        {
+          "bo3_id": 132682,
+          "slug": "donstu-esports-vs-invicta-dk-26-10-2026",
+          "url": "https://bo3.gg/matches/donstu-esports-vs-invicta-dk-26-10-2026",
+          "start_date": "2026-10-26T11:30:00.000+00:00",
+          "bo_type": 3,
+          "team1": "DONSTU",
+          "team2": "Invicta",
+          "tournament": "European Pro League Series 10 Play-In",
+          "bet_team_1": null,
+          "bet_team_2": null,
+          "token_overlap": false
+        },
+        {
+          "bo3_id": 131201,
+          "slug": "metizport-vs-brute-26-10-2026",
+          "url": "https://bo3.gg/matches/metizport-vs-brute-26-10-2026",
+          "start_date": "2026-10-26T12:00:00.000+00:00",
+          "bo_type": 3,
+          "team1": "BRUTE",
+          "team2": "Metizport",
+          "tournament": "NODWIN Clutch Series 13",
+          "bet_team_1": null,
+          "bet_team_2": null,
+          "token_overlap": false
+        },
+        {
+          "bo3_id": 131984,
+          "slug": "sokerorg-vs-ex-6666-26-10-2026",
+          "url": "https://bo3.gg/matches/sokerorg-vs-ex-6666-26-10-2026",
+          "start_date": "2026-10-26T12:00:00.000+00:00",
+          "bo_type": 3,
+          "team1": "Sökerorg",
+          "team2": "ex-6666",
+          "tournament": "CCT Europe 2026 Series 12",
+          "bet_team_1": null,
+          "bet_team_2": null,
+          "token_overlap": true
+        },
+        {
+          "bo3_id": 132749,
+          "slug": "walczaki-vs-wingman-26-10-2026",
+          "url": "https://bo3.gg/matches/walczaki-vs-wingman-26-10-2026",
+          "start_date": "2026-10-26T12:00:00.000+00:00",
+          "bo_type": 3,
+          "team1": "Walczaki",
+          "team2": "Wingman",
+          "tournament": "Fiesta Series 3",
+          "bet_team_1": null,
+          "bet_team_2": null,
+          "token_overlap": false
+        }
+      ],
+      "vrs_candidates": {
+        "file": "data/vrs/standings_global_2026_10_05.md",
+        "teams": {
+          "LFO 10": [],
+          "ex-6666": [
+            "| 127      |    923 | 6666                 | amster, dENZY, kL1o, rendysky, skcH                   | [details](details/2026_10_05/0127--6666--amster-denzy-kl1o-rendysky-skch.md)                         |",
+            "| 368      |    425 | 6666                 | auth0ri, m4d4ra, rickangel, skcH                      | [details](details/2026_10_05/0368--6666--auth0ri-m4d4ra-rickangel-skch.md)                           |"
+          ]
+        }
+      },
+      "hltv_search": {
+        "LFO 10": [
+          {
+            "url": "https://www.hltv.org/search?query=LFO+10",
+            "http_status": 403
+          }
+        ],
+        "ex-6666": [
+          {
+            "url": "https://www.hltv.org/search?query=ex-6666",
+            "http_status": 403
+          }
+        ]
+      }
+    },
+    {
+      "id": "1079203",
+      "teams": [
+        "Metizport",
+        "BRUTE"
+      ],
+      "competition": "NODWIN Clutch Series #13",
+      "tier": "b",
+      "start": "2026-10-26T15:00:00Z",
+      "lock": "2026-10-26T14:54:00Z",
+      "best_of": null,
+      "pick": "Metizport",
+      "method": "model_vrs",
+      "probabilities": [
+        0.6804803346577152,
+        0.3195196653422848
+      ],
+      "reason": null,
+      "flags": [
+        "Originated line: Valve VRS model estimate, not a market price."
+      ],
+      "attempts": [
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/sports",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed."
+        },
+        {
+          "provider": "HLTV",
+          "status": "unresolved",
+          "url": "https://www.hltv.org/matches/2399118/metizport-vs-brute-nodwin-clutch-series-13",
+          "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. Recent results and head-to-head wins are recorded for the final research tier only; no probability is derived from them."
+        },
+        {
+          "provider": "Pinnacle",
+          "status": "unresolved",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed."
+        },
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/sports",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed."
+        },
+        {
+          "provider": "Thunderpick",
+          "status": "unresolved",
+          "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+          "url": "https://thunderpick.io/esports/cs2-betting"
+        },
+        {
+          "provider": "GG.BET",
+          "status": "error",
+          "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+          "url": "https://gg.bet/en/esports/counter-strike"
+        },
+        {
+          "provider": "Thunderpick (via BO3.gg API)",
+          "status": "unresolved",
+          "url": "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
+          "reason": "No exact team-pair and UTC-start match in the live BO3.gg CS2 feed."
+        },
+        {
+          "provider": "Valve VRS model",
+          "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+          "status": "resolved",
+          "reason": "Originated line from both teams' Valve standings points (2026-10-05)."
+        }
+      ],
+      "source_url": "https://www.hotspawn.com/matches/metizport-vs-brute-nodwin-clutch-series-13-1079203",
+      "bo3_candidates": [
+        {
+          "bo3_id": 131201,
+          "slug": "metizport-vs-brute-26-10-2026",
+          "url": "https://bo3.gg/matches/metizport-vs-brute-26-10-2026",
+          "start_date": "2026-10-26T12:00:00.000+00:00",
+          "bo_type": 3,
+          "team1": "BRUTE",
+          "team2": "Metizport",
+          "tournament": "NODWIN Clutch Series 13",
+          "bet_team_1": null,
+          "bet_team_2": null,
+          "token_overlap": true
+        },
+        {
+          "bo3_id": 131202,
+          "slug": "nuclear-tigeres-vs-unity-26-10-2026",
+          "url": "https://bo3.gg/matches/nuclear-tigeres-vs-unity-26-10-2026",
+          "start_date": "2026-10-26T15:00:00.000+00:00",
+          "bo_type": 3,
+          "team1": "Nuclear TigeRES",
+          "team2": "UNiTY",
+          "tournament": "NODWIN Clutch Series 13",
+          "bet_team_1": null,
+          "bet_team_2": null,
+          "token_overlap": false
+        },
+        {
+          "bo3_id": 132750,
+          "slug": "azuolas-vs-fortress-26-10-2026",
+          "url": "https://bo3.gg/matches/azuolas-vs-fortress-26-10-2026",
+          "start_date": "2026-10-26T15:00:00.000+00:00",
+          "bo_type": 3,
+          "team1": "Azuolas",
+          "team2": "Fortress",
+          "tournament": "Fiesta Series 3",
+          "bet_team_1": null,
+          "bet_team_2": null,
+          "token_overlap": false
+        },
+        {
+          "bo3_id": 131986,
+          "slug": "havu-vs-illyrians-26-10-2026",
+          "url": "https://bo3.gg/matches/havu-vs-illyrians-26-10-2026",
+          "start_date": "2026-10-26T15:00:00.000+00:00",
+          "bo_type": 3,
+          "team1": "HAVU",
+          "team2": "Illyrians",
+          "tournament": "CCT Europe 2026 Series 12",
+          "bet_team_1": null,
+          "bet_team_2": null,
+          "token_overlap": false
+        }
+      ],
+      "vrs_candidates": {
+        "file": "data/vrs/standings_global_2026_10_05.md",
+        "teams": {
+          "Metizport": [
+            "| 53       |   1290 | Metizport            | F1KU, forsyy, MaiL09, Plopski, stanislaw              | [details](details/2026_10_05/0053--metizport--f1ku-forsyy-mail09-plopski-stanislaw.md)               |"
+          ],
+          "BRUTE": [
+            "| 75       |   1116 | BRUTE                | aidKiT, hfah, nbqq, tAk, ZEDKO                        | [details](details/2026_10_05/0075--brute--aidkit-hfah-nbqq-tak-zedko.md)                             |",
+            "| 218      |    689 | BRUTE                | hfah, KAD1M, majky, nbqq, realzen                     | [details](details/2026_10_05/0218--brute--hfah-kad1m-majky-nbqq-realzen.md)                          |"
+          ]
+        }
+      },
+      "hltv_search": {
+        "Metizport": [
+          {
+            "url": "https://www.hltv.org/search?query=Metizport",
+            "http_status": 403
+          }
+        ],
+        "BRUTE": [
+          {
+            "url": "https://www.hltv.org/search?query=BRUTE",
+            "http_status": 403
+          }
+        ]
+      }
+    },
+    {
+      "id": "1081160",
+      "teams": [
+        "HAVU",
+        "ILLYRIANS"
+      ],
+      "competition": "CCT Europe 2026 Series #12",
+      "tier": "b",
+      "start": "2026-10-26T15:00:00Z",
+      "lock": "2026-10-26T14:54:00Z",
+      "best_of": null,
+      "pick": "HAVU",
+      "method": "model_vrs",
+      "probabilities": [
+        0.5826418348526576,
+        0.41735816514734236
+      ],
+      "reason": null,
+      "flags": [
+        "Originated line: Valve VRS model estimate, not a market price."
+      ],
+      "attempts": [
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/markets/6231433",
+          "reason": "Exchange spread exceeds 25 points or liquidity is below $100.",
+          "rejected_quote": {
+            "provider": "Polymarket",
+            "id": "6231433",
+            "teams": [
+              "HAVU",
+              "ILLYRIANS"
+            ],
+            "start": "2026-10-26 15:00:00+00",
+            "observed_at": "2026-10-26T01:21:10.194085Z",
+            "updated_at": "2026-10-26T01:20:37.186433Z",
+            "raw": {
+              "id": "6231433",
+              "question": "Counter-Strike: HAVU vs ILLYRIANS (BO3) - CCT Europe Series #12 Group Stage",
+              "sportsMarketType": "moneyline",
+              "outcomes": "[\"HAVU\", \"ILLYRIANS\"]",
+              "outcomePrices": "[\"0.5\", \"0.5\"]",
+              "gameStartTime": "2026-10-26 15:00:00+00",
+              "eventStartTime": "2026-10-26T15:00:00Z",
+              "updatedAt": "2026-10-26T01:20:37.186433Z",
+              "active": true,
+              "closed": false,
+              "acceptingOrders": true,
+              "bestBid": 0.05,
+              "bestAsk": 0.95,
+              "liquidity": "707.7417",
+              "volume": null
+            },
+            "api_url": "https://gamma-api.polymarket.com/markets/6231433",
+            "source_receipts": [
+              {
+                "name": "Polymarket events page 1",
+                "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-26T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
+                "checked_at": "2026-10-26T01:25:22.157110Z",
+                "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-26T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
+                "cache_bust": null,
+                "http_status": 200,
+                "status": "ok",
+                "retrieved_at": "2026-10-26T01:25:22.194085Z",
+                "observed_at": "2026-10-26T01:21:10.194085Z",
+                "cache_age_seconds": 252,
+                "cache_status": "Hit from cloudfront",
+                "sha256": "a6351d23cd7d76d03b0aa97ff3ddb79f9ea23f3ee3afd39092be74c9821a43dd",
+                "bytes": 3036298
+              }
+            ],
+            "notice": "Rejected evidence, not a pick or verified probability."
+          }
+        },
+        {
+          "provider": "HLTV",
+          "status": "unresolved",
+          "url": "https://www.hltv.org/matches/2399510/havu-vs-illyrians-cct-2026-europe-series-12",
+          "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. Recent results and head-to-head wins are recorded for the final research tier only; no probability is derived from them."
+        },
+        {
+          "provider": "Pinnacle",
+          "status": "unresolved",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed."
+        },
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/markets/6231433",
+          "reason": "Exchange spread exceeds the 60-point ceiling for the low-confidence tier.",
+          "rejected_quote": {
+            "provider": "Polymarket",
+            "id": "6231433",
+            "teams": [
+              "HAVU",
+              "ILLYRIANS"
+            ],
+            "start": "2026-10-26 15:00:00+00",
+            "observed_at": "2026-10-26T01:21:10.194085Z",
+            "updated_at": "2026-10-26T01:20:37.186433Z",
+            "raw": {
+              "id": "6231433",
+              "question": "Counter-Strike: HAVU vs ILLYRIANS (BO3) - CCT Europe Series #12 Group Stage",
+              "sportsMarketType": "moneyline",
+              "outcomes": "[\"HAVU\", \"ILLYRIANS\"]",
+              "outcomePrices": "[\"0.5\", \"0.5\"]",
+              "gameStartTime": "2026-10-26 15:00:00+00",
+              "eventStartTime": "2026-10-26T15:00:00Z",
+              "updatedAt": "2026-10-26T01:20:37.186433Z",
+              "active": true,
+              "closed": false,
+              "acceptingOrders": true,
+              "bestBid": 0.05,
+              "bestAsk": 0.95,
+              "liquidity": "707.7417",
+              "volume": null
+            },
+            "api_url": "https://gamma-api.polymarket.com/markets/6231433",
+            "source_receipts": [
+              {
+                "name": "Polymarket events page 1",
+                "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-26T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
+                "checked_at": "2026-10-26T01:25:22.157110Z",
+                "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-26T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
+                "cache_bust": null,
+                "http_status": 200,
+                "status": "ok",
+                "retrieved_at": "2026-10-26T01:25:22.194085Z",
+                "observed_at": "2026-10-26T01:21:10.194085Z",
+                "cache_age_seconds": 252,
+                "cache_status": "Hit from cloudfront",
+                "sha256": "a6351d23cd7d76d03b0aa97ff3ddb79f9ea23f3ee3afd39092be74c9821a43dd",
+                "bytes": 3036298
+              }
+            ],
+            "notice": "Rejected evidence, not a pick or verified probability."
+          }
+        },
+        {
+          "provider": "Thunderpick",
+          "status": "unresolved",
+          "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+          "url": "https://thunderpick.io/esports/cs2-betting"
+        },
+        {
+          "provider": "GG.BET",
+          "status": "error",
+          "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+          "url": "https://gg.bet/en/esports/counter-strike"
+        },
+        {
+          "provider": "Thunderpick (via BO3.gg API)",
+          "status": "unresolved",
+          "url": "https://bo3.gg/matches/havu-vs-illyrians-26-10-2026",
+          "reason": "Fixture found on BO3.gg with exact UTC start, but no active sportsbook moneyline is posted yet (bet_updates is null)."
+        },
+        {
+          "provider": "Valve VRS model",
+          "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+          "status": "resolved",
+          "reason": "Originated line from both teams' Valve standings points (2026-10-05)."
+        }
+      ],
+      "source_url": "https://www.hotspawn.com/matches/havu-vs-illyrians-cct-europe-2026-series-12-1081160",
+      "bo3_candidates": [
+        {
+          "bo3_id": 131202,
+          "slug": "nuclear-tigeres-vs-unity-26-10-2026",
+          "url": "https://bo3.gg/matches/nuclear-tigeres-vs-unity-26-10-2026",
+          "start_date": "2026-10-26T15:00:00.000+00:00",
+          "bo_type": 3,
+          "team1": "Nuclear TigeRES",
+          "team2": "UNiTY",
+          "tournament": "NODWIN Clutch Series 13",
+          "bet_team_1": null,
+          "bet_team_2": null,
+          "token_overlap": false
+        },
+        {
+          "bo3_id": 132750,
+          "slug": "azuolas-vs-fortress-26-10-2026",
+          "url": "https://bo3.gg/matches/azuolas-vs-fortress-26-10-2026",
+          "start_date": "2026-10-26T15:00:00.000+00:00",
+          "bo_type": 3,
+          "team1": "Azuolas",
+          "team2": "Fortress",
+          "tournament": "Fiesta Series 3",
+          "bet_team_1": null,
+          "bet_team_2": null,
+          "token_overlap": false
+        },
+        {
+          "bo3_id": 131986,
+          "slug": "havu-vs-illyrians-26-10-2026",
+          "url": "https://bo3.gg/matches/havu-vs-illyrians-26-10-2026",
+          "start_date": "2026-10-26T15:00:00.000+00:00",
+          "bo_type": 3,
+          "team1": "HAVU",
+          "team2": "Illyrians",
+          "tournament": "CCT Europe 2026 Series 12",
+          "bet_team_1": null,
+          "bet_team_2": null,
+          "token_overlap": true
+        }
+      ],
+      "vrs_candidates": {
+        "file": "data/vrs/standings_global_2026_10_05.md",
+        "teams": {
+          "HAVU": [
+            "| 124      |    937 | HAVU                 | 8Juho8, Alxc, ottob, p3kko, uli                       | [details](details/2026_10_05/0124--havu--8juho8-alxc-ottob-p3kko-uli.md)                             |"
+          ],
+          "ILLYRIANS": [
+            "| 141      |    862 | Illyrians            | ammar, BledarD, cerber, vAloN, xonn1k                 | [details](details/2026_10_05/0141--illyrians--ammar-bledard-cerber-valon-xonn1k.md)                  |"
+          ]
+        }
+      },
+      "hltv_search": {
+        "HAVU": [
+          {
+            "url": "https://www.hltv.org/search?query=HAVU",
+            "http_status": 403
+          }
+        ],
+        "ILLYRIANS": [
+          {
+            "url": "https://www.hltv.org/search?query=ILLYRIANS",
+            "http_status": 403
+          }
+        ]
+      }
+    },
+    {
+      "id": "1093218",
+      "teams": [
+        "Nuclear TigeRES",
+        "UNiTY"
+      ],
+      "competition": "NODWIN Clutch Series #13",
+      "tier": "b",
+      "start": "2026-10-26T18:00:00Z",
+      "lock": "2026-10-26T17:54:00Z",
+      "best_of": null,
+      "pick": "Nuclear TigeRES",
+      "method": "model_vrs",
+      "probabilities": [
+        0.6650360144457831,
+        0.3349639855542169
+      ],
+      "reason": null,
+      "flags": [
+        "Originated line: Valve VRS model estimate, not a market price."
+      ],
+      "attempts": [
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/sports",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed."
+        },
+        {
+          "provider": "HLTV",
+          "status": "unresolved",
+          "url": "https://www.hltv.org/matches/2399119/nuclear-tigeres-vs-unity-nodwin-clutch-series-13",
+          "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. Recent results and head-to-head wins are recorded for the final research tier only; no probability is derived from them."
+        },
+        {
+          "provider": "Pinnacle",
+          "status": "unresolved",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed."
+        },
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/sports",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed."
+        },
+        {
+          "provider": "Thunderpick",
+          "status": "unresolved",
+          "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+          "url": "https://thunderpick.io/esports/cs2-betting"
+        },
+        {
+          "provider": "GG.BET",
+          "status": "error",
+          "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+          "url": "https://gg.bet/en/esports/counter-strike"
+        },
+        {
+          "provider": "Thunderpick (via BO3.gg API)",
+          "status": "unresolved",
+          "url": "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
+          "reason": "No exact team-pair and UTC-start match in the live BO3.gg CS2 feed."
+        },
+        {
+          "provider": "Valve VRS model",
+          "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+          "status": "resolved",
+          "reason": "Originated line from both teams' Valve standings points (2026-10-05)."
+        }
+      ],
+      "source_url": "https://www.hotspawn.com/matches/nuclear-tigeres-vs-unity-nodwin-clutch-series-13-1093218",
+      "bo3_candidates": [
+        {
+          "bo3_id": 132724,
+          "slug": "gothboiclique-vs-unity-26-10-2026",
+          "url": "https://bo3.gg/matches/gothboiclique-vs-unity-26-10-2026",
+          "start_date": "2026-10-26T09:00:00.000+00:00",
+          "bo_type": 3,
+          "team1": "gothboiclique",
+          "team2": "UNiTY",
+          "tournament": "United21 Season 57",
+          "bet_team_1": null,
+          "bet_team_2": null,
+          "token_overlap": true
+        },
+        {
+          "bo3_id": 131202,
+          "slug": "nuclear-tigeres-vs-unity-26-10-2026",
+          "url": "https://bo3.gg/matches/nuclear-tigeres-vs-unity-26-10-2026",
+          "start_date": "2026-10-26T15:00:00.000+00:00",
+          "bo_type": 3,
+          "team1": "Nuclear TigeRES",
+          "team2": "UNiTY",
+          "tournament": "NODWIN Clutch Series 13",
+          "bet_team_1": null,
+          "bet_team_2": null,
+          "token_overlap": true
+        },
+        {
+          "bo3_id": 129779,
+          "slug": "ecstatic-vs-masonic-26-10-2026",
+          "url": "https://bo3.gg/matches/ecstatic-vs-masonic-26-10-2026",
+          "start_date": "2026-10-26T18:00:00.000+00:00",
+          "bo_type": 1,
+          "team1": "ECSTATIC",
+          "team2": "MASONIC",
+          "tournament": "Dust2.dk Ligaen Season 33: Regular Season",
+          "bet_team_1": {
+            "name": "ECSTATIC",
+            "coeff": 1.57,
+            "active": true,
+            "team_id": 2245,
+            "max_coeff": 1.57,
+            "aggrement_score": 0.25
+          },
+          "bet_team_2": {
+            "name": "MASONIC",
+            "coeff": 2.2,
+            "active": true,
+            "team_id": 1059,
+            "max_coeff": 2.25,
+            "aggrement_score": 0.75
+          },
+          "token_overlap": false
+        },
+        {
+          "bo3_id": 131985,
+          "slug": "6yubojlbl-vs-mellren-26-10-2026",
+          "url": "https://bo3.gg/matches/6yubojlbl-vs-mellren-26-10-2026",
+          "start_date": "2026-10-26T18:00:00.000+00:00",
+          "bo_type": 3,
+          "team1": "6yuBoJlbl",
+          "team2": "mellren",
+          "tournament": "CCT Europe 2026 Series 12",
+          "bet_team_1": null,
+          "bet_team_2": null,
+          "token_overlap": false
+        },
+        {
+          "bo3_id": 131203,
+          "slug": "fokus-cs-vs-ex-zero-tenacity-26-10-2026",
+          "url": "https://bo3.gg/matches/fokus-cs-vs-ex-zero-tenacity-26-10-2026",
+          "start_date": "2026-10-26T18:00:00.000+00:00",
+          "bo_type": 3,
+          "team1": "FOKUS",
+          "team2": "ex-Zero Tenacity",
+          "tournament": "NODWIN Clutch Series 13",
+          "bet_team_1": null,
+          "bet_team_2": null,
+          "token_overlap": false
+        },
+        {
+          "bo3_id": 132147,
+          "slug": "dnk-vs-lph-gaming-26-10-2026",
+          "url": "https://bo3.gg/matches/dnk-vs-lph-gaming-26-10-2026",
+          "start_date": "2026-10-26T18:00:00.000+00:00",
+          "bo_type": 1,
+          "team1": "DNK",
+          "team2": "LPH",
+          "tournament": "ESEA Season 59: Advanced Division - Europe",
+          "bet_team_1": null,
+          "bet_team_2": null,
+          "token_overlap": false
+        },
+        {
+          "bo3_id": 129778,
+          "slug": "eac-extra-vs-xi-esport-26-10-2026",
+          "url": "https://bo3.gg/matches/eac-extra-vs-xi-esport-26-10-2026",
+          "start_date": "2026-10-26T18:00:00.000+00:00",
+          "bo_type": 1,
+          "team1": "EAC EXTRA",
+          "team2": "XI",
+          "tournament": "Dust2.dk Ligaen Season 33: Regular Season",
+          "bet_team_1": null,
+          "bet_team_2": null,
+          "token_overlap": false
+        },
+        {
+          "bo3_id": 132631,
+          "slug": "rush-gaming-vs-hunters-rising-26-10-2026",
+          "url": "https://bo3.gg/matches/rush-gaming-vs-hunters-rising-26-10-2026",
+          "start_date": "2026-10-26T18:00:00.000+00:00",
+          "bo_type": 3,
+          "team1": "RUSH",
+          "team2": "Hunters Rising",
+          "tournament": "Gamers Club Liga Série A: October 2026",
+          "bet_team_1": {
+            "name": "RUSH",
+            "coeff": 1.41,
+            "active": true,
+            "team_id": 24574,
+            "max_coeff": 1.42,
+            "aggrement_score": 0.7
+          },
+          "bet_team_2": {
+            "name": "Hunters Rising",
+            "coeff": 2.69,
+            "active": true,
+            "team_id": 20703,
+            "max_coeff": 2.69,
+            "aggrement_score": 0.3
+          },
+          "token_overlap": false
+        }
+      ],
+      "vrs_candidates": {
+        "file": "data/vrs/standings_global_2026_10_05.md",
+        "teams": {
+          "Nuclear TigeRES": [
+            "| 46       |   1324 | Nuclear TigeRES      | ayuki, Djon8, flouzer, senka, tronic                  | [details](details/2026_10_05/0046--nuclear_tigeres--ayuki-djon8-flouzer-senka-tronic.md)             |",
+            "| 199      |    728 | Young TigeRES        | Gashhhi4, motya, tronic, z3ndy                        | [details](details/2026_10_05/0199--young_tigeres--gashhhi4-motya-tronic-z3ndy.md)                    |"
+          ],
+          "UNiTY": [
+            "| 69       |   1167 | UNiTY                | 2high, Dytor, KWERTZZ, M1key, Sn0w                    | [details](details/2026_10_05/0069--unity--2high-dytor-kwertzz-m1key-sn0w.md)                         |"
+          ]
+        }
+      },
+      "hltv_search": {
+        "Nuclear TigeRES": [
+          {
+            "url": "https://www.hltv.org/search?query=Nuclear+TigeRES",
+            "http_status": 403
+          }
+        ],
+        "UNiTY": [
+          {
+            "url": "https://www.hltv.org/search?query=UNiTY",
+            "http_status": 403
+          }
+        ]
+      }
+    },
+    {
+      "id": "1081162",
+      "teams": [
+        "ex-RUSTEC",
+        "Spirit Academy"
+      ],
+      "competition": "CCT Europe 2026 Series #12",
+      "tier": "b",
+      "start": "2026-10-27T12:00:00Z",
+      "lock": "2026-10-27T11:54:00Z",
+      "best_of": null,
+      "pick": "ex-RUSTEC",
+      "method": "model_vrs_mirror",
+      "probabilities": [
+        0.5234518509837461,
+        0.47654814901625386
+      ],
+      "reason": null,
+      "flags": [
+        "Originated line: Valve VRS model estimate from HLTV's dated view of Valve's ranking, not a market price.",
+        "Valve points came from HLTV's dated Valve ranking of 2026-10-26, not from Valve's monthly standings file of 2026-10-05."
+      ],
+      "attempts": [
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/markets/6233625",
+          "reason": "Exchange spread exceeds 25 points or liquidity is below $100.",
+          "rejected_quote": {
+            "provider": "Polymarket",
+            "id": "6233625",
+            "teams": [
+              "ex-RUSTEC",
+              "Spirit Academy"
+            ],
+            "start": "2026-10-27 12:00:00+00",
+            "observed_at": "2026-10-26T01:21:10.194085Z",
+            "updated_at": "2026-10-26T01:18:36.968867Z",
+            "raw": {
+              "id": "6233625",
+              "question": "Counter-Strike: ex-RUSTEC vs Spirit Academy (BO3) - CCT Europe Series #12 Group Stage",
+              "sportsMarketType": "moneyline",
+              "outcomes": "[\"ex-RUSTEC\", \"Spirit Academy\"]",
+              "outcomePrices": "[\"0.5\", \"0.5\"]",
+              "gameStartTime": "2026-10-27 12:00:00+00",
+              "eventStartTime": "2026-10-27T12:00:00Z",
+              "updatedAt": "2026-10-26T01:18:36.968867Z",
+              "active": true,
+              "closed": false,
+              "acceptingOrders": true,
+              "bestBid": 0.05,
+              "bestAsk": 0.95,
+              "liquidity": "104.8544",
+              "volume": null
+            },
+            "api_url": "https://gamma-api.polymarket.com/markets/6233625",
+            "source_receipts": [
+              {
+                "name": "Polymarket events page 1",
+                "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-26T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
+                "checked_at": "2026-10-26T01:25:22.157110Z",
+                "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-26T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
+                "cache_bust": null,
+                "http_status": 200,
+                "status": "ok",
+                "retrieved_at": "2026-10-26T01:25:22.194085Z",
+                "observed_at": "2026-10-26T01:21:10.194085Z",
+                "cache_age_seconds": 252,
+                "cache_status": "Hit from cloudfront",
+                "sha256": "a6351d23cd7d76d03b0aa97ff3ddb79f9ea23f3ee3afd39092be74c9821a43dd",
+                "bytes": 3036298
+              }
+            ],
+            "notice": "Rejected evidence, not a pick or verified probability."
+          }
+        },
+        {
+          "provider": "HLTV",
+          "status": "unresolved",
+          "url": "https://www.hltv.org/matches/2399512/ex-rustec-vs-spirit-academy-cct-2026-europe-series-12",
+          "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. Recent results and head-to-head wins are recorded for the final research tier only; no probability is derived from them."
+        },
+        {
+          "provider": "Pinnacle",
+          "status": "unresolved",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed."
+        },
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/markets/6233625",
+          "reason": "Exchange spread exceeds the 60-point ceiling for the low-confidence tier.",
+          "rejected_quote": {
+            "provider": "Polymarket",
+            "id": "6233625",
+            "teams": [
+              "ex-RUSTEC",
+              "Spirit Academy"
+            ],
+            "start": "2026-10-27 12:00:00+00",
+            "observed_at": "2026-10-26T01:21:10.194085Z",
+            "updated_at": "2026-10-26T01:18:36.968867Z",
+            "raw": {
+              "id": "6233625",
+              "question": "Counter-Strike: ex-RUSTEC vs Spirit Academy (BO3) - CCT Europe Series #12 Group Stage",
+              "sportsMarketType": "moneyline",
+              "outcomes": "[\"ex-RUSTEC\", \"Spirit Academy\"]",
+              "outcomePrices": "[\"0.5\", \"0.5\"]",
+              "gameStartTime": "2026-10-27 12:00:00+00",
+              "eventStartTime": "2026-10-27T12:00:00Z",
+              "updatedAt": "2026-10-26T01:18:36.968867Z",
+              "active": true,
+              "closed": false,
+              "acceptingOrders": true,
+              "bestBid": 0.05,
+              "bestAsk": 0.95,
+              "liquidity": "104.8544",
+              "volume": null
+            },
+            "api_url": "https://gamma-api.polymarket.com/markets/6233625",
+            "source_receipts": [
+              {
+                "name": "Polymarket events page 1",
+                "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-26T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
+                "checked_at": "2026-10-26T01:25:22.157110Z",
+                "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-26T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
+                "cache_bust": null,
+                "http_status": 200,
+                "status": "ok",
+                "retrieved_at": "2026-10-26T01:25:22.194085Z",
+                "observed_at": "2026-10-26T01:21:10.194085Z",
+                "cache_age_seconds": 252,
+                "cache_status": "Hit from cloudfront",
+                "sha256": "a6351d23cd7d76d03b0aa97ff3ddb79f9ea23f3ee3afd39092be74c9821a43dd",
+                "bytes": 3036298
+              }
+            ],
+            "notice": "Rejected evidence, not a pick or verified probability."
+          }
+        },
+        {
+          "provider": "Thunderpick",
+          "status": "unresolved",
+          "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+          "url": "https://thunderpick.io/esports/cs2-betting"
+        },
+        {
+          "provider": "GG.BET",
+          "status": "error",
+          "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+          "url": "https://gg.bet/en/esports/counter-strike"
+        },
+        {
+          "provider": "Thunderpick (via BO3.gg API)",
+          "status": "unresolved",
+          "url": "https://bo3.gg/matches/ex-rustec-vs-spirit-academy-27-10-2026",
+          "reason": "Fixture found on BO3.gg with exact UTC start, but no active sportsbook moneyline is posted yet (bet_updates is null)."
+        },
+        {
+          "provider": "Valve VRS model",
+          "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+          "status": "unresolved",
+          "reason": "No originated line: ex-RUSTEC: more than one listed roster shares the same number of players with the current HLTV lineup."
+        },
+        {
+          "provider": "HLTV Valve ranking (Valve points)",
+          "url": "https://www.hltv.org/valve-ranking/teams/2026/october/26",
+          "status": "resolved",
+          "reason": "Originated line from both clubs' Valve rankings points as HLTV publishes them (2026-10-26)."
+        }
+      ],
+      "source_url": "https://www.hotspawn.com/matches/ex-rustec-vs-spirit-academy-cct-europe-2026-series-12-1081162",
+      "bo3_candidates": [
+        {
+          "bo3_id": 132235,
+          "slug": "spirit-vs-furia-26-10-2026",
+          "url": "https://bo3.gg/matches/spirit-vs-furia-26-10-2026",
+          "start_date": "2026-10-26T14:00:00.000+00:00",
+          "bo_type": 3,
+          "team1": "Spirit",
+          "team2": "FURIA",
+          "tournament": "PGL Masters Bucharest 2026",
+          "bet_team_1": {
+            "name": "Spirit",
+            "coeff": 1.5,
+            "active": true,
+            "team_id": 654,
+            "max_coeff": 1.5,
+            "aggrement_score": 0.52
+          },
+          "bet_team_2": {
+            "name": "FURIA",
+            "coeff": 2.4,
+            "active": true,
+            "team_id": 648,
+            "max_coeff": 2.4,
+            "aggrement_score": 0.48
+          },
+          "token_overlap": true
+        },
+        {
+          "bo3_id": 132727,
+          "slug": "4899b422bd-vs-ec189064a6-27-10-2026",
+          "url": "https://bo3.gg/matches/4899b422bd-vs-ec189064a6-27-10-2026",
+          "start_date": "2026-10-27T11:30:00.000+00:00",
+          "bo_type": 3,
+          "team1": "",
+          "team2": "",
+          "tournament": "United21 Season 57",
+          "bet_team_1": null,
+          "bet_team_2": null,
+          "token_overlap": false
+        },
+        {
+          "bo3_id": 132669,
+          "slug": "benched-gods-vs-maybe-ukr-27-10-2026",
+          "url": "https://bo3.gg/matches/benched-gods-vs-maybe-ukr-27-10-2026",
+          "start_date": "2026-10-27T11:30:00.000+00:00",
+          "bo_type": 3,
+          "team1": "benched gods",
+          "team2": "MAYBE",
+          "tournament": "European Pro League Series 10 Play-In",
+          "bet_team_1": null,
+          "bet_team_2": null,
+          "token_overlap": false
+        },
+        {
+          "bo3_id": 131205,
+          "slug": "e791db220b-vs-e0d5956041-27-10-2026",
+          "url": "https://bo3.gg/matches/e791db220b-vs-e0d5956041-27-10-2026",
+          "start_date": "2026-10-27T12:00:00.000+00:00",
+          "bo_type": 3,
+          "team1": "",
+          "team2": "",
+          "tournament": "NODWIN Clutch Series 13",
+          "bet_team_1": null,
+          "bet_team_2": null,
+          "token_overlap": false
+        },
+        {
+          "bo3_id": 131987,
+          "slug": "ex-rustec-vs-spirit-academy-27-10-2026",
+          "url": "https://bo3.gg/matches/ex-rustec-vs-spirit-academy-27-10-2026",
+          "start_date": "2026-10-27T12:00:00.000+00:00",
+          "bo_type": 3,
+          "team1": "ex-RUSTEC",
+          "team2": "Spirit Academy",
+          "tournament": "CCT Europe 2026 Series 12",
+          "bet_team_1": null,
+          "bet_team_2": null,
+          "token_overlap": true
+        },
+        {
+          "bo3_id": 132592,
+          "slug": "spirit-vs-fut-cs2-11-11-2026",
+          "url": "https://bo3.gg/matches/spirit-vs-fut-cs2-11-11-2026",
+          "start_date": "2026-11-11T07:00:00.000+00:00",
+          "bo_type": 3,
+          "team1": "Spirit",
+          "team2": "FUT",
+          "tournament": "BLAST Rivals Fall 2026",
+          "bet_team_1": {
+            "name": "Spirit",
+            "coeff": 1.35,
+            "active": true,
+            "team_id": 654,
+            "max_coeff": 1.35,
+            "aggrement_score": 0.64
+          },
+          "bet_team_2": {
+            "name": "FUT",
+            "coeff": 2.9,
+            "active": true,
+            "team_id": 20832,
+            "max_coeff": 2.9,
+            "aggrement_score": 0.36
+          },
+          "token_overlap": true
+        }
+      ],
+      "vrs_candidates": {
+        "file": "data/vrs/standings_global_2026_10_05.md",
+        "teams": {
+          "ex-RUSTEC": [
+            "| 92       |   1066 | ex-RUSTEC            | Brilliance, glowiing, shalfey, yiksrezo, youka        | [details](details/2026_10_05/0092--ex-rustec--brilliance-glowiing-shalfey-yiksrezo-youka.md)         |",
+            "| 152      |    824 | ex-RUSTEC            | Brilliance, jakekeS, Patsi, youka                     | [details](details/2026_10_05/0152--ex-rustec--brilliance-jakekes-patsi-youka.md)                     |"
+          ],
+          "Spirit Academy": [
+            "| 1        |   2046 | Spirit               | donk, magixx, sh1ro, tN1R, zont1x                     | [details](details/2026_10_05/0001--spirit--donk-magixx-sh1ro-tn1r-zont1x.md)                         |",
+            "| 115      |    981 | Spirit Academy       | k0gaSs, Kiryasoo, Netrix, s1nside, VILBy              | [details](details/2026_10_05/0115--spirit_academy--k0gass-kiryasoo-netrix-s1nside-vilby.md)          |",
+            "| 162      |    803 | HYPERSPIRIT          | Ciocardau, d1maje, Q-Q, Scr0b, starplajerz            | [details](details/2026_10_05/0162--hyperspirit--ciocardau-d1maje-q-q-scr0b-starplajerz.md)           |",
+            "| 192      |    737 | Spirit Academy Green | d3nks, flytex, hyp3else, maun, sae                    | [details](details/2026_10_05/0192--spirit_academy_green--d3nks-flytex-hyp3else-maun-sae.md)          |",
+            "| 347      |    485 | Just Players         | em0k1d, rexxie, Something, spirit, sstiNiX            | [details](details/2026_10_05/0347--just_players--em0k1d-rexxie-something-spirit-sstinix.md)          |",
+            "| 367      |    437 | Spirit HU            | flasi, makszi, NONS3NS, strong3r, texmy               | [details](details/2026_10_05/0367--spirit_hu--flasi-makszi-nons3ns-strong3r-texmy.md)                |"
+          ]
+        }
+      },
+      "hltv_search": {
+        "ex-RUSTEC": [
+          {
+            "url": "https://www.hltv.org/search?query=ex-RUSTEC",
+            "http_status": 403
+          }
+        ],
+        "Spirit Academy": [
+          {
+            "url": "https://www.hltv.org/search?query=Spirit+Academy",
+            "http_status": 403
+          }
+        ]
+      }
+    },
+    {
+      "id": "1081163",
+      "teams": [
+        "BakS",
+        "Saint Sinners"
+      ],
+      "competition": "CCT Europe 2026 Series #12",
+      "tier": "b",
+      "start": "2026-10-27T15:00:00Z",
+      "lock": "2026-10-27T14:54:00Z",
+      "best_of": null,
+      "pick": "BakS",
+      "method": "model_vrs",
+      "probabilities": [
+        0.729661697246749,
+        0.270338302753251
+      ],
+      "reason": null,
+      "flags": [
+        "Originated line: Valve VRS model estimate, not a market price."
+      ],
+      "attempts": [
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/markets/6233629",
+          "reason": "Exchange spread exceeds 25 points or liquidity is below $100.",
+          "rejected_quote": {
+            "provider": "Polymarket",
+            "id": "6233629",
+            "teams": [
+              "BakS eSports",
+              "Saint Sinners"
+            ],
+            "start": "2026-10-27 15:00:00+00",
+            "observed_at": "2026-10-26T01:21:10.194085Z",
+            "updated_at": "2026-10-26T01:18:36.968867Z",
+            "raw": {
+              "id": "6233629",
+              "question": "Counter-Strike: BakS eSports vs Saint Sinners (BO3) - CCT Europe Series #12 Group Stage",
+              "sportsMarketType": "moneyline",
+              "outcomes": "[\"BakS eSports\", \"Saint Sinners\"]",
+              "outcomePrices": "[\"0.5\", \"0.5\"]",
+              "gameStartTime": "2026-10-27 15:00:00+00",
+              "eventStartTime": "2026-10-27T15:00:00Z",
+              "updatedAt": "2026-10-26T01:18:36.968867Z",
+              "active": true,
+              "closed": false,
+              "acceptingOrders": true,
+              "bestBid": 0.05,
+              "bestAsk": 0.95,
+              "liquidity": "508.0859",
+              "volume": null
+            },
+            "api_url": "https://gamma-api.polymarket.com/markets/6233629",
+            "source_receipts": [
+              {
+                "name": "Polymarket events page 1",
+                "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-26T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
+                "checked_at": "2026-10-26T01:25:22.157110Z",
+                "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-26T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
+                "cache_bust": null,
+                "http_status": 200,
+                "status": "ok",
+                "retrieved_at": "2026-10-26T01:25:22.194085Z",
+                "observed_at": "2026-10-26T01:21:10.194085Z",
+                "cache_age_seconds": 252,
+                "cache_status": "Hit from cloudfront",
+                "sha256": "a6351d23cd7d76d03b0aa97ff3ddb79f9ea23f3ee3afd39092be74c9821a43dd",
+                "bytes": 3036298
+              }
+            ],
+            "notice": "Rejected evidence, not a pick or verified probability."
+          }
+        },
+        {
+          "provider": "HLTV",
+          "status": "unresolved",
+          "url": "https://www.hltv.org/matches/2399513/baks-vs-saint-sinners-cct-2026-europe-series-12",
+          "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. Recent results and head-to-head wins are recorded for the final research tier only; no probability is derived from them."
+        },
+        {
+          "provider": "Pinnacle",
+          "status": "unresolved",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed."
+        },
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/markets/6233629",
+          "reason": "Exchange spread exceeds the 60-point ceiling for the low-confidence tier.",
+          "rejected_quote": {
+            "provider": "Polymarket",
+            "id": "6233629",
+            "teams": [
+              "BakS eSports",
+              "Saint Sinners"
+            ],
+            "start": "2026-10-27 15:00:00+00",
+            "observed_at": "2026-10-26T01:21:10.194085Z",
+            "updated_at": "2026-10-26T01:18:36.968867Z",
+            "raw": {
+              "id": "6233629",
+              "question": "Counter-Strike: BakS eSports vs Saint Sinners (BO3) - CCT Europe Series #12 Group Stage",
+              "sportsMarketType": "moneyline",
+              "outcomes": "[\"BakS eSports\", \"Saint Sinners\"]",
+              "outcomePrices": "[\"0.5\", \"0.5\"]",
+              "gameStartTime": "2026-10-27 15:00:00+00",
+              "eventStartTime": "2026-10-27T15:00:00Z",
+              "updatedAt": "2026-10-26T01:18:36.968867Z",
+              "active": true,
+              "closed": false,
+              "acceptingOrders": true,
+              "bestBid": 0.05,
+              "bestAsk": 0.95,
+              "liquidity": "508.0859",
+              "volume": null
+            },
+            "api_url": "https://gamma-api.polymarket.com/markets/6233629",
+            "source_receipts": [
+              {
+                "name": "Polymarket events page 1",
+                "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-26T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
+                "checked_at": "2026-10-26T01:25:22.157110Z",
+                "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-26T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
+                "cache_bust": null,
+                "http_status": 200,
+                "status": "ok",
+                "retrieved_at": "2026-10-26T01:25:22.194085Z",
+                "observed_at": "2026-10-26T01:21:10.194085Z",
+                "cache_age_seconds": 252,
+                "cache_status": "Hit from cloudfront",
+                "sha256": "a6351d23cd7d76d03b0aa97ff3ddb79f9ea23f3ee3afd39092be74c9821a43dd",
+                "bytes": 3036298
+              }
+            ],
+            "notice": "Rejected evidence, not a pick or verified probability."
+          }
+        },
+        {
+          "provider": "Thunderpick",
+          "status": "unresolved",
+          "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+          "url": "https://thunderpick.io/esports/cs2-betting"
+        },
+        {
+          "provider": "GG.BET",
+          "status": "error",
+          "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+          "url": "https://gg.bet/en/esports/counter-strike"
+        },
+        {
+          "provider": "Thunderpick (via BO3.gg API)",
+          "status": "unresolved",
+          "url": "https://bo3.gg/matches/baks-esports-vs-saint-sinners-27-10-2026",
+          "reason": "Fixture found on BO3.gg with exact UTC start, but no active sportsbook moneyline is posted yet (bet_updates is null)."
+        },
+        {
+          "provider": "Valve VRS model",
+          "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+          "status": "resolved",
+          "reason": "Originated line from both teams' Valve standings points (2026-10-05)."
+        }
+      ],
+      "source_url": "https://www.hotspawn.com/matches/baks-vs-saint-sinners-cct-europe-2026-series-12-1081163",
+      "bo3_candidates": [
+        {
+          "bo3_id": 131988,
+          "slug": "baks-esports-vs-saint-sinners-27-10-2026",
+          "url": "https://bo3.gg/matches/baks-esports-vs-saint-sinners-27-10-2026",
+          "start_date": "2026-10-27T15:00:00.000+00:00",
+          "bo_type": 3,
+          "team1": "BAKS",
+          "team2": "Saint Sinners",
+          "tournament": "CCT Europe 2026 Series 12",
+          "bet_team_1": null,
+          "bet_team_2": null,
+          "token_overlap": true
+        },
+        {
+          "bo3_id": 131206,
+          "slug": "1d56094c07-vs-e88025218d-27-10-2026",
+          "url": "https://bo3.gg/matches/1d56094c07-vs-e88025218d-27-10-2026",
+          "start_date": "2026-10-27T15:00:00.000+00:00",
+          "bo_type": 3,
+          "team1": "",
+          "team2": "",
+          "tournament": "NODWIN Clutch Series 13",
+          "bet_team_1": null,
+          "bet_team_2": null,
+          "token_overlap": false
+        }
+      ],
+      "vrs_candidates": {
+        "file": "data/vrs/standings_global_2026_10_05.md",
+        "teams": {
+          "BakS": [
+            "| 100      |   1044 | BAKS                 | danistzz, Norwi, turbo, whisper, xdENiSZERA           | [details](details/2026_10_05/0100--baks--danistzz-norwi-turbo-whisper-xdeniszera.md)                 |"
+          ],
+          "Saint Sinners": [
+            "| 41       |   1359 | SINNERS              | beastik, kisserek, MoDo, SHOCK, stressarN             | [details](details/2026_10_05/0041--sinners--beastik-kisserek-modo-shock-stressarn.md)                |",
+            "| 158      |    810 | Saint Sinners        | Caleyy, deb0, iRV1NG, pavlysha666, ves111             | [details](details/2026_10_05/0158--saint_sinners--caleyy-deb0-irv1ng-pavlysha666-ves111.md)          |"
+          ]
+        }
+      },
+      "hltv_search": {
+        "BakS": [
+          {
+            "url": "https://www.hltv.org/search?query=BakS",
+            "http_status": 403
+          }
+        ],
+        "Saint Sinners": [
+          {
+            "url": "https://www.hltv.org/search?query=Saint+Sinners",
+            "http_status": 403
+          }
+        ]
+      }
+    },
+    {
+      "id": "1081164",
+      "teams": [
+        "Inner Circle Academy",
+        "Lavked"
+      ],
+      "competition": "CCT Europe 2026 Series #12",
+      "tier": "b",
+      "start": "2026-10-27T18:00:00Z",
+      "lock": "2026-10-27T17:54:00Z",
+      "best_of": null,
+      "pick": "Inner Circle Academy",
+      "method": "model_vrs",
+      "probabilities": [
+        0.7044899765611272,
+        0.2955100234388728
+      ],
+      "reason": null,
+      "flags": [
+        "Originated line: Valve VRS model estimate, not a market price."
+      ],
+      "attempts": [
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/markets/6233633",
+          "reason": "Exchange spread exceeds 25 points or liquidity is below $100.",
+          "rejected_quote": {
+            "provider": "Polymarket",
+            "id": "6233633",
+            "teams": [
+              "Inner Circle Academy",
+              "Lavked"
+            ],
+            "start": "2026-10-27 18:00:00+00",
+            "observed_at": "2026-10-26T01:21:10.194085Z",
+            "updated_at": "2026-10-26T01:18:36.968867Z",
+            "raw": {
+              "id": "6233633",
+              "question": "Counter-Strike: Inner Circle Academy vs Lavked (BO3) - CCT Europe Series #12 Group Stage",
+              "sportsMarketType": "moneyline",
+              "outcomes": "[\"Inner Circle Academy\", \"Lavked\"]",
+              "outcomePrices": "[\"0.5\", \"0.5\"]",
+              "gameStartTime": "2026-10-27 18:00:00+00",
+              "eventStartTime": "2026-10-27T18:00:00Z",
+              "updatedAt": "2026-10-26T01:18:36.968867Z",
+              "active": true,
+              "closed": false,
+              "acceptingOrders": true,
+              "bestBid": 0.05,
+              "bestAsk": 0.95,
+              "liquidity": "530.1794",
+              "volume": null
+            },
+            "api_url": "https://gamma-api.polymarket.com/markets/6233633",
+            "source_receipts": [
+              {
+                "name": "Polymarket events page 1",
+                "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-26T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
+                "checked_at": "2026-10-26T01:25:22.157110Z",
+                "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-26T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
+                "cache_bust": null,
+                "http_status": 200,
+                "status": "ok",
+                "retrieved_at": "2026-10-26T01:25:22.194085Z",
+                "observed_at": "2026-10-26T01:21:10.194085Z",
+                "cache_age_seconds": 252,
+                "cache_status": "Hit from cloudfront",
+                "sha256": "a6351d23cd7d76d03b0aa97ff3ddb79f9ea23f3ee3afd39092be74c9821a43dd",
+                "bytes": 3036298
+              }
+            ],
+            "notice": "Rejected evidence, not a pick or verified probability."
+          }
+        },
+        {
+          "provider": "HLTV",
+          "status": "unresolved",
+          "url": "https://www.hltv.org/matches/2399514/inner-circle-academy-vs-lavked-cct-2026-europe-series-12",
+          "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. Recent results and head-to-head wins are recorded for the final research tier only; no probability is derived from them."
+        },
+        {
+          "provider": "Pinnacle",
+          "status": "unresolved",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed."
+        },
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/markets/6233633",
+          "reason": "Exchange spread exceeds the 60-point ceiling for the low-confidence tier.",
+          "rejected_quote": {
+            "provider": "Polymarket",
+            "id": "6233633",
+            "teams": [
+              "Inner Circle Academy",
+              "Lavked"
+            ],
+            "start": "2026-10-27 18:00:00+00",
+            "observed_at": "2026-10-26T01:21:10.194085Z",
+            "updated_at": "2026-10-26T01:18:36.968867Z",
+            "raw": {
+              "id": "6233633",
+              "question": "Counter-Strike: Inner Circle Academy vs Lavked (BO3) - CCT Europe Series #12 Group Stage",
+              "sportsMarketType": "moneyline",
+              "outcomes": "[\"Inner Circle Academy\", \"Lavked\"]",
+              "outcomePrices": "[\"0.5\", \"0.5\"]",
+              "gameStartTime": "2026-10-27 18:00:00+00",
+              "eventStartTime": "2026-10-27T18:00:00Z",
+              "updatedAt": "2026-10-26T01:18:36.968867Z",
+              "active": true,
+              "closed": false,
+              "acceptingOrders": true,
+              "bestBid": 0.05,
+              "bestAsk": 0.95,
+              "liquidity": "530.1794",
+              "volume": null
+            },
+            "api_url": "https://gamma-api.polymarket.com/markets/6233633",
+            "source_receipts": [
+              {
+                "name": "Polymarket events page 1",
+                "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-26T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
+                "checked_at": "2026-10-26T01:25:22.157110Z",
+                "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-26T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
+                "cache_bust": null,
+                "http_status": 200,
+                "status": "ok",
+                "retrieved_at": "2026-10-26T01:25:22.194085Z",
+                "observed_at": "2026-10-26T01:21:10.194085Z",
+                "cache_age_seconds": 252,
+                "cache_status": "Hit from cloudfront",
+                "sha256": "a6351d23cd7d76d03b0aa97ff3ddb79f9ea23f3ee3afd39092be74c9821a43dd",
+                "bytes": 3036298
+              }
+            ],
+            "notice": "Rejected evidence, not a pick or verified probability."
+          }
+        },
+        {
+          "provider": "Thunderpick",
+          "status": "unresolved",
+          "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+          "url": "https://thunderpick.io/esports/cs2-betting"
+        },
+        {
+          "provider": "GG.BET",
+          "status": "error",
+          "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+          "url": "https://gg.bet/en/esports/counter-strike"
+        },
+        {
+          "provider": "Thunderpick (via BO3.gg API)",
+          "status": "unresolved",
+          "url": "https://bo3.gg/matches/inner-circle-academy-vs-lavked-27-10-2026",
+          "reason": "Fixture found on BO3.gg with exact UTC start, but no active sportsbook moneyline is posted yet (bet_updates is null)."
+        },
+        {
+          "provider": "Valve VRS model",
+          "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+          "status": "resolved",
+          "reason": "Originated line from both teams' Valve standings points (2026-10-05)."
+        }
+      ],
+      "source_url": "https://www.hotspawn.com/matches/inner-circle-academy-vs-lavked-cct-europe-2026-series-12-1081164",
+      "bo3_candidates": [
+        {
+          "bo3_id": 132133,
+          "slug": "inner-circle-esports-vs-team-nemesis-cs-27-10-2026",
+          "url": "https://bo3.gg/matches/inner-circle-esports-vs-team-nemesis-cs-27-10-2026",
+          "start_date": "2026-10-27T13:30:00.000+00:00",
+          "bo_type": 3,
+          "team1": "Inner Circle",
+          "team2": "Nemesis",
+          "tournament": "Stake Ranked Episode 5",
+          "bet_team_1": {
+            "name": "Inner Circle",
+            "coeff": 1.72,
+            "active": true,
+            "team_id": 19186,
+            "max_coeff": 1.88,
+            "aggrement_score": 0.63
+          },
+          "bet_team_2": {
+            "name": "Nemesis",
+            "coeff": 2.0,
+            "active": true,
+            "team_id": 21388,
+            "max_coeff": 2.0,
+            "aggrement_score": 0.37
+          },
+          "token_overlap": true
+        },
+        {
+          "bo3_id": 131928,
+          "slug": "lph-gaming-vs-los-kogutos-27-10-2026",
+          "url": "https://bo3.gg/matches/lph-gaming-vs-los-kogutos-27-10-2026",
+          "start_date": "2026-10-27T18:00:00.000+00:00",
+          "bo_type": 1,
+          "team1": "LPH",
+          "team2": "los kogutos",
+          "tournament": "ESEA Season 59: Advanced Division - Europe",
+          "bet_team_1": null,
+          "bet_team_2": null,
+          "token_overlap": false
+        },
+        {
+          "bo3_id": 131989,
+          "slug": "inner-circle-academy-vs-lavked-27-10-2026",
+          "url": "https://bo3.gg/matches/inner-circle-academy-vs-lavked-27-10-2026",
+          "start_date": "2026-10-27T18:00:00.000+00:00",
+          "bo_type": 3,
+          "team1": "Inner Circle Academy",
+          "team2": "Lavked",
+          "tournament": "CCT Europe 2026 Series 12",
+          "bet_team_1": null,
+          "bet_team_2": null,
+          "token_overlap": true
+        },
+        {
+          "bo3_id": 132135,
+          "slug": "mibr-vs-eternal-fire-27-10-2026",
+          "url": "https://bo3.gg/matches/mibr-vs-eternal-fire-27-10-2026",
+          "start_date": "2026-10-27T18:30:00.000+00:00",
+          "bo_type": 3,
+          "team1": "MIBR",
+          "team2": "Eternal Fire",
+          "tournament": "Stake Ranked Episode 5",
+          "bet_team_1": {
+            "name": "MIBR",
+            "coeff": 1.42,
+            "active": true,
+            "team_id": 755,
+            "max_coeff": 1.48,
+            "aggrement_score": 0.77
+          },
+          "bet_team_2": {
+            "name": "Eternal Fire",
+            "coeff": 2.7,
+            "active": true,
+            "team_id": 1527,
+            "max_coeff": 2.7,
+            "aggrement_score": 0.23
+          },
+          "token_overlap": false
+        }
+      ],
+      "vrs_candidates": {
+        "file": "data/vrs/standings_global_2026_10_05.md",
+        "teams": {
+          "Inner Circle Academy": [
+            "| 20       |   1516 | Inner Circle         | cptkurtka023, Dawy, headtr1ck, onic, zeRRoFIX         | [details](details/2026_10_05/0020--inner_circle--cptkurtka023-dawy-headtr1ck-onic-zerrofix.md)       |",
+            "| 41       |   1359 | SINNERS              | beastik, kisserek, MoDo, SHOCK, stressarN             | [details](details/2026_10_05/0041--sinners--beastik-kisserek-modo-shock-stressarn.md)                |",
+            "| 94       |   1064 | Inner Circle Academy | 3ippoch, Flierax, L1seYoung, NaYz, Tamefear           | [details](details/2026_10_05/0094--inner_circle_academy--3ippoch-flierax-l1seyoung-nayz-tamefear.md) |",
+            "| 158      |    810 | Saint Sinners        | Caleyy, deb0, iRV1NG, pavlysha666, ves111             | [details](details/2026_10_05/0158--saint_sinners--caleyy-deb0-irv1ng-pavlysha666-ves111.md)          |",
+            "| 287      |    592 | eternal premium      | dazzy, Innerpeace, P1kan0, saizius, skept1K           | [details](details/2026_10_05/0287--eternal_premium--dazzy-innerpeace-p1kan0-saizius-skept1k.md)      |"
+          ],
+          "Lavked": [
+            "| 143      |    862 | Lavked               | 1NVISIBLEE, azukay, k4nfuz, sol, xm1nd                | [details](details/2026_10_05/0143--lavked--1nvisiblee-azukay-k4nfuz-sol-xm1nd.md)                    |"
+          ]
+        }
+      },
+      "hltv_search": {
+        "Inner Circle Academy": [
+          {
+            "url": "https://www.hltv.org/search?query=Inner+Circle+Academy",
+            "http_status": 403
+          }
+        ],
+        "Lavked": [
+          {
+            "url": "https://www.hltv.org/search?query=Lavked",
+            "http_status": 403
+          }
+        ]
+      }
+    },
+    {
+      "id": "1082792",
+      "teams": [
+        "HOTU",
+        "The Huns"
+      ],
+      "competition": "Moscow Cyber Games 2026",
+      "tier": "b",
+      "start": "2026-10-31T09:00:00Z",
+      "lock": "2026-10-31T08:54:00Z",
+      "best_of": null,
+      "pick": "HOTU",
+      "method": "model_vrs",
+      "probabilities": [
+        0.851799765370461,
+        0.14820023462953902
+      ],
+      "reason": null,
+      "flags": [
+        "Originated line: Valve VRS model estimate, not a market price."
+      ],
+      "attempts": [
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/sports",
+          "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.",
+          "candidates": [
+            {
+              "teams": [
+                "HOTU",
+                "The Huns Esports"
+              ],
+              "url": "https://gamma-api.polymarket.com/markets/6085308"
+            }
+          ]
+        },
+        {
+          "provider": "HLTV",
+          "status": "unresolved",
+          "url": "https://www.hltv.org/matches/2399437/hotu-vs-the-huns-gluck-moscow-cyber-games-2026",
+          "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. Recent results and head-to-head wins are recorded for the final research tier only; no probability is derived from them."
+        },
+        {
+          "provider": "Pinnacle",
+          "status": "unresolved",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed."
+        },
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/sports",
+          "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.",
+          "candidates": [
+            {
+              "teams": [
+                "HOTU",
+                "The Huns Esports"
+              ],
+              "url": "https://gamma-api.polymarket.com/markets/6085308"
+            }
+          ]
+        },
+        {
+          "provider": "Thunderpick",
+          "status": "unresolved",
+          "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+          "url": "https://thunderpick.io/esports/cs2-betting"
+        },
+        {
+          "provider": "GG.BET",
+          "status": "error",
+          "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+          "url": "https://gg.bet/en/esports/counter-strike"
+        },
+        {
+          "provider": "Thunderpick (via BO3.gg API)",
+          "status": "unresolved",
+          "url": "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
+          "reason": "No exact team-pair and UTC-start match in the live BO3.gg CS2 feed."
+        },
+        {
+          "provider": "Book listing gap recheck",
+          "url": "https://egamersworld.com/counterstrike/match/EkalRNMvVx/hotu-vs-the-huns-esports-SfdtzDhiK",
+          "status": "unresolved",
+          "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run."
+        },
+        {
+          "provider": "Valve VRS model",
+          "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+          "status": "resolved",
+          "reason": "Originated line from both teams' Valve standings points (2026-10-05)."
+        }
+      ],
+      "source_url": "https://www.hotspawn.com/matches/hotu-vs-the-huns-moscow-cyber-games-2026-1082792",
+      "bo3_candidates": [
+        {
+          "bo3_id": 132622,
+          "slug": "luminosity-cs-go-vs-hotu-27-10-2026",
+          "url": "https://bo3.gg/matches/luminosity-cs-go-vs-hotu-27-10-2026",
+          "start_date": "2026-10-27T17:00:00.000+00:00",
+          "bo_type": 3,
+          "team1": "Luminosity",
+          "team2": "HOTU",
+          "tournament": "Tesla Cup 2026",
+          "bet_team_1": {
+            "name": "Luminosity",
+            "coeff": 1.75,
+            "active": true,
+            "team_id": 776,
+            "max_coeff": 1.85,
+            "aggrement_score": 0.67
+          },
+          "bet_team_2": {
+            "name": "HOTU",
+            "coeff": 1.95,
+            "active": true,
+            "team_id": 2720,
+            "max_coeff": 2.0,
+            "aggrement_score": 0.33
+          },
+          "token_overlap": true
+        },
+        {
+          "bo3_id": 132734,
+          "slug": "b9b5d2cf58-vs-8030dac879-31-10-2026",
+          "url": "https://bo3.gg/matches/b9b5d2cf58-vs-8030dac879-31-10-2026",
+          "start_date": "2026-10-31T09:00:00.000+00:00",
+          "bo_type": 3,
+          "team1": "",
+          "team2": "",
+          "tournament": "United21 Season 57",
+          "bet_team_1": null,
+          "bet_team_2": null,
+          "token_overlap": false
+        },
+        {
+          "bo3_id": 132001,
+          "slug": "d274a51228-vs-e01f925188-31-10-2026",
+          "url": "https://bo3.gg/matches/d274a51228-vs-e01f925188-31-10-2026",
+          "start_date": "2026-10-31T09:00:00.000+00:00",
+          "bo_type": 3,
+          "team1": "",
+          "team2": "",
+          "tournament": "CCT Europe 2026 Series 12",
+          "bet_team_1": null,
+          "bet_team_2": null,
+          "token_overlap": false
+        },
+        {
+          "bo3_id": 132680,
+          "slug": "vexar-vs-da521472f2-31-10-2026",
+          "url": "https://bo3.gg/matches/vexar-vs-da521472f2-31-10-2026",
+          "start_date": "2026-10-31T09:00:00.000+00:00",
+          "bo_type": 3,
+          "team1": "Vexar",
+          "team2": "",
+          "tournament": "European Pro League Series 10 Play-In",
+          "bet_team_1": null,
+          "bet_team_2": null,
+          "token_overlap": false
+        }
+      ],
+      "vrs_candidates": {
+        "file": "data/vrs/standings_global_2026_10_05.md",
+        "teams": {
+          "HOTU": [
+            "| 31       |   1437 | HOTU                 | dwushka, frontales, kade0, mizu, n0rb3r7              | [details](details/2026_10_05/0031--hotu--dwushka-frontales-kade0-mizu-n0rb3r7.md)                    |"
+          ],
+          "The Huns": [
+            "| 122      |    944 | The Huns             | Annihilation, Bart4k, bexyz, controlez, Cozen         | [details](details/2026_10_05/0122--the_huns--annihilation-bart4k-bexyz-controlez-cozen.md)           |",
+            "| 213      |    701 | The Huns             | Bart4k, controlez, nin9, sk0R, xerolte                | [details](details/2026_10_05/0213--the_huns--bart4k-controlez-nin9-sk0r-xerolte.md)                  |"
+          ]
+        }
+      },
+      "hltv_search": {
+        "HOTU": [
+          {
+            "url": "https://www.hltv.org/search?query=HOTU",
+            "http_status": 403
+          }
+        ],
+        "The Huns": [
+          {
+            "url": "https://www.hltv.org/search?query=The+Huns",
+            "http_status": 403
+          }
+        ]
+      }
+    },
+    {
+      "id": "1082793",
+      "teams": [
+        "5star",
+        "1WIN"
+      ],
+      "competition": "Moscow Cyber Games 2026",
+      "tier": "b",
+      "start": "2026-10-31T13:00:00Z",
+      "lock": "2026-10-31T12:54:00Z",
+      "best_of": null,
+      "pick": "1WIN",
+      "method": "model_vrs",
+      "probabilities": [
+        0.242985776930831,
+        0.757014223069169
+      ],
+      "reason": null,
+      "flags": [
+        "Originated line: Valve VRS model estimate, not a market price."
+      ],
+      "attempts": [
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/markets/6147278",
+          "reason": "Exchange liquidity is below $100.",
+          "rejected_quote": {
+            "provider": "Polymarket",
+            "id": "6147278",
+            "teams": [
+              "1WIN",
+              "5star"
+            ],
+            "start": "2026-10-31 13:00:00+00",
+            "observed_at": "2026-10-26T01:21:10.194085Z",
+            "updated_at": "2026-10-26T01:18:36.968867Z",
+            "raw": {
+              "id": "6147278",
+              "question": "Counter-Strike: 1WIN vs 5star (BO3) - Moscow Cyber Games Playoffs",
+              "sportsMarketType": "moneyline",
+              "outcomes": "[\"1WIN\", \"5star\"]",
+              "outcomePrices": "[\"0.5\", \"0.5\"]",
+              "gameStartTime": "2026-10-31 13:00:00+00",
+              "eventStartTime": "2026-10-31T13:00:00Z",
+              "updatedAt": "2026-10-26T01:18:36.968867Z",
+              "active": true,
+              "closed": false,
+              "acceptingOrders": true,
+              "bestBid": 0.04,
+              "bestAsk": 0.96,
+              "liquidity": "98.5193",
+              "volume": null
+            },
+            "api_url": "https://gamma-api.polymarket.com/markets/6147278",
+            "source_receipts": [
+              {
+                "name": "Polymarket events page 1",
+                "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-26T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
+                "checked_at": "2026-10-26T01:25:22.157110Z",
+                "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-26T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
+                "cache_bust": null,
+                "http_status": 200,
+                "status": "ok",
+                "retrieved_at": "2026-10-26T01:25:22.194085Z",
+                "observed_at": "2026-10-26T01:21:10.194085Z",
+                "cache_age_seconds": 252,
+                "cache_status": "Hit from cloudfront",
+                "sha256": "a6351d23cd7d76d03b0aa97ff3ddb79f9ea23f3ee3afd39092be74c9821a43dd",
+                "bytes": 3036298
+              }
+            ],
+            "notice": "Rejected evidence, not a pick or verified probability."
+          }
+        },
+        {
+          "provider": "HLTV",
+          "status": "unresolved",
+          "url": "https://www.hltv.org/matches/2399438/1win-vs-5star-gluck-moscow-cyber-games-2026",
+          "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. Recent results and head-to-head wins are recorded for the final research tier only; no probability is derived from them."
+        },
+        {
+          "provider": "Pinnacle",
+          "status": "unresolved",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed."
+        },
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/markets/6147278",
+          "reason": "Exchange liquidity is below $100.",
+          "rejected_quote": {
+            "provider": "Polymarket",
+            "id": "6147278",
+            "teams": [
+              "1WIN",
+              "5star"
+            ],
+            "start": "2026-10-31 13:00:00+00",
+            "observed_at": "2026-10-26T01:21:10.194085Z",
+            "updated_at": "2026-10-26T01:18:36.968867Z",
+            "raw": {
+              "id": "6147278",
+              "question": "Counter-Strike: 1WIN vs 5star (BO3) - Moscow Cyber Games Playoffs",
+              "sportsMarketType": "moneyline",
+              "outcomes": "[\"1WIN\", \"5star\"]",
+              "outcomePrices": "[\"0.5\", \"0.5\"]",
+              "gameStartTime": "2026-10-31 13:00:00+00",
+              "eventStartTime": "2026-10-31T13:00:00Z",
+              "updatedAt": "2026-10-26T01:18:36.968867Z",
+              "active": true,
+              "closed": false,
+              "acceptingOrders": true,
+              "bestBid": 0.04,
+              "bestAsk": 0.96,
+              "liquidity": "98.5193",
+              "volume": null
+            },
+            "api_url": "https://gamma-api.polymarket.com/markets/6147278",
+            "source_receipts": [
+              {
+                "name": "Polymarket events page 1",
+                "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-26T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
+                "checked_at": "2026-10-26T01:25:22.157110Z",
+                "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-26T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
+                "cache_bust": null,
+                "http_status": 200,
+                "status": "ok",
+                "retrieved_at": "2026-10-26T01:25:22.194085Z",
+                "observed_at": "2026-10-26T01:21:10.194085Z",
+                "cache_age_seconds": 252,
+                "cache_status": "Hit from cloudfront",
+                "sha256": "a6351d23cd7d76d03b0aa97ff3ddb79f9ea23f3ee3afd39092be74c9821a43dd",
+                "bytes": 3036298
+              }
+            ],
+            "notice": "Rejected evidence, not a pick or verified probability."
+          }
+        },
+        {
+          "provider": "Thunderpick",
+          "status": "unresolved",
+          "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+          "url": "https://thunderpick.io/esports/cs2-betting"
+        },
+        {
+          "provider": "GG.BET",
+          "status": "error",
+          "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+          "url": "https://gg.bet/en/esports/counter-strike"
+        },
+        {
+          "provider": "Thunderpick (via BO3.gg API)",
+          "status": "unresolved",
+          "url": "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
+          "reason": "No exact team-pair and UTC-start match in the live BO3.gg CS2 feed."
+        },
+        {
+          "provider": "Book listing gap recheck",
+          "url": "https://egamersworld.com/counterstrike/match/EkalRNMvVx/1win-vs-5star-esports-4hTvdd1uN",
+          "status": "unresolved",
+          "reason": "Skipped after earlier access/rate restriction on this host: 403"
+        },
+        {
+          "provider": "Valve VRS model",
+          "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+          "status": "resolved",
+          "reason": "Originated line from both teams' Valve standings points (2026-10-05)."
+        }
+      ],
+      "source_url": "https://www.hotspawn.com/matches/5star-vs-1win-moscow-cyber-games-2026-1082793",
+      "bo3_candidates": [],
+      "vrs_candidates": {
+        "file": "data/vrs/standings_global_2026_10_05.md",
+        "teams": {
+          "5star": [
+            "| 80       |   1110 | 5star                | ariucle, clouden, hoolig4n, NEUZ, rate                | [details](details/2026_10_05/0080--5star--ariucle-clouden-hoolig4n-neuz-rate.md)                     |"
+          ],
+          "1WIN": [
+            "| 38       |   1383 | 1win                 | ArtFr0st, Ax1Le, BELCHONOKK, fame, nafany             | [details](details/2026_10_05/0038--1win--artfr0st-ax1le-belchonokk-fame-nafany.md)                   |"
+          ]
+        }
+      },
+      "hltv_search": {
+        "5star": [
+          {
+            "url": "https://www.hltv.org/search?query=5star",
+            "http_status": 403
+          }
+        ],
+        "1WIN": [
+          {
+            "url": "https://www.hltv.org/search?query=1WIN",
+            "http_status": 403
+          }
+        ]
+      }
+    }
+  ],
   "nonmarket_rows_probed": [
     "1079202",
     "1081159",
@@ -60,7 +2264,7 @@
     "egamersworld": {
       "listing": {
         "url": "https://egamersworld.com/counterstrike/matches",
-        "read_at": "2026-10-26T01:21:16.735642Z",
+        "read_at": "2026-10-26T01:29:51.197975Z",
         "http_status": 403,
         "bytes": 5651,
         "status": "refused"
@@ -71,7 +2275,7 @@
     "polymarket": {
       "registry": {
         "url": "https://gamma-api.polymarket.com/sports",
-        "read_at": "2026-10-26T01:21:16.787114Z",
+        "read_at": "2026-10-26T01:29:51.271709Z",
         "http_status": 200,
         "bytes": 155942,
         "status": "ok",
@@ -80,9 +2284,9 @@
       "searches": [
         {
           "url": "https://gamma-api.polymarket.com/events?limit=20&active=true&closed=false&search=FOKUS",
-          "read_at": "2026-10-26T01:21:16.909074Z",
+          "read_at": "2026-10-26T01:29:51.327398Z",
           "http_status": 200,
-          "bytes": 389784,
+          "bytes": 389841,
           "status": "ok",
           "fixture_id": "1079202",
           "query_team": "FOKUS",
@@ -90,9 +2294,9 @@
         },
         {
           "url": "https://gamma-api.polymarket.com/events?limit=20&active=true&closed=false&search=ex-Zero+Tenacity",
-          "read_at": "2026-10-26T01:21:17.958174Z",
+          "read_at": "2026-10-26T01:29:51.936807Z",
           "http_status": 200,
-          "bytes": 389784,
+          "bytes": 389841,
           "status": "ok",
           "fixture_id": "1079202",
           "query_team": "ex-Zero Tenacity",
@@ -100,9 +2304,9 @@
         },
         {
           "url": "https://gamma-api.polymarket.com/events?limit=20&active=true&closed=false&search=LFO+10",
-          "read_at": "2026-10-26T01:21:18.698931Z",
+          "read_at": "2026-10-26T01:29:52.562746Z",
           "http_status": 200,
-          "bytes": 389784,
+          "bytes": 389841,
           "status": "ok",
           "fixture_id": "1081159",
           "query_team": "LFO 10",
@@ -110,9 +2314,9 @@
         },
         {
           "url": "https://gamma-api.polymarket.com/events?limit=20&active=true&closed=false&search=ex-6666",
-          "read_at": "2026-10-26T01:21:19.256821Z",
+          "read_at": "2026-10-26T01:29:53.175178Z",
           "http_status": 200,
-          "bytes": 389784,
+          "bytes": 389841,
           "status": "ok",
           "fixture_id": "1081159",
           "query_team": "ex-6666",
@@ -120,9 +2324,9 @@
         },
         {
           "url": "https://gamma-api.polymarket.com/events?limit=20&active=true&closed=false&search=Metizport",
-          "read_at": "2026-10-26T01:21:19.809979Z",
+          "read_at": "2026-10-26T01:29:53.790904Z",
           "http_status": 200,
-          "bytes": 389784,
+          "bytes": 389841,
           "status": "ok",
           "fixture_id": "1079203",
           "query_team": "Metizport",
@@ -130,9 +2334,9 @@
         },
         {
           "url": "https://gamma-api.polymarket.com/events?limit=20&active=true&closed=false&search=BRUTE",
-          "read_at": "2026-10-26T01:21:20.379586Z",
+          "read_at": "2026-10-26T01:29:54.592427Z",
           "http_status": 200,
-          "bytes": 389784,
+          "bytes": 389841,
           "status": "ok",
           "fixture_id": "1079203",
           "query_team": "BRUTE",
@@ -140,9 +2344,9 @@
         },
         {
           "url": "https://gamma-api.polymarket.com/events?limit=20&active=true&closed=false&search=HAVU",
-          "read_at": "2026-10-26T01:21:20.927980Z",
+          "read_at": "2026-10-26T01:29:55.212638Z",
           "http_status": 200,
-          "bytes": 389784,
+          "bytes": 389841,
           "status": "ok",
           "fixture_id": "1081160",
           "query_team": "HAVU",
@@ -150,9 +2354,9 @@
         },
         {
           "url": "https://gamma-api.polymarket.com/events?limit=20&active=true&closed=false&search=ILLYRIANS",
-          "read_at": "2026-10-26T01:21:21.479106Z",
+          "read_at": "2026-10-26T01:29:56.133465Z",
           "http_status": 200,
-          "bytes": 389784,
+          "bytes": 389841,
           "status": "ok",
           "fixture_id": "1081160",
           "query_team": "ILLYRIANS",
@@ -160,9 +2364,9 @@
         },
         {
           "url": "https://gamma-api.polymarket.com/events?limit=20&active=true&closed=false&search=Nuclear+TigeRES",
-          "read_at": "2026-10-26T01:21:22.024514Z",
+          "read_at": "2026-10-26T01:29:56.899125Z",
           "http_status": 200,
-          "bytes": 389784,
+          "bytes": 389841,
           "status": "ok",
           "fixture_id": "1093218",
           "query_team": "Nuclear TigeRES",
@@ -170,9 +2374,9 @@
         },
         {
           "url": "https://gamma-api.polymarket.com/events?limit=20&active=true&closed=false&search=UNiTY",
-          "read_at": "2026-10-26T01:21:22.585791Z",
+          "read_at": "2026-10-26T01:29:57.516713Z",
           "http_status": 200,
-          "bytes": 389784,
+          "bytes": 389841,
           "status": "ok",
           "fixture_id": "1093218",
           "query_team": "UNiTY",
@@ -180,9 +2384,9 @@
         },
         {
           "url": "https://gamma-api.polymarket.com/events?limit=20&active=true&closed=false&search=ex-RUSTEC",
-          "read_at": "2026-10-26T01:21:23.141462Z",
+          "read_at": "2026-10-26T01:29:58.696209Z",
           "http_status": 200,
-          "bytes": 389784,
+          "bytes": 389841,
           "status": "ok",
           "fixture_id": "1081162",
           "query_team": "ex-RUSTEC",
@@ -190,9 +2394,9 @@
         },
         {
           "url": "https://gamma-api.polymarket.com/events?limit=20&active=true&closed=false&search=Spirit+Academy",
-          "read_at": "2026-10-26T01:21:23.713115Z",
+          "read_at": "2026-10-26T01:29:59.617989Z",
           "http_status": 200,
-          "bytes": 389784,
+          "bytes": 389841,
           "status": "ok",
           "fixture_id": "1081162",
           "query_team": "Spirit Academy",
@@ -200,9 +2404,9 @@
         },
         {
           "url": "https://gamma-api.polymarket.com/events?limit=20&active=true&closed=false&search=BakS",
-          "read_at": "2026-10-26T01:21:24.263564Z",
+          "read_at": "2026-10-26T01:30:00.242233Z",
           "http_status": 200,
-          "bytes": 389784,
+          "bytes": 389841,
           "status": "ok",
           "fixture_id": "1081163",
           "query_team": "BakS",
@@ -210,9 +2414,9 @@
         },
         {
           "url": "https://gamma-api.polymarket.com/events?limit=20&active=true&closed=false&search=Saint+Sinners",
-          "read_at": "2026-10-26T01:21:24.814701Z",
+          "read_at": "2026-10-26T01:30:00.898190Z",
           "http_status": 200,
-          "bytes": 389784,
+          "bytes": 389841,
           "status": "ok",
           "fixture_id": "1081163",
           "query_team": "Saint Sinners",
@@ -220,9 +2424,9 @@
         },
         {
           "url": "https://gamma-api.polymarket.com/events?limit=20&active=true&closed=false&search=Inner+Circle+Academy",
-          "read_at": "2026-10-26T01:21:25.377994Z",
+          "read_at": "2026-10-26T01:30:01.668499Z",
           "http_status": 200,
-          "bytes": 389784,
+          "bytes": 389841,
           "status": "ok",
           "fixture_id": "1081164",
           "query_team": "Inner Circle Academy",
@@ -230,9 +2434,9 @@
         },
         {
           "url": "https://gamma-api.polymarket.com/events?limit=20&active=true&closed=false&search=Lavked",
-          "read_at": "2026-10-26T01:21:25.935506Z",
+          "read_at": "2026-10-26T01:30:02.297349Z",
           "http_status": 200,
-          "bytes": 389784,
+          "bytes": 389841,
           "status": "ok",
           "fixture_id": "1081164",
           "query_team": "Lavked",
@@ -240,9 +2444,9 @@
         },
         {
           "url": "https://gamma-api.polymarket.com/events?limit=20&active=true&closed=false&search=HOTU",
-          "read_at": "2026-10-26T01:21:26.489921Z",
+          "read_at": "2026-10-26T01:30:02.920928Z",
           "http_status": 200,
-          "bytes": 389784,
+          "bytes": 389841,
           "status": "ok",
           "fixture_id": "1082792",
           "query_team": "HOTU",
@@ -250,9 +2454,9 @@
         },
         {
           "url": "https://gamma-api.polymarket.com/events?limit=20&active=true&closed=false&search=The+Huns",
-          "read_at": "2026-10-26T01:21:27.272356Z",
+          "read_at": "2026-10-26T01:30:03.583941Z",
           "http_status": 200,
-          "bytes": 389784,
+          "bytes": 389841,
           "status": "ok",
           "fixture_id": "1082792",
           "query_team": "The Huns",
@@ -260,9 +2464,9 @@
         },
         {
           "url": "https://gamma-api.polymarket.com/events?limit=20&active=true&closed=false&search=5star",
-          "read_at": "2026-10-26T01:21:27.829479Z",
+          "read_at": "2026-10-26T01:30:04.230751Z",
           "http_status": 200,
-          "bytes": 389784,
+          "bytes": 389841,
           "status": "ok",
           "fixture_id": "1082793",
           "query_team": "5star",
@@ -270,9 +2474,9 @@
         },
         {
           "url": "https://gamma-api.polymarket.com/events?limit=20&active=true&closed=false&search=1WIN",
-          "read_at": "2026-10-26T01:21:28.468432Z",
+          "read_at": "2026-10-26T01:30:04.873465Z",
           "http_status": 200,
-          "bytes": 389784,
+          "bytes": 389841,
           "status": "ok",
           "fixture_id": "1082793",
           "query_team": "1WIN",
@@ -283,7 +2487,7 @@
     "pinnacle": {
       "matchups": {
         "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/matchups?withSpecials=false",
-        "read_at": "2026-10-26T01:21:29.035655Z",
+        "read_at": "2026-10-26T01:30:05.510632Z",
         "http_status": 200,
         "bytes": 77600,
         "status": "ok",
@@ -291,69 +2495,52 @@
       },
       "moneylines": {
         "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
-        "read_at": "2026-10-26T01:21:29.134903Z",
+        "read_at": "2026-10-26T01:30:05.596467Z",
         "http_status": 200,
-        "bytes": 582040,
+        "bytes": 582032,
         "status": "ok",
         "count": 1070
       },
       "per_fixture": {
         "1079202": {
-          "pinnacle_names_matching_both_teams": [],
-          "note": "No Pinnacle esports matchup row names both clubs in the same minute as this snapshot."
+          "two_way_pinnacle_lines": [],
+          "note": "Pinnacle lists no two-way CS2 moneyline for this exact pair in this minute (26 CS2 matchups read). Coverage gap recorded, no price inferred."
         },
         "1081159": {
-          "pinnacle_names_matching_both_teams": [],
-          "note": "No Pinnacle esports matchup row names both clubs in the same minute as this snapshot."
+          "two_way_pinnacle_lines": [],
+          "note": "Pinnacle lists no two-way CS2 moneyline for this exact pair in this minute (26 CS2 matchups read). Coverage gap recorded, no price inferred."
         },
         "1079203": {
-          "pinnacle_names_matching_both_teams": [],
-          "note": "No Pinnacle esports matchup row names both clubs in the same minute as this snapshot."
+          "two_way_pinnacle_lines": [],
+          "note": "Pinnacle lists no two-way CS2 moneyline for this exact pair in this minute (26 CS2 matchups read). Coverage gap recorded, no price inferred."
         },
         "1081160": {
-          "pinnacle_names_matching_both_teams": [],
-          "note": "No Pinnacle esports matchup row names both clubs in the same minute as this snapshot."
+          "two_way_pinnacle_lines": [],
+          "note": "Pinnacle lists no two-way CS2 moneyline for this exact pair in this minute (26 CS2 matchups read). Coverage gap recorded, no price inferred."
         },
         "1093218": {
-          "pinnacle_names_matching_both_teams": [],
-          "note": "No Pinnacle esports matchup row names both clubs in the same minute as this snapshot."
+          "two_way_pinnacle_lines": [],
+          "note": "Pinnacle lists no two-way CS2 moneyline for this exact pair in this minute (26 CS2 matchups read). Coverage gap recorded, no price inferred."
         },
         "1081162": {
-          "pinnacle_names_matching_both_teams": [
-            {
-              "matchup_id": 1638612939,
-              "name": "Spirit",
-              "starts": null
-            },
-            {
-              "matchup_id": 1639275275,
-              "name": "Spirit",
-              "starts": null
-            }
-          ],
-          "note": "Pinnacle names this pair; see the retained moneyline receipt."
+          "two_way_pinnacle_lines": [],
+          "note": "Pinnacle lists no two-way CS2 moneyline for this exact pair in this minute (26 CS2 matchups read). Coverage gap recorded, no price inferred."
         },
         "1081163": {
-          "pinnacle_names_matching_both_teams": [],
-          "note": "No Pinnacle esports matchup row names both clubs in the same minute as this snapshot."
+          "two_way_pinnacle_lines": [],
+          "note": "Pinnacle lists no two-way CS2 moneyline for this exact pair in this minute (26 CS2 matchups read). Coverage gap recorded, no price inferred."
         },
         "1081164": {
-          "pinnacle_names_matching_both_teams": [],
-          "note": "No Pinnacle esports matchup row names both clubs in the same minute as this snapshot."
+          "two_way_pinnacle_lines": [],
+          "note": "Pinnacle lists no two-way CS2 moneyline for this exact pair in this minute (26 CS2 matchups read). Coverage gap recorded, no price inferred."
         },
         "1082792": {
-          "pinnacle_names_matching_both_teams": [
-            {
-              "matchup_id": 1639017847,
-              "name": "HOTU",
-              "starts": null
-            }
-          ],
-          "note": "Pinnacle names this pair; see the retained moneyline receipt."
+          "two_way_pinnacle_lines": [],
+          "note": "Pinnacle lists no two-way CS2 moneyline for this exact pair in this minute (26 CS2 matchups read). Coverage gap recorded, no price inferred."
         },
         "1082793": {
-          "pinnacle_names_matching_both_teams": [],
-          "note": "No Pinnacle esports matchup row names both clubs in the same minute as this snapshot."
+          "two_way_pinnacle_lines": [],
+          "note": "Pinnacle lists no two-way CS2 moneyline for this exact pair in this minute (26 CS2 matchups read). Coverage gap recorded, no price inferred."
         }
       }
     }
