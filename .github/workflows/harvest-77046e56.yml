@@ -1,0 +1,120 @@
+name: Fresh coverage harvest 77046e56 (non-publishing)
+
+# Session 77046e56 (Arena-fixed branch arena/77046e56-maltaproj4).
+#
+# Why this exists: the authoring sandbox cannot reach Hotspawn, HLTV, the exchange
+# or the bookmakers, so the only honest way to measure "does every open fixture on
+# the lobby have a pick?" is to run the publisher's own refresh on a normal GitHub
+# egress and read the result. This workflow never deploys Pages, never pushes to
+# main, and never stages a build over the committed root: the refreshed snapshot is
+# retained under research/ only.
+on:
+  push:
+    branches: [arena/77046e56-maltaproj4]
+    paths:
+      - scripts/census_77046e56.py
+      - .github/workflows/harvest-77046e56.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: harvest-77046e56
+  cancel-in-progress: false
+
+jobs:
+  harvest:
+    if: github.ref == 'refs/heads/arena/77046e56-maltaproj4'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+
+      - name: A. Refresh official sources with the publisher's own command
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p runtime research/session-77046e56/harvest/logs
+          cp data/latest.json runtime/latest.json
+          set -o pipefail
+          python -m scripts.refresh --output runtime/latest.json 2>&1 \
+            | tee research/session-77046e56/harvest/logs/01-refresh.log | tail -40
+          echo "rc_refresh=$?" >> research/session-77046e56/harvest/logs/rcs.txt
+
+      - name: B. Withhold any row the independent audit cannot reproduce
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          python -m scripts.quarantine runtime/latest.json 2>&1 \
+            | tee research/session-77046e56/harvest/logs/02-quarantine.log | tail -10
+          echo "rc_quarantine=$?" >> research/session-77046e56/harvest/logs/rcs.txt
+
+      - name: C. Census every open fixture, its pick, its probability and its sources
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          python -m scripts.census_77046e56 --snapshot runtime/latest.json \
+            --output research/session-77046e56/harvest 2>&1 \
+            | tee research/session-77046e56/harvest/logs/03-census.log
+          echo "rc_census=$?" >> research/session-77046e56/harvest/logs/rcs.txt
+
+      - name: D. Independent row audit of the refreshed snapshot
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          python verification-c6/audit_snapshot.py runtime/latest.json \
+            --output research/session-77046e56/harvest/independent-row-audit.md 2>&1 \
+            | tee research/session-77046e56/harvest/logs/04-audit.log | tail -20
+          echo "rc_audit=$?" >> research/session-77046e56/harvest/logs/rcs.txt
+
+      - name: E. Build and validate exactly as publication does
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          python -m scripts.build --data runtime/latest.json 2>&1 \
+            | tee research/session-77046e56/harvest/logs/05-build.log | tail -20
+          echo "rc_build=$?" >> research/session-77046e56/harvest/logs/rcs.txt
+          python -m scripts.validate --data runtime/latest.json 2>&1 \
+            | tee research/session-77046e56/harvest/logs/06-validate.log | tail -20
+          echo "rc_validate=$?" >> research/session-77046e56/harvest/logs/rcs.txt
+          python verification-c6/audit_snapshot.py public/data/latest.json \
+            --output research/session-77046e56/harvest/published-row-audit.md 2>&1 | tail -20
+
+      - name: F. Unit suite against this tree
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          python -m unittest discover -s tests 2>&1 \
+            | tee research/session-77046e56/harvest/logs/07-unit.log | tail -25
+          echo "rc_unit=$?" >> research/session-77046e56/harvest/logs/rcs.txt
+
+      - name: G. Commit dated receipts to the session branch
+        if: always()
+        run: |
+          git config user.name "cs2-coverage-harvest"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp runtime/latest.json research/session-77046e56/harvest/snapshot.json 2>/dev/null || true
+          git add -- research/session-77046e56/harvest
+          if git diff --cached --quiet; then
+            echo "No harvest receipt to commit."
+            exit 0
+          fi
+          git commit -m "Retain fresh coverage harvest ${GITHUB_RUN_ID} [skip ci]"
+          git pull --rebase origin arena/77046e56-maltaproj4
+          git push origin arena/77046e56-maltaproj4
+
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: coverage-harvest-77046e56-${{ github.run_id }}
+          path: |
+            research/session-77046e56/harvest
+            public/build-info.json
+          retention-days: 14
