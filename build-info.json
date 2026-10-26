@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": "5d75af25870b8995ecccad00a7aac19c3a48f005",
+  "revision": "321f65a3e0720477effac8aa9895a1a678ca0f97",
   "built_at": "2026-10-26T01:00:10Z",
   "snapshot_generated_at": "2026-10-26T01:00:10.246310Z",
   "rows": 81,
@@ -17,13 +17,13 @@
     "matches.html": "12903b59d66c52e100978935e949ba8cc3d54c53ee50935514e1f573d325d42c",
     "methodology.html": "db6dd3e60721627f0629397fd4d76b07f3f9ea5ab15b72348f3bee3b35a094ae",
     "picks.html": "ee35ea38dc8a3c935383351b4ae93f521d66dc0dd3b1b45d4e06bf90cd12e54d",
-    "review.html": "bab639672eced6e94b846d40d504399effaa48e064ddcf1230022b2c16377969",
+    "review.html": "b9a027edb99ee79a10cbc275ce9c072943ec32174dd470b68d14963cea185f7e",
     "site/index.html": "7ad39335aef2960a4c7f3a8f9f2322d358e59fd45631acfa19f456575ec491db",
     "site/methodology.html": "130024ea27020261e759b42920f78c42bebcbb44f226ef5216c8bbb1a2684b33",
     "site/picks.html": "de8e71d8a3a1f7b287299108b460956d7c52391255b567fc71cc9974f8dcd76c",
     "site/review.html": "91547a7e0d0e5b1e9bde9a89cad48c38173aefee74ea25afd75c17d9de3937cf",
     "site/unresolved.html": "d8c18e13a798f6d0f0f3cf8ee21bb42ed941d6077c82c8031ae3476d6120bded",
-    "sources.html": "3b93b43d68253e1c9ccc58782d4231435b4198f16e58a49fd69d11d114c0fe33",
+    "sources.html": "cc9000af1369da4982bdc3295d1c458ea979db0bd384a654ec33eea27731b8a5",
     "unresolved.html": "8f145af3678e2349ed186edc82bb459f2410d4cdedfe5e113469f8d8665f4616"
   }
 }

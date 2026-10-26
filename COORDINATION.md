@@ -11670,3 +11670,27 @@ progress by this session: reproduce the staged-root gate against a rotated
 snapshot (the 02:15Z refresh upgraded 1079202/1079203/1093218 from model lines
 to newly listed Polymarket lines), repair minimally, follow-up PR to follow.
 
+
+**Session b964dffd — staged-root gate diagnosis outcome (2026-10-26 ~03:00 UTC).**
+Reproduced with harvest run
+[40260109765](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40260109765)
+(snapshot 2026-10-26T02:44:05Z; receipts on this branch only — the merged
+01:00:10Z archive on main is unchanged). Root cause: fixture **1093218** gained a
+Polymarket listing after the 01:00Z board was staged, and Polymarket's outcome
+label is **“UNiTY esports”** where Hotspawn/HLTV say **“UNiTY”**; the independent
+auditor's orientation check (no fuzzy guessing) failed the row, so
+`test_session_5717f7d9` failed the publisher's staged-root unit gate (rc=3) while
+the artifact deploy kept succeeding. Repairs in the follow-up PR: (1) sourced
+identity record `UNiTY <-> UNiTY esports` in `data/identities.json`
+([Polymarket 6186061](https://gamma-api.polymarket.com/markets/6186061) +
+[HLTV 2399119](https://www.hltv.org/matches/2399119/nuclear-tigeres-vs-unity-nodwin-clutch-series-13);
+same event, exact opponent, BO3, UTC start 2026-10-26T18:00:00Z — checked
+directly at both official pages); (2) `test_session_046b2e46` refusal case moved
+to an unregistered label (`UNiTY Gaming`), since the registered pair now
+legitimately orients by identity record; (3) `test_session_0a862f5f`'s
+older-capture case removes `lobby_coverage` explicitly (fresh snapshots always
+carry it since 02:44Z). Exact gate reproduced locally on the fresh board:
+`scripts.validate --site .` 81/19 + **1,878 unit tests OK**. Flagged for Review:
+`session-b964dffd-unity-alias-staged-root-gate-2026-10-26` (301 notes). Follow-up
+PR link and the first green root-fallback step will be appended below.
+
