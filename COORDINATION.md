@@ -1,3 +1,42 @@
+## Session 32efbb66 claim — 2026-10-26 00:50 UTC (picks for EVERY open match: close the low-tier fall-through)
+
+**User ask, restated exactly.** "We need to be able to generate picks for every match. Right now we dont have
+picks because it is a low tier cs match or because it is not covered on some betting sites like polymarket, but
+these need to have picks as well. Look for information sources to guide pick selections only for any matches that
+cannot be resolved in the same way as the featured picks. ... Try hltv, then try looking at esportsbooks and
+esports betting lines. Create a separate section for any unresolved picks and the limitations for generating
+picks for them and include this in the executive summary." Plus: an executive summary with in-site links to the
+updated pick list, easily readable on a phone; full Hotspawn CS2 coverage refreshed every 4-8 hours; no
+Hotspawn crowd percentage as a probability; no manual input; verify line by line; PR + merge without waiting.
+
+**Board read before claiming** at `origin/main` / this fixed Arena branch base `eca5117` (2026-10-26T00:10:50Z
+build, 73 feed rows, 11 open, 11 with a pick, 0 open rows unresolved in that capture; 7 exchange, 1
+bookmaker-fallback via BO3.gg/Thunderpick, 3 Valve-VRS model). Every `in progress` row below is from
+2026-10-24/25, is older than the 60-minute takeover rule, and is superseded by its own delivery receipt at the
+top of this file; none is reopened. Arena fixes this session to `arena/32efbb66-maltaproj4`; no other branch is
+created, checked out, or pushed.
+
+**Measured fall-through (why a match can still end with no pick at all), read from the code, not assumed.**
+The ladder is: Polymarket strict -> HLTV context -> Pinnacle -> Polymarket wide -> Thunderpick/GG.BET access
+probes (never priced) -> BO3.gg Thunderpick receipts -> retained book receipts -> Valve VRS model -> HLTV Valve
+mirror -> HLTV rank pair / team-page ranks -> one-sided VRS -> HLTV recent-form/h2h. A row ends pick-less only
+when ALL of: no market anywhere; a team absent/ambiguous in Valve standings (official + HLTV mirror); no HLTV
+fixture page (so no ranks/form/h2h) AND no usable team-page rank pair; no one-sided standings evidence; form
+level or absent. `scripts.hltv.team_profile` already reads each club's own HLTV page for roster+rank but never
+its recent results, so a fixture with no HLTV match page cannot reach the form tier at all. That is the gap
+this session measures and, only if the markup proves parseable, closes.
+
+| Task | Status | Owner | Files | Updated (UTC) |
+|---|---|---|---|---|
+| Fresh live capture on a GitHub runner + rung-by-rung gap analysis: every open row, which rung priced it, which rungs failed and why | in progress | 32efbb66 | `.github/workflows/harvest-32efbb66.yml` (new), `scripts/probe_32efbb66.py` (new), `research/session-32efbb66/**` (new) | 2026-10-26 00:50 |
+| Source research for low-tier coverage, measured on the runner before any adapter is written: HLTV team-page recent-results markup; direct Thunderpick API; other public esportsbook/exchange JSON feeds | in progress | 32efbb66 | `research/session-32efbb66/**` (new) | 2026-10-26 00:50 |
+| Implement the measured new rung(s) fail-closed, with validator replay and regressions | unclaimed | 32efbb66 | `scripts/hltv.py`, `scripts/core.py`, `scripts/validate.py`, `scripts/build.py` (markup only if a measured defect requires it), `tests/test_session_32efbb66.py` (new) | 2026-10-26 00:50 |
+| Executive summary check on published bytes: in-site links to the updated pick list, the separate unresolved/limitations section named inside the summary, phone viewports | unclaimed | 32efbb66 | `research/session-32efbb66/**`; existing browser suites read-only unless a defect is measured | 2026-10-26 00:50 |
+| Line-by-line verification of the refreshed board (official source per row); irregularities to Flagged for Review | unclaimed | 32efbb66 | `data/review-notes.json` (additive IDs only), `research/session-32efbb66/**` | 2026-10-26 00:50 |
+| Final integration: full gates, PR from this fixed branch to `main`, merge without approval, live Pages byte check, receipt | unclaimed | 32efbb66 | `COORDINATION.md`, regenerated root via canonical build/refresh only | 2026-10-26 00:50 |
+
+---
+
 ## Session 6857421f — delivery receipt: PR #318 merged without waiting, Pages re-verified live (2026-10-25 15:30 UTC)
 
 **Merged.** [PR #318](https://github.com/buffedlizard55-lab/MaltaProj4/pull/318) —
