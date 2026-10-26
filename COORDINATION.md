@@ -10969,3 +10969,50 @@ withholds past-lock rows in its `public/` copy by reader clock (`build.py:1733`)
 committed snapshot breaks snapshot-keyed tests; the production pipeline does this on purpose at publish time,
 diagnostic sessions must not. (f) GitHub Pages legacy `main:/` builds are soft-limited to 10/hour, so the live
 site can lag a green run by minutes (session b06ee902's measurement).
+
+---
+
+## Session b964dffd — CLAIM (2026-10-26 00:50 UTC): picks for every open match incl. the 8 fixtures added after the 00:10Z board; executive-summary / mobile check
+
+Arena fixes this session to `arena/b964dffd-maltaproj4`; the requested
+`session-<id>/<task>` branch naming is not available in this environment, so no
+other branch is created, checked out or pushed (same constraint recorded by every
+earlier session above). This is new work from a new user request, not a takeover:
+the last claims above are dated 2026-10-25, their PRs are merged or receipt-only,
+and no `b964dffd` claim exists on this board (`grep b964dffd COORDINATION.md` = 0
+before this entry).
+
+**Measured trigger for this session (not assumed).** The committed/live board is
+build `2026-10-26T00:10:50Z`, snapshot `2026-10-26T00:10:49Z`, 73 feed rows,
+**11 open · 11 picks · 11 win-probability pairs · 0 unresolved** (7 Polymarket
+exchange, 1 BO3.gg bookmaker listing, 3 originated Valve-VRS model lines — counted
+from `data/latest.json` in this checkout). A direct read of the official lobby
+<https://play.hotspawn.com/lobby> in this session (2026-10-26 ~00:49 UTC, page
+headed "19 matches this week", tiers "All tiers (81)") lists **19 open matches**:
+the same 11 **plus 8 fixtures absent from the committed snapshot entirely** —
+`1079201` INOX Division vs Nemesis, `1079202` FOKUS vs ex-Zero Tenacity,
+`1079203` Metizport vs BRUTE (NODWIN Clutch Series #13) and `1081159` LFO 10 vs
+ex-6666, `1081160` HAVU vs ILLYRIANS, `1081162` ex-RUSTEC vs Spirit Academy,
+`1081163` BakS vs Saint Sinners, `1081164` Inner Circle Academy vs Lavked
+(CCT Europe 2026 Series #12). Hotspawn crowd percentages on that page were
+recorded only as refused context and are **never** used as probabilities. Whether
+these 8 were added after the 00:07Z fixture observation or missed by it is **not
+yet verified**; the fresh runner capture below decides it. Either way the user
+requirement is the same: every open match must carry a sourced pick, and any that
+cannot must be named in the unresolved section with its limitation.
+
+**Claimed tasks (status: in progress, owner: session b964dffd):**
+
+| # | Task | Files in scope |
+|---|---|---|
+| 1 | Fresh non-publishing runner capture (this sandbox reaches GitHub/package registries only, so Hotspawn/HLTV/Polymarket/Pinnacle/BO3.gg are read on GitHub's egress, raw receipts committed) | `.github/workflows/harvest-b964dffd.yml` (new), `research/harvest-b964dffd/**` (runner) |
+| 2 | Line-by-line verification of the fresh capture: every open row's pick, %, method, official source URL, observation/expiry re-derived independently; count parity lobby/feed/board; the 8 new fixtures specifically | `research/session-b964dffd/**`, `tests/test_session_b964dffd.py` |
+| 3 | Fallback research for any open row the featured (strict exchange) tier cannot resolve — in ladder order HLTV identity/rankings/lineups, Pinnacle, wide exchange, BO3.gg/book listings, Valve-VRS model, HLTV dated Valve-ranking mirror, HLTV rank/form research picks; a code change only if a verified gap is reproduced on the fresh capture | `scripts/refresh.py`, `scripts/core.py`, `scripts/hltv.py`, `scripts/bo3.py`, `scripts/books.py`, `scripts/vrs.py`, `scripts/vrs_mirror.py` **only if a gap is reproduced**, plus their tests |
+| 4 | Executive summary + unresolved/limitations section + phone readability: verify first-screen links to the updated pick list, both teams' % and the pick visible on a phone, unresolved section present in the summary and on its own page | `scripts/build.py`, `site/assets/style.css` + `assets/style.css` (kept byte-identical) **only if a defect is measured**; generated pages via `scripts.build` only |
+| 5 | Publish: rebuilt site + data only if the fresh snapshot validates; Flagged-for-Review notes for anything unverified (non-blocking) | `data/latest.json`, `data/matches.csv`, `build-info.json`, root/site generated HTML (build output only), `data/review-notes.json`, `README.md`, `COORDINATION.md` |
+
+Shared outputs (generated site + `data/latest.json`) are touched only at final
+integration after the capture is verified, per the board rules. If a needed file
+is owned by another active claim, the request will be logged here instead of
+edited. Small frequent commits; `git pull --rebase` before every push.
+
