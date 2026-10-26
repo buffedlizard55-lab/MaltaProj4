@@ -7,11 +7,11 @@ import time
 import uuid
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
-from urllib.parse import urlencode,urlsplit
+from urllib.parse import urlencode,urlsplit,quote as urlquote
 import requests
 from bs4 import BeautifulSoup
-from scripts.core import (HOTSPAWN,FIXTURES,PIN,GAMMA,dt,iso,fresh,hotspawn_state,
-    normalize_fixtures,polymarket_candidates,pinnacle_candidates,resolve,record_polymarket_exclusions,
+from scripts.core import (HOTSPAWN,FIXTURES,PIN,GAMMA,KALSHI,KALSHI_SERIES,dt,iso,fresh,hotspawn_state,
+    normalize_fixtures,polymarket_candidates,pinnacle_candidates,kalshi_candidates,resolve,record_polymarket_exclusions,
     pick_deadline)
 
 try:
@@ -409,6 +409,46 @@ def run(previous=None):
             for m in [m for m in unresolved if m['probabilities'] is None]:
                 resolve(m,exchange_events,'Polymarket',datetime.now(timezone.utc),relax=True)
         unresolved = [m for m in unresolved if m['probabilities'] is None]
+        # Second exchange (session 32efbb66): Kalshi's KXCS2GAME series lists
+        # low-tier CS2 matches Polymarket never carries - on the 2026-10-26
+        # measurement 15 of 19 open fixtures had an exact-pair event and 13
+        # joined on the exact UTC start (research/session-32efbb66). It runs
+        # only for rows no earlier market tier priced, under the same strict
+        # spread ceiling; scripts.core.kalshi_candidates documents why the
+        # scheduled start is read from the contract text cross-checked
+        # against the event ticker and never from occurrence_datetime.
+        if unresolved:
+            kalshi_feed = KALSHI+'/markets?series_ticker='+KALSHI_SERIES+'&status=open'
+            try:
+                markets, receipts, cursor, seen_tickers = [], [], None, set()
+                for page_index in range(5):
+                    url = kalshi_feed+'&limit=1000'+('&cursor='+urlquote(cursor, safe='') if cursor else '')
+                    body, receipt = src.get('Kalshi CS2 match-winner markets page %d' % (page_index + 1), url)
+                    batch = body.get('markets') if isinstance(body, dict) else None
+                    if not isinstance(batch, list) or not all(isinstance(mk, dict) for mk in batch):
+                        raise ValueError('Unexpected Kalshi markets schema')
+                    tickers = {str(mk.get('ticker')) for mk in batch}
+                    if tickers & seen_tickers:
+                        raise ValueError('Repeated Kalshi market page; coverage unverified')
+                    seen_tickers |= tickers
+                    markets += batch
+                    receipts.append(receipt.copy())
+                    cursor = (body.get('cursor') or None) if isinstance(body, dict) else None
+                    if not cursor:
+                        break
+                else:
+                    raise ValueError('Kalshi pagination safety cap reached')
+                observed = min((r['observed_at'] for r in receipts), key=dt)
+                candidates = kalshi_candidates(markets, observed)
+                for candidate in candidates:
+                    candidate['source_receipts'] = receipts
+                for m in unresolved:
+                    resolve(m, candidates, 'Kalshi', datetime.now(timezone.utc))
+            except (ValueError, KeyError, TypeError) as e:
+                flags.append(issue('kalshi', str(e), kalshi_feed))
+                for m in unresolved:
+                    m['attempts'].append({'provider': 'Kalshi', 'status': 'error', 'reason': str(e), 'url': kalshi_feed})
+            unresolved = [m for m in unresolved if m['probabilities'] is None]
         for provider,url in [('Thunderpick','https://thunderpick.io/esports/cs2-betting'),('GG.BET','https://gg.bet/en/esports/counter-strike')]:
             if not unresolved:
                 break

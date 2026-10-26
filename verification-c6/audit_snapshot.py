@@ -401,6 +401,71 @@ def inspect(snapshot):
                     odds = [1 + (v/100 if v > 0 else 100/-v) for v in [prices['home'], prices['away']]]
                     weights = [1/x for x in odds]
                     require(Decimal('-.02') <= sum(weights)-1 <= Decimal('.25'), 'Bookmaker margin gate failed')
+                elif q['provider'] == 'Kalshi':
+                    # Two binary "<team> wins" markets under one event ticker.
+                    # Independently re-derived here (session 32efbb66): the
+                    # scheduled start comes from each market's own contract
+                    # sentence with an explicit EST/EDT offset, cross-checked
+                    # against the wall-clock time encoded in the event
+                    # ticker; occurrence_datetime is never a start.
+                    raw = q['raw']
+                    markets = raw.get('markets') or []
+                    require(raw.get('event_ticker') == q['id'], 'Kalshi event ticker mismatch')
+                    require(q['api_url'] == 'https://api.elections.kalshi.com/trade-api/v2/events/' + q['id'],
+                            'Kalshi API link mismatch')
+                    require(len(markets) == 2, 'Kalshi quote without exactly two team markets')
+                    require([mk.get('yes_sub_title') for mk in markets] == source_names,
+                            'Kalshi outcome order changed')
+                    months = {'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr': 4, 'May': 5, 'Jun': 6, 'Jul': 7,
+                              'Aug': 8, 'Sep': 9, 'Oct': 10, 'Nov': 11, 'Dec': 12, 'January': 1,
+                              'February': 2, 'March': 3, 'April': 4, 'June': 6, 'July': 7,
+                              'August': 8, 'September': 9, 'October': 10, 'November': 11, 'December': 12}
+                    ticker_months = {'JAN': 1, 'FEB': 2, 'MAR': 3, 'APR': 4, 'MAY': 5, 'JUN': 6, 'JUL': 7,
+                                     'AUG': 8, 'SEP': 9, 'OCT': 10, 'NOV': 11, 'DEC': 12}
+                    weights = []
+                    spread = Decimal('0')
+                    liquidity = Decimal('0')
+                    starts = set()
+                    for mk in markets:
+                        require(mk.get('market_type') == 'binary' and mk.get('status') == 'active'
+                                and (mk.get('result') or '') == '', 'Kalshi market is not an open binary market')
+                        require(str(mk.get('ticker') or '').startswith(q['id'] + '-'),
+                                'Kalshi market does not belong to the quoted event')
+                        require(mk.get('title') == str(mk.get('yes_sub_title')) + ' wins'
+                                and mk.get('no_sub_title') == mk.get('yes_sub_title'),
+                                'Kalshi market is not a team match-winner market')
+                        require('refers to the full match' in str(mk.get('rules_secondary') or ''),
+                                'Kalshi contract does not define a full-match market')
+                        require(all(label in str(mk.get('rules_primary') or '') for label in source_names),
+                                'Kalshi contract text does not name both teams')
+                        hit = re.search(r'originally scheduled for ([A-Z][a-z]+) (\d{1,2}), (\d{4}) at '
+                                        r'(\d{1,2}):(\d{2}) (AM|PM) ([A-Z]{2,4})', str(mk.get('rules_primary') or ''))
+                        tick = re.match(r'^KXCS2GAME-(\d{2})(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)'
+                                        r'(\d{2})(\d{2})(\d{2})', q['id'])
+                        require(hit is not None and tick is not None, 'Kalshi scheduled start is not stated exactly')
+                        mon, day, year, hour, minute, meridiem, tz_name = hit.groups()
+                        require(tz_name in ('EST', 'EDT') and mon in months, 'Kalshi start timezone is ambiguous')
+                        hour24 = int(hour) % 12 + (12 if meridiem == 'PM' else 0)
+                        wall = (int(year), months[mon], int(day), hour24, int(minute))
+                        require(wall == (2000 + int(tick.group(1)), ticker_months[tick.group(2)],
+                                         int(tick.group(3)), int(tick.group(4)), int(tick.group(5))),
+                                'Kalshi rules start disagrees with its event ticker')
+                        from datetime import timedelta
+                        starts.add(datetime(*wall, tzinfo=timezone.utc)
+                                   - timedelta(hours=-5 if tz_name == 'EST' else -4))
+                        bid, ask = Decimal(str(mk['yes_bid_dollars'])), Decimal(str(mk['yes_ask_dollars']))
+                        bid_size, ask_size = Decimal(str(mk['yes_bid_size_fp'])), Decimal(str(mk['yes_ask_size_fp']))
+                        require(0 < bid <= ask < 1 and bid_size > 0 and ask_size > 0,
+                                'Kalshi two-sided quote unavailable')
+                        spread = max(spread, ask - bid)
+                        liquidity += Decimal(str(mk['open_interest_fp'])) + min(bid_size * bid, ask_size * ask)
+                        weights.append((bid + ask) / 2)
+                    require(len(starts) == 1, 'Kalshi team markets state different scheduled starts')
+                    require(starts.pop() == date(q['start']), 'Kalshi stored start differs from its contract text')
+                    require(spread <= Decimal('.25'), 'Kalshi spread gate failed')
+                    require(liquidity >= 50, 'Kalshi liquidity gate failed')
+                    require(Decimal('.95') <= sum(weights) <= Decimal('1.05'), 'Kalshi pair of prices is inconsistent')
+                    require(m.get('method') == 'exchange', 'Kalshi row carries a different method label')
                 else:
                     raise ValueError('Unknown provider; independent recalculation unavailable')
                 expected = [float(weights[i]/sum(weights)) for i in order]

@@ -283,6 +283,7 @@ class ExecutiveSummaryTests(unittest.TestCase):
             self.assertTrue(title.startswith('%d.' % (i + 1)), title)
         allowed = ('https://gamma-api.polymarket.com', 'https://www.hltv.org',
                    'https://guest.api.arcadia.pinnacle.com', 'https://egamersworld.com',
+                   'https://api.elections.kalshi.com',
                    'https://github.com/ValveSoftware/counter-strike_regional_standings')
         for li in steps:
             hrefs = [a['href'] for a in li.select('a[href]')]
@@ -293,13 +294,15 @@ class ExecutiveSummaryTests(unittest.TestCase):
         source = (ROOT / 'scripts' / 'refresh.py').read_text()
         order = [marker for marker in ('Polymarket events page', 'from scripts.hltv import research',
                                        'Pinnacle esports moneylines', 'relax=True',
+                                       'Kalshi CS2 match-winner markets page',
                                        'book_research_pick', 'vrs.apply', 'research_rank_pick')
                  if marker in source]
         self.assertEqual(order, ['Polymarket events page', 'from scripts.hltv import research',
                                  'Pinnacle esports moneylines', 'relax=True',
+                                 'Kalshi CS2 match-winner markets page',
                                  'book_research_pick', 'vrs.apply', 'research_rank_pick'])
         self.assertEqual([step[0] for step in summary.LADDER],
-                         ['exchange', 'hltv', 'pinnacle', 'exchange_wide', 'book', 'model_vrs', 'model_vrs_mirror', 'research'])
+                         ['exchange', 'hltv', 'pinnacle', 'exchange_wide', 'kalshi', 'book', 'model_vrs', 'model_vrs_mirror', 'research'])
 
     def test_ladder_sources_are_the_ones_the_collector_reads(self):
         from scripts import core

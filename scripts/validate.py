@@ -12,8 +12,9 @@ from scripts.core import (
     IDENTITIES, normalize_fixtures, dt, iso, norm, plain_name, orientation, fresh,
     polymarket_candidates, pinnacle_candidates, quote_polymarket, quote_pinnacle,
     quote_book, book_candidate, calculator_for, pick_deadline,
+    kalshi_candidates,
     MIN_FORM_MATCHES, MAX_FORM_WINDOW,
-    GAMMA, PIN,
+    GAMMA, PIN, KALSHI,
 )
 
 
@@ -48,6 +49,15 @@ def reconstruct_quote(q, schema_version=1):
             match.setdefault('type', 'matchup')
         candidates = pinnacle_candidates([match], [line], q['observed_at'])
         assert q.get('updated_at') is None, 'No bookmaker price-change time was supplied'
+    elif q['provider'] == 'Kalshi':
+        # The two raw team markets are the whole evidence: the candidate
+        # builder re-derives the pair, the full-match scope and the scheduled
+        # start from them (rules text cross-checked against the ticker), so a
+        # stored start or label that the raw records do not prove fails here.
+        assert q['api_url'] == KALSHI + '/events/' + q['id']
+        assert raw.get('event_ticker') == q['id'], 'Kalshi event ticker differs from raw evidence'
+        assert q.get('updated_at') is None, 'Kalshi record time is not a quote-update time; observation time is the stored freshness anchor'
+        candidates = kalshi_candidates(raw.get('markets') or [], q['observed_at'])
     else:
         # Researched two-way book listing (scripts.core.book_candidate): the
         # full receipt is the raw evidence and the calculator replays it.
@@ -421,10 +431,10 @@ def validate_data(data):
                 teams[i] = targets[0]
         order = orientation(m, teams, candidate['start'])
         assert order is not None, 'Unverified raw team/time identity'
-        if m.get('best_of') is not None:
+        if m.get('best_of') is not None and candidate.get('format_evidence') != 'kalshi_full_match_rules':
             assert candidate.get('best_of') is not None and str(candidate['best_of']) == str(m['best_of'])
         calculator = calculator_for(q['provider'])
-        expected_method = 'exchange' if q['provider'] == 'Polymarket' else 'bookmaker_fallback'
+        expected_method = 'exchange' if q['provider'] in ('Polymarket', 'Kalshi') else 'bookmaker_fallback'
         if q['provider'] == 'Polymarket' and q.get('tier') == 'wide_exchange':
             # Low-confidence tier: it may only be used where the strict gate fails,
             # and the published spread must be the real one.

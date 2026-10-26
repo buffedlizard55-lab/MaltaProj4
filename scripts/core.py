@@ -12,6 +12,8 @@ HOTSPAWN = 'https://play.hotspawn.com/cs2-pickems'
 FIXTURES = 'https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1'
 PIN = 'https://guest.api.arcadia.pinnacle.com/0.1'
 GAMMA = 'https://gamma-api.polymarket.com'
+KALSHI = 'https://api.elections.kalshi.com/trade-api/v2'
+KALSHI_SERIES = 'KXCS2GAME'
 MAX_AGE = 8 * 3600
 IDENTITIES = json.loads((Path(__file__).resolve().parents[1] / 'data/identities.json').read_text())['aliases']
 
@@ -347,6 +349,193 @@ def quote_pinnacle(candidate, order, now):
         'warning': 'Single bookmaker; price update timestamp not supplied. Observation time shown.'}
 
 
+# --- Kalshi CFTC exchange, CS2 match-winner series (session 32efbb66) -------
+#
+# Why this tier exists: the user requires a pick for every Hotspawn CS2 match,
+# including low-tier fixtures Polymarket never lists. Kalshi's public,
+# no-authentication market-data API (docs.kalshi.com, "Quick Start: Market
+# Data") lists the KXCS2GAME series - one mutually exclusive event per match,
+# holding one binary "<team> wins" market per side. Measured on a GitHub
+# runner 2026-10-26 (research/session-32efbb66/kalshi-markets.json, run
+# 40251306187): 116 open markets in 58 events; 15 of the 19 then-open Hotspawn
+# fixtures had an exact opponent-pair event, and 13 of those 15 joined on the
+# exact UTC start. The other two are genuine same-pair/other-start source
+# disagreements and stay refused, exactly like an HLTV start disagreement.
+#
+# Start time: the market record carries no machine-readable scheduled start.
+# ``occurrence_datetime`` is NOT the start (measured: rules-stated start + 4h
+# on 13 joined fixtures, +1h and +10h on the two disagreements), so it is
+# never used, and no "correction" is derived from it. The scheduled start is
+# read from the contract's own ``rules_primary`` sentence ("... match
+# originally scheduled for Oct 28, 2026 at 5:00 AM EDT") and cross-checked
+# against the wall-clock time encoded in the event ticker
+# (KXCS2GAME-26OCT280500...). Measured agreement: 116 of 116 markets. A market
+# whose rules text and ticker disagree, whose timezone abbreviation is not an
+# explicit EST/EDT, or whose sentence does not parse exactly, is dropped -
+# never interpreted.
+_KALSHI_MONTHS = {'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr': 4, 'May': 5, 'Jun': 6,
+                  'Jul': 7, 'Aug': 8, 'Sep': 9, 'Oct': 10, 'Nov': 11, 'Dec': 12,
+                  'January': 1, 'February': 2, 'March': 3, 'April': 4, 'June': 6,
+                  'July': 7, 'August': 8, 'September': 9, 'October': 10,
+                  'November': 11, 'December': 12}
+_KALSHI_TZ = {'EST': timedelta(hours=-5), 'EDT': timedelta(hours=-4)}
+_KALSHI_RULES_TIME = re.compile(
+    r'originally scheduled for ([A-Z][a-z]+) (\d{1,2}), (\d{4}) at (\d{1,2}):(\d{2}) (AM|PM) ([A-Z]{2,4})')
+_KALSHI_TICKER_TIME = re.compile(
+    r'^KXCS2GAME-(\d{2})(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)(\d{2})(\d{2})(\d{2})')
+_KALSHI_TICKER_MONTHS = {'JAN': 1, 'FEB': 2, 'MAR': 3, 'APR': 4, 'MAY': 5, 'JUN': 6,
+                         'JUL': 7, 'AUG': 8, 'SEP': 9, 'OCT': 10, 'NOV': 11, 'DEC': 12}
+_KALSHI_RAW_FIELDS = ('ticker', 'event_ticker', 'market_type', 'status', 'title',
+    'yes_sub_title', 'no_sub_title', 'yes_bid_dollars', 'yes_ask_dollars',
+    'no_bid_dollars', 'no_ask_dollars', 'yes_bid_size_fp', 'yes_ask_size_fp',
+    'volume_fp', 'volume_24h_fp', 'open_interest_fp', 'last_price_dollars',
+    'occurrence_datetime', 'expected_expiration_time', 'close_time', 'open_time',
+    'created_time', 'updated_time', 'result', 'custom_strike',
+    'rules_primary', 'rules_secondary')
+
+
+def _kalshi_start(market):
+    """The scheduled UTC start a Kalshi market states for itself, or None.
+
+    Both of Kalshi's own encodings must agree to the minute: the
+    ``rules_primary`` sentence (with an explicit EST/EDT abbreviation) and the
+    wall-clock time embedded in the event ticker. Anything else - an
+    ambiguous "ET", an unparseable sentence, a ticker that does not match -
+    returns None and the candidate is dropped by the caller.
+    """
+    if not isinstance(market, dict):
+        return None
+    hit = _KALSHI_RULES_TIME.search(str(market.get('rules_primary') or ''))
+    ticker = _KALSHI_TICKER_TIME.match(str(market.get('event_ticker') or ''))
+    if hit is None or ticker is None:
+        return None
+    month_name, day, year, hour, minute, meridiem, tz_name = hit.groups()
+    offset = _KALSHI_TZ.get(tz_name)
+    month = _KALSHI_MONTHS.get(month_name)
+    if offset is None or month is None:
+        return None
+    hour24 = int(hour) % 12 + (12 if meridiem == 'PM' else 0)
+    try:
+        wall = datetime(int(year), month, int(day), hour24, int(minute), tzinfo=timezone.utc)
+    except ValueError:
+        return None
+    encoded = (2000 + int(ticker.group(1)), _KALSHI_TICKER_MONTHS[ticker.group(2)],
+               int(ticker.group(3)), int(ticker.group(4)), int(ticker.group(5)))
+    if (wall.year, wall.month, wall.day, wall.hour, wall.minute) != encoded:
+        return None
+    return iso(wall - offset)
+
+
+def kalshi_candidates(markets, observed_at):
+    """Whole-match two-sided candidates from open KXCS2GAME markets.
+
+    One event becomes one candidate only when every structural fact measured
+    on the 2026-10-26 capture holds for both of its markets (58 of 58 events
+    there): exactly two binary, active, unsettled markets whose tickers hang
+    off the event ticker; two distinct team labels carried as "X wins"
+    titles with the NO side naming the same team; two distinct competitor
+    identities; both labels named inside both markets' own contract text;
+    the "refers to the full match" series definition on both (that phrase,
+    on the official contract, is this venue's whole-series evidence - the
+    map-winner contracts live in a different series this collector never
+    reads); and one identical scheduled start from :func:`_kalshi_start`.
+    The numeric best-of count is not stated by the venue, so ``best_of``
+    stays None and ``format_evidence`` records what proved series scope.
+    """
+    events = {}
+    for market in markets or []:
+        if isinstance(market, dict) and market.get('event_ticker'):
+            events.setdefault(str(market['event_ticker']), []).append(market)
+    result = []
+    for event_ticker, pair in events.items():
+        if len(pair) != 2:
+            continue
+        labels = [m.get('yes_sub_title') for m in pair]
+        competitors = {(m.get('custom_strike') or {}).get('esports_competitor') for m in pair}
+        starts = {_kalshi_start(m) for m in pair}
+        if (not all(isinstance(label, str) and label.strip() for label in labels)
+                or len(set(labels)) != 2 or len(competitors) != 2 or None in competitors
+                or len(starts) != 1 or None in starts):
+            continue
+        sound = True
+        for m in pair:
+            rules = str(m.get('rules_primary') or '')
+            if (m.get('market_type') != 'binary' or m.get('status') != 'active'
+                    or (m.get('result') or '') != ''
+                    or not str(m.get('ticker') or '').startswith(event_ticker + '-')
+                    or m.get('title') != str(m.get('yes_sub_title')) + ' wins'
+                    or m.get('no_sub_title') != m.get('yes_sub_title')
+                    or 'refers to the full match' not in str(m.get('rules_secondary') or '')
+                    or not all(label in rules for label in labels)):
+                sound = False
+                break
+        if not sound:
+            continue
+        raw_markets = [{k: copy.deepcopy(m.get(k)) for k in _KALSHI_RAW_FIELDS} for m in pair]
+        result.append({'provider': 'Kalshi', 'id': event_ticker, 'teams': list(labels),
+            'start': starts.pop(), 'observed_at': observed_at, 'updated_at': None,
+            'url': 'https://kalshi.com/markets/kxcs2game/counter-strike-2-match/' + event_ticker.lower(),
+            'api_url': KALSHI + '/events/' + event_ticker,
+            'raw': {'event_ticker': event_ticker, 'series_ticker': KALSHI_SERIES,
+                    'markets': raw_markets},
+            'markets': raw_markets, 'best_of': None,
+            'format_evidence': 'kalshi_full_match_rules'})
+    return result
+
+
+def quote_kalshi(candidate, order, now):
+    """Validate a two-market Kalshi match-winner quote and de-vig its mids.
+
+    Gates mirror the strict exchange tier, with Kalshi-native fields:
+    both team markets active with a genuine two-sided YES book
+    (``0 < bid <= ask < 1``), the wider of the two spreads at most 25
+    points, the two mids summing inside [0.95, 1.05] before normalisation,
+    a fresh observation, and at least $50 of venue liquidity measured as
+    total open interest (contracts are $1 binaries) plus the thinner side
+    of each market's top-of-book dollar depth. Measured on the 2026-10-26
+    capture: tight, traded or market-made books score $99-$6,123 on that
+    measure, while Kalshi's own 0.06/0.94 placeholder books score $1-$3
+    with 67-88 point spreads and are refused by both gates. The venue's
+    ``updated_time`` is the market-record time, not a quote time (it sits
+    at the creation batch on markets that later traded), so it is kept in
+    ``raw`` and ``updated_at`` stays None with the observation time shown,
+    exactly as the Pinnacle tier handles a missing price-change time.
+    """
+    if not fresh(candidate['observed_at'], now):
+        raise ValueError('Exchange observation is older than eight hours.')
+    markets = candidate.get('markets') or []
+    if len(markets) != 2:
+        raise ValueError('Kalshi match event does not hold exactly two team markets.')
+    mids, spread, liquidity = [], 0.0, 0.0
+    for m in markets:
+        if m.get('status') != 'active' or m.get('market_type') != 'binary':
+            raise ValueError('Exchange market is not an active binary market.')
+        try:
+            bid, ask = float(m['yes_bid_dollars']), float(m['yes_ask_dollars'])
+            bid_size, ask_size = float(m['yes_bid_size_fp']), float(m['yes_ask_size_fp'])
+            interest = float(m['open_interest_fp'])
+        except (TypeError, ValueError, KeyError):
+            raise ValueError('Exchange quote fields are not finite numbers.')
+        if not all(math.isfinite(x) for x in (bid, ask, bid_size, ask_size, interest)):
+            raise ValueError('Exchange quote fields are not finite numbers.')
+        if not 0 < bid <= ask < 1 or bid_size <= 0 or ask_size <= 0 or interest < 0:
+            raise ValueError('Two-sided exchange quote is unavailable.')
+        mids.append((bid + ask) / 2)
+        spread = max(spread, ask - bid)
+        liquidity += interest + min(bid_size * bid, ask_size * ask)
+    if not .95 <= sum(mids) <= 1.05:
+        raise ValueError('Invalid or inconsistent pair of binary match-winner prices.')
+    if spread > .25 + 1e-9:
+        raise ValueError('Exchange spread exceeds 25 points.')
+    if liquidity < 50:
+        raise ValueError('Exchange liquidity is below $50 (open interest plus thinner top-of-book side).')
+    p = [mids[i] / sum(mids) for i in order]
+    return {k: candidate[k] for k in ('provider', 'id', 'url', 'api_url', 'observed_at', 'raw')} | {
+        'updated_at': None, 'probabilities': p, 'spread': spread, 'liquidity': liquidity,
+        'warning': 'Wide exchange spread; low precision.' if spread > .10 else None,
+        'tier': 'exchange', 'source_teams': candidate['teams'], 'start': iso(candidate['start'])}
+
+
 BOOK_RECEIPTS = Path(__file__).resolve().parents[1] / 'data/book-receipts.json'
 
 
@@ -422,7 +611,13 @@ def quote_book(candidate, order, now):
 
 def calculator_for(provider):
     """The exact calculator that produced (and can replay) a stored quote."""
-    return quote_polymarket if provider == 'Polymarket' else (quote_pinnacle if provider == 'Pinnacle' else quote_book)
+    if provider == 'Polymarket':
+        return quote_polymarket
+    if provider == 'Kalshi':
+        return quote_kalshi
+    if provider == 'Pinnacle':
+        return quote_pinnacle
+    return quote_book
 
 
 def book_research_pick(fixture, receipts=None, now=None):
@@ -508,18 +703,22 @@ def resolve(fixture, candidates, provider, now, relax=False):
                     near.append(c)
             except (ValueError, TypeError, OverflowError):
                 continue
-    attempt = {'provider': provider, 'status': 'unresolved', 'url': GAMMA+'/sports' if provider == 'Polymarket' else PIN+'/sports/12/markets/straight'}
+    attempt = {'provider': provider, 'status': 'unresolved', 'url': GAMMA+'/sports' if provider == 'Polymarket' else (KALSHI+'/markets?series_ticker='+KALSHI_SERIES+'&status=open' if provider == 'Kalshi' else PIN+'/sports/12/markets/straight')}
     if len(exact) > 1:
         attempt['reason'] = 'Multiple same-team, same-time markets; ambiguous identity. No automatic pick.'
     elif len(exact) == 1:
         c, order = exact[0]
         attempt['url'] = c['api_url']
         try:
-            if fixture.get('best_of') is not None and (c.get('best_of') is None or str(c['best_of']) != str(fixture['best_of'])):
+            # A Kalshi candidate proves whole-series scope differently: the
+            # venue states no numeric best-of, and its official contract text
+            # defines the market as the full match (kalshi_candidates refuses
+            # anything else). Every other source must still agree numerically.
+            if fixture.get('best_of') is not None and c.get('format_evidence') != 'kalshi_full_match_rules' and (c.get('best_of') is None or str(c['best_of']) != str(fixture['best_of'])):
                 raise ValueError('Known series format does not agree with the external source.')
             quote = None
             try:
-                quote = (quote_polymarket if provider == 'Polymarket' else quote_pinnacle)(c, order, now)
+                quote = calculator_for(provider)(c, order, now)
             except ValueError as strict_error:
                 if provider == 'Polymarket' and relax:
                     # Documented second chance: keep every strict gate except the
@@ -551,7 +750,7 @@ def resolve(fixture, candidates, provider, now, relax=False):
                 quote['team_metadata'] = c['team_metadata']
             fixture.update(probabilities=p, fair_odds=[1/x for x in p],
                 pick=None if abs(p[0]-p[1]) < .0001 else fixture['teams'][0 if p[0]>p[1] else 1],
-                method=('exchange_wide' if quote.get('tier') == 'wide_exchange' else ('exchange' if provider == 'Polymarket' else 'bookmaker_fallback')),
+                method=('exchange_wide' if quote.get('tier') == 'wide_exchange' else ('exchange' if provider in ('Polymarket', 'Kalshi') else 'bookmaker_fallback')),
                 evidence=[quote],
                 reason='Equal verified prices; no directional edge.' if abs(p[0]-p[1]) < .0001 else None)
             if quote.get('warning'):

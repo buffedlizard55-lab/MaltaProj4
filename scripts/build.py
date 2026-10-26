@@ -1025,6 +1025,11 @@ def unresolved_limits_card(data):
     step_counts = {}
     for m in opens:
         step = summary.METHOD_STEP.get(m.get('method')) if m.get('probabilities') is not None or m.get('pick') else None
+        # An 'exchange' row priced by Kalshi belongs to the Kalshi rung, not
+        # the Polymarket one; the rung counts must name the venue that priced
+        # the row (session 32efbb66).
+        if step == 'exchange' and ((m.get('evidence') or [{}])[0] or {}).get('provider') == 'Kalshi':
+            step = 'kalshi'
         step_counts[step or 'none'] = step_counts.get(step or 'none', 0) + 1
     rung_text = ' · '.join(
         '%s <strong data-ladder-count="%s">%d</strong>' % (e(step['title']), e(step['key']), step_counts.get(step['key'], 0))

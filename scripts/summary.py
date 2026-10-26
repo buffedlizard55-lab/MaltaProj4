@@ -25,11 +25,15 @@ future change to the order has to be reflected here.
 """
 from __future__ import annotations
 
-from scripts.core import GAMMA, PIN
+from scripts.core import GAMMA, PIN, KALSHI
 
 # Every method a priced row can carry, and where the number came from.
 ORIGINS = {
     'exchange': ('market', 'Betting-market line', 'Polymarket two-sided order book, de-vigged'),
+    # Not a stored method: origin() selects it for an 'exchange' row whose
+    # evidence provider is Kalshi, so the venue named on the row is the venue
+    # that actually priced it (session 32efbb66).
+    'exchange_kalshi': ('market', 'Betting-market line', 'Kalshi two-sided order books (one binary market per team), de-vigged from both mids'),
     'exchange_wide': ('market', 'Betting-market line · wide quote', 'Polymarket quote past the strict spread ceiling, published as low confidence'),
     'bookmaker': ('market', 'Bookmaker line', 'A bookmaker’s own two-way price, de-vigged'),
     'bookmaker_fallback': ('market', 'Bookmaker line · researched listing', 'A dated two-way price read from a bookmaker listing page'),
@@ -64,6 +68,16 @@ LADDER = (
      'Used only when a row would otherwise have no pick at all: still two-sided, funding and '
      'freshness gates unchanged, spread between 25 and 60 points. The real spread is published.',
      'Polymarket Gamma API', GAMMA + '/events'),
+    ('kalshi', 'Kalshi exchange line, strict gate',
+     'The regulated Kalshi exchange lists low-tier CS2 matches Polymarket never carries, as one '
+     'binary "<team> wins" market per side. Accepted only when both markets are active and '
+     'two-sided, the wider spread is 25 points or less, the two mids sum inside 0.95-1.05, open '
+     'interest plus the thinner top-of-book side reaches $50, and the scheduled start stated in '
+     'each market’s own contract text agrees with its event ticker and with the Hotspawn UTC '
+     'start (measured 2026-10-26: 13 of 15 exact-pair events joined; the two start '
+     'disagreements stay refused). The venue supplies no quote-update timestamp, so the '
+     'observation time is shown and the same eight-hour expiry applies.',
+     'Kalshi trade API (public market data)', KALSHI + '/markets?series_ticker=KXCS2GAME&status=open'),
     ('book', 'Researched bookmaker listing',
      'A dated two-way price read from a listing page, accepted only when it re-confirms the exact '
      'pair, the exact UTC start and an asymmetric pair bound to both team labels. The identical '
@@ -146,6 +160,10 @@ def origin(match):
     """
     method = match.get('method')
     if match.get('probabilities') is not None:
+        if method == 'exchange':
+            provider = ((match.get('evidence') or [{}])[0] or {}).get('provider')
+            if provider == 'Kalshi':
+                return ORIGINS['exchange_kalshi']
         return ORIGINS.get(method, ('unknown', 'Unclassified line', 'method not in the published tier list'))
     if match.get('pick'):
         return ORIGINS.get(method, ('research', 'Research pick', 'sourced pick without a percentage'))
@@ -212,6 +230,7 @@ def step_status(match, step):
     """
     providers = {
         'exchange': ('Polymarket',), 'exchange_wide': ('Polymarket',),
+        'kalshi': ('Kalshi',),
         'hltv': ('HLTV', 'HLTV team pages', 'HLTV lineup receipt'),
         'pinnacle': ('Pinnacle',), 'book': ('Book research', 'Book listing re-observation'),
         'model_vrs': ('Valve VRS model',), 'research': ('HLTV', 'HLTV team pages', 'Valve VRS model', 'Rank research', 'Form research'),

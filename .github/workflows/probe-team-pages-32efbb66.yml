@@ -1,0 +1,48 @@
+name: HLTV team-page markup probe 32efbb66 (non-publishing)
+
+# Three HLTV team pages and nothing else, in its own run: the full harvest's
+# HLTV section was rate-limited because it followed a complete refresh sweep
+# from the same runner address. Manual dispatch only; commits its evidence
+# under research/session-32efbb66/ to this session's fixed branch.
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: team-page-probe-32efbb66
+  cancel-in-progress: false
+jobs:
+  probe:
+    if: github.ref == 'refs/heads/arena/32efbb66-maltaproj4'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Read three HLTV team pages (markup measurement only)
+        run: |
+          set +e
+          python -m scripts.probe_team_pages_32efbb66 > research/session-32efbb66/logs/team-pages.txt 2>&1
+          echo "team_pages_rc=$?"
+          tail -20 research/session-32efbb66/logs/team-pages.txt
+          exit 0
+      - name: Commit probe evidence to the fixed session branch
+        if: always()
+        run: |
+          git config user.name "cs2-evidence-runner"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A -- research/session-32efbb66
+          git checkout -- . || true
+          git clean -fd -- public runtime || true
+          git commit -m "Retain HLTV team-page markup probe from run ${GITHUB_RUN_ID} [skip ci]" || echo "nothing to commit"
+          for attempt in 1 2 3; do
+            if git push origin HEAD:arena/32efbb66-maltaproj4; then echo "receipt pushed"; exit 0; fi
+            git pull --rebase --autostash origin arena/32efbb66-maltaproj4 || true
+          done
+          echo "::warning::Could not push the probe receipt."
