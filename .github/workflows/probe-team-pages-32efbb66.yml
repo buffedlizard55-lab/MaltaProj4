@@ -2,9 +2,13 @@ name: HLTV team-page markup probe 32efbb66 (non-publishing)
 
 # Three HLTV team pages and nothing else, in its own run: the full harvest's
 # HLTV section was rate-limited because it followed a complete refresh sweep
-# from the same runner address. Manual dispatch only; commits its evidence
-# under research/session-32efbb66/ to this session's fixed branch.
+# from the same runner address. Triggered by a [team-pages] commit on this
+# session's fixed branch (a workflow that exists only on a side branch
+# cannot be dispatched by name); commits its evidence under
+# research/session-32efbb66/ to the same branch.
 on:
+  push:
+    branches: [arena/32efbb66-maltaproj4]
   workflow_dispatch:
 permissions:
   contents: write
@@ -13,7 +17,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   probe:
-    if: github.ref == 'refs/heads/arena/32efbb66-maltaproj4'
+    if: github.ref == 'refs/heads/arena/32efbb66-maltaproj4' && (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[team-pages]'))
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     steps:
