@@ -125,3 +125,18 @@ node tests/browser_28e4f2a1.cjs                       # 3 viewports x 2 pages
 * **`scripts/refresh.py`, `scripts/core.py`, `scripts/validate.py` and `.github/workflows/**` were not
   touched.** The ladder, its gates and the four-slot-per-hour schedule already deliver the 4–8 hour
   coverage promise; changing them was not needed for this brief.
+
+## 9. Delivery receipt — PR #356 merged, live bytes re-read
+
+| Item | Value |
+| --- | --- |
+| Pull request | [#356](https://github.com/buffedlizard55-lab/MaltaProj4/pull/356) — merged without waiting for review at **2026-10-26T01:16:05Z**, merge commit `23d3282` |
+| Conflict resolution | `main` advanced twice while the branch held the PR. Both times the only conflicts were `COORDINATION.md` (both sessions appending a claim at the same point: both blocks kept, incoming first) and `data/review-notes.json` (union by `id`, main's order kept, this session's four notes appended). The second round also conflicted `build-info.json`; it was resolved by taking `main`'s staged manifest and rewriting only `files["assets/style.css"]` to the sha256 of the merged stylesheet (`e79c962a…ebad`), which is what `scripts.validate` checks. |
+| Publisher run | [40253386073](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40253386073) — the **only** failing step is the legacy `main:/` root staging ("Keep the legacy main:/ root fallback on the verified build"), the documented infrastructure fault that by design cannot block the artifact; the `deploy` job ran and its own step "Verify live Pages bytes match this exact build" passed. |
+| Live receipt (`build-info.json`, read ~01:36Z) | revision `23d3282`, built **01:24:43Z**, snapshot **01:24:42Z**, **81** feed rows, `assets/style.css` = `e79c962a…ebad` (the merged stylesheet). |
+| Live directory, `index.html` | present inside `#unresolved-limits`, above the ladder and the checklist. |
+| Live directory, `unresolved.html` | present directly under the page header, with the `Jump to the match rows ↓` link. |
+| Live counts (refreshed snapshot, 19 open) | exchange **8** · Pinnacle **0** · wide exchange **0** · book listing **1** · our VRS model **8** · HLTV-mirror **2** · research-only **0** · no pick **0** → **total 19 / 19 priced**. 8+0+0+1+8+2+0+0 = 19, so the directory adds up to the published open board on a snapshot this session never built locally (the local snapshot has 11 open). |
+| Prose check | The live paragraph names the snapshot time ("observed 26 Oct 2026 · 01:24 UTC") and states that a page served after the eight-hour window shows that snapshot's counts. |
+
+The first read of both live pages came back from an edge cache that predated the deploy; re-reading with a cache-busting query string showed the directory on both pages. That is a measurement note for future sessions, not a site defect.
