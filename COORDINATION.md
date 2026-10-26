@@ -10969,3 +10969,45 @@ withholds past-lock rows in its `public/` copy by reader clock (`build.py:1733`)
 committed snapshot breaks snapshot-keyed tests; the production pipeline does this on purpose at publish time,
 diagnostic sessions must not. (f) GitHub Pages legacy `main:/` builds are soft-limited to 10/hour, so the live
 site can lag a green run by minutes (session b06ee902's measurement).
+
+## Session 5bf1c3eb — CLAIM (2026-10-26 00:55 UTC): every-match pick coverage, unresolved-register separation, mobile executive summary
+
+**Board read before claiming.** `origin/main` = `eca5117` (*Publish the verified build to the legacy main:/ root
+fallback*). Committed root snapshot `data/latest.json` `generated_at 2026-10-26T00:10:49Z`, `build-info.json`
+`built_at 2026-10-26T00:10:50Z`, revision `3b158a37`, **73 feed rows / 11 open / 11 with a pick / 11 with a win
+probability / 0 unresolved**, and **62 rows not open by Hotspawn's own sourced timestamps**. Live Pages
+`build-info.json` read at claim time serves the same revision `3b158a37` / `built_at 2026-10-26T00:10:50.130013Z`,
+so the deployed artifact and the committed root agree. `main` runs `40247657442` (schedule, success, 9m4s) and
+`40248351919` (pages build and deployment, success) are green; the publisher is healthy.
+
+**Local gates reproduced on the claimed tree before any edit** (`.venv`, `requirements.txt` exact pins):
+`python -m unittest discover -s tests` → **Ran 1778 tests, OK (skipped=14)**; `audits` → 9 OK;
+`verification-95b588c2/test_integrity.py` → 5 OK; `verification-c6` → 12 OK;
+`scripts.validate --data data/latest.json --site .` → RC 0, 73 rows / 11 calculations / 15 pages / 693 links /
+20 checksums / 165 displayed rows. No gate was red at claim time, so nothing is being inherited broken.
+
+**The gap this session owns.** The brief asks for a pick on *every* match and a *separate* section for the ones
+that cannot have one, named in the executive summary. Measured on the committed snapshot, the 62 pick-less rows
+are **not** unresolved research: they are rows whose own Hotspawn `lock_time` has passed, and 50 of them are
+returned by the fixtures endpoint with `status: "scheduled"` **while also carrying a past `end_time`** (e.g.
+`1052746` Fortress v Endless Journey, `lock_time 2026-06-26T10:24:00Z`, `start_time 2026-06-26T11:45:27Z`,
+`end_time 2026-06-26T12:51:00Z`, `status "scheduled"`, observed 2026-10-26T00:07:16Z). Publishing a percentage
+for those would be a fabricated live recommendation, so the honest deliverable is a **third, distinct register**
+beside "priced" and "unresolved": *closed by Hotspawn's own lock*, with the exact feed field that closes it and
+the upstream status conflict flagged for review.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| H1 Live harvest on this branch (real refresh + quarantine + independent row audit + unpriced-row gap probe, non-publishing) | **in progress** | 5bf1c3eb | `.github/workflows/harvest-5bf1c3eb.yml`, `scripts/gap_probe_5bf1c3eb.py`, `research/session-5bf1c3eb/**` | 2026-10-26 00:55 |
+| H2 Re-verify pick coverage for every *open* fixture on fresh live data; research any blank through HLTV → esportsbooks → betting lines and close it or record the limitation | **unclaimed→in progress** | 5bf1c3eb | `research/session-5bf1c3eb/**`, `scripts/core.py` **only if a new rung is required** | 2026-10-26 00:55 |
+| H3 Separate register for rows that cannot take a pick (closed by Hotspawn's own lock) + its limitations, named in the executive summary | unclaimed | 5bf1c3eb | `scripts/build.py`, `site/assets/style.css`, `assets/style.css`, `tests/test_session_5bf1c3eb.py` | 2026-10-26 00:55 |
+| H4 Mobile-first executive summary: one obvious route to the updated picks from the landing page on a phone | unclaimed | 5bf1c3eb | `scripts/build.py`, `site/assets/style.css`, `assets/style.css` | 2026-10-26 00:55 |
+| H5 Flag the Hotspawn upstream status conflict (past `end_time` + `status: scheduled`) for manual review | unclaimed | 5bf1c3eb | `data/review-notes.json` (append by unique id), `research/session-5bf1c3eb/**` | 2026-10-26 00:55 |
+| H6 Final integration: full gates, PR to `main`, merge without waiting, Pages live verification, receipt here | unclaimed | 5bf1c3eb | `COORDINATION.md` (this section), generated root pages via the publisher path only | 2026-10-26 00:55 |
+
+**Scope discipline.** This session does not edit `pages.yml`, `harvest.yml`, another session's
+`.github/workflows/harvest-*.yml`, another session's `scripts/*_<id>.py`, or any other session's
+`research/**`. Generated shared outputs (`data/latest.json`, `data/matches.csv`, root pages, `build-info.json`)
+are written **only** by running this repository's own publisher path at integration time, never by hand.
+`data/review-notes.json` is append-only by unique `session-5bf1c3eb-*` id and unioned on rebase.
+`COORDINATION.md` is append-only for this section; any conflict is resolved keep-both.

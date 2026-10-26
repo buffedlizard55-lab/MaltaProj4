@@ -1,0 +1,114 @@
+name: Live harvest 5bf1c3eb (non-publishing)
+
+# Session arena/5bf1c3eb-maltaproj4. The authoring sandbox reaches GitHub and the
+# package registries only, so the real, unmodified refresh runs here on a runner
+# with normal egress and commits its snapshot plus every command log back to this
+# branch for line-by-line local re-checking. This workflow never publishes to
+# Pages and never deploys: publication stays with pages.yml on main.
+#
+# It also retains a dated, unpriced-row gap probe so a blank pick can be
+# re-researched against the exact source responses observed in the same minute,
+# instead of being re-derived later from memory.
+
+on:
+  push:
+    branches: [arena/5bf1c3eb-maltaproj4]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: harvest-5bf1c3eb
+  cancel-in-progress: false
+
+jobs:
+  capture:
+    if: github.ref == 'refs/heads/arena/5bf1c3eb-maltaproj4' && (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[harvest]'))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Refresh the official Hotspawn, HLTV, exchange, bookmaker and Valve sources
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        continue-on-error: true
+        run: |
+          mkdir -p runtime research/session-5bf1c3eb/logs
+          python -m scripts.refresh --output runtime/latest.json 2>&1 | tee research/session-5bf1c3eb/logs/refresh.txt
+      - name: Withhold any row the independent evidence replay cannot reproduce
+        continue-on-error: true
+        run: python -m scripts.quarantine runtime/latest.json 2>&1 | tee research/session-5bf1c3eb/logs/quarantine.txt
+      - name: Independent row audit of the refreshed snapshot
+        continue-on-error: true
+        run: python verification-c6/audit_snapshot.py runtime/latest.json --output research/session-5bf1c3eb/logs/row-audit.md 2>&1 | tee research/session-5bf1c3eb/logs/row-audit.txt
+      - name: Retain the unpriced-row gap probe for every blank pick
+        continue-on-error: true
+        run: python -m scripts.gap_probe_5bf1c3eb --snapshot runtime/latest.json --output-dir research/session-5bf1c3eb/gaps 2>&1 | tee research/session-5bf1c3eb/logs/gap-probe.txt
+      - name: Rehearse the publisher path without publishing
+        continue-on-error: true
+        run: |
+          set +e
+          python -m scripts.build --data runtime/latest.json 2>&1 | tee research/session-5bf1c3eb/logs/build.txt
+          python -m scripts.validate --data runtime/latest.json 2>&1 | tee research/session-5bf1c3eb/logs/validate.txt
+          rm -rf public
+          exit 0
+      - name: Retain the snapshot and the harvest summary
+        if: always()
+        env:
+          RUN_ID: ${{ github.run_id }}
+          RUN_SHA: ${{ github.sha }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          mkdir -p research/session-5bf1c3eb
+          if [ -s runtime/latest.json ]; then cp runtime/latest.json research/session-5bf1c3eb/snapshot.json; fi
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          out = Path('research/session-5bf1c3eb')
+          receipt = {
+              'workflow_run_id': os.environ['RUN_ID'],
+              'checkout_sha': os.environ['RUN_SHA'],
+              'run_url': os.environ['RUN_URL'],
+              'publishes_pages': False,
+          }
+          snap = out / 'snapshot.json'
+          if snap.exists() and snap.stat().st_size:
+              data = json.loads(snap.read_text())
+              matches = data.get('matches') or []
+              opens = [m for m in matches if m.get('state') == 'open']
+              receipt.update({
+                  'snapshot_generated_at': data.get('generated_at'),
+                  'fixtures_observed_at': data.get('fixtures_observed_at'),
+                  'coverage': data.get('coverage'),
+                  'rows_total': len(matches),
+                  'rows_open': len(opens),
+                  'rows_open_priced': sum(1 for m in opens if m.get('probabilities') is not None),
+                  'rows_open_research_only': sum(1 for m in opens if m.get('probabilities') is None and m.get('pick')),
+                  'rows_open_without_pick': sum(1 for m in opens if m.get('probabilities') is None and not m.get('pick')),
+                  'unresolved_open_ids': [m['id'] for m in opens if m.get('probabilities') is None and not m.get('pick')],
+                  'open_pick_methods': sorted({str(m.get('method')) for m in opens}),
+                  'issues': data.get('issues'),
+                  'source_checks': data.get('source_checks'),
+              })
+          else:
+              receipt['error'] = 'refresh produced no snapshot; see logs/refresh.txt'
+          (out / 'run.json').write_text(json.dumps(receipt, indent=2) + '\n')
+          PY
+      - name: Commit the dated harvest back to this branch only
+        if: always()
+        run: |
+          git checkout -- . ':!research/session-5bf1c3eb' || true
+          git clean -fd -- . ':!research/session-5bf1c3eb' || true
+          git config user.name "cs2-evidence-runner"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A -- research/session-5bf1c3eb
+          if git diff --cached --quiet; then echo "No harvest change to commit."; exit 0; fi
+          git commit -m "Retain the live harvest from run ${GITHUB_RUN_ID} (no publication) [skip ci]"
+          git pull --rebase --autostash origin arena/5bf1c3eb-maltaproj4
+          git push origin HEAD:arena/5bf1c3eb-maltaproj4
