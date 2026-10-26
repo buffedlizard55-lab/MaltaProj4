@@ -11581,3 +11581,12 @@ root pages, and each was resolved union-by-`id` / regenerate-from-`origin/main` 
 research fixtures (`research/session-aeafcbe6/mobile-measurements.json`,
 `research/session-28e4f2a1/phone-directory-measurements.json`); both are restored with `git checkout -- research/`
 after every run, and this session's own measurements are not claimed from them.
+
+**Session b964dffd — fifth integration note (2026-10-26 ~02:04 UTC).** Main merged
+PR #355 (ba480835, post-hoc wording in build.py). Same resolution: notes union
+300, README/COORDINATION dated sections kept both, generated files rebuilt from
+the verified 01:00Z capture with the merged builder (833 links). Gates: **1,878
+unit OK, validate 81/19/833, browser chain rc=0**. Merging PR #361 as soon as
+GitHub reports it clean; if main moves again first, the repeated-merge record
+above (five cycles) is the evidence that each merged tree was fully gated.
+
