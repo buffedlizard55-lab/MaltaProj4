@@ -1,7 +1,7 @@
 {
- "measured_at": "2026-10-26T01:06:31.846Z",
+ "measured_at": "2026-10-26T01:46:19.971Z",
  "artifact": "public/",
- "open_matches": 11,
+ "open_matches": 19,
  "viewports": [
   {
    "name": "iPhone SE",
@@ -22,7 +22,7 @@
        "ariaHidden": null
       },
       {
-       "text": "7",
+       "text": "8",
        "height": 38,
        "width": 100,
        "display": "block",
@@ -30,7 +30,7 @@
        "ariaHidden": null
       },
       {
-       "text": "7",
+       "text": "8",
        "height": 38,
        "width": 100,
        "display": "block",
@@ -206,7 +206,7 @@
        "ariaHidden": null
       },
       {
-       "text": "3",
+       "text": "8",
        "height": 38,
        "width": 100,
        "display": "block",
@@ -214,7 +214,7 @@
        "ariaHidden": null
       },
       {
-       "text": "3",
+       "text": "8",
        "height": 38,
        "width": 100,
        "display": "block",
@@ -252,7 +252,7 @@
        "ariaHidden": null
       },
       {
-       "text": "0",
+       "text": "2",
        "height": 38,
        "width": 100,
        "display": "block",
@@ -260,7 +260,7 @@
        "ariaHidden": null
       },
       {
-       "text": "0",
+       "text": "2",
        "height": 38,
        "width": 100,
        "display": "block",
@@ -390,7 +390,7 @@
        "ariaHidden": null
       },
       {
-       "text": "11",
+       "text": "19",
        "height": 39,
        "width": 100,
        "display": "block",
@@ -398,7 +398,7 @@
        "ariaHidden": null
       },
       {
-       "text": "11",
+       "text": "19",
        "height": 39,
        "width": 100,
        "display": "block",
@@ -425,8 +425,8 @@
      "bottom": 2316
     }
    ],
-   "total_sum": 11,
-   "total_row": 11,
+   "total_sum": 19,
+   "total_row": 19,
    "in_summary": true,
    "hit_tag": "TD",
    "tab_top": 507,
@@ -472,7 +472,7 @@
        "ariaHidden": null
       },
       {
-       "text": "7",
+       "text": "8",
        "height": 38,
        "width": 121,
        "display": "block",
@@ -480,7 +480,7 @@
        "ariaHidden": null
       },
       {
-       "text": "7",
+       "text": "8",
        "height": 38,
        "width": 121,
        "display": "block",
@@ -656,7 +656,7 @@
        "ariaHidden": null
       },
       {
-       "text": "3",
+       "text": "8",
        "height": 38,
        "width": 121,
        "display": "block",
@@ -664,7 +664,7 @@
        "ariaHidden": null
       },
       {
-       "text": "3",
+       "text": "8",
        "height": 38,
        "width": 121,
        "display": "block",
@@ -702,7 +702,7 @@
        "ariaHidden": null
       },
       {
-       "text": "0",
+       "text": "2",
        "height": 38,
        "width": 121,
        "display": "block",
@@ -710,7 +710,7 @@
        "ariaHidden": null
       },
       {
-       "text": "0",
+       "text": "2",
        "height": 38,
        "width": 121,
        "display": "block",
@@ -840,7 +840,7 @@
        "ariaHidden": null
       },
       {
-       "text": "11",
+       "text": "19",
        "height": 39,
        "width": 121,
        "display": "block",
@@ -848,7 +848,7 @@
        "ariaHidden": null
       },
       {
-       "text": "11",
+       "text": "19",
        "height": 39,
        "width": 121,
        "display": "block",
@@ -875,8 +875,8 @@
      "bottom": 2173
     }
    ],
-   "total_sum": 11,
-   "total_row": 11,
+   "total_sum": 19,
+   "total_row": 19,
    "in_summary": false,
    "hit_tag": "TD",
    "tab_top": 507,
@@ -923,7 +923,7 @@
        "ariaHidden": null
       },
       {
-       "text": "7",
+       "text": "8",
        "height": 38,
        "width": 135,
        "display": "block",
@@ -931,7 +931,7 @@
        "ariaHidden": null
       },
       {
-       "text": "7",
+       "text": "8",
        "height": 38,
        "width": 135,
        "display": "block",
@@ -1047,7 +1047,7 @@
        "ariaHidden": null
       }
      ],
-     "bottom": 963
+     "bottom": 962
     },
     {
      "step": "book",
@@ -1107,7 +1107,7 @@
        "ariaHidden": null
       },
       {
-       "text": "3",
+       "text": "8",
        "height": 38,
        "width": 135,
        "display": "block",
@@ -1115,7 +1115,7 @@
        "ariaHidden": null
       },
       {
-       "text": "3",
+       "text": "8",
        "height": 38,
        "width": 135,
        "display": "block",
@@ -1153,7 +1153,7 @@
        "ariaHidden": null
       },
       {
-       "text": "0",
+       "text": "2",
        "height": 38,
        "width": 135,
        "display": "block",
@@ -1161,7 +1161,7 @@
        "ariaHidden": null
       },
       {
-       "text": "0",
+       "text": "2",
        "height": 38,
        "width": 135,
        "display": "block",
@@ -1291,7 +1291,7 @@
        "ariaHidden": null
       },
       {
-       "text": "11",
+       "text": "19",
        "height": 39,
        "width": 135,
        "display": "block",
@@ -1299,7 +1299,7 @@
        "ariaHidden": null
       },
       {
-       "text": "11",
+       "text": "19",
        "height": 39,
        "width": 135,
        "display": "block",
@@ -1326,8 +1326,8 @@
      "bottom": 2291
     }
    ],
-   "total_sum": 11,
-   "total_row": 11,
+   "total_sum": 19,
+   "total_row": 19,
    "in_summary": true,
    "hit_tag": "TD",
    "tab_top": 783,
@@ -1373,7 +1373,7 @@
        "ariaHidden": null
       },
       {
-       "text": "7",
+       "text": "8",
        "height": 38,
        "width": 156,
        "display": "block",
@@ -1381,7 +1381,7 @@
        "ariaHidden": null
       },
       {
-       "text": "7",
+       "text": "8",
        "height": 38,
        "width": 156,
        "display": "block",
@@ -1557,7 +1557,7 @@
        "ariaHidden": null
       },
       {
-       "text": "3",
+       "text": "8",
        "height": 38,
        "width": 156,
        "display": "block",
@@ -1565,7 +1565,7 @@
        "ariaHidden": null
       },
       {
-       "text": "3",
+       "text": "8",
        "height": 38,
        "width": 156,
        "display": "block",
@@ -1603,7 +1603,7 @@
        "ariaHidden": null
       },
       {
-       "text": "0",
+       "text": "2",
        "height": 38,
        "width": 156,
        "display": "block",
@@ -1611,7 +1611,7 @@
        "ariaHidden": null
       },
       {
-       "text": "0",
+       "text": "2",
        "height": 38,
        "width": 156,
        "display": "block",
@@ -1741,7 +1741,7 @@
        "ariaHidden": null
       },
       {
-       "text": "11",
+       "text": "19",
        "height": 39,
        "width": 156,
        "display": "block",
@@ -1749,7 +1749,7 @@
        "ariaHidden": null
       },
       {
-       "text": "11",
+       "text": "19",
        "height": 39,
        "width": 156,
        "display": "block",
@@ -1776,8 +1776,8 @@
      "bottom": 2191
     }
    ],
-   "total_sum": 11,
-   "total_row": 11,
+   "total_sum": 19,
+   "total_row": 19,
    "in_summary": false,
    "hit_tag": "TD",
    "tab_top": 783,
@@ -1824,7 +1824,7 @@
        "ariaHidden": null
       },
       {
-       "text": "7",
+       "text": "8",
        "height": 38,
        "width": 146,
        "display": "block",
@@ -1832,7 +1832,7 @@
        "ariaHidden": null
       },
       {
-       "text": "7",
+       "text": "8",
        "height": 38,
        "width": 146,
        "display": "block",
@@ -1902,7 +1902,7 @@
        "ariaHidden": null
       }
      ],
-     "bottom": 774
+     "bottom": 773
     },
     {
      "step": "exchange_wide",
@@ -1994,7 +1994,7 @@
        "ariaHidden": null
       }
      ],
-     "bottom": 1196
+     "bottom": 1195
     },
     {
      "step": "model_vrs",
@@ -2008,7 +2008,7 @@
        "ariaHidden": null
       },
       {
-       "text": "3",
+       "text": "8",
        "height": 38,
        "width": 146,
        "display": "block",
@@ -2016,7 +2016,7 @@
        "ariaHidden": null
       },
       {
-       "text": "3",
+       "text": "8",
        "height": 38,
        "width": 146,
        "display": "block",
@@ -2054,7 +2054,7 @@
        "ariaHidden": null
       },
       {
-       "text": "0",
+       "text": "2",
        "height": 38,
        "width": 146,
        "display": "block",
@@ -2062,7 +2062,7 @@
        "ariaHidden": null
       },
       {
-       "text": "0",
+       "text": "2",
        "height": 38,
        "width": 146,
        "display": "block",
@@ -2086,7 +2086,7 @@
        "ariaHidden": null
       }
      ],
-     "bottom": 1670
+     "bottom": 1669
     },
     {
      "step": "research",
@@ -2192,7 +2192,7 @@
        "ariaHidden": null
       },
       {
-       "text": "11",
+       "text": "19",
        "height": 39,
        "width": 146,
        "display": "block",
@@ -2200,7 +2200,7 @@
        "ariaHidden": null
       },
       {
-       "text": "11",
+       "text": "19",
        "height": 39,
        "width": 146,
        "display": "block",
@@ -2227,8 +2227,8 @@
      "bottom": 2307
     }
    ],
-   "total_sum": 11,
-   "total_row": 11,
+   "total_sum": 19,
+   "total_row": 19,
    "in_summary": true,
    "hit_tag": "TD",
    "tab_top": 854,
@@ -2274,7 +2274,7 @@
        "ariaHidden": null
       },
       {
-       "text": "7",
+       "text": "8",
        "height": 38,
        "width": 167,
        "display": "block",
@@ -2282,7 +2282,7 @@
        "ariaHidden": null
       },
       {
-       "text": "7",
+       "text": "8",
        "height": 38,
        "width": 167,
        "display": "block",
@@ -2458,7 +2458,7 @@
        "ariaHidden": null
       },
       {
-       "text": "3",
+       "text": "8",
        "height": 38,
        "width": 167,
        "display": "block",
@@ -2466,7 +2466,7 @@
        "ariaHidden": null
       },
       {
-       "text": "3",
+       "text": "8",
        "height": 38,
        "width": 167,
        "display": "block",
@@ -2504,7 +2504,7 @@
        "ariaHidden": null
       },
       {
-       "text": "0",
+       "text": "2",
        "height": 38,
        "width": 167,
        "display": "block",
@@ -2512,7 +2512,7 @@
        "ariaHidden": null
       },
       {
-       "text": "0",
+       "text": "2",
        "height": 38,
        "width": 167,
        "display": "block",
@@ -2642,7 +2642,7 @@
        "ariaHidden": null
       },
       {
-       "text": "11",
+       "text": "19",
        "height": 39,
        "width": 167,
        "display": "block",
@@ -2650,7 +2650,7 @@
        "ariaHidden": null
       },
       {
-       "text": "11",
+       "text": "19",
        "height": 39,
        "width": 167,
        "display": "block",
@@ -2677,8 +2677,8 @@
      "bottom": 2170
     }
    ],
-   "total_sum": 11,
-   "total_row": 11,
+   "total_sum": 19,
+   "total_row": 19,
    "in_summary": false,
    "hit_tag": "TD",
    "tab_top": 854,
