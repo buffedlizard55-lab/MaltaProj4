@@ -1,5 +1,5 @@
 {
- "measured_at": "2026-10-26T01:46:19.971Z",
+ "measured_at": "2026-10-26T01:57:16.642Z",
  "artifact": "public/",
  "open_matches": 19,
  "viewports": [
@@ -100,7 +100,7 @@
        "ariaHidden": null
       }
      ],
-     "bottom": 636
+     "bottom": 637
     },
     {
      "step": "exchange_wide",
@@ -146,7 +146,7 @@
        "ariaHidden": null
       }
      ],
-     "bottom": 889
+     "bottom": 890
     },
     {
      "step": "book",
@@ -192,7 +192,7 @@
        "ariaHidden": null
       }
      ],
-     "bottom": 1127
+     "bottom": 1128
     },
     {
      "step": "model_vrs",
@@ -238,7 +238,7 @@
        "ariaHidden": null
       }
      ],
-     "bottom": 1363
+     "bottom": 1364
     },
     {
      "step": "model_vrs_mirror",
@@ -284,7 +284,7 @@
        "ariaHidden": null
       }
      ],
-     "bottom": 1601
+     "bottom": 1602
     },
     {
      "step": "research",
@@ -330,7 +330,7 @@
        "ariaHidden": null
       }
      ],
-     "bottom": 1837
+     "bottom": 1838
     },
     {
      "step": "none",
@@ -376,7 +376,7 @@
        "ariaHidden": null
       }
      ],
-     "bottom": 2114
+     "bottom": 2115
     },
     {
      "step": "total",
@@ -422,7 +422,7 @@
        "ariaHidden": null
       }
      ],
-     "bottom": 2316
+     "bottom": 2317
     }
    ],
    "total_sum": 19,
@@ -1231,7 +1231,7 @@
        "ariaHidden": null
       }
      ],
-     "bottom": 1872
+     "bottom": 1871
     },
     {
      "step": "none",
@@ -1856,7 +1856,7 @@
        "ariaHidden": null
       }
      ],
-     "bottom": 556
+     "bottom": 555
     },
     {
      "step": "pinnacle",
@@ -2040,7 +2040,7 @@
        "ariaHidden": null
       }
      ],
-     "bottom": 1432
+     "bottom": 1431
     },
     {
      "step": "model_vrs_mirror",
@@ -2178,7 +2178,7 @@
        "ariaHidden": null
       }
      ],
-     "bottom": 2131
+     "bottom": 2130
     },
     {
      "step": "total",
@@ -2224,7 +2224,7 @@
        "ariaHidden": null
       }
      ],
-     "bottom": 2307
+     "bottom": 2306
     }
    ],
    "total_sum": 19,

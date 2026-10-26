@@ -20,6 +20,11 @@ const VIEWPORTS = [
 
 (async () => {
   const root = path.resolve('public');
+  // One card per listed row. The expectation is read from the published snapshot rather
+  // than pinned to a count: this board refreshes every 4-8 hours, so a newer snapshot with
+  // more listed matches must be measured against itself, not against a stale row total.
+  const listedRows = JSON.parse(
+    fs.readFileSync(path.join(root, 'data', 'latest.json'), 'utf8')).matches.length;
   const server = http.createServer((req, res) => {
     const url = new URL(req.url, 'http://test');
     const pathname = decodeURIComponent(url.pathname).replace(/^\/MaltaProj4\//, '/');
@@ -94,8 +99,9 @@ const VIEWPORTS = [
                 sectionTop: Math.round(section.getBoundingClientRect().y + scrollY)};
       });
       if (!coverage.found) report.failures.push(`${vp.name}: #every-match is missing from matches.html`);
-      if (coverage.cards.length !== 73)
-        report.failures.push(`${vp.name}: expected 73 coverage cards, found ${coverage.cards.length}`);
+      if (coverage.cards.length !== listedRows)
+        report.failures.push(
+          `${vp.name}: expected ${listedRows} coverage cards (one per listed row), found ${coverage.cards.length}`);
       if (coverage.cards.some(c => !c.pick && !/no supported pick/i.test(c.pick))) {
         const silent = coverage.cards.filter(c => !c.pick && !c.limitation);
         if (silent.length) report.failures.push(`${vp.name}: ${silent.length} cards with neither pick nor limitation`);

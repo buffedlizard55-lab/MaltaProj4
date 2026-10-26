@@ -11432,3 +11432,14 @@ integration session and that nobody's work is discarded:
 Gates on the merged tree: unit **1848 OK (9 skipped)**, audits 9 OK, integrity 5 OK, verification-c6 12 OK,
 `scripts.validate --site public` and `--site .` both RC 0 (**81 rows / 19 calculations / 15 pages / 970 links /
 20 checksums / 200 displayed rows**), 13-suite Chromium browser run RC 0.
+
+**One more stale pin, adapted the same way (session `11e17543`).** `tests/browser_11e17543.cjs` asserted
+`coverage.cards.length !== 73` — the row total of the board it was written against. On the published
+01:28:55Z board the every-listed-match table correctly renders **81** cards (one per listed row), so the suite
+failed on the count alone while every other assertion (stacked cards, pick-or-limitation on each card, source
+link on each card, tap targets, no overflow) passed. The count is now read from `public/data/latest.json`
+(`listedRows`), which keeps the original intent — *one card per listed row* — and stops breaking on every
+4–8-hour refresh. Nothing was loosened: a card missing from the table still fails, and so does an extra one.
+That session's own generator also re-ran on this board, so `research/session-11e17543/every-match-picks.{json,
+csv,md}` and `mobile-measurements.json` are regenerated receipts for the 81-row snapshot
+(`snapshot_generated_at 2026-10-26T01:28:55.438641Z`), committed as-is.
