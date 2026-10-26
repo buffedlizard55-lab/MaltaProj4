@@ -10970,7 +10970,6 @@ committed snapshot breaks snapshot-keyed tests; the production pipeline does thi
 diagnostic sessions must not. (f) GitHub Pages legacy `main:/` builds are soft-limited to 10/hour, so the live
 site can lag a green run by minutes (session b06ee902's measurement).
 
-<<<<<<< HEAD
 ## Session c0f54478 — claim (2026-10-26 00:45 UTC): fresh acceptance audit of the live CS2 board; reconcile the stale non-featured research request
 
 **Coordination read before this claim:** the full `COORDINATION.md`, current main tree, open PR list, recent Actions runs, and the public build receipt. This branch is fixed by Arena as `arena/c0f54478-maltaproj4`; it remains on that branch and will not create or switch to another branch.
@@ -10998,12 +10997,13 @@ site can lag a green run by minutes (session b06ee902's measurement).
 **Gates on the exact committed snapshot:** `scripts.validate --data data/latest.json --site .` RC=0; independent validator on built `public/` RC=0 (**73 rows / 11 calculations / 15 pages / 693 links-assets / 20 checksums / 165 displayed rows**); independent `verification-c6/audit_snapshot.py` **0 errors**; **1,778 unit tests OK (14 skipped)**; audits 9 OK; integrity 5 OK; verification-c6 tests 12 OK; all 13 Chromium suites RC=0. At 320×568, 390×844 and 412×915 the summary quick-nav and updated-picks path are present, the first pick and both probabilities clear the fixed tab bar, and no horizontal overflow is reported. The first browser invocation stopped because the local `public/` build had not yet been created; after building and validating `public/`, the complete suite passed.
 
 **Coordination note.** While the browser suite ran, it refreshed the older tracked `research/session-aeafcbe6/mobile-measurements.json` fixture with this snapshot. That file was restored byte-for-byte from this branch's `HEAD`; this session's new measurements are preserved only in its own `browser.log`/`VERIFICATION.md`. No other session's artifact is included in this branch's diff.
-=======
+
 ## Session 160f03c8 — claim (2026-10-26 UTC)
 
 | Task | Status | Owner | File scope | Updated (UTC) |
 | --- | --- | --- | --- | --- |
-| Independent audit of the checked-in latest snapshot: coverage, every open pick/probability/source chain, stale/expired and unresolved handling; report only independently observed findings without changing shared generated data | in progress | 160f03c8 | `research/session-160f03c8/**` | 2026-10-26 |
-| Verify executive-summary navigation, the clearly separated unresolved/limitations view, and responsive mobile accessibility against the current generated site; record reproducible checks and any irregularities | in progress | 160f03c8 | `research/session-160f03c8/**` | 2026-10-26 |
-| Run relevant project gates and deliver a scoped verification receipt; no shared build/data/UI edits unless a concrete defect is demonstrated and logged first | in progress | 160f03c8 | `research/session-160f03c8/**`, `COORDINATION.md` | 2026-10-26 |
->>>>>>> 099fa69 (Claim independent snapshot and mobile audit)
+| Independent audit of the checked-in latest snapshot and later live Hotspawn inventory; record the verified discrepancy and exact rows | **needs review — eight future Hotspawn fixtures absent from the 00:10Z snapshot; published on Flagged for Review** | 160f03c8 | `research/session-160f03c8/VERIFICATION.md`, `data/review-notes.json` (additive) | 2026-10-26 |
+| Verify executive-summary navigation, unresolved/limitations view, and responsive mobile accessibility; record reproducible checks | **done** | 160f03c8 | `research/session-160f03c8/VERIFICATION.md` | 2026-10-26 |
+| Publish the independently observed live Hotspawn inventory discrepancy as a Flagged for Review note; preserve exact source links and do not invent odds/picks for unverified new fixtures | **done** — note `session-160f03c8-hotspawn-inventory-drift-2026-10-26` is appended to `data/review-notes.json` and rendered on `review.html` | 160f03c8 | `research/session-160f03c8/**`, `data/review-notes.json` (additive), generated root pages/build receipt | 2026-10-26 |
+| Run relevant project gates and deliver a scoped verification receipt; no other shared build/data/UI edits unless a concrete defect is demonstrated and logged first | **done** — 1,778 unit tests (14 skipped); validate 73 rows / 11 probability calculations / 693 links / 20 checksums; independent retained-evidence audit 73 rows / 0 failures; audits 9 + integrity 5 + verification-c6 12 pass; all 13 browser suites pass at 320/390/768/1440px | 160f03c8 | `research/session-160f03c8/**`, `COORDINATION.md` | 2026-10-26 |
+| Final integration: PR from this fixed Arena branch to `main`, merge after green checks, confirm Pages includes the review note and state the live coverage discrepancy precisely | in progress | 160f03c8 | `COORDINATION.md`, generated root pages/data/build receipt | 2026-10-26 |
