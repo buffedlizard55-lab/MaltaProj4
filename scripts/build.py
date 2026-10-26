@@ -12,6 +12,7 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from scripts.core import dt, iso, fresh, pick_deadline, research_observation, HOTSPAWN, FIXTURES, GAMMA, PIN, norm, IDENTITIES as IDENTITY_REGISTER
 from scripts import summary, vrs
+from scripts import every_match_11e17543 as every_match
 
 ROOT=Path(__file__).resolve().parents[1]
 REPO='https://github.com/buffedlizard55-lab/MaltaProj4'
@@ -120,9 +121,11 @@ def feed_scope(data):
         f'<h2>{len(past)} of {len(rows)} feed rows are past fixtures</h2>'
         f'<p>Hotspawn’s fixture endpoint still returns <strong>{len(past)}</strong> CS2 rows whose scheduled start '
         f'is before this snapshot’s own observation time ({e(date(starts[0]))} to {e(date(starts[-1]))} UTC), '
-        'each still carrying <em>status: scheduled</em>. They are kept here for complete inventory and are '
-        f'<strong>never given a pick or a percentage</strong>; only the {count_span("open", c["open"])} open rows carry prices. '
-        'The public lobby lists the open matches it is taking picks on.</p>'
+        'each still carrying <em>status: scheduled</em>. They are kept here for complete inventory, are '
+        '<strong>never given a pick or a percentage</strong> on the actionable pick board, and '
+        f'only the {count_span("open", c["open"])} open rows carry prices. '
+        'The public lobby lists the open matches it is taking picks on. Every past row still gets a researched '
+        'pick or its own recorded limitation in the coverage table below, labelled as historical.</p>'
         '<p class="small">Official sources: '
         + link('https://play.hotspawn.com/lobby', 'Hotspawn lobby ↗')
         + ' · ' + link(FIXTURES, 'Hotspawn fixtures endpoint ↗')
@@ -130,8 +133,185 @@ def feed_scope(data):
         + '</p>'
         # The board opens on the open matches (the user's question is "where is my
         # pick?"), so the past rows this panel just counted need their own tap.
-        + '<div class="actions">' + link('matches.html?status=not_open', 'Show the past fixtures →', 'button secondary')
-        + link('picks.html', 'Picks for every open match →', 'button') + '</div></section>')
+        + '<div class="actions">' + link('#every-match', 'A pick for every listed match ↓', 'button')
+        + link('matches.html?status=not_open', 'Show the past fixtures →', 'button secondary')
+        + link('picks.html', 'Actionable picks only →', 'button secondary') + '</div></section>')
+
+
+def plain_count(value):
+    """A count the client-side counters must not rewrite.
+
+    ``count_span`` emits ``data-count`` and ``assets/app.js`` overwrites every such
+    node from the board coverage JSON, which counts only the open rows. The
+    every-match sections count all 73 feed rows, so their numbers are static by
+    necessity: they come from the snapshot beside them and cannot move with a lock.
+    """
+    return f'<strong>{int(value)}</strong>'
+
+
+def every_match_report(data):
+    """Session 11e17543: the same ladder run over EVERY row, not only the open ones.
+
+    Cached per snapshot so a build renders it once. The report is computed from the
+    rows ``build()`` is about to publish (after expiry), not from a re-read of
+    ``data/latest.json``, so the counts on the page always equal the counts in the
+    snapshot beside it.
+    """
+    cache = getattr(every_match_report, '_cache', None)
+    key = (data.get('generated_at'), id(data.get('matches')))
+    if cache and cache[0] == key:
+        return cache[1]
+    standings, meta = vrs.vendored()
+    rep = every_match.report(data['matches'], data.get('generated_at'),
+                             data.get('fixtures_observed_at'), standings, meta,
+                             every_match.load_outside())
+    every_match_report._cache = (key, rep)
+    return rep
+
+
+def every_match_section(data):
+    """One pick, or one recorded limitation, for every match Hotspawn lists.
+
+    The recommendation board above only prices rows whose pick lock is still open,
+    which is correct for a recommendation and wrong for coverage: on the
+    2026-10-26T00:10:49Z snapshot the endpoint returned 73 CS2 rows and only 11 were
+    open, so a visitor reading All matches saw 62 rows with nothing on them. This
+    section closes that gap without weakening the board - every row says whether it
+    is still actionable, what rung produced the pick, and which official page it came
+    from. A row no official source supports stays blank and names its limitation.
+    """
+    rep = every_match_report(data)
+    rows = sorted(rep['rows'], key=lambda r: (not r['actionable'], r['start'] or ''))
+    c = rep['counts_by_ladder']
+    body = []
+    for r in rows:
+        p = r['probabilities']
+        prob = (f'<strong>{p[0]*100:.1f}%</strong> / <strong>{p[1]*100:.1f}%</strong>'
+                if p else '<span class="muted">no percentage published</span>')
+        pick = (f'<span class="pick{" research-only" if not p else ""}">{e(r["pick"])}</span>'
+                if r['pick'] else tag('No supported pick', 'warning'))
+        status = ('Actionable' if r['actionable'] else 'Lock passed')
+        rung = e(r['ladder_label'] or 'Unresolved')
+        if r['ladder'] == 'model_vrs' and r.get('vrs_points'):
+            rung += (' &middot; Valve standings %s v %s, points %s v %s'
+                     % (e(r['vrs_standings'][0]), e(r['vrs_standings'][1]),
+                        e(r['vrs_points'][0]), e(r['vrs_points'][1])))
+        source = link(r['source_url'], 'Hotspawn ↗')
+        for s in r['sources']:
+            if s.get('url'):
+                source += link(s['url'], (s.get('provider') or 'source') + ' ↗')
+        limitation = r['limitation'] or ('Actionable pick; priced from %s. No limitation recorded.'
+                                         % (r['ladder_label'] or 'the ladder').lower())
+        body.append(
+            '<tr>'
+            '<td data-label="Fixture">%s</td>'
+            '<td data-label="Match">%s<span class="small"> %s · %s</span></td>'
+            '<td data-label="Start (UTC)">%s</td>'
+            '<td data-label="Status">%s</td>'
+            '<td data-label="Our pick">%s</td>'
+            '<td data-label="Win probability">%s</td>'
+            '<td data-label="How it was priced">%s</td>'
+            '<td data-label="Source" class="source-links">%s</td>'
+            '<td data-label="Limitation">%s</td>'
+            '</tr>' % (e(r['id']), e(' vs '.join(r['teams'])), e(r['competition']),
+                       e((r['tier'] or '').upper() or 'tier unverified'),
+                       e(r['start'] or 'unverified'), tag(status, 'ok' if r['actionable'] else 'gray'),
+                       pick, prob, rung, source, e(limitation)))
+    ladder_line = ' · '.join('%s %d' % (every_match.TIER_LABEL[t], c[t]) for t in every_match.TIER_RANK if c.get(t))
+    unresolved_link = (link('unresolved.html', 'the unresolved & limitations page')
+                       if rep['unresolved'] else link('unresolved.html', 'the unresolved & limitations page'))
+    return (
+        '<section class="panel" id="every-match" aria-label="A pick for every match Hotspawn lists">'
+        '<p class="eyebrow muted">Coverage &middot; every listed match, not only the open ones</p>'
+        f'<h2>{plain_count(rep["with_pick"])} of {rep["rows_total"]} listed CS2 matches carry a pick</h2>'
+        f'<p>{plain_count(rep["with_probability"])} of them also carry a win probability. '
+        f'{plain_count(rep["actionable"])} are still actionable - the Hotspawn pick lock has not passed - and '
+        f'{rep["rows_total"] - rep["actionable"]} are historical rows the feed still returns, labelled as such and never '
+        'presented as current recommendations. Probabilities come from external betting lines or from our own labelled '
+        'Valve-standings model; Hotspawn\u2019s own crowd percentages are never used.</p>'
+        f'<p class="small">{e(ladder_line)}. Standings: Valve <em>{e(rep["standings"]["as_of"])}</em>.</p>'
+        '<div class="notice info">A row no official source supports keeps a blank pick and states its limitation. '
+        f'{plain_count(rep["unresolved"])} of {rep["rows_total"]} rows are in that state; each is named on '
+        + unresolved_link + '.</div>'
+        # Coverage boundary, stated rather than implied. This table covers every row
+        # the fixtures endpoint returned at the snapshot's own observation time. The
+        # public lobby can list fixtures the feed has not published yet, and pricing
+        # one of those would mean inventing its start, lock and identity, so they are
+        # named and counted instead. Measured on 2026-10-26 by scripts/lobby_gap.py.
+        '<p class="small"><strong>Coverage boundary.</strong> This table is every CS2 row the '
+        + link(every_match.HOTSPAWN_FEED, 'fixtures endpoint') + ' returned at this snapshot\u2019s own observation time. '
+        + 'The ' + link(every_match.HOTSPAWN_LOBBY, 'public lobby') + ' can list fixtures the feed has not published '
+        'yet; a lobby-only row carries no <em>scheduled_start_time</em> or <em>lock_time</em>, so giving it a pick would '
+        'mean inventing its start, its lock and its identity. Those rows are named and counted, never priced - see '
+        + link('review.html#research-findings', 'the research findings record') + ' and '
+        + link(REPO + '/blob/main/scripts/lobby_gap.py', 'scripts/lobby_gap.py') + '.</p>'
+        '<div class="table-wrap" tabindex="0" role="region" aria-label="Every listed CS2 match and its pick">'
+        '<table class="source-table" role="table"><caption>Every CS2 row Hotspawn\u2019s fixture endpoint returns. '
+        'Blank win probability = unsupported, never a default 50/50. Times UTC.</caption>'
+        '<thead><tr><th scope="col">Fixture</th><th scope="col">Match</th><th scope="col">Start</th>'
+        '<th scope="col">Status</th><th scope="col">Our pick</th><th scope="col">Win probability</th>'
+        '<th scope="col">How it was priced</th><th scope="col">Source</th><th scope="col">Limitation</th></tr></thead>'
+        '<tbody>' + ''.join(body) + '</tbody></table></div>'
+        '<div class="actions">' + link('picks.html', 'Actionable picks only →', 'button')
+        + link('unresolved.html', 'Unresolved & limitations →', 'button secondary')
+        + link(REPO + '/blob/main/research/session-11e17543/every-match-picks.csv',
+               'Download the full table (CSV) ↗', 'button secondary')
+        + '</div></section>')
+
+
+def every_match_unresolved(data):
+    """Session 11e17543: the unresolved section for EVERY listed match, not only open ones.
+
+    The board above answers "which open match has no market line". This answers the
+    wider question the coverage table raises - of all the CS2 rows Hotspawn lists,
+    which could not be given a pick at all, and exactly why. Each row names the
+    official sources that were tried and what they returned, so a reader can check
+    the limitation instead of taking it on trust.
+    """
+    rep = every_match_report(data)
+    rows = [r for r in rep['rows'] if not r['pick']]
+    attempts = {}
+    if every_match.OUTSIDE_LINES.exists():
+        attempts = {str(a.get('fixture_id')): a
+                    for a in json.loads(every_match.OUTSIDE_LINES.read_text()).get('attempts') or []}
+    head = (
+        '<section class="panel" id="every-match-unresolved" aria-label="Unresolved picks across every listed match">'
+        '<p class="eyebrow muted">Executive summary &middot; unresolved picks &amp; limitations, every listed match</p>'
+        '<h2>' + plain_count(len(rows)) + ' of ' + str(rep['rows_total'])
+        + ' listed CS2 matches have no pick</h2>'
+        '<p>The ' + link('matches.html#every-match', 'every-listed-match table') + ' gives '
+        + str(rep['with_pick']) + ' of ' + str(rep['rows_total']) + ' rows a pick: '
+        + str(rep['counts_by_ladder']['pipeline']) + ' from the published market line, '
+        + str(rep['counts_by_ladder']['researched_line']) + ' from a researched outside line, '
+        + str(rep['counts_by_ladder']['model_vrs']) + ' from our own Valve-standings model, '
+        + str(rep['counts_by_ladder']['research_one_sided']) + ' as a one-sided Valve-standings research pick and '
+        + str(rep['counts_by_ladder']['research_bounded']) + ' as a bounded-direction research pick. '
+        'The rest stay blank, because no official source supports a number or even a direction for them. '
+        'Nothing is inferred to fill the gap.</p>')
+    if not rows:
+        return head + ('<p class="notice ok">Every CS2 row Hotspawn lists carries a pick or a win probability in this '
+                       'snapshot. This section is still published: zero unresolved today is not a claim about the '
+                       'next refresh.</p></section>')
+    body = ['<div class="table-wrap" tabindex="0" role="region" aria-label="Unresolved listed matches">'
+            '<table class="source-table" role="table"><caption>Rows no official source could price or direct. '
+            'Blank by evidence, never by default.</caption><thead><tr><th scope="col">Fixture</th>'
+            '<th scope="col">Match</th><th scope="col">Start</th><th scope="col">Limitation</th>'
+            '<th scope="col">Sources tried</th></tr></thead><tbody>']
+    for r in rows:
+        attempt = attempts.get(r['id'])
+        tried = ''.join(link(s['url'], (s.get('provider') or 'source') + ' ↗') for s in r['sources'] if s.get('url'))
+        if attempt:
+            for res in attempt.get('results') or []:
+                tried += link(res['url'], res['source'] + ' ↗')
+        body.append('<tr><td data-label="Fixture">%s</td><td data-label="Match">%s</td>'
+                    '<td data-label="Start (UTC)">%s</td><td data-label="Limitation">%s</td>'
+                    '<td data-label="Sources tried" class="source-links">%s</td></tr>'
+                    % (e(r['id']), e(' vs '.join(r['teams'])), e(r['start'] or 'unverified'),
+                       e(r['limitation'] or 'No limitation recorded'), tried))
+    body.append('</tbody></table></div>')
+    return head + ''.join(body) + ('<p class="small">The full attempted-source ledger for these rows is retained at '
+                                   + link(REPO + '/blob/main/research/session-11e17543/outside-lines.json',
+                                          'research/session-11e17543/outside-lines.json') + '.</p></section>')
 
 
 def is_research(m):
@@ -391,9 +571,14 @@ def executive_banner(data):
         extra = f', and {retained} more are retained but not open at this snapshot’s own clock'
     else:
         extra = ''
+    rep = every_match_report(data)
     past_note = (f'<p class="small">Of those {c["feed_rows"]} feed rows, {len(past)} are past-dated records the '
                  'endpoint still returns with <em>status: scheduled</em>' + extra
-                 + '. They stay on ' + link('matches.html', 'All matches') + ', labelled, and are never priced. '
+                 + '. They stay on ' + link('matches.html', 'All matches') + ', labelled, and are never priced on the '
+                 'actionable board; each one still carries a researched pick or its own recorded limitation — '
+                 + str(rep['with_pick']) + ' of ' + str(rep['rows_total']) + ' listed matches have a pick, '
+                 + str(rep['unresolved']) + ' do not. '
+                 + link('matches.html#every-match', 'Every listed match and its pick →') + ' · '
                  + link('matches.html#feed-scope', 'What the feed returns →') + '</p>') if past else ''
     # 92 feed rows must never read as 92 matches: name the stale records the
     # endpoint still returns, in the same block that publishes the counts.
@@ -414,6 +599,7 @@ def executive_banner(data):
         f'<a class="button secondary" href="unresolved.html">Unresolved &amp; limits ({count_span("missing", c["without_percentage"])} without %) →</a>'
         f'<a class="button secondary" href="#closed-windows">Closed pick windows →</a>'
         f'<a class="button secondary" href="review.html">Flagged for review →</a>'
+        f'<a class="button exec-primary" href="matches.html#every-match">Every listed match — {rep["with_pick"]} of {c["feed_rows"]} picked →</a>'
         f'<a class="button secondary" href="matches.html">All {c["feed_rows"]} matches →</a>'
         f'<a class="button secondary" href="sources.html#method">How we price →</a>'
         '</div>'
@@ -452,6 +638,7 @@ def exec_summary_bar(data):
         + link('#unresolved-summary', 'Why a pick can be missing ↓', 'exec-bar-link')
         + link('#closed-windows', 'Closed pick windows ↓', 'exec-bar-link')
         + link('#unresolved-limits', 'Visible limitations ↓', 'exec-bar-link')
+        + link('matches.html#every-match', 'Every listed match →', 'exec-bar-link')
         + link('matches.html', 'All matches →', 'exec-bar-link')
         # Session 85087497: the summary also answers "how is a pick priced when
         # no book lists it" in one tap, not only where the picks are.
@@ -475,7 +662,8 @@ def exec_summary_bar(data):
         # the not-open count; the wording now states exactly that.
         + str(c['feed_rows'] - c['open'])
         + ' of ' + str(c['feed_rows']) + ' feed rows are not open by sourced status or start '
-        'time and stay unpriced on ' + link('matches.html', 'All matches') + '.</p>'
+        'time; they are not on the actionable board, but each still carries a researched pick or its own '
+        'limitation on ' + link('matches.html#every-match', 'Every listed match') + '.</p>'
         '</section>'
     )
 
@@ -504,9 +692,23 @@ def exec_summary_quicknav(data):
         # different numbers. Session 65af11da: the trailing count is every not-open feed row, not only past-dated ones.
         + ' unresolved (no %)<span class="exec-quicknav-past"> · <span data-past-rows="'
         + str(past) + '">' + str(past) + '</span> feed rows are not open</span>.</p>'
+        # Session 11e17543: the first phone screen also answers "and the matches
+        # that are not open?". Measured at 320x568 the full #exec-banner sits at
+        # y=3517, far below the fold, so its every-match link was unreachable
+        # without scrolling past all eleven pick cards.
+        + '<span class="exec-quicknav-every"> · ' + plain_count(every_match_report(data)['with_pick'])
+        + '/' + str(c['feed_rows']) + ' listed matches have a pick</span>'
+        # Labels are deliberately short. Measured at 320x568 the action row is
+        # 272px wide and three verbose labels ("Updated picks", "Every match",
+        # "Unresolved & limits") needed 551px, so the row wrapped to two lines,
+        # pushed the first pick card down 43px and put its win probability behind
+        # the fixed tab bar. The sentence above each link already names what the
+        # three destinations are; the full #exec-banner below carries the long
+        # labels for a reader who wants them.
         '<span class="exec-quicknav-actions">'
-        + link('picks.html', 'Updated picks →', 'exec-quicknav-primary')
-        + link('#unresolved-limits', 'Unresolved & limits ↓', 'exec-quicknav-link')
+        + link('picks.html', 'Picks →', 'exec-quicknav-primary')
+        + link('matches.html#every-match', 'Every match →', 'exec-quicknav-link')
+        + link('#unresolved-limits', 'Limits ↓', 'exec-quicknav-link')
         + '</span></nav>'
     )
 
@@ -1929,7 +2131,12 @@ def unresolved_page(data):
                  'Every open match without a usable betting line: our model line, a research-only '
                  'pick, or an honest blank. Each row states its limitation.', data)
             + pick_directory(data, jump=('#unresolved-rows', 'Jump to the match rows ↓'))
-            + unresolved_page_intro(data) + lobby_coverage_panel(data) + measured_source_access()
+            + unresolved_page_intro(data)
+            # Session 11e17543: the unresolved section for EVERY listed match,
+            # not only the open ones. Kept through session 28e4f2a1's refactor
+            # of this page into a function.
+            + every_match_unresolved(data)
+            + lobby_coverage_panel(data) + measured_source_access()
             + '<nav class="section-nav" aria-label="Pick lists">'
             + ('<a href="unresolved.html?status=needs">No percentage (<span data-count="missing">'
                + str(len(no_probability)) + '</span>)</a>')
@@ -2139,7 +2346,7 @@ def build(data,out,now=None):
     nonmarket=non_market_rows(matches)
     pages={'index':('Executive summary',overview(data)),
         'picks':('Updated picks',head('The pick board','Updated CS2 picks.','Every open Hotspawn CS2 match: our pick, both supported win probabilities, and direct source links.',data)+'<nav class="section-nav" aria-label="Pick lists">'+link('picks.html','All open matches ('+str(len(opens))+')')+('<a href="unresolved.html?status=needs">No percentage (<span data-count="missing">'+str(len(no_probability))+'</span>)</a>')+link('unresolved.html','No market line ('+str(len(nonmarket))+')')+link('matches.html','All matches')+'</nav><details class="method-details board-method"><summary>How picks, model lines &amp; blanks work</summary><div class="notice info">One complete board: market probabilities first, our labelled VRS model where no accepted market line was collected, and research-only picks with <strong>no percentage</strong> where a number is unsupported. Unresolved entries stay visible, not omitted. Estimates, not promises. '+link('unresolved.html','Read every non-market limitation →')+'</div></details>'+filters(opens,'open')+table(opens,True,label='Every open CS2 match and pick')),
-        'matches':('All matches',head('Complete coverage','Every listed fixture.','All CS2 records returned by the official Hotspawn lobby feed, including not-open entries.',data)+feed_scope(data)+filters(matches,'open')+table(matches,past_ids={str(m['id']) for m in past_dated_rows(matches,data)})),
+        'matches':('All matches',head('Complete coverage','Every listed fixture.','All CS2 records returned by the official Hotspawn lobby feed, including not-open entries.',data)+feed_scope(data)+every_match_section(data)+filters(matches,'open')+table(matches,past_ids={str(m['id']) for m in past_dated_rows(matches,data)})),
         'analysis':('TWC analysis',analysis_page(data)),
         'unresolved':('Unresolved picks',unresolved_page(data)+closed_windows_section(data)),
         'sources':('Sources and methodology',methodology(data)),

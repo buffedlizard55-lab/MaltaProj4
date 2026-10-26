@@ -1,0 +1,77 @@
+{
+ "schema_version": 1,
+ "session": "11e17543",
+ "researched_at": "2026-10-26T01:20:00Z",
+ "purpose": [
+  "Rung 1 of the every-match ladder in scripts/every_match_11e17543.py.",
+  "Only entries under `lines` are ever published as a probability. An entry must carry",
+  "provider, url, prices as two de-vigged probabilities that sum to 1, and an observation time.",
+  "`attempts` records what was asked and what came back, including refusals, so a row that",
+  "stays unresolved names the sources that were actually tried rather than an assumption."
+ ],
+ "lines": {},
+ "attempts": [
+  {
+   "fixture_id": "1051343",
+   "teams": ["Sharks", "ex-Tricked"],
+   "start_utc": "2026-06-28T13:35:00Z",
+   "asked": "HLTV first, then esportsbook listings",
+   "results": [
+    {
+     "source": "HLTV team page",
+     "url": "https://www.hltv.org/team/8113/sharks",
+     "outcome": "Sharks confirmed as a current HLTV club with recent results including 27/06/2026 Sharks 1:2 Inner Circle and 25/06/2026 Sharks 2:1 Acend. No two-way price is published on the page."
+    },
+    {
+     "source": "HLTV dated Valve ranking, 2 June 2026",
+     "url": "https://www.hltv.org/valve-ranking/teams/2026/june/2",
+     "outcome": "Lists '#37 Sharks (1365 Valve points)' and '#51 Tricked (1249 Valve points)'. Not accepted: the fixture label is 'ex-Tricked', and equating it to the 2 June 'Tricked' row is an alias claim this session could not confirm from a primary source, so no percentage was invented."
+    },
+    {
+     "source": "Valve official global standings 2026_10_05",
+     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+     "outcome": "Neither 'Sharks' nor 'ex-Tricked' appears. Both clubs absent, so the one-sided directional rung cannot fire either."
+    }
+   ],
+   "verdict": "unresolved"
+  },
+  {
+   "fixture_id": "1053442",
+   "teams": ["6666", "BERG"],
+   "start_utc": "2026-06-28T18:00:00Z",
+   "asked": "HLTV first, then esportsbook listings",
+   "results": [
+    {
+     "source": "HLTV team page 6666",
+     "url": "https://www.hltv.org/team/13882/6666",
+     "outcome": "World ranking #80, 'Valve ranking VRS -' (none), and '6666 has no active players in their lineup at the moment'. No price."
+    },
+    {
+     "source": "HLTV Valve ranking view showing both 6666 rows",
+     "url": "https://www.hltv.org/valve-ranking/teams?teamId=4869",
+     "outcome": "Shows '#158 6666 (840 Valve points)' and '#382 6666 (444 Valve points)' with the second row annotated 'This is an old roster'. This independently confirms the duplicate label in Valve's official file rather than resolving it."
+    },
+    {
+     "source": "Valve official global standings 2026_10_05",
+     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+     "outcome": "'6666' appears twice (425 and 923 points); BERG once (754). The candidate ranges overlap, so the bounded-direction rung refuses: the direction depends on which 6666 roster is meant."
+    }
+   ],
+   "verdict": "unresolved"
+  },
+  {
+   "fixture_id": "*",
+   "teams": ["all 62 non-actionable rows"],
+   "start_utc": "2026-06-26T10:30:00Z - 2026-10-25T18:00:00Z",
+   "asked": "Live two-way esportsbook prices for matches whose Hotspawn pick lock passed between 26 June and 25 October 2026",
+   "results": [
+    {
+     "source": "Scope note",
+     "url": "https://play.hotspawn.com/cs2-pickems",
+     "outcome": "Not attempted row by row. An operator moneyline for a fixture that finished months ago is no longer published by the books this collector reads (Polymarket Gamma, Pinnacle guest API, BO3.gg/Thunderpick, EGamersWorld), and a historical closing price would be presented as a current pick. These rows are priced from Valve's official standings instead, labelled not actionable."
+    }
+   ],
+   "verdict": "model_or_research_only"
+  }
+ ]
+}

@@ -835,3 +835,19 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
 }
 /* The directory's one-tap jump to the rows below it (unresolved page). */
 .directory-jump{display:inline-flex;align-items:center;min-height:44px;font-weight:650;margin:2px 0 12px}
+
+/* Session 11e17543: the phone quick nav gained a third destination
+   (matches.html#every-match), and three nowrap links cannot share a 320px row.
+   Measured: index.html overflowed at 320px until this landed. The fix is
+   flex-wrap, never a horizontal scroller - this row's pinned contract is that
+   it wraps rather than scrolls, and tests/test_session_2b856884.py greps the
+   raw stylesheet text for the scrolling property, comments included. */
+@media(max-width:650px){.exec-quicknav-actions{flex-wrap:wrap}.exec-quicknav-actions a{flex:1 1 auto;min-width:0}}
+
+/* Session 11e17543: the coverage-boundary paragraph inside #every-match links four
+   official sources inline, and at 10.5px they measured 17px tall on a phone -
+   below the 24px WCAG 2.5.8 minimum that tests/browser_11e17543.cjs asserts.
+   WCAG's inline exception would cover them, but the site's own convention is a
+   taller target, so these links get a 32px inline-flex box. Nothing is hidden and
+   no text changes. */
+@media(max-width:650px){#every-match p.small a{display:inline-flex;align-items:center;min-height:32px}}
