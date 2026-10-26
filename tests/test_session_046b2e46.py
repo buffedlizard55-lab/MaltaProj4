@@ -243,8 +243,14 @@ class IndependentLedgerReDerivesEveryOpenPick(unittest.TestCase):
         self.assertEqual(ledger.orient(['Acend', 'UNiTY'], ['Acend', 'UNiTY esports'],
                                        [{'name': 'UNiTY esports', 'abbreviation': 'unity'}]),
                          {'Acend': 0, 'UNiTY': 1})
+        # Session b964dffd (2026-10-26): 'UNiTY esports' is now ALSO joined to
+        # 'UNiTY' by a sourced identity record in data/identities.json (rule 1
+        # in orient's docstring; Polymarket market 6186061 + HLTV 2399119), so
+        # that exact pair legitimately orients without abbreviation metadata.
+        # The refusal direction is therefore pinned on a label no identity
+        # record covers.
         with self.assertRaises(ValueError):
-            ledger.orient(['Acend', 'UNiTY'], ['Acend', 'UNiTY esports'], [])
+            ledger.orient(['Acend', 'UNiTY'], ['Acend', 'UNiTY Gaming'], [])
 
     def test_book_listing_is_de_vigged(self):
         from scripts import session_046b2e46 as ledger
