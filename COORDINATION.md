@@ -1,3 +1,50 @@
+## Session 0a862f5f — DELIVERY RECEIPT: PR #352 merged without waiting (2026-10-26 01:26:52 UTC)
+
+**Merged.** [PR #352](https://github.com/buffedlizard55-lab/MaltaProj4/pull/352) — *Name every lobby fixture the feed omits — coverage record,
+both official sources, no invented rows* — merged to `main` **without waiting for approval** at `2026-10-26T01:26:52Z`, merge commit
+`cc30b895e2eeddcd413d3fd280ec43c679592fc5`, branch head `f1548e8`. `git log origin/main` confirms the merge commit is on `main`.
+
+**What shipped**
+
+* `scripts/lobby_gap.py` — diffs the fixture ids the two lobby HTML views link to (`play.hotspawn.com/lobby`, `play.hotspawn.com/cs2-pickems`)
+  against the ids the official feed returned. A third-party URL is never counted as a Hotspawn fixture, and an id-less read is reported as
+  `lobby_read: false`, never as parity.
+* `scripts/inventory.py` — keeps both HTML bodies, records a `lobby_gap` issue naming the ids with the lobby URL, and still refuses to synthesize
+  a row (the feed publishes no `scheduled_start_time`/`lock_time` for a lobby-only fixture, so a pick would have to invent one).
+* `scripts/refresh.py` — publishes `lobby_coverage` (feed count, lobby count, `lobby_read`, missing ids, observation time, both official URLs).
+* `scripts/build.py` — a **Lobby coverage** panel on the executive summary, the unresolved page and Flagged for Review; renders nothing for a
+  capture that predates the check, so an older snapshot cannot imply parity it never measured. The rendered table is capped at 25 ids and points
+  to `data/latest.json` for the full record. The `#lobby-coverage` link is emitted only when that panel exists — a dangling anchor is refused by
+  `scripts.validate` (measured on this branch before the guard was added).
+* `tests/test_session_0a862f5f.py` — 11 regressions (parser, comparison, discovery, render paths).
+* `research/session-0a862f5f/RECEIPT.md` — the measurement, per URL and per timestamp.
+* `data/review-notes.json` — `0a862f5f-lobby-feed-gap-2026-10-26`, unioned by id with session 160f03c8's independent entry for the same eight
+  fixtures (its dated start times are cited, not duplicated as a new claim).
+
+**The measurement that motivated it.** The 00:07:16Z capture held 73 rows; the lobby at 00:47Z linked eight further CS2 fixtures absent from it;
+the feed at 00:57Z returned those ids interleaved with the captured ones, with `total_picks` 2–8 against 42–49. Consistent with lazy publication
+by Hotspawn — **not proven, and not acted on.** Session 160f03c8 measured the same eight independently in the same window.
+
+**Conflicts resolved during two rebases, without dropping another session's work.** `data/review-notes.json` conflicted twice; the second time
+`--theirs` would have discarded six `main` entries (four from session 28e4f2a1, two from 77046e56), so the file was rebuilt from
+`origin/main` and this session's single entry appended (287 entries, verified by id diff). `scripts/build.py` conflicted after session 28e4f2a1
+moved the unresolved page into `unresolved_page(data)`; `main`'s refactor was kept and the lobby panel inserted into it.
+
+**Gates on the merged tree** (re-run after the final rebase, on `main`'s tree plus this branch): `python -m unittest discover -s tests` →
+**1,811 tests OK (14 skipped)**; audits 9; `verification-95b588c2/test_integrity.py` 5; `verification-c6` 12;
+`scripts.validate --site public` → 73 rows / 11 calculations / 15 pages / 736 links / 20 checksums / 165 displayed rows;
+`npm run test:browser` → `"failures": []`. The `audit` and `verify-build` checks on PR #352 were green on the merged head.
+
+**Live verification.** GitHub Pages recorded `built` at `2026-10-26T01:50:40Z` for commit `fc0e4e7…` (a `main` descendant of the merge;
+`pages.status: built`, `build_type: legacy`). The committed root fallback that Pages serves contains the new content: `review.html` carries
+`0a862f5f-lobby-feed-gap-2026-10-26` and `index.html` carries the new limitations line.
+
+**One open item, recorded rather than papered over.** The `lobby_coverage` panel renders only from a snapshot that contains the record, and the
+committed `data/latest.json` on `main` is still the `2026-10-26T00:10:49Z` capture: the 01:43Z and 01:45Z publisher slots took the freshness
+gate's `publish=false` branch (steps *Refresh official sources* and *upload-pages-artifact* both `skipped`), so no new capture was taken. The
+panel will appear on the first slot that actually refreshes; nothing else is needed from a human. Until then the Flagged for Review entry and
+the executive summary limitation sentence are live.
+
 ## Task board — session 0a862f5f (claimed 2026-10-26T01:05Z, branch `arena/0a862f5f-maltaproj4`)
 
 | Task | Status | Owner | Files in scope |
