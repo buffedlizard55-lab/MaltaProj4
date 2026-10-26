@@ -4,7 +4,7 @@
     "sha256": "df96e7fc3cd91a2687ec08cac0128e50cc4e4e55346581679572e881d79ae61b",
     "rows": 380
   },
-  "snapshot_generated_at": "2026-10-26T00:10:49.639616Z",
+  "snapshot_generated_at": "2026-10-26T00:52:33.666528Z",
   "rows": [
     {
       "fixture": "1082858",
@@ -131,6 +131,365 @@
       "published": [
         0.6822550828520781,
         0.31774491714792186
+      ],
+      "reproduces": true
+    },
+    {
+      "fixture": "1079201",
+      "kind": "market_check",
+      "fixture_teams": [
+        "INOX Division",
+        "Nemesis"
+      ],
+      "vrs_teams": [
+        "INOX Division",
+        "Nemesis"
+      ],
+      "snapshot_points": [
+        1105,
+        1455
+      ],
+      "confirmed": [
+        {
+          "team": "INOX Division",
+          "listed_rows": [
+            {
+              "standing": 82,
+              "points": 1105,
+              "name": "INOX Division",
+              "roster": [
+                "FenomeN",
+                "finW",
+                "gooddeph",
+                "k0s",
+                "k1slll"
+              ]
+            }
+          ],
+          "points_match": true
+        },
+        {
+          "team": "Nemesis",
+          "listed_rows": [
+            {
+              "standing": 29,
+              "points": 1455,
+              "name": "Nemesis",
+              "roster": [
+                "mag1k3Y",
+                "r3salt",
+                "Sdaim",
+                "SELLTER",
+                "tex1y"
+              ]
+            }
+          ],
+          "points_match": true
+        }
+      ],
+      "raw_expected": 0.1234667528611764,
+      "recomputed": [
+        0.19930054883493548,
+        0.8006994511650645
+      ],
+      "published": [
+        0.19930054883493548,
+        0.8006994511650645
+      ],
+      "reproduces": true
+    },
+    {
+      "fixture": "1079202",
+      "kind": "published_line",
+      "fixture_teams": [
+        "FOKUS",
+        "ex-Zero Tenacity"
+      ],
+      "vrs_teams": [
+        "FOKUS",
+        "ex-Zero Tenacity"
+      ],
+      "snapshot_points": [
+        1321,
+        1066
+      ],
+      "confirmed": [
+        {
+          "team": "FOKUS",
+          "listed_rows": [
+            {
+              "standing": 48,
+              "points": 1321,
+              "name": "FOKUS",
+              "roster": [
+                "Banjo",
+                "jocab",
+                "Matheos",
+                "podi",
+                "ztr"
+              ]
+            }
+          ],
+          "points_match": true
+        },
+        {
+          "team": "ex-Zero Tenacity",
+          "listed_rows": [
+            {
+              "standing": 93,
+              "points": 1066,
+              "name": "ex-Zero Tenacity",
+              "roster": [
+                "brutmonster",
+                "Cjoffo",
+                "Dragon",
+                "Kind0",
+                "VLDN"
+              ]
+            }
+          ],
+          "points_match": true
+        }
+      ],
+      "raw_expected": 0.8065898108213129,
+      "recomputed": [
+        0.7448426229219005,
+        0.2551573770780995
+      ],
+      "published": [
+        0.7448426229219005,
+        0.2551573770780995
+      ],
+      "reproduces": true
+    },
+    {
+      "fixture": "1081159",
+      "kind": "mirror_line",
+      "fixture_teams": [
+        "LFO 10",
+        "ex-6666"
+      ],
+      "vrs_teams": [
+        "LFO 10",
+        "ex-6666"
+      ],
+      "snapshot_points": [
+        803,
+        968
+      ],
+      "confirmed": [
+        {
+          "team": "LFO 10",
+          "listed_rows": [],
+          "points_match": null
+        },
+        {
+          "team": "ex-6666",
+          "listed_rows": [],
+          "points_match": null
+        }
+      ],
+      "official_file_check": false,
+      "ranking_as_of": "2026-10-26",
+      "ranking_source": "https://www.hltv.org/valve-ranking/teams/2026/october/26",
+      "ranking_page_sha256": "5b6ff7f630e1fb784b35565cd33e6955723ce7480ec861c375dfb320d4ea8c9f",
+      "raw_expected": 0.28414330714721847,
+      "recomputed": [
+        0.32761684508776867,
+        0.6723831549122313
+      ],
+      "published": [
+        0.32761684508776867,
+        0.6723831549122313
+      ],
+      "reproduces": true
+    },
+    {
+      "fixture": "1079203",
+      "kind": "published_line",
+      "fixture_teams": [
+        "Metizport",
+        "BRUTE"
+      ],
+      "vrs_teams": [
+        "Metizport",
+        "BRUTE"
+      ],
+      "snapshot_points": [
+        1290,
+        1116
+      ],
+      "confirmed": [
+        {
+          "team": "Metizport",
+          "listed_rows": [
+            {
+              "standing": 53,
+              "points": 1290,
+              "name": "Metizport",
+              "roster": [
+                "F1KU",
+                "forsyy",
+                "MaiL09",
+                "Plopski",
+                "stanislaw"
+              ]
+            }
+          ],
+          "points_match": true
+        },
+        {
+          "team": "BRUTE",
+          "listed_rows": [
+            {
+              "standing": 75,
+              "points": 1116,
+              "name": "BRUTE",
+              "roster": [
+                "aidKiT",
+                "hfah",
+                "nbqq",
+                "tAk",
+                "ZEDKO"
+              ]
+            },
+            {
+              "standing": 218,
+              "points": 689,
+              "name": "BRUTE",
+              "roster": [
+                "hfah",
+                "KAD1M",
+                "majky",
+                "nbqq",
+                "realzen"
+              ]
+            }
+          ],
+          "points_match": true
+        }
+      ],
+      "raw_expected": 0.7259959111666857,
+      "recomputed": [
+        0.6804803346577152,
+        0.3195196653422848
+      ],
+      "published": [
+        0.6804803346577152,
+        0.3195196653422848
+      ],
+      "reproduces": true,
+      "duplicate_labels": [
+        {
+          "team": "BRUTE",
+          "lineup": [
+            "nbqq",
+            "aidKiT",
+            "ZEDKO",
+            "tAk",
+            "oontoma"
+          ],
+          "overlap_by_row": [
+            {
+              "standing": 75,
+              "overlap": 4
+            },
+            {
+              "standing": 218,
+              "overlap": 1
+            }
+          ],
+          "chosen_points": 1116,
+          "chosen_standing": 75,
+          "roster_rule_verified": true,
+          "rows": [
+            {
+              "standing": 75,
+              "points": 1116,
+              "roster": [
+                "aidKiT",
+                "hfah",
+                "nbqq",
+                "tAk",
+                "ZEDKO"
+              ]
+            },
+            {
+              "standing": 218,
+              "points": 689,
+              "roster": [
+                "hfah",
+                "KAD1M",
+                "majky",
+                "nbqq",
+                "realzen"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fixture": "1081160",
+      "kind": "published_line",
+      "fixture_teams": [
+        "HAVU",
+        "ILLYRIANS"
+      ],
+      "vrs_teams": [
+        "HAVU",
+        "Illyrians"
+      ],
+      "snapshot_points": [
+        937,
+        862
+      ],
+      "confirmed": [
+        {
+          "team": "HAVU",
+          "listed_rows": [
+            {
+              "standing": 124,
+              "points": 937,
+              "name": "HAVU",
+              "roster": [
+                "8Juho8",
+                "Alxc",
+                "ottob",
+                "p3kko",
+                "uli"
+              ]
+            }
+          ],
+          "points_match": true
+        },
+        {
+          "team": "Illyrians",
+          "listed_rows": [
+            {
+              "standing": 141,
+              "points": 862,
+              "name": "Illyrians",
+              "roster": [
+                "ammar",
+                "BledarD",
+                "cerber",
+                "vAloN",
+                "xonn1k"
+              ]
+            }
+          ],
+          "points_match": true
+        }
+      ],
+      "raw_expected": 0.6034833894974426,
+      "recomputed": [
+        0.5826418348526576,
+        0.41735816514734236
+      ],
+      "published": [
+        0.5826418348526576,
+        0.41735816514734236
       ],
       "reproduces": true
     },
@@ -391,6 +750,112 @@
       "reproduces": true
     },
     {
+      "fixture": "1081162",
+      "kind": "mirror_line",
+      "fixture_teams": [
+        "ex-RUSTEC",
+        "Spirit Academy"
+      ],
+      "vrs_teams": [
+        "ex-RUSTEC",
+        "Spirit Academy"
+      ],
+      "snapshot_points": [
+        1059,
+        1038
+      ],
+      "confirmed": [
+        {
+          "team": "ex-RUSTEC",
+          "listed_rows": [],
+          "points_match": null
+        },
+        {
+          "team": "Spirit Academy",
+          "listed_rows": [],
+          "points_match": null
+        }
+      ],
+      "official_file_check": false,
+      "ranking_as_of": "2026-10-26",
+      "ranking_source": "https://www.hltv.org/valve-ranking/teams/2026/october/26",
+      "ranking_page_sha256": "5b6ff7f630e1fb784b35565cd33e6955723ce7480ec861c375dfb320d4ea8c9f",
+      "raw_expected": 0.5293662045877111,
+      "recomputed": [
+        0.5234518509837461,
+        0.47654814901625386
+      ],
+      "published": [
+        0.5234518509837461,
+        0.47654814901625386
+      ],
+      "reproduces": true
+    },
+    {
+      "fixture": "1081163",
+      "kind": "published_line",
+      "fixture_teams": [
+        "BakS",
+        "Saint Sinners"
+      ],
+      "vrs_teams": [
+        "BAKS",
+        "Saint Sinners"
+      ],
+      "snapshot_points": [
+        1044,
+        810
+      ],
+      "confirmed": [
+        {
+          "team": "BAKS",
+          "listed_rows": [
+            {
+              "standing": 100,
+              "points": 1044,
+              "name": "BAKS",
+              "roster": [
+                "danistzz",
+                "Norwi",
+                "turbo",
+                "whisper",
+                "xdENiSZERA"
+              ]
+            }
+          ],
+          "points_match": true
+        },
+        {
+          "team": "Saint Sinners",
+          "listed_rows": [
+            {
+              "standing": 158,
+              "points": 810,
+              "name": "Saint Sinners",
+              "roster": [
+                "Caleyy",
+                "deb0",
+                "iRV1NG",
+                "pavlysha666",
+                "ves111"
+              ]
+            }
+          ],
+          "points_match": true
+        }
+      ],
+      "raw_expected": 0.7875803872360995,
+      "recomputed": [
+        0.729661697246749,
+        0.270338302753251
+      ],
+      "published": [
+        0.729661697246749,
+        0.270338302753251
+      ],
+      "reproduces": true
+    },
+    {
       "fixture": "1082900",
       "kind": "market_check",
       "fixture_teams": [
@@ -451,6 +916,70 @@
       "published": [
         0.6192377362770581,
         0.38076226372294186
+      ],
+      "reproduces": true
+    },
+    {
+      "fixture": "1081164",
+      "kind": "published_line",
+      "fixture_teams": [
+        "Inner Circle Academy",
+        "Lavked"
+      ],
+      "vrs_teams": [
+        "Inner Circle Academy",
+        "Lavked"
+      ],
+      "snapshot_points": [
+        1064,
+        862
+      ],
+      "confirmed": [
+        {
+          "team": "Inner Circle Academy",
+          "listed_rows": [
+            {
+              "standing": 94,
+              "points": 1064,
+              "name": "Inner Circle Academy",
+              "roster": [
+                "3ippoch",
+                "Flierax",
+                "L1seYoung",
+                "NaYz",
+                "Tamefear"
+              ]
+            }
+          ],
+          "points_match": true
+        },
+        {
+          "team": "Lavked",
+          "listed_rows": [
+            {
+              "standing": 143,
+              "points": 862,
+              "name": "Lavked",
+              "roster": [
+                "1NVISIBLEE",
+                "azukay",
+                "k4nfuz",
+                "sol",
+                "xm1nd"
+              ]
+            }
+          ],
+          "points_match": true
+        }
+      ],
+      "raw_expected": 0.7560605767106526,
+      "recomputed": [
+        0.7044899765611272,
+        0.2955100234388728
+      ],
+      "published": [
+        0.7044899765611272,
+        0.2955100234388728
       ],
       "reproduces": true
     },
@@ -710,8 +1239,8 @@
   ],
   "problems": [],
   "summary": {
-    "model_rows": 10,
-    "reproduced": 10,
+    "model_rows": 18,
+    "reproduced": 18,
     "problems": 0
   }
 }

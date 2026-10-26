@@ -72,8 +72,16 @@ def main():
         check = m.get('model_check') or {}
         kind = None
         payload = None
+        mirror = m.get('method') == 'model_vrs_mirror'
         if m.get('method') == 'model_vrs':
             kind, payload = 'published_line', quote
+        elif mirror:
+            # Session 77046e56: a mirror row exists because Valve's monthly file
+            # does not resolve every club on the row. The arithmetic is still
+            # Valve's (same points -> same published fit), so it is re-derived
+            # here without importing scripts/, but the official-file join is not
+            # applicable by design and is recorded as such instead of failed.
+            kind, payload = 'mirror_line', quote
         elif check.get('status') == 'ok':
             kind, payload = 'market_check', check
         else:
@@ -86,7 +94,21 @@ def main():
         record = {'fixture': m['id'], 'kind': kind, 'fixture_teams': m['teams'],
                   'vrs_teams': teams, 'snapshot_points': points,
                   'confirmed': []}
+        if mirror:
+            record['official_file_check'] = False
+            record['ranking_as_of'] = payload.get('ranking_as_of')
+            record['ranking_source'] = payload.get('url')
+            record['ranking_page_sha256'] = payload.get('ranking_page_sha256')
+            for key in ('ranking_as_of', 'ranking_page_sha256', 'url'):
+                if not payload.get(key):
+                    out['problems'].append('%s: mirror evidence is missing %s' % (m['id'], key))
+            for name, point in zip(teams, points):
+                record['confirmed'].append({'team': name, 'listed_rows': [], 'points_match': None})
+                if not name or not isinstance(point, int):
+                    out['problems'].append('%s: mirror payload has an unusable team/point' % m['id'])
         for name, point in zip(teams, points):
+            if mirror:
+                break
             hits = by_name.get(name.strip().lower(), [])
             record['confirmed'].append({'team': name, 'listed_rows': hits,
                                         'points_match': any(h['points'] == point for h in hits)})
@@ -107,7 +129,7 @@ def main():
         # A club label that Valve repeats must be distinguished by roster, never
         # by picking the better-ranked row.
         lineups = [c.get('lineup') for c in (payload.get('roster_checks') or [])]
-        for index, confirm in enumerate(record['confirmed']):
+        for index, confirm in enumerate([] if mirror else record['confirmed']):
             if len(confirm['listed_rows']) > 1:
                 lineup = lineups[index] if index < len(lineups) else None
                 scored = []

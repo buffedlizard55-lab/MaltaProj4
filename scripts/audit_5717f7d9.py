@@ -373,6 +373,7 @@ def _audit_book(m, generated, amap, findings, rec):
                                 [e.get("url")]))
 
 
+MIRROR_PROVIDER = "HLTV Valve ranking (Valve points)"
 _HLTV_VRS_URL = re.compile(
     r"^https://www\.hltv\.org/valve-ranking/teams(?:/\d{4}/[a-z]+/\d{1,2})?$"
 )
@@ -464,10 +465,25 @@ def _audit_vrs(m, generated, standings, findings, rec):
     elif m["method"] == "model_vrs_mirror":
         _fresh(e, generated, findings, m["id"])
         url = str(e.get("url") or "")
+        # Session 77046e56: the retained points must belong to the fixture that
+        # the row names, and both ranking rows must be named, or the arithmetic
+        # below is reproducing a line for a different pair of clubs.
+        fixture_teams = e.get("fixture_teams") or []
+        if sorted(norm(t, {}) for t in fixture_teams) != sorted(norm(t, {}) for t in m["teams"]):
+            findings.append(Finding("fail", "vrs_mirror_identity", m["id"],
+                                    f"Mirror fixture teams {fixture_teams} do not match {m['teams']}.",
+                                    [url]))
+        if len(e.get("vrs_teams") or []) != 2:
+            findings.append(Finding("fail", "vrs_mirror_identity", m["id"],
+                                    "Mirror evidence does not name both ranking rows.", [url]))
         if not _HLTV_VRS_URL.match(url) or e.get("api_url") != url:
             findings.append(Finding("fail", "vrs_mirror_source", m["id"],
                                     f"Mirror evidence URL {url!r} is not HLTV's Valve ranking page.",
                                     [url]))
+        if not e.get("ranking_page_sha256"):
+            findings.append(Finding("fail", "vrs_mirror_source", m["id"],
+                                    "Mirror evidence has no ranking_page_sha256 to bind the points "
+                                    "to one version of the page.", [url]))
         as_of = e.get("ranking_as_of")
         if not as_of:
             findings.append(Finding("fail", "vrs_mirror_age", m["id"],

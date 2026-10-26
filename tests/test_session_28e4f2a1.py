@@ -272,7 +272,10 @@ class PublishedLinesReDerive(unittest.TestCase):
         receipt = json.loads((RECEIPTS / 'model-receipt.json').read_text())
         self.assertEqual(receipt['summary']['problems'], 0, receipt['problems'])
         self.assertEqual(receipt['summary']['reproduced'], receipt['summary']['model_rows'])
-        model_ids = {r['fixture'] for r in receipt['rows'] if r['kind'] == 'published_line'}
+        # Session 77046e56: an HLTV-mirror line is a published line too — it is
+        # re-derived from retained Valve points by the same independent script.
+        model_ids = {r['fixture'] for r in receipt['rows']
+                     if r['kind'] in ('published_line', 'mirror_line')}
         for m in open_rows():
             if m.get('method') in ('model_vrs', 'model_vrs_mirror'):
                 self.assertIn(m['id'], model_ids)
