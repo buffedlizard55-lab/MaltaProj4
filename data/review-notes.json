@@ -6911,5 +6911,28 @@
     "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40251666216"
    }
   ]
+ },
+ {
+  "id": "session-b964dffd-unity-alias-staged-root-gate-2026-10-26",
+  "status": "Fixed in this session — follow-up PR, gate reproduced green",
+  "finding": "After PR #361 merged (2026-10-26T02:04Z), publisher runs 40257261056 (#361) and 40257883135 (#365) refreshed, built, passed validate/browser and deployed the Actions artifact, but the step 'Keep the legacy main:/ root fallback on the verified build' failed with rc=3 ('The staged root failed its own validator or unit gate'), so no fresh build has been committed to the legacy main:/ root since eca5117. Reproduced by this session with the 2026-10-26T02:44:05Z harvest snapshot staged at the root: the unit gate failed in test_session_5717f7d9 because the independent auditor's orientation check cannot match Hotspawn/HLTV team 'UNiTY' to Polymarket outcome 'UNiTY esports' on fixture 1093218 (Nuclear TigeRES vs UNiTY, newly listed on Polymarket after the 01:00Z board, where the row was model-priced). Fix: a sourced identity record UNiTY <-> UNiTY esports in data/identities.json (Polymarket market 6186061 + HLTV match 2399119; fixture parity — same event, exact opponent, BO3, UTC start 2026-10-26T18:00:00Z), plus two labelled un-pinnings the same gate exposed: test_session_046b2e46's refusal case moved to a label no identity record covers, and test_session_0a862f5f's 'older capture' case now removes lobby_coverage explicitly (fresh snapshots always carry it since 02:44Z). With the three repairs the exact staged-root gate (scripts.validate --site . + full unit discover) passes on the fresh 02:44Z board: 81 rows / 19 calculations and 1,878 unit tests OK. Remaining structural risk, flagged not fixed: any newly listed exchange market whose outcome label differs from the feed label by more than case/punctuation will block the same gate until a sourced identity record lands; the failure is safe (the artifact still deploys and the root stays on the last gated board) but it is silent from this sandbox, which cannot read run logs.",
+  "sources": [
+   {
+    "label": "Polymarket market 6186061 — outcomes 'Nuclear TigeRES' / 'UNiTY esports', gameStartTime 2026-10-26 18:00:00+00",
+    "url": "https://gamma-api.polymarket.com/markets/6186061"
+   },
+   {
+    "label": "HLTV match 2399119 — Nuclear TigeRES vs UNiTY, NODWIN Clutch Series 13 quarter-final",
+    "url": "https://www.hltv.org/matches/2399119/nuclear-tigeres-vs-unity-nodwin-clutch-series-13"
+   },
+   {
+    "label": "Publisher run 40257261056 on PR #361's merge — deploy success, root-fallback step rc=3",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40257261056"
+   },
+   {
+    "label": "Publisher run 40257883135 on PR #365's merge — same single-step failure",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40257883135"
+   }
+  ]
  }
 ]

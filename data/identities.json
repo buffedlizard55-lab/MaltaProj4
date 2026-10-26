@@ -402,6 +402,16 @@
      "url": "https://www.hltv.org/team/5991/envy"
     }
    ]
+  },
+  {
+   "canonical": "UNiTY",
+   "names": [
+    "UNiTY",
+    "UNiTY esports"
+   ],
+   "source": "https://gamma-api.polymarket.com/markets/6186061",
+   "additional_source": "https://www.hltv.org/matches/2399119/nuclear-tigeres-vs-unity-nodwin-clutch-series-13",
+   "basis": "Fixture parity for a single renamed label, checked directly by session b964dffd on 2026-10-26. Hotspawn fixture 1093218 lists Nuclear TigeRES vs UNiTY in NODWIN Clutch Series #13 with UTC start 2026-10-26T18:00:00Z; HLTV match 2399119 lists the same Quarterfinal as Nuclear TigeRES vs UNiTY (BO3). Polymarket market 6186061 (event cs2-ntr-unity-2026-10-26) is 'Counter-Strike: Nuclear TigeRES vs UNiTY esports (BO3) - NODWIN Clutch Series Playoffs' with structured gameStartTime 2026-10-26 18:00:00+00 and outcomes ['Nuclear TigeRES', 'UNiTY esports']. Same event, exact opponent, format and UTC start on both labels; only Polymarket's outcome label carries the 'esports' suffix (the BC.Game/BC.Game Esports pattern). Without this entry the independent auditor's orientation check fails fixture 1093218 and the publisher's staged-root gate rejects every fresh board carrying this market."
   }
  ]
 }

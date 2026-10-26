@@ -163,7 +163,14 @@ class RenderTests(unittest.TestCase):
         self.assertNotIn('lobby and the feed agreed', html)
 
     def test_older_capture_without_the_record_renders_nothing(self):
-        self.assertEqual(build.lobby_coverage_panel(self.snapshot()), '')
+        # Session b964dffd (2026-10-26): fresh snapshots now always carry the
+        # lobby_coverage record (first seen on the 2026-10-26T02:44Z refresh),
+        # so "an older capture without the record" must be simulated by
+        # removing the key; asserting against the live snapshot as-is made
+        # this test fail the publisher's staged-root gate on every fresh board.
+        data = self.snapshot()
+        data.pop('lobby_coverage', None)
+        self.assertEqual(build.lobby_coverage_panel(data), '')
 
     def test_the_published_snapshot_is_a_dated_observation(self):
         # The committed snapshot either carries a coverage record or predates the
