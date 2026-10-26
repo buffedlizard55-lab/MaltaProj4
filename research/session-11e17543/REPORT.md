@@ -204,3 +204,28 @@ and it is caught.
 Re-verified after the fix: 1,838 unit tests OK (14 skipped); `scripts.validate --site .` clean
 (73 / 11 / 15 pages / 746 links / 20 checksums / 165 rows); `npm run test:browser` (15 suites)
 exit 0.
+
+## The board rotated, and both independent fixes were kept (2026-10-26 03:10Z)
+
+`origin/main` had advanced to snapshot `2026-10-26T01:00:10.246310Z` with **81** rows — the feed
+rotated, exactly the failure b964dffd hit (`expected 73 coverage cards, found 81`). That session fixed
+the same literal independently, from a different angle, so both readings were kept rather than one
+replacing the other:
+
+| Check | Source of truth | Catches |
+| --- | --- | --- |
+| `expectedCards` (b964dffd) | the built snapshot's `data/latest.json` | a page that renders fewer cards than the builder was given |
+| `total` from the heading (11e17543) | the rendered page | a heading that disagrees with its own table |
+| picks + unresolved == total (11e17543) | both pages | an arithmetic slip between the board and the unresolved list |
+
+They are independent: neither alone catches a builder that mislabels its own table.
+
+Re-measured on the rotated board, `research/session-11e17543/every-match-picks.*` regenerated:
+
+    rows 81 | picks 79 | probabilities 42 | unresolved 2
+    rungs {pipeline:19, researched_line:0, model_vrs:23, research_one_sided:23, research_bounded:14, unresolved:2}
+
+Phone suite: `failures: []`, 81 cards, heading "79 of 81 listed CS2 matches carry a pick",
+2 unresolved — 79 + 2 = 81. Gates on this tree: 1,878 unit tests OK (9 skipped), audits 9, integrity 5,
+c6 12, `scripts.validate --site .` → 81 / 19 / 15 pages / 833 links / 20 checksums / 200 rows,
+`npm run test:browser` 15 suites exit 0.

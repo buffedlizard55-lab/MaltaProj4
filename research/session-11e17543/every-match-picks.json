@@ -1,8 +1,8 @@
 {
  "session": "11e17543",
- "generated_at": "2026-10-26T02:02:14Z",
- "snapshot_generated_at": "2026-10-26T00:10:49.639616Z",
- "fixtures_observed_at": "2026-10-26T00:07:16.611284Z",
+ "generated_at": "2026-10-26T02:09:42Z",
+ "snapshot_generated_at": "2026-10-26T01:00:10.246310Z",
+ "fixtures_observed_at": "2026-10-26T00:56:34.557911Z",
  "snapshot_path": "data/latest.json",
  "standings": {
   "as_of": "2026-10-05",
@@ -12,13 +12,13 @@
  },
  "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
  "lobby_url": "https://play.hotspawn.com/lobby",
- "rows_total": 73,
- "actionable": 11,
- "with_pick": 71,
- "with_probability": 34,
+ "rows_total": 81,
+ "actionable": 19,
+ "with_pick": 79,
+ "with_probability": 42,
  "unresolved": 2,
  "counts_by_ladder": {
-  "pipeline": 11,
+  "pipeline": 19,
   "researched_line": 0,
   "model_vrs": 23,
   "research_one_sided": 23,
@@ -2222,12 +2222,12 @@
    "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
    "pick": "Off Chops",
    "probabilities": [
-    0.19,
-    0.81
+    0.205,
+    0.795
    ],
    "fair_odds": [
-    5.2631578947368425,
-    1.2345679012345678
+    4.878048780487805,
+    1.2578616352201257
    ],
    "ladder": "pipeline",
    "ladder_label": "Published production line",
@@ -2255,12 +2255,12 @@
    "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
    "pick": "NEXVOID",
    "probabilities": [
-    0.575197889182058,
-    0.42480211081794195
+    0.5714285714285714,
+    0.42857142857142855
    ],
    "fair_odds": [
-    1.738532110091743,
-    2.3540372670807455
+    1.75,
+    2.3333333333333335
    ],
    "ladder": "pipeline",
    "ladder_label": "Published production line",
@@ -2268,6 +2268,171 @@
     {
      "provider": "Thunderpick (via BO3.gg API)",
      "url": "https://bo3.gg/matches/nexvoid-vs-alter-ego-26-10-2026"
+    }
+   ],
+   "limitation": null
+  },
+  {
+   "id": "1079201",
+   "teams": [
+    "INOX Division",
+    "Nemesis"
+   ],
+   "competition": "NODWIN Clutch Series #13",
+   "tier": "b",
+   "start": "2026-10-26T09:00:00Z",
+   "lock": "2026-10-26T08:54:00Z",
+   "actionable": true,
+   "state": "open",
+   "source_url": "https://www.hotspawn.com/matches/inox-division-vs-nemesis-nodwin-clutch-series-13-1079201",
+   "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "pick": "Nemesis",
+   "probabilities": [
+    0.275,
+    0.725
+   ],
+   "fair_odds": [
+    3.6363636363636362,
+    1.3793103448275863
+   ],
+   "ladder": "pipeline",
+   "ladder_label": "Published production line",
+   "sources": [
+    {
+     "provider": "Polymarket",
+     "url": "https://polymarket.com/event/cs2-nem-inox-2026-10-26"
+    }
+   ],
+   "limitation": null
+  },
+  {
+   "id": "1079202",
+   "teams": [
+    "FOKUS",
+    "ex-Zero Tenacity"
+   ],
+   "competition": "NODWIN Clutch Series #13",
+   "tier": "b",
+   "start": "2026-10-26T12:00:00Z",
+   "lock": "2026-10-26T11:54:00Z",
+   "actionable": true,
+   "state": "open",
+   "source_url": "https://www.hotspawn.com/matches/fokus-vs-ex-zero-tenacity-nodwin-clutch-series-13-1079202",
+   "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "pick": "FOKUS",
+   "probabilities": [
+    0.7448426229219005,
+    0.2551573770780995
+   ],
+   "fair_odds": [
+    1.3425654886359177,
+    3.91914986527674
+   ],
+   "ladder": "pipeline",
+   "ladder_label": "Published production line",
+   "sources": [
+    {
+     "provider": "Valve VRS model",
+     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+    }
+   ],
+   "limitation": null
+  },
+  {
+   "id": "1081159",
+   "teams": [
+    "LFO 10",
+    "ex-6666"
+   ],
+   "competition": "CCT Europe 2026 Series #12",
+   "tier": "b",
+   "start": "2026-10-26T12:00:00Z",
+   "lock": "2026-10-26T11:54:00Z",
+   "actionable": true,
+   "state": "open",
+   "source_url": "https://www.hotspawn.com/matches/lfo-10-vs-ex-6666-cct-europe-2026-series-12-1081159",
+   "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "pick": "ex-6666",
+   "probabilities": [
+    0.32761684508776867,
+    0.6723831549122313
+   ],
+   "fair_odds": [
+    3.0523461018376503,
+    1.4872472528413263
+   ],
+   "ladder": "pipeline",
+   "ladder_label": "Published production line",
+   "sources": [
+    {
+     "provider": "HLTV Valve ranking (Valve points)",
+     "url": "https://www.hltv.org/valve-ranking/teams/2026/october/26"
+    }
+   ],
+   "limitation": null
+  },
+  {
+   "id": "1079203",
+   "teams": [
+    "Metizport",
+    "BRUTE"
+   ],
+   "competition": "NODWIN Clutch Series #13",
+   "tier": "b",
+   "start": "2026-10-26T15:00:00Z",
+   "lock": "2026-10-26T14:54:00Z",
+   "actionable": true,
+   "state": "open",
+   "source_url": "https://www.hotspawn.com/matches/metizport-vs-brute-nodwin-clutch-series-13-1079203",
+   "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "pick": "Metizport",
+   "probabilities": [
+    0.6804803346577152,
+    0.3195196653422848
+   ],
+   "fair_odds": [
+    1.4695501825236503,
+    3.1296978197844316
+   ],
+   "ladder": "pipeline",
+   "ladder_label": "Published production line",
+   "sources": [
+    {
+     "provider": "Valve VRS model",
+     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+    }
+   ],
+   "limitation": null
+  },
+  {
+   "id": "1081160",
+   "teams": [
+    "HAVU",
+    "ILLYRIANS"
+   ],
+   "competition": "CCT Europe 2026 Series #12",
+   "tier": "b",
+   "start": "2026-10-26T15:00:00Z",
+   "lock": "2026-10-26T14:54:00Z",
+   "actionable": true,
+   "state": "open",
+   "source_url": "https://www.hotspawn.com/matches/havu-vs-illyrians-cct-europe-2026-series-12-1081160",
+   "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "pick": "HAVU",
+   "probabilities": [
+    0.5826418348526576,
+    0.41735816514734236
+   ],
+   "fair_odds": [
+    1.7163202849189274,
+    2.396023568023317
+   ],
+   "ladder": "pipeline",
+   "ladder_label": "Published production line",
+   "sources": [
+    {
+     "provider": "Valve VRS model",
+     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
     }
    ],
    "limitation": null
@@ -2420,12 +2585,12 @@
    "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
    "pick": "FaZe",
    "probabilities": [
-    0.375,
-    0.625
+    0.345,
+    0.655
    ],
    "fair_odds": [
-    2.6666666666666665,
-    1.6
+    2.8985507246376816,
+    1.5267175572519083
    ],
    "ladder": "pipeline",
    "ladder_label": "Published production line",
@@ -2433,6 +2598,72 @@
     {
      "provider": "Polymarket",
      "url": "https://polymarket.com/event/cs2-all-faze-2026-10-27"
+    }
+   ],
+   "limitation": null
+  },
+  {
+   "id": "1081162",
+   "teams": [
+    "ex-RUSTEC",
+    "Spirit Academy"
+   ],
+   "competition": "CCT Europe 2026 Series #12",
+   "tier": "b",
+   "start": "2026-10-27T12:00:00Z",
+   "lock": "2026-10-27T11:54:00Z",
+   "actionable": true,
+   "state": "open",
+   "source_url": "https://www.hotspawn.com/matches/ex-rustec-vs-spirit-academy-cct-europe-2026-series-12-1081162",
+   "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "pick": "ex-RUSTEC",
+   "probabilities": [
+    0.5234518509837461,
+    0.47654814901625386
+   ],
+   "fair_odds": [
+    1.9103953842567485,
+    2.0984238467074445
+   ],
+   "ladder": "pipeline",
+   "ladder_label": "Published production line",
+   "sources": [
+    {
+     "provider": "HLTV Valve ranking (Valve points)",
+     "url": "https://www.hltv.org/valve-ranking/teams/2026/october/26"
+    }
+   ],
+   "limitation": null
+  },
+  {
+   "id": "1081163",
+   "teams": [
+    "BakS",
+    "Saint Sinners"
+   ],
+   "competition": "CCT Europe 2026 Series #12",
+   "tier": "b",
+   "start": "2026-10-27T15:00:00Z",
+   "lock": "2026-10-27T14:54:00Z",
+   "actionable": true,
+   "state": "open",
+   "source_url": "https://www.hotspawn.com/matches/baks-vs-saint-sinners-cct-europe-2026-series-12-1081163",
+   "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "pick": "BakS",
+   "probabilities": [
+    0.729661697246749,
+    0.270338302753251
+   ],
+   "fair_odds": [
+    1.3704981414994446,
+    3.6990688696922893
+   ],
+   "ladder": "pipeline",
+   "ladder_label": "Published production line",
+   "sources": [
+    {
+     "provider": "Valve VRS model",
+     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
     }
    ],
    "limitation": null
@@ -2466,6 +2697,39 @@
     {
      "provider": "Polymarket",
      "url": "https://polymarket.com/event/cs2-lg6-hotu-2026-10-27"
+    }
+   ],
+   "limitation": null
+  },
+  {
+   "id": "1081164",
+   "teams": [
+    "Inner Circle Academy",
+    "Lavked"
+   ],
+   "competition": "CCT Europe 2026 Series #12",
+   "tier": "b",
+   "start": "2026-10-27T18:00:00Z",
+   "lock": "2026-10-27T17:54:00Z",
+   "actionable": true,
+   "state": "open",
+   "source_url": "https://www.hotspawn.com/matches/inner-circle-academy-vs-lavked-cct-europe-2026-series-12-1081164",
+   "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "pick": "Inner Circle Academy",
+   "probabilities": [
+    0.7044899765611272,
+    0.2955100234388728
+   ],
+   "fair_odds": [
+    1.4194666116917165,
+    3.3839799691493484
+   ],
+   "ladder": "pipeline",
+   "ladder_label": "Published production line",
+   "sources": [
+    {
+     "provider": "Valve VRS model",
+     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
     }
    ],
    "limitation": null

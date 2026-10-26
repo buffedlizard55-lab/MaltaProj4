@@ -22,6 +22,21 @@ const VIEWPORTS = [
   // SITE_ROOT lets the suite be pointed at a deliberately broken build to prove
   // its assertions actually fail. Defaults to the generated build CI checks.
   const root = path.resolve(process.env.SITE_ROOT || 'public');
+  // Session b964dffd repair (2026-10-26): the expected card count was pinned
+  // to the literal 73 of the 2026-10-26T00:10Z board this suite was authored
+  // against, so the first rotated board (81 feed rows) failed the browser
+  // gate with "expected 73 coverage cards, found 81" — the pinned-live-value
+  // class that froze publication on 2026-10-23/24. The coverage table renders
+  // one card per feed row in the built snapshot, so derive the expectation
+  // from that same snapshot (the tests/browser.cjs pattern).
+  //
+  // Session 11e17543 kept both readings deliberately: expectedCards comes from
+  // the built snapshot's data, while `total` below is read off the rendered
+  // heading. They are independent, so a page can be checked against the rows
+  // the builder was given AND against the count it advertises. Either check
+  // alone would miss a builder that mislabels its own table.
+  const snapshot = JSON.parse(fs.readFileSync(path.join(root, 'data/latest.json'), 'utf8'));
+  const expectedCards = snapshot.matches.length;
   const server = http.createServer((req, res) => {
     const url = new URL(req.url, 'http://test');
     const pathname = decodeURIComponent(url.pathname).replace(/^\/MaltaProj4\//, '/');
@@ -96,13 +111,12 @@ const VIEWPORTS = [
                 sectionTop: Math.round(section.getBoundingClientRect().y + scrollY)};
       });
       if (!coverage.found) report.failures.push(`${vp.name}: #every-match is missing from matches.html`);
-      // The row count is not pinned to a literal. CI refreshes the snapshot from
-      // the live feed before it builds, so the number of listed CS2 matches moves
-      // between runs; a hardcoded expectation would fail on a correct page and,
-      // worse, pass on a page that silently dropped rows. The invariant that
-      // actually matters is internal consistency: the table carries exactly one
-      // card per match its own heading counts, and the picks it reports plus the
-      // rows the unresolved page reports account for all of them.
+      // (a) one card per feed row the builder was given...
+      if (coverage.cards.length !== expectedCards)
+        report.failures.push(`${vp.name}: expected ${expectedCards} coverage cards (one per feed row in the built snapshot), found ${coverage.cards.length}`);
+      // ...and (b) the same count the page advertises in its own heading, so a
+      // table that silently drops or duplicates a row cannot hide behind a
+      // heading that agrees with it.
       const claimed = /of\s+(\d+)\s+listed/i.exec(coverage.heading || '');
       const total = claimed ? Number(claimed[1]) : NaN;
       if (!Number.isFinite(total) || total <= 0)
