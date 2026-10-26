@@ -1,5 +1,5 @@
 {
- "measured_at": "2026-10-26T01:37:18.581Z",
+ "measured_at": "2026-10-26T02:09:12.544Z",
  "board": "public/ from research/diagnose-aeafcbe6/snapshot.json",
  "viewports": [
   {
@@ -12,14 +12,14 @@
     "horizontalOverflow": false,
     "withheld": false,
     "exec_summary": {
-     "top": 2428,
+     "top": 3778,
      "height": 288
     },
     "exec_quicknav": {
      "top": 290,
      "height": 97
     },
-    "quicknav_text": "Executive summary · 11/11 picks · 0 unresolved (no %) · 62 feed rows are not open. · 71/73 listed matches have a pickPicks →Every match →Limits ↓",
+    "quicknav_text": "Executive summary · 19/19 picks · 0 unresolved (no %) · 62 feed rows are not open. · 79/81 listed matches have a pickPicks →Every match →Limits ↓",
     "exec_links": [
      "picks.html",
      "#picks-at-a-glance",
@@ -48,18 +48,18 @@
     "pick": "Off Chops",
     "teams": "Ground ZerovsOff Chops",
     "percentages": [
-     "19.0%",
-     "81.0%"
+     "20.5%",
+     "79.5%"
     ],
     "percentage_labels": [
-     "Ground Zero 19.0 percent",
-     "Off Chops 81.0 percent"
+     "Ground Zero 20.5 percent",
+     "Off Chops 79.5 percent"
     ],
     "tabbar_top": 507,
     "horizontalOverflow": false,
-    "rows": 11,
-    "publishedPicks": 11,
-    "pricedRows": 11
+    "rows": 19,
+    "publishedPicks": 19,
+    "pricedRows": 19
    },
    "documentWidth": 0
   },
@@ -73,14 +73,14 @@
     "horizontalOverflow": false,
     "withheld": false,
     "exec_summary": {
-     "top": 3077,
+     "top": 4932,
      "height": 237
     },
     "exec_quicknav": {
      "top": 300,
      "height": 90
     },
-    "quicknav_text": "Executive summary · 11/11 picks · 0 unresolved (no %) · 62 feed rows are not open. · 71/73 listed matches have a pickPicks →Every match →Limits ↓",
+    "quicknav_text": "Executive summary · 19/19 picks · 0 unresolved (no %) · 62 feed rows are not open. · 79/81 listed matches have a pickPicks →Every match →Limits ↓",
     "exec_links": [
      "picks.html",
      "#picks-at-a-glance",
@@ -109,18 +109,18 @@
     "pick": "Off Chops",
     "teams": "Ground ZerovsOff Chops",
     "percentages": [
-     "19.0%",
-     "81.0%"
+     "20.5%",
+     "79.5%"
     ],
     "percentage_labels": [
-     "Ground Zero 19.0 percent",
-     "Off Chops 81.0 percent"
+     "Ground Zero 20.5 percent",
+     "Off Chops 79.5 percent"
     ],
     "tabbar_top": 783,
     "horizontalOverflow": false,
-    "rows": 11,
-    "publishedPicks": 11,
-    "pricedRows": 11
+    "rows": 19,
+    "publishedPicks": 19,
+    "pricedRows": 19
    },
    "documentWidth": 0
   },
@@ -134,14 +134,14 @@
     "horizontalOverflow": false,
     "withheld": false,
     "exec_summary": {
-     "top": 3026,
+     "top": 4847,
      "height": 237
     },
     "exec_quicknav": {
      "top": 300,
      "height": 90
     },
-    "quicknav_text": "Executive summary · 11/11 picks · 0 unresolved (no %) · 62 feed rows are not open. · 71/73 listed matches have a pickPicks →Every match →Limits ↓",
+    "quicknav_text": "Executive summary · 19/19 picks · 0 unresolved (no %) · 62 feed rows are not open. · 79/81 listed matches have a pickPicks →Every match →Limits ↓",
     "exec_links": [
      "picks.html",
      "#picks-at-a-glance",
@@ -170,18 +170,18 @@
     "pick": "Off Chops",
     "teams": "Ground ZerovsOff Chops",
     "percentages": [
-     "19.0%",
-     "81.0%"
+     "20.5%",
+     "79.5%"
     ],
     "percentage_labels": [
-     "Ground Zero 19.0 percent",
-     "Off Chops 81.0 percent"
+     "Ground Zero 20.5 percent",
+     "Off Chops 79.5 percent"
     ],
     "tabbar_top": 854,
     "horizontalOverflow": false,
-    "rows": 11,
-    "publishedPicks": 11,
-    "pricedRows": 11
+    "rows": 19,
+    "publishedPicks": 19,
+    "pricedRows": 19
    },
    "documentWidth": 0
   }

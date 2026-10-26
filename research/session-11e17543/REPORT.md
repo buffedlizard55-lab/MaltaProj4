@@ -166,3 +166,66 @@ Nothing from main was dropped.
 `scripts.validate` on the generated build **and** the committed root → 73 rows / 11 calculations /
 15 pages / 746 links / 20 checksums / 165 displayed rows; `npm run test:browser` (15 suites) →
 **exit 0** (11 `Passed`, 3 `"failures": []`, 1 `"status":"ok"`).
+
+## CI failure after the merge, and the fix (2026-10-26 02:10Z)
+
+PR #359 merged as `4467713`, then the publisher workflow run `40255168673` **failed** at step 14
+("Phone, tablet, desktop, accessibility and exact-boundary expiry checks"). The CI log is not
+readable from this sandbox — the Actions log blobs live on `results-receiver.actions.githubusercontent.com`
+and Azure blob storage, neither of which is in the outbound allowlist — so the cause was established
+from the workflow definition instead of from the log.
+
+**Cause.** `.github/workflows/pages.yml` runs `scripts.refresh` against the live feed before it
+builds, so the published snapshot is *not* the committed `data/latest.json`. The every-match phone
+suite asserted a literal `cards.length !== 73`. A refreshed feed with a different row count fails
+that check on a page that is entirely correct — the exact failure mode: the count is a moving input,
+not a defect.
+
+**Fix.** `tests/browser_11e17543.cjs` now derives the total from the section's own heading
+(`of N listed`) and asserts internal consistency instead of a literal:
+
+* the table carries exactly one card per match its heading counts;
+* picks + the unresolved page's rows equal that total;
+* the unresolved heading's count equals the rows it actually names.
+
+`SITE_ROOT` was added so the suite can be aimed at a deliberately broken build.
+
+**Proved the new assertion actually fires** (an untested assertion is worth nothing):
+
+| Build | Result |
+| --- | --- |
+| Real build, 73 rows | `failures: []` |
+| Snapshot with one row removed, rebuilt | `failures: []` — correct: the build regenerates its own heading as "70 of 72", so the page is self-consistent. This is why a literal was the wrong test. |
+| Real build with one `<tr>` deleted from `#every-match`, heading left intact | **fails**: `the heading claims 73 listed matches but the table has 72 cards`, on both viewports |
+
+The third row is the defect the check exists for — a card silently dropped from the rendered table —
+and it is caught.
+
+Re-verified after the fix: 1,838 unit tests OK (14 skipped); `scripts.validate --site .` clean
+(73 / 11 / 15 pages / 746 links / 20 checksums / 165 rows); `npm run test:browser` (15 suites)
+exit 0.
+
+## The board rotated, and both independent fixes were kept (2026-10-26 03:10Z)
+
+`origin/main` had advanced to snapshot `2026-10-26T01:00:10.246310Z` with **81** rows — the feed
+rotated, exactly the failure b964dffd hit (`expected 73 coverage cards, found 81`). That session fixed
+the same literal independently, from a different angle, so both readings were kept rather than one
+replacing the other:
+
+| Check | Source of truth | Catches |
+| --- | --- | --- |
+| `expectedCards` (b964dffd) | the built snapshot's `data/latest.json` | a page that renders fewer cards than the builder was given |
+| `total` from the heading (11e17543) | the rendered page | a heading that disagrees with its own table |
+| picks + unresolved == total (11e17543) | both pages | an arithmetic slip between the board and the unresolved list |
+
+They are independent: neither alone catches a builder that mislabels its own table.
+
+Re-measured on the rotated board, `research/session-11e17543/every-match-picks.*` regenerated:
+
+    rows 81 | picks 79 | probabilities 42 | unresolved 2
+    rungs {pipeline:19, researched_line:0, model_vrs:23, research_one_sided:23, research_bounded:14, unresolved:2}
+
+Phone suite: `failures: []`, 81 cards, heading "79 of 81 listed CS2 matches carry a pick",
+2 unresolved — 79 + 2 = 81. Gates on this tree: 1,878 unit tests OK (9 skipped), audits 9, integrity 5,
+c6 12, `scripts.validate --site .` → 81 / 19 / 15 pages / 833 links / 20 checksums / 200 rows,
+`npm run test:browser` 15 suites exit 0.
