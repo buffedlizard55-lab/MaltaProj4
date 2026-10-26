@@ -11694,3 +11694,11 @@ carry it since 02:44Z). Exact gate reproduced locally on the fresh board:
 `session-b964dffd-unity-alias-staged-root-gate-2026-10-26` (301 notes). Follow-up
 PR link and the first green root-fallback step will be appended below.
 
+
+**Session b964dffd — interim (2026-10-26 ~03:13 UTC).** Follow-up
+[PR #368](https://github.com/buffedlizard55-lab/MaltaProj4/pull/368) merged
+03:01:22Z (`c4055d8`), but publisher run 40261981524 still failed the
+root-fallback step with rc=3 — the board rotated again at the 03:00Z locks.
+Reproducing against a current capture before any further change; no fix is
+claimed until a publisher run commits the root fallback green.
+
