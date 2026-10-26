@@ -6456,6 +6456,37 @@
   ]
  },
  {
+  "id": "session-160f03c8-hotspawn-inventory-drift-2026-10-26",
+  "status": "Open — live source inventory mismatch; refresh/reconcile required",
+  "finding": "At 2026-10-26 00:52 UTC, the live Hotspawn general lobby displayed 81 CS2 entries and 19 matches this week, while its separate /cs2-pickems page displayed 72 entries. The verified board snapshot generated 2026-10-26T00:10:49.639616Z retained 73 rows. A later read of Hotspawn’s official fixtures feed and lobby exposed eight scheduled fixtures absent from that snapshot: 1079201 INOX Division–Nemesis (09:00Z), 1081159 LFO 10–ex-6666 (12:00Z), 1079202 FOKUS–ex-Zero Tenacity (12:00Z), 1081160 HAVU–ILLYRIANS (15:00Z), 1079203 Metizport–BRUTE (15:00Z), 1081162 ex-RUSTEC–Spirit Academy (27 Oct 12:00Z), 1081163 BakS–Saint Sinners (27 Oct 15:00Z), and 1081164 Inner Circle Academy–Lavked (27 Oct 18:00Z). The line-by-line receipt lists the exact match-page URLs and the shared fixture API URL. This is a dated discrepancy, not a claim that either surface is authoritative over the other. The later eight were not added or assigned a pick: no accepted external market line, exact HLTV evidence or verified Valve model calculation was established in this audit. Hotspawn vote percentages are explicitly excluded. Re-harvest all three surfaces, reconcile IDs, then run the existing market/HLTV/book/model ladder. The site refresh workflow is best-effort; the live summary still showed the 00:10Z snapshot at 00:52Z, and no newer publish run appeared in the Actions run list at audit time.",
+  "sources": [
+   {
+    "url": "https://play.hotspawn.com/lobby",
+    "label": "Hotspawn general lobby; displayed 81 CS2 entries and listed the 19 this-week fixtures"
+   },
+   {
+    "url": "https://play.hotspawn.com/cs2-pickems",
+    "label": "Hotspawn CS2 Pick’ems page; displayed 72 entries"
+   },
+   {
+    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+    "label": "Hotspawn fixtures API; records for the eight IDs were present in the later response"
+   },
+   {
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/",
+    "label": "Published snapshot and last-checked time observed during audit"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40247657442",
+    "label": "Latest successful publish run visible at audit time (00:05:31–00:14:35 UTC)"
+   },
+   {
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/picks.html",
+    "label": "Published picks board; historical snapshot only, not evidence for the missing eight"
+   }
+  ]
+ },
+ {
   "id": "session-28e4f2a1-executive-summary-directory-2026-10-26",
   "status": "Published with limitation — counts are dated to the snapshot; needs review of the category policy",
   "finding": "The executive summary now carries a counts-driven pick directory (#picks-directory) inside its unresolved-and-limitations section, repeated at the top of the unresolved page: one row per published ladder step, the number of open matches it answered for, how many of those carry a percentage, the official source of that kind of line and the page on this site that lists them, plus a 'no pick' row and a total. Re-derived for the 2026-10-26T00:10:49Z snapshot (73 feed rows, 11 open): exchange 7, bookmaker listing 1, our VRS model 3, research-only 0, unresolved 0; total 11, all 11 with a percentage. The rendered cells were measured with Chromium at 320x568, 390x844 and 412x915 on both pages: no horizontal overflow, every one of the 9 rows x 5 cells visible with text, no count hidden behind the fixed tab bar, and the category counts add up to the published total (receipt: research/session-28e4f2a1/phone-directory-measurements.json). LIMITATION FOR REVIEW: the numbers are static in the generated HTML and describe the snapshot named in the paragraph above the table, so a page served after its eight-hour evidence window shows that snapshot's counts while the board withholds its expired picks; the page says so in the same paragraph. Category boundaries follow scripts.summary's published ladder (a Pinnacle line and a researched book listing are separate rows, 'no pick' covers both unresolved rows and any method outside the ladder), which is a product decision a reviewer may want to change.",
