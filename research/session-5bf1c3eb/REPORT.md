@@ -37,11 +37,22 @@ snapshot's retained `fixture_evidence`, reproducible offline).
 
 ## 3. Per-row line-source receipts for the non-featured picks
 
-`gaps/gap-report.json` → `source_probes` re-reads, for every open row whose published line is **not** a market
-line, the outside sources the brief names, in order: HLTV search per club, BO3.gg's Thunderpick feed,
-EGamersWorld's bookmaker-average listing, Polymarket's public event search per club and Pinnacle's guest
-esports moneyline. Each response is retained with its HTTP status and read time. A source that renders no
-numeric two-way price stays a recorded collection limitation; nothing is converted, averaged or defaulted.
+`gaps/gap-report.json` (run 40254113329, probed `2026-10-26T01:28:55Z`) re-reads, for each of the 10 open rows
+whose published line is **not** a featured exchange line, the outside sources the brief names, in order. Every
+response is retained with its HTTP status and read time:
+
+| Source | Measured at 01:28Z | Result for the 10 non-market rows |
+| --- | --- | --- |
+| HLTV search per club | HTTP 200 | Every club resolves to exactly one HLTV team page (identity confirmed); HLTV renders no numeric two-way price to this collector, consistent with the dated 25 Oct re-check on the method page. |
+| BO3.gg upcoming feed (Thunderpick odds) | HTTP 200 · 221 rows | Loose token-overlap candidates exist for 9 of 10 rows, but **none names the exact opponent pair at the exact UTC start with an active two-way price**; the 4 "with odds" candidates are different fixtures (e.g. `ECSTATIC vs MASONIC`, `Luminosity vs HOTU`) that share one token. None passed the pipeline's exact identity+start gate, which is why these rows carry the model line. |
+| EGamersWorld bookmaker-average listing | **HTTP 403** | Access refused, recorded as a limitation (matches the dated 2026-10-25 access probe). No price inferred from a refusal. |
+| Polymarket public event search per club | HTTP 200 · 491 sport entries | **0 events whose title contains both clubs** for all 10 rows — i.e. these fixtures are genuinely not covered on Polymarket, the case the brief describes. |
+| Pinnacle guest esports endpoints | HTTP 200 · 26 CS2 matchups / 1070 moneyline rows | Using the pipeline's own matcher (`scripts.core.pinnacle_candidates`), **0 two-way moneylines for the exact pair** on all 10 rows. An earlier draft of this probe used a looser name search and produced a misleading "Spirit" ~ "Spirit Academy" hit; that matcher was replaced and the receipts re-taken in this run. |
+
+Conclusion recorded per row: the model label (`model_vrs` / `model_vrs_mirror`) on these 10 rows is honest — the
+exchange, the sharp book, the affiliate feed and the book listing were each asked for that exact fixture in the
+same minute and none supplied a usable two-way price. Valve's official standings supplied the line instead, and
+the row says so.
 
 ## 4. Site changes (all rendered from the snapshot, no hand-typed counts)
 

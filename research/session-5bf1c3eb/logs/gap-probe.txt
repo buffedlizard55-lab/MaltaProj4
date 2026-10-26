@@ -16,6 +16,6 @@
   },
   "closed_rows": 62,
   "closed_rows_with_upstream_status_conflict": 50,
-  "gaps_probed": 0,
+  "gaps_probed": 10,
   "live_pages_within_8h": true
 }
