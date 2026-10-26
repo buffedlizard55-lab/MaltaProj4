@@ -1,0 +1,1 @@
+{"open": 19, "open_without_pick": 0, "kalshi_open_markets": 116, "kalshi_open_events": 58, "kalshi_joined_fixtures": 0, "sx_active_markets": 0, "sx_joined_fixtures": 0, "hltv_team_pages_read": 0}
