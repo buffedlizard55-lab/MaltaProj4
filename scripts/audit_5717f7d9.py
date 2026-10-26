@@ -373,12 +373,37 @@ def _audit_book(m, generated, amap, findings, rec):
                                 [e.get("url")]))
 
 
+MIRROR_PROVIDER = "HLTV Valve ranking (Valve points)"
+
+
 def _audit_vrs(m, generated, standings, findings, rec):
-    ev = [e for e in m["evidence"] if e.get("provider") in ("Valve VRS model",)]
+    # Two providers carry the same Valve points and the same published formula:
+    # the monthly official file, and HLTV's dated view of that ranking used when
+    # the monthly file does not resolve the clubs. The arithmetic checks below
+    # are identical; only the mirror needs its own provenance assertions, and
+    # only the official-file row can be joined against the vendored file.
+    ev = [e for e in m["evidence"] if e.get("provider") in ("Valve VRS model", MIRROR_PROVIDER)]
     if not ev:
         findings.append(Finding("fail", "vrs_evidence", m["id"], "Model row has no VRS evidence.", []))
         return
     e = ev[0]
+    if e.get("provider") == MIRROR_PROVIDER:
+        for key in ("ranking_as_of", "ranking_page_sha256"):
+            if not e.get(key):
+                findings.append(Finding("fail", "vrs_mirror_source", m["id"],
+                                        f"Mirror evidence missing {key}.", [e.get("url")]))
+        fixture_teams = e.get("fixture_teams") or []
+        if sorted(norm(t, {}) for t in fixture_teams) != sorted(norm(t, {}) for t in m["teams"]):
+            findings.append(Finding("fail", "vrs_mirror_identity", m["id"],
+                                    f"Mirror fixture teams {fixture_teams} do not match {m['teams']}.",
+                                    [e.get("url")]))
+        if len(e.get("vrs_teams") or []) != 2:
+            findings.append(Finding("fail", "vrs_mirror_identity", m["id"],
+                                    "Mirror evidence does not name both ranking rows.", [e.get("url")]))
+        if str(e.get("ranking_as_of")) > generated.strftime("%Y-%m-%d"):
+            findings.append(Finding("fail", "vrs_mirror_source", m["id"],
+                                    f"Mirror ranking dated {e.get('ranking_as_of')} is after the snapshot.",
+                                    [e.get("url")]))
     points = e.get("points")
     if not points or len(points) != 2:
         findings.append(Finding("fail", "vrs_points", m["id"], "No retained Valve points.", [e.get("url")]))

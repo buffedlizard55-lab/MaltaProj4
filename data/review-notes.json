@@ -6537,5 +6537,49 @@
    }
   ],
   "impact": "Evidence depth on one originated line. The value is labelled as a non-market model estimate on the row; it is not presented as a market price. Re-reading the two numbers on HLTV's page would close it."
+ },
+ {
+  "id": "session-77046e56-audit-mirror-provider-2026-10-26",
+  "status": "Fixed in this change; published for manual review",
+  "finding": "The independent auditor scripts/audit_5717f7d9.py selected model evidence with provider == 'Valve VRS model' only. A row priced from HLTV's dated view of Valve's ranking carries provider == 'HLTV Valve ranking (Valve points)'. On the verified 2026-10-26T00:52:33Z capture those two rows (1081159 LFO 10 vs ex-6666, 1081162 ex-RUSTEC vs Spirit Academy) were therefore reported as the hard failure 'Model row has no VRS evidence'. That finding is part of the publish workflow's own gate: the gate refuses to stage a snapshot onto the legacy Pages root when the unit suite is red, so the 81-row build was verified and deployed as an artifact while the committed main:/ root kept the older 73-row snapshot, and the public board kept serving 11 open matches after Hotspawn listed 19. The equations were never wrong: both mirror rows re-derive from their retained Valve points through Valve's published fit (G = 0.9728209910486895, slope 0.7986) to <1e-9. The auditor now accepts both providers, checks the arithmetic identically, and adds mirror-specific assertions (ranking date, ranking page hash, fixture identity, two named ranking rows); tests/test_session_77046e56.py proves tampering with any of those still fails the audit. Reproduction, before the fix: python3 -m unittest tests.test_session_5717f7d9 with the 81-row snapshot in data/latest.json.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/scripts/audit_5717f7d9.py",
+    "label": "The auditor whose evidence filter is the defect"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/scripts/vrs_mirror.py",
+    "label": "Mirror model that sets the different provider string"
+   },
+   {
+    "url": "https://www.hltv.org/valve-ranking/teams/2026/october/26",
+    "label": "HLTV dated Valve ranking used as the mirror's point source"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40253386073",
+    "label": "Publish run whose root-fallback step failed after the artifact deployed"
+   }
+  ],
+  "impact": "A verification bug, not a data bug. Until it was fixed, every refresh that priced a mirror row failed the publish gate and the legacy root stayed behind, which is how a correctly priced board could still look like it had missing picks."
+ },
+ {
+  "id": "session-77046e56-equal-rows-priced-2026-10-26",
+  "status": "Closed — measured, no defect",
+  "finding": "The historical note 'every equal-line row is priced 50/50 without a pick' no longer describes the board. On the verified 2026-10-26T00:52:33Z capture, 19 of 19 open rows carry a pick and both probabilities, and 0 rows are unresolved. An exact-even originated line is still treated as context rather than a published coin flip (scripts/core.py directional(), same rule in scripts/vrs.py and scripts/vrs_mirror.py), but no row in this capture hit that path, so nothing is hidden behind it. The earlier problem was observed on run 40068512182 at 2026-10-24T06:33Z; this note records the current measured state instead of leaving a stale description on the review page.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40068512182",
+    "label": "Run where the equal-line failure was observed on 24 Oct"
+   },
+   {
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/picks.html",
+    "label": "Public board the measurement describes"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40251150280",
+    "label": "Harvest run that produced and audited the 19-row capture"
+   }
+  ],
+  "impact": "Documentation only. It prevents an old, resolved defect from being read as a current limitation of the board."
  }
 ]
