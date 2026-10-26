@@ -273,9 +273,23 @@ class PublishedLinesReDerive(unittest.TestCase):
         self.assertEqual(receipt['summary']['problems'], 0, receipt['problems'])
         self.assertEqual(receipt['summary']['reproduced'], receipt['summary']['model_rows'])
         model_ids = {r['fixture'] for r in receipt['rows'] if r['kind'] == 'published_line'}
+        mirror_ids = {r['fixture'] for r in receipt['rows'] if r['kind'] == 'mirror_line'}
         for m in open_rows():
-            if m.get('method') in ('model_vrs', 'model_vrs_mirror'):
+            if m.get('method') == 'model_vrs':
                 self.assertIn(m['id'], model_ids)
+            elif m.get('method') == 'model_vrs_mirror':
+                # The mirror tier prices from HLTV's dated copy of Valve's ranking,
+                # whose bytes are not retained offline, so it re-derives through its
+                # own receipt kind and must carry dated provenance instead.
+                self.assertIn(m['id'], mirror_ids)
+                row = next(r for r in receipt['rows']
+                           if r['kind'] == 'mirror_line' and r['fixture'] == m['id'])
+                self.assertTrue(row['reproduces'], m['id'])
+                prov = row['mirror_provenance']
+                self.assertTrue(str(prov['ranking_url'] or '').startswith(
+                    'https://www.hltv.org/valve-ranking/'))
+                self.assertEqual(len(str(prov['ranking_page_sha256'] or '')), 64)
+                self.assertTrue(prov['ranking_as_of'])
         for row in receipt['rows']:
             for duplicate in row.get('duplicate_labels', []):
                 self.assertTrue(duplicate['roster_rule_verified'], (row['fixture'], duplicate))

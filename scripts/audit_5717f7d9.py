@@ -373,12 +373,37 @@ def _audit_book(m, generated, amap, findings, rec):
                                 [e.get("url")]))
 
 
+MIRROR_PROVIDER = "HLTV Valve ranking (Valve points)"
+
+
 def _audit_vrs(m, generated, standings, findings, rec):
-    ev = [e for e in m["evidence"] if e.get("provider") in ("Valve VRS model",)]
+    # The mirror tier (model_vrs_mirror) prices with the same Valve formula and
+    # calibration, but its points come from HLTV's dated publication of Valve's
+    # ranking when Valve's monthly file cannot resolve a club. Its evidence is
+    # VRS evidence of a different provenance, so the auditor accepts it only
+    # with the dated page, its sha256 and the HLTV valve-ranking URL retained;
+    # the vendored-Valve-file cross-check below stays exclusive to model_vrs.
+    ev = [e for e in m["evidence"] if e.get("provider") in ("Valve VRS model", MIRROR_PROVIDER)]
     if not ev:
         findings.append(Finding("fail", "vrs_evidence", m["id"], "Model row has no VRS evidence.", []))
         return
     e = ev[0]
+    if m["method"] == "model_vrs_mirror":
+        if e.get("provider") != MIRROR_PROVIDER:
+            findings.append(Finding("fail", "vrs_mirror_provider", m["id"],
+                                    "Mirror-priced row without the HLTV mirror provider label.",
+                                    [e.get("url")]))
+        for key in ("ranking_as_of", "ranking_page_sha256"):
+            if not e.get(key):
+                findings.append(Finding("fail", "vrs_mirror_provenance", m["id"],
+                                        f"Mirror model evidence missing {key}.", [e.get("url")]))
+        if len(str(e.get("ranking_page_sha256") or "")) != 64:
+            findings.append(Finding("fail", "vrs_mirror_provenance", m["id"],
+                                    "Mirror page sha256 is not a 64-char digest.", [e.get("url")]))
+        if not str(e.get("url") or "").startswith("https://www.hltv.org/valve-ranking/"):
+            findings.append(Finding("fail", "vrs_mirror_provenance", m["id"],
+                                    "Mirror model evidence does not cite an HLTV valve-ranking page.",
+                                    [e.get("url")]))
     points = e.get("points")
     if not points or len(points) != 2:
         findings.append(Finding("fail", "vrs_points", m["id"], "No retained Valve points.", [e.get("url")]))

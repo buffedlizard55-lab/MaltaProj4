@@ -74,6 +74,8 @@ def main():
         payload = None
         if m.get('method') == 'model_vrs':
             kind, payload = 'published_line', quote
+        elif m.get('method') == 'model_vrs_mirror':
+            kind, payload = 'mirror_line', quote
         elif check.get('status') == 'ok':
             kind, payload = 'market_check', check
         else:
@@ -86,6 +88,39 @@ def main():
         record = {'fixture': m['id'], 'kind': kind, 'fixture_teams': m['teams'],
                   'vrs_teams': teams, 'snapshot_points': points,
                   'confirmed': []}
+        if kind == 'mirror_line':
+            # The mirror tier's points come from HLTV's dated copy of Valve's
+            # ranking, not from the monthly Valve file retained beside this
+            # script, so the bytes-level confirmation below cannot apply. What
+            # CAN be re-derived offline is the arithmetic, and what CAN be
+            # pinned is the provenance: the dated page, its sha256 and the
+            # Valve file the mirror itself cites. A mirror row without all of
+            # those is a problem, not a pass.
+            record['mirror_provenance'] = {
+                'ranking_url': payload.get('url'),
+                'ranking_as_of': payload.get('ranking_as_of'),
+                'ranking_page_sha256': payload.get('ranking_page_sha256'),
+                'ranking_teams_count': payload.get('ranking_teams_count'),
+                'cited_valve_file': payload.get('official_file'),
+            }
+            prov = record['mirror_provenance']
+            if not (str(prov['ranking_url'] or '').startswith('https://www.hltv.org/valve-ranking/')
+                    and prov['ranking_as_of'] and len(str(prov['ranking_page_sha256'] or '')) == 64):
+                out['problems'].append('%s: mirror line lacks dated HLTV provenance' % m['id'])
+            if prov['cited_valve_file'] != {'file': 'standings_global_2026_10_05.md',
+                                            'commit': 'eec4853d7bcf0f1f7efe7f0d901234bef7e98b75',
+                                            'as_of': '2026-10-05'}:
+                out['problems'].append('%s: mirror line cites an unexpected Valve file %r'
+                                       % (m['id'], prov['cited_valve_file']))
+            raw = expected(points[0], points[1])
+            p = [calibrated(raw), 1 - calibrated(raw)]
+            published = payload.get('probabilities')
+            record.update(raw_expected=raw, recomputed=p, published=published,
+                          reproduces=bool(published) and max(abs(a - b) for a, b in zip(p, published)) < 1e-12)
+            if not record['reproduces']:
+                out['problems'].append('%s: recomputed %r != published %r' % (m['id'], p, published))
+            out['rows'].append(record)
+            continue
         for name, point in zip(teams, points):
             hits = by_name.get(name.strip().lower(), [])
             record['confirmed'].append({'team': name, 'listed_rows': hits,

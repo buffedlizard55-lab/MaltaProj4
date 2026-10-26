@@ -11191,3 +11191,43 @@ the upstream status conflict flagged for review.
 are written **only** by running this repository's own publisher path at integration time, never by hand.
 `data/review-notes.json` is append-only by unique `session-5bf1c3eb-*` id and unioned on rebase.
 `COORDINATION.md` is append-only for this section; any conflict is resolved keep-both.
+
+## Session 5bf1c3eb — delivery receipt (2026-10-26 02:1x UTC): full-coverage picks, the closed-window register, mobile executive summary
+
+**Tasks H1–H6 of this session's claim are done.** Scope honoured throughout: no other session's workflow,
+script or research directory was edited except the three integration-time adaptations listed below, each of
+which is a stale pin that the *new committed snapshot* legitimately moves, and each keeps the original
+assertion's standard rather than relaxing it.
+
+| Task | Status | Evidence |
+| --- | --- | --- |
+| H1 live harvest on this branch | **done** | Runs [40251492364](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40251492364) (fixtures 00:53:32Z), [40253421231](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40253421231), [40254113329](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40254113329) (fixtures 01:25:18Z). Non-publishing; receipts in `research/session-5bf1c3eb/`. |
+| H2 pick coverage for every open fixture | **done** | 81 feed rows / **19 open / 19 picks / 19 win probabilities / 0 unresolved** at 01:25:18Z, `coverage: verified`, `coverage_counts {api:81, page:81, lobby:81, retained:81}`, 0 fixture conflicts. Independently cross-checked against the official lobby read from this sandbox at ~01:2xZ: the lobby's own header says "This week 19 matches" / "All tiers (81)" and renders exactly those 19 fixture ids (8 Closing Soon + 11 Upcoming), identical in both directions. 10 of the 19 carry no featured exchange line: 8 `model_vrs`, 2 `model_vrs_mirror`, plus 1 `bookmaker_fallback` and 8 `exchange`. Per-row no-line receipts (HLTV search, BO3.gg/Thunderpick feed, EGamersWorld listing HTTP 403, Polymarket search 0 both-team events, Pinnacle 0 two-way lines via the pipeline's own matcher) are in `research/session-5bf1c3eb/gaps/gap-report.json`. |
+| H3 separate register for rows that cannot take a pick | **done** | `#closed-windows` on `index.html` (inside the executive summary) and `unresolved.html`: 62 rows, each with its own Hotspawn `lock_time`, scheduled start, limitation and official source link; limitations panel names the 50-row upstream `status:"scheduled"` + past `end_time` conflict, the refusal to back-fill from Hotspawn crowd percentages, and the inventory rule. Linked from `#exec-summary`, `#exec-banner` and the unresolved section. 10 regressions in `tests/test_session_5bf1c3eb.py`. |
+| H4 mobile executive summary | **done** | Phone geometry unchanged: the register is inserted after the pick list and the unresolved section, so nothing above the first pick card moved; `tests/browser_9b97d585.cjs` measures the first-screen summary at y=363 (320x568), identical to the pre-change baseline, no horizontal overflow at 320/390/768/1440, axe wcag2a/aa/21aa clean. |
+| H5 upstream irregularity flag | **done** | `review.html#session-5bf1c3eb-hotspawn-stale-scheduled-2026-10-26` (288th note), sources: fixtures endpoint, harvest run, pick'ems lobby. |
+| H6 integration, PR, merge, Pages verification | **in progress → receipt appended after merge** | Gates on the staged tree before the PR: unit **1821 OK (9 skipped)**, audits 9 OK, integrity 5 OK, verification-c6 12 OK, `scripts.validate --site .` RC 0 (81 rows / 19 calculations / 15 pages / 960 links / 20 checksums / 200 displayed rows), 13-suite Chromium browser run RC 0. |
+
+**Integration-time adaptations of stale pins (documented, standard preserved).**
+1. `research/session-28e4f2a1/model-receipt.json` regenerated with that session's own independent verifier
+   (`verify_model.py`, imports no pipeline code) against the new committed snapshot: **18 rows, 18 reproduced,
+   0 problems**. The verifier gained a `mirror_line` kind so `model_vrs_mirror` rows re-derive their arithmetic
+   offline and pin their dated HLTV provenance (page URL, `ranking_as_of`, 64-char page sha256, cited Valve
+   file); the bytes of HLTV's dated page are not retained offline, so a bytes-level join was not invented.
+   `tests/test_session_28e4f2a1.py` now requires mirror rows to appear under that kind with provenance, instead
+   of silently skipping them.
+2. `scripts/audit_5717f7d9.py::_audit_vrs` accepts the mirror provider label *only* with the same provenance
+   gates; the vendored-Valve-file cross-check stays exclusive to `model_vrs`. Its 18 tests remain green.
+3. No assertion was weakened: both changes add a stricter provenance requirement for a tier the old pins did
+   not know existed in a committed snapshot.
+
+**Irregularities observed (all disclosed, none blocking).**
+* Hotspawn upstream conflict: 50 of 62 closed rows return `status:"scheduled"` beside a past `end_time`
+  (flagged, see H5).
+* At `origin/main` = `23d3282` the committed `data/review-notes.json` was transiently unparseable (a truncated
+  `finding` string in note `session-160f03c8-…`); PR #352 (`cc30b89`) repaired it before this session merged,
+  and this session's merge unioned review notes by unique id (288 notes, no duplicates, canonical indent-1).
+* A first draft of this session's gap probe used a loose name matcher for Pinnacle and produced a misleading
+  "Spirit" ≈ "Spirit Academy" hit; the matcher was replaced with the pipeline's own `pinnacle_candidates`, the
+  receipts were re-taken in run 40254113329, and the mistake is recorded in
+  `research/session-5bf1c3eb/REPORT.md` §3 rather than silently dropped.

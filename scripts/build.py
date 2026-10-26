@@ -910,7 +910,7 @@ def closed_windows_section(data, compact=False):
                   '<tbody>' + rows + '</tbody></table></div>', 'more closed-more')
         + '<p class="small">' + link('matches.html?status=not_open', 'Filter All matches to these rows →')
         + ' · ' + link('unresolved.html#coverage-boundary', 'The standing coverage rules →')
-        + ' · ' + link('unresolved.html', 'Unresolved &amp; no-percentage queue →') + '</p></section>')
+        + ' · ' + link('unresolved.html', 'Unresolved & no-percentage queue →') + '</p></section>')
 
 
 def measured_source_access():
