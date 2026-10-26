@@ -10998,6 +10998,18 @@ site can lag a green run by minutes (session b06ee902's measurement).
 
 **Coordination note.** While the browser suite ran, it refreshed the older tracked `research/session-aeafcbe6/mobile-measurements.json` fixture with this snapshot. That file was restored byte-for-byte from this branch's `HEAD`; this session's new measurements are preserved only in its own `browser.log`/`VERIFICATION.md`. No other session's artifact is included in this branch's diff.
 
+## Session 160f03c8 — claim (2026-10-26 UTC)
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Independent audit of the checked-in latest snapshot and later live Hotspawn inventory; record the verified discrepancy and exact rows | **needs review — eight future Hotspawn fixtures absent from the 00:10Z snapshot; published on Flagged for Review** | 160f03c8 | `research/session-160f03c8/VERIFICATION.md`, `data/review-notes.json` (additive) | 2026-10-26 |
+| Verify executive-summary navigation, unresolved/limitations view, and responsive mobile accessibility; record reproducible checks | **done** | 160f03c8 | `research/session-160f03c8/VERIFICATION.md` | 2026-10-26 |
+| Publish the independently observed live Hotspawn inventory discrepancy as a Flagged for Review note; preserve exact source links and do not invent odds/picks for unverified new fixtures | **done** — note `session-160f03c8-hotspawn-inventory-drift-2026-10-26` is appended to `data/review-notes.json` and rendered on `review.html` | 160f03c8 | `research/session-160f03c8/**`, `data/review-notes.json` (additive), generated root pages/build receipt | 2026-10-26 |
+| Run relevant project gates and deliver a scoped verification receipt; no other shared build/data/UI edits unless a concrete defect is demonstrated and logged first | **done** — 1,778 unit tests (14 skipped); validate 73 rows / 11 probability calculations / 693 links / 20 checksums; independent retained-evidence audit 73 rows / 0 failures; audits 9 + integrity 5 + verification-c6 12 pass; all 13 browser suites pass at 320/390/768/1440px | 160f03c8 | `research/session-160f03c8/**`, `COORDINATION.md` | 2026-10-26 |
+| Final integration: PR from this fixed Arena branch to `main`, merge after green checks, confirm Pages includes the review note and state the live coverage discrepancy precisely | in progress | 160f03c8 | `COORDINATION.md`, generated root pages/data/build receipt | 2026-10-26 |
+
+++ b/COORDINATION.md
+
 ## Session 77046e56 — CLAIM (2026-10-26 00:55 UTC): Hotspawn inventory parity, every-match picks, mobile executive summary
 
 **Measured before claiming.** Branch `arena/77046e56-maltaproj4` is at `eca5117`. The live public
