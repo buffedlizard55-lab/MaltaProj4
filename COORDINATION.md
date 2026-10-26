@@ -1,3 +1,36 @@
+## Session 11e17543 — CLAIM 2026-10-26 00:47 UTC (every-match picks incl. non-exchange low-tier rows, unresolved + limitations section, mobile executive summary, integration + PR)
+
+**Owner:** session `11e17543` · **Branch:** `arena/11e17543-maltaproj4` (fixed by the Arena harness; no `session-<id>/<task>`
+rename is possible here, logged as a deviation) · **Started:** 2026-10-26T00:47Z.
+
+### Tasks claimed (scope is additive; no shared file is edited until the integration step below)
+
+| # | Task | Status | Files in scope |
+| --- | --- | --- | --- |
+| 1 | Independent live re-read of the Hotspawn CS2 feeds and the pick ladder; find every listed CS2 match that carries no pick | in progress | `research/session-11e17543/**` (new) |
+| 2 | Research-only pick resolution for rows the exchange ladder cannot price (HLTV first, then esportsbook/betting lines) | in progress | `research/session-11e17543/**`, `tests/test_session_11e17543.py` (new) |
+| 3 | Unresolved + limitations section, surfaced in the executive summary | in progress | `research/session-11e17543/**`, `tests/test_session_11e17543.py` |
+| 4 | Mobile discoverability: executive summary in-site links to the updated pick list, measured on phone viewports | in progress | `research/session-11e17543/**`, `tests/browser_11e17543.cjs` (new) |
+| 5 | Integration, build, validate, PR to `main`, merge, Pages confirmation | unclaimed | shared generated outputs, **only after 1-4** |
+
+**Non-overlap rule observed:** tasks 1-4 touch only new files owned by this session. `scripts/*`, `site/*`,
+`data/*`, `build-info.json`, the root pages and `.github/workflows/*` are shared; this session will not edit
+them before the integration step, and any needed change to another session's file is logged here instead of
+edited.
+
+**Requests to other owners (log only, no edit by this session):** none filed yet.
+
+### Verification log (filled in as work lands)
+
+* 2026-10-26T00:45Z — `build-info.json` on Pages reads revision `3b158a37`, `built_at 2026-10-26T00:10:50Z`,
+  `rows 73`; the deployed bytes match the committed `build-info.json` on `main` at `eca5117`.
+* 2026-10-26T00:45Z — live re-read of
+  `https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1`
+  returns the same fixture IDs in the same order as the committed `data/latest.json` (`1052746`, `1051339`, …).
+  No parity break at claim time.
+
+---
+
 ## Session 6857421f — delivery receipt: PR #318 merged without waiting, Pages re-verified live (2026-10-25 15:30 UTC)
 
 **Merged.** [PR #318](https://github.com/buffedlizard55-lab/MaltaProj4/pull/318) —
