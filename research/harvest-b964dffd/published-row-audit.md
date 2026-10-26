@@ -1,7 +1,7 @@
 # Independent retained-evidence audit
 
 This audits the archived evidence and arithmetic, not the present live lobby or current prices.
-Snapshot: `2026-10-26T01:00:10.246310Z` · SHA-256: `c395a65a3ff8d4fe3363995f9ed8629a83d4ae365705d1b6a124931e15f25a2e`
+Snapshot: `2026-10-26T03:18:04.466543Z` · SHA-256: `55853568a9db9477d8803c5941a2de9b006ebea46eaf994d7568c4c9422f60fd`
 
 Rows checked: **81** · Arithmetic/field failures: **0**
 
@@ -69,14 +69,14 @@ Rows checked: **81** · Arithmetic/field failures: **0**
 | [1081105](https://play.hotspawn.com/cs2-pickems) | SUKEBAN / your end | Not priced; blank values checked | Consistent with stored evidence |
 | [1079621](https://play.hotspawn.com/cs2-pickems) | Gothic / Lavked | Not priced; blank values checked | Consistent with stored evidence |
 | [1079200](https://play.hotspawn.com/cs2-pickems) | Color / ex-Zero Tenacity | Not priced; blank values checked | Consistent with stored evidence |
-| [1082858](https://www.hotspawn.com/matches/ground-zero-vs-off-chops-dfrag-invitational-2026-1082858) | Ground Zero / Off Chops | [Polymarket](https://gamma-api.polymarket.com/markets/6066508) | Consistent with stored evidence |
-| [1082859](https://www.hotspawn.com/matches/nexvoid-vs-alter-ego-dfrag-invitational-2026-1082859) | NEXVOID / Alter Ego | [Thunderpick (via BO3.gg API)](https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament) | Consistent with stored evidence |
+| [1082858](https://play.hotspawn.com/cs2-pickems) | Ground Zero / Off Chops | Not priced; blank values checked | Consistent with stored evidence |
+| [1082859](https://play.hotspawn.com/cs2-pickems) | NEXVOID / Alter Ego | Not priced; blank values checked | Consistent with stored evidence |
 | [1079201](https://www.hotspawn.com/matches/inox-division-vs-nemesis-nodwin-clutch-series-13-1079201) | INOX Division / Nemesis | [Polymarket](https://gamma-api.polymarket.com/markets/6186053) | Consistent with stored evidence |
-| [1079202](https://www.hotspawn.com/matches/fokus-vs-ex-zero-tenacity-nodwin-clutch-series-13-1079202) | FOKUS / ex-Zero Tenacity | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
+| [1079202](https://www.hotspawn.com/matches/fokus-vs-ex-zero-tenacity-nodwin-clutch-series-13-1079202) | FOKUS / ex-Zero Tenacity | [Polymarket](https://gamma-api.polymarket.com/markets/6186065) | Consistent with stored evidence |
 | [1081159](https://www.hotspawn.com/matches/lfo-10-vs-ex-6666-cct-europe-2026-series-12-1081159) | LFO 10 / ex-6666 | [HLTV Valve ranking (Valve points)](https://www.hltv.org/valve-ranking/teams/2026/october/26) | Consistent with stored evidence |
-| [1079203](https://www.hotspawn.com/matches/metizport-vs-brute-nodwin-clutch-series-13-1079203) | Metizport / BRUTE | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
-| [1081160](https://www.hotspawn.com/matches/havu-vs-illyrians-cct-europe-2026-series-12-1081160) | HAVU / ILLYRIANS | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
-| [1093218](https://www.hotspawn.com/matches/nuclear-tigeres-vs-unity-nodwin-clutch-series-13-1093218) | Nuclear TigeRES / UNiTY | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
+| [1079203](https://www.hotspawn.com/matches/metizport-vs-brute-nodwin-clutch-series-13-1079203) | Metizport / BRUTE | [Polymarket](https://gamma-api.polymarket.com/markets/6223406) | Consistent with stored evidence |
+| [1081160](https://www.hotspawn.com/matches/havu-vs-illyrians-cct-europe-2026-series-12-1081160) | HAVU / ILLYRIANS | [Polymarket](https://gamma-api.polymarket.com/markets/6231433) | Consistent with stored evidence |
+| [1093218](https://www.hotspawn.com/matches/nuclear-tigeres-vs-unity-nodwin-clutch-series-13-1093218) | Nuclear TigeRES / UNiTY | [Polymarket](https://gamma-api.polymarket.com/markets/6186061) | Consistent with stored evidence |
 | [1082860](https://www.hotspawn.com/matches/flyquest-vs-staqued-dfrag-invitational-2026-1082860) | FlyQuest / Staqued | [Polymarket](https://gamma-api.polymarket.com/markets/6066520) | Consistent with stored evidence |
 | [1082861](https://www.hotspawn.com/matches/rooster-vs-abyssal-dfrag-invitational-2026-1082861) | Rooster / Abyssal | [Polymarket](https://gamma-api.polymarket.com/markets/6066525) | Consistent with stored evidence |
 | [1082897](https://www.hotspawn.com/matches/b8-vs-k27-tesla-cup-2026-1082897) | B8 / K27 | [Polymarket](https://gamma-api.polymarket.com/markets/6024944) | Consistent with stored evidence |
