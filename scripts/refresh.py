@@ -583,6 +583,7 @@ def run(previous=None):
         'missing_from_feed': lobby.get('missing_from_feed') or [],
         'missing_count': lobby.get('missing_count', 0),
         'lobby_url': 'https://play.hotspawn.com/lobby',
+        'cs2_page_url': HOTSPAWN,
         'feed_url': FIXTURES,
         'observed_at': fixture_observed,
         'note': ('Lobby-only fixtures are named, never priced: the feed publishes no start or lock '

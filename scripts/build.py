@@ -969,6 +969,10 @@ def lobby_coverage_panel(data, anchor='lobby-coverage'):
     cov = data.get('lobby_coverage') or {}
     if not cov:
         return ''
+    # The comparison is taken from the CS2 pick'em page only: the general lobby
+    # renders a sport switcher, so one of its anchors can name a non-CS2 match and
+    # must never be published as a CS2 coverage gap.
+    cs2_page = cov.get('cs2_page_url') or 'https://play.hotspawn.com/cs2-pickems'
     missing = [str(x) for x in (cov.get('missing_from_feed') or [])]
     observed = cov.get('observed_at')
     # Bound the rendered table: a page that links a long history of fixtures must
@@ -976,7 +980,7 @@ def lobby_coverage_panel(data, anchor='lobby-coverage'):
     # snapshot (`lobby_coverage.missing_from_feed`) and in data/latest.json.
     shown, hidden_count = missing[:25], max(0, len(missing) - 25)
     if missing:
-        headline = ('<strong>%d fixture(s) the lobby links to are not in this capture</strong>. '
+        headline = ('<strong>%d fixture(s) the Hotspawn CS2 page links to are not in this capture</strong>. '
                     'They carry no pick, because the official feed published no start or lock time '
                     'for them &mdash; a pick without those fields would be invented, not sourced.'
                     % len(missing))
@@ -999,25 +1003,25 @@ def lobby_coverage_panel(data, anchor='lobby-coverage'):
                          if hidden_count else ''))
     else:
         read = cov.get('lobby_read')
-        headline = ('<strong>The lobby and the feed agreed at this capture</strong>: every fixture id '
-                    'the lobby page linked to was returned by the official feed.'
+        headline = ('<strong>The CS2 page and the feed agreed at this capture</strong>: every fixture id '
+                    'the CS2 page linked to was returned by the official feed.'
                     if read else
-                    '<strong>The lobby page returned no fixture links at this capture</strong>, so '
+                    '<strong>The CS2 page returned no fixture links at this capture</strong>, so '
                     'parity is unverified rather than confirmed. A failed or unrendered read is never '
                     'reported as an empty lobby.')
         table_html = ''
-    counts = ('<p class="small">Feed rows <strong>%s</strong> · lobby links <strong>%s</strong> · '
-              'absent from the feed <strong>%s</strong> · observed %s UTC · '
-              '%s · %s</p>'
+    counts = ('<p class="small">Feed rows <strong>%s</strong> · CS2 page links <strong>%s</strong> · '
+              'absent from the feed <strong>%s</strong> · observed '
+              '%s · %s · %s</p>'
               % (e(cov.get('feed_count') if cov.get('feed_count') is not None else '—'),
                  e(cov.get('lobby_count') if cov.get('lobby_count') is not None else '—'),
                  e(cov.get('missing_count', len(missing))),
                  e(date(observed, True)) if observed else 'time unrecorded',
-                 link(LOBBY_URL, 'Official lobby ↗'),
+                 link(cs2_page, 'Official CS2 page ↗'),
                  link(FEED_API, 'Official fixture feed ↗')))
     return ('<section class="panel" id="' + e(anchor) + '" aria-label="Lobby coverage">'
             '<p class="eyebrow muted">Coverage &middot; every listed fixture</p>'
-            '<h2>Lobby coverage: what the lobby listed, and what the feed returned</h2>'
+            '<h2>Lobby coverage: what the CS2 page listed, and what the feed returned</h2>'
             '<p>' + headline + '</p>'
             + table_html + counts
             + '<p class="small">' + e(cov.get('note') or '') + '</p>'

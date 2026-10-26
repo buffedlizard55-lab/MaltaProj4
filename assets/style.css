@@ -851,3 +851,25 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
    taller target, so these links get a 32px inline-flex box. Nothing is hidden and
    no text changes. */
 @media(max-width:650px){#every-match p.small a{display:inline-flex;align-items:center;min-height:32px}}
+
+
+/* Session 0a862f5f (2026-10-26): the first phone pick card must clear the fixed
+   bottom tab bar on a 320px-wide phone, measured by tests/browser_e3fe9518.cjs at
+   the +300-minute clock. On the 2026-10-26 02:00Z snapshot (19 open matches) that
+   assertion failed by 0.39px: `.glance-card-scores` ended at 507.39 against a tab
+   bar at 507.
+   Measured baseline inside the card (320x568, +300 min): card padding-top 4px,
+   `.glance-card-top` 18.4px tall with no margin, pick padding-top 4px, pick label
+   line-height 15.5px at a 10px font, scores gap 2px. This rule reclaims ~7.5px from
+   those four measured values only. Two earlier attempts are recorded here because
+   they made it worse: overriding the card's own padding and `.glance-card-top`
+   moved the pick from y 430.2 to 437.2 (the existing phone rules already set 4px /
+   2px there), and changing `.glance-list` margin-top moved the scores from 452.7
+   to 456.7 (an existing rule already sets 2px). No percentage, pick, label, flag
+   or source link is hidden, resized to nothing or reordered, and nothing changes
+   above 360px. */
+@media(max-width:360px){
+  body[data-page="index"] .glance-card-pick{padding-top:2px}
+  body[data-page="index"] .glance-card-pick-label{line-height:1.1}
+  body[data-page="index"] .glance-card-scores{gap:1px}
+}

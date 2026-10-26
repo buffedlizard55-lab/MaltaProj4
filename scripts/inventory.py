@@ -160,9 +160,17 @@ def discover(src, now, previous=None):
     old_ids = {m['id'] for m in previous.get('matches', [])} if previous else set()
     # Fixtures the lobby page links to but this capture's feed did not return.
     # Recorded, never synthesized: see scripts.lobby_gap and the session receipt.
+    # Only the CS2-specific view is parsed for links. The general lobby
+    # (`play.hotspawn.com/lobby`) renders a sport switcher, so an anchor there can
+    # point at a non-CS2 match permalink; counting it would publish another game's
+    # fixture as a CS2 coverage gap. The CS2 pick'em page is CS2 by definition, so
+    # its links alone can support the claim. That view's ng-state is already
+    # validated as CS2 by `checked_rows`.
     from scripts.lobby_gap import compare as lobby_compare, ids_from_html
     lobby_ids = set()
     for snapshot in snapshots:
+        if snapshot['key'] != 'page':
+            continue
         lobby_ids.update(ids_from_html(snapshot.get('html')))
     lobby = lobby_compare([str(k) for k in raw], sorted(lobby_ids))
     if lobby['missing_from_feed']:
