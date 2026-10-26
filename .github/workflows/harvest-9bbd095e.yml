@@ -1,0 +1,136 @@
+name: Live coverage harvest 9bbd095e (non-publishing)
+
+on:
+  push:
+    branches: [arena/9bbd095e-maltaproj4]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: coverage-harvest-9bbd095e
+  cancel-in-progress: false
+
+jobs:
+  capture:
+    if: github.ref == 'refs/heads/arena/9bbd095e-maltaproj4' && (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[capture]'))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+          cache: npm
+      - run: pip install -r requirements.txt
+      - run: npm ci --ignore-scripts
+      - name: Refresh official Hotspawn, HLTV, exchange, book and Valve sources
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p research/harvest-9bbd095e/logs runtime
+          set +e
+          python -m scripts.refresh --output runtime/latest.json 2>&1 | tee research/harvest-9bbd095e/logs/refresh.txt
+          echo "refresh_rc=${PIPESTATUS[0]}" > research/harvest-9bbd095e/logs/return-codes.txt
+          python -m scripts.quarantine runtime/latest.json 2>&1 | tee research/harvest-9bbd095e/logs/quarantine.txt
+          echo "quarantine_rc=${PIPESTATUS[0]}" >> research/harvest-9bbd095e/logs/return-codes.txt
+          python verification-c6/audit_snapshot.py runtime/latest.json --output research/harvest-9bbd095e/row-audit.md 2>&1 | tee research/harvest-9bbd095e/logs/row-audit.txt
+          echo "row_audit_rc=${PIPESTATUS[0]}" >> research/harvest-9bbd095e/logs/return-codes.txt
+          python -m scripts.audit_9b97d585 --snapshot runtime/latest.json --previous data/latest.json --output research/harvest-9bbd095e 2>&1 | tee research/harvest-9bbd095e/logs/ledger.txt
+          echo "ledger_rc=${PIPESTATUS[0]}" >> research/harvest-9bbd095e/logs/return-codes.txt
+          python -m scripts.build --data runtime/latest.json 2>&1 | tee research/harvest-9bbd095e/logs/build.txt
+          echo "build_rc=${PIPESTATUS[0]}" >> research/harvest-9bbd095e/logs/return-codes.txt
+          python -m scripts.validate --data runtime/latest.json 2>&1 | tee research/harvest-9bbd095e/logs/validate-fresh.txt
+          echo "validate_fresh_rc=${PIPESTATUS[0]}" >> research/harvest-9bbd095e/logs/return-codes.txt
+          python verification-c6/audit_snapshot.py public/data/latest.json --output research/harvest-9bbd095e/published-row-audit.md 2>&1 | tee research/harvest-9bbd095e/logs/published-audit.txt
+          echo "published_audit_rc=${PIPESTATUS[0]}" >> research/harvest-9bbd095e/logs/return-codes.txt
+          npm run test:browser 2>&1 | tee research/harvest-9bbd095e/logs/browser.txt
+          echo "browser_rc=${PIPESTATUS[0]}" >> research/harvest-9bbd095e/logs/return-codes.txt
+          exit 0
+      - name: Test staged-root gate without altering working tree
+        continue-on-error: true
+        run: |
+          set +e
+          python -m scripts.publish_root_fallback --public public --root . --cooldown-hours 0.0 2>&1 | tee research/harvest-9bbd095e/logs/root-stage.txt
+          echo "root_stage_rc=${PIPESTATUS[0]}" >> research/harvest-9bbd095e/logs/return-codes.txt
+          python -m scripts.validate --data data/latest.json --site . > research/harvest-9bbd095e/logs/root-validate.txt 2>&1
+          echo "root_validate_rc=$?" >> research/harvest-9bbd095e/logs/return-codes.txt
+          python -m unittest discover -s tests > research/harvest-9bbd095e/logs/root-unit.txt 2>&1
+          echo "root_unit_rc=$?" >> research/harvest-9bbd095e/logs/return-codes.txt
+          grep -E "^(FAIL|ERROR):" research/harvest-9bbd095e/logs/root-unit.txt | head -80 > research/harvest-9bbd095e/logs/root-unit-failures.txt || true
+          tail -80 research/harvest-9bbd095e/logs/root-unit.txt > research/harvest-9bbd095e/logs/root-unit-tail.txt || true
+          rm -f research/harvest-9bbd095e/logs/root-unit.txt
+          git checkout -- 404.html analysis.html assets build-info.json data evidence.html \
+            index.html matches.html methodology.html picks.html review.html site \
+            sources.html unresolved.html .nojekyll 2>/dev/null || true
+          exit 0
+      - name: Retain refreshed snapshot and diagnostic summary
+        env:
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+          RUN_SHA: ${{ github.sha }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          if test -s runtime/latest.json; then cp runtime/latest.json research/harvest-9bbd095e/refresh-snapshot.json; fi
+          if test -s public/build-info.json; then cp public/build-info.json research/harvest-9bbd095e/public-build-info.json; fi
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          out = Path('research/harvest-9bbd095e')
+          snap_p = out / 'refresh-snapshot.json'
+          summary = {
+              'workflow_run_id': os.environ['RUN_ID'],
+              'attempt': os.environ['RUN_ATTEMPT'],
+              'checkout_sha': os.environ['RUN_SHA'],
+              'run_url': os.environ['RUN_URL'],
+              'publishes_pages': False,
+          }
+          if snap_p.exists():
+              d = json.loads(snap_p.read_text())
+              ms = d.get('matches', [])
+              op = [m for m in ms if m.get('state') == 'open']
+              summary.update({
+                  'generated_at': d.get('generated_at'),
+                  'fixtures_observed_at': d.get('fixtures_observed_at'),
+                  'coverage': d.get('coverage'),
+                  'coverage_counts': d.get('coverage_counts'),
+                  'total_rows': len(ms),
+                  'open_rows': len(op),
+                  'open_with_pick': sum(bool(m.get('pick')) for m in op),
+                  'open_with_probs': sum(m.get('probabilities') is not None for m in op),
+                  'open_research_only': sum(bool(m.get('pick')) and m.get('probabilities') is None for m in op),
+                  'open_unresolved': sum(not m.get('pick') for m in op),
+                  'methods': {k: sum(m.get('method') == k for m in op) for k in sorted({str(m.get('method')) for m in op})},
+                  'open_detail': [
+                      {
+                          'id': m.get('id'),
+                          'start': m.get('start'),
+                          'competition': m.get('competition'),
+                          'teams': m.get('teams'),
+                          'pick': m.get('pick'),
+                          'probabilities': m.get('probabilities'),
+                          'method': m.get('method'),
+                          'reason': m.get('reason'),
+                          'flags': m.get('flags'),
+                      }
+                      for m in op
+                  ],
+              })
+          (out / 'summary.json').write_text(json.dumps(summary, indent=2) + '\n')
+          PY
+      - name: Commit dated harvest evidence to arena/9bbd095e-maltaproj4
+        run: |
+          git config user.name "cs2-evidence-runner"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- research/harvest-9bbd095e
+          if git diff --cached --quiet; then echo "No capture change to commit."; exit 0; fi
+          git commit -m "Retain official-source coverage harvest from run ${GITHUB_RUN_ID} [skip ci]"
+          git checkout -- . 2>/dev/null || true
+          git pull --rebase origin arena/9bbd095e-maltaproj4
+          git push origin arena/9bbd095e-maltaproj4
