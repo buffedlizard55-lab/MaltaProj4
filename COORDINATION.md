@@ -11220,3 +11220,18 @@ GG.BET/EGW 403, BO3 listings not yet posted for 4 fixtures, mirror for clubs
 absent/ambiguous in Valve's monthly file) are in the report's unresolved
 section and on the site. PR + merge + live-Pages verification follow below.
 
+## Session 28e4f2a1 — claim (2026-10-26 00:55 UTC): executive-summary pick directory + unresolved section, mobile-first
+
+**Branch:** `arena/28e4f2a1-maltaproj4` (from `main` @ `eca5117`). **Owner:** session `28e4f2a1`.
+
+| Task | Status | Owner | File scope (exclusive) | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| C1 Executive summary carries a counts-driven **directory of where every pick lives** (by category: exchange / wide exchange / book listing / our VRS model / research-only / unresolved), each row linking to the page that lists it, plus a one-tap in-site link row | **in progress** | 28e4f2a1 | `scripts/build.py` (`pick_categories`, `picks_directory`, `exec_summary_quicknav`, `unresolved_limits_card`, `overview`, page assembly), `assets/style.css` (`.directory-table` phone rules only, appended block) | 2026-10-26 00:55 |
+| C2 A **separate unresolved-picks section in the executive summary** that names the category counts, the rows that carry no market line, and the limitations for generating their picks | **in progress** | 28e4f2a1 | `scripts/build.py` (`unresolved_limits_card`), same CSS block | 2026-10-26 00:55 |
+| C3 Live line-by-line verification of the originated-line (VRS) model against Valve's own repository, and of the live Hotspawn lobby / Polymarket book against this snapshot | **in progress** | 28e4f2a1 | `research/session-28e4f2a1/**` | 2026-10-26 00:55 |
+| C4 Regressions for C1–C3 | **in progress** | 28e4f2a1 | `tests/test_session_28e4f2a1.py` (new file only) | 2026-10-26 00:55 |
+| C5 Flag the measured irregularities for manual review | **in progress** | 28e4f2a1 | `data/review-notes.json` (append-only; union by `id`) | 2026-10-26 00:55 |
+
+**Not touched by this session:** `data/latest.json`, `data/matches.csv`, `build-info.json`, the committed root `*.html` pages, `site/*`, `scripts/refresh.py`, `scripts/core.py`, `scripts/validate.py`, `.github/workflows/**`, and every other session's `tests/test_session_<id>.py`. The publisher regenerates the root pages and `public/` from the same `scripts/build.py`; this session never hand-stages them (session 6d111263's lesson).
+
+**Deliberate non-change.** The exchange gate's exact-UTC-start rule stays as it is: a live Polymarket series market for fixture `1093218` exists at 0.605/0.395 with ~$6,141 of liquidity, but its `gameStartTime` is `2026-10-26T15:00:00Z` while Hotspawn's lock schedule says `2026-10-26T18:00:00Z`. Attaching that price would price a possibly different kick-off, so the row keeps its labelled VRS line and the conflict is flagged for review instead (C5).

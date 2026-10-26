@@ -455,6 +455,9 @@ def exec_summary_bar(data):
         # no book lists it" in one tap, not only where the picks are.
         + link('sources.html#method', 'How we price →', 'exec-bar-link')
         + link('review.html', 'Flagged for review →', 'exec-bar-link')
+        # Session 28e4f2a1: one tap to the counts-driven directory of every
+        # pick source, which is the executive summary's own table further down.
+        + link('#picks-directory', 'Picks by category ↓', 'exec-bar-link')
         + '</nav>'
         '<p class="exec-bar-note">Probabilities come from external betting lines or our own labelled '
         'VRS model — never from Hotspawn. ' + count_span('missing', c['without_percentage'])
@@ -990,6 +993,168 @@ def glance(data, opens):
             +link('picks.html','Full updated pick board →')+' · '+link('unresolved.html','Unresolved & limitations →')+' · '+link('matches.html','All matches →')+'</p></section>')
 
 
+# --- Session 28e4f2a1: the executive summary's pick directory --------------
+#
+# Why this exists
+# ---------------
+# The executive summary could already say how many open matches carry a pick,
+# a market line or a model line, but it never answered the question a phone
+# reader actually asks: *where on this site is the list I want?* The same page
+# holds four different kinds of answer (an exchange price, a bookmaker price,
+# our own Valve-standings line, a research pick with no percentage) and the
+# unresolved page holds the rest, so the counts and the destinations are
+# published together here.
+#
+# Every row is counted from the snapshot that built the page and every row links
+# the *official* source that produced that kind of line (``scripts.summary``
+# already stores one URL per ladder step). Nothing in this table is a
+# probability, and a zero is a measured zero: a step that produced no pick on
+# this snapshot prints 0 rather than disappearing, so the table cannot drift
+# silently when a tier stops answering.
+DIRECTORY_STEPS = (
+    # ladder step, plain-language label, what it means, where the pick is read
+    ('exchange', 'Market line — Polymarket exchange',
+     'Two-sided order book, de-vigged; strict spread, funding and freshness gates',
+     'picks.html', 'Open the pick board →'),
+    ('pinnacle', 'Market line — Pinnacle bookmaker',
+     'A sharp bookmaker’s two-way price, de-vigged; one book is not a consensus',
+     'picks.html', 'Open the pick board →'),
+    ('exchange_wide', 'Market line — wide exchange quote',
+     'Only where nothing else prices the row; real spread published, labelled low confidence',
+     'picks.html', 'Open the pick board →'),
+    ('book', 'Book listing — researched two-way price',
+     'A dated listing page that re-confirms the exact pair and UTC start',
+     'picks.html', 'Open the pick board →'),
+    ('model_vrs', 'Our VRS model line',
+     'Valve’s official standings points through Valve’s own published formula',
+     'picks.html', 'Open the pick board →'),
+    ('model_vrs_mirror', 'Our VRS model from HLTV’s dated Valve ranking',
+     'The same formula, with points read from HLTV’s dated Valve list',
+     'picks.html', 'Open the pick board →'),
+    ('research', 'Research pick — no percentage',
+     'Ranking order or one-sided standings evidence; a direction, never a number',
+     'unresolved.html?status=needs#unresolved-rows', 'The research-only rows →'),
+)
+
+
+def directory_buckets(data):
+    """Open rows grouped by the ladder step that answered for them.
+
+    Returns ``(buckets, problems)``. ``buckets`` always has one list per
+    :data:`DIRECTORY_STEPS` key plus ``none`` for rows with no pick, so the
+    rendered counts add up to the open board exactly. Any row whose method is
+    not in ``scripts.summary.METHOD_STEP`` is counted under ``none`` *and*
+    named in ``problems``: an unclassified method must not inflate a known
+    tier's count.
+    """
+    buckets = {key: [] for key, *_ in DIRECTORY_STEPS}
+    buckets['none'] = []
+    problems = []
+    for m in data['matches']:
+        if m.get('state') != 'open':
+            continue
+        if m.get('probabilities') is None and not m.get('pick'):
+            buckets['none'].append(m)
+            continue
+        step = summary.METHOD_STEP.get(m.get('method'))
+        if step in buckets:
+            buckets[step].append(m)
+        else:
+            buckets['none'].append(m)
+            problems.append(m['id'])
+    return buckets, problems
+
+
+def pick_directory(data, jump=None):
+    """The counts-driven directory of every pick source, with in-site links.
+
+    Rendered inside the executive summary's unresolved-and-limitations section
+    on the home page (``#unresolved-limits``) and at the top of
+    ``unresolved.html``. Each row states how many open matches that source
+    answered for, how many of those also publish a percentage, the official
+    source that produced the line, and the page on this site that lists the
+    picks. The totals are asserted to equal the open board.
+    """
+    buckets, problems = directory_buckets(data)
+    opens = sum(len(v) for v in buckets.values())
+    ladder = {step['key']: step for step in summary.ladder_rows()}
+    rows = []
+    for key, label, basis, href, href_label in DIRECTORY_STEPS:
+        step = ladder.get(key) or {}
+        members = buckets.get(key, [])
+        priced = sum(1 for m in members if m['probabilities'] is not None)
+        source = (link(step['url'], step['source_label'] + ' ↗') if step.get('url')
+                  else '<span class="muted">source not recorded</span>')
+        rows.append(
+            '<tr data-directory-step="' + e(key) + '">'
+            '<td data-label="How the pick was produced"><strong>' + e(label) + '</strong>'
+            '<span class="small muted">' + e(basis) + '</span></td>'
+            '<td data-label="Open matches"><strong>' + str(len(members)) + '</strong></td>'
+            '<td data-label="With a win percentage">' + str(priced) + '</td>'
+            '<td data-label="Official source">' + source + '</td>'
+            '<td data-label="Where to read it">' + link(href, href_label) + '</td></tr>')
+    none = buckets.get('none', [])
+    rows.append(
+        '<tr data-directory-step="none">'
+        '<td data-label="How the pick was produced"><strong>No pick at all — unresolved</strong>'
+        '<span class="small muted">No verified line, no model input and no sourced ranking edge</span></td>'
+        '<td data-label="Open matches"><strong>' + str(len(none)) + '</strong></td>'
+        '<td data-label="With a win percentage">0</td>'
+        '<td data-label="Official source">' + link('https://play.hotspawn.com/cs2-pickems', 'Hotspawn lobby (inventory) ↗')
+        + ' · ' + link('unresolved.html', 'every source tried') + '</td>'
+        '<td data-label="Where to read it">' + link('unresolved.html', 'Unresolved & limitations →') + '</td></tr>')
+    unlisted = ''
+    if problems:
+        unlisted = ('<p class="small"><strong>Unclassified method on this snapshot:</strong> fixture '
+                    + e(', '.join(str(x) for x in problems))
+                    + ' carries a method outside the published ladder, so it is counted under “no pick” and '
+                    'flagged rather than folded into a known source.</p>')
+    return (
+        '<div class="pick-directory" id="picks-directory">'
+        '<h3>Where every pick on this board comes from</h3>'
+        '<p>Each open CS2 match is counted once, under the source that answered for it. The counts are '
+        'computed from <a href="data/latest.json">this snapshot</a>, observed '
+        + e(date(data.get('last_attempt_at'), True)) + ', and add up to the '
+        '<strong>' + str(opens) + '</strong> open matches; a source that answered for nothing prints 0 '
+        'instead of disappearing. They are dated exactly like the lines above: if this page is served '
+        'after its eight-hour evidence window, the row counts describe that snapshot, not the current '
+        'clock, and the board withholds its expired picks.</p>'
+        '<div class="table-wrap" tabindex="0" role="region" aria-label="Picks by category and where to read them">'
+        '<table class="source-table directory-table" role="table">'
+        '<caption>Picks by category. Every row links the official source of that kind of line and the page '
+        'on this site that lists those picks. A blank percentage is unverified — never a default 50/50.</caption>'
+        '<thead><tr><th scope="col">How the pick was produced</th><th scope="col">Open matches</th>'
+        '<th scope="col">With a win %</th><th scope="col">Official source</th>'
+        '<th scope="col">Where to read it</th></tr></thead>'
+        '<tbody>' + ''.join(rows) + '<tr class="directory-total" data-directory-step="total">'
+        '<td data-label="Total"><strong>Total open matches</strong></td>'
+        '<td data-label="Open matches"><strong>' + str(opens) + '</strong></td>'
+        '<td data-label="With a win percentage"><strong>'
+        + str(sum(1 for m in data['matches'] if m.get('state') == 'open' and m['probabilities'] is not None))
+        + '</strong></td><td data-label="Official source">' + link('https://play.hotspawn.com/cs2-pickems', 'Hotspawn lobby ↗')
+        + '</td><td data-label="Where to read it">' + link('data/latest.json', 'Snapshot JSON') + ' · '
+        + link('data/matches.csv', 'CSV') + '</td></tr></tbody>'
+        '</table></div>' + unlisted +
+        '<p class="small" id="where-picks-are"><strong>Where the updated list is, on this site:</strong> '
+        + link('picks.html', 'the pick board (every open match)') + ' · '
+        + link('unresolved.html', 'unresolved picks & limits') + ' · '
+        + link('matches.html', 'all ' + str(len(data['matches'])) + ' feed entries') + ' · '
+        + link('review.html', 'flagged for review') + ' · '
+        + link('sources.html#method', 'how a pick is priced') + ' · '
+        + link('evidence.html', 'evidence for every row') + ' · '
+        + link('data/latest.json', 'the snapshot this page was built from') + '. '
+        'On a phone the bottom bar repeats <strong>Picks</strong>, <strong>Unresolved</strong> and '
+        '<strong>Matches</strong> on every page.</p>'
+        + (link(jump[0], jump[1], 'directory-jump') + ' ' if jump else '')
+        + '<p class="small"><strong>HLTV is an identity and ranking input, not a price.</strong> It confirms the '
+        'opponent pair, the UTC start, the current five and the world ranking; this project has measured no '
+        'numeric two-way line on HLTV’s match pages or its odds overview, so no HLTV number is ever published '
+        'as a probability and its community vote is never used. ' + link('https://www.hltv.org/matches', 'HLTV matches ↗')
+        + ' · ' + link('https://egamersworld.com/counterstrike/matches', 'esportsbook listing ↗')
+        + ' · ' + link('sources.html#method', 'why a low-tier match can lack a price →') + '</p>'
+        '</div>')
+
+
 def unresolved_limits_card(data):
     """Executive summary · a compact, phone-sized unresolved-picks section.
 
@@ -1079,6 +1244,11 @@ def unresolved_limits_card(data):
             '<p class="eyebrow muted">Executive summary &middot; unresolved picks &amp; limitations</p>'
             '<h2>Unresolved picks, and why a pick can be missing</h2>'
             '<p>' + headline + '</p>'
+            # Session 28e4f2a1: the executive summary's own directory. Every
+            # category, its count, the official source of that kind of line and
+            # the page that lists those picks — one tap from the first phone
+            # screen, because #unresolved-limits is what the phone summary links.
+            + pick_directory(data)
             + ladder_block
             + '<ul class="checklist">' + ''.join(items) + '</ul>'
             '<p class="glance-actions">'
@@ -1558,6 +1728,39 @@ def results_section(day):
             '<th scope="col">Detail</th><th scope="col">Sources</th></tr></thead><tbody>'+rows+'</tbody></table></div>'+outcomes+'</section>')
 
 
+def unresolved_page(data):
+    """The research queue page: directory, ladder, and every non-market row.
+
+    Session 28e4f2a1 moved the body into this function so the page can be
+    rendered (and its sections tested) without hand-staging the committed root
+    fallback, which the publisher regenerates. It keeps the executive summary's
+    pick directory at the top, then one tap to the rows themselves.
+    """
+    matches = data['matches']
+    opens = [m for m in matches if m['state'] == 'open']
+    nonmarket = non_market_rows(matches)
+    no_probability = [m for m in opens if m['probabilities'] is None]
+    return (head('Research queue', 'Unresolved & non-market picks.',
+                 'Every open match without a usable betting line: our model line, a research-only '
+                 'pick, or an honest blank. Each row states its limitation.', data)
+            + pick_directory(data, jump=('#unresolved-rows', 'Jump to the match rows ↓'))
+            + unresolved_page_intro(data) + measured_source_access()
+            + '<nav class="section-nav" aria-label="Pick lists">'
+            + ('<a href="unresolved.html?status=needs">No percentage (<span data-count="missing">'
+               + str(len(no_probability)) + '</span>)</a>')
+            + link('picks.html', 'All open matches (' + str(len(opens)) + ')')
+            + link('matches.html', 'All matches') + '</nav>'
+            + '<div class="notice">Order of evidence: strict exchange gate → HLTV identity research → '
+              'Pinnacle bookmaker line → labelled wide-exchange tier → <strong>our VRS model line</strong> '
+              '(Valve standings, Valve formula, HLTV lineups confirm rosters) → HLTV ranking order as a '
+              'research-only pick with <strong>no probability</strong>. Thunderpick and GG.BET access is '
+              'recorded, never bypassed. Name mismatches, stale data, ambiguous rosters and access '
+              'failures are disclosed below. ' + link('sources.html#method', 'Read the limits →') + '</div>'
+            + '<span id="unresolved-rows"></span>'
+            + filters(nonmarket, 'all')
+            + table(nonmarket, True, label='Open matches without a market line'))
+
+
 def analysis_page(data):
     notes=json.loads((ROOT/'data/analysis.json').read_text())
     event=notes['event']
@@ -1753,7 +1956,7 @@ def build(data,out,now=None):
         'picks':('Updated picks',head('The pick board','Updated CS2 picks.','Every open Hotspawn CS2 match: our pick, both supported win probabilities, and direct source links.',data)+'<nav class="section-nav" aria-label="Pick lists">'+link('picks.html','All open matches ('+str(len(opens))+')')+('<a href="unresolved.html?status=needs">No percentage (<span data-count="missing">'+str(len(no_probability))+'</span>)</a>')+link('unresolved.html','No market line ('+str(len(nonmarket))+')')+link('matches.html','All matches')+'</nav><details class="method-details board-method"><summary>How picks, model lines &amp; blanks work</summary><div class="notice info">One complete board: market probabilities first, our labelled VRS model where no accepted market line was collected, and research-only picks with <strong>no percentage</strong> where a number is unsupported. Unresolved entries stay visible, not omitted. Estimates, not promises. '+link('unresolved.html','Read every non-market limitation →')+'</div></details>'+filters(opens,'open')+table(opens,True,label='Every open CS2 match and pick')),
         'matches':('All matches',head('Complete coverage','Every listed fixture.','All CS2 records returned by the official Hotspawn lobby feed, including not-open entries.',data)+feed_scope(data)+filters(matches,'open')+table(matches,past_ids={str(m['id']) for m in past_dated_rows(matches,data)})),
         'analysis':('TWC analysis',analysis_page(data)),
-        'unresolved':('Unresolved picks',head('Research queue','Unresolved & non-market picks.','Every open match without a usable betting line: our model line, a research-only pick, or an honest blank. Each row states its limitation.',data)+unresolved_page_intro(data)+measured_source_access()+'<nav class="section-nav" aria-label="Pick lists">'+('<a href="unresolved.html?status=needs">No percentage (<span data-count="missing">'+str(len(no_probability))+'</span>)</a>')+link('picks.html','All open matches ('+str(len(opens))+')')+link('matches.html','All matches')+'</nav><div class="notice">Order of evidence: strict exchange gate → HLTV identity research → Pinnacle bookmaker line → labelled wide-exchange tier → <strong>our VRS model line</strong> (Valve standings, Valve formula, HLTV lineups confirm rosters) → HLTV ranking order as a research-only pick with <strong>no probability</strong>. Thunderpick and GG.BET access is recorded, never bypassed. Name mismatches, stale data, ambiguous rosters and access failures are disclosed below. '+link('sources.html#method','Read the limits →')+'</div>'+filters(nonmarket,'all')+table(nonmarket,True,label='Open matches without a market line')),
+        'unresolved':('Unresolved picks',unresolved_page(data)),
         'sources':('Sources and methodology',methodology(data)),
         'evidence':('Evidence ledger',evidence_page(data))}
     review=head('Published irregularities','Flagged for Review.','These limitations are visible, not silently filled in. They do not prevent publication.',data)

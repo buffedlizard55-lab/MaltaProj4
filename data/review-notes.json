@@ -6539,6 +6539,102 @@
   "impact": "Evidence depth on one originated line. The value is labelled as a non-market model estimate on the row; it is not presented as a market price. Re-reading the two numbers on HLTV's page would close it."
  },
  {
+  "id": "session-28e4f2a1-executive-summary-directory-2026-10-26",
+  "status": "Published with limitation — counts are dated to the snapshot; needs review of the category policy",
+  "finding": "The executive summary now carries a counts-driven pick directory (#picks-directory) inside its unresolved-and-limitations section, repeated at the top of the unresolved page: one row per published ladder step, the number of open matches it answered for, how many of those carry a percentage, the official source of that kind of line and the page on this site that lists them, plus a 'no pick' row and a total. Re-derived for the 2026-10-26T00:10:49Z snapshot (73 feed rows, 11 open): exchange 7, bookmaker listing 1, our VRS model 3, research-only 0, unresolved 0; total 11, all 11 with a percentage. The rendered cells were measured with Chromium at 320x568, 390x844 and 412x915 on both pages: no horizontal overflow, every one of the 9 rows x 5 cells visible with text, no count hidden behind the fixed tab bar, and the category counts add up to the published total (receipt: research/session-28e4f2a1/phone-directory-measurements.json). LIMITATION FOR REVIEW: the numbers are static in the generated HTML and describe the snapshot named in the paragraph above the table, so a page served after its eight-hour evidence window shows that snapshot's counts while the board withholds its expired picks; the page says so in the same paragraph. Category boundaries follow scripts.summary's published ladder (a Pinnacle line and a researched book listing are separate rows, 'no pick' covers both unresolved rows and any method outside the ladder), which is a product decision a reviewer may want to change.",
+  "sources": [
+   {
+    "url": "https://play.hotspawn.com/cs2-pickems",
+    "label": "Hotspawn CS2 pick'em lobby (fixture inventory and lock times)"
+   },
+   {
+    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+    "label": "Hotspawn CS2 scheduled fixtures API (the snapshot's inventory source)"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/events",
+    "label": "Polymarket Gamma API (exchange line source)"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings",
+    "label": "Valve official Regional Standings (our model's only input)"
+   },
+   {
+    "url": "https://www.hltv.org/matches",
+    "label": "HLTV matches (identity, lineups, rankings — never a price)"
+   }
+  ]
+ },
+ {
+  "id": "session-28e4f2a1-fixture-1093218-start-conflict-2026-10-26",
+  "status": "Open source conflict — published for manual review; no value changed",
+  "finding": "Fixture 1093218 (Nuclear TigeRES vs UNiTY, NODWIN Clutch Series #13) is priced on this board by our VRS model line (Nuclear TigeRES 66.5% / UNiTY 33.5%) rather than by a market, because the only two-sided market this session could read disagrees about when the match starts. Hotspawn's fixtures API gives 2026-10-26T18:00:00Z (lock 17:54Z) and the board follows it; the HLTV fixture recorded on the same row also states 2026-10-26T18:00:00Z; the live Polymarket series market lists gameStartTime '2026-10-26 15:00:00+00' and its own description says 'initially scheduled for October 26, 2026 at 11:00 AM ET' (= 15:00Z), three hours earlier. Read live at 2026-10-26T00:47Z: market 6186061, outcomes [Nuclear TigeRES, UNiTY esports], outcomePrices 0.605 / 0.395, bestBid/bestAsk present, acceptingOrders true, active and not closed, liquidityNum 6140.85, updatedAt 2026-10-26T00:34:37Z. The published exact-UTC-start gate therefore refuses to attach that price, and no value was changed or inferred. NOTE FOR REVIEW: the direction agrees with our model (both favour Nuclear TigeRES) but the magnitude differs (market 60.5% vs model 66.5%), so a reviewer may prefer the market number once the true start is confirmed. Also observed: the 2026-10-26T00:57Z read of the public lobby rendered 10 open pick cards and did not show this fixture among them, although its own tournament filter counts NODWIN Clutch Series #13 (1) and the fixtures API returns it as scheduled — coverage here is driven by the API, per the published methodology.",
+  "sources": [
+   {
+    "url": "https://gamma-api.polymarket.com/markets?id=6186061&limit=1",
+    "label": "Polymarket market 6186061 (live series moneyline, gameStartTime 15:00Z)"
+   },
+   {
+    "url": "https://polymarket.com/event/cs2-ntr-unity-2026-10-26",
+    "label": "Polymarket event page for the same market"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399119/nuclear-tigeres-vs-unity-nodwin-clutch-series-13",
+    "label": "HLTV fixture 2399119 (start 18:00Z, lineups, world ranks)"
+   },
+   {
+    "url": "https://play.hotspawn.com/cs2-pickems",
+    "label": "Hotspawn lobby (does not render this fixture among its open pick cards at read time)"
+   }
+  ]
+ },
+ {
+  "id": "session-28e4f2a1-originated-line-reproduced-2026-10-26",
+  "status": "Verified — every published model line and every model/market comparison re-derived from Valve's official bytes",
+  "finding": "All 10 rows that carry a Valve-standings model input were re-derived independently on the 2026-10-26T00:10:49Z snapshot, without importing the production code: the official standings_global_2026_10_05.md at commit eec4853 was re-read and its bytes compared with the vendored copy (identical, sha256 df96e7fc3cd91a2687ec08cac0128e50cc4e4e55346581679572e881d79ae61b, 77,872 bytes), each team's points were located in that file, and the probability was recomputed with Valve's own Glicko expectation at RD 75 (model/fit.js defaultGlickoParams.rd, model/glicko.js) and the calibration slope read off Valve's published chart (modelfit.png: y = 0.7986x + 0.126). 10 of 10 reproduce to within 1e-12, including the three published model picks (1093218 Nuclear TigeRES 66.50%, 1082792 HOTU 85.18%, 1082793 1WIN 75.70%). Valve repeats the label 'The Huns' twice (#122, 944 points; #213, 701 points); the row uses #122 and the stored HLTV lineup (Bart4k, controlez, bexyz, Cozen, DarkMeister) shares 4 players with that roster and 2 with the other, so the choice is roster-derived, uniquely, exactly as Valve's own TEAM_OVERLAP_TO_SHARE_ROSTER = 3 rule requires — not a rank preference. Receipt: research/session-28e4f2a1/model-receipt.json.",
+  "sources": [
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "label": "Valve standings file used by the model (commit eec4853, live official bytes)"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/model/fit.js",
+    "label": "Valve model code: defaultGlickoParams.rd = 75 and priorWinExpectation"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/model/glicko.js",
+    "label": "Valve Glicko implementation (g(), expected score)"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/model/team.js",
+    "label": "Valve roster-continuity rule (TEAM_OVERLAP_TO_SHARE_ROSTER = 3)"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/modelfit.png",
+    "label": "Valve published calibration chart (y = 0.7986x + 0.126)"
+   }
+  ]
+ },
+ {
+  "id": "session-28e4f2a1-exchange-lines-reproduced-2026-10-26",
+  "status": "Verified with a dated observation — live prices move; the board publishes its own observation time and expiry",
+  "finding": "Every published line on the 2026-10-26T00:10:49Z snapshot was re-derived from its own stored raw bytes with an independent implementation: 11 open rows, 125 checks, 0 failures (receipt: research/session-28e4f2a1/line-receipt.json). For the 7 Polymarket rows the de-vig reproduces the published pair to 1e-12, each market was accepting orders, active and not closed, two-sided, inside the 25-point spread ceiling (Rooster vs Abyssal sits exactly on it at 0.250, which the published rule allows), above $100 of liquidity, updated inside the eight-hour window, and its own gameStartTime equals the fixture's UTC start. The Bookmaker row reproduces from the stored decimal odds 1.61 / 2.18 (overround 7.98%) de-vigged to 57.52% / 42.48%. Dated counter-check read live at 2026-10-26T00:47Z on market 6066508 (Ground Zero vs Off Chops): outcomePrices 0.205 / 0.795, liquidity 10,419.86, gameStartTime '2026-10-26 03:00:00+00' — the same market the snapshot recorded at 0.19 / 0.81 fifty minutes earlier, so the price moved while the identity, the two sides and the start did not. This is why every percentage on the site carries its own observation and expiry.",
+  "sources": [
+   {
+    "url": "https://gamma-api.polymarket.com/markets?id=6066508&limit=1",
+    "label": "Polymarket market 6066508 (Ground Zero vs Off Chops) live read"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/events",
+    "label": "Polymarket Gamma API (the exchange source the collector reads)"
+   },
+   {
+    "url": "https://api.bo3.gg/api/v1/matches",
+    "label": "BO3.gg CS2 matches API (the Thunderpick line behind the bookmaker row)"
+   }
+  ]
+ },
+ {
   "id": "session-b964dffd-inventory-rollout-gap-2026-10-26",
   "status": "Resolved by re-harvest — retained for review",
   "finding": "Companion to session-160f03c8-hotspawn-inventory-drift-2026-10-26 (left untouched, still open on its own terms). Session b964dffd independently read the official lobby at ~00:49Z on 2026-10-26 (81 CS2 entries, 19 matches this week) and found the same eight fixtures absent from the published 00:10Z board. The requested re-harvest was then run on GitHub egress (non-publishing run 40251666216): at fixtures-observed 2026-10-26T00:56:34Z all three Hotspawn surfaces agreed 81/81/81, inventory_changes added exactly 1079201, 1079202, 1079203, 1081159, 1081160, 1081162, 1081163, 1081164 and removed none, and the existing ladder priced all 19 open rows (8 strict Polymarket, 1 BO3.gg/Thunderpick listing, 8 Valve-VRS model, 2 HLTV-mirror VRS model; 0 unresolved). Because the 00:07Z observation also showed three-surface parity (73/73/73), the eight were added by Hotspawn between observations during its weekly rollout; no discovery-code defect was reproduced. The user-visible limitation stands: fixtures Hotspawn adds between publication slots are invisible until the next slot whose gates pass (publisher now schedules every 15 minutes behind a 60-minute freshness gate, 8-hour evidence expiry). Hotspawn crowd percentages were never used. Full ledger: research/session-b964dffd/REPORT.md and row-ledger.md.",
