@@ -6,6 +6,48 @@ A simple, mobile-first pick dashboard for **every CS2 fixture returned by Hotspa
 
 **[Executive summary](https://buffedlizard55-lab.github.io/MaltaProj4/)** · **[Updated picks](https://buffedlizard55-lab.github.io/MaltaProj4/picks.html)** · [Unresolved & research-only picks](https://buffedlizard55-lab.github.io/MaltaProj4/unresolved.html) · [All matches](https://buffedlizard55-lab.github.io/MaltaProj4/matches.html) · [TWC results & Day-5 guide](https://buffedlizard55-lab.github.io/MaltaProj4/analysis.html) · [Flagged for Review](https://buffedlizard55-lab.github.io/MaltaProj4/review.html) · [Sources & methodology](https://buffedlizard55-lab.github.io/MaltaProj4/sources.html) · [Evidence ledger](https://buffedlizard55-lab.github.io/MaltaProj4/evidence.html)
 
+### Historical rows now say their numbers are post-hoc — 26 October 2026 (session ba480835)
+
+**What was already true, and what this session found.** The every-match table (session 11e17543, PR #359) already gives
+**71 of 73** listed CS2 rows a pick or a recorded limitation, and labels a row whose Hotspawn pick lock has passed as
+`Lock passed` / historical. It did not say the thing that decides how such a number may be read: those percentages are
+re-derived **at build time** from the Valve standings file current at that moment, so for a fixture played on
+2026-06-26 the number comes from a file dated 2026-10-05, and it moves when Valve publishes a new one.
+
+**What changed.** On the 2026-10-26T00:10:49Z snapshot, the **23** historical rows that carry a percentage now say so
+on the row itself — naming the standings date and the fixture start — and the section states the rule once, with its
+count:
+
+> *Post-hoc estimate, not a contemporaneous price: the pick lock passed before this snapshot, and the Valve standings of
+> 2026-10-05 used for these percentages postdate the fixture (2026-06-26T10:30:00Z), so the number is re-derived from a
+> file that did not exist when the match was played.*
+
+No pick, percentage, source or count was changed, and the 11 actionable rows are untouched: the note is emitted only for
+a historical row that carries a percentage from a standings-based tier (`build.POST_HOC_TIERS`).
+
+**A duplicate mechanism was withdrawn, not layered.** This session had independently built a second "pick for every
+listed fixture" mechanism (an `archive` block per closed row, a validator re-derivation and a separate phone section).
+Session 11e17543's version landed first and covers more rows, so keeping both would have printed two different numbers
+for the same match. Per the coordination protocol the session's own mechanism was deleted in full — module, tests,
+refresh hook, validator checks, section, stylesheet rules — and only the disclosure above was kept. Nothing from
+PR #359 was modified or discarded.
+
+**Verification (measured on this branch after the rebase, none assumed).** Full unit suite **OK (1,8xx tests, 14
+skipped)** · 9 audit tests OK · `verification-95b588c2` 5/5 OK · `verification-c6` 12/12 OK ·
+`scripts.validate --data data/latest.json --site .` → 73 rows / 15 pages / checksums / displayed rows reproduced ·
+`tests/test_session_ba480835.py` (11 tests) pins the note's scope and the rendered rows · full `npm run test:browser`
+`rc=0` (320/390/768/1440 px, axe WCAG 2.1 AA) · verified on the built page that exactly the 23 historical priced rows
+carry the note and no actionable row does.
+
+**Flagged for review (non-blocking, on the Flagged for Review page).**
+`session-ba480835-historical-numbers-are-post-hoc-2026-10-26` (the drift question — should a historical row keep a
+price, and should each row pin the standings file it was priced from?) ·
+`session-ba480835-two-listed-rows-have-no-pick-2026-10-26` (fixtures 1051343 and 1053442 and why they stay blank) ·
+`session-ba480835-sandbox-could-not-probe-outside-lines-2026-10-26` (this session could not re-probe Hotspawn, HLTV,
+Polymarket or the bookmakers; it claims no new market line) ·
+`session-ba480835-adopted-upstream-every-match-solution-2026-10-26` (the withdrawn duplicate, recorded so the two
+sessions' work is never confused later).
+
 ### Live board repair and full-coverage capture — 24 October 2026
 
 **The public board was frozen because a test, not the data, failed.** The scheduled publisher runs the
