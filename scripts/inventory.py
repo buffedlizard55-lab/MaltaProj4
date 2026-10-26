@@ -67,7 +67,13 @@ def _read_sources(src, flags, snapshots, links, now):
             rows = checked_rows(rows)
             # Validate each source on its own before considering union/parity.
             normalize_fixtures(rows, {}, now)
-            snapshots.append({'key': key, 'url': url, 'rows': rows, 'receipt': receipt})
+            # The two HTML views are kept verbatim so the run can also compare the
+            # fixtures the *lobby page links to* against the ids the feed returned
+            # (scripts.lobby_gap). That comparison never adds a row: a lobby
+            # listing carries no feed start/lock time, so a lobby-only fixture
+            # cannot be priced without inventing one.
+            snapshots.append({'key': key, 'url': url, 'rows': rows, 'receipt': receipt,
+                              'html': None if json_response else payload})
         except (ValueError, KeyError, TypeError, OverflowError, AttributeError) as exc:
             flags.append(problem(key, str(exc), url))
 
@@ -152,9 +158,23 @@ def discover(src, now, previous=None):
     if prior_only:
         flags.append(problem('retained_open_rows', f'{len(prior_only)} previously open fixtures retained with unverified current membership. No pick issued for them.', HOTSPAWN))
     old_ids = {m['id'] for m in previous.get('matches', [])} if previous else set()
+    # Fixtures the lobby page links to but this capture's feed did not return.
+    # Recorded, never synthesized: see scripts.lobby_gap and the session receipt.
+    from scripts.lobby_gap import compare as lobby_compare, ids_from_html
+    lobby_ids = set()
+    for snapshot in snapshots:
+        lobby_ids.update(ids_from_html(snapshot.get('html')))
+    lobby = lobby_compare([str(k) for k in raw], sorted(lobby_ids))
+    if lobby['missing_from_feed']:
+        flags.append(problem('lobby_gap',
+            '%d fixture(s) linked from the Hotspawn lobby are absent from this capture\'s official '
+            'fixture feed: %s. No start or lock time is published for them, so no pick is issued; '
+            'they are retried on the next refresh.'
+            % (lobby['missing_count'], ', '.join(lobby['missing_from_feed'])), LOBBY))
     return {'raw': list(raw.values()), 'matches': matches, 'flags': flags,
             'coverage': 'verified' if complete else 'partial',
             'observed_at': min(observations, key=dt), 'conflicts': conflicts,
+            'lobby': lobby,
             'counts': {key: next((len(s['rows']) for s in snapshots if s['key'] == key), None)
                        for key in ('api', 'page', 'lobby')} | {'retained': len(matches)},
             'changes': {'compared_with': previous.get('generated_at') if previous else None,

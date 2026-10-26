@@ -125,3 +125,44 @@ Both were found by running the gates, not by reading the code:
 * **The two unresolved rows stay unresolved.** Closing either needs a primary-source alias for
   `ex-Tricked`, or a contemporaneous lineup for `6666`; neither was confirmed this session and
   neither was guessed.
+
+## Merge integration (2026-10-26 02:55Z)
+
+`main` moved while this branch was open, so the merge was resolved by hand rather than rebased over
+history that was already pushed. Conflicts and how each was settled:
+
+| File | Resolution |
+| --- | --- |
+| `scripts/build.py` | Adopted main's refactor of the unresolved page into `unresolved_page(data)` (session 28e4f2a1) and re-inserted `every_match_unresolved(data)` inside it, after the intro. |
+| `site/assets/style.css` | Union: main's `#picks-directory` rules plus this session's quick-nav wrap and coverage-link rules. |
+| `package.json` | Union of both browser-suite lists — 15 suites. |
+| `data/review-notes.json` | Union, de-duplicated by id: 287 (main) + 2 (this session) = 289. |
+| `COORDINATION.md` | Both receipts kept. |
+| `build-info.json`, `data/latest.json`, `data/matches.csv`, `review.html`, `assets/style.css` | Not hand-merged. Regenerated from the merged source with `scripts/build.py` + `scripts/stage_legacy.py`. Both sides carried the same snapshot (`generated_at 2026-10-26T00:10:49.639616Z`), so no data was lost. |
+
+Nothing from main was dropped.
+
+### Two things the merge itself surfaced
+
+1. **`review.html#lobby-coverage-review` is not a stable anchor.** The panel only renders when the
+   capture recorded a `lobby_coverage` diff, so linking it broke the build — `scripts/validate.py`
+   caught it and named the URL. Re-pointed at `review.html#research-findings`, which always exists.
+2. **The coverage claim needed a boundary.** Session 28e4f2a1 measured on 2026-10-26 that the public
+   lobby listed **eight** CS2 fixtures the 00:07:16Z feed capture did not contain
+   (`1079201`, `1081159`, `1079202`, `1081160`, `1079203`, `1081162`, `1081163`, `1081164`). This
+   session's "71 of 73" is therefore coverage of the rows the **fixtures endpoint** returned at its
+   own observation time, not of every fixture Hotspawn shows anywhere. A lobby-only row carries no
+   `scheduled_start_time` or `lock_time`, so pricing one would mean inventing its start, lock and
+   identity; the every-match section now states that boundary and links
+   `scripts/lobby_gap.py` instead of implying parity it never measured.
+3. **A regression this session's own suite caught:** the four inline source links in the new
+   coverage-boundary paragraph measured 17px tall on a phone, below the 24px WCAG 2.5.8 minimum the
+   suite asserts. Fixed with an additive 32px inline-flex rule; re-measured at 32px.
+
+### Gates on the merged tree
+
+`python -m unittest discover -s tests` → **1,838 OK (14 skipped)**; audits 9 OK;
+`verification-95b588c2/test_integrity.py` 5 OK; `verification-c6` 12 OK;
+`scripts.validate` on the generated build **and** the committed root → 73 rows / 11 calculations /
+15 pages / 746 links / 20 checksums / 165 displayed rows; `npm run test:browser` (15 suites) →
+**exit 0** (11 `Passed`, 3 `"failures": []`, 1 `"status":"ok"`).

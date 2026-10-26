@@ -6456,6 +6456,208 @@
   ]
  },
  {
+  "id": "session-160f03c8-hotspawn-inventory-drift-2026-10-26",
+  "status": "Open — live source inventory mismatch; refresh/reconcile required",
+  "finding": "At 2026-10-26 00:52 UTC, the live Hotspawn general lobby displayed 81 CS2 entries and 19 matches this week, while its separate /cs2-pickems page displayed 72 entries. The verified board snapshot generated 2026-10-26T00:10:49.639616Z retained 73 rows. A later read of Hotspawn’s official fixtures feed and lobby exposed eight scheduled fixtures absent from that snapshot: 1079201 INOX Division–Nemesis (09:00Z), 1081159 LFO 10–ex-6666 (12:00Z), 1079202 FOKUS–ex-Zero Tenacity (12:00Z), 1081160 HAVU–ILLYRIANS (15:00Z), 1079203 Metizport–BRUTE (15:00Z), 1081162 ex-RUSTEC–Spirit Academy (27 Oct 12:00Z), 1081163 BakS–Saint Sinners (27 Oct 15:00Z), and 1081164 Inner Circle Academy–Lavked (27 Oct 18:00Z). The line-by-line receipt lists the exact match-page URLs and the shared fixture API URL. This is a dated discrepancy, not a claim that either surface is authoritative over the other. The later eight were not added or assigned a pick: no accepted external market line, exact HLTV evidence or verified Valve model calculation was established in this audit. Hotspawn vote percentages are explicitly excluded. Re-harvest all three surfaces, reconcile IDs, then run the existing market/HLTV/book/model ladder. The site refresh workflow is best-effort; the live summary still showed the 00:10Z snapshot at 00:52Z, and no newer publish run appeared in the Actions run list at audit time.",
+  "sources": [
+   {
+    "url": "https://play.hotspawn.com/lobby",
+    "label": "Hotspawn general lobby; displayed 81 CS2 entries and listed the 19 this-week fixtures"
+   },
+   {
+    "url": "https://play.hotspawn.com/cs2-pickems",
+    "label": "Hotspawn CS2 Pick’ems page; displayed 72 entries"
+   },
+   {
+    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+    "label": "Hotspawn fixtures API; records for the eight IDs were present in the later response"
+   },
+   {
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/",
+    "label": "Published snapshot and last-checked time observed during audit"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40247657442",
+    "label": "Latest successful publish run visible at audit time (00:05:31–00:14:35 UTC)"
+   },
+   {
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/picks.html",
+    "label": "Published picks board; historical snapshot only, not evidence for the missing eight"
+   }
+  ]
+ },
+ {
+  "id": "session-77046e56-cron-delivery-gap-2026-10-26",
+  "status": "Open — delivery limitation, published for manual review; does not block publication",
+  "finding": "Measured on 2026-10-26: Hotspawn added eight CS2 fixtures to its scheduled feed after the 00:07:16Z observation that produced the 2026-10-26T00:10:49Z board (1079201 INOX Division vs Nemesis, 1079202 FOKUS vs ex-Zero Tenacity, 1079203 Metizport vs BRUTE, 1081159 LFO 10 vs ex-6666, 1081160 HAVU vs ILLYRIANS, 1081162 ex-RUSTEC vs Spirit Academy, 1081163 BakS vs Saint Sinners, 1081164 Inner Circle Academy vs Lavked). A read-only probe at 2026-10-26T00:47:52Z against the collector's exact URL returned 81 CS2 rows including all eight, with 19 future starts, and the lobby and CS2 page agreed at 81 — so the collector is not dropping fixtures and no collector code was changed. The published board nonetheless showed 73 rows and 11 open matches for the next hour: GitHub delivered no scheduled 'Verify, refresh and publish' run between 2026-10-26T00:05:31Z and the writing of this note, and the ten-minute refresh watchdog also produced no run in that window (its previous run started 2026-10-25T23:19:50Z). The gap is inside the project's 8-hour evidence window, but it is the mechanism by which a low-tier fixture can appear to have no pick: the fixture exists on Hotspawn before any board has refreshed. A fresh refresh on a GitHub runner at 00:52:33Z priced all 19 open fixtures with 0 unresolved, and the same build validated (81 rows / 19 calculations / 779 links / 20 checksums). This is the measured counter-evidence to the line in note session-160f03c8-hotspawn-inventory-drift-2026-10-26 that the later eight 'were not added or assigned a pick': they were not in the 00:10Z snapshot, but the collector does return them and the existing ladder prices all eight with no manual value entered.",
+  "sources": [
+   {
+    "url": "https://play.hotspawn.com/lobby",
+    "label": "Hotspawn lobby — rendered 81 CS2 entries and 19 matches this week at the time of measurement"
+   },
+   {
+    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+    "label": "Fixtures endpoint read by the probe — 81 rows, 19 future, all eight fixtures present"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40251063027",
+    "label": "Read-only inventory probe run that measured the parity (receipts committed under research/session-77046e56/diag/)"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40251150280",
+    "label": "Fresh coverage harvest run whose refresh priced all 19 open fixtures with 0 unresolved"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions",
+    "label": "Run history used to measure the deliverability gap"
+   }
+  ],
+  "impact": "Time-to-publish for newly added Hotspawn fixtures. No price, pick or source value is affected; the next successful publication carries the fixtures, and every row that publishes is independently audited before it ships."
+ },
+ {
+  "id": "session-77046e56-mirror-points-partial-2026-10-26",
+  "status": "Open — partially verified at source; published for manual review; does not block publication",
+  "finding": "Two open rows are priced from HLTV's dated view of Valve's ranking (model_vrs_mirror), because Valve's monthly standings file does not resolve every club on the row. For 1081159 LFO 10 vs ex-6666 the two inputs were re-read at source on 2026-10-26: HLTV's 26 October global Valve ranking shows #157 LFO 10 with 803 Valve points and #118 ex-6666 with 968 points, and both five-player rosters match the board. For 1081162 ex-RUSTEC vs Spirit Academy this session confirmed the same page and heading, the ex-RUSTEC roster, and its position immediately before #95 BET-M (so #94), but did not read the two point values (1059 and 1038) directly in the page text; the published probability reproduces exactly from those two numbers with Valve's published formula and 0.7986 calibration slope, but the inputs themselves remain unverified at source in this session. The row publishes the dated HLTV page and states the provenance, and no monthly-file and mirror value is mixed within a row.",
+  "sources": [
+   {
+    "url": "https://www.hltv.org/valve-ranking/teams/2026/october/26",
+    "label": "HLTV dated Valve global ranking used as the mirror input (heading read: 'Valve global ranking on October 26th, 2026')"
+   },
+   {
+    "url": "https://www.hltv.org/valve-ranking/teams/2026/october/26#",
+    "label": "Same page, #157 LFO 10 (803 points) and #118 ex-6666 (968 points) read directly"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "label": "Valve's official monthly file that does not resolve these clubs"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/model/fit.js",
+    "label": "Valve's published expectation formula used to reproduce the probability"
+   }
+  ],
+  "impact": "Evidence depth on one originated line. The value is labelled as a non-market model estimate on the row; it is not presented as a market price. Re-reading the two numbers on HLTV's page would close it."
+ },
+ {
+  "id": "session-28e4f2a1-executive-summary-directory-2026-10-26",
+  "status": "Published with limitation — counts are dated to the snapshot; needs review of the category policy",
+  "finding": "The executive summary now carries a counts-driven pick directory (#picks-directory) inside its unresolved-and-limitations section, repeated at the top of the unresolved page: one row per published ladder step, the number of open matches it answered for, how many of those carry a percentage, the official source of that kind of line and the page on this site that lists them, plus a 'no pick' row and a total. Re-derived for the 2026-10-26T00:10:49Z snapshot (73 feed rows, 11 open): exchange 7, bookmaker listing 1, our VRS model 3, research-only 0, unresolved 0; total 11, all 11 with a percentage. The rendered cells were measured with Chromium at 320x568, 390x844 and 412x915 on both pages: no horizontal overflow, every one of the 9 rows x 5 cells visible with text, no count hidden behind the fixed tab bar, and the category counts add up to the published total (receipt: research/session-28e4f2a1/phone-directory-measurements.json). LIMITATION FOR REVIEW: the numbers are static in the generated HTML and describe the snapshot named in the paragraph above the table, so a page served after its eight-hour evidence window shows that snapshot's counts while the board withholds its expired picks; the page says so in the same paragraph. Category boundaries follow scripts.summary's published ladder (a Pinnacle line and a researched book listing are separate rows, 'no pick' covers both unresolved rows and any method outside the ladder), which is a product decision a reviewer may want to change.",
+  "sources": [
+   {
+    "url": "https://play.hotspawn.com/cs2-pickems",
+    "label": "Hotspawn CS2 pick'em lobby (fixture inventory and lock times)"
+   },
+   {
+    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+    "label": "Hotspawn CS2 scheduled fixtures API (the snapshot's inventory source)"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/events",
+    "label": "Polymarket Gamma API (exchange line source)"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings",
+    "label": "Valve official Regional Standings (our model's only input)"
+   },
+   {
+    "url": "https://www.hltv.org/matches",
+    "label": "HLTV matches (identity, lineups, rankings — never a price)"
+   }
+  ]
+ },
+ {
+  "id": "session-28e4f2a1-fixture-1093218-start-conflict-2026-10-26",
+  "status": "Open source conflict — published for manual review; no value changed",
+  "finding": "Fixture 1093218 (Nuclear TigeRES vs UNiTY, NODWIN Clutch Series #13) is priced on this board by our VRS model line (Nuclear TigeRES 66.5% / UNiTY 33.5%) rather than by a market, because the only two-sided market this session could read disagrees about when the match starts. Hotspawn's fixtures API gives 2026-10-26T18:00:00Z (lock 17:54Z) and the board follows it; the HLTV fixture recorded on the same row also states 2026-10-26T18:00:00Z; the live Polymarket series market lists gameStartTime '2026-10-26 15:00:00+00' and its own description says 'initially scheduled for October 26, 2026 at 11:00 AM ET' (= 15:00Z), three hours earlier. Read live at 2026-10-26T00:47Z: market 6186061, outcomes [Nuclear TigeRES, UNiTY esports], outcomePrices 0.605 / 0.395, bestBid/bestAsk present, acceptingOrders true, active and not closed, liquidityNum 6140.85, updatedAt 2026-10-26T00:34:37Z. The published exact-UTC-start gate therefore refuses to attach that price, and no value was changed or inferred. NOTE FOR REVIEW: the direction agrees with our model (both favour Nuclear TigeRES) but the magnitude differs (market 60.5% vs model 66.5%), so a reviewer may prefer the market number once the true start is confirmed. Also observed: the 2026-10-26T00:57Z read of the public lobby rendered 10 open pick cards and did not show this fixture among them, although its own tournament filter counts NODWIN Clutch Series #13 (1) and the fixtures API returns it as scheduled — coverage here is driven by the API, per the published methodology.",
+  "sources": [
+   {
+    "url": "https://gamma-api.polymarket.com/markets?id=6186061&limit=1",
+    "label": "Polymarket market 6186061 (live series moneyline, gameStartTime 15:00Z)"
+   },
+   {
+    "url": "https://polymarket.com/event/cs2-ntr-unity-2026-10-26",
+    "label": "Polymarket event page for the same market"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399119/nuclear-tigeres-vs-unity-nodwin-clutch-series-13",
+    "label": "HLTV fixture 2399119 (start 18:00Z, lineups, world ranks)"
+   },
+   {
+    "url": "https://play.hotspawn.com/cs2-pickems",
+    "label": "Hotspawn lobby (does not render this fixture among its open pick cards at read time)"
+   }
+  ]
+ },
+ {
+  "id": "session-28e4f2a1-originated-line-reproduced-2026-10-26",
+  "status": "Verified — every published model line and every model/market comparison re-derived from Valve's official bytes",
+  "finding": "All 10 rows that carry a Valve-standings model input were re-derived independently on the 2026-10-26T00:10:49Z snapshot, without importing the production code: the official standings_global_2026_10_05.md at commit eec4853 was re-read and its bytes compared with the vendored copy (identical, sha256 df96e7fc3cd91a2687ec08cac0128e50cc4e4e55346581679572e881d79ae61b, 77,872 bytes), each team's points were located in that file, and the probability was recomputed with Valve's own Glicko expectation at RD 75 (model/fit.js defaultGlickoParams.rd, model/glicko.js) and the calibration slope read off Valve's published chart (modelfit.png: y = 0.7986x + 0.126). 10 of 10 reproduce to within 1e-12, including the three published model picks (1093218 Nuclear TigeRES 66.50%, 1082792 HOTU 85.18%, 1082793 1WIN 75.70%). Valve repeats the label 'The Huns' twice (#122, 944 points; #213, 701 points); the row uses #122 and the stored HLTV lineup (Bart4k, controlez, bexyz, Cozen, DarkMeister) shares 4 players with that roster and 2 with the other, so the choice is roster-derived, uniquely, exactly as Valve's own TEAM_OVERLAP_TO_SHARE_ROSTER = 3 rule requires — not a rank preference. Receipt: research/session-28e4f2a1/model-receipt.json.",
+  "sources": [
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "label": "Valve standings file used by the model (commit eec4853, live official bytes)"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/model/fit.js",
+    "label": "Valve model code: defaultGlickoParams.rd = 75 and priorWinExpectation"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/model/glicko.js",
+    "label": "Valve Glicko implementation (g(), expected score)"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/model/team.js",
+    "label": "Valve roster-continuity rule (TEAM_OVERLAP_TO_SHARE_ROSTER = 3)"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/modelfit.png",
+    "label": "Valve published calibration chart (y = 0.7986x + 0.126)"
+   }
+  ]
+ },
+ {
+  "id": "session-28e4f2a1-exchange-lines-reproduced-2026-10-26",
+  "status": "Verified with a dated observation — live prices move; the board publishes its own observation time and expiry",
+  "finding": "Every published line on the 2026-10-26T00:10:49Z snapshot was re-derived from its own stored raw bytes with an independent implementation: 11 open rows, 125 checks, 0 failures (receipt: research/session-28e4f2a1/line-receipt.json). For the 7 Polymarket rows the de-vig reproduces the published pair to 1e-12, each market was accepting orders, active and not closed, two-sided, inside the 25-point spread ceiling (Rooster vs Abyssal sits exactly on it at 0.250, which the published rule allows), above $100 of liquidity, updated inside the eight-hour window, and its own gameStartTime equals the fixture's UTC start. The Bookmaker row reproduces from the stored decimal odds 1.61 / 2.18 (overround 7.98%) de-vigged to 57.52% / 42.48%. Dated counter-check read live at 2026-10-26T00:47Z on market 6066508 (Ground Zero vs Off Chops): outcomePrices 0.205 / 0.795, liquidity 10,419.86, gameStartTime '2026-10-26 03:00:00+00' — the same market the snapshot recorded at 0.19 / 0.81 fifty minutes earlier, so the price moved while the identity, the two sides and the start did not. This is why every percentage on the site carries its own observation and expiry.",
+  "sources": [
+   {
+    "url": "https://gamma-api.polymarket.com/markets?id=6066508&limit=1",
+    "label": "Polymarket market 6066508 (Ground Zero vs Off Chops) live read"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/events",
+    "label": "Polymarket Gamma API (the exchange source the collector reads)"
+   },
+   {
+    "url": "https://api.bo3.gg/api/v1/matches",
+    "label": "BO3.gg CS2 matches API (the Thunderpick line behind the bookmaker row)"
+   }
+  ]
+ },
+ {
+  "id": "0a862f5f-lobby-feed-gap-2026-10-26",
+  "status": "Needs review — measured coverage gap between the public lobby and the official fixture feed; named by the refresh, never filled in",
+  "finding": "Read directly on 2026-10-26. The published capture read the official CS2 fixtures API at 2026-10-26T00:07:16Z and held 73 rows (build-info.json: built_at 2026-10-26T00:10:50Z, revision 3b158a37). The public lobby at https://play.hotspawn.com/lobby, read at 00:47Z, linked eight further CS2 fixtures absent from that capture: 1079201 INOX Division vs Nemesis, 1081159 LFO 10 vs ex-6666, 1079202 FOKUS vs ex-Zero Tenacity, 1081160 HAVU vs ILLYRIANS, 1079203 Metizport vs BRUTE, 1081162 ex-RUSTEC vs Spirit Academy, 1081163 BakS vs Saint Sinners and 1081164 Inner Circle Academy vs Lavked. Session 160f03c8 measured the same eight independently in the same window and dated their starts (09:00Z, 12:00Z, 12:00Z, 15:00Z, 15:00Z, 27 Oct 12:00Z, 27 Oct 15:00Z, 27 Oct 18:00Z) - see its entry. The same feed read again at 00:57Z returned those ids interleaved with rows the 00:07Z capture already held (1079201 sits between 1082859 and 1081159), and their total_picks counters were 2-8 against 42-49 on the fixtures captured earlier, which is consistent with Hotspawn publishing fixtures into its feed lazily. That cause is NOT proven and is not acted on. What this session changed: scripts/lobby_gap.py diffs the fixture ids the two lobby HTML views link to against the ids the feed returned, scripts/inventory records a 'lobby_gap' issue naming them, scripts/refresh publishes 'lobby_coverage', and scripts/build renders it under 'Lobby coverage' on the executive summary, the unresolved page and this page. No start time, team identity or probability is inferred for a lobby-only row: the feed publishes no scheduled_start_time/lock_time for it, so a pick would have to invent one, and the row is retried on the next 15-minute refresh instead.",
+  "sources": [
+   {
+    "label": "Hotspawn public lobby",
+    "url": "https://play.hotspawn.com/lobby"
+   },
+   {
+    "label": "Hotspawn CS2 fixture feed",
+    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+   },
+   {
+    "label": "Build receipt of the 00:10:50Z capture",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/build-info.json"
+   },
+   {
+    "label": "Measured evidence for this session",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-0a862f5f/RECEIPT.md"
+   }
+  ]
+ },
+ {
   "id": "session-11e17543-valve-duplicate-labels-2026-10-26",
   "status": "Flagged for review — measured irregularity in Valve's official standings file; no value was inferred to cover it",
   "finding": "Measured 2026-10-26 on the vendored copy of Valve's official global standings (standings_global_2026_10_05.md, sha256 df96e7fc3cd91a2687ec08cac0128e50cc4e4e55346581679572e881d79ae61b, matching data/vrs/meta.json, and confirmed against the live repository listing as the newest global file Valve publishes): the single 380-row table repeats 31 normalised team labels on two different rows with two different rosters and two different point totals. Worked example read straight from the file: 'Johnny Speeds' is #99 with 1049 points (bsover, draken, hampus, Rack, Svedjehed) and #164 with 802 points (HEAP, jocab, Lekr0, nawwk, titulus). HLTV's own Valve-ranking view independently shows the same shape for '6666' and annotates the second row 'This is an old roster'. scripts/vrs.line already refuses to publish a percentage for such a label, which is correct: the project cannot know which roster is meant. What was missing was any pick at all for those fixtures, so the every-match ladder (scripts/every_match_11e17543.py) adds a bounded-direction rung: it publishes a directional pick with NO percentage only when the weaker of one club's candidate point totals still beats the stronger of the other's, so every possible reading of Valve's file gives the same winner. 14 of 73 rows resolve that way on this snapshot. Where the ranges overlap the row stays blank: 6666 (425 or 923) against BERG (754) is one of the 2 unresolved rows, because 425 < 754 < 923. Duplicated labels: 6666, aimclub, bandachuya, bebop, benchedgods, betclicapogeeesports, bigacademy, brute, chinggiswarriors, club333, cybershoke, depo, empire, exrustec, famalicao, farmville, honved, johnnyspeeds, justplayers, leo, lilmix, maitai, marsborne, metanoiawolves, misa, mouznxt, rbls, thehuns, unomille, zomblers, zotix.",

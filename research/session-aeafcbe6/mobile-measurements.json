@@ -1,5 +1,5 @@
 {
- "measured_at": "2026-10-26T01:27:54.042Z",
+ "measured_at": "2026-10-26T01:37:18.581Z",
  "board": "public/ from research/diagnose-aeafcbe6/snapshot.json",
  "viewports": [
   {
@@ -30,6 +30,7 @@
      "matches.html",
      "sources.html#method",
      "review.html",
+     "#picks-directory",
      "#unresolved-summary",
      "unresolved.html",
      "matches.html#every-match",
@@ -90,6 +91,7 @@
      "matches.html",
      "sources.html#method",
      "review.html",
+     "#picks-directory",
      "#unresolved-summary",
      "unresolved.html",
      "matches.html#every-match",
@@ -150,6 +152,7 @@
      "matches.html",
      "sources.html#method",
      "review.html",
+     "#picks-directory",
      "#unresolved-summary",
      "unresolved.html",
      "matches.html#every-match",
