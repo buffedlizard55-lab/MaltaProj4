@@ -6456,7 +6456,6 @@
   ]
  },
  {
-<<<<<<< HEAD
   "id": "session-160f03c8-hotspawn-inventory-drift-2026-10-26",
   "status": "Open — live source inventory mismatch; refresh/reconcile required",
   "finding": "At 2026-10-26 00:52 UTC, the live Hotspawn general lobby displayed 81 CS2 entries and 19 matches this week, while its separate /cs2-pickems page displayed 72 entries. The verified board snapshot generated 2026-10-26T00:10:49.639616Z retained 73 rows. A later read of Hotspawn’s official fixtures feed and lobby exposed eight scheduled fixtures absent from that snapshot: 1079201 INOX Division–Nemesis (09:00Z), 1081159 LFO 10–ex-6666 (12:00Z), 1079202 FOKUS–ex-Zero Tenacity (12:00Z), 1081160 HAVU–ILLYRIANS (15:00Z), 1079203 Metizport–BRUTE (15:00Z), 1081162 ex-RUSTEC–Spirit Academy (27 Oct 12:00Z), 1081163 BakS–Saint Sinners (27 Oct 15:00Z), and 1081164 Inner Circle Academy–Lavked (27 Oct 18:00Z). The line-by-line receipt lists the exact match-page URLs and the shared fixture API URL. This is a dated discrepancy, not a claim that either surface is authoritative over the other. The later eight were not added or assigned a pick: no accepted external market line, exact HLTV evidence or verified Valve model calculation was established in this audit. Hotspawn vote percentages are explicitly excluded. Re-harvest all three surfaces, reconcile IDs, then run the existing market/HLTV/book/model ladder. The site refresh workflow is best-effort; the live summary still showed the 00:10Z snapshot at 00:52Z, and no newer publish run appeared in the Actions run list at audit time.",
@@ -6634,7 +6633,31 @@
     "label": "BO3.gg CS2 matches API (the Thunderpick line behind the bookmaker row)"
    }
   ]
-=======
+ },
+ {
+  "id": "0a862f5f-lobby-feed-gap-2026-10-26",
+  "status": "Needs review — measured coverage gap between the public lobby and the official fixture feed; named by the refresh, never filled in",
+  "finding": "Read directly on 2026-10-26. The published capture read the official CS2 fixtures API at 2026-10-26T00:07:16Z and held 73 rows (build-info.json: built_at 2026-10-26T00:10:50Z, revision 3b158a37). The public lobby at https://play.hotspawn.com/lobby, read at 00:47Z, linked eight further CS2 fixtures absent from that capture: 1079201 INOX Division vs Nemesis, 1081159 LFO 10 vs ex-6666, 1079202 FOKUS vs ex-Zero Tenacity, 1081160 HAVU vs ILLYRIANS, 1079203 Metizport vs BRUTE, 1081162 ex-RUSTEC vs Spirit Academy, 1081163 BakS vs Saint Sinners and 1081164 Inner Circle Academy vs Lavked. Session 160f03c8 measured the same eight independently in the same window and dated their starts (09:00Z, 12:00Z, 12:00Z, 15:00Z, 15:00Z, 27 Oct 12:00Z, 27 Oct 15:00Z, 27 Oct 18:00Z) - see its entry. The same feed read again at 00:57Z returned those ids interleaved with rows the 00:07Z capture already held (1079201 sits between 1082859 and 1081159), and their total_picks counters were 2-8 against 42-49 on the fixtures captured earlier, which is consistent with Hotspawn publishing fixtures into its feed lazily. That cause is NOT proven and is not acted on. What this session changed: scripts/lobby_gap.py diffs the fixture ids the two lobby HTML views link to against the ids the feed returned, scripts/inventory records a 'lobby_gap' issue naming them, scripts/refresh publishes 'lobby_coverage', and scripts/build renders it under 'Lobby coverage' on the executive summary, the unresolved page and this page. No start time, team identity or probability is inferred for a lobby-only row: the feed publishes no scheduled_start_time/lock_time for it, so a pick would have to invent one, and the row is retried on the next 15-minute refresh instead.",
+  "sources": [
+   {
+    "label": "Hotspawn public lobby",
+    "url": "https://play.hotspawn.com/lobby"
+   },
+   {
+    "label": "Hotspawn CS2 fixture feed",
+    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+   },
+   {
+    "label": "Build receipt of the 00:10:50Z capture",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/build-info.json"
+   },
+   {
+    "label": "Measured evidence for this session",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-0a862f5f/RECEIPT.md"
+   }
+  ]
+ },
+ {
   "id": "session-5bf1c3eb-hotspawn-stale-scheduled-2026-10-26",
   "status": "Open — upstream data conflict disclosed, not repaired; no value inferred",
   "finding": "Measured on the live harvest run 40251492364 (fixtures observed 2026-10-26T00:53:32Z): Hotspawn's fixtures endpoint returns 81 CS2 rows with status \"scheduled\", of which 62 carry a lock_time earlier than the observation clock and therefore cannot take a pick, and 50 of those 62 ALSO carry an end_time in the past while still reporting status \"scheduled\" (example: fixture 1052746 Fortress v Endless Journey, scheduled_start_time 2026-06-26T10:30:00Z, start_time 2026-06-26T11:45:27Z, end_time 2026-06-26T12:51:00Z, status \"scheduled\"). A status of \"scheduled\" beside a completed end_time is internally inconsistent in the upstream feed. This project keeps the rows verbatim for complete inventory, publishes no pick or percentage for them, and lists all of them in the separate \"Closed pick windows\" register with each row's own lock_time and limitation. The feed's own participants*_picked_percent crowd numbers for these rows are deliberately never used as a probability (the brief forbids Hotspawn as a probability source). No row was corrected, inferred or back-filled; the raw fields are retained per row in research/session-5bf1c3eb/gaps/gap-report.json.",
@@ -6653,6 +6676,5 @@
    }
   ],
   "impact": "Cosmetic-to-moderate for readers: without the separate register the 62 closed rows read as \"matches with no pick\". The register and this note state the rule and the upstream conflict. Coverage of the 19 open rows is unaffected: 19 picks, 19 win probabilities, 0 unresolved at this observation."
->>>>>>> c1dbd0a (session 5bf1c3eb: separate closed-pick-window register with per-row limitations, executive-summary links, upstream status-conflict flag + 10 regressions)
  }
 ]

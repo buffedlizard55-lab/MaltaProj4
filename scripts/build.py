@@ -706,6 +706,91 @@ def unresolved_page_intro(data):
         + coverage_boundary())
 
 
+LOBBY_URL = 'https://play.hotspawn.com/lobby'
+FEED_API = ('https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures'
+            '?sport_alias=cs2&status=scheduled&tenantId=1')
+
+
+def lobby_coverage_panel(data, anchor='lobby-coverage'):
+    """Which fixtures the Hotspawn lobby linked to, and which the feed omitted.
+
+    Measured on 2026-10-26: the published capture of 00:07:16Z held 73 CS2 rows
+    while the public lobby, read at 00:47Z, linked eight further fixtures that
+    the capture did not contain (the ids are listed in
+    `scripts/lobby_gap.py` and in the session receipt in COORDINATION.md). The
+    same feed read again at 00:57Z returned those rows, so the likeliest
+    explanation is that Hotspawn publishes fixtures into the feed lazily; that is
+    recorded as an observation, not as a proven cause.
+
+    What this block may and may not do:
+
+    * It may name every id the lobby linked to and the feed did not return, with
+      the two official sources side by side, so the gap can be re-checked.
+    * It may not render a pick or a percentage for such a fixture. The feed
+      publishes no `scheduled_start_time` or `lock_time` for a lobby-only row, so
+      any number here would be invented.
+    * When the snapshot carries no `lobby_coverage` record (an older capture), it
+      renders nothing rather than implying parity it never measured.
+    """
+    cov = data.get('lobby_coverage') or {}
+    if not cov:
+        return ''
+    missing = [str(x) for x in (cov.get('missing_from_feed') or [])]
+    observed = cov.get('observed_at')
+    # Bound the rendered table: a page that links a long history of fixtures must
+    # not turn an evidence block into a wall. The complete list stays in the
+    # snapshot (`lobby_coverage.missing_from_feed`) and in data/latest.json.
+    shown, hidden_count = missing[:25], max(0, len(missing) - 25)
+    if missing:
+        headline = ('<strong>%d fixture(s) the lobby links to are not in this capture</strong>. '
+                    'They carry no pick, because the official feed published no start or lock time '
+                    'for them &mdash; a pick without those fields would be invented, not sourced.'
+                    % len(missing))
+        rows = ''.join(
+            '<tr><td><strong>%s</strong><div class="competition">Hotspawn fixture id</div></td>'
+            '<td><span class="muted">Not published by the feed at this capture</span></td>'
+            '<td class="source-links">%s%s</td></tr>'
+            % (e(ident), link(LOBBY_URL, 'Hotspawn lobby ↗'), link(FEED_API, 'Fixture feed ↗'))
+            for ident in shown)
+        table_html = ('<div class="table-wrap" tabindex="0" role="region" aria-label="Lobby fixtures '
+                      'absent from the feed"><table role="table"><caption>Every id the public lobby '
+                      'linked to that the official fixture feed did not return at this capture. '
+                      'Blank means uncollected, never 50/50.</caption><thead><tr>'
+                      '<th scope="col">Fixture id</th><th scope="col">Start &amp; lock</th>'
+                      '<th scope="col">Sources</th></tr></thead><tbody>' + rows +
+                      '</tbody></table></div>'
+                      + ('<p class="small">%d further id(s) are recorded in the snapshot and in '
+                         '%s; the panel lists the first 25.</p>'
+                         % (hidden_count, link('data/latest.json', 'the JSON data'))
+                         if hidden_count else ''))
+    else:
+        read = cov.get('lobby_read')
+        headline = ('<strong>The lobby and the feed agreed at this capture</strong>: every fixture id '
+                    'the lobby page linked to was returned by the official feed.'
+                    if read else
+                    '<strong>The lobby page returned no fixture links at this capture</strong>, so '
+                    'parity is unverified rather than confirmed. A failed or unrendered read is never '
+                    'reported as an empty lobby.')
+        table_html = ''
+    counts = ('<p class="small">Feed rows <strong>%s</strong> · lobby links <strong>%s</strong> · '
+              'absent from the feed <strong>%s</strong> · observed %s UTC · '
+              '%s · %s</p>'
+              % (e(cov.get('feed_count') if cov.get('feed_count') is not None else '—'),
+                 e(cov.get('lobby_count') if cov.get('lobby_count') is not None else '—'),
+                 e(cov.get('missing_count', len(missing))),
+                 e(date(observed, True)) if observed else 'time unrecorded',
+                 link(LOBBY_URL, 'Official lobby ↗'),
+                 link(FEED_API, 'Official fixture feed ↗')))
+    return ('<section class="panel" id="' + e(anchor) + '" aria-label="Lobby coverage">'
+            '<p class="eyebrow muted">Coverage &middot; every listed fixture</p>'
+            '<h2>Lobby coverage: what the lobby listed, and what the feed returned</h2>'
+            '<p>' + headline + '</p>'
+            + table_html + counts
+            + '<p class="small">' + e(cov.get('note') or '') + '</p>'
+            '<p class="small">' + link('review.html', 'Flagged for review →')
+            + link('sources.html', 'Source health →') + '</p></section>')
+
+
 def coverage_boundary():
     """The matches a pick can never be issued for, stated with their source.
 
@@ -1312,6 +1397,20 @@ def unresolved_limits_card(data):
               for a in (m.get('attempts') or []) if (a.get('provider') or '') == k and a.get('status') == 'error'))
             for k, v in sorted(refused.items())) +
             '. Access controls are recorded, never bypassed, and a block is not evidence that a price does not exist.</li>')
+    # The coverage record only exists on snapshots captured after this check
+    # landed, so the link target has to depend on the record, not on hope: a
+    # #lobby-coverage link on a page that does not render that block is a broken
+    # anchor and scripts.validate refuses the build (measured here).
+    if data.get('lobby_coverage'):
+        where = link('#lobby-coverage', 'lobby coverage')
+    else:
+        where = link('review.html#0a862f5f-lobby-feed-gap-2026-10-26', 'the flagged coverage finding')
+    items.append('<li><strong>A fixture the lobby shows can be missing from the feed.</strong> ' +
+                 'Hotspawn publishes fixtures into its own feed continuously, so a match can appear on ' +
+                 'the ' + link('https://play.hotspawn.com/lobby', 'public lobby') + ' after this snapshot ' +
+                 'was captured. Those ids are listed with both official sources under ' + where +
+                 ' and are never given an invented start time or price; they are retried on the next ' +
+                 'refresh, which runs every 15 minutes.</li>')
     items.append('<li><strong>Our own line needs both teams.</strong> The ' + link('sources.html#model', 'VRS model') +
                  ' prices a match only when both clubs resolve in Valve&rsquo;s official standings with a current '
                  'roster; with one side missing the row drops to a research-only pick and no percentage is shown.</li>')
@@ -1407,6 +1506,7 @@ def overview(data):
     body+=f'''<section class="panel start-here" id="start-here" aria-label="Start here"><p class="eyebrow muted">Start here · tap a card</p><h2>Where the picks are</h2><div class="start-grid"><a class="start-card" href="picks.html"><strong>Updated picks</strong><span>Every open match in one place: market and model probabilities, research-only picks, and unresolved entries with their limitations.</span></a><a class="start-card" href="#unresolved-summary"><strong>Unresolved & limitations</strong><span>Picks without a market line, research-only picks and anything still unresolved, with the reason and its source.</span></a><a class="start-card" href="analysis.html#day-five-results"><strong>TWC final results</strong><span>Aurora 2-1 Falcons (third place) and FURIA 3-2 BETBOOM (grand final). Every score links to HLTV, and the pre-lock picks are scored honestly.</span></a><a class="start-card" href="matches.html"><strong>All matches</strong><span>The complete Hotspawn feed, including closed entries.</span></a></div><p class="start-note">Pick labels, the source ladder and every limitation are on the {link('sources.html','method page')}.</p></section>'''
     body+='</details>'
     body+=glance(data,opens)
+    body+=lobby_coverage_panel(data)
     body+=unresolved_limits_card(data)
     # The dedicated unresolved section follows the pick list, so a phone reaches
     # every pick first and then the rows that have no percentage. The coverage
@@ -1829,7 +1929,7 @@ def unresolved_page(data):
                  'Every open match without a usable betting line: our model line, a research-only '
                  'pick, or an honest blank. Each row states its limitation.', data)
             + pick_directory(data, jump=('#unresolved-rows', 'Jump to the match rows ↓'))
-            + unresolved_page_intro(data) + measured_source_access()
+            + unresolved_page_intro(data) + lobby_coverage_panel(data) + measured_source_access()
             + '<nav class="section-nav" aria-label="Pick lists">'
             + ('<a href="unresolved.html?status=needs">No percentage (<span data-count="missing">'
                + str(len(no_probability)) + '</span>)</a>')
@@ -2050,6 +2150,9 @@ def build(data,out,now=None):
     for flag in data['issues']:
         review+='<li>'+e(flag['message'])+' '+link(flag['source'],'Source ↗')+'</li>'
     review+='</ul><p>'+link('sources.html','Every source attempt, including blocked providers →')+'</p></section>'
+    # Lobby coverage: the ids the lobby linked to and this capture's feed did not
+    # return, with both official sources. A coverage record, never a price.
+    review+=lobby_coverage_panel(data, anchor='lobby-coverage-review')
     notes=json.loads((ROOT/'data/review-notes.json').read_text())
     review+='<section id="research-findings"><h2>Research findings & audit resolution</h2><p class="muted">Each finding states its own research date and scope. For current access results, see '+link('sources.html','source health')+'. Every limitation is retained for manual review.</p><div class="table-wrap"><table class="source-table" role="table"><caption>Historical research findings and current implementation safeguards; not a claim of 100% probability coverage.</caption><thead><tr><th scope="col">Status</th><th scope="col">Finding / limitation</th><th scope="col">Review sources</th></tr></thead><tbody>'
     for note in notes:
