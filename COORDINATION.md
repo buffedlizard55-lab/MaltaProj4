@@ -11016,3 +11016,26 @@ integration after the capture is verified, per the board rules. If a needed file
 is owned by another active claim, the request will be logged here instead of
 edited. Small frequent commits; `git pull --rebase` before every push.
 
+
+**Session b964dffd — scope extension + cross-session request (2026-10-26 ~01:15 UTC).**
+(1) Scope extension under claimed task 3 ("a code change only if a verified gap is
+reproduced"): staging the fresh capture
+([40251666216](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40251666216),
+81 rows, 19/19 open priced) the publisher's way left exactly one genuine unit
+failure — `scripts/audit_5717f7d9.py` accepted only `provider == "Valve VRS model"`
+while routing `model_vrs_mirror` rows into the same audit, so rows 1081159/1081162
+failed with "Model row has no VRS evidence" and any mirror board cannot pass the
+staged-root gate. `scripts/audit_5717f7d9.py` is therefore added to this session's
+scope for that fix only (provider bound to method + mirror dated-page checks;
+regressions in `tests/test_session_b964dffd.py`). No other session claims that file
+above. (2) **Request to session aeafcbe6 (logged, not edited):**
+`tests/browser_aeafcbe6.cjs` rewrites tracked
+`research/session-aeafcbe6/mobile-measurements.json` during test runs; the dirty
+tree made harvest run 40251080446's receipt-commit `git pull --rebase` refuse and
+the capture was lost. Please write measurements to `runtime/`/temp or restore the
+file post-assertion. Flagged as
+`session-b964dffd-browser-test-dirties-tree-2026-10-26`. (3) Main moved during this
+session (PRs #353/#354; session 160f03c8 flagged the same 8 fixtures and asked for
+this re-harvest): final integration merges `origin/main` first, unions
+`data/review-notes.json`, then rebuilds/restages — no upstream file is reverted.
+

@@ -373,12 +373,64 @@ def _audit_book(m, generated, amap, findings, rec):
                                 [e.get("url")]))
 
 
+# Session b964dffd (2026-10-26): the router above sends BOTH model tiers
+# here, but this filter used to accept only the monthly-file provider, so
+# every board containing a ``model_vrs_mirror`` row failed this audit with
+# "Model row has no VRS evidence" even though the row's HLTV-mirror evidence
+# re-derives exactly (reproduced on the 2026-10-26T01:00:10Z capture, rows
+# 1081159 and 1081162; the same defect class session e334b970 fixed in
+# verify_0cc1138a.py — see README, 24 October 2026). The provider is now
+# bound to the method, so a swapped or mislabelled evidence record still
+# fails, and the mirror tier carries its own dated-page checks below
+# instead of the vendored-monthly-file cross-check it cannot pass by design.
+VRS_PROVIDER_BY_METHOD = {
+    "model_vrs": "Valve VRS model",
+    "model_vrs_mirror": "HLTV Valve ranking (Valve points)",
+}
+
+
 def _audit_vrs(m, generated, standings, findings, rec):
-    ev = [e for e in m["evidence"] if e.get("provider") in ("Valve VRS model",)]
+    expected_provider = VRS_PROVIDER_BY_METHOD.get(m.get("method"))
+    ev = [e for e in m["evidence"] if e.get("provider") == expected_provider]
     if not ev:
-        findings.append(Finding("fail", "vrs_evidence", m["id"], "Model row has no VRS evidence.", []))
+        providers = [e.get("provider") for e in m["evidence"]]
+        findings.append(Finding("fail", "vrs_evidence", m["id"],
+                                f"Model row ({m.get('method')}) has no evidence from its own "
+                                f"provider {expected_provider!r}; providers present: {providers}.", []))
         return
     e = ev[0]
+    if m.get("method") == "model_vrs_mirror":
+        # The mirror tier exists precisely because Valve's monthly file could
+        # not resolve a club, so instead of the vendored-file cross-check the
+        # retained dated HLTV page is the evidence: it must be named, dated
+        # no later than the snapshot, hash-retained, and disclosed on the row.
+        for key in ("ranking_as_of", "ranking_page_sha256"):
+            if not e.get(key):
+                findings.append(Finding("fail", "vrs_mirror_source", m["id"],
+                                        f"Mirror evidence missing {key}; the dated HLTV page "
+                                        "behind these points is not re-derivable.", [e.get("url")]))
+        if e.get("ranking_as_of"):
+            try:
+                as_of = datetime.strptime(e["ranking_as_of"], "%Y-%m-%d").replace(tzinfo=timezone.utc)
+                if as_of.date() > generated.date():
+                    findings.append(Finding("fail", "vrs_mirror_source", m["id"],
+                                            f"Mirror ranking dated {e['ranking_as_of']} is after the "
+                                            f"snapshot date {generated.date()}.", [e.get("url")]))
+            except (ValueError, TypeError):
+                findings.append(Finding("fail", "vrs_mirror_source", m["id"],
+                                        f"Mirror ranking_as_of {e.get('ranking_as_of')!r} is not a date.",
+                                        [e.get("url")]))
+        if "hltv.org/valve-ranking/teams" not in str(e.get("url") or ""):
+            findings.append(Finding("fail", "vrs_mirror_source", m["id"],
+                                    "Mirror evidence URL is not HLTV's dated Valve ranking page.",
+                                    [e.get("url")]))
+        if not any("dated valve ranking" in f.lower() for f in m.get("flags", [])):
+            findings.append(Finding("flag", "vrs_mirror_label", m["id"],
+                                    "Mirror line missing the flag disclosing that its points came "
+                                    "from HLTV's dated Valve ranking, not Valve's monthly file.",
+                                    [e.get("url")]))
+        else:
+            rec["checks"].append("mirror points sourced to HLTV's dated Valve ranking page")
     points = e.get("points")
     if not points or len(points) != 2:
         findings.append(Finding("fail", "vrs_points", m["id"], "No retained Valve points.", [e.get("url")]))
