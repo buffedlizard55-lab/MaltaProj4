@@ -1,0 +1,348 @@
+{
+  "measured_at_clock": "2026-10-26T01:05:00Z",
+  "snapshot": "2026-10-26T00:58:54.030684Z",
+  "viewports": [
+    {
+      "viewport": {
+        "name": "iPhone SE (320x568)",
+        "width": 320,
+        "height": 568
+      },
+      "pageOverflow": {
+        "index.html": false,
+        "picks.html": false,
+        "unresolved.html": false,
+        "matches.html": false,
+        "review.html": false,
+        "sources.html": false,
+        "evidence.html": false,
+        "analysis.html": false
+      },
+      "home": {
+        "execQuicknav": {
+          "top": 290,
+          "bottom": 359,
+          "height": 69
+        },
+        "execSummary": {
+          "top": 3750,
+          "bottom": 4004,
+          "height": 254
+        },
+        "unresolvedSummary": {
+          "top": 7051,
+          "bottom": 9753,
+          "height": 2702
+        },
+        "firstGlanceCard": null,
+        "glanceCardCount": 0,
+        "tabbarTop": 507,
+        "firstScoresClearTabbar": true
+      },
+      "picksBoard": {
+        "rows": 19,
+        "firstPick": {
+          "text": "Off Chops",
+          "bottom": 371
+        },
+        "firstProbs": [
+          {
+            "text": "20.5%",
+            "bottom": 426
+          },
+          {
+            "text": "79.5%",
+            "bottom": 426
+          }
+        ],
+        "tabbarTop": 507,
+        "firstRowClearTabbar": true
+      }
+    },
+    {
+      "viewport": {
+        "name": "iPhone SE 3 (375x667)",
+        "width": 375,
+        "height": 667
+      },
+      "pageOverflow": {
+        "index.html": false,
+        "picks.html": false,
+        "unresolved.html": false,
+        "matches.html": false,
+        "review.html": false,
+        "sources.html": false,
+        "evidence.html": false,
+        "analysis.html": false
+      },
+      "home": {
+        "execQuicknav": {
+          "top": 290,
+          "bottom": 346,
+          "height": 57
+        },
+        "execSummary": {
+          "top": 3636,
+          "bottom": 3873,
+          "height": 237
+        },
+        "unresolvedSummary": {
+          "top": 6525,
+          "bottom": 8850,
+          "height": 2324
+        },
+        "firstGlanceCard": null,
+        "glanceCardCount": 0,
+        "tabbarTop": 606,
+        "firstScoresClearTabbar": true
+      },
+      "picksBoard": {
+        "rows": 19,
+        "firstPick": {
+          "text": "Off Chops",
+          "bottom": 337
+        },
+        "firstProbs": [
+          {
+            "text": "20.5%",
+            "bottom": 392
+          },
+          {
+            "text": "79.5%",
+            "bottom": 392
+          }
+        ],
+        "tabbarTop": 606,
+        "firstRowClearTabbar": true
+      }
+    },
+    {
+      "viewport": {
+        "name": "iPhone 14 (390x844)",
+        "width": 390,
+        "height": 844
+      },
+      "pageOverflow": {
+        "index.html": false,
+        "picks.html": false,
+        "unresolved.html": false,
+        "matches.html": false,
+        "review.html": false,
+        "sources.html": false,
+        "evidence.html": false,
+        "analysis.html": false
+      },
+      "home": {
+        "execQuicknav": {
+          "top": 300,
+          "bottom": 364,
+          "height": 65
+        },
+        "execSummary": {
+          "top": 4907,
+          "bottom": 5126,
+          "height": 219
+        },
+        "unresolvedSummary": {
+          "top": 7673,
+          "bottom": 9895,
+          "height": 2222
+        },
+        "firstGlanceCard": null,
+        "glanceCardCount": 0,
+        "tabbarTop": 783,
+        "firstScoresClearTabbar": true
+      },
+      "picksBoard": {
+        "rows": 19,
+        "firstPick": {
+          "text": "Off Chops",
+          "bottom": 357
+        },
+        "firstProbs": [
+          {
+            "text": "20.5%",
+            "bottom": 421
+          },
+          {
+            "text": "79.5%",
+            "bottom": 421
+          }
+        ],
+        "tabbarTop": 783,
+        "firstRowClearTabbar": true
+      }
+    },
+    {
+      "viewport": {
+        "name": "Pixel 7 (412x915)",
+        "width": 412,
+        "height": 915
+      },
+      "pageOverflow": {
+        "index.html": false,
+        "picks.html": false,
+        "unresolved.html": false,
+        "matches.html": false,
+        "review.html": false,
+        "sources.html": false,
+        "evidence.html": false,
+        "analysis.html": false
+      },
+      "home": {
+        "execQuicknav": {
+          "top": 300,
+          "bottom": 364,
+          "height": 65
+        },
+        "execSummary": {
+          "top": 4821,
+          "bottom": 5041,
+          "height": 219
+        },
+        "unresolvedSummary": {
+          "top": 7547,
+          "bottom": 9667,
+          "height": 2120
+        },
+        "firstGlanceCard": null,
+        "glanceCardCount": 0,
+        "tabbarTop": 854,
+        "firstScoresClearTabbar": true
+      },
+      "picksBoard": {
+        "rows": 19,
+        "firstPick": {
+          "text": "Off Chops",
+          "bottom": 357
+        },
+        "firstProbs": [
+          {
+            "text": "20.5%",
+            "bottom": 421
+          },
+          {
+            "text": "79.5%",
+            "bottom": 421
+          }
+        ],
+        "tabbarTop": 854,
+        "firstRowClearTabbar": true
+      }
+    },
+    {
+      "viewport": {
+        "name": "iPad Portrait (768x1024)",
+        "width": 768,
+        "height": 1024
+      },
+      "pageOverflow": {
+        "index.html": false,
+        "picks.html": false,
+        "unresolved.html": false,
+        "matches.html": false,
+        "review.html": false,
+        "sources.html": false,
+        "evidence.html": false,
+        "analysis.html": false
+      },
+      "home": {
+        "execQuicknav": {
+          "top": 0,
+          "bottom": 0,
+          "height": 0
+        },
+        "execSummary": {
+          "top": 491,
+          "bottom": 888,
+          "height": 397
+        },
+        "unresolvedSummary": {
+          "top": 6061,
+          "bottom": 7746,
+          "height": 1685
+        },
+        "firstGlanceCard": null,
+        "glanceCardCount": 0,
+        "tabbarTop": null,
+        "firstScoresClearTabbar": true
+      },
+      "picksBoard": {
+        "rows": 19,
+        "firstPick": {
+          "text": "Off Chops",
+          "bottom": 732
+        },
+        "firstProbs": [
+          {
+            "text": "20.5%",
+            "bottom": 729
+          },
+          {
+            "text": "79.5%",
+            "bottom": 729
+          }
+        ],
+        "tabbarTop": null,
+        "firstRowClearTabbar": true
+      }
+    },
+    {
+      "viewport": {
+        "name": "Desktop (1440x900)",
+        "width": 1440,
+        "height": 900
+      },
+      "pageOverflow": {
+        "index.html": false,
+        "picks.html": false,
+        "unresolved.html": false,
+        "matches.html": false,
+        "review.html": false,
+        "sources.html": false,
+        "evidence.html": false,
+        "analysis.html": false
+      },
+      "home": {
+        "execQuicknav": {
+          "top": 0,
+          "bottom": 0,
+          "height": 0
+        },
+        "execSummary": {
+          "top": 425,
+          "bottom": 659,
+          "height": 234
+        },
+        "unresolvedSummary": {
+          "top": 4731,
+          "bottom": 5861,
+          "height": 1130
+        },
+        "firstGlanceCard": null,
+        "glanceCardCount": 0,
+        "tabbarTop": null,
+        "firstScoresClearTabbar": true
+      },
+      "picksBoard": {
+        "rows": 19,
+        "firstPick": {
+          "text": "Off Chops",
+          "bottom": 632
+        },
+        "firstProbs": [
+          {
+            "text": "20.5%",
+            "bottom": 630
+          },
+          {
+            "text": "79.5%",
+            "bottom": 630
+          }
+        ],
+        "tabbarTop": null,
+        "firstRowClearTabbar": true
+      }
+    }
+  ]
+}
