@@ -571,10 +571,29 @@ def run(previous=None):
     stale_count = sum(m['state']!='open' for m in matches)
     if stale_count:
         flags.append(issue('feed_status',f'{stale_count} feed entries are not open by sourced timestamps/status. They remain in All matches and are not treated as future picks.',FIXTURES))
+    # Lobby coverage: which fixtures the public lobby linked to, how many the
+    # feed returned, and any id in the first set missing from the second. This is
+    # a coverage record, not a price: a lobby-only fixture has no feed start or
+    # lock time, so the ladder cannot price it and no row is invented for it.
+    lobby = inventory.get('lobby') or {}
+    lobby_coverage = {
+        'feed_count': lobby.get('feed_count'),
+        'lobby_count': lobby.get('lobby_count'),
+        'lobby_read': lobby.get('lobby_read'),
+        'missing_from_feed': lobby.get('missing_from_feed') or [],
+        'missing_count': lobby.get('missing_count', 0),
+        'lobby_url': 'https://play.hotspawn.com/lobby',
+        'feed_url': FIXTURES,
+        'observed_at': fixture_observed,
+        'note': ('Lobby-only fixtures are named, never priced: the feed publishes no start or lock '
+                 'time for them, so a pick would have to invent one. They are retried on the next '
+                 'refresh. Hotspawn crowd percentages are never used as a probability.'),
+    }
     return {'schema_version':2,'generated_at':iso(completed),'last_attempt_at':iso(completed),
         'refresh_started_at':iso(now),
         'fixtures_observed_at':fixture_observed, 'coverage':coverage,
         'refresh_hours':1,'stale_after_hours':8, 'matches':matches,
+        'lobby_coverage':lobby_coverage,
         'source_checks':src.log,'issues':flags,
         'coverage_counts':inventory['counts'], 'fixture_conflicts':inventory['conflicts'],
         'inventory_changes':inventory['changes'],
