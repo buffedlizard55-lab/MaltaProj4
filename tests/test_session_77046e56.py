@@ -58,12 +58,14 @@ class MirrorRowsAreAudited(unittest.TestCase):
         self.assertEqual(hard_findings(findings), [], json.dumps(hard_findings(findings), indent=2))
 
     def test_missing_ranking_provenance_is_a_failure(self):
-        for key in ("ranking_as_of", "ranking_page_sha256"):
+        expected = {"ranking_as_of": "vrs_mirror_age",
+                    "ranking_page_sha256": "vrs_mirror_source"}
+        for key, area in expected.items():
             with self.subTest(key=key):
                 def drop(row, key=key):
                     row["evidence"][0].pop(key, None)
                 areas = {f["area"] for f in hard_findings(self.audit_with(drop))}
-                self.assertIn("vrs_mirror_source", areas)
+                self.assertIn(area, areas)
 
     def test_fixture_identity_mismatch_is_a_failure(self):
         def swap(row):

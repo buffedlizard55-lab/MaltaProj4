@@ -1,0 +1,80 @@
+First extra element 0:
+{'severity': 'fail', 'area': 'vrs_evidence', 'fixture': '1081159', 'message': 'Model row has no VRS evidence.', 'sources': []}
+
++ []
+- [{'area': 'vrs_evidence',
+-   'fixture': '1081159',
+-   'message': 'Model row has no VRS evidence.',
+-   'severity': 'fail',
+-   'sources': []},
+-  {'area': 'vrs_evidence',
+-   'fixture': '1081162',
+-   'message': 'Model row has no VRS evidence.',
+-   'severity': 'fail',
+-   'sources': []}] : [
+  {
+    "severity": "fail",
+    "area": "vrs_evidence",
+    "fixture": "1081159",
+    "message": "Model row has no VRS evidence.",
+    "sources": []
+  },
+  {
+    "severity": "fail",
+    "area": "vrs_evidence",
+    "fixture": "1081162",
+    "message": "Model row has no VRS evidence.",
+    "sources": []
+  }
+]
+
+----------------------------------------------------------------------
+Ran 1778 tests in 75.241s
+
+FAILED (failures=1, skipped=9)
+
+checks: 282  failures: 1
+FAIL: 1082769 K27 vs NEXORA: unresolved method must be None
+receipt: /tmp/tmpaat74pc6/audit-receipt.json
+{
+ "rows_with_official_source": 107,
+ "open_with_pick": 0,
+ "open_with_probability": 0,
+ "probabilities_reproduced": 0,
+ "research_only": 0,
+ "research_listed_on_both_pages": 0,
+ "unresolved": 25,
+ "unresolved_listed_on_both_pages": 25
+}
+checks: 282  failures: 1
+FAIL: 1082769 K27 vs NEXORA: unresolved row lacks its limitation
+receipt: /tmp/tmpaat74pc6/audit-receipt.json
+{
+ "rows_with_official_source": 107,
+ "open_with_pick": 0,
+ "open_with_probability": 0,
+ "probabilities_reproduced": 0,
+ "research_only": 0,
+ "research_listed_on_both_pages": 0,
+ "unresolved": 25,
+ "unresolved_listed_on_both_pages": 25
+}
+checks: 282  failures: 1
+FAIL: 1082769 K27 vs NEXORA: unresolved row lacks source attempts
+receipt: /tmp/tmpaat74pc6/audit-receipt.json
+{
+ "rows_with_official_source": 107,
+ "open_with_pick": 0,
+ "open_with_probability": 0,
+ "probabilities_reproduced": 0,
+ "research_only": 0,
+ "research_listed_on_both_pages": 0,
+ "unresolved": 25,
+ "unresolved_listed_on_both_pages": 25
+}
+checks: 282  failures: 1
+FAIL: 1082769 K27 vs NEXORA: unresolved row lacks official fixture URL
+Built 9 primary pages + 6 legacy redirects; 107 sourced rows, 0 with percentages, 0 without percentages, 0 unresolved.
+Built 9 primary pages + 6 legacy redirects; 107 sourced rows, 36 with percentages, 7 without percentages, 1 unresolved.
+Built 9 primary pages + 6 legacy redirects; 107 sourced rows, 0 with percentages, 25 without percentages, 25 unresolved.
+coverage: 19 open · 19 with a pick · 19 with a win probability

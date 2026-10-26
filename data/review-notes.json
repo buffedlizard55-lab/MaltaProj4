@@ -6712,6 +6712,75 @@
   ]
  },
  {
+  "id": "session-9bbd095e-polymarket-sokerorg-lfo10-1081159-2026-10-26",
+  "status": "Open limitation — unverified opponent rebrand refused; originated Valve VRS mirror line published instead",
+  "finding": "Hotspawn fixture 1081159 (LFO 10 vs ex-6666, CCT Season 3 Europe Series 12, 2026-10-26T12:00:00Z) matches HLTV match 2399509 (LFO 10 vs ex-6666) with LFO 10 (team/14084, HLTV #167, 2026-10-26 Valve ranking #157 at 803 pts, lineup Sapec, L00m1, dottie, flaw, Mann3n) facing ex-6666 (team/14100, HLTV #72, 2026-10-26 Valve ranking #118 at 968 pts, lineup skcH, kL1o, amster, rendysky, stefienson). Polymarket Gamma API (series_id=10310) exposes market 6231429 (Counter-Strike: Sökerorg vs ex-6666, 2026-10-26T12:00:00Z, outcomes ['Sökerorg', 'ex-6666'], outcomePrices ['0.315', '0.685'], spread 0.53, liquidity $691.77). Neither HLTV match 2399509 nor HLTV team 14084 records Sökerorg as a verified club or roster name, and the 53-point spread also fails the strict 25-point exchange gate. No unverified alias was added to data/identities.json; the pipeline refused market 6231429, recorded HLTV, Pinnacle, Thunderpick, GG.BET, BO3.gg and 2026-10-05 Valve standings attempts (LFO 10 absent from the 2026-10-05 file), and originated a labelled model_vrs_mirror estimate from HLTV's dated 2026-10-26 Valve ranking (ex-6666 67.2% / LFO 10 32.8%, 5/5 HLTV roster continuity on both clubs).",
+  "sources": [
+   {
+    "label": "Hotspawn lobby (fixture 1081159: LFO 10 vs ex-6666)",
+    "url": "https://play.hotspawn.com/lobby"
+   },
+   {
+    "label": "HLTV match 2399509: LFO 10 vs ex-6666 (2026-10-26 12:00 UTC)",
+    "url": "https://www.hltv.org/matches/2399509/lfo-10-vs-ex-6666-cct-2026-europe-series-12"
+   },
+   {
+    "label": "HLTV team 14084: LFO 10 (no Sökerorg alias published)",
+    "url": "https://www.hltv.org/team/14084/lfo-10"
+   },
+   {
+    "label": "Polymarket market 6231429: Sökerorg vs ex-6666 (spread 0.53)",
+    "url": "https://gamma-api.polymarket.com/markets/6231429"
+   },
+   {
+    "label": "HLTV dated Valve ranking (2026-10-26: #157 LFO 10 803 pts vs #118 ex-6666 968 pts)",
+    "url": "https://www.hltv.org/valve-ranking/teams/2026/october/26"
+   }
+  ]
+ },
+ {
+  "id": "session-9bbd095e-bo3-nodwin13-slot-rotation-2026-10-26",
+  "status": "Open source discrepancy — BO3.gg rotates afternoon NODWIN Clutch 13 start times vs Hotspawn and HLTV; exact-UTC gate preserved",
+  "finding": "Across the four NODWIN Clutch Series 13 playoffs quarterfinals on 2026-10-26 (1079201 INOX Division vs Nemesis at 09:00Z, 1079202 FOKUS vs ex-Zero Tenacity at 12:00Z, 1079203 Metizport vs BRUTE at 15:00Z, 1093218 Nuclear TigeRES vs UNiTY at 18:00Z), Hotspawn's official fixtures API and HLTV's event schedule (events/9440/matches: 2399116, 2399117, 2399118, 2399119) agree on every UTC start timestamp. BO3.gg's upcoming CS2 feed (tournament_id=6149) matches 09:00Z on id=131200, carries bet_updates: null across all four series, and rotates the three afternoon UTC start times (id=131201 Metizport vs BRUTE at 12:00Z, id=131202 Nuclear TigeRES vs UNiTY at 15:00Z, id=131203 FOKUS vs ex-Zero Tenacity at 18:00Z). Enforcing exact opponent-pair + UTC-start verification in scripts/bo3.py prevented cross-slot matching; 1079201 resolved via Polymarket (27.5% / 72.5%) while 1079202, 1079203 and 1093218 originated Valve VRS model lines from standings_global_2026_10_05.md with 4/5 to 5/5 HLTV lineup continuity.",
+  "sources": [
+   {
+    "label": "HLTV event 9440 matches: NODWIN Clutch Series 13 quarterfinal UTC schedule",
+    "url": "https://www.hltv.org/events/9440/matches"
+   },
+   {
+    "label": "Hotspawn CS2 scheduled fixtures API",
+    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+   },
+   {
+    "label": "BO3.gg tournament 6149 upcoming matches API (bet_updates null, afternoon slots rotated)",
+    "url": "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=20&filter[matches.status][in]=upcoming&filter[matches.tournament_id][in]=6149&sort=start_date&with=teams,tournament"
+   }
+  ]
+ },
+ {
+  "id": "session-9bbd095e-audit-5717f7d9-mirror-gate-2026-10-26",
+  "status": "Fixed — audit_5717f7d9 root-staging gate now validates model_vrs_mirror provenance, freshness and Valve calibration",
+  "finding": "When open fixtures 1081159 (LFO 10 vs ex-6666) and 1081162 (ex-RUSTEC vs Spirit Academy) entered the Hotspawn CS2 lobby on 2026-10-26, both legitimately resolved through model_vrs_mirror (HLTV Valve ranking, 2026-10-26) because LFO 10 is absent from Valve's 2026-10-05 file and ex-RUSTEC has two tied-overlap rows in 2026-10-05 versus one unique row (#94, 1059 pts, 4/5 HLTV overlap) on 2026-10-26. Although scripts.validate (validate_mirror_row) and upload-pages-artifact passed, scripts/audit_5717f7d9.py dispatched model_vrs_mirror to _audit_vrs while filtering evidence exclusively to provider == 'Valve VRS model', raising 'Model row has no VRS evidence' and failing pages.yml Step 17 (Keep the legacy main:/ root fallback on the verified build, e.g. run 40252224713) with rc=3. _audit_vrs now validates 'HLTV Valve ranking (Valve points)' on model_vrs_mirror rows, re-derives Valve's Glicko + 0.7986 calibration, and fails closed on non-HLTV URLs, stale observed_at (>8h) or ranking_as_of (>45d), incomplete lists (<100 teams), unverified duplicate labels, or missing prior unresolved official-file VRS attempts.",
+  "sources": [
+   {
+    "label": "Independent auditor module (scripts/audit_5717f7d9.py)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/scripts/audit_5717f7d9.py"
+   },
+   {
+    "label": "Main publish run 40252224713 (Step 17 root-fallback unit gate failure before fix)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40252224713"
+   },
+   {
+    "label": "Session 9bbd095e harvest run 40251642534 (captured root-unit failure trace)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40251642534"
+   },
+   {
+    "label": "HLTV dated Valve ranking (2026-10-26)",
+    "url": "https://www.hltv.org/valve-ranking/teams/2026/october/26"
+   }
+  ]
+ },
+ {
   "id": "session-77046e56-audit-mirror-provider-2026-10-26",
   "status": "Fixed in this change; published for manual review",
   "finding": "The independent auditor scripts/audit_5717f7d9.py selected model evidence with provider == 'Valve VRS model' only. A row priced from HLTV's dated view of Valve's ranking carries provider == 'HLTV Valve ranking (Valve points)'. On the verified 2026-10-26T00:52:33Z capture those two rows (1081159 LFO 10 vs ex-6666, 1081162 ex-RUSTEC vs Spirit Academy) were therefore reported as the hard failure 'Model row has no VRS evidence'. That finding is part of the publish workflow's own gate: the gate refuses to stage a snapshot onto the legacy Pages root when the unit suite is red, so the 81-row build was verified and deployed as an artifact while the committed main:/ root kept the older 73-row snapshot, and the public board kept serving 11 open matches after Hotspawn listed 19. The equations were never wrong: both mirror rows re-derive from their retained Valve points through Valve's published fit (G = 0.9728209910486895, slope 0.7986) to <1e-9. The auditor now accepts both providers, checks the arithmetic identically, and adds mirror-specific assertions (ranking date, ranking page hash, fixture identity, two named ranking rows); tests/test_session_77046e56.py proves tampering with any of those still fails the audit. Reproduction, before the fix: python3 -m unittest tests.test_session_5717f7d9 with the 81-row snapshot in data/latest.json.",
