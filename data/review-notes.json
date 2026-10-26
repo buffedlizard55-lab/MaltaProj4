@@ -6686,5 +6686,20 @@
     "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40251666216"
    }
   ]
+ },
+ {
+  "id": "session-b964dffd-model-receipt-timebomb-2026-10-26",
+  "status": "Fixed in this session — merged-main test repaired at integration, intent preserved",
+  "finding": "tests/test_session_28e4f2a1.py::test_the_model_receipt_reproduces_every_model_row (merged minutes earlier in PR #356) asserted that every model-tier row in the live data/latest.json appears in that session's dated model-receipt.json (snapshot 2026-10-26T00:10:49Z, published_line fixtures 1093218/1082792/1082793). Its sibling line-receipt test and the suite's own docstring bind receipts to their snapshot by timestamp equality; the model test did not, so it failed on the first rotated board (session b964dffd's verified 2026-10-26T01:00:10Z capture: '1079202 not found'). Left unrepaired it would fail the publisher's staged-root unit gate on main's next successful refresh — the pinned-live-value class that froze publication on 2026-10-23/24. Repair: the cross-check now runs only when receipt['snapshot_generated_at'] == snapshot['generated_at'] (full strength on its own board); the receipt-internal checks (problems 0, reproduced == model_rows, duplicate-label roster rule) remain unconditional, and the timestamp's presence is asserted. Owning session 28e4f2a1's task was already merged/done; the change is confined to that one assertion block and labelled in place.",
+  "sources": [
+   {
+    "label": "PR #356 that merged the suite (session 28e4f2a1)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/pull/356"
+   },
+   {
+    "label": "Capture whose rotated board exposed it — run 40251666216",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40251666216"
+   }
+  ]
  }
 ]

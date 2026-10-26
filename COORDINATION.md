@@ -11235,3 +11235,29 @@ section and on the site. PR + merge + live-Pages verification follow below.
 **Not touched by this session:** `data/latest.json`, `data/matches.csv`, `build-info.json`, the committed root `*.html` pages, `site/*`, `scripts/refresh.py`, `scripts/core.py`, `scripts/validate.py`, `.github/workflows/**`, and every other session's `tests/test_session_<id>.py`. The publisher regenerates the root pages and `public/` from the same `scripts/build.py`; this session never hand-stages them (session 6d111263's lesson).
 
 **Deliberate non-change.** The exchange gate's exact-UTC-start rule stays as it is: a live Polymarket series market for fixture `1093218` exists at 0.605/0.395 with ~$6,141 of liquidity, but its `gameStartTime` is `2026-10-26T15:00:00Z` while Hotspawn's lock schedule says `2026-10-26T18:00:00Z`. Attaching that price would price a possibly different kick-off, so the row keeps its labelled VRS line and the conflict is flagged for review instead (C5).
+
+**Session b964dffd — second integration note (2026-10-26 ~01:33 UTC).** Main merged
+PR #356 (session 28e4f2a1, pick directory in the executive summary: `scripts/build.py`
++ stylesheets) after this branch's first integration commit. Re-merged, rebuilt
+with the new builder, and re-staged. Two measured wrinkles, both handled without
+reverting upstream work: (1) `scripts.publish_root_fallback` refused on snapshot
+*timestamp equality* (root already carried this session's 01:00Z snapshot) while
+merged source changed the bytes — hand-staged via `scripts.stage_legacy` (the
+documented precedent) after verifying both publisher guards by hand:
+`source_drift == []`, `asset_divergence == []`, then full validation. The
+publisher re-stages normally at its next newer snapshot. (2) PR #356's own
+`test_the_model_receipt_reproduces_every_model_row` pinned its dated receipt to
+the live snapshot despite its docstring's timestamp-binding rule and failed on
+this rotated board (`1079202 not found`); repaired minimally to bind by
+`snapshot_generated_at` exactly like its sibling line-receipt test, receipt-internal
+checks unconditional — flagged as
+`session-b964dffd-model-receipt-timebomb-2026-10-26`. Note also:
+`research/session-28e4f2a1/phone-directory-measurements.json` is a **second**
+tracked measurements file rewritten by a browser suite (dirtied by this session's
+local run, restored not committed); the aeafcbe6 flagged request applies to it too.
+Gates after re-merge: **1,813 unit OK (9 skipped), audits 9, integrity 5, c6 12,
+validate 81/19/15/821 links/200 rows, all browser suites rc=0**. (Process note:
+after a merge commit exists on a session branch, `git pull --rebase` tries to
+linearise merged upstream commits and conflicts; this session aborted such a
+rebase cleanly with HEAD == the pushed commit and used fetch+merge afterwards.)
+
