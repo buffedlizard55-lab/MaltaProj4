@@ -11041,3 +11041,73 @@ This session edits `scripts/inventory.py`, `scripts/core.py` and `data/review-no
 does not touch `pages.yml`, `scripts/build.py`, `scripts/validate.py`, or any other session's research
 directory. If a later rebase finds a competing change in those two collector files, the resolution is
 keep-both and log it here.
+
+## Session 77046e56 — status update (2026-10-26 01:15 UTC): the gap is delivery, not collection; the fresh board prices 19/19
+
+**D1 done — measured, not assumed.** A read-only probe (`scripts/diag_77046e56.py`, run
+[40251063027](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40251063027), receipts in
+`research/session-77046e56/diag/`) requested **the collector's exact URL**
+(`…/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1`) once at `2026-10-26T00:47:52Z` with the
+collector's own User-Agent. It returned **200, 63,325 bytes, 81 CS2 rows, 19 with a future start, and all
+eight absent fixtures present**. Dropping `status` returned 10,626 rows (20 future); dropping `tenantId`
+returned the same 81. `limit`, `page`, `offset`, `per_page` and `take` are rejected by the API with
+`property … should not exist` (400). The rendered lobby (200, 309,875 B) carries all eight IDs in its
+`/matches/…` links and the same "81" tier count; the CS2 pick'em page (200, 236,678 B) is a stale 72.
+The lobby's two JS bundles contain **zero** `api/v1/fixtures` references, so the browser request is not
+the missing piece either. **Conclusion: the collector is correct; Hotspawn added the eight fixtures after
+the 00:07Z observation, and the board was simply older than the fixtures.** C1 is therefore **withdrawn, not
+done**: no collector defect was reproduced, so `scripts/inventory.py`, `scripts/core.py` were not edited —
+changing them would have been a fix for a problem that does not exist.
+
+**P1 done on a real egress — 19/19 priced, 0 unresolved.** `harvest-77046e56` run
+[40251150280](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40251150280) ran the
+publisher's own commands. Every step returned 0: refresh, quarantine (`{"withheld_rows": 0}`), census,
+independent audit (81 rows, 0 failures on both the refreshed and the built snapshot), build, validate
+(81 rows / 19 calculations / 15 pages / 779 links / 20 checksums / 200 displayed), unit suite. Snapshot
+`2026-10-26T00:52:33Z`, fixtures observed `00:48:58Z`, `coverage_counts {"api":81,"page":81,"lobby":81,"retained":81}`,
+**81 feed rows · 19 open · 19 picks · 19 two-way probabilities · 0 research-only · 0 unresolved**. Methods:
+8 exchange, 1 researched bookmaker listing, 8 Valve-VRS model, 2 HLTV-dated Valve-ranking mirror. The eight
+fixtures that were missing from the published board are priced through the existing ladder — no new tier
+was needed.
+
+**V1 done — sources re-read, arithmetic reproduced.** `research/session-77046e56/VERIFICATION.md` carries
+the per-row ledger. In this session: Polymarket `6066508` (`0.205/0.795`, spread 0.01), `6186053`
+(`0.725/0.275`, start 09:00Z), `6066525` (`0.425/0.575`, spread 0.25, liquidity 4,928.74) were read live and
+match their rows; BO3.gg's `132601` line re-read `1.62/2.16` and de-vigs to the published
+57.14/42.86; Valve's official detail files `0046` (Nuclear TigeRES 46 / 1323.5), `0069` (UNiTY 69 /
+1167.4), `0048` (FOKUS 48 / 1320.8) and `0158` (Saint Sinners 158 / 809.6) match the board's rounded points
+and rosters; HLTV's dated Valve ranking shows **#157 LFO 10 (803)** and **#118 ex-6666 (968)** exactly.
+All twelve originated lines recompute from their recorded points to **<1e-9**, all eight exchange pairs sum
+to 1, and the bookmaker row de-vigs exactly. Two mirror inputs (ex-RUSTEC 1059 / Spirit Academy 1038) were
+**not** read directly — disclosed in the ledger and on Flagged for Review rather than assumed.
+
+**Mobile / executive summary re-measured on the 19-row build** (`npm run test:browser`, 13 suites, exit 0,
+`"failures": []`; raw geometry in `research/session-77046e56/mobile/`): at 320×568 the summary title sits at
+y=290–359, the first pick card at y=363–526 with both percentages at y=409–430 and y=432–463, and the fixed
+tab bar starts at y=507 — 44px of clear space, no horizontal overflow, 19/19/19 cards/picks/prices, and 32
+axe scans with 0 violations at 320/390/768/1440. The quicknav a phone reader sees first reads
+*"19/19 picks · 0 unresolved (no %) · 62 feed rows are not open"* and carries in-site links to `picks.html`,
+`#picks-at-a-glance`, `unresolved.html`, `#unresolved-summary`, `#unresolved-limits`, `matches.html`,
+`sources.html#method` and `review.html`.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| D1 Measure the lobby-vs-API coverage gap (parameter matrix, raw-page scan, per-source counts) | **done** — collector URL returns all 81 incl. the 8; receipts committed | 77046e56 | `research/session-77046e56/diag/**`, `scripts/diag_77046e56.py`, `.github/workflows/diag-77046e56.yml` | 2026-10-26 01:10 |
+| C1 Repair the collector if (and only if) a defect reproduces | **withdrawn** — no defect reproduced; collector union already 81/81/81 | 77046e56 | none (no edit made) | 2026-10-26 01:10 |
+| P1 Fresh capture + price every new fixture through the existing ladder | **done** — 19/19 picks, 19/19 probabilities, 0 unresolved; all gates 0 | 77046e56 | `scripts/census_77046e56.py`, `.github/workflows/harvest-77046e56.yml`, `research/session-77046e56/harvest/**` | 2026-10-26 01:12 |
+| V1 Line-by-line source verification + mobile/exec-summary measurement | **done** — ledger + measurements committed; 2 limitations flagged | 77046e56 | `research/session-77046e56/VERIFICATION.md`, `data/review-notes.json` (2 additive ids) | 2026-10-26 01:15 |
+| I1 Integration: PR to `main`, merge without waiting, confirm Pages deploy and live bytes, receipt | in progress | 77046e56 | `COORDINATION.md`, PR | 2026-10-26 01:15 |
+
+**Flagged for review (non-blocking, published on the Flagged for Review page).**
+`session-77046e56-cron-delivery-gap-2026-10-26` — no scheduled publish between 00:05:31Z and 01:1xZ and no
+watchdog run in that window, so eight real fixtures sat on Hotspawn for over an hour before any board could
+show them (inside the 8-hour window, but it is the mechanism that makes a fixture look unpicked).
+`session-77046e56-mirror-points-partial-2026-10-26` — the two mirror point inputs above were not re-read at
+source, although the page, heading, roster and rank position were.
+
+**Coordination, honestly stated.** Sessions `b964dffd` and `32efbb66` claimed overlapping work at 00:50Z
+(fresh capture, low-tier ladder, exec-summary/phone check) while this session held the same scope. This
+session did **not** edit `scripts/inventory.py`, `scripts/core.py`, `scripts/refresh.py`, `scripts/build.py`
+or any other session's `research/` directory, and its integration PR is deliberately additive: research
+receipts, two review notes, and this board. If their branches land first, their code wins and this PR stays
+a verification receipt; if they land after, this PR's files do not conflict with theirs.
