@@ -6454,5 +6454,25 @@
     "url": "https://play.hotspawn.com/lobby"
    }
   ]
+ },
+ {
+  "id": "session-5bf1c3eb-hotspawn-stale-scheduled-2026-10-26",
+  "status": "Open — upstream data conflict disclosed, not repaired; no value inferred",
+  "finding": "Measured on the live harvest run 40251492364 (fixtures observed 2026-10-26T00:53:32Z): Hotspawn's fixtures endpoint returns 81 CS2 rows with status \"scheduled\", of which 62 carry a lock_time earlier than the observation clock and therefore cannot take a pick, and 50 of those 62 ALSO carry an end_time in the past while still reporting status \"scheduled\" (example: fixture 1052746 Fortress v Endless Journey, scheduled_start_time 2026-06-26T10:30:00Z, start_time 2026-06-26T11:45:27Z, end_time 2026-06-26T12:51:00Z, status \"scheduled\"). A status of \"scheduled\" beside a completed end_time is internally inconsistent in the upstream feed. This project keeps the rows verbatim for complete inventory, publishes no pick or percentage for them, and lists all of them in the separate \"Closed pick windows\" register with each row's own lock_time and limitation. The feed's own participants*_picked_percent crowd numbers for these rows are deliberately never used as a probability (the brief forbids Hotspawn as a probability source). No row was corrected, inferred or back-filled; the raw fields are retained per row in research/session-5bf1c3eb/gaps/gap-report.json.",
+  "sources": [
+   {
+    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+    "label": "Hotspawn fixtures endpoint (official, read 2026-10-26T00:53:32Z)"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40251492364",
+    "label": "Live harvest run 40251492364 (2026-10-26)"
+   },
+   {
+    "url": "https://play.hotspawn.com/cs2-pickems",
+    "label": "Hotspawn CS2 Pick'ems lobby (official)"
+   }
+  ],
+  "impact": "Cosmetic-to-moderate for readers: without the separate register the 62 closed rows read as \"matches with no pick\". The register and this note state the rule and the upstream conflict. Coverage of the 19 open rows is unaffected: 19 picks, 19 win probabilities, 0 unresolved at this observation."
  }
 ]
