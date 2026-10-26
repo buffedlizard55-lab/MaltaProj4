@@ -18,7 +18,9 @@ Measured, 2026-10-26
 What these tests pin
 --------------------
 1. The parser accepts exactly one Hotspawn match-permalink shape and nothing else,
-   so a blocked or half-rendered page cannot masquerade as an empty lobby.
+   so a blocked or half-rendered page cannot masquerade as an empty lobby, and only
+   the CS2 pick'em page may support a CS2 coverage claim (the general lobby has a
+   sport switcher, so one of its anchors can name another game).
 2. `compare` reports only lobby-not-in-feed ids, and a lobby read that produced no
    ids is reported as unread rather than as parity.
 3. `scripts.inventory.discover` keeps the behaviour it had -- it does not invent a
@@ -103,7 +105,7 @@ class DiscoveryTests(unittest.TestCase):
         return Sources({FIXTURES: [ROW], HOTSPAWN: [ROW], LOBBY: [ROW]}, html)
 
     def test_lobby_only_fixture_is_recorded_and_named_but_never_invented(self):
-        html = {lobby_gap_host: '<script id="ng-state">' + json.dumps(
+        html = {CS2_PAGE: '<script id="ng-state">' + json.dumps(
             {'test': {'u': FIXTURES.split('?')[0], 'b': [ROW]}}) + '</script>'
             '<a href="/matches/inox-division-vs-nemesis-1079201">x</a>'
             '<a href="https://www.hotspawn.com/matches/alpha-vs-beta-900001">x</a>'}
@@ -116,7 +118,7 @@ class DiscoveryTests(unittest.TestCase):
         self.assertEqual(issue['source'], LOBBY)
 
     def test_no_gap_records_parity_without_an_issue(self):
-        html = {lobby_gap_host: '<script id="ng-state">' + json.dumps(
+        html = {CS2_PAGE: '<script id="ng-state">' + json.dumps(
             {'test': {'u': FIXTURES.split('?')[0], 'b': [ROW]}}) + '</script>'
             '<a href="https://www.hotspawn.com/matches/alpha-vs-beta-900001">x</a>'}
         result = discover(self.sources(html), NOW)
@@ -124,8 +126,26 @@ class DiscoveryTests(unittest.TestCase):
         self.assertFalse([i for i in result['flags'] if i['code'] == 'lobby_gap'])
         self.assertTrue(result['lobby']['lobby_read'])
 
+    def test_general_lobby_links_never_claim_a_cs2_gap(self):
+        # The general lobby carries a sport switcher, so only the CS2 pick'em page
+        # may support a CS2 coverage claim. A non-CS2 permalink there is ignored.
+        html = {CS2_PAGE: '<script id="ng-state">' + json.dumps(
+            {'test': {'u': FIXTURES.split('?')[0], 'b': [ROW]}}) + '</script>',
+            LOBBY: '<a href="/matches/some-lol-final-999888">x</a>'
+                   '<a href="https://www.hotspawn.com/matches/alpha-vs-beta-900001">x</a>'}
+        result = discover(self.sources(html), NOW)
+        self.assertEqual(result['lobby']['missing_from_feed'], [])
+        self.assertFalse(result['lobby']['lobby_read'])
+        self.assertFalse([i for i in result['flags'] if i['code'] == 'lobby_gap'])
 
-lobby_gap_host = LOBBY
+    def test_unreadable_cs2_page_is_reported_as_unread_not_as_parity(self):
+        html = {LOBBY: '<a href="/matches/inox-division-vs-nemesis-1079201">x</a>'}
+        result = discover(self.sources(html), NOW)
+        self.assertFalse(result['lobby']['lobby_read'])
+        self.assertEqual(result['lobby']['missing_from_feed'], [])
+
+
+CS2_PAGE = HOTSPAWN
 
 
 class RenderTests(unittest.TestCase):
@@ -154,13 +174,13 @@ class RenderTests(unittest.TestCase):
         data = self.snapshot({'feed_count': 73, 'lobby_count': 73, 'lobby_read': True,
                               'missing_from_feed': [], 'missing_count': 0,
                               'observed_at': '2026-10-26T00:07:16Z', 'note': ''})
-        self.assertIn('lobby and the feed agreed', build.lobby_coverage_panel(data))
+        self.assertIn('CS2 page and the feed agreed', build.lobby_coverage_panel(data))
         data = self.snapshot({'feed_count': 73, 'lobby_count': 0, 'lobby_read': False,
                               'missing_from_feed': [], 'missing_count': 0,
                               'observed_at': '2026-10-26T00:07:16Z', 'note': ''})
         html = build.lobby_coverage_panel(data)
         self.assertIn('parity is unverified', html)
-        self.assertNotIn('lobby and the feed agreed', html)
+        self.assertNotIn('CS2 page and the feed agreed', html)
 
     def test_older_capture_without_the_record_renders_nothing(self):
         # Session b964dffd (2026-10-26): fresh snapshots now always carry the

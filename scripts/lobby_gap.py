@@ -36,6 +36,9 @@ What is deliberately not done
 
 The parser is intentionally narrow: it accepts one URL shape,
 ``/matches/<slug>-<fixture id>``, on hotspawn.com hosts, and nothing else.
+The caller feeds it only the CS2 pick'em page (``play.hotspawn.com/cs2-pickems``):
+the general lobby carries a sport switcher, so its anchors can name a non-CS2
+match and are never used to claim a CS2 coverage gap.
 """
 import re
 
